@@ -1,0 +1,88 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Senator.As400.Cloud.Sync.Api", "src\Api\Senator.As400.Cloud.Sync.Api.csproj", "{A9F7E0B5-8A37-44EE-8DD8-C21DBF20E975}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{83187691-24FB-4DFD-98B5-2B6FA8FE058D}"
+	ProjectSection(SolutionItems) = preProject
+		doc\CHANGELOG.md = doc\CHANGELOG.md
+		doc\CONTRIBUTING.md = doc\CONTRIBUTING.md
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CE596776-2700-456A-A67A-6C470081C74B}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{1C4439AE-80ED-4EF4-8DDE-F0DF805C2670}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{AF1E105F-6205-49D8-997E-FB3BE382519D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Senator.As400.Cloud.Sync.Application", "src\Domain\Senator.As400.Cloud.Sync.Application.csproj", "{3B975E61-B141-4273-B915-EDD8B838B43B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Senator.As400.Cloud.Sync.Infrastructure", "src\Infra\Senator.As400.Cloud.Sync.Infrastructure.csproj", "{AD4A833D-F9E0-40B6-BF07-D2079B658A93}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Senator.As400.Cloud.Sync.Api.Tests", "tests\Api.Tests\Senator.As400.Cloud.Sync.Api.Tests.csproj", "{07727EE0-25AF-44B2-8AEF-72AC75B7D38E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Senator.As400.Cloud.Sync.Infra.Tests", "tests\Infra.Tests\Senator.As400.Cloud.Sync.Infra.Tests.csproj", "{F6A40733-B344-4229-907C-47C2B0A3686A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Senator.As400.Cloud.Sync.Tests.Common", "tests\Tests.Common\Senator.As400.Cloud.Sync.Tests.Common.csproj", "{1EE95BC4-B929-4505-9069-8BA497E7C736}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Senator.As400.Cloud.Sync.App.Tests", "tests\App.Tests\Senator.As400.Cloud.Sync.App.Tests.csproj", "{9E742618-A823-40D7-9946-AD6E22A5D5E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9F7E0B5-8A37-44EE-8DD8-C21DBF20E975}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9F7E0B5-8A37-44EE-8DD8-C21DBF20E975}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9F7E0B5-8A37-44EE-8DD8-C21DBF20E975}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9F7E0B5-8A37-44EE-8DD8-C21DBF20E975}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B975E61-B141-4273-B915-EDD8B838B43B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B975E61-B141-4273-B915-EDD8B838B43B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B975E61-B141-4273-B915-EDD8B838B43B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B975E61-B141-4273-B915-EDD8B838B43B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD4A833D-F9E0-40B6-BF07-D2079B658A93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD4A833D-F9E0-40B6-BF07-D2079B658A93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD4A833D-F9E0-40B6-BF07-D2079B658A93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD4A833D-F9E0-40B6-BF07-D2079B658A93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07727EE0-25AF-44B2-8AEF-72AC75B7D38E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07727EE0-25AF-44B2-8AEF-72AC75B7D38E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07727EE0-25AF-44B2-8AEF-72AC75B7D38E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07727EE0-25AF-44B2-8AEF-72AC75B7D38E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6A40733-B344-4229-907C-47C2B0A3686A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6A40733-B344-4229-907C-47C2B0A3686A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6A40733-B344-4229-907C-47C2B0A3686A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6A40733-B344-4229-907C-47C2B0A3686A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EE95BC4-B929-4505-9069-8BA497E7C736}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EE95BC4-B929-4505-9069-8BA497E7C736}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EE95BC4-B929-4505-9069-8BA497E7C736}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EE95BC4-B929-4505-9069-8BA497E7C736}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E742618-A823-40D7-9946-AD6E22A5D5E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E742618-A823-40D7-9946-AD6E22A5D5E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E742618-A823-40D7-9946-AD6E22A5D5E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E742618-A823-40D7-9946-AD6E22A5D5E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A9F7E0B5-8A37-44EE-8DD8-C21DBF20E975} = {1C4439AE-80ED-4EF4-8DDE-F0DF805C2670}
+		{3B975E61-B141-4273-B915-EDD8B838B43B} = {1C4439AE-80ED-4EF4-8DDE-F0DF805C2670}
+		{AD4A833D-F9E0-40B6-BF07-D2079B658A93} = {1C4439AE-80ED-4EF4-8DDE-F0DF805C2670}
+		{07727EE0-25AF-44B2-8AEF-72AC75B7D38E} = {AF1E105F-6205-49D8-997E-FB3BE382519D}
+		{F6A40733-B344-4229-907C-47C2B0A3686A} = {AF1E105F-6205-49D8-997E-FB3BE382519D}
+		{1EE95BC4-B929-4505-9069-8BA497E7C736} = {AF1E105F-6205-49D8-997E-FB3BE382519D}
+		{9E742618-A823-40D7-9946-AD6E22A5D5E7} = {AF1E105F-6205-49D8-997E-FB3BE382519D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {04057DF8-7128-47DD-BA9C-30CAE3E1A43F}
+	EndGlobalSection
+EndGlobal
