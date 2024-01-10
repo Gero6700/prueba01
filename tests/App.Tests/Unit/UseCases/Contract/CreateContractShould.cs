@@ -1,16 +1,4 @@
-using FluentAssertions;
-using NSubstitute;
-using Senator.As400.Cloud.Sync.Application.Dtos.As400;
-using Senator.As400.Cloud.Sync.Application.Dtos.BookingCenter;
-using Senator.As400.Cloud.Sync.Application.UseCases;
-using Senator.As400.Cloud.Sync.Infrastructure.Providers;
-using Senator.As400.Cloud.Sync.Tests.Common.Builders;
-
-
-using System;
-using System.Drawing;
-
-namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases; 
+namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Contract; 
 
 [TestFixture]
 public class CreateContractShould {
@@ -37,8 +25,7 @@ public class CreateContractShould {
         const int anyComone = 23;
         const int anyCovers = 0;
         //const string anyComerca = "E";
-
-        var as400Concabec = ConcabecBuilder.AnConcabecBuilder()
+        var anyConcabec = ConcabecBuilder.AnConcabecBuilder()
             .WithCoagen(anyCoagen)
             .WithCosucu(anyCosucu)
             .WithCohote(anyCohote)
@@ -52,26 +39,24 @@ public class CreateContractShould {
             .Build();
 
         // When
-        await createContract.Execute(as400Concabec);
+        await createContract.Execute(anyConcabec);
 
         // Then
-        var newContract = new Contract {
-            code = anyCohote + anyCocont + anyCofec1 + anyCovers,
-            description = as400Concabec.Codesc,
-            valid_date_from = new DateTime(2024, 01, 01),
-            valid_date_to = new DateTime(2024, 12, 31),
-            tax_included = true,
-            ordered_ages = OrderedAges.ASC,
-            deposit_date = new DateTime(2024, 01, 01),
-            deposit_type = DepositType.percent,
-            hotel_code = anyCohote,
-            currency_code = anyComone.ToString(),
-            market = "E"
+        var expectedContract = new Application.Dtos.BookingCenter.Contract {
+            Code = anyCohote + anyCocont + anyCofec1 + anyCovers,
+            Description = anyConcabec.Codesc,
+            ValidDateFrom = new DateTime(2024, 01, 01),
+            ValidDateTo = new DateTime(2024, 12, 31),
+            TaxIncluded = true,
+            TypeOfAgeOrdering = TypeOfAgeOrdering.Asc,
+            DepositDate = new DateTime(2024, 01, 01),
+            DepositType = DepositType.Percent,
+            HotelCode = anyCohote,
+            CurrencyCode = anyComone.ToString(),
+            Market = "E"
         };
-        
         await availabilitySynchronizerApiClient.Received()
-            .PushContract(Arg.Is<Contract>(rq => IsEquivalent(rq, newContract)));
-
+            .PushContract(Arg.Is<Application.Dtos.BookingCenter.Contract>(c => IsEquivalent(c, expectedContract)));
     }
 
     private bool IsEquivalent(object source, object expected) {

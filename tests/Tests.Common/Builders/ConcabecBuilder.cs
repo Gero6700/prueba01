@@ -1,6 +1,3 @@
-using Bogus;
-using Senator.As400.Cloud.Sync.Application.Dtos.As400;
-
 namespace Senator.As400.Cloud.Sync.Tests.Common.Builders; 
 
 public class ConcabecBuilder {
@@ -12,123 +9,121 @@ public class ConcabecBuilder {
         };
     }
 
-    public ConcabecBuilder WithCoagen(int coagen) {
-        raw.Coagen = coagen;
+    public ConcabecBuilder WithCoagen(int newCoagen) {
+        raw.Coagen = newCoagen;
         return this;
     }
 
-    public ConcabecBuilder WithCosucu(int cosucu) {
-        raw.Cosucu = cosucu;
+    public ConcabecBuilder WithCosucu(int newCosucu) {
+        raw.Cosucu = newCosucu;
         return this;
     }
 
-    public ConcabecBuilder WithCohote(int cohote) {
-        raw.Cohote = cohote;
+    public ConcabecBuilder WithCohote(int newCohote) {
+        raw.Cohote = newCohote;
         return this;
     }
 
-    public ConcabecBuilder WithCocont(string cocont) {
-        raw.Cocont = cocont;
+    public ConcabecBuilder WithCocont(string newCocont) {
+        raw.Cocont = newCocont;
         return this;
     }
 
-    public ConcabecBuilder WithCofec1(int cofec1) {
-        raw.Cofec1 = cofec1;
+    public ConcabecBuilder WithCofec1(int newCofec1) {
+        raw.Cofec1 = newCofec1;
         return this;
     }
 
-    public ConcabecBuilder WithCofec2(int cofec2) {
-        raw.Cofec2 = cofec2;
+    public ConcabecBuilder WithCofec2(int newCofec2) {
+        raw.Cofec2 = newCofec2;
         return this;
     }
 
-    public ConcabecBuilder WithCoagcl(int coagcl) {
-        raw.Coagcl = coagcl;
+    public ConcabecBuilder WithCoagcl(int newCoagcl) {
+        raw.Coagcl = newCoagcl;
         return this;
     }
     
-    public ConcabecBuilder WithCosucl(int cosucl) {
-        raw.Cosucl = cosucl;
+    public ConcabecBuilder WithCosucl(int newCosucl) {
+        raw.Cosucl = newCosucl;
         return this;
     }
 
-    public ConcabecBuilder WithComone(int comone) {
-        raw.Comone = comone;
+    public ConcabecBuilder WithComone(int newComone) {
+        raw.Comone = newComone;
         return this;
     }
 
-    public ConcabecBuilder WithCovers(int covers) {
-        raw.Covers = covers;
+    public ConcabecBuilder WithCovers(int newCovers) {
+        raw.Covers = newCovers;
         return this;
     }
-
-
-
+    
     public Concabec Build() {
         return new Faker<Concabec>()
-            .RuleFor(x => x.Coagen, f => raw.Coagen)
-            .RuleFor(x => x.Cosucu, f => raw.Cosucu)
-            .RuleFor(x => x.Cohote, f => raw.Cohote)
-            .RuleFor(x => x.Cocont, f => raw.Cocont)
-            .RuleFor(x => x.Cofec1, f => raw.Cofec1)
-            .RuleFor(x => x.Cofec2, f => raw.Cofec2)
-            .RuleFor(x => x.Codesc, f => raw.Codesc)
-            .RuleFor(x => x.Cohf, f => raw.Cohf)
-            .RuleFor(x => x.Corece, f => raw.Corece)
-            .RuleFor(x => x.Cotran, f => raw.Cotran)
-            .RuleFor(x => x.Comone, f => raw.Comone)
-            .RuleFor(x => x.Cotrai, f => raw.Cotrai)
-            .RuleFor(x => x.Cocoag, f => raw.Cocoag)
-            .RuleFor(x => x.Coagcl, f => raw.Coagcl)
-            .RuleFor(x => x.Cosucl, f => raw.Cosucl)
-            .RuleFor(x => x.Cococl, f => raw.Cococl)
-            .RuleFor(x => x.Coiva, f => raw.Coiva)
-            .RuleFor(x => x.Cocore, f => raw.Cocore)
-            .RuleFor(x => x.Cofact, f => raw.Cofact)
-            .RuleFor(x => x.Cofpag, f => raw.Cofpag)
-            .RuleFor(x => x.Copfcc, f => raw.Copfcc)
-            .RuleFor(x => x.Cocuga, f => raw.Cocuga)
-            .RuleFor(x => x.Coencu, f => raw.Coencu)
-            .RuleFor(x => x.Coenct, f => raw.Coenct)
-            .RuleFor(x => x.Coencd, f => raw.Coencd)
-            .RuleFor(x => x.Coidio, f => raw.Coidio)
-            .RuleFor(x => x.Coconf, f => raw.Coconf)
-            .RuleFor(x => x.Cogcno, f => raw.Cogcno)
-            .RuleFor(x => x.Cogcpo, f => raw.Cogcpo)
-            .RuleFor(x => x.Cogcim, f => raw.Cogcim)
-            .RuleFor(x => x.Cogcto, f => raw.Cogcto)
-            .RuleFor(x => x.Cogcho, f => raw.Cogcho)
-            .RuleFor(x => x.Coest, f => raw.Coest)
-            .RuleFor(x => x.Copgm, f => raw.Copgm)
-            .RuleFor(x => x.Cocarp, f => raw.Cocarp)
-            .RuleFor(x => x.Cosubc, f => raw.Cosubc)
-            .RuleFor(x => x.Coasig, f => raw.Coasig)
-            .RuleFor(x => x.Cofext, f => raw.Cofext)
-            .RuleFor(x => x.Covers, f => raw.Covers)
-            .RuleFor(x => x.Cobaco, f => raw.Cobaco)
-            .RuleFor(x => x.Cobacc, f => raw.Cobacc)
-            .RuleFor(x => x.Cocose, f => raw.Cocose)
-            .RuleFor(x => x.Cotemp, f => raw.Cotemp)
-            .RuleFor(x => x.Cocpor, f => raw.Cocpor)
-            .RuleFor(x => x.Cocage, f => raw.Cocage)
-            .RuleFor(x => x.Cocsuc, f => raw.Cocsuc)
-            .RuleFor(x => x.Cocagc, f => raw.Cocagc)
-            .RuleFor(x => x.Cocscl, f => raw.Cocscl)
-            .RuleFor(x => x.Cochot, f => raw.Cochot)
-            .RuleFor(x => x.Coccto, f => raw.Coccto)
-            .RuleFor(x => x.Cocver, f => raw.Cocver)
-            .RuleFor(x => x.Cocfe1, f => raw.Cocfe1)
-            .RuleFor(x => x.Codde1, f => raw.Codde1)
-            .RuleFor(x => x.Codco1, f => raw.Codco1)
-            .RuleFor(x => x.Codde2, f => raw.Codde2)
-            .RuleFor(x => x.Codco2, f => raw.Codco2)
-            .RuleFor(x => x.Copalo, f => raw.Copalo)
-            .RuleFor(x => x.Codpto, f => raw.Codpto)
-            .RuleFor(x => x.Cofode, f => raw.Cofode)
-            .RuleFor(x => x.Coftop, f => raw.Coftop)
-            .RuleFor(x => x.Rrnmod, f => raw.Rrnmod)
-            .RuleFor(x => x.Estadmod, f => raw.Estadmod)
-            .RuleFor(x => x.Fechamod, f => raw.Fechamod)
+            .RuleFor(x => x.Coagen, raw.Coagen)
+            .RuleFor(x => x.Cosucu, raw.Cosucu)
+            .RuleFor(x => x.Cohote, raw.Cohote)
+            .RuleFor(x => x.Cocont, raw.Cocont)
+            .RuleFor(x => x.Cofec1, raw.Cofec1)
+            .RuleFor(x => x.Cofec2, raw.Cofec2)
+            .RuleFor(x => x.Codesc, raw.Codesc)
+            .RuleFor(x => x.Cohf, raw.Cohf)
+            .RuleFor(x => x.Corece, raw.Corece)
+            .RuleFor(x => x.Cotran, raw.Cotran)
+            .RuleFor(x => x.Comone, raw.Comone)
+            .RuleFor(x => x.Cotrai, raw.Cotrai)
+            .RuleFor(x => x.Cocoag, raw.Cocoag)
+            .RuleFor(x => x.Coagcl, raw.Coagcl)
+            .RuleFor(x => x.Cosucl, raw.Cosucl)
+            .RuleFor(x => x.Cococl, raw.Cococl)
+            .RuleFor(x => x.Coiva, raw.Coiva)
+            .RuleFor(x => x.Cocore, raw.Cocore)
+            .RuleFor(x => x.Cofact, raw.Cofact)
+            .RuleFor(x => x.Cofpag, raw.Cofpag)
+            .RuleFor(x => x.Copfcc, raw.Copfcc)
+            .RuleFor(x => x.Cocuga, raw.Cocuga)
+            .RuleFor(x => x.Coencu, raw.Coencu)
+            .RuleFor(x => x.Coenct, raw.Coenct)
+            .RuleFor(x => x.Coencd, raw.Coencd)
+            .RuleFor(x => x.Coidio, raw.Coidio)
+            .RuleFor(x => x.Coconf, raw.Coconf)
+            .RuleFor(x => x.Cogcno, raw.Cogcno)
+            .RuleFor(x => x.Cogcpo, raw.Cogcpo)
+            .RuleFor(x => x.Cogcim, raw.Cogcim)
+            .RuleFor(x => x.Cogcto, raw.Cogcto)
+            .RuleFor(x => x.Cogcho, raw.Cogcho)
+            .RuleFor(x => x.Coest, raw.Coest)
+            .RuleFor(x => x.Copgm, raw.Copgm)
+            .RuleFor(x => x.Cocarp, raw.Cocarp)
+            .RuleFor(x => x.Cosubc, raw.Cosubc)
+            .RuleFor(x => x.Coasig, raw.Coasig)
+            .RuleFor(x => x.Cofext, raw.Cofext)
+            .RuleFor(x => x.Covers, raw.Covers)
+            .RuleFor(x => x.Cobaco, raw.Cobaco)
+            .RuleFor(x => x.Cobacc, raw.Cobacc)
+            .RuleFor(x => x.Cocose, raw.Cocose)
+            .RuleFor(x => x.Cotemp, raw.Cotemp)
+            .RuleFor(x => x.Cocpor, raw.Cocpor)
+            .RuleFor(x => x.Cocage, raw.Cocage)
+            .RuleFor(x => x.Cocsuc, raw.Cocsuc)
+            .RuleFor(x => x.Cocagc, raw.Cocagc)
+            .RuleFor(x => x.Cocscl, raw.Cocscl)
+            .RuleFor(x => x.Cochot, raw.Cochot)
+            .RuleFor(x => x.Coccto, raw.Coccto)
+            .RuleFor(x => x.Cocver, raw.Cocver)
+            .RuleFor(x => x.Cocfe1, raw.Cocfe1)
+            .RuleFor(x => x.Codde1, raw.Codde1)
+            .RuleFor(x => x.Codco1, raw.Codco1)
+            .RuleFor(x => x.Codde2, raw.Codde2)
+            .RuleFor(x => x.Codco2, raw.Codco2)
+            .RuleFor(x => x.Copalo, raw.Copalo)
+            .RuleFor(x => x.Codpto, raw.Codpto)
+            .RuleFor(x => x.Cofode, raw.Cofode)
+            .RuleFor(x => x.Coftop, raw.Coftop)
+            .RuleFor(x => x.Rrnmod, raw.Rrnmod)
+            .RuleFor(x => x.Estadmod, raw.Estadmod)
+            .RuleFor(x => x.Fechamod, raw.Fechamod)
             .Generate();
     }
 
@@ -140,7 +135,8 @@ public class ConcabecBuilder {
             .RuleFor(x => x.Cocont, f => f.Random.AlphaNumeric(2).ToUpper())
             .RuleFor(x => x.Cofec1, f => (DateTime.Now.Year * 1000) + f.Random.Number(0, 365))
             .RuleFor(x => x.Cofec2, f => (DateTime.Now.Year + 1 * 1000) + f.Random.Number(0, 365))
-            .RuleFor(x => x.Codesc, (f, a) => string.Concat("CONTRACT ", a.Cocont, " ", a.Cofec1.ToString().AsSpan(0, 4)))
+            .RuleFor(x => x.Codesc,
+                (_, a) => string.Concat("CONTRACT ", a.Cocont, " ", a.Cofec1.ToString().AsSpan(0, 4)))
             .RuleFor(x => x.Cohf, f => f.Random.Double())
             .RuleFor(x => x.Corece, f => f.Random.Double())
             .RuleFor(x => x.Cotran, f => f.Random.Double())
@@ -178,14 +174,14 @@ public class ConcabecBuilder {
             .RuleFor(x => x.Cocose, f => f.Random.Char('A', 'Z').ToString().ToUpper())
             .RuleFor(x => x.Cotemp, f => f.Random.Char('A', 'Z').ToString().ToUpper())
             .RuleFor(x => x.Cocpor, f => f.Random.Double())
-            .RuleFor(x => x.Cocage, (f, x) => x.Coagen)
-            .RuleFor(x => x.Cocsuc, (f, x) => x.Cosucu)
-            .RuleFor(x => x.Cocagc, (f, x) => x.Coagcl)
-            .RuleFor(x => x.Cocscl, (f, x) => x.Cosucl)
-            .RuleFor(x => x.Cochot, (f, x) => x.Cohote)
-            .RuleFor(x => x.Coccto, (f, x) => x.Cocont)
-            .RuleFor(x => x.Cocver, (f, x) => x.Covers)
-            .RuleFor(x => x.Cocfe1, (f,x) => x.Cofec1)
+            .RuleFor(x => x.Cocage, (_, x) => x.Coagen)
+            .RuleFor(x => x.Cocsuc, (_, x) => x.Cosucu)
+            .RuleFor(x => x.Cocagc, (_, x) => x.Coagcl)
+            .RuleFor(x => x.Cocscl, (_, x) => x.Cosucl)
+            .RuleFor(x => x.Cochot, (_, x) => x.Cohote)
+            .RuleFor(x => x.Coccto, (_, x) => x.Cocont)
+            .RuleFor(x => x.Cocver, (_, x) => x.Covers)
+            .RuleFor(x => x.Cocfe1, (_, x) => x.Cofec1)
             .RuleFor(x => x.Codde1, f => f.Random.Double())
             .RuleFor(x => x.Codco1, f => f.Random.Word())
             .RuleFor(x => x.Codde2, f => f.Random.Double())
@@ -198,7 +194,6 @@ public class ConcabecBuilder {
             .RuleFor(x => x.Estadmod, f => f.PickRandom('A','B','M').ToString())
             .RuleFor(x => x.Fechamod, f => f.Date.Past())
             .Generate();
-        
     }
 
     private class ConcabecRaw {
@@ -266,5 +261,4 @@ public class ConcabecBuilder {
         public string Estadmod { get; set; } = string.Empty;
         public DateTime Fechamod { get; set; }
     }
-
 }
