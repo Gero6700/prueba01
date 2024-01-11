@@ -1,3 +1,5 @@
+using System.Net.Mime;
+
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Contract; 
 
 [TestFixture]
@@ -24,7 +26,14 @@ public class CreateContractShould {
         const int anyCosucl = 0;
         const int anyComone = 23;
         const int anyCovers = 0;
-        //const string anyComerca = "E";
+        const string anyCodmerca = "E";
+        const double anyCenimi = 3.0;
+        const double anyCenima = 12.99;
+        const double anyD4desd = 13.0;
+        const double anyD4hast = 17.99;
+        const double anyCocoag = 0.0;
+                
+       
         var anyConcabec = ConcabecBuilder.AnConcabecBuilder()
             .WithCoagen(anyCoagen)
             .WithCosucu(anyCosucu)
@@ -36,6 +45,11 @@ public class CreateContractShould {
             .WithCosucl(anyCosucl)
             .WithComone(anyComone)
             .WithCovers(anyCovers)
+            .WithCenima(anyCenima)
+            .WithCenimi(anyCenimi)
+            .WithD4desd(anyD4desd)
+            .WithD4hast(anyD4hast)
+            .WithCocoag(anyCocoag)
             .Build();
 
         // When
@@ -53,10 +67,24 @@ public class CreateContractShould {
             DepositType = DepositType.Percent,
             HotelCode = anyCohote,
             CurrencyCode = anyComone.ToString(),
-            Market = "E"
+            Market = anyCodmerca
+        };
+        var expectedContractClient = new Application.Dtos.BookingCenter.ContractClient {
+            Code = expectedContract.Code + anyCoagen + anyCosucu + anyCoagcl + anyCosucl,
+            MinAgeOfBabies = 0,
+            MaxAgeOfBabies = anyCenimi - 0.01,
+            MinAgeOfChildren = anyCenimi,
+            MaxAgeChildren = anyCenima,
+            MinAgeOfTeenagers = anyD4desd,
+            MaxAgeOfTeenagers = anyD4hast,
+            ExpiredDate = new DateTime(2024, 12, 31),
+            Comission = (decimal)anyCocoag,
+            ComissionType = IncomeType.Pvp,         
         };
         await availabilitySynchronizerApiClient.Received()
-            .PushContract(Arg.Is<Application.Dtos.BookingCenter.Contract>(c => IsEquivalent(c, expectedContract)));
+            .CreateContract(Arg.Is<Application.Dtos.BookingCenter.Contract>(c => IsEquivalent(c, expectedContract)));
+        await availabilitySynchronizerApiClient.Received()
+            .CreateContractClient(Arg.Is<Application.Dtos.BookingCenter.ContractClient>(c => IsEquivalent(c, expectedContractClient)));
     }
 
     private bool IsEquivalent(object source, object expected) {

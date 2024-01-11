@@ -61,7 +61,20 @@ public class Concabec {
     public double Codpto { get; set; }
     public string Cofode { get; set; } = string.Empty;
     public int Coftop { get; set; }
-    public long Rrnmod { get; set; }
-    public string Estadmod { get; set; } = string.Empty;
-    public DateTime Fechamod { get; set; }
+    
+    //Merca
+    public string Codmerca { get; set; } = string.Empty;
+    //Concabed
+    public double Cenimi { get; set; }
+    public double Cenima { get; set; }
+    public double Ceinmi { get; set; }
+    public double Ceinma { get; set; }
+    //Condtos
+    public double D4desd { get; set; }
+    public double D4hast { get; set; }
+
+
+    //public long Rrnmod { get; set; }
+    //public string Estadmod { get; set; } = string.Empty;
+    //public DateTime Fechamod { get; set; }
 }

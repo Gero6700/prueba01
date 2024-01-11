@@ -58,6 +58,36 @@ public class ConcabecBuilder {
         raw.Covers = newCovers;
         return this;
     }
+
+    public ConcabecBuilder WithCodmerca(string newCodmerca) {
+        raw.Codmerca = newCodmerca;
+        return this;
+    }
+
+    public ConcabecBuilder WithCenimi(double newCenimi) {
+        raw.Cenimi = newCenimi;
+        return this;
+    }
+
+    public ConcabecBuilder WithCenima(double newCenima) {
+        raw.Cenima = newCenima;
+        return this;
+    }
+
+    public ConcabecBuilder WithD4desd(double newD4desd) {
+        raw.D4desd = newD4desd;
+        return this;
+    }
+
+    public ConcabecBuilder WithD4hast(double newD4hast) {
+        raw.D4hast = newD4hast;
+        return this;
+    }
+
+    public ConcabecBuilder WithCocoag(double newCocoag) {
+        raw.Cocoag = newCocoag;
+        return this;
+    }
     
     public Concabec Build() {
         return new Faker<Concabec>()
@@ -121,9 +151,13 @@ public class ConcabecBuilder {
             .RuleFor(x => x.Codpto, raw.Codpto)
             .RuleFor(x => x.Cofode, raw.Cofode)
             .RuleFor(x => x.Coftop, raw.Coftop)
-            .RuleFor(x => x.Rrnmod, raw.Rrnmod)
-            .RuleFor(x => x.Estadmod, raw.Estadmod)
-            .RuleFor(x => x.Fechamod, raw.Fechamod)
+            .RuleFor(x => x.Codmerca, raw.Codmerca)
+            .RuleFor(x => x.Cenimi, raw.Cenimi)
+            .RuleFor(x => x.Cenima, raw.Cenima)
+            .RuleFor(x => x.Ceinmi, raw.Ceinmi)
+            .RuleFor(x => x.Ceinma, raw.Ceinma)
+            .RuleFor(x => x.D4desd, raw.D4desd)
+            .RuleFor(x => x.D4hast, raw.D4hast)
             .Generate();
     }
 
@@ -190,9 +224,17 @@ public class ConcabecBuilder {
             .RuleFor(x => x.Codpto, f => f.Random.Double())
             .RuleFor(x => x.Cofode, f => f.Random.Char('A', 'Z').ToString().ToUpper())
             .RuleFor(x => x.Coftop, f => f.Random.Int(0, 999999))
-            .RuleFor(x => x.Rrnmod, f => f.Random.Long(0, 9999999999))
-            .RuleFor(x => x.Estadmod, f => f.PickRandom('A','B','M').ToString())
-            .RuleFor(x => x.Fechamod, f => f.Date.Past())
+            .RuleFor(x => x.Codmerca, f => f.Random.String(3).ToUpper())
+            .RuleFor(x => x.D4desd, f => f.Random.Int(13, 15))
+            .RuleFor(x => x.D4hast, (_, x) => x.D4desd + 2.99)
+            .RuleFor(x => x.Cenima, (_, x) => x.D4desd - 0.01)
+            .RuleFor(x => x.Cenimi, (_, x) => x.Cenima - 9.99)
+            .RuleFor(x => x.Ceinma, (_, x) => x.Cenimi - 0.01)
+            .RuleFor(x => x.Ceinmi, f => f.Random.Double(0,0))
+
+            //.RuleFor(x => x.Rrnmod, f => f.Random.Long(0, 9999999999))
+            //.RuleFor(x => x.Estadmod, f => f.PickRandom('A','B','M').ToString())
+            //.RuleFor(x => x.Fechamod, f => f.Date.Past())
             .Generate();
     }
 
@@ -257,8 +299,12 @@ public class ConcabecBuilder {
         public double Codpto { get; set; }
         public string Cofode { get; set; } = string.Empty;
         public int Coftop { get; set; }
-        public long Rrnmod { get; set; }
-        public string Estadmod { get; set; } = string.Empty;
-        public DateTime Fechamod { get; set; }
+        public string Codmerca { get; set; } = string.Empty;
+        public double Cenimi { get; set; }
+        public double Cenima { get; set; }
+        public double Ceinmi { get; set; }
+        public double Ceinma { get; set; }
+        public double D4desd { get; set; }
+        public double D4hast { get; set; }
     }
 }
