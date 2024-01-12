@@ -1,4 +1,4 @@
-namespace Senator.As400.Cloud.Sync.Application.Dtos.As400;
+namespace Senator.As400.Cloud.Sync.Infrastructure.Dtos.As400;
 
 public class Concabec {
     public int Coagen { get; set; }

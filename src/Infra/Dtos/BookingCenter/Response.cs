@@ -1,4 +1,4 @@
-namespace Senator.As400.Cloud.Sync.Application.Dtos.BookingCenter;
+namespace Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter;
 
 public class Response {
     public bool Success { get; set; }

@@ -1,5 +1,3 @@
-using System.Net.Mime;
-
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Contract; 
 
 [TestFixture]
@@ -33,8 +31,7 @@ public class CreateContractShould {
         const decimal anyD4hast = 17.99m;
         const decimal anyCocoag = 0.0m;
         const long anyIdusuario = 123456789012;
-                
-       
+        
         var anyConcabec = ConcabecBuilder.AnConcabecBuilder()
             .WithCoagen(anyCoagen)
             .WithCosucu(anyCosucu)
@@ -58,7 +55,7 @@ public class CreateContractShould {
         await createContract.Execute(anyConcabec);
 
         // Then
-        var expectedContract = new Application.Dtos.BookingCenter.Contract {
+        var expectedContract = new Infrastructure.Dtos.BookingCenter.Contract {
             Code = string.Concat(anyCohote, anyCocont, anyCofec1, anyCovers),
             Description = anyConcabec.Codesc,
             ValidDateFrom = new DateTime(2024, 01, 01),
@@ -71,7 +68,7 @@ public class CreateContractShould {
             CurrencyCode = anyComone.ToString(),
             Market = anyCodmerca
         };
-        var expectedContractClient = new Application.Dtos.BookingCenter.ContractClient {
+        var expectedContractClient = new ContractClient {
             Code = string.Concat(anyCoagen, anyCosucu, anyCoagcl, anyCosucl),
             MinAgeOfBabies = 0,
             MaxAgeOfBabies = anyCenimi - 0.01m,
@@ -86,9 +83,9 @@ public class CreateContractShould {
             ClientCode = anyIdusuario.ToString()
         };
         await availabilitySynchronizerApiClient.Received()
-            .CreateContract(Arg.Is<Application.Dtos.BookingCenter.Contract>(c => IsEquivalent(c, expectedContract)));
+            .CreateContract(Arg.Is<Infrastructure.Dtos.BookingCenter.Contract>(c => IsEquivalent(c, expectedContract)));
         await availabilitySynchronizerApiClient.Received()
-            .CreateContractClient(Arg.Is<Application.Dtos.BookingCenter.ContractClient>(c => IsEquivalent(c, expectedContractClient)));
+            .CreateContractClient(Arg.Is<ContractClient>(c => IsEquivalent(c, expectedContractClient)));
     }
 
     private bool IsEquivalent(object source, object expected) {

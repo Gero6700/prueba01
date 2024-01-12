@@ -6,30 +6,11 @@ public class CreateContract {
     public CreateContract(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
-    public async Task<Task> Execute(Concabec concabec) {
-        Contract contract;
-        ContractClient contractClient;
 
-        try {
-            contract = concabec.ToContract();
-            contractClient = concabec.ToContractClient();
-        }
-        catch {
-            throw new ContractMappingFailedException();
-        }
-        
-        var response = await availabilitySynchronizerApiClient.CreateContract(contract);
-        if (!response.Success) {
-            throw new ContractCreationFailedException();
-        }
-        else {
-            response = await availabilitySynchronizerApiClient.CreateContractClient(contractClient);
-            if (!response.Success) {
-                throw new ContractCreationFailedException();
-            }
-           
-            return Task.CompletedTask;
-        }
-
+    public async Task Execute(Concabec concabec) {
+        var contract = concabec.ToContract();
+        var contractClient = concabec.ToContractClient();
+        await availabilitySynchronizerApiClient.CreateContract(contract);
+        await availabilitySynchronizerApiClient.CreateContractClient(contractClient);
     }
 }

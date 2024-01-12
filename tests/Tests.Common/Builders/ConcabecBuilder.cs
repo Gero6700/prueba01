@@ -188,7 +188,7 @@ public class ConcabecBuilder {
             .RuleFor(x => x.Coiva, f => f.Random.Char('A', 'Z').ToString().ToUpper())
             .RuleFor(x => x.Cocore, f => f.Random.Char('A', 'Z').ToString().ToUpper())
             .RuleFor(x => x.Cofact, f => f.Random.Char('A', 'Z').ToString().ToUpper())
-            .RuleFor(x => x.Cofpag, f => f.Random.String(3).ToUpper())
+            .RuleFor(x => x.Cofpag, f => f.Random.String(3, 'A', 'Z').ToUpper())
             .RuleFor(x => x.Copfcc, f => f.Random.Char('A', 'Z').ToString().ToUpper())
             .RuleFor(x => x.Cocuga, f => f.Random.Char('A', 'Z').ToString().ToUpper())
             .RuleFor(x => x.Coencu, f => f.Random.Decimal())
@@ -229,7 +229,7 @@ public class ConcabecBuilder {
             .RuleFor(x => x.Codpto, f => f.Random.Decimal())
             .RuleFor(x => x.Cofode, f => f.Random.Char('A', 'Z').ToString().ToUpper())
             .RuleFor(x => x.Coftop, f => f.Random.Int(0, 999999))
-            .RuleFor(x => x.Codmerca, f => f.Random.String(3).ToUpper())
+            .RuleFor(x => x.Codmerca, f => f.Random.String(3, 'A', 'Z').ToUpper())
             .RuleFor(x => x.D4desd, f => f.Random.Int(13, 15))
             .RuleFor(x => x.D4hast, (_, x) => x.D4desd + 2.99m)
             .RuleFor(x => x.Cenima, (_, x) => x.D4desd - 0.01m)
@@ -237,10 +237,6 @@ public class ConcabecBuilder {
             .RuleFor(x => x.Ceinma, (_, x) => x.Cenimi - 0.01m)
             .RuleFor(x => x.Ceinmi, f => f.Random.Decimal(0,0))
             .RuleFor(x => x.Idusuario, f => f.Random.Long(1000000000, 999999999999))
-
-            //.RuleFor(x => x.Rrnmod, f => f.Random.Long(0, 9999999999))
-            //.RuleFor(x => x.Estadmod, f => f.PickRandom('A','B','M').ToString())
-            //.RuleFor(x => x.Fechamod, f => f.Date.Past())
             .Generate();
     }
 
