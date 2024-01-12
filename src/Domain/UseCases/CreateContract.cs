@@ -6,7 +6,7 @@ public class CreateContract {
     public CreateContract(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
-    public async Task Execute(Concabec concabec) {
+    public async Task<Task> Execute(Concabec concabec) {
         Contract contract;
         ContractClient contractClient;
 
@@ -19,16 +19,17 @@ public class CreateContract {
         }
         
         var response = await availabilitySynchronizerApiClient.CreateContract(contract);
-        if (!response.IsSuccess) {
+        if (!response.Success) {
             throw new ContractCreationFailedException();
         }
         else {
             response = await availabilitySynchronizerApiClient.CreateContractClient(contractClient);
-            if (!response.IsSuccess) {
-                throw new ContractClientCreationFailedException();
+            if (!response.Success) {
+                throw new ContractCreationFailedException();
             }
            
-            //return Task.CompletedTask;
+            return Task.CompletedTask;
         }
+
     }
 }
