@@ -7,7 +7,7 @@ public class Contract {
     public DateTime ValidDateTo { get; set; }
     public bool TaxIncluded { get; set; }
     public TypeOfAgeOrdering TypeOfAgeOrdering { get; set; }
-    public DateTime DepositDate { get; set; }
+    public DateTime? DepositDate { get; set; }
     public decimal DepositAmount { get; set; }
     public DepositType DepositType { get; set; }
     public int HotelCode { get; set; }

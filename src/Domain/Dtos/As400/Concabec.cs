@@ -8,29 +8,29 @@ public class Concabec {
     public int Cofec1 { get; set; }
     public int Cofec2 { get; set; }
     public string Codesc { get; set; } = string.Empty;
-    public double Cohf { get; set; }
-    public double Corece { get; set; }
-    public double Cotran { get; set; }
+    public decimal Cohf { get; set; }
+    public decimal Corece { get; set; }
+    public decimal Cotran { get; set; }
     public int Comone { get; set; }
-    public double Cotrai { get; set; }
-    public double Cocoag { get; set; }
+    public decimal Cotrai { get; set; }
+    public decimal Cocoag { get; set; }
     public int Coagcl { get; set; }
     public int Cosucl { get; set; }
-    public double Cococl { get; set; }
+    public decimal Cococl { get; set; }
     public string Coiva { get; set; } = string.Empty;
     public string Cocore { get; set; } = string.Empty;
     public string Cofact { get; set; } = string.Empty;
     public string Cofpag { get; set; } = string.Empty;
     public string Copfcc { get; set; } = string.Empty;
     public string Cocuga { get; set; } = string.Empty;
-    public double Coencu { get; set; }
+    public decimal Coencu { get; set; }
     public string Coenct { get; set; } = string.Empty;
     public string Coencd { get; set; } = string.Empty;
     public string Coidio { get; set; } = string.Empty;
     public string Coconf { get; set; } = string.Empty;
     public int Cogcno { get; set; }
-    public double Cogcpo { get; set; }
-    public double Cogcim { get; set; }
+    public decimal Cogcpo { get; set; }
+    public decimal Cogcim { get; set; }
     public string Cogcto { get; set; } = string.Empty;
     public int Cogcho { get; set; }
     public string Coest { get; set; } = string.Empty;
@@ -44,7 +44,7 @@ public class Concabec {
     public string Cobacc { get; set; } = string.Empty;
     public string Cocose { get; set; } = string.Empty;
     public string Cotemp { get; set; } = string.Empty;
-    public double Cocpor { get; set; }
+    public decimal Cocpor { get; set; }
     public int Cocage { get; set; }
     public int Cocsuc { get; set; }
     public int Cocagc { get; set; }
@@ -53,25 +53,29 @@ public class Concabec {
     public string Coccto { get; set; } = string.Empty;
     public int Cocver { get; set; }
     public int Cocfe1 { get; set; }
-    public double Codde1 { get; set; }
+    public decimal Codde1 { get; set; }
     public string Codco1 { get; set; } = string.Empty;
-    public double Codde2 { get; set; }
+    public decimal Codde2 { get; set; }
     public string Codco2 { get; set; } = string.Empty;
-    public double Copalo { get; set; }
-    public double Codpto { get; set; }
+    public decimal Copalo { get; set; }
+    public decimal Codpto { get; set; }
     public string Cofode { get; set; } = string.Empty;
     public int Coftop { get; set; }
     
     //Merca
     public string Codmerca { get; set; } = string.Empty;
     //Concabed
-    public double Cenimi { get; set; }
-    public double Cenima { get; set; }
-    public double Ceinmi { get; set; }
-    public double Ceinma { get; set; }
+    public decimal Cenimi { get; set; }
+    public decimal Cenima { get; set; }
+    public decimal Ceinmi { get; set; }
+    public decimal Ceinma { get; set; }
     //Condtos
-    public double D4desd { get; set; }
-    public double D4hast { get; set; }
+    public decimal D4desd { get; set; }
+    public decimal D4hast { get; set; }
+
+    //servxml.usureg
+    public long Idusuario { get; set; }
+
 
 
     //public long Rrnmod { get; set; }
