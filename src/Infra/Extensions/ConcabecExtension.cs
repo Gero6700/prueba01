@@ -1,12 +1,14 @@
+
+
 namespace Senator.As400.Cloud.Sync.Infrastructure.Extensions;
 
 public static class ConcabecExtension {
     public static Contract ToContract(this Concabec concabec) {
         return new Contract {
-            Code = concabec.Cohote + concabec.Cocont + concabec.Cofec1 + concabec.Covers,
+            Code = string.Concat(concabec.Cohote + concabec.Cocont + concabec.Cofec1 + concabec.Covers),
             Description = concabec.Codesc,
             ValidDateFrom = DateTimeHelper.ConvertJulianDateToDateTime(concabec.Cofec1),
-            ValidDateTo = DateTimeHelper.ConvertJulianDateToDateTime(concabec.Cofec1),
+            ValidDateTo = DateTimeHelper.ConvertJulianDateToDateTime(concabec.Cofec2),
             TaxIncluded = string.Equals(concabec.Coiva, "I"),
             TypeOfAgeOrdering = TypeOfAgeOrdering.Asc,
             DepositDate = concabec.Coftop != 0 ? DateTimeHelper.ConvertIntegerToDatetime(concabec.Coftop) : null,
@@ -22,7 +24,7 @@ public static class ConcabecExtension {
         return new ContractClient {
             Code =string.Concat(concabec.Coagen, concabec.Cosucu, concabec.Coagcl, concabec.Cosucl),
             MinAgeOfBabies = concabec.Ceinmi,
-            MaxAgeOfBabies = concabec.Cenima,
+            MaxAgeOfBabies = concabec.Ceinma,
             MinAgeOfChildren = concabec.Cenimi,
             MaxAgeChildren = concabec.Cenima,
             MinAgeOfTeenagers = concabec.D4desd,

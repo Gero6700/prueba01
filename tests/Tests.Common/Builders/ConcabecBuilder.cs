@@ -33,6 +33,10 @@ public class ConcabecBuilder {
         raw.Cofec1 = newCofec1;
         return this;
     }
+    public ConcabecBuilder WithCodesc(string newCodesc) {
+        raw.Codesc = newCodesc;
+        return this;
+    }
 
     public ConcabecBuilder WithCofec2(int newCofec2) {
         raw.Cofec2 = newCofec2;
@@ -61,6 +65,10 @@ public class ConcabecBuilder {
 
     public ConcabecBuilder WithCodmerca(string newCodmerca) {
         raw.Codmerca = newCodmerca;
+        return this;
+    }
+    public ConcabecBuilder WithCeinma(decimal newCeinma) {
+        raw.Ceinma = newCeinma;
         return this;
     }
 
@@ -92,6 +100,27 @@ public class ConcabecBuilder {
         raw.Idusuario = newIdusuario;
         return this;
     }
+    public ConcabecBuilder WithCofext(int newCofext) {
+        raw.Cofext = newCofext;
+        return this;
+    }
+    public ConcabecBuilder WithCofode(string newCofode) {
+        raw.Cofode = newCofode;
+        return this;
+    }
+    public ConcabecBuilder WithCoftop(int newCoftop) {
+        raw.Coftop = newCoftop;
+        return this;
+    }
+    public ConcabecBuilder WithCodpto(decimal newCodpto) {
+        raw.Codpto = newCodpto;
+        return this;
+    }
+    public ConcabecBuilder WithCoiva(string newCoiva) {
+        raw.Coiva = newCoiva;
+        return this;
+    }
+
     
     public Concabec Build() {
         return new Faker<Concabec>()
@@ -174,8 +203,7 @@ public class ConcabecBuilder {
             .RuleFor(x => x.Cocont, f => f.Random.AlphaNumeric(2).ToUpper())
             .RuleFor(x => x.Cofec1, f => (DateTime.Now.Year * 1000) + f.Random.Number(0, 365))
             .RuleFor(x => x.Cofec2, f => (DateTime.Now.Year + 1 * 1000) + f.Random.Number(0, 365))
-            .RuleFor(x => x.Codesc,
-                (_, a) => string.Concat("CONTRACT ", a.Cocont, " ", a.Cofec1.ToString().AsSpan(0, 4)))
+            .RuleFor(x => x.Codesc, f => f.Random.String(10, 'A', 'Z').ToUpper())
             .RuleFor(x => x.Cohf, f => f.Random.Decimal())
             .RuleFor(x => x.Corece, f => f.Random.Decimal())
             .RuleFor(x => x.Cotran, f => f.Random.Decimal())
