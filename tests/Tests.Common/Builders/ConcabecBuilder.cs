@@ -3,7 +3,7 @@ namespace Senator.As400.Cloud.Sync.Tests.Common.Builders;
 public class ConcabecBuilder {
     private ConcabecRaw raw = null!;
 
-    public static ConcabecBuilder AnConcabecBuilder() {
+    public static ConcabecBuilder AConcabecBuilder() {
         return new ConcabecBuilder {
             raw = GenerateRaw()
         };
@@ -33,6 +33,7 @@ public class ConcabecBuilder {
         raw.Cofec1 = newCofec1;
         return this;
     }
+
     public ConcabecBuilder WithCodesc(string newCodesc) {
         raw.Codesc = newCodesc;
         return this;
@@ -67,6 +68,7 @@ public class ConcabecBuilder {
         raw.Codmerca = newCodmerca;
         return this;
     }
+
     public ConcabecBuilder WithCeinma(decimal newCeinma) {
         raw.Ceinma = newCeinma;
         return this;
@@ -96,31 +98,36 @@ public class ConcabecBuilder {
         raw.Cocoag = newCocoag;
         return this;
     }
+    
     public ConcabecBuilder WithIdusuario(long newIdusuario) {
         raw.Idusuario = newIdusuario;
         return this;
     }
+    
     public ConcabecBuilder WithCofext(int newCofext) {
         raw.Cofext = newCofext;
         return this;
     }
+    
     public ConcabecBuilder WithCofode(string newCofode) {
         raw.Cofode = newCofode;
         return this;
     }
+    
     public ConcabecBuilder WithCoftop(int newCoftop) {
         raw.Coftop = newCoftop;
         return this;
     }
+    
     public ConcabecBuilder WithCodpto(decimal newCodpto) {
         raw.Codpto = newCodpto;
         return this;
     }
+    
     public ConcabecBuilder WithCoiva(string newCoiva) {
         raw.Coiva = newCoiva;
         return this;
     }
-
     
     public Concabec Build() {
         return new Faker<Concabec>()

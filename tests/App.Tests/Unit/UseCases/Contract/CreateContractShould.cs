@@ -1,5 +1,3 @@
-
-
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Contract; 
 
 [TestFixture]
@@ -41,7 +39,7 @@ public class CreateContractShould {
         const long anyIdusuario = 123456789012;
         const int anyCofext= 20241231;
         
-        var anyConcabec = ConcabecBuilder.AnConcabecBuilder()
+        var anyConcabec = ConcabecBuilder.AConcabecBuilder()
             .WithCoagen(anyCoagen)
             .WithCosucu(anyCosucu)
             .WithCohote(anyCohote)
