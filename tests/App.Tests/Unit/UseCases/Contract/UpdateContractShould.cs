@@ -1,6 +1,3 @@
-
-using System.Net.Mime;
-
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Contract; 
 
 [TestFixture]
@@ -11,7 +8,7 @@ public class UpdateContractShould {
     [SetUp]
     public void Setup() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        updateContract = new UpdateContract();
+        updateContract = new UpdateContract(availabilitySynchronizerApiClient);
     }
 
     [Test]
@@ -81,7 +78,7 @@ public class UpdateContractShould {
             ValidDateTo = new DateTime(2024, 12, 31),
             TaxIncluded = true,
             TypeOfAgeOrdering = TypeOfAgeOrdering.Asc,
-            DepositDate = new DateTime(2024, 6, 1),
+            DepositDate = new DateTime(2024, 6, 5),
             DepositAmount = anyCodpto,
             DepositType = DepositType.Percent,
             HotelCode = anyCohote,
@@ -103,9 +100,9 @@ public class UpdateContractShould {
             ClientCode = anyIdusuario.ToString()
         };
         await availabilitySynchronizerApiClient.Received()
-            .CreateContract(Arg.Is<Infrastructure.Dtos.BookingCenter.Contract>(c => IsEquivalent(c, expectedContract)));
+            .UpdateContract(Arg.Is<Infrastructure.Dtos.BookingCenter.Contract>(c => IsEquivalent(c, expectedContract)));
         await availabilitySynchronizerApiClient.Received()
-            .CreateContractClient(Arg.Is<ContractClient>(c => IsEquivalent(c, expectedContractClient)));
+            .UpdateContractClient(Arg.Is<ContractClient>(c => IsEquivalent(c, expectedContractClient)));
     }
 
     private bool IsEquivalent(object source, object expected) {
