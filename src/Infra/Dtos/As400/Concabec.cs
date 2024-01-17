@@ -61,7 +61,6 @@ public class Concabec {
     public decimal Codpto { get; set; }
     public string Cofode { get; set; } = string.Empty;
     public int Coftop { get; set; }
-    
     //Merca
     public string Codmerca { get; set; } = string.Empty;
     //Concabed
@@ -72,13 +71,9 @@ public class Concabec {
     //Condtos
     public decimal D4desd { get; set; }
     public decimal D4hast { get; set; }
-
     //servxml.usureg
     public long Idusuario { get; set; }
+    
+    public string Code => $"{Cohote}{Cocont}{Cofec1}{Covers}";
 
-
-
-    //public long Rrnmod { get; set; }
-    //public string Estadmod { get; set; } = string.Empty;
-    //public DateTime Fechamod { get; set; }
 }
