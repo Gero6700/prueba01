@@ -18,6 +18,10 @@ public static class ConcabecExtension {
         };
     }
 
+    public static string GetCode(this Concabec concabec) {
+        return $"{concabec.Cohote}{concabec.Cocont}{concabec.Cofec1}{concabec.Covers}";
+    }
+
     public static ContractClient ToContractClient(this Concabec concabec) {
         return new ContractClient {
             Code = $"{concabec.Coagen}{concabec.Cosucu}{concabec.Coagcl}{concabec.Cosucl}",
