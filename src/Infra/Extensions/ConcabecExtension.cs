@@ -3,7 +3,7 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Extensions;
 public static class ConcabecExtension {
     public static Contract ToContract(this Concabec concabec) {
         return new Contract {
-            Code = $"{concabec.Cohote}{concabec.Cocont}{concabec.Cofec1}{concabec.Covers}",
+            Code = concabec.GetNewCode,
             Description = concabec.Codesc,
             ValidDateFrom = DateTimeHelper.ConvertJulianDateToDateTime(concabec.Cofec1),
             ValidDateTo = DateTimeHelper.ConvertJulianDateToDateTime(concabec.Cofec2),
@@ -30,7 +30,7 @@ public static class ConcabecExtension {
             ExpiredDate = concabec.Cofext != 0 ? DateTimeHelper.ConvertIntegerToDatetime(concabec.Cofext) : null,
             Comission = concabec.Cocoag,
             ComissionType = concabec.Cobaco == "B" ? IncomeType.Net : IncomeType.Pvp,
-            ContractCode = concabec.Cohote + concabec.Cocont + concabec.Cofec1 + concabec.Covers,
+            ContractCode = concabec.GetNewCode,
             ClientCode = concabec.Idusuario.ToString()
         };
     }

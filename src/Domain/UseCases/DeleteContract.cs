@@ -8,7 +8,7 @@ public class DeleteContract {
     }
   
     public async Task Execute(Concabec concabec) {
-        var code = concabec.Code;
+        var code = concabec.GetNewCode;
 
         await availabilitySynchronizerApiClient.DeleteContract(code);    
     }

@@ -74,6 +74,6 @@ public class Concabec {
     //servxml.usureg
     public long Idusuario { get; set; }
     
-    public string Code => $"{Cohote}{Cocont}{Cofec1}{Covers}";
+    public string GetNewCode => $"{Cohote}{Cocont}{Cofec1}{Covers}";
 
 }
