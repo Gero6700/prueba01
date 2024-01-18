@@ -29,7 +29,7 @@ public static class ConcabecExtension {
             MaxAgeOfTeenagers = concabec.D4hast,
             ExpiredDate = concabec.Cofext != 0 ? DateTimeHelper.ConvertIntegerToDatetime(concabec.Cofext) : null,
             Comission = concabec.Cocoag,
-            ComissionType = IncomeType.Net,
+            ComissionType = concabec.Cobaco == "B" ? IncomeType.Net : IncomeType.Pvp,
             ContractCode = concabec.GetNewCode,
             ClientCode = concabec.Idusuario.ToString()
         };
