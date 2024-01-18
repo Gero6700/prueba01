@@ -128,6 +128,11 @@ public class ConcabecBuilder {
         raw.Coiva = newCoiva;
         return this;
     }
+
+    public ConcabecBuilder WithCobaco(string newCobaco) {
+        raw.Cobaco = newCobaco;
+        return this;
+    }
     
     public Concabec Build() {
         return new Faker<Concabec>()
