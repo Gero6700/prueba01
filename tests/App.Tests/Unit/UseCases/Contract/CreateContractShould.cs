@@ -40,6 +40,7 @@ public class CreateContractShould {
         const decimal anyCocoag = 0.0m;
         const long anyIdusuario = 123456789012;
         const int anyCofext= 20241231;
+        const string anyCobaco = "B";
         
         var anyConcabec = ConcabecBuilder.AConcabecBuilder()
             .WithCoagen(anyCoagen)
@@ -66,6 +67,7 @@ public class CreateContractShould {
             .WithCocoag(anyCocoag)
             .WithIdusuario(anyIdusuario)
             .WithCofext(anyCofext)
+            .WithCobaco(anyCobaco)
             .Build();
 
         // When
@@ -96,7 +98,7 @@ public class CreateContractShould {
             MaxAgeOfTeenagers = anyD4hast,
             ExpiredDate = new DateTime(2024, 12, 31),
             Comission = anyCocoag,
-            ComissionType = IncomeType.Pvp,
+            ComissionType = IncomeType.Net,
             ContractCode= expectedContract.Code,
             ClientCode = anyIdusuario.ToString()
         };
