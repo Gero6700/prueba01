@@ -217,6 +217,60 @@ public class CreateContractShould {
 
     }
 
+    [Test]
+    public async Task create_contract_when_cofode_is_empty() {
+        // Given
+        const string anyCofode = "";
+        const int anyCofec1 = 2024001;
+        const int anyCofec2 = 2024366;
+        const int anyCofext = 20241231;
+        const int anyCoftop = 20240601;
+
+        var anyConcabec = ConcabecBuilder.AConcabecBuilder()
+           .WithCofode(anyCofode)
+           .WithCofec1(anyCofec1)
+           .WithCofec2(anyCofec2)
+           .WithCofext(anyCofext)
+           .WithCoftop(anyCoftop)
+           .Build();
+
+        // When
+        await createContract.Execute(anyConcabec);
+
+        // Then
+        var expectedContract = new Infrastructure.Dtos.BookingCenter.Contract {
+            Code = anyConcabec.GetNewCode,
+            Description = anyConcabec.Codesc,
+            ValidDateFrom = new DateTime(2024, 01, 01),
+            ValidDateTo = new DateTime(2024, 12, 31),
+            TaxIncluded = string.Equals(anyConcabec.Coiva, "I"),
+            TypeOfAgeOrdering = TypeOfAgeOrdering.Asc,
+            DepositDate = new DateTime(2024, 6, 1),
+            DepositAmount = anyConcabec.Codpto,
+            DepositType = DepositType.Fixed,
+            HotelCode = anyConcabec.Cohote,
+            CurrencyCode = anyConcabec.Comone.ToString(),
+            Market = anyConcabec.Codmerca
+        };
+        var expectedContractClient = new ContractClient {
+            Code = string.Concat(anyConcabec.Coagen, anyConcabec.Cosucu, anyConcabec.Coagcl, anyConcabec.Cosucl),
+            MinAgeOfBabies = anyConcabec.Ceinmi,
+            MaxAgeOfBabies = anyConcabec.Ceinma,
+            MinAgeOfChildren = anyConcabec.Cenimi,
+            MaxAgeChildren = anyConcabec.Cenima,
+            MinAgeOfTeenagers = anyConcabec.D4desd,
+            MaxAgeOfTeenagers = anyConcabec.D4hast,
+            ExpiredDate = new DateTime(2024, 12, 31),
+            Comission = anyConcabec.Cocoag,
+            ComissionType = IncomeType.Pvp,
+            ContractCode = expectedContract.Code,
+            ClientCode = anyConcabec.Idusuario.ToString()
+        };
+        await availabilitySynchronizerApiClient.Received()
+           .CreateContract(Arg.Is<Infrastructure.Dtos.BookingCenter.Contract>(c => IsEquivalent(c, expectedContract)));
+        await availabilitySynchronizerApiClient.Received()
+            .CreateContractClient(Arg.Is<ContractClient>(c => IsEquivalent(c, expectedContractClient)));
+    }
 
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
