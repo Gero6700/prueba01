@@ -9,7 +9,7 @@ public static class ConcabecExtension {
             ValidDateTo = DateTimeHelper.ConvertJulianDateToDateTime(concabec.Cofec2),
             TaxIncluded = string.Equals(concabec.Coiva, "I"),
             TypeOfAgeOrdering = TypeOfAgeOrdering.Asc,
-            DepositDate = DateTimeHelper.ConvertIntegerToDatetime(concabec.Coftop),
+            DepositDate = concabec.Coftop != 0 ? DateTimeHelper.ConvertIntegerToDatetime(concabec.Coftop) : null,
             DepositAmount = concabec.Codpto,
             DepositType = concabec.Cofode == "%" ? DepositType.Percent : DepositType.Fixed,
             HotelCode = concabec.Cohote,

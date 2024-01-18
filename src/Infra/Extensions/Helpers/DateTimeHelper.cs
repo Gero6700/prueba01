@@ -14,7 +14,10 @@ public static class DateTimeHelper {
     }
 
     public static DateTime? ConvertIntegerToDatetime(int integerDate) {
-        DateTime.TryParseExact(integerDate.ToString(), "yyyyMMdd", CultureInfo.InvariantCulture,DateTimeStyles.None, out var date);
-        return date;             
+        if (DateTime.TryParseExact(integerDate.ToString(), "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var date)) {
+            return date;
+        }
+
+        return null;            
     }
 }
