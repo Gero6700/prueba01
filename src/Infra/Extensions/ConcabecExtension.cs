@@ -27,7 +27,7 @@ public static class ConcabecExtension {
             MaxAgeChildren = concabec.Cenima,
             MinAgeOfTeenagers = concabec.D4desd,
             MaxAgeOfTeenagers = concabec.D4hast,
-            ExpiredDate = concabec.Cofext != 0 ? DateTimeHelper.ConvertIntegerToDatetime(concabec.Cofext) : null,
+            ExpiredDate = DateTimeHelper.ConvertIntegerToDatetime(concabec.Cofext),
             Comission = concabec.Cocoag,
             ComissionType = concabec.Cobaco == "B" ? IncomeType.Net : IncomeType.Pvp,
             ContractCode = concabec.GetNewCode,
