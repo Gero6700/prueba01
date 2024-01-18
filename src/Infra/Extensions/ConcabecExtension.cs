@@ -11,7 +11,7 @@ public static class ConcabecExtension {
             TypeOfAgeOrdering = TypeOfAgeOrdering.Asc,
             DepositDate = concabec.Coftop != 0 ? DateTimeHelper.ConvertIntegerToDatetime(concabec.Coftop) : null,
             DepositAmount = concabec.Codpto,
-            DepositType = DepositType.Percent,
+            DepositType = concabec.Cofode == "%" ? DepositType.Percent : DepositType.Fixed,
             HotelCode = concabec.Cohote,
             CurrencyCode = concabec.Comone.ToString(),
             Market = concabec.Codmerca
