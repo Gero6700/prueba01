@@ -386,7 +386,7 @@ public class CreateContractShould {
     [Test]
     public async Task do_not_create_contract_when_cofec1_is_invalid() {
         // Given
-        const int anyCofec1 = 0;
+        const int anyCofec1 = 500;
         const int anyCofec2 = 2024366;
         const int anyCofext = 20241231;
         const int anyCoftop = 20240601;
@@ -402,7 +402,7 @@ public class CreateContractShould {
         Func<Task> function = async () => await createContract.Execute(anyConcabec);
 
         // Then
-        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Incorrect start date");
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Invalid start date");
 
     }
     private bool IsEquivalent(object source, object expected) {
