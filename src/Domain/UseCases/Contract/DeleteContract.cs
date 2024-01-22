@@ -1,4 +1,4 @@
-namespace Senator.As400.Cloud.Sync.Application.UseCases;
+namespace Senator.As400.Cloud.Sync.Application.UseCases.Contract;
 
 public class DeleteContract {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
@@ -6,10 +6,10 @@ public class DeleteContract {
     public DeleteContract(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
-  
+
     public async Task Execute(Concabec concabec) {
         var code = concabec.GetNewCode;
 
-        await availabilitySynchronizerApiClient.DeleteContract(code);    
+        await availabilitySynchronizerApiClient.DeleteContract(code);
     }
 }

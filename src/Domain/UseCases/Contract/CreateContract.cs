@@ -1,7 +1,4 @@
-using System.Globalization;
-
-
-namespace Senator.As400.Cloud.Sync.Application.UseCases;
+namespace Senator.As400.Cloud.Sync.Application.UseCases.Contract;
 
 public class CreateContract {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;

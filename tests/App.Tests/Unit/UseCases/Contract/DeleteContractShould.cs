@@ -1,4 +1,4 @@
-namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Contract; 
+namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Contract;
 
 [TestFixture]
 public class DeleteContractShould {

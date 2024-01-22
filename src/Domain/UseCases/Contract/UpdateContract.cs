@@ -1,4 +1,4 @@
-namespace Senator.As400.Cloud.Sync.Application.UseCases;
+namespace Senator.As400.Cloud.Sync.Application.UseCases.Contract;
 
 public class UpdateContract {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
@@ -8,9 +8,9 @@ public class UpdateContract {
     }
 
     public async Task Execute(Concabec concabec) {
-       var contract = concabec.ToContract();
-       var contractClient = concabec.ToContractClient();
-       await availabilitySynchronizerApiClient.UpdateContract(contract);
-       await availabilitySynchronizerApiClient.UpdateContractClient(contractClient);
+        var contract = concabec.ToContract();
+        var contractClient = concabec.ToContractClient();
+        await availabilitySynchronizerApiClient.UpdateContract(contract);
+        await availabilitySynchronizerApiClient.UpdateContractClient(contractClient);
     }
 }
