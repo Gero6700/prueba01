@@ -6,7 +6,7 @@ public static class DateTimeHelper {
         var dayOfYear = julianDate % 1000;
         var date = DateTime.MinValue;
         
-        if (dayOfYear >= 1  && dayOfYear <= (DateTime.IsLeapYear(year) ? 366 : 365)) {
+        if (dayOfYear >= 1 && year >= 1 && year <= 9999 && dayOfYear <= (DateTime.IsLeapYear(year) ? 366 : 365)) {
             date = new DateTime(year, 1, 1).AddDays(dayOfYear - 1);
         }
 
