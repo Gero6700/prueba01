@@ -522,6 +522,31 @@ public class CreateContractShould {
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Incorrect hotel code");
 
     }
+
+    [Test]
+    public async Task do_not_create_contract_when_market_is_empty() {
+        // Given
+        const string anyCodmerca = "";
+        const int anyCofec1 = 2024001;
+        const int anyCofec2 = 2024366;
+        const int anyCofext = 20241231;
+        const int anyCoftop = 20240601;
+
+        var anyConcabec = ConcabecBuilder.AConcabecBuilder()
+           .WithCodmerca(anyCodmerca)
+           .WithCofec1(anyCofec1)
+           .WithCofec2(anyCofec2)
+           .WithCofext(anyCofext)
+           .WithCoftop(anyCoftop)
+           .Build();
+
+        // When
+        Func<Task> function = async () => await createContract.Execute(anyConcabec);
+
+        // Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Incorrect market code");
+
+    }
     
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);

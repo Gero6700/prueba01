@@ -26,6 +26,9 @@ public class CreateContract {
         if (concabec.Cohote == 0) {
             throw new ArgumentException("Incorrect hotel code");
         }
+        if (concabec.Codmerca=="") {
+            throw new ArgumentException("Incorrect market code");
+        }
 
         var contract = concabec.ToContract();
         var contractClient = concabec.ToContractClient();
