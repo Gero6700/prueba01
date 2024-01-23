@@ -17,6 +17,9 @@ public class CreateContract {
         if (concabec.Cofext>0 && DateTimeHelper.ConvertIntegerToDatetime(concabec.Cofext) == null) {
             throw new ArgumentException("Invalid extinction date");
         }
+        if (concabec.Cofec1 > concabec.Cofec2) {
+            throw new ArgumentException("End date is less than start date");
+        }
 
         var contract = concabec.ToContract();
         var contractClient = concabec.ToContractClient();
