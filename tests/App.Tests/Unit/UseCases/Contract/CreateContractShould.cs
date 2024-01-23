@@ -403,6 +403,30 @@ public class CreateContractShould {
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Invalid start date");
 
     }
+
+    [Test]
+    public async Task do_not_create_contract_when_cofec2_is_invalid() {
+        // Given
+        const int anyCofec1 = 2024001;
+        const int anyCofec2 = 500;
+        const int anyCofext = 20241231;
+        const int anyCoftop = 20240601;
+
+        var anyConcabec = ConcabecBuilder.AConcabecBuilder()
+           .WithCofec1(anyCofec1)
+           .WithCofec2(anyCofec2)
+           .WithCofext(anyCofext)
+           .WithCoftop(anyCoftop)
+           .Build();
+
+        // When
+        Func<Task> function = async () => await createContract.Execute(anyConcabec);
+
+        // Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Invalid end date");
+
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
