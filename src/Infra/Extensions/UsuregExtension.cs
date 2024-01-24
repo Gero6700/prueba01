@@ -7,7 +7,7 @@ public static class UsuregExtension {
             CommercialName = usureg.NombreComercial,
             IntegrationUserName = usureg.Usuario,
             IntegrationPassword = usureg.Clave,
-            ClientTypeCode = usureg.Mrcodi.ToString()
+            ClientTypeCode = usureg.AgGroup.ToString()
         };
     }
 }

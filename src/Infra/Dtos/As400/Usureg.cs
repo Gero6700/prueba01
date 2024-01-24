@@ -5,8 +5,6 @@ public class Usureg {
     public string Clave { get; set; } = string.Empty;  
     public string NombreComercial { get; set; } = string.Empty;
     //Restagen
-    public char Mrcodi { get; set; }
-
-
+    public char AgGroup { get; set; }
 }
 

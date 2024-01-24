@@ -28,8 +28,8 @@ public class UsuregBuilder {
         return this;
     }
 
-    public UsuregBuilder WithMrcodi(char mrcodi) {
-        raw.Mrcodi = mrcodi;
+    public UsuregBuilder WithAgGroup(char agGroup) {
+        raw.AgGroup = agGroup;
         return this;
     }
 
@@ -39,7 +39,7 @@ public class UsuregBuilder {
             .RuleFor(x => x.Usuario, raw.Usuario)
             .RuleFor(x => x.Clave, raw.Clave)
             .RuleFor(x => x.NombreComercial, raw.NombreComercial)
-            .RuleFor(x => x.Mrcodi, raw.Mrcodi)
+            .RuleFor(x => x.AgGroup, raw.AgGroup)
             .Generate();
     }
 
@@ -49,7 +49,7 @@ public class UsuregBuilder {
             .RuleFor(x => x.Usuario, f => f.Internet.UserName())
             .RuleFor(x => x.Clave, f => f.Internet.Password())
             .RuleFor(x => x.NombreComercial, f => f.Company.CompanyName())
-            .RuleFor(x => x.Mrcodi, f => f.Random.Char('A','Z'))
+            .RuleFor(x => x.AgGroup, f => f.Random.Char('A','Z'))
             .Generate();
     }
 
@@ -58,7 +58,7 @@ public class UsuregBuilder {
         public string Usuario { get; set; } = string.Empty;
         public string Clave { get; set; } = string.Empty;
         public string NombreComercial { get; set; } = string.Empty;
-        public char Mrcodi { get; set; }
+        public char AgGroup { get; set; }
     }
 }
 
