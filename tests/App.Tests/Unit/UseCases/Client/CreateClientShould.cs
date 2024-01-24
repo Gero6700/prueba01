@@ -1,4 +1,3 @@
-
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Client;
 
 [TestFixture]
@@ -9,16 +8,16 @@ public class CreateClientShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        createClient = new CreateClient();
+        createClient = new CreateClient(availabilitySynchronizerApiClient);
     }
 
     [Test]
     public async Task create_client() {
         //Given
         const long anyIdUsuario = 123456789012;
-        const string anyUsuario = "anyusuario";
-        const string anyClave = "anyclave";
-        const string anyNombreComercial = "nombreComercial";
+        const string anyUsuario = "anyUsuario";
+        const string anyClave = "anyClave";
+        const string anyNombreComercial = "anyNombreComercial";
         const char anyMrcodi = 'A';
        
         var anyClient = UsuregBuilder.AUsuregBuilder()
@@ -33,15 +32,20 @@ public class CreateClientShould {
         await createClient.Execute(anyClient);
 
         //Then
-        var expectedClient = new Infrastructure.Dtos.BookingCenter.Client { 
-            ClientTypeCode = anyMrcodi.ToString(),
+        var expectedClient = new Infrastructure.Dtos.BookingCenter.Client {
             Code = anyIdUsuario.ToString(),
             CommercialName = anyNombreComercial,
+            IntegrationUserName = anyUsuario,
             IntegrationPassword = anyClave,
-            IntegrationUserName = anyUsuario
+            ClientTypeCode = anyMrcodi.ToString()      
         }; 
 
-        await availabilitySynchronizerApiClient.Received().CreateClient(expectedClient);
+        await availabilitySynchronizerApiClient.Received()
+            .CreateClient(Arg.Is<Infrastructure.Dtos.BookingCenter.Client>(c => IsEquivalent(c, expectedClient)));
 
+    }
+        private bool IsEquivalent(object source, object expected) {
+        source.Should().BeEquivalentTo(expected);
+        return true;
     }
 }
