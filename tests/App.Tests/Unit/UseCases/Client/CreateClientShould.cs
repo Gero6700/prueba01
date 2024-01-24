@@ -1,5 +1,3 @@
-using Senator.As400.Cloud.Sync.Application.UseCases.Contract;
-
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Client;
 
 [TestFixture]
@@ -22,7 +20,7 @@ public class CreateClientShould {
         const string anyNombreComercial = "anyNombreComercial";
         const char anyAgGroup = 'A';
        
-        var anyClient = UsuregBuilder.AUsuregBuilder()
+        var anyClient = UsuregBuilder.AnUsuregBuilder()
             .WithIdUsuario(anyIdUsuario)
             .WithUsuario(anyUsuario)
             .WithClave(anyClave)
@@ -56,7 +54,7 @@ public class CreateClientShould {
         const string anyNombreComercial = "anyNombreComercial";
         const char anyAgGroup = 'A';
        
-        var anyClient = UsuregBuilder.AUsuregBuilder()
+        var anyClient = UsuregBuilder.AnUsuregBuilder()
             .WithIdUsuario(anyIdUsuario)
             .WithUsuario(anyUsuario)
             .WithClave(anyClave)

@@ -2,7 +2,7 @@ namespace Senator.As400.Cloud.Sync.Tests.Common.Builders;
 public class UsuregBuilder {
     private UsuregRaw raw = null!;
 
-    public static UsuregBuilder AUsuregBuilder() {
+    public static UsuregBuilder AnUsuregBuilder() {
         return new UsuregBuilder { 
             raw = GenerateRaw() 
         };
