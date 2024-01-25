@@ -7,9 +7,9 @@ public class DeleteClient {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(long clientCode) {
-        var cod = clientCode.ToString();
-        await availabilitySynchronizerApiClient.DeleteClient(cod);
+    public async Task Execute(Usureg usureg) {
+        var client = usureg.ToClient();
+        await availabilitySynchronizerApiClient.DeleteClient(client.Code);
     }
 
 }

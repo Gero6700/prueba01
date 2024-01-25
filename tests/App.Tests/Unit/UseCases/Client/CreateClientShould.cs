@@ -20,7 +20,7 @@ public class CreateClientShould {
         const string anyNombreComercial = "anyNombreComercial";
         const char anyAgGroup = 'A';
        
-        var anyClient = UsuregBuilder.AnUsuregBuilder()
+        var anyUsureg = UsuregBuilder.AnUsuregBuilder()
             .WithIdUsuario(anyIdUsuario)
             .WithUsuario(anyUsuario)
             .WithClave(anyClave)
@@ -29,7 +29,7 @@ public class CreateClientShould {
             .Build();
 
         //When
-        await createClient.Execute(anyClient);
+        await createClient.Execute(anyUsureg);
 
         //Then
         var expectedClient = new Infrastructure.Dtos.BookingCenter.Client {
@@ -54,7 +54,7 @@ public class CreateClientShould {
         const string anyNombreComercial = "anyNombreComercial";
         const char anyAgGroup = 'A';
        
-        var anyClient = UsuregBuilder.AnUsuregBuilder()
+        var anyUsureg = UsuregBuilder.AnUsuregBuilder()
             .WithIdUsuario(anyIdUsuario)
             .WithUsuario(anyUsuario)
             .WithClave(anyClave)
@@ -63,7 +63,7 @@ public class CreateClientShould {
             .Build();
 
         //When
-        Func<Task> function = async () => await createClient.Execute(anyClient);
+        Func<Task> function = async () => await createClient.Execute(anyUsureg);
 
         //Then
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Incorrect user code");

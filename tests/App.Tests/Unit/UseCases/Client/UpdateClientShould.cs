@@ -20,7 +20,7 @@ public class UpdateClientShould {
         const string anyNombreComercial = "anyNombreComercial";
         const char anyAgGroup = 'A';
         
-        var anyClient = UsuregBuilder.AnUsuregBuilder()
+        var anyUsureg = UsuregBuilder.AnUsuregBuilder()
             .WithIdUsuario(anyIdUsuario)
             .WithUsuario(anyUsuario)
             .WithClave(anyClave)
@@ -29,7 +29,7 @@ public class UpdateClientShould {
             .Build();
 
         //When
-        await updateClient.Execute(anyClient);
+        await updateClient.Execute(anyUsureg);
 
         //Then
         var expectedClient = new Infrastructure.Dtos.BookingCenter.Client {

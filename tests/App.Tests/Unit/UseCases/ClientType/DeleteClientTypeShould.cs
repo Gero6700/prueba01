@@ -15,9 +15,14 @@ public class DeleteClientTypeShould{
     public async Task delete_client_type() {
         //Given
         var anyMrcodi = 'A';
-        
+        var anyMrtext = "";
+        var anyRestagen = new Restagen {
+            Mrcodi = anyMrcodi,
+            Mrtext = anyMrtext
+        };
+
         //When
-        await deleteClientType.Execute(anyMrcodi);
+        await deleteClientType.Execute(anyRestagen);
 
         //Then
         await availabilitySynchronizerApiClient.Received()

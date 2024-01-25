@@ -16,13 +16,13 @@ public class UpdateClientTypeShould {
        //Given
        var anyMrcodi = 'A';
        var anyMrtext = "anyMrtext";
-       var anyClientType = new Restagen {
+       var anyReseagen = new Restagen {
            Mrcodi = anyMrcodi,
            Mrtext = anyMrtext
        };
        
         //When
-        await updateClientType.Execute(anyClientType);
+        await updateClientType.Execute(anyReseagen);
 
         //Then
         var expectedClientType = new Infrastructure.Dtos.BookingCenter.ClientType {

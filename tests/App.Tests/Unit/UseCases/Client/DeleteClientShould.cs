@@ -16,8 +16,12 @@ public class DeleteClientShould {
         //Given
         const long anyIdUsuario = 123456789012;
 
+        var anyUsureg = UsuregBuilder.AnUsuregBuilder()
+            .WithIdUsuario(anyIdUsuario)
+            .Build();
+
         //When
-        await deleteClient.Execute(anyIdUsuario);
+        await deleteClient.Execute(anyUsureg);
 
         //Then
         var expectedCode = anyIdUsuario.ToString();
