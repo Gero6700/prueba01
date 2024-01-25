@@ -12,5 +12,6 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Providers {
         Task<Response> DeleteClient(string codClient);
         Task<Response> CreateClientType(ClientType clientType);
         Task<Response> UpdateClientType(ClientType clientType);
+        Task<Response> DeleteClientType(string codClientType);
     }
 }
