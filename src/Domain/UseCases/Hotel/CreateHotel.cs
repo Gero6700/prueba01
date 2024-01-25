@@ -8,6 +8,9 @@ public class CreateHotel {
     }
 
     public async Task Execute(Reshotel reshotel) {
+        if (reshotel.Hotcod == 0) {
+            throw new ArgumentException("Invalid hotel code");
+        }
         var hotel= reshotel.ToHotel();
         await availabilitySynchronizerApiClient.CreateHotel(hotel);
     }
