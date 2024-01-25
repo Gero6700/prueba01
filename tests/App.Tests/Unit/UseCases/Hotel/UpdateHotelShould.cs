@@ -16,9 +16,13 @@ public class UpdateHotelShould {
         //Given
         var anyHotcod = 1234;
         var anyHozhor = "anyHozhor";
+        var anyProvinceCode = "anyProvinceCode";
+        var anyCityCode = "anyCityCode";
         var anyReshotel = new Reshotel {
             Hotcod = anyHotcod,
-            Hozhor = anyHozhor
+            Hozhor = anyHozhor,
+            ProvinceCode = anyProvinceCode,
+            CityCode = anyCityCode
         };
 
         //When
@@ -28,6 +32,8 @@ public class UpdateHotelShould {
         var expectedHotel = new Infrastructure.Dtos.BookingCenter.Hotel {
             Code = anyHotcod.ToString(),
             TimeZone = anyHozhor.ToString(),
+            ProvinceCode = anyProvinceCode,
+            CityCode = anyCityCode
         };
         
         await availabilitySynchronizerApiClient.Received()
