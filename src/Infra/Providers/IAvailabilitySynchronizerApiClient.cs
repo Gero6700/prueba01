@@ -10,5 +10,6 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Providers {
         Task<Response> CreateClient(Client client);
         Task<Response> UpdateClient(Client client);
         Task<Response> DeleteClient(string codClient);
+        Task<Response> CreateClientType(ClientType clientType);
     }
 }
