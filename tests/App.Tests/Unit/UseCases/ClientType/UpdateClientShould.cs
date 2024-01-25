@@ -8,7 +8,7 @@ public class UpdateClientShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        updateClientType = new UpdateClientType();
+        updateClientType = new UpdateClientType(availabilitySynchronizerApiClient);
     }
 
     [Test]
