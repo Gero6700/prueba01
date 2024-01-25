@@ -8,7 +8,7 @@ public class DeleteClientTypeShould{
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        deleteClientType = new DeleteClientType();
+        deleteClientType = new DeleteClientType(availabilitySynchronizerApiClient);
     }
 
     [Test]
