@@ -1,7 +1,7 @@
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.ClientType;
 
 [TestFixture]
-public class UpdateClientShould {
+public class UpdateClientTypeShould {
     private IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
     private UpdateClientType updateClientType;
 
