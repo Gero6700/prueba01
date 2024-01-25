@@ -6,8 +6,8 @@ public static class ReshotelExtension
         return new Hotel {
             Code = resHotel.Hotcod.ToString(),
             TimeZone = resHotel.Hozhor,
-            ProvinceCode = "",
-            CityCode = "",
+            ProvinceCode = resHotel.ProvinceCode,
+            CityCode = resHotel.CityCode,
         };
     }
 }
