@@ -10,7 +10,7 @@ public class CreateClientTypeShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        createClientType = new CreateClientType();
+        createClientType = new CreateClientType(availabilitySynchronizerApiClient);
     }
 
     [Test]
