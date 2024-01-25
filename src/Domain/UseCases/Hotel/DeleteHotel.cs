@@ -1,6 +1,13 @@
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Hotel;
 public class DeleteHotel{
+    private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
+
+    public DeleteHotel(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {
+        this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
+    }
+
     public Task Execute(Reshotel reshotel) {
-       throw new NotImplementedException();
+       var hotel= reshotel.ToHotel();
+       return availabilitySynchronizerApiClient.DeleteHotel(hotel.Code);
     }
 }

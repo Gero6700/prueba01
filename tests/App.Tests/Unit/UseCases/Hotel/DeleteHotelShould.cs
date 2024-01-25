@@ -8,7 +8,7 @@ public class DeleteHotelShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        deleteHotel = new DeleteHotel();
+        deleteHotel = new DeleteHotel(availabilitySynchronizerApiClient);
     }
 
     [Test]
@@ -25,13 +25,10 @@ public class DeleteHotelShould {
         await deleteHotel.Execute(anyReshotel);
 
         //Then
-        var expectedHotel = new Infrastructure.Dtos.BookingCenter.Hotel {
-            Code = anyHotcod.ToString(),
-            TimeZone = anyHozhor.ToString(),
-        };
+        var expectedCode = anyHotcod.ToString();
         
         await availabilitySynchronizerApiClient.Received()
-            .DeleteHotel(Arg.Is<string>(c => IsEquivalent(c, expectedHotel)));
+            .DeleteHotel(Arg.Is<string>(c => IsEquivalent(c, expectedCode)));
     }
 
     private bool IsEquivalent(object source, object expected) {
