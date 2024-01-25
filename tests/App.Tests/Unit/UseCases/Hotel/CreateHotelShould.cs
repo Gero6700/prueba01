@@ -8,7 +8,7 @@ public class CreateHotelShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        createHotel = new CreateHotel();
+        createHotel = new CreateHotel(availabilitySynchronizerApiClient);
     }
 
     [Test]
