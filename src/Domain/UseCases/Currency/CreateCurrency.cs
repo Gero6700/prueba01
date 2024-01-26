@@ -6,6 +6,9 @@ public class CreateCurrency {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
     public async Task Execute(Divisa divisa) {
+        if (divisa.Dinom2 == "") {
+            throw new ArgumentException("Incorrect currency code");
+        }
         var currency = divisa.ToCurrency();
         await availabilitySynchronizerApiClient.CreateCurrency(currency);
     }
