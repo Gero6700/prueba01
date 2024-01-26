@@ -8,7 +8,7 @@ public class UpdateCurrencyShould {
     [SetUp]
     public void Setup() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        updateCurrency = new UpdateCurrency();
+        updateCurrency = new UpdateCurrency(availabilitySynchronizerApiClient);
     }
 
     [Test]
