@@ -62,7 +62,7 @@ public class CreateCurrencyShould {
     [Test]
     public async Task do_not_create_currency_when_dinomb2_is_invalid() {
         //Then
-        const string anyDinom2 = "1EUR";
+        const string anyDinom2 = "EU0";
         const string anyDinomb = "anyDinomb";
         const string anyDisimb = "anyDisimb";
 

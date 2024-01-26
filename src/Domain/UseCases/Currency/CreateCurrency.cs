@@ -9,6 +9,10 @@ public class CreateCurrency {
         if (divisa.Dinom2 == "") {
             throw new ArgumentException("Incorrect currency code");
         }
+        if (divisa.Dinom2.Length != 3 || !divisa.Dinom2.All(char.IsLetter)) {
+            throw new ArgumentException("Invalid iso code");
+        }
+
         var currency = divisa.ToCurrency();
         await availabilitySynchronizerApiClient.CreateCurrency(currency);
     }
