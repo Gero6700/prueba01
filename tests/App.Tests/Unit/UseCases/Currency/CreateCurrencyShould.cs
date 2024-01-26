@@ -1,3 +1,5 @@
+using FluentAssertions.Specialized;
+
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Currency;
 
 [TestFixture]
@@ -35,6 +37,26 @@ public class CreateCurrencyShould {
         };
         await availabilitySynchronizerApiClient.Received()
             .CreateCurrency(Arg.Is<Infrastructure.Dtos.BookingCenter.Currency>(c => IsEquivalent(c, expectedCurrency)));
+    }
+
+    [Test]
+    public async Task do_not_create_currency_when_dinomb2_is_empty() {
+        //Then
+        const string anyDinom2 = "";
+        const string anyDinomb = "anyDinomb";
+        const string anyDisimb = "anyDisimb";
+
+        var anyDivisa = new Divisa {
+            Dinom2 = anyDinom2,
+            Dinomb = anyDinomb,
+            Disimb = anyDisimb
+        };
+
+        //When
+        Func<Task> function = async () => await createCurrency.Execute(anyDivisa);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Incorrect currency code");
     }
 
     private bool IsEquivalent(object source, object expected) {
