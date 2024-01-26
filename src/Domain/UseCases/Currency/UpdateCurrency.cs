@@ -7,6 +7,9 @@ public class UpdateCurrency {
     }
 
     public async Task Execute(Divisa divisa) {
+        if (divisa.Dinom2 == "") {
+            throw new ArgumentException("Incorrect currency code");
+        }
         if (divisa.Dinom2.Length != 3 || !divisa.Dinom2.All(char.IsLetter)) {
             throw new ArgumentException("Invalid iso code");
         }
