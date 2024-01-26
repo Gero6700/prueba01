@@ -20,6 +20,9 @@ public class UpdateContract {
         if (concabec.Cofec1 > concabec.Cofec2) {
             throw new ArgumentException("End date is less than start date");
         }
+        if (concabec.Idusuario == 0) {
+            throw new ArgumentException("Incorrect user code");
+        }
 
         var contract = concabec.ToContract();
         var contractClient = concabec.ToContractClient();
