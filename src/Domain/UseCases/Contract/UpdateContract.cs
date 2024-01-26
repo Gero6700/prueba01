@@ -23,6 +23,9 @@ public class UpdateContract {
         if (concabec.Idusuario == 0) {
             throw new ArgumentException("Incorrect user code");
         }
+        if (concabec.Cohote == 0) {
+            throw new ArgumentException("Incorrect hotel code");
+        }
 
         var contract = concabec.ToContract();
         var contractClient = concabec.ToContractClient();
