@@ -8,7 +8,7 @@ public class CreateCurrencyShould {
     [SetUp]
     public void Setup() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        createCurrency = new CreateCurrency();
+        createCurrency = new CreateCurrency(availabilitySynchronizerApiClient);
     }
 
     [Test]
