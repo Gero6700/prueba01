@@ -154,7 +154,7 @@ public class UpdateContractShould {
     }
 
     [Test]
-    public async Task do_not_create_contract_when_cofext_is_invalid() {
+    public async Task do_not_update_contract_when_cofext_is_invalid() {
         // Given
         const int anyCofec1 = 2024001;
         const int anyCofec2 = 2024366;
@@ -173,6 +173,29 @@ public class UpdateContractShould {
 
         // Then
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Invalid extinction date");
+
+    }
+
+    [Test]
+    public async Task do_not_update_contract_when_end_date_is_less_than_start_date() {
+        // Given
+        const int anyCofec1 = 2024001;
+        const int anyCofec2 = 2023365;
+        const int anyCofext = 20241231;
+        const int anyCoftop = 20240601;
+
+        var anyConcabec = ConcabecBuilder.AConcabecBuilder()
+           .WithCofec1(anyCofec1)
+           .WithCofec2(anyCofec2)
+           .WithCofext(anyCofext)
+           .WithCoftop(anyCoftop)
+           .Build();
+
+        // When
+        Func<Task> function = async () => await updateContract.Execute(anyConcabec);
+
+        // Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("End date is less than start date");
 
     }
 
