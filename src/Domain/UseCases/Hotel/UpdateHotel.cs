@@ -7,6 +7,9 @@ public class UpdateHotel {
     }
 
     public Task Execute(Reshotel reshotel) {
+        if (reshotel.Hotcod == 0) {
+            throw new ArgumentException("Invalid hotel code");
+        }
         var hotel= reshotel.ToHotel();
         return availabilitySynchronizerApiClient.UpdateHotel(hotel);
     }
