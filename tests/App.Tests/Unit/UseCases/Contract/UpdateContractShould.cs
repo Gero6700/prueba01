@@ -1,3 +1,5 @@
+using Senator.As400.Cloud.Sync.Application.UseCases.Contract;
+
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Contract;
 
 [TestFixture]
@@ -103,6 +105,29 @@ public class UpdateContractShould {
             .UpdateContract(Arg.Is<Infrastructure.Dtos.BookingCenter.Contract>(c => IsEquivalent(c, expectedContract)));
         await availabilitySynchronizerApiClient.Received()
             .UpdateContractClient(Arg.Is<ContractClient>(c => IsEquivalent(c, expectedContractClient)));
+    }
+
+    [Test]
+    public async Task do_not_update_contract_when_cofec1_is_invalid() {
+        // Given
+        const int anyCofec1 = 500;
+        const int anyCofec2 = 2024366;
+        const int anyCofext = 20241231;
+        const int anyCoftop = 20240601;
+
+        var anyConcabec = ConcabecBuilder.AConcabecBuilder()
+           .WithCofec1(anyCofec1)
+           .WithCofec2(anyCofec2)
+           .WithCofext(anyCofext)
+           .WithCoftop(anyCoftop)
+           .Build();
+
+        // When
+        Func<Task> function = async () => await updateContract.Execute(anyConcabec);
+
+        // Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Invalid start date");
+
     }
 
     private bool IsEquivalent(object source, object expected) {
