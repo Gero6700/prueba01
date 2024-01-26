@@ -8,6 +8,10 @@ public class UpdateContract {
     }
 
     public async Task Execute(Concabec concabec) {
+        if (DateTimeHelper.ConvertJulianDateToDateTime(concabec.Cofec1) == DateTime.MinValue) {
+            throw new ArgumentException("Invalid start date");
+        }
+
         var contract = concabec.ToContract();
         var contractClient = concabec.ToContractClient();
         await availabilitySynchronizerApiClient.UpdateContract(contract);
