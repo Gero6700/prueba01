@@ -16,7 +16,7 @@ public class CreateCurrencyShould {
     [Test]
     public async Task create_currency() {
         //Given
-        const string anyDinom2 = "anyDinom2";
+        const string anyDinom2 = "EUR";
         const string anyDinomb = "anyDinomb";
         const string anyDisimb = "anyDisimb";
 
@@ -57,6 +57,26 @@ public class CreateCurrencyShould {
 
         //Then
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Incorrect currency code");
+    }
+
+    [Test]
+    public async Task do_not_create_currency_when_dinomb2_is_invalid() {
+        //Then
+        const string anyDinom2 = "1EUR";
+        const string anyDinomb = "anyDinomb";
+        const string anyDisimb = "anyDisimb";
+
+        var anyDivisa = new Divisa {
+            Dinom2 = anyDinom2,
+            Dinomb = anyDinomb,
+            Disimb = anyDisimb
+        };
+
+        //When
+        Func<Task> function = async () => await createCurrency.Execute(anyDivisa);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Invalid iso code");
     }
 
     private bool IsEquivalent(object source, object expected) {
