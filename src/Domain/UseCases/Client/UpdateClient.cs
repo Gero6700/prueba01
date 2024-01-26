@@ -7,6 +7,10 @@ public class UpdateClient {
     }
 
     public async Task Execute(Usureg usureg) {
+        if (usureg.IdUsuario == 0) {
+            throw new ArgumentException("Incorrect user code");
+        }
+
         var client = usureg.ToClient();
         await availabilitySynchronizerApiClient.UpdateClient(client);
     }
