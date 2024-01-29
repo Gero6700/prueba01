@@ -82,7 +82,7 @@ public class CreateContractShould {
             DepositDate = new DateTime(2024,6,1),
             DepositAmount = anyCodpto,
             DepositType = DepositType.Percent,
-            HotelCode = anyCohote,
+            HotelCode = anyCohote.ToString(),
             CurrencyIsoCode = anyDinom2,
             Market = anyCodmerca
         };
@@ -135,7 +135,7 @@ public class CreateContractShould {
             DepositDate = null,
             DepositAmount = anyConcabec.Codpto,
             DepositType = anyConcabec.Cofode == "%" ? DepositType.Percent : DepositType.Fixed,
-            HotelCode = anyConcabec.Cohote,
+            HotelCode = anyConcabec.Cohote.ToString(),
             CurrencyIsoCode = anyConcabec.Dinom2,
             Market = anyConcabec.Codmerca
         };
@@ -191,7 +191,7 @@ public class CreateContractShould {
             DepositDate = new DateTime(2024, 6, 1),
             DepositAmount = anyConcabec.Codpto,
             DepositType = anyConcabec.Cofode == "%" ? DepositType.Percent : DepositType.Fixed,
-            HotelCode = anyConcabec.Cohote,
+            HotelCode = anyConcabec.Cohote.ToString(),
             CurrencyIsoCode = anyConcabec.Dinom2,
             Market = anyConcabec.Codmerca
         };
@@ -248,7 +248,7 @@ public class CreateContractShould {
             DepositDate = new DateTime(2024, 6, 1),
             DepositAmount = anyConcabec.Codpto,
             DepositType = DepositType.Fixed,
-            HotelCode = anyConcabec.Cohote,
+            HotelCode = anyConcabec.Cohote.ToString(),
             CurrencyIsoCode = anyConcabec.Dinom2,
             Market = anyConcabec.Codmerca
         };
@@ -301,7 +301,7 @@ public class CreateContractShould {
             DepositDate = new DateTime(2024, 6, 1),
             DepositAmount = anyConcabec.Codpto,
             DepositType = anyConcabec.Cofode == "%" ? DepositType.Percent : DepositType.Fixed,
-            HotelCode = anyConcabec.Cohote,
+            HotelCode = anyConcabec.Cohote.ToString(),
             CurrencyIsoCode = anyConcabec.Dinom2,
             Market = anyConcabec.Codmerca
         };
@@ -356,7 +356,7 @@ public class CreateContractShould {
             DepositDate = new DateTime(2024, 6, 1),
             DepositAmount = anyConcabec.Codpto,
             DepositType = anyConcabec.Cofode == "%" ? DepositType.Percent : DepositType.Fixed,
-            HotelCode = anyConcabec.Cohote,
+            HotelCode = anyConcabec.Cohote.ToString(),
             CurrencyIsoCode = anyConcabec.Dinom2,
             Market = anyConcabec.Codmerca
         };

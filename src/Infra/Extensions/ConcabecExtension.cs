@@ -12,7 +12,7 @@ public static class ConcabecExtension {
             DepositDate = concabec.Coftop != 0 ? DateTimeHelper.ConvertIntegerToDatetime(concabec.Coftop) : null,
             DepositAmount = concabec.Codpto,
             DepositType = concabec.Cofode == "%" ? DepositType.Percent : DepositType.Fixed,
-            HotelCode = concabec.Cohote,
+            HotelCode = concabec.Cohote.ToString(),
             CurrencyIsoCode = concabec.Dinom2,
             Market = concabec.Codmerca
         };

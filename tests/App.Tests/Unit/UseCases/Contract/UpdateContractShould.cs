@@ -83,7 +83,7 @@ public class UpdateContractShould {
             DepositDate = new DateTime(2024, 6, 5),
             DepositAmount = anyCodpto,
             DepositType = DepositType.Percent,
-            HotelCode = anyCohote,
+            HotelCode = anyCohote.ToString(),
             CurrencyIsoCode = anyDinom2,
             Market = anyCodmerca
         };
