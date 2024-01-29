@@ -277,7 +277,7 @@ public class UpdateContractShould {
     [Test]
     public async Task do_not_update_contract_when_dinomb2_is_invalid() {
         // Given
-        const string anyDinom2 = "EU%";
+        const string anyDinom2 = "";
         const int anyCofec1 = 2024001;
         const int anyCofec2 = 2024366;
         const int anyCofext = 20241231;
