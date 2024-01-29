@@ -13,6 +13,9 @@ public class CreateHotelRoomConfiguration {
         if (resthaho.Tihab == "") {
             throw new ArgumentException("Incorrect room code");
         }
+        if (resthaho.Tihabg == "") {
+            throw new ArgumentException("Incorrect inventory room code");
+        }
         var hotelRoomConfiguration = resthaho.ToHotelRoomConfiguration();
         await availabilitySynchronizerApiClient.CreateHotelRoomConfiguration(hotelRoomConfiguration);
     }
