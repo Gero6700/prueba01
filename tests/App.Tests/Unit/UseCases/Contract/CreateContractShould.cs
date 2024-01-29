@@ -551,7 +551,7 @@ public class CreateContractShould {
     [Test]
     public async Task do_not_create_contract_when_dinom2_is_invalid() {
         //Given
-        const string anyDinom2 = "EURO";
+        const string anyDinom2 = "EU%";
         const int anyCofec1 = 2024001;
         const int anyCofec2 = 2024366;
         const int anyCofext = 20241231;

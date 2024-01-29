@@ -26,8 +26,11 @@ public class CreateContract {
         if (concabec.Cohote == 0) {
             throw new ArgumentException("Incorrect hotel code");
         }
-        if (concabec.Codmerca=="") {
+        if (concabec.Codmerca =="") {
             throw new ArgumentException("Incorrect market code");
+        }
+        if (concabec.Dinom2 != "" && (concabec.Dinom2.Length != 3 || !concabec.Dinom2.All(char.IsLetter))) {
+            throw new ArgumentException("Invalid currency iso code");
         }
 
         var contract = concabec.ToContract();
