@@ -54,8 +54,8 @@ public class ConcabecBuilder {
         return this;
     }
 
-    public ConcabecBuilder WithComone(int newComone) {
-        raw.Comone = newComone;
+    public ConcabecBuilder WithDinom2(string newDinom2) {
+        raw.Dinom2 = newDinom2;
         return this;
     }
 
@@ -143,7 +143,7 @@ public class ConcabecBuilder {
             .RuleFor(x => x.Cofec1, raw.Cofec1)
             .RuleFor(x => x.Cofec2, raw.Cofec2)
             .RuleFor(x => x.Codesc, raw.Codesc)
-            .RuleFor(x => x.Comone, raw.Comone)
+            .RuleFor(x => x.Dinom2, raw.Dinom2)
             .RuleFor(x => x.Cocoag, raw.Cocoag)
             .RuleFor(x => x.Coagcl, raw.Coagcl)
             .RuleFor(x => x.Cosucl, raw.Cosucl)
@@ -174,7 +174,7 @@ public class ConcabecBuilder {
             .RuleFor(x => x.Cofec1, f => (DateTime.Now.Year * 1000) + f.Random.Number(0, 365))
             .RuleFor(x => x.Cofec2, f => (DateTime.Now.Year + 1 * 1000) + f.Random.Number(0, 365))
             .RuleFor(x => x.Codesc, f => f.Random.String(10, 'A', 'Z').ToUpper())
-            .RuleFor(x => x.Comone, f => f.Random.Int(2))
+            .RuleFor(x => x.Dinom2, f => f.Random.String(3, 'A', 'Z').ToUpper())
             .RuleFor(x => x.Cocoag, f => f.Random.Decimal())
             .RuleFor(x => x.Coagcl, f => f.Random.Int(10000, 99999))
             .RuleFor(x => x.Cosucl, f => f.Random.Int(1, 99))
@@ -204,7 +204,7 @@ public class ConcabecBuilder {
         public int Cofec1 { get; set; }
         public int Cofec2 { get; set; }
         public string Codesc { get; set; } = string.Empty;
-        public int Comone { get; set; }
+        public string Dinom2 { get; set; } = string.Empty;
         public decimal Cocoag { get; set; }
         public int Coagcl { get; set; }
         public int Cosucl { get; set; }

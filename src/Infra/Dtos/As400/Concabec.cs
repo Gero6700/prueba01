@@ -8,7 +8,6 @@ public class Concabec {
     public int Cofec1 { get; set; }
     public int Cofec2 { get; set; }
     public string Codesc { get; set; } = string.Empty;
-    public int Comone { get; set; }
     public decimal Cocoag { get; set; }
     public int Coagcl { get; set; }
     public int Cosucl { get; set; }
@@ -31,7 +30,9 @@ public class Concabec {
     public decimal D4hast { get; set; }
     //servxml.usureg
     public long Idusuario { get; set; }
-    
+    //contgral.divisa
+    public string Dinom2 { get; set; } = string.Empty;
+
     public string GetNewCode => $"{Cohote}{Cocont}{Cofec1}{Covers}";
 
 }
