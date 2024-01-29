@@ -29,6 +29,9 @@ public class UpdateContract {
         if (concabec.Codmerca == "") {
             throw new ArgumentException("Incorrect market code");
         }
+        if (concabec.Dinom2 != "" && (concabec.Dinom2.Length != 3 || !concabec.Dinom2.All(char.IsLetter))) {
+            throw new ArgumentException("Invalid currency iso code");
+        }
 
         var contract = concabec.ToContract();
         var contractClient = concabec.ToContractClient();
