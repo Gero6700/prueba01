@@ -63,6 +63,28 @@ public class CreateHotelRoomConfigurationShould {
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Incorrect hotel code");
     }
 
+    [Test]
+    public async Task do_not_create_hotel_room_configuration_when_tihab_is_empty() {
+        //Given
+        const int anyTihote = 150;
+        const string anyTihab = "";
+        const string anyTihabg = "A1";
+        const int anyTiconf = 1;
+
+        var anyResthaho = new Resthaho {
+            Tihote = anyTihote,
+            Tihab = anyTihab,
+            Tihabg = anyTihabg,
+            Ticonf = anyTiconf
+        };
+
+        //When
+        Func<Task> function = async () => await createHotelRoomConfiguration.Execute(anyResthaho);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Incorrect room code");
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
