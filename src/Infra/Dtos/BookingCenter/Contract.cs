@@ -10,7 +10,7 @@ public class Contract {
     public DateTime? DepositDate { get; set; }
     public decimal DepositAmount { get; set; }
     public DepositType DepositType { get; set; }
-    public string HotelCode { get; set; }
+    public string HotelCode { get; set; } = string.Empty;
     public string CurrencyIsoCode { get; set; } = string.Empty;
     public string Market { get; set; } = string.Empty;
 }
