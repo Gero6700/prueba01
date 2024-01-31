@@ -9,7 +9,7 @@ public class DeleteHotelRoomConfigurationShould
     [SetUp]
     public void Setup() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        deleteHotelRoomConfiguration = new DeleteHotelRoomConfiguration();
+        deleteHotelRoomConfiguration = new DeleteHotelRoomConfiguration(availabilitySynchronizerApiClient);
     }
 
     [Test]
