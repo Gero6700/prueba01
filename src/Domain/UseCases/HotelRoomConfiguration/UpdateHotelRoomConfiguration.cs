@@ -16,6 +16,9 @@ public class UpdateHotelRoomConfiguration {
         if (resthaho.Tihabg == "") {
             throw new ArgumentException("Incorrect inventory room type code");
         }
+        if (resthaho.Ticonf == 0) {
+            throw new ArgumentException("Incorrect occupancy rate code");
+        }
 
         var hotelRoomConfiguration = resthaho.ToHotelRoomConfiguration();
         await availabilitySynchronizerApiClient.UpdateHotelRoomConfiguration(hotelRoomConfiguration);
