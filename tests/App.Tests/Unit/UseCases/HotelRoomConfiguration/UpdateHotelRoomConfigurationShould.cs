@@ -107,6 +107,28 @@ public class UpdateHotelRoomConfigurationShould {
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Incorrect inventory room type code");
     }
 
+    [Test]
+    public async Task do_not_update_hotel_room_configuration_when_ticonf_is_zero() {
+        //Given
+        const int anyTihote = 150;
+        const string anyTihab = "A1";
+        const string anyTihabg = "A1";
+        const int anyTiconf = 0;
+
+        var anyResthaho = new Resthaho {
+            Tihote = anyTihote,
+            Tihab = anyTihab,
+            Tihabg = anyTihabg,
+            Ticonf = anyTiconf
+        };
+
+        //When
+        Func<Task> function = async () => await updateHotelRoomConfiguration.Execute(anyResthaho);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Incorrect occupancy rate code");
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
