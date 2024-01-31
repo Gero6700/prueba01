@@ -7,6 +7,9 @@ public class UpdateHotelRoomConfiguration {
     }
 
     public async Task Execute(Resthaho resthaho) {
+        if (resthaho.Tihote == 0) {
+            throw new ArgumentException("Incorrect hotel code");
+        }
         var hotelRoomConfiguration = resthaho.ToHotelRoomConfiguration();
         await availabilitySynchronizerApiClient.UpdateHotelRoomConfiguration(hotelRoomConfiguration);
     }
