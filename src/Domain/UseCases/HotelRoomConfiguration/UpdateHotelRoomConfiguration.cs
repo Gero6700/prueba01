@@ -1,6 +1,13 @@
 namespace Senator.As400.Cloud.Sync.Application.UseCases.HotelRoomConfiguration;
 public class UpdateHotelRoomConfiguration {
-    public Task Execute(Resthaho resthaho) {
-        throw new NotImplementedException();
+    private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
+
+    public UpdateHotelRoomConfiguration(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {
+        this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
+    }
+
+    public async Task Execute(Resthaho resthaho) {
+        var hotelRoomConfiguration = resthaho.ToHotelRoomConfiguration();
+        await availabilitySynchronizerApiClient.UpdateHotelRoomConfiguration(hotelRoomConfiguration);
     }
 }

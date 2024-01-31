@@ -8,7 +8,7 @@ public class UpdateHotelRoomConfigurationShould {
     [SetUp]
     public void Setup() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        updateHotelRoomConfiguration = new UpdateHotelRoomConfiguration();
+        updateHotelRoomConfiguration = new UpdateHotelRoomConfiguration(availabilitySynchronizerApiClient);
     }
 
     [Test]
