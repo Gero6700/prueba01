@@ -8,7 +8,7 @@ public class CreateMarketShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        createMarket = new CreateMarket();
+        createMarket = new CreateMarket(availabilitySynchronizerApiClient);
     }
 
     [Test]
