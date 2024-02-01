@@ -34,6 +34,24 @@ public class CreateMarketShould {
             .CreateMarket(Arg.Is<Infrastructure.Dtos.BookingCenter.Market>(c => IsEquivalent(c, expectedMarket)));
     }
 
+    [Test]
+    public async Task do_not_create_contract_when_code_is_empty() {
+        //Given
+        const string anyCod = "";
+        const string anyNom = "anyNom";
+        var anyMerca = new Merca {
+            Cod = anyCod,
+            Nom = anyNom
+        };
+
+        //When
+        Func<Task> function = async () => await createMarket.Execute(anyMerca);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Incorrect market code");
+    }
+
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
