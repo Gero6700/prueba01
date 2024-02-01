@@ -8,6 +8,9 @@ public class UpdateMarket {
     }
 
     public async Task Execute(Merca merca) {
+        if (merca.Cod == "") {
+            throw new ArgumentException("Incorrect market code");
+        }
         var market = merca.ToMarket();
         await availabilitySynchronizerApiClient.UpdateMarket(market);
     }
