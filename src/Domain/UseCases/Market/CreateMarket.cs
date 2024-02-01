@@ -7,6 +7,9 @@ public class CreateMarket {
     }
 
     public Task Execute(Merca merca) {
+        if (merca.Cod == "") {
+            throw new ArgumentException("Incorrect market code");
+        }
         var market= merca.ToMarket();
         return availabilitySynchronizerApiClient.CreateMarket(market);
     }

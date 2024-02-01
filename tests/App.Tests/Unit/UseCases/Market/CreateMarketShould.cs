@@ -35,7 +35,7 @@ public class CreateMarketShould {
     }
 
     [Test]
-    public async Task do_not_create_contract_when_code_is_empty() {
+    public async Task do_not_create_market_when_code_is_empty() {
         //Given
         const string anyCod = "";
         const string anyNom = "anyNom";
