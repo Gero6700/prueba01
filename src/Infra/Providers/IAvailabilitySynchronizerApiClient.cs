@@ -20,5 +20,6 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Providers {
         Task<Response> UpdateHotelRoomConfiguration(HotelRoomConfiguration hotelRoomConfiguration);
         Task<Response> DeleteHotelRoomConfiguration(HotelRoomConfiguration hotelRoomConfiguration);
         Task<Response> CreateMarket(Market market);
+        Task<Response> UpdateMarket(Market market);
     }
 }

@@ -8,7 +8,7 @@ public class UpdateMarketShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        updateMarket = new UpdateMarket();
+        updateMarket = new UpdateMarket(availabilitySynchronizerApiClient);
     }
     [Test]
     public async Task update_market() {

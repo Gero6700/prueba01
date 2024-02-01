@@ -1,8 +1,15 @@
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Market;
 
 public class UpdateMarket {
-    public Task Execute(Merca merca) {
-      throw new NotImplementedException();
+    private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
+
+    public UpdateMarket(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {
+        this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
+    }
+
+    public async Task Execute(Merca merca) {
+        var market = merca.ToMarket();
+        await availabilitySynchronizerApiClient.UpdateMarket(market);
     }
     
 }
