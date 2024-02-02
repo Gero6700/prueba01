@@ -8,7 +8,7 @@ public class DeleteMarketShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        deleteMarket = new DeleteMarket();
+        deleteMarket = new DeleteMarket(availabilitySynchronizerApiClient);
     }
 
     [Test]  
