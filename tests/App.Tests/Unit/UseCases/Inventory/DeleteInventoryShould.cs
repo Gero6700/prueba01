@@ -8,7 +8,7 @@ public class DeleteInventoryShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        deleteInventory = new DeleteInventory();
+        deleteInventory = new DeleteInventory(availabilitySynchronizerApiClient);
     }
 
     [Test]
