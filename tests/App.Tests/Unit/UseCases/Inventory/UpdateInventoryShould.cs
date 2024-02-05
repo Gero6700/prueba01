@@ -1,3 +1,5 @@
+using Senator.As400.Cloud.Sync.Application.UseCases.Inventory;
+
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Inventory;
 
 [TestFixture]
@@ -49,7 +51,37 @@ public class UpdateInventoryShould
             .UpdateInventory(Arg.Is<Infrastructure.Dtos.BookingCenter.Inventory>(x => IsEquivalent(x, expectedInventory)));
 
     }
-        private bool IsEquivalent(object source, object expected) {
+
+    [Test]
+    public async Task do_not_update_inventory_when_ptfec_is_invalid() {
+        //Given
+        const int anyPtfec = 2024;
+        const int anyPtcupo = 5;
+        const int anyPtbloq = 0;
+        const int anyPtreal = 0;
+        const int anyPtgrup = 0;
+        const int anyPtreag = 0;
+        const int anyPthot = 150;
+        const string anyPthab = "D";
+        var anyResplaht = new Resplaht {
+            Ptfec = anyPtfec,
+            Ptcupo = anyPtcupo,
+            Ptbloq = anyPtbloq,
+            Ptreal = anyPtreal,
+            Ptgrup = anyPtgrup,
+            Ptreag = anyPtreag,
+            Pthot = anyPthot,
+            Pthab = anyPthab
+        };
+
+        // When
+        Func<Task> function = async () => await updateInventory.Execute(anyResplaht);
+
+        // Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Invalid date");
+    }
+
+    private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
     }
