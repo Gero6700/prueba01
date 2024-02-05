@@ -13,6 +13,9 @@ public class CreateInventory {
         if (resplaht.Pthot == 0) {
             throw new ArgumentException("Incorrect hotel code");
         }
+        if (resplaht.Pthab == "") {
+            throw new ArgumentException("Incorrect room code");
+        }
         var inventory= resplaht.ToInventory();
         await availabilitySynchronizerApiClient.CreateInventory(inventory);
     }
