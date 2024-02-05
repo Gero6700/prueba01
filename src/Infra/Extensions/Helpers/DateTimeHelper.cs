@@ -13,7 +13,7 @@ public static class DateTimeHelper {
         return date;
     }
 
-    public static DateTime? ConvertIntegerToDatetime(int integerDate) {
+    public static DateTime? ConvertIntegerToNullableDatetime(int integerDate) {
         if (DateTime.TryParseExact(integerDate.ToString(), "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var date)) {
             return date;
         }
@@ -22,10 +22,12 @@ public static class DateTimeHelper {
 
     }
 
-//    public static bool IsValidJulianDate(int integerDate) {
-//        if (ConvertJulianDateToDateTime(integerDate) is not DateTime.MinValue) {
-//            return true;
-//        }
-//        return false;
-//    }
+    
+
+    //    public static bool IsValidJulianDate(int integerDate) {
+    //        if (ConvertJulianDateToDateTime(integerDate) is not DateTime.MinValue) {
+    //            return true;
+    //        }
+    //        return false;
+    //    }
 }

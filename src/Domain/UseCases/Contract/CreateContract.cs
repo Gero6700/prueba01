@@ -14,7 +14,7 @@ public class CreateContract {
         if (DateTimeHelper.ConvertJulianDateToDateTime(concabec.Cofec2) == DateTime.MinValue) {
             throw new ArgumentException("Invalid end date");
         }
-        if (concabec.Cofext>0 && DateTimeHelper.ConvertIntegerToDatetime(concabec.Cofext) == null) {
+        if (concabec.Cofext>0 && DateTimeHelper.ConvertIntegerToNullableDatetime(concabec.Cofext) == null) {
             throw new ArgumentException("Invalid extinction date");
         }
         if (concabec.Cofec1 > concabec.Cofec2) {
