@@ -9,7 +9,7 @@ public class UpdateInventoryShould
     [SetUp]
     public void Setup() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        updateInventory = new UpdateInventory();
+        updateInventory = new UpdateInventory(availabilitySynchronizerApiClient);
     }
 
     [Test]
