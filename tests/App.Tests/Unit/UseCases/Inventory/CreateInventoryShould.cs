@@ -1,3 +1,4 @@
+using Senator.As400.Cloud.Sync.Application.UseCases.Contract;
 using System.IO;
 
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Inventory;
@@ -48,6 +49,36 @@ public class CreateInventoryShould {
 
         await availabilitySynchronizerApiClient.Received()
             .CreateInventory(Arg.Is<Infrastructure.Dtos.BookingCenter.Inventory>(x => IsEquivalent(x, expectedInventory)));
+
+    }
+
+    [Test]
+    public async Task do_not_create_inventory_when_ptfec_is_invalid() {
+        //Given
+        const int anyPtfec = 2024;
+        const int anyPtcupo = 5;
+        const int anyPtbloq = 0;
+        const int anyPtreal = 0;
+        const int anyPtgrup = 0;
+        const int anyPtreag = 0;
+        const int anyPthot = 150;
+        const string anyPthab = "D";
+        var anyResplaht = new Resplaht {
+            Ptfec = anyPtfec,
+            Ptcupo = anyPtcupo,
+            Ptbloq = anyPtbloq,
+            Ptreal = anyPtreal,
+            Ptgrup = anyPtgrup,
+            Ptreag = anyPtreag,
+            Pthot = anyPthot,
+            Pthab = anyPthab
+        };
+
+        // When
+        Func<Task> function = async () => await createInventory.Execute(anyResplaht);
+
+        // Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Invalid date");
 
     }
 
