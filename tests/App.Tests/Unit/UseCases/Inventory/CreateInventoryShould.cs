@@ -82,6 +82,36 @@ public class CreateInventoryShould {
 
     }
 
+    [Test]
+    public async Task do_not_create_inventory_when_pthot_is_zero() {
+        //Given
+        const int anyPtfec = 20240101;
+        const int anyPtcupo = 5;
+        const int anyPtbloq = 0;
+        const int anyPtreal = 0;
+        const int anyPtgrup = 0;
+        const int anyPtreag = 0;
+        const int anyPthot = 0;
+        const string anyPthab = "D";
+        var anyResplaht = new Resplaht {
+            Ptfec = anyPtfec,
+            Ptcupo = anyPtcupo,
+            Ptbloq = anyPtbloq,
+            Ptreal = anyPtreal,
+            Ptgrup = anyPtgrup,
+            Ptreag = anyPtreag,
+            Pthot = anyPthot,
+            Pthab = anyPthab
+        };
+
+        // When
+        Func<Task> function = async () => await createInventory.Execute(anyResplaht);
+
+        // Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Incorrect hotel code");
+
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
