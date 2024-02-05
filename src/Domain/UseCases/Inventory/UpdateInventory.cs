@@ -8,6 +8,9 @@ public class UpdateInventory{
     }
 
     public async Task Execute(Resplaht resplaht) {
+        if (DateTimeHelper.ConvertIntegerToDatetime(resplaht.Ptfec) == DateTime.MinValue) {
+            throw new ArgumentException("Invalid date");
+        }
         var inventory= resplaht.ToInventory();
         await availabilitySynchronizerApiClient.UpdateInventory(inventory);
     }
