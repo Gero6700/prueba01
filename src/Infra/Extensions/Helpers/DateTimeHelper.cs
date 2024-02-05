@@ -22,7 +22,16 @@ public static class DateTimeHelper {
 
     }
 
-    
+    public static DateTime ConvertIntegerToDatetime(int integerDate) {
+        if (DateTime.TryParseExact(integerDate.ToString(), "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var date)) {
+            return date;
+        }
+
+        return DateTime.MinValue;
+
+    }
+
+
 
     //    public static bool IsValidJulianDate(int integerDate) {
     //        if (ConvertJulianDateToDateTime(integerDate) is not DateTime.MinValue) {

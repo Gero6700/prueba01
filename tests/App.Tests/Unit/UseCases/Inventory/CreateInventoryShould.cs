@@ -10,7 +10,7 @@ public class CreateInventoryShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        createInventory = new CreateInventory();
+        createInventory = new CreateInventory(availabilitySynchronizerApiClient);
     }
 
     [Test]
