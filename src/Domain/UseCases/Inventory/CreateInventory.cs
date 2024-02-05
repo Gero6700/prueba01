@@ -10,6 +10,9 @@ public class CreateInventory {
         if (DateTimeHelper.ConvertIntegerToDatetime(resplaht.Ptfec) == DateTime.MinValue) {
             throw new ArgumentException("Invalid date");
         }
+        if (resplaht.Pthot == 0) {
+            throw new ArgumentException("Incorrect hotel code");
+        }
         var inventory= resplaht.ToInventory();
         await availabilitySynchronizerApiClient.CreateInventory(inventory);
     }
