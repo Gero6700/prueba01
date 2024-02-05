@@ -24,6 +24,7 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Providers {
         Task<Response> DeleteMarket(Market market);
         Task<Response> CreateInventory(Inventory inventory);
         Task<Response> UpdateInventory(Inventory inventory);
+        Task<Response> DeleteInventory(Inventory inventory);
 
 
     }
