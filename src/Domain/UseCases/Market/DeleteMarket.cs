@@ -7,7 +7,7 @@ public class DeleteMarket {
     }
     public async Task Execute(Merca merca) {
         var market=merca.ToMarket();
-        await availabilitySynchronizerApiClient.DeleteMarket(market);
+        await availabilitySynchronizerApiClient.DeleteMarket(market.Code);
     }
     
 }

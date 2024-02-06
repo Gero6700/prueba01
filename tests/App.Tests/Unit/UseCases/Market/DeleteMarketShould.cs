@@ -25,13 +25,10 @@ public class DeleteMarketShould {
         await deleteMarket.Execute(anyMerca);
 
         //Then
-        var expectedMarket = new Infrastructure.Dtos.BookingCenter.Market {
-            Code = anyCod,
-            Description = anyNom
-        };
+        var expectedMarketCode = anyCod;
 
         await availabilitySynchronizerApiClient.Received()
-            .DeleteMarket(Arg.Is<Infrastructure.Dtos.BookingCenter.Market>(c => IsEquivalent(c, expectedMarket)));
+            .DeleteMarket(Arg.Is<string>(c => IsEquivalent(c, expectedMarketCode)));
     }
 
     private bool IsEquivalent(object source, object expected) {
