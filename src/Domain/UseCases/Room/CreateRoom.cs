@@ -7,6 +7,9 @@ public class CreateRoom {
     }
 
     public async Task Execute(Resthabi resthabi) {
+        if (resthabi.Mthab == "") {
+            throw new ArgumentException("Incorrect room code");
+        }
         var room = resthabi.ToRoom();
         await availabilitySynchronizerApiClient.CreateRoom(room);
     }
