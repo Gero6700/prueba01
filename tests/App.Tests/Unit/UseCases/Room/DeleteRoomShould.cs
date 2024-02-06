@@ -8,7 +8,7 @@ public class DeleteRoomShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        deleteRoom = new DeleteRoom();
+        deleteRoom = new DeleteRoom(availabilitySynchronizerApiClient);
     }
 
     [Test]
