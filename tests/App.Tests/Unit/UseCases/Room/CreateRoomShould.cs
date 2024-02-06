@@ -30,6 +30,21 @@ public class CreateRoomShould {
             .CreateRoom(Arg.Is<Infrastructure.Dtos.BookingCenter.Room>(x => IsEquivalent(x, expectedRoom)));
     }
 
+    [Test]
+    public async Task do_not_create_room_when_mthab_is_empty() {
+        //Given
+        var anyResthabi = new Resthabi {
+            Mthab = string.Empty
+        };
+
+        //When
+        Func<Task> function = async () => await createRoom.Execute(anyResthabi);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Incorrect room code");
+        
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
