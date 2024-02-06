@@ -8,7 +8,7 @@ public class UpdateRoomShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        updateRoom = new UpdateRoom();
+        updateRoom = new UpdateRoom(availabilitySynchronizerApiClient);
     }
 
     [Test]
