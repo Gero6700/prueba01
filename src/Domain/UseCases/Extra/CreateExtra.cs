@@ -16,6 +16,9 @@ public class CreateExtra {
         if (DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5freh) == DateTime.MinValue) {
             throw new ArgumentException("Invalid apply to date");
         }
+        if (DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5fec1) == DateTime.MinValue) {
+            throw new ArgumentException("Invalid check-in from date");
+        }
         var extra= conextra.ToExtra();   
         await availabilitySynchronizerApiClient.CreateExtra(extra);
     }
