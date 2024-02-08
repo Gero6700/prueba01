@@ -9,6 +9,7 @@ global using Senator.As400.Cloud.Sync.Application.UseCases.HotelRoomConfiguratio
 global using Senator.As400.Cloud.Sync.Application.UseCases.Inventory;
 global using Senator.As400.Cloud.Sync.Application.UseCases.Market;
 global using Senator.As400.Cloud.Sync.Application.UseCases.Room;
+global using Senator.As400.Cloud.Sync.Application.UseCases.Extra;
 global using Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter;
 global using Senator.As400.Cloud.Sync.Infrastructure.Dtos.As400;
 global using Senator.As400.Cloud.Sync.Infrastructure.Providers;
