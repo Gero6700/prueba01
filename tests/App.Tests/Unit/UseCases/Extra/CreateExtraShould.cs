@@ -208,6 +208,9 @@ public class CreateExtraShould {
             OccupancyRateCod = anyConextra.C5cocu.ToString()
         };
 
+        await availabilitySynchronizerApiClient.Received()
+            .CreateExtra(Arg.Is<Infrastructure.Dtos.BookingCenter.Extra>(x => IsEquivalent(x, expectedExtra)));
+
 
     }
 
