@@ -9,7 +9,7 @@ public static class ConextraExtension {
             CheckInTo = DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5fec2),
             StayFrom = conextra.C5died,
             StayTo = conextra.C5dieh,
-            Mandatory = false,
+            Mandatory = conextra.C5Sele=="S" ? false : true,
             Quantity = conextra.C5unid,
             ByDay = conextra.C5inta,
             ApplyBy = ApplyStayPriceType.X,

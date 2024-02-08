@@ -76,6 +76,45 @@ public class CreateExtraShould {
             .CreateExtra(Arg.Is<Infrastructure.Dtos.BookingCenter.Extra>(x => IsEquivalent(x, expectedConextra)));
     }
 
+    [Test]
+    public async Task create_extra_when_c5sele_is_not_s() {
+        //Then
+        const int anyC5fred = 2024001;
+        const int anyC5freh = 2024366;
+        const int anyC5fec1 = 2024001;
+        const int anyC5fec2 = 2024366;
+        const string anyC5Sele = "";
+
+        var anyConextra = ConextraBuilder.AConextraBuilder()
+            .WithC5fred(anyC5fred)
+            .WithC5freh(anyC5freh)
+            .WithC5fec1(anyC5fec1)
+            .WithC5fec2(anyC5fec2)
+            .WithC5Sele(anyC5Sele)
+            .Build();
+
+        //When
+        await createExtra.Execute(anyConextra);
+
+        //Then
+        var expectedConextra = new Infrastructure.Dtos.BookingCenter.Extra {
+            Code = anyConextra.Code,
+            ApplyFrom = new DateTime(2024, 01, 01),
+            ApplyTo = new DateTime(2024, 12, 31),
+            CheckInFrom = new DateTime(2024, 01, 01),
+            CheckInTo = new DateTime(2024, 12, 31),
+            Mandatory = true,
+            Quantity = anyConextra.C5unid,
+            ByDay = anyConextra.C5inta,
+            ApplyBy = ApplyStayPriceType.X,
+            Price = anyConextra.C5prec,
+            PriceApplication = ApplyStayPriceType.X,
+            ApplyOtherSuplementsOrDiscounts = ApplyOtherSuplementsOrDiscounts.Contract,
+            IsCancellationGuarantee = anyConextra.Cogc,
+            OccupancyRateCod = anyConextra.C5cocu.ToString()            
+        };
+
+    }
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
