@@ -554,20 +554,14 @@ public class CreateExtraShould {
     [Test]
     public async Task do_not_create_extra_when_c5fred_is_invalid() {
         // Given
-        const int anyC5fred = 2024;
-        const int anyC5freh = 2024366;
-        const int anyC5fec1 = 2024001;
-        const int anyC5fec2 = 2024366;
+        const int anyC5fred = 2024;   
 
         var anyConextra = ConextraBuilder.AConextraBuilder()
             .WithC5fred(anyC5fred)
-            .WithC5freh(anyC5freh)
-            .WithC5fec1(anyC5fec1)
-            .WithC5fec2(anyC5fec2)
             .Build();
 
         // When
-            Func<Task> function = async () => await createExtra.Execute(anyConextra);
+        Func<Task> function = async () => await createExtra.Execute(anyConextra);
 
         // Then
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Invalid apply from date");
