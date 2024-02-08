@@ -29,7 +29,7 @@ public class CreateExtraShould {
         const string anyC5form = "X";
         const string anyC5apdt ="C";
         const bool anyCogc = false;
-        const string anyC5cocu = "";
+        const int anyC5cocu = 0;
 
         var anyConextra = ConextraBuilder.AConextraBuilder()
             .WithCode(anyCode)
@@ -70,7 +70,7 @@ public class CreateExtraShould {
             PriceApplication = ApplyStayPriceType.X,
             ApplyOtherSuplementsOrDiscounts = ApplyOtherSuplementsOrDiscounts.Contract,
             IsCancellationGuarantee = anyCogc,
-            OccupancyRateCod = anyC5cocu        
+            OccupancyRateCod = ""      
         };
         await availabilitySynchronizerApiClient.Received()
             .CreateExtra(Arg.Is<Infrastructure.Dtos.BookingCenter.Extra>(x => IsEquivalent(x, expectedConextra)));

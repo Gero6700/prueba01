@@ -28,7 +28,7 @@ public class ConextraBuilder {
             .RuleFor(x => x.C5form, f => f.Random.ArrayElement(new string[] { "D", "P", "U", "X" }))
             .RuleFor(x => x.C5apdt, f => f.Random.ArrayElement(new string[] { "C", "S", "" }))
             .RuleFor(x => x.Cogc, f => f.Random.Bool())
-            .RuleFor(x => x.C5cocu, f => f.Random.Int(0, 99).ToString())
+            .RuleFor(x => x.C5cocu, f => f.Random.Int(0, 99))
             .Generate();
     }
 
@@ -107,7 +107,7 @@ public class ConextraBuilder {
         return this;
     }
 
-    public ConextraBuilder WithC5cocu(string newC5cocu) {
+    public ConextraBuilder WithC5cocu(int newC5cocu) {
         raw.C5cocu = newC5cocu;
         return this;
     }
@@ -150,7 +150,6 @@ public class ConextraBuilder {
         public string C5form { get; set; } = string.Empty;
         public string C5apdt { get; set; } = string.Empty;
         public bool Cogc { get; set; }
-        public string C5cocu { get; set; } = string.Empty;
-
+        public int C5cocu { get; set; } 
     }
 }

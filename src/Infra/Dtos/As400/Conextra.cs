@@ -15,6 +15,5 @@ public class Conextra {
     public string C5form { get; set; } = string.Empty;
     public string C5apdt { get; set; } = string.Empty;
     public bool Cogc { get; set; }
-    public string C5cocu { get; set; } = string.Empty;
-
+    public int C5cocu { get; set; } 
 }
