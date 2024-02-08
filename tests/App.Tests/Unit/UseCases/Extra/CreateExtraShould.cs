@@ -145,6 +145,8 @@ public class CreateExtraShould {
             ApplyTo = new DateTime(2024, 12, 31),
             CheckInFrom = new DateTime(2024, 01, 01),
             CheckInTo = new DateTime(2024, 12, 31),
+            StayFrom = anyConextra.C5died,
+            StayTo = anyConextra.C5dieh,
             Mandatory = anyConextra.C5Sele == "S" ? false : true,
             Quantity = anyConextra.C5unid,
             ByDay = anyConextra.C5inta,

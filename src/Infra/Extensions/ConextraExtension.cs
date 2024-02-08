@@ -17,7 +17,7 @@ public static class ConextraExtension {
             PriceApplication = ApplyStayPriceType.X,
             ApplyOtherSuplementsOrDiscounts = ApplyOtherSuplementsOrDiscounts.Contract,
             IsCancellationGuarantee = conextra.Cogc,
-            OccupancyRateCod = conextra.C5cocu.ToString()
+            OccupancyRateCod = conextra.C5cocu == 0 ? "" : conextra.C5cocu.ToString()
         };
     }
 }
