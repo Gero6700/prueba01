@@ -1,3 +1,4 @@
+using Senator.As400.Cloud.Sync.Application.UseCases.Contract;
 using Senator.As400.Cloud.Sync.Infrastructure.Dtos.As400;
 
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Extra;
@@ -550,7 +551,27 @@ public class CreateExtraShould {
             .CreateExtra(Arg.Is<Infrastructure.Dtos.BookingCenter.Extra>(x => IsEquivalent(x, expectedExtra)));
     }
 
+    [Test]
+    public async Task do_not_create_extra_when_c5fred_is_invalid() {
+        // Given
+        const int anyC5fred = 2024;
+        const int anyC5freh = 2024366;
+        const int anyC5fec1 = 2024001;
+        const int anyC5fec2 = 2024366;
 
+        var anyConextra = ConextraBuilder.AConextraBuilder()
+            .WithC5fred(anyC5fred)
+            .WithC5freh(anyC5freh)
+            .WithC5fec1(anyC5fec1)
+            .WithC5fec2(anyC5fec2)
+            .Build();
+
+        // When
+            Func<Task> function = async () => await createExtra.Execute(anyConextra);
+
+        // Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Invalid apply from date");
+    }
 
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
