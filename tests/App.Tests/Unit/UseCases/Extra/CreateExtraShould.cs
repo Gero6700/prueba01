@@ -506,6 +506,52 @@ public class CreateExtraShould {
             .CreateExtra(Arg.Is<Infrastructure.Dtos.BookingCenter.Extra>(x => IsEquivalent(x, expectedExtra)));
     }
 
+    [Test]
+    public async Task create_extra_when_c5apdt_is_s() {
+        //Given
+        const int anyC5fred = 2024001;
+        const int anyC5freh = 2024366;
+        const int anyC5fec1 = 2024001;
+        const int anyC5fec2 = 2024366;
+        const string anyC5apdt = "S";
+
+        var anyConextra = ConextraBuilder.AConextraBuilder()
+            .WithC5fred(anyC5fred)
+            .WithC5freh(anyC5freh)
+            .WithC5fec1(anyC5fec1)
+            .WithC5fec2(anyC5fec2)
+            .WithC5apdt(anyC5apdt)
+            .Build();
+
+        //When
+        await createExtra.Execute(anyConextra);
+
+        //Then
+        var expectedExtra = new Infrastructure.Dtos.BookingCenter.Extra {
+            Code = anyConextra.Code,
+            ApplyFrom = new DateTime(2024, 01, 01),
+            ApplyTo = new DateTime(2024, 12, 31),
+            CheckInFrom = new DateTime(2024, 01, 01),
+            CheckInTo = new DateTime(2024, 12, 31),
+            StayFrom = anyConextra.C5died,
+            StayTo = anyConextra.C5dieh,
+            Mandatory = anyConextra.C5Sele == "S" ? false : true,
+            Quantity = anyConextra.C5unid,
+            ByDay = anyConextra.C5inta,
+            ApplyBy = anyConextra.C5foun == "D" ? ApplyStayPriceType.D : anyConextra.C5foun == "P" ? ApplyStayPriceType.P : anyConextra.C5foun == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
+            Price = anyConextra.C5prec,
+            PriceApplication = anyConextra.C5form == "D" ? ApplyStayPriceType.D : anyConextra.C5form == "P" ? ApplyStayPriceType.P : anyConextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
+            ApplyOtherSuplementsOrDiscounts = ApplyOtherSuplementsOrDiscounts.Offer,
+            IsCancellationGuarantee = anyConextra.Cogc,
+            OccupancyRateCod = anyConextra.C5cocu.ToString()
+        };
+
+        await availabilitySynchronizerApiClient.Received()
+            .CreateExtra(Arg.Is<Infrastructure.Dtos.BookingCenter.Extra>(x => IsEquivalent(x, expectedExtra)));
+    }
+
+
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
