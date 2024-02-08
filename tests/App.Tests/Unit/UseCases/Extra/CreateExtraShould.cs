@@ -29,7 +29,7 @@ public class CreateExtraShould {
         const string anyC5foun = "U";
         const decimal anyC5prec = 5.50m;
         const string anyC5form = "U";
-        const string anyC5apdt ="";
+        const string anyC5apdt = "";
         const bool anyCogc = false;
         const int anyC5cocu = 1;
 
@@ -86,6 +86,9 @@ public class CreateExtraShould {
         const int anyC5fec1 = 2024001;
         const int anyC5fec2 = 2024366;
         const string anyC5Sele = "";
+        const string anyC5foun = "U";
+        const string anyC5form = "U";
+        const string anyC5apdt = "";
 
         var anyConextra = ConextraBuilder.AConextraBuilder()
             .WithC5fred(anyC5fred)
@@ -93,6 +96,9 @@ public class CreateExtraShould {
             .WithC5fec1(anyC5fec1)
             .WithC5fec2(anyC5fec2)
             .WithC5Sele(anyC5Sele)
+            .WithC5foun(anyC5foun)
+            .WithC5form(anyC5form)
+            .WithC5apdt(anyC5apdt)
             .Build();
 
         //When
@@ -131,6 +137,9 @@ public class CreateExtraShould {
         const int anyC5freh = 2024366;
         const int anyC5fec1 = 2024001;
         const int anyC5fec2 = 2024366;
+        const string anyc5foun = "U";
+        const string anyC5form = "U";
+        const string anyC5apdt = "";
 
         var anyConextra = ConextraBuilder.AConextraBuilder()
             .WithC5fred(anyC5fred)
@@ -138,6 +147,9 @@ public class CreateExtraShould {
             .WithC5fec1(anyC5fec1)
             .WithC5fec2(anyC5fec2)
             .WithC5cocu(anyC5cocu)
+            .WithC5foun(anyc5foun)
+            .WithC5form(anyC5form)
+            .WithC5apdt(anyC5apdt)
             .Build();
 
         //When
@@ -169,13 +181,15 @@ public class CreateExtraShould {
     }
 
     [Test]
-    public async Task create_extra_when_c5found_is_d() {
+    public async Task create_extra_when_c5foun_is_d() {
         //Given
         const int anyC5fred = 2024001;
         const int anyC5freh = 2024366;
         const int anyC5fec1 = 2024001;
         const int anyC5fec2 = 2024366;
         const string anyC5foun = "D";
+        const string anyC5form = "U";
+        const string anyC5apdt = "";
 
         var anyConextra = ConextraBuilder.AConextraBuilder()
             .WithC5fred(anyC5fred)
@@ -183,6 +197,8 @@ public class CreateExtraShould {
             .WithC5fec1(anyC5fec1)
             .WithC5fec2(anyC5fec2)
             .WithC5foun(anyC5foun)
+            .WithC5form(anyC5form)
+            .WithC5apdt(anyC5apdt)
             .Build();
 
         //When
@@ -222,6 +238,8 @@ public class CreateExtraShould {
         const int anyC5fec1 = 2024001;
         const int anyC5fec2 = 2024366;
         const string anyC5foun = "P";
+        const string anyC5form = "U";
+        const string anyC5apdt = "";
 
         var anyConextra = ConextraBuilder.AConextraBuilder()
             .WithC5fred(anyC5fred)
@@ -229,6 +247,8 @@ public class CreateExtraShould {
             .WithC5fec1(anyC5fec1)
             .WithC5fec2(anyC5fec2)
             .WithC5foun(anyC5foun)
+            .WithC5form(anyC5form)
+            .WithC5apdt(anyC5apdt)
             .Build();
 
         //When
@@ -257,7 +277,7 @@ public class CreateExtraShould {
         await availabilitySynchronizerApiClient.Received()
             .CreateExtra(Arg.Is<Infrastructure.Dtos.BookingCenter.Extra>(x => IsEquivalent(x, expectedExtra)));
     }
-
+       
     [Test]
     public async Task create_extra_when_c5foun_is_x() {
         //Given
@@ -266,6 +286,7 @@ public class CreateExtraShould {
         const int anyC5fec1 = 2024001;
         const int anyC5fec2 = 2024366;
         const string anyC5foun = "X";
+        const string anyC5form = "U";
 
         var anyConextra = ConextraBuilder.AConextraBuilder()
             .WithC5fred(anyC5fred)
@@ -273,6 +294,7 @@ public class CreateExtraShould {
             .WithC5fec1(anyC5fec1)
             .WithC5fec2(anyC5fec2)
             .WithC5foun(anyC5foun)
+            .WithC5form(anyC5form)
             .Build();
 
         //When
@@ -301,6 +323,7 @@ public class CreateExtraShould {
         await availabilitySynchronizerApiClient.Received()
             .CreateExtra(Arg.Is<Infrastructure.Dtos.BookingCenter.Extra>(x => IsEquivalent(x, expectedExtra)));
     }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
