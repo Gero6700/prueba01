@@ -105,6 +105,8 @@ public class CreateExtraShould {
             ApplyTo = new DateTime(2024, 12, 31),
             CheckInFrom = new DateTime(2024, 01, 01),
             CheckInTo = new DateTime(2024, 12, 31),
+            StayFrom = anyConextra.C5died,
+            StayTo = anyConextra.C5dieh,
             Mandatory = true,
             Quantity = anyConextra.C5unid,
             ByDay = anyConextra.C5inta,
@@ -115,6 +117,9 @@ public class CreateExtraShould {
             IsCancellationGuarantee = anyConextra.Cogc,
             OccupancyRateCod = anyConextra.C5cocu.ToString()            
         };
+
+        await availabilitySynchronizerApiClient.Received()
+            .CreateExtra(Arg.Is<Infrastructure.Dtos.BookingCenter.Extra>(x => IsEquivalent(x, expectedConextra)));
 
     }
 
