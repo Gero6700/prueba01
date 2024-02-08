@@ -8,7 +8,7 @@ public class CreateExtraShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        createExtra = new CreateExtra();
+        createExtra = new CreateExtra(availabilitySynchronizerApiClient);
     }
 
     [Test]
@@ -16,9 +16,9 @@ public class CreateExtraShould {
         //Given
         const string anyCode = "anyCode";
         const int anyC5fred = 2024001;
-        const int anyC5freh = 2024365;
+        const int anyC5freh = 2024366;
         const int anyC5fec1 = 2024001;
-        const int anyC5fec2 = 2024365;
+        const int anyC5fec2 = 2024366;
         const int anyC5died = 1;
         const int anyC5dihd = 2;
         const string anyC5Sele = "S";
@@ -29,7 +29,7 @@ public class CreateExtraShould {
         const string anyC5form = "X";
         const string anyC5apdt ="C";
         const bool anyCogc = false;
-        const int anyC5cocu = 0;
+        const int anyC5cocu = 1;
 
         var anyConextra = ConextraBuilder.AConextraBuilder()
             .WithCode(anyCode)
@@ -70,7 +70,7 @@ public class CreateExtraShould {
             PriceApplication = ApplyStayPriceType.X,
             ApplyOtherSuplementsOrDiscounts = ApplyOtherSuplementsOrDiscounts.Contract,
             IsCancellationGuarantee = anyCogc,
-            OccupancyRateCod = ""      
+            OccupancyRateCod = anyC5cocu.ToString()      
         };
         await availabilitySynchronizerApiClient.Received()
             .CreateExtra(Arg.Is<Infrastructure.Dtos.BookingCenter.Extra>(x => IsEquivalent(x, expectedConextra)));
