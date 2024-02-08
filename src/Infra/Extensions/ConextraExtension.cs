@@ -12,7 +12,7 @@ public static class ConextraExtension {
             Mandatory = conextra.C5Sele=="S" ? false : true,
             Quantity = conextra.C5unid,
             ByDay = conextra.C5inta,
-            ApplyBy = conextra.C5foun == "D" ? ApplyStayPriceType.D : ApplyStayPriceType.U,
+            ApplyBy = conextra.C5foun == "D" ? ApplyStayPriceType.D : conextra.C5foun == "P" ? ApplyStayPriceType.P : ApplyStayPriceType.U,
             Price = conextra.C5prec,
             PriceApplication = ApplyStayPriceType.U,
             ApplyOtherSuplementsOrDiscounts = ApplyOtherSuplementsOrDiscounts.All,
