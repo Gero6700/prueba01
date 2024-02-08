@@ -12,10 +12,10 @@ public static class ConextraExtension {
             Mandatory = conextra.C5Sele=="S" ? false : true,
             Quantity = conextra.C5unid,
             ByDay = conextra.C5inta,
-            ApplyBy = ApplyStayPriceType.X,
+            ApplyBy = ApplyStayPriceType.U,
             Price = conextra.C5prec,
-            PriceApplication = ApplyStayPriceType.X,
-            ApplyOtherSuplementsOrDiscounts = ApplyOtherSuplementsOrDiscounts.Contract,
+            PriceApplication = ApplyStayPriceType.U,
+            ApplyOtherSuplementsOrDiscounts = ApplyOtherSuplementsOrDiscounts.All,
             IsCancellationGuarantee = conextra.Cogc,
             OccupancyRateCod = conextra.C5cocu == 0 ? "" : conextra.C5cocu.ToString()
         };

@@ -26,10 +26,10 @@ public class CreateExtraShould {
         const string anyC5Sele = "S";
         const int anyC5unid = 1;
         const int anyC5inta = 1;
-        const string anyC5foun = "X";
+        const string anyC5foun = "U";
         const decimal anyC5prec = 5.50m;
-        const string anyC5form = "X";
-        const string anyC5apdt ="C";
+        const string anyC5form = "U";
+        const string anyC5apdt ="";
         const bool anyCogc = false;
         const int anyC5cocu = 1;
 
@@ -67,10 +67,10 @@ public class CreateExtraShould {
             Mandatory = anyC5Sele != "S",
             Quantity = anyC5unid,
             ByDay = anyC5inta,
-            ApplyBy = ApplyStayPriceType.X,
+            ApplyBy = ApplyStayPriceType.U,
             Price = anyC5prec,
-            PriceApplication = ApplyStayPriceType.X,
-            ApplyOtherSuplementsOrDiscounts = ApplyOtherSuplementsOrDiscounts.Contract,
+            PriceApplication = ApplyStayPriceType.U,
+            ApplyOtherSuplementsOrDiscounts = ApplyOtherSuplementsOrDiscounts.All,
             IsCancellationGuarantee = anyCogc,
             OccupancyRateCod = anyC5cocu.ToString()      
         };
@@ -110,10 +110,10 @@ public class CreateExtraShould {
             Mandatory = true,
             Quantity = anyConextra.C5unid,
             ByDay = anyConextra.C5inta,
-            ApplyBy = ApplyStayPriceType.X,
+            ApplyBy = ApplyStayPriceType.U,
             Price = anyConextra.C5prec,
-            PriceApplication = ApplyStayPriceType.X,
-            ApplyOtherSuplementsOrDiscounts = ApplyOtherSuplementsOrDiscounts.Contract,
+            PriceApplication = ApplyStayPriceType.U,
+            ApplyOtherSuplementsOrDiscounts = ApplyOtherSuplementsOrDiscounts.All,
             IsCancellationGuarantee = anyConextra.Cogc,
             OccupancyRateCod = anyConextra.C5cocu.ToString()            
         };
@@ -155,10 +155,10 @@ public class CreateExtraShould {
             Mandatory = anyConextra.C5Sele == "S" ? false : true,
             Quantity = anyConextra.C5unid,
             ByDay = anyConextra.C5inta,
-            ApplyBy = ApplyStayPriceType.X,
+            ApplyBy = ApplyStayPriceType.U,
             Price = anyConextra.C5prec,
-            PriceApplication = ApplyStayPriceType.X,
-            ApplyOtherSuplementsOrDiscounts = ApplyOtherSuplementsOrDiscounts.Contract,
+            PriceApplication = ApplyStayPriceType.U,
+            ApplyOtherSuplementsOrDiscounts = ApplyOtherSuplementsOrDiscounts.All,
             IsCancellationGuarantee = anyConextra.Cogc,
             OccupancyRateCod = ""
         };
@@ -167,6 +167,50 @@ public class CreateExtraShould {
             .CreateExtra(Arg.Is<Infrastructure.Dtos.BookingCenter.Extra>(x => IsEquivalent(x, expectedExtra)));
 
     }
+
+    [Test]
+    public async Task create_extra_when_c5found_is_d() {
+        //Given
+        const int anyC5fred = 2024001;
+        const int anyC5freh = 2024366;
+        const int anyC5fec1 = 2024001;
+        const int anyC5fec2 = 2024366;
+        const string anyC5foun = "D";
+
+        var anyConextra = ConextraBuilder.AConextraBuilder()
+            .WithC5fred(anyC5fred)
+            .WithC5freh(anyC5freh)
+            .WithC5fec1(anyC5fec1)
+            .WithC5fec2(anyC5fec2)
+            .WithC5foun(anyC5foun)
+            .Build();
+
+        //When
+        await createExtra.Execute(anyConextra);
+
+        //Then
+        var expectedExtra = new Infrastructure.Dtos.BookingCenter.Extra {
+            Code = anyConextra.Code,
+            ApplyFrom = new DateTime(2024, 01, 01),
+            ApplyTo = new DateTime(2024, 12, 31),
+            CheckInFrom = new DateTime(2024, 01, 01),
+            CheckInTo = new DateTime(2024, 12, 31),
+            StayFrom = anyConextra.C5died,
+            StayTo = anyConextra.C5dieh,
+            Mandatory = anyConextra.C5Sele == "S" ? false : true,
+            Quantity = anyConextra.C5unid,
+            ByDay = anyConextra.C5inta,
+            ApplyBy = ApplyStayPriceType.D,
+            Price = anyConextra.C5prec,
+            PriceApplication = ApplyStayPriceType.U,
+            ApplyOtherSuplementsOrDiscounts = ApplyOtherSuplementsOrDiscounts.All,
+            IsCancellationGuarantee = anyConextra.Cogc,
+            OccupancyRateCod = anyConextra.C5cocu.ToString()
+        };
+
+
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
