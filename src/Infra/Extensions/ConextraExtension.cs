@@ -14,7 +14,7 @@ public static class ConextraExtension {
             ByDay = conextra.C5inta,
             ApplyBy = conextra.C5foun == "D" ? ApplyStayPriceType.D : conextra.C5foun == "P" ? ApplyStayPriceType.P : conextra.C5foun == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             Price = conextra.C5prec,
-            PriceApplication = ApplyStayPriceType.U,
+            PriceApplication = conextra.C5form == "D" ? ApplyStayPriceType.D : ApplyStayPriceType.U,
             ApplyOtherSuplementsOrDiscounts = ApplyOtherSuplementsOrDiscounts.All,
             IsCancellationGuarantee = conextra.Cogc,
             OccupancyRateCod = conextra.C5cocu == 0 ? "" : conextra.C5cocu.ToString()
