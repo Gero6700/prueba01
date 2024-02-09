@@ -20,6 +20,9 @@ public class UpdateExtra {
         if (DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5fec2) == DateTime.MinValue) {
             throw new ArgumentException("Invalid check-in to date");
         }
+        if (conextra.C5fred > conextra.C5freh) {
+            throw new ArgumentException("Apply to date is less than apply from date");
+        }
         var extra = conextra.ToExtra();
         await availabilitySynchronizerApiClient.UpdateExtra(extra);
     }
