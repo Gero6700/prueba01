@@ -7,7 +7,10 @@ public class UpdateExtra {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(Conextra conextra) { 
+    public async Task Execute(Conextra conextra) {
+        if (DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5fred) == DateTime.MinValue) {
+            throw new ArgumentException("Invalid apply from date");
+        }
         var extra = conextra.ToExtra();
         await availabilitySynchronizerApiClient.UpdateExtra(extra);
     }
