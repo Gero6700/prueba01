@@ -23,6 +23,9 @@ public class UpdateExtra {
         if (conextra.C5fred > conextra.C5freh) {
             throw new ArgumentException("Apply to date is less than apply from date");
         }
+        if (conextra.C5fec1 > conextra.C5fec2) {
+            throw new ArgumentException("Check-in to date is less than check-in from date");
+        }
         var extra = conextra.ToExtra();
         await availabilitySynchronizerApiClient.UpdateExtra(extra);
     }
