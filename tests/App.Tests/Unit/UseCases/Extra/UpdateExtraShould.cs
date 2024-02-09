@@ -96,6 +96,22 @@ public class UpdateExtraShould {
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Invalid apply to date");
     }
 
+    [Test]
+    public async Task do_not_update_extra_when_c5fec1_is_invalid() {
+        // Given
+        const int anyC5fec1 = 202401;
+
+        var anyConextra = ConextraBuilder.AConextraBuilder()
+            .WithC5fec1(anyC5fec1)
+            .Build();
+
+        // When
+        Func<Task> function = async () => await updateExtra.Execute(anyConextra);
+
+        // Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Invalid check-in from date");
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
