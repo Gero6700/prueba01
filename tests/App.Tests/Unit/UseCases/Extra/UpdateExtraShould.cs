@@ -10,7 +10,7 @@ public class UpdateExtraShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        updateExtra = new UpdateExtra();
+        updateExtra = new UpdateExtra(availabilitySynchronizerApiClient);
     }
 
     [Test]
@@ -60,7 +60,7 @@ public class UpdateExtraShould {
             OccupancyRateCod = anyConextra.C5cocu.ToString()
         };
         await availabilitySynchronizerApiClient.Received()
-            .CreateExtra(Arg.Is<Infrastructure.Dtos.BookingCenter.Extra>(x => IsEquivalent(x, expectedExtra)));
+            .UpdateExtra(Arg.Is<Infrastructure.Dtos.BookingCenter.Extra>(x => IsEquivalent(x, expectedExtra)));
     }
 
     private bool IsEquivalent(object source, object expected) {

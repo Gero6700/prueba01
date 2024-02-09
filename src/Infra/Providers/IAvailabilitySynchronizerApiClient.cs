@@ -29,5 +29,6 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Providers {
         Task<Response> UpdateRoom(Room room);
         Task<Response> DeleteRoom(string roomCode);
         Task<Response> CreateExtra(Extra extra);
+        Task<Response> UpdateExtra(Extra extra);
     }
 }
