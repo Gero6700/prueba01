@@ -633,6 +633,24 @@ public class CreateExtraShould {
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Apply to date is less than apply from date");
     }
 
+    [Test]
+    public async Task do_not_create_extra_when_c5fec1_is_less_than_c5fec2() {
+        // Given
+        const int anyC5fec1 = 2024002;
+        const int anyC5fec2 = 2024001;
+
+        var anyConextra = ConextraBuilder.AConextraBuilder()
+            .WithC5fec1(anyC5fec1)
+            .WithC5fec2(anyC5fec2)
+            .Build();
+
+        // When
+        Func<Task> function = async () => await createExtra.Execute(anyConextra);
+
+        // Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Check-in to date is less than check-in from date");
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
