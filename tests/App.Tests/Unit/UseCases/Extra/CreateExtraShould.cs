@@ -288,6 +288,7 @@ public class CreateExtraShould {
         const int anyC5fec2 = 2024366;
         const string anyC5foun = "X";
         const string anyC5form = "U";
+        const string anyC5apdt = "";
 
         var anyConextra = ConextraBuilder.AConextraBuilder()
             .WithC5fred(anyC5fred)
@@ -296,6 +297,7 @@ public class CreateExtraShould {
             .WithC5fec2(anyC5fec2)
             .WithC5foun(anyC5foun)
             .WithC5form(anyC5form)
+            .WithC5apdt(anyC5apdt)
             .Build();
 
         //When
