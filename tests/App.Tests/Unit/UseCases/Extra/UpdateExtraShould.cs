@@ -1,3 +1,4 @@
+using Senator.As400.Cloud.Sync.Application.UseCases.Extra;
 using Senator.As400.Cloud.Sync.Infrastructure.Dtos.As400;
 
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Extra;
@@ -61,6 +62,22 @@ public class UpdateExtraShould {
         };
         await availabilitySynchronizerApiClient.Received()
             .UpdateExtra(Arg.Is<Infrastructure.Dtos.BookingCenter.Extra>(x => IsEquivalent(x, expectedExtra)));
+    }
+
+    [Test]
+    public async Task do_not_update_extra_when_c5fred_is_invalid() {
+        // Given
+        const int anyC5fred = 2024;
+
+        var anyConextra = ConextraBuilder.AConextraBuilder()
+            .WithC5fred(anyC5fred)
+            .Build();
+
+        // When
+        Func<Task> function = async () => await updateExtra.Execute(anyConextra);
+
+        // Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Invalid apply from date");
     }
 
     private bool IsEquivalent(object source, object expected) {
