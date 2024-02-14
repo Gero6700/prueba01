@@ -13,7 +13,7 @@ public class ConextraBuilder {
 
     private static ConextraRaw GenerateRaw() {
         return new Faker<ConextraRaw>()
-            .RuleFor(x => x.Code, f => f.Random.String())
+            .RuleFor(x => x.Code, f => f.Random.String(10,'A','Z').ToUpper())
             .RuleFor(x => x.C5fred, f => (DateTime.Now.Year * 1000) + f.Random.Int(0, 365))
             .RuleFor(x => x.C5freh, f => ((DateTime.Now.Year + 1) * 1000) + f.Random.Int(0, 365))
             .RuleFor(x => x.C5fec1, f => (DateTime.Now.Year * 1000) + f.Random.Int(0, 365))
