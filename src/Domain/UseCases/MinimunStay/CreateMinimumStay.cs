@@ -25,6 +25,9 @@ public class CreateMinimumStay {
         if (conestmi.C7hote == 0) {
             throw new ArgumentException("Incorrect hotel code");
         }
+        if (conestmi.C7agen == 0 && conestmi.C7agcl==0) {
+            throw new ArgumentException("Incorrect client code");
+        }
 
         var minimumStay = conestmi.toMinimumStay();
         await availabilitySynchronizerApiClient.CreateMinimumStay(minimumStay);
