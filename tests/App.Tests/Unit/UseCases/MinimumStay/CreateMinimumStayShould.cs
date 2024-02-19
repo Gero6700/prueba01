@@ -150,6 +150,28 @@ public class CreateMinimumstayShould {
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Invalid contract start date");
     }
 
+    [Test]
+    public async Task do_not_create_minimum_stay_when_c7fec1_is_less_than_cofec1() {
+        //Given
+        const int anyC7fec1 = 20240101;
+        const int anyC7fec2 = 20240101;
+        const int anyCofec1 = 2024002;
+        const char anyC7peri = 'S';
+
+        var anyConestmi = ConestmiBuilder.AConestmiBuilder()
+            .WithC7fec1(anyC7fec1)
+            .WithC7fec2(anyC7fec2)
+            .WithCofec1(anyCofec1)
+            .WithC7peri(anyC7peri)
+            .Build();
+
+        //When
+        Func<Task> function = async () => await createMinimumStay.Execute(anyConestmi);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Start date is less than contract start date");
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
