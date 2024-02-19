@@ -13,6 +13,9 @@ public class CreateMinimumStay {
         if( DateTimeHelper.ConvertIntegerToDatetime(conestmi.C7fec2) == DateTime.MinValue) {
             throw new ArgumentException("Invalid end date");
         }
+        if(DateTimeHelper.ConvertJulianDateToDateTime(conestmi.Cofec1) == DateTime.MinValue) {
+            throw new ArgumentException("Invalid contract start date");
+        }
 
         var minimumStay = conestmi.toMinimumStay();
         await availabilitySynchronizerApiClient.CreateMinimumStay(minimumStay);

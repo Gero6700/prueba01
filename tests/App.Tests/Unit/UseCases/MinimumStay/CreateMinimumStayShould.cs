@@ -147,7 +147,7 @@ public class CreateMinimumstayShould {
         Func<Task> function = async () => await createMinimumStay.Execute(anyConestmi);
 
         //Then
-        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Invalid start date");
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Invalid contract start date");
     }
 
     private bool IsEquivalent(object source, object expected) {
