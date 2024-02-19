@@ -31,5 +31,6 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Providers {
         Task<Response> CreateExtra(Extra extra);
         Task<Response> UpdateExtra(Extra extra);
         Task<Response> CreateMinimumStay(MinimumStay minimumStay);
+        Task<Response> UpdateMinimumStay(MinimumStay minimumStay);
     }
 }
