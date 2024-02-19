@@ -10,7 +10,7 @@ public class UpdateMinimumStayShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        updateMinimumStay = new UpdateMinimumStay();
+        updateMinimumStay = new UpdateMinimumStay(availabilitySynchronizerApiClient);
     }
 
     [Test]

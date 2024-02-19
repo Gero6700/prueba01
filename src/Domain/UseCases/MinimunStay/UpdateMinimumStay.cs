@@ -1,6 +1,13 @@
 namespace Senator.As400.Cloud.Sync.Application.UseCases.MinimunStay;
 public class UpdateMinimumStay {
-    public Task Execute(Conestmi conestmi) {
-        throw new NotImplementedException();
+    private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
+
+    public UpdateMinimumStay(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {
+        this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
+    }
+
+    public async Task Execute(Conestmi conestmi) {
+        var minimumStay = conestmi.toMinimumStay();
+        await availabilitySynchronizerApiClient.UpdateMinimumStay(minimumStay);
     }
 }
