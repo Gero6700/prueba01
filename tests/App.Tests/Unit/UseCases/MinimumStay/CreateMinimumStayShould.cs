@@ -184,6 +184,23 @@ public class CreateMinimumStayShould {
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("End date is less than start date");
     }
 
+    [Test]
+    public async Task do_not_create_minimum_stay_when_c7hote_is_zero() {
+        //Given
+        const int anyC7hote = 0;
+
+        var anyConestmi = ConestmiBuilder.AConestmiBuilder()
+            .WithC7hote(anyC7hote)
+            .Build();
+
+        //When
+        Func<Task> function = async () => await createMinimumStay.Execute(anyConestmi);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Incorrect hotel code");
+
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
