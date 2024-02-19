@@ -8,15 +8,15 @@ public class CreateMinimumstayShould {
     [SetUp]
     public void Setup() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        createMinimumStay = new CreateMinimumStay();
+        createMinimumStay = new CreateMinimumStay(availabilitySynchronizerApiClient);
     }
 
     [Test]
     public async Task create_minimun_stay() {
         //Given
-        const decimal anyC7fec1 = 20240101;
-        const decimal anyC7fec2 = 20240101;
-        const decimal anyCofec1 = 20240101;
+        const int anyC7fec1 = 20240101;
+        const int anyC7fec2 = 20240101;
+        const int anyCofec1 = 2024001;
         const char anyC7peri = 'S';
 
         var anyConestmi = ConestmiBuilder.AConestmiBuilder()
@@ -31,14 +31,14 @@ public class CreateMinimumstayShould {
 
         //Then
         var expectedConestmi = new Infrastructure.Dtos.BookingCenter.MinimumStay {
-            Code = string.Concat(anyConestmi.C7agen,anyConestmi.C7sucu, anyConestmi.C7agcl, anyConestmi.C7sucl, 
-            anyConestmi.C7hote, anyConestmi.C7cont, anyCofec1, anyConestmi.C7vers, anyConestmi.C7Lin),
+            Code = string.Concat(anyConestmi.C7hote, anyConestmi.C7cont, anyCofec1, anyConestmi.C7vers, 
+            anyConestmi.C7agen,anyConestmi.C7sucu, anyConestmi.C7agcl, anyConestmi.C7sucl, anyConestmi.C7Lin),
             From = new DateTime(2024, 01, 01),
             To = new DateTime(2024, 01, 01),
             Days = anyConestmi.C7dmin,
             StrictPeriod = true,
-            ContractClientCode = string.Concat(anyConestmi.C7agen, anyConestmi.C7sucu, anyConestmi.C7agcl, anyConestmi.C7sucl,
-            anyConestmi.C7hote, anyConestmi.C7cont, anyCofec1, anyConestmi.C7vers),
+            ContractClientCode = string.Concat(anyConestmi.C7hote, anyConestmi.C7cont, anyCofec1, anyConestmi.C7vers,
+            anyConestmi.C7agen, anyConestmi.C7sucu, anyConestmi.C7agcl, anyConestmi.C7sucl),
             RoomCode = anyConestmi.C7thab,
             RegimeCode = anyConestmi.C7regi
         };

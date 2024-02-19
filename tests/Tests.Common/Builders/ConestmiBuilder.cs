@@ -8,12 +8,12 @@ public class ConestmiBuilder {
         };
     }
 
-    public ConestmiBuilder WithC7fec1(decimal newC7fec1) {
+    public ConestmiBuilder WithC7fec1(int newC7fec1) {
         raw.C7fec1 = newC7fec1;
         return this;
     }
 
-    public ConestmiBuilder WithC7fec2(decimal newC7fec2) {
+    public ConestmiBuilder WithC7fec2(int newC7fec2) {
         raw.C7fec2 = newC7fec2;
         return this;
     }
@@ -68,7 +68,7 @@ public class ConestmiBuilder {
         return this;
     }
 
-    public ConestmiBuilder WithCofec1(decimal newCofec1) {
+    public ConestmiBuilder WithCofec1(int newCofec1) {
         raw.Cofec1 = newCofec1;
         return this;
     }
@@ -124,8 +124,8 @@ public class ConestmiBuilder {
     }
 
     private class ConestmiRaw {
-        public decimal C7fec1 { get; set; }
-        public decimal C7fec2 { get; set; }
+        public int C7fec1 { get; set; }
+        public int C7fec2 { get; set; }
         public int C7dmin { get; set; }
         public char C7peri { get; set; }
         public string C7thab { get; set; } = string.Empty;
@@ -136,7 +136,7 @@ public class ConestmiBuilder {
         public int C7sucl { get; set; }
         public int C7hote { get; set; }
         public string C7cont { get; set; } = string.Empty;
-        public decimal Cofec1 { get; set; }
+        public int Cofec1 { get; set; }
         public int C7vers { get; set; }
         public int C7Lin { get; set; }
     }
