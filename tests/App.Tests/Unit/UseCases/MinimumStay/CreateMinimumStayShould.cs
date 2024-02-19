@@ -1,7 +1,7 @@
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.MinimumStay;
 
 [TestFixture]
-public class CreateMinimumstayShould {
+public class CreateMinimumStayShould {
     private IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
     private CreateMinimumStay createMinimumStay;
 
@@ -90,13 +90,11 @@ public class CreateMinimumstayShould {
         const int anyC7fec1 = 20240132;
         const int anyC7fec2 = 20240101;
         const int anyCofec1 = 2024001;
-        const char anyC7peri = 'S';
-
+        
         var anyConestmi = ConestmiBuilder.AConestmiBuilder()
             .WithC7fec1(anyC7fec1)
             .WithC7fec2(anyC7fec2)
             .WithCofec1(anyCofec1)
-            .WithC7peri(anyC7peri)
             .Build();
 
         //When
@@ -112,13 +110,11 @@ public class CreateMinimumstayShould {
         const int anyC7fec1 = 20240101;
         const int anyC7fec2 = 20240132;
         const int anyCofec1 = 2024001;
-        const char anyC7peri = 'S';
-
+        
         var anyConestmi = ConestmiBuilder.AConestmiBuilder()
             .WithC7fec1(anyC7fec1)
             .WithC7fec2(anyC7fec2)
             .WithCofec1(anyCofec1)
-            .WithC7peri(anyC7peri)
             .Build();
 
         //When
@@ -134,13 +130,11 @@ public class CreateMinimumstayShould {
         const int anyC7fec1 = 20240101;
         const int anyC7fec2 = 20240101;
         const int anyCofec1 = 0;
-        const char anyC7peri = 'S';
-
+       
         var anyConestmi = ConestmiBuilder.AConestmiBuilder()
             .WithC7fec1(anyC7fec1)
             .WithC7fec2(anyC7fec2)
             .WithCofec1(anyCofec1)
-            .WithC7peri(anyC7peri)
             .Build();
 
         //When
@@ -156,13 +150,11 @@ public class CreateMinimumstayShould {
         const int anyC7fec1 = 20240101;
         const int anyC7fec2 = 20240101;
         const int anyCofec1 = 2024002;
-        const char anyC7peri = 'S';
-
+       
         var anyConestmi = ConestmiBuilder.AConestmiBuilder()
             .WithC7fec1(anyC7fec1)
             .WithC7fec2(anyC7fec2)
             .WithCofec1(anyCofec1)
-            .WithC7peri(anyC7peri)
             .Build();
 
         //When
