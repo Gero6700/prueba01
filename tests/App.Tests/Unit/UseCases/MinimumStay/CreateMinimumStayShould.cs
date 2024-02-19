@@ -107,7 +107,7 @@ public class CreateMinimumstayShould {
     }
 
     [Test]
-    public async Task do_not_create_minimum_stary_when_c7fec2_is_invalid() {
+    public async Task do_not_create_minimum_stay_when_c7fec2_is_invalid() {
         //Given
         const int anyC7fec1 = 20240101;
         const int anyC7fec2 = 20240132;
