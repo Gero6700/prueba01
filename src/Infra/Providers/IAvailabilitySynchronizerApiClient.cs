@@ -30,5 +30,6 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Providers {
         Task<Response> DeleteRoom(string roomCode);
         Task<Response> CreateExtra(Extra extra);
         Task<Response> UpdateExtra(Extra extra);
+        Task<Response> CreateMinimumStay(MinimumStay minimumStay);
     }
 }
