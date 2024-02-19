@@ -105,8 +105,8 @@ public class ConestmiBuilder {
 
     private static ConestmiRaw GenerateRaw() {
         return new Faker<ConestmiRaw>()
-            .RuleFor(x => x.C7fec1, f => (DateTime.Now.Year * 1000) + f.Random.Number(0, 365))
-            .RuleFor(x => x.C7fec2, f => ((DateTime.Now.Year + 1) * 1000) + f.Random.Number(0, 365))
+            .RuleFor(x => x.C7fec1, f => int.Parse(f.Date.Future().ToString("yyyyMMdd")))
+            .RuleFor(x => x.C7fec2, f => int.Parse(f.Date.Future().ToString("yyyyMMdd")))
             .RuleFor(x => x.C7dmin, f => f.Random.Int(0,99))
             .RuleFor(x => x.C7peri, f => f.Random.Char('A','Z'))
             .RuleFor(x => x.C7thab, f => f.Random.String(2,'A', 'Z'))

@@ -187,9 +187,15 @@ public class CreateMinimumStayShould {
     [Test]
     public async Task do_not_create_minimum_stay_when_c7hote_is_zero() {
         //Given
+        const int anyC7fec1 = 20240101;
+        const int anyC7fec2 = 20240101;
+        const int anyCofec1 = 2024001;
         const int anyC7hote = 0;
 
         var anyConestmi = ConestmiBuilder.AConestmiBuilder()
+            .WithC7fec1(anyC7fec1)
+            .WithC7fec2(anyC7fec2)
+            .WithCofec1(anyCofec1)
             .WithC7hote(anyC7hote)
             .Build();
 
