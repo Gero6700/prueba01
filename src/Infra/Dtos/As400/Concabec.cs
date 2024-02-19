@@ -35,4 +35,7 @@ public class Concabec {
 
     public string GetNewCode => $"{Cohote}{Cocont}{Cofec1}{Covers}";
 
+
+    public string GetNewClientCode => $"{GetNewCode}{Coagen}{Cosucu}{Coagcl}{Cosucl}";
+
 }

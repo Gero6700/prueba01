@@ -87,7 +87,7 @@ public class CreateContractShould {
             Market = anyCodmerca
         };
         var expectedContractClient = new ContractClient {
-            Code = string.Concat(anyCoagen, anyCosucu, anyCoagcl, anyCosucl),
+            Code = string.Concat(expectedContract.Code, anyCoagen, anyCosucu, anyCoagcl, anyCosucl),
             MinAgeOfBabies = 0,
             MaxAgeOfBabies = anyCeinma,
             MinAgeOfChildren = anyCenimi,
@@ -140,7 +140,7 @@ public class CreateContractShould {
             Market = anyConcabec.Codmerca
         };
         var expectedContractClient = new ContractClient {
-            Code = string.Concat(anyConcabec.Coagen, anyConcabec.Cosucu, anyConcabec.Coagcl, anyConcabec.Cosucl),
+            Code = string.Concat(expectedContract.Code, anyConcabec.Coagen, anyConcabec.Cosucu, anyConcabec.Coagcl, anyConcabec.Cosucl),
             MinAgeOfBabies = anyConcabec.Ceinmi,
             MaxAgeOfBabies = anyConcabec.Ceinma,
             MinAgeOfChildren = anyConcabec.Cenimi,
@@ -196,7 +196,7 @@ public class CreateContractShould {
             Market = anyConcabec.Codmerca
         };
         var expectedContractClient = new ContractClient {
-            Code = string.Concat(anyConcabec.Coagen, anyConcabec.Cosucu, anyConcabec.Coagcl, anyConcabec.Cosucl),
+            Code = string.Concat(expectedContract.Code, anyConcabec.Coagen, anyConcabec.Cosucu, anyConcabec.Coagcl, anyConcabec.Cosucl),
             MinAgeOfBabies = anyConcabec.Ceinmi,
             MaxAgeOfBabies = anyConcabec.Ceinma,
             MinAgeOfChildren = anyConcabec.Cenimi,
@@ -253,7 +253,7 @@ public class CreateContractShould {
             Market = anyConcabec.Codmerca
         };
         var expectedContractClient = new ContractClient {
-            Code = string.Concat(anyConcabec.Coagen, anyConcabec.Cosucu, anyConcabec.Coagcl, anyConcabec.Cosucl),
+            Code = string.Concat(expectedContract.Code, anyConcabec.Coagen, anyConcabec.Cosucu, anyConcabec.Coagcl, anyConcabec.Cosucl),
             MinAgeOfBabies = anyConcabec.Ceinmi,
             MaxAgeOfBabies = anyConcabec.Ceinma,
             MinAgeOfChildren = anyConcabec.Cenimi,
@@ -306,7 +306,7 @@ public class CreateContractShould {
             Market = anyConcabec.Codmerca
         };
         var expectedContractClient = new ContractClient {
-            Code = string.Concat(anyConcabec.Coagen, anyConcabec.Cosucu, anyConcabec.Coagcl, anyConcabec.Cosucl),
+            Code = string.Concat(expectedContract.Code, anyConcabec.Coagen, anyConcabec.Cosucu, anyConcabec.Coagcl, anyConcabec.Cosucl),
             MinAgeOfBabies = anyConcabec.Ceinmi,
             MaxAgeOfBabies = anyConcabec.Ceinma,
             MinAgeOfChildren = anyConcabec.Cenimi,
@@ -361,7 +361,7 @@ public class CreateContractShould {
             Market = anyConcabec.Codmerca
         };
         var expectedContractClient = new ContractClient {
-            Code = string.Concat(anyConcabec.Coagen, anyConcabec.Cosucu, anyConcabec.Coagcl, anyConcabec.Cosucl),
+            Code = string.Concat(expectedContract.Code, anyConcabec.Coagen, anyConcabec.Cosucu, anyConcabec.Coagcl, anyConcabec.Cosucl),
             MinAgeOfBabies = anyConcabec.Ceinmi,
             MaxAgeOfBabies = anyConcabec.Ceinma,
             MinAgeOfChildren = anyConcabec.Cenimi,

@@ -20,7 +20,7 @@ public static class ConcabecExtension {
 
     public static ContractClient ToContractClient(this Concabec concabec) {
         return new ContractClient {
-            Code = $"{concabec.Coagen}{concabec.Cosucu}{concabec.Coagcl}{concabec.Cosucl}",
+            Code = concabec.GetNewClientCode,
             MinAgeOfBabies = concabec.Ceinmi,
             MaxAgeOfBabies = concabec.Ceinma,
             MinAgeOfChildren = concabec.Cenimi,
