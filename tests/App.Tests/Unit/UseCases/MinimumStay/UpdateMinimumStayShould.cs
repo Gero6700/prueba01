@@ -116,7 +116,7 @@ public class UpdateMinimumStayShould {
         //Given
         const int anyC7fec1 = 20240101;
         const int anyC7fec2 = 20240101;
-        const int anyCofec1 = 20240102;
+        const int anyCofec1 = 2024002;
 
         var anyConestmi = ConestmiBuilder.AConestmiBuilder()
             .WithC7fec1(anyC7fec1)

@@ -16,6 +16,9 @@ public class UpdateMinimumStay {
         if (DateTimeHelper.ConvertJulianDateToDateTime(conestmi.Cofec1) == DateTime.MinValue) {
             throw new ArgumentException("Invalid contract start date");
         }
+        if (DateTimeHelper.ConvertIntegerToDatetime(conestmi.C7fec1) < DateTimeHelper.ConvertJulianDateToDateTime(conestmi.Cofec1)) {
+            throw new ArgumentException("Start date is less than contract start date");
+        }
 
         var minimumStay = conestmi.toMinimumStay();
         await availabilitySynchronizerApiClient.UpdateMinimumStay(minimumStay);
