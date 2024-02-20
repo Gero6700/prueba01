@@ -35,6 +35,24 @@ public class UpdateRegimeShould {
             .UpdateRegime(Arg.Is<Infrastructure.Dtos.BookingCenter.Regime>(x => IsEquivalent(x, expectedRegime)));
     }
 
+    [Test]
+    public async Task do_not_update_regime_when_mrhab_is_empty() {
+        //Given
+        const string anyMrhab = "";
+        const int anyRoorde = 1;
+
+        var anyRestregi = new Restregi {
+            Mrhab = anyMrhab,
+            Roorde = anyRoorde
+        };
+
+        //When
+        Func<Task> function = async () => await updateRegime.Execute(anyRestregi);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Incorrect regime code");
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
