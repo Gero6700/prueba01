@@ -12,7 +12,7 @@ public class CreateRegimeShould {
     }
 
     [Test]
-    public async Task create_regimen() {
+    public async Task create_regime() {
         //Given
         const string anyMrhab = "anyCode";
         const int anyRoorde = 1;
