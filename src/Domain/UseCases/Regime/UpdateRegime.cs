@@ -1,6 +1,13 @@
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Regime;
 public class UpdateRegime {
-    public Task Execute(Restregi restregi) {
-        throw new NotImplementedException();
+    private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
+
+    public UpdateRegime(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {
+        this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
+    }
+
+    public async Task Execute(Restregi restregi) {
+        var regime = restregi.ToRegime();
+        await availabilitySynchronizerApiClient.UpdateRegime(regime);
     }
 }

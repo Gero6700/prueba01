@@ -8,7 +8,7 @@ public class UpdateRegimeShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        updateRegime = new UpdateRegime();
+        updateRegime = new UpdateRegime(availabilitySynchronizerApiClient);
     }
 
     [Test]
