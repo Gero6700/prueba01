@@ -111,6 +111,26 @@ public class UpdateMinimumStayShould {
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Invalid contract start date");
     }
 
+    [Test]
+    public async Task do_not_update_minimum_stay_when_c7fec1_is_less_than_cofec1() {
+        //Given
+        const int anyC7fec1 = 20240101;
+        const int anyC7fec2 = 20240101;
+        const int anyCofec1 = 20240102;
+
+        var anyConestmi = ConestmiBuilder.AConestmiBuilder()
+            .WithC7fec1(anyC7fec1)
+            .WithC7fec2(anyC7fec2)
+            .WithCofec1(anyCofec1)
+            .Build();
+
+        //When
+        Func<Task> function = async () => await updateMinimumStay.Execute(anyConestmi);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Start date is less than contract start date");
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
