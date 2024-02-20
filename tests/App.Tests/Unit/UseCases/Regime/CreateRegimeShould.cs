@@ -1,3 +1,5 @@
+using FluentAssertions.Specialized;
+
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Regime;
 
 [TestFixture]
@@ -33,6 +35,24 @@ public class CreateRegimeShould {
 
         await availabilitySynchronizerApiClient.Received()
             .CreateRegime(Arg.Is<Infrastructure.Dtos.BookingCenter.Regime>(x => IsEquivalent(x, expectedRegime)));
+    }
+
+    [Test]
+    public async Task do_not_create_regime_when_mrhab_is_empty() {
+        //Given
+        const string anyMrhab = "";
+        const int anyRoorde = 1;
+
+        var anyRestregi = new Restregi {
+            Mrhab = anyMrhab,
+            Roorde = anyRoorde
+        };
+
+        //When
+        Func<Task> function = async () => await createRegime.Execute(anyRestregi);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Incorrect regime code");
     }
 
     private bool IsEquivalent(object source, object expected) {
