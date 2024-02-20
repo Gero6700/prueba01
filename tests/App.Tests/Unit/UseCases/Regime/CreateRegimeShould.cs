@@ -8,7 +8,7 @@ public class CreateRegimeShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        createRegime = new CreateRegime();
+        createRegime = new CreateRegime(availabilitySynchronizerApiClient);
     }
 
     [Test]
