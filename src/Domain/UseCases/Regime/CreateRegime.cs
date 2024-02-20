@@ -7,8 +7,11 @@ public class CreateRegime {
     }
 
     public async Task Execute(Restregi restregi) {
-        var regime = restregi.ToRegime();
+        if (restregi.Mrhab == "") {
+            throw new ArgumentException("Incorrect regime code");
+        }
 
+        var regime = restregi.ToRegime();
         await availabilitySynchronizerApiClient.CreateRegime(regime);
     }
 }
