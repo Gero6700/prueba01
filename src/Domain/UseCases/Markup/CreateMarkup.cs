@@ -13,6 +13,9 @@ public class CreateMarkup {
         if (mkupcabe.Mkcbwh == DateTime.MinValue) {
             throw new ArgumentException("Booking window to is required");
         }
+        if (mkupcabe.Mkcfed == 0) {
+            throw new ArgumentException("Stay date from is required");
+        }
         var markup = mkupcabe.ToMarkup();
         await availabilitySynchronizerApiClient.CreateMarkup(markup);
     }
