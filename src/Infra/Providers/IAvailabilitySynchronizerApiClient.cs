@@ -34,5 +34,6 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Providers {
         Task<Response> UpdateMinimumStay(MinimumStay minimumStay);
         Task<Response> CreateRegime(Regime regime);
         Task<Response> UpdateRegime(Regime regime);
+        Task<Response> CreateMarkup(Markup markup);
     }
 }
