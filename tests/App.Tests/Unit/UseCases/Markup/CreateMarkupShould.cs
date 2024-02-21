@@ -75,7 +75,7 @@ public class CreateMarkupShould {
         Func<Task> function = async () => await createMarkup.Execute(anyMkupcabe);
 
         //Then
-        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Incorrect booking window from");
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Booking window from is required");
     }
 
     private bool IsEquivalent(object source, object expected) {
