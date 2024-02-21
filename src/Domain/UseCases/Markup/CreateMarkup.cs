@@ -19,6 +19,9 @@ public class CreateMarkup {
         if (mkupcabe.Mkcfeh == 0) {
             throw new ArgumentException("Stay date to is required");
         }
+        if (DateTimeHelper.ConvertIntegerToDatetime(mkupcabe.Mkcfed) == DateTime.MinValue) {
+            throw new ArgumentException("Stay date from is invalid");
+        }
         var markup = mkupcabe.ToMarkup();
         await availabilitySynchronizerApiClient.CreateMarkup(markup);
     }
