@@ -8,7 +8,7 @@ public class CreateMarkupShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        createMarkup = new CreateMarkup();
+        createMarkup = new CreateMarkup(availabilitySynchronizerApiClient);
     }
 
     [Test]
