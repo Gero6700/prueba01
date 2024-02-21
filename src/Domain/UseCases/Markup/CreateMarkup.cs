@@ -28,6 +28,9 @@ public class CreateMarkup {
         if (mkupcabe.Mkcbwh < mkupcabe.Mkcbwd) {
             throw new ArgumentException("Booking window to is less than boking window from");
         }
+        if (mkupcabe.Mkcfeh < mkupcabe.Mkcfed) {
+            throw new ArgumentException("Stay date to is less than stay date from");
+        }
         var markup = mkupcabe.ToMarkup();
         await availabilitySynchronizerApiClient.CreateMarkup(markup);
     }
