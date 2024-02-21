@@ -23,6 +23,9 @@ public class UpdateMarkup {
         if (DateTimeHelper.ConvertIntegerToDatetime(mkupcabe.Mkcfed) == DateTime.MinValue) {
             throw new ArgumentException("Stay date from is invalid");
         }
+        if (DateTimeHelper.ConvertIntegerToDatetime(mkupcabe.Mkcfeh) == DateTime.MinValue) {
+            throw new ArgumentException("Stay date to is invalid");
+        }
         var markup = mkupcabe.ToMarkup();  
         await availabilitySynchronizerApiClient.UpdateMarkup(markup);
     }
