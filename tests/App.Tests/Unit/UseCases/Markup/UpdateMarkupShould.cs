@@ -7,7 +7,7 @@ public class UpdateMarkupShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        updateMarkup = new UpdateMarkup();
+        updateMarkup = new UpdateMarkup(availabilitySynchronizerApiClient);
     }
 
     [Test]
