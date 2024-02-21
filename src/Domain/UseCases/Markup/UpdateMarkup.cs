@@ -11,6 +11,9 @@ public class UpdateMarkup {
         if (mkupcabe.Mkcbwd == DateTime.MinValue) {
             throw new ArgumentException("Booking window from is required");
         }
+        if (mkupcabe.Mkcbwh == DateTime.MinValue) {
+            throw new ArgumentException("Booking window to is required");
+        }
         var markup = mkupcabe.ToMarkup();  
         await availabilitySynchronizerApiClient.UpdateMarkup(markup);
     }
