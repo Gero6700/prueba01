@@ -25,6 +25,9 @@ public class CreateMarkup {
         if (DateTimeHelper.ConvertIntegerToDatetime(mkupcabe.Mkcfeh) == DateTime.MinValue) {
             throw new ArgumentException("Stay date to is invalid");
         }
+        if (mkupcabe.Mkcbwh < mkupcabe.Mkcbwd) {
+            throw new ArgumentException("Booking window to is less than boking window from");
+        }
         var markup = mkupcabe.ToMarkup();
         await availabilitySynchronizerApiClient.CreateMarkup(markup);
     }
