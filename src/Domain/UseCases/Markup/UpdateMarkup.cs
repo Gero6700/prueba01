@@ -17,6 +17,9 @@ public class UpdateMarkup {
         if (mkupcabe.Mkcfed == 0) {
             throw new ArgumentException("Stay date from is required");
         }
+        if (mkupcabe.Mkcfeh == 0) {
+            throw new ArgumentException("Stay date to is required");
+        }
         var markup = mkupcabe.ToMarkup();  
         await availabilitySynchronizerApiClient.UpdateMarkup(markup);
     }
