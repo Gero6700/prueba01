@@ -1,3 +1,4 @@
+using Senator.As400.Cloud.Sync.Application.UseCases.Market;
 using Senator.As400.Cloud.Sync.Application.UseCases.Markup;
 
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Markup;
@@ -78,6 +79,34 @@ public class UpdateMarkupShould {
 
         //Then
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Booking window from is required");
+    }
+
+    [Test]
+    public async Task do_not_update_markup_when_mkcbwh_is_null() {
+        //Given
+        const int anyMkcid = 1;
+        const int anyMkcfed = 20240601;
+        const int anyMkcfeh = 20240602;
+        const decimal anyMkccpor = 5;
+        var anyMkcgrb = new DateTime(2024, 1, 1);
+        var anyMkcbwd = new DateTime(2024, 1, 1);
+        var anyMkcbwh = DateTime.MinValue;
+
+        var anyMkupcabe = new Mkupcabe {
+            Mkcid = anyMkcid,
+            Mkcgrb = anyMkcgrb,
+            Mkcbwd = anyMkcbwd,
+            Mkcbwh = anyMkcbwh,
+            Mkcfed = anyMkcfed,
+            Mkcfeh = anyMkcfeh,
+            Mkccpor = anyMkccpor
+        };
+
+        //When
+        Func<Task> function = async () => await updateMarkup.Execute(anyMkupcabe);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Booking window to is required");
     }
 
     private bool IsEquivalent(object source, object expected) {
