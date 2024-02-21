@@ -160,7 +160,35 @@ public class CreateMarkupShould {
 
         //Then
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Stay date to is required");
-    } 
+    }
+
+    [Test]
+    public async Task do_not_create_markup_when_mkcfed_is_invalid() {
+        //Given
+        const int anyMkcid = 1;
+        const int anyMkcfed = 20240600;
+        const int anyMkcfeh = 20240602;
+        const decimal anyMkccpor = 5;
+        var anyMkcgrb = new DateTime(2024, 1, 1);
+        var anyMkcbwd = new DateTime(2024, 1, 1);
+        var anyMkcbwh = new DateTime(2024, 12, 31);
+
+        var anyMkupcabe = new Mkupcabe {
+            Mkcid = anyMkcid,
+            Mkcgrb = anyMkcgrb,
+            Mkcbwd = anyMkcbwd,
+            Mkcbwh = anyMkcbwh,
+            Mkcfed = anyMkcfed,
+            Mkcfeh = anyMkcfeh,
+            Mkccpor = anyMkccpor
+        };
+
+        //When
+        Func<Task> function = async () => await createMarkup.Execute(anyMkupcabe);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Stay date from is invalid");
+    }
 
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
