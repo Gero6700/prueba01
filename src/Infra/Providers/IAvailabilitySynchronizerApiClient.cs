@@ -36,5 +36,6 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Providers {
         Task<Response> UpdateRegime(Regime regime);
         Task<Response> CreateMarkup(Markup markup);
         Task<Response> UpdateMarkup(Markup markup);
+        Task<Response> CreateMarkupHotel(MarkupHotel markupHotel);
     }
 }
