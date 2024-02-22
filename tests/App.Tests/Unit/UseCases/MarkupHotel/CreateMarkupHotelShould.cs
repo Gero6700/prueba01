@@ -8,7 +8,7 @@ public class CreateMarkupHotelShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        createMarkupHotel = new CreateMarkupHotel();
+        createMarkupHotel = new CreateMarkupHotel(availabilitySynchronizerApiClient);
     }
 
     [Test]
@@ -19,7 +19,7 @@ public class CreateMarkupHotelShould {
         
         var anyMkuphote = new Infrastructure.Dtos.As400.Mkuphote {
             Mkhidc = anyMkhidc,
-            Mkhhot = anyMkhhot.ToString()
+            Mkhhot = anyMkhhot
         };
 
         //When
@@ -27,8 +27,8 @@ public class CreateMarkupHotelShould {
 
         //Then
         var expectedMarkupHotel = new Infrastructure.Dtos.BookingCenter.MarkupHotel {
-            HotelCode = anyMkhidc,
-            MarkupCode = anyMkhhot
+            HotelCode = anyMkhidc.ToString(),
+            MarkupCode = anyMkhhot.ToString()
         };
         await availabilitySynchronizerApiClient.Received()
             .CreateMarkupHotel(Arg.Is<Infrastructure.Dtos.BookingCenter.MarkupHotel>(x => IsEquivalent(x, expectedMarkupHotel)));
