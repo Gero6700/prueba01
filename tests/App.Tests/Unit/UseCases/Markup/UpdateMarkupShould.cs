@@ -221,6 +221,34 @@ public class UpdateMarkupShould {
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Stay date to is invalid");
     }
 
+    [Test]
+    public async Task do_not_update_markup_when_mkcbwh_is_less_than_mkcbwd() {
+        //Given
+        const int anyMkcid = 1;
+        const int anyMkcfed = 20240601;
+        const int anyMkcfeh = 20240602;
+        const decimal anyMkccpor = 5;
+        var anyMkcgrb = new DateTime(2024, 1, 1);
+        var anyMkcbwd = new DateTime(2024, 12, 31);
+        var anyMkcbwh = new DateTime(2024, 1, 1);
+
+        var anyMkupcabe = new Mkupcabe {
+            Mkcid = anyMkcid,
+            Mkcgrb = anyMkcgrb,
+            Mkcbwd = anyMkcbwd,
+            Mkcbwh = anyMkcbwh,
+            Mkcfed = anyMkcfed,
+            Mkcfeh = anyMkcfeh,
+            Mkccpor = anyMkccpor
+        };
+
+        //When
+        Func<Task> function = async () => await updateMarkup.Execute(anyMkupcabe);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Booking window to is less than boking window from");
+    }
+
 
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
