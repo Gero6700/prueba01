@@ -32,6 +32,9 @@ public class UpdateMarkup {
         if (mkupcabe.Mkcfeh < mkupcabe.Mkcfed) {
             throw new ArgumentException("Stay date to is less than stay date from");
         }
+        if (mkupcabe.Mkccpor == 0) {
+            throw new ArgumentException("Incorrect amount");
+        }
         var markup = mkupcabe.ToMarkup();  
         await availabilitySynchronizerApiClient.UpdateMarkup(markup);
     }
