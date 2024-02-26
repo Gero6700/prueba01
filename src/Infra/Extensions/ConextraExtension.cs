@@ -29,7 +29,7 @@ public static class ConextraExtension {
         }else if (conextra.OriginType == OriginType.Offer) {
             extra.OfferAndSuplements.Add(new ExtraOfferAndSuplement {
                 OfferAndSuplementCode = conextra.OriginCode,
-                ApplyStayPriceType = conextra.Offoe.ToUpper() == "P" ? ApplyStayPriceType.P : conextra.Offoe.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
+                ApplyStayPriceType = conextra.Offoe.ToUpper() == "P" ? ApplyStayPriceType.P : conextra.Offoe.ToUpper() == "U" ? ApplyStayPriceType.U : conextra.Offoe.ToUpper() == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.D,
             });
         }
 
