@@ -31,6 +31,9 @@ public class CreateExtra {
         if (conextra.C5died > conextra.C5dieh) {
             throw new ArgumentException("Stay to date is less than stay from date");
         }
+        if (conextra.OriginCode == "") {
+            throw new ArgumentException("Origin code is required");
+        }
 
         var extra= conextra.ToExtra();   
         await availabilitySynchronizerApiClient.CreateExtra(extra);

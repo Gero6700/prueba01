@@ -2341,7 +2341,7 @@ public class CreateExtraShould {
         Func<Task> function = async () => await createExtra.Execute(anyConextra);
 
         // Then
-        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Origin code is empty");
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Origin code is required");
     }
 
     private bool IsEquivalent(object source, object expected) {
