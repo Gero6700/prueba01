@@ -1943,6 +1943,8 @@ public class CreateExtraShould {
     [Test]
     public async Task create_extra_when_c5apdt_is_c() {
         //Given
+        const string anyOriginCode = "anyOriginCode";
+        const OriginType anyOriginType = OriginType.Contract;
         const int anyC5fred = 2024001;
         const int anyC5freh = 2024366;
         const int anyC5fec1 = 2024001;
@@ -2011,6 +2013,8 @@ public class CreateExtraShould {
             .WithC5reg3(anyC5reg3)
             .WithC5reg4(anyC5reg4)
             .WithC5reg5(anyC5reg5)
+            .WithOriginCode(anyOriginCode)
+            .WithOriginType(anyOriginType)
             .Build();
 
         //When
@@ -2033,7 +2037,8 @@ public class CreateExtraShould {
             PriceApplication = anyConextra.C5form == "D" ? ApplyStayPriceType.D : anyConextra.C5form == "P" ? ApplyStayPriceType.P : anyConextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             ApplyOtherSuplementsOrDiscounts = ApplyOtherSuplementsOrDiscounts.Contract,
             IsCancellationGuarantee = anyConextra.Cogc,
-            OccupancyRateCod = anyConextra.C5cocu.ToString()
+            OccupancyRateCod = anyConextra.C5cocu.ToString(),
+            ContractClients = new List<string>() { anyOriginCode },
         };
 
         await availabilitySynchronizerApiClient.Received()
