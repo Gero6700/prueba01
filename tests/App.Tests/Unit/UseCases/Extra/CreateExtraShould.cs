@@ -18,6 +18,8 @@ public class CreateExtraShould {
     public async Task create_extra() {
         //Given
         const string anyCode = "anyCode";
+        const string anyOriginCode = "anyOriginCode";
+        const OriginType anyOriginType = OriginType.Contract;
         const int anyC5fred = 2024001;
         const int anyC5freh = 2024366;
         const int anyC5fec1 = 2024001;
@@ -61,11 +63,12 @@ public class CreateExtraShould {
         const string anyC5reg3 = "";
         const string anyC5reg4 = "";
         const string anyC5reg5 = "";
-
-
+        const string anyOffoe = "";
 
         var anyConextra = ConextraBuilder.AConextraBuilder()
             .WithCode(anyCode)
+            .WithOriginCode(anyOriginCode)
+            .WithOriginType(anyOriginType)
             .WithC5fred(anyC5fred)
             .WithC5freh(anyC5freh)
             .WithC5fec1(anyC5fec1)
@@ -109,6 +112,7 @@ public class CreateExtraShould {
             .WithC5reg3(anyC5reg3)
             .WithC5reg4(anyC5reg4)
             .WithC5reg5(anyC5reg5)
+            .WithOffoe(anyOffoe)
             .Build();
 
         //When
@@ -134,7 +138,9 @@ public class CreateExtraShould {
             OccupancyRateCod = anyC5cocu.ToString(),
             Paxes = new List<ExtraPax>(),
             Rooms = new List<string>(),
-            Regimes = new List<string>()
+            Regimes = new List<string>(),
+            ContractClients = new List<string>() {anyOriginCode},
+            OfferAndSuplements = new List<ExtraOfferAndSuplement>()
         };
         await availabilitySynchronizerApiClient.Received()
             .CreateExtra(Arg.Is<Infrastructure.Dtos.BookingCenter.Extra>(x => IsEquivalent(x, expectedConextra)));

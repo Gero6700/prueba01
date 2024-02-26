@@ -1,6 +1,8 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Dtos.As400;
 public class Conextra {
     public string Code { get; set; } = string.Empty;
+    public string OriginCode { get; set; } = string.Empty;
+    public OriginType OriginType { get; set; }  
     public int C5fred { get; set; }
     public int C5freh { get; set; }
     public int C5fec1 { get; set; }
@@ -44,4 +46,5 @@ public class Conextra {
     public string C5reg3 { get; set; } = string.Empty;
     public string C5reg4 { get; set; } = string.Empty;
     public string C5reg5 { get; set; } = string.Empty;
+    public string Offoe { get; set; } = string.Empty;
 }

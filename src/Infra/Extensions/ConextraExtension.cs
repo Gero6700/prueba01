@@ -23,7 +23,11 @@ public static class ConextraExtension {
         extra.AddChildPaxes(conextra);
         extra.AddRooms(conextra);
         extra.AddRegimes(conextra);
-       
+
+        if (conextra.OriginType == OriginType.Contract) {
+            extra.ContractClients.Add(conextra.OriginCode);
+        };
+
         return extra;
     }
 

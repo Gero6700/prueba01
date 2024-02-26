@@ -14,6 +14,8 @@ public class ConextraBuilder {
     private static ConextraRaw GenerateRaw() {
         return new Faker<ConextraRaw>()
             .RuleFor(x => x.Code, f => f.Random.String(10,'A','Z').ToUpper())
+            .RuleFor(x => x.OriginCode, f => f.Random.String(10,'A','Z').ToUpper())
+            .RuleFor(x => x.OriginType, f => f.PickRandom<OriginType>())
             .RuleFor(x => x.C5fred, f => (DateTime.Now.Year * 1000) + f.Random.Int(0, 365))
             .RuleFor(x => x.C5freh, f => ((DateTime.Now.Year + 1) * 1000) + f.Random.Int(0, 365))
             .RuleFor(x => x.C5fec1, f => (DateTime.Now.Year * 1000) + f.Random.Int(0, 365))
@@ -57,11 +59,22 @@ public class ConextraBuilder {
             .RuleFor(x => x.C5reg3, f => f.Random.String(2, 'A', 'Z').ToUpper())
             .RuleFor(x => x.C5reg4, f => f.Random.String(2, 'A', 'Z').ToUpper())
             .RuleFor(x => x.C5reg5, f => f.Random.String(2, 'A', 'Z').ToUpper())
+            .RuleFor(x => x.Offoe, f => f.Random.String(1, 'A', 'Z').ToUpper())
             .Generate();
     }
 
     public ConextraBuilder WithCode(string newCode) {
         raw.Code = newCode;
+        return this;
+    }
+
+    public ConextraBuilder WithOriginCode(string newOriginCode) {
+        raw.OriginCode = newOriginCode;
+        return this;
+    }
+
+    public ConextraBuilder WithOriginType(OriginType newOriginType) {
+        raw.OriginType = newOriginType;
         return this;
     }
 
@@ -280,9 +293,16 @@ public class ConextraBuilder {
         return this;
     }
 
+    public ConextraBuilder WithOffoe(string newOffoe) {
+        raw.Offoe = newOffoe;
+        return this;
+    }
+
     public Conextra Build() {
         return new Faker<Conextra>()
             .RuleFor(x => x.Code, raw.Code)
+            .RuleFor(x => x.OriginCode, raw.OriginCode)
+            .RuleFor(x => x.OriginType, raw.OriginType)
             .RuleFor(x => x.C5fred, raw.C5fred)
             .RuleFor(x => x.C5freh, raw.C5freh)
             .RuleFor(x => x.C5fec1, raw.C5fec1)
@@ -326,12 +346,15 @@ public class ConextraBuilder {
             .RuleFor(x => x.C5reg3, raw.C5reg3)
             .RuleFor(x => x.C5reg4, raw.C5reg4)
             .RuleFor(x => x.C5reg5, raw.C5reg5)
+            .RuleFor(x => x.Offoe, raw.Offoe)
             .Generate();
 
     }
 
     private class ConextraRaw {
         public string Code { get; set; } = string.Empty;
+        public string OriginCode { get; set; } = string.Empty;
+        public OriginType OriginType { get; set; }
         public int C5fred { get; set; }
         public int C5freh { get; set; }
         public int C5fec1 { get; set; }
@@ -375,5 +398,6 @@ public class ConextraBuilder {
         public string C5reg3 { get; set; } = string.Empty;
         public string C5reg4 { get; set; } = string.Empty;
         public string C5reg5 { get; set; } = string.Empty;
+        public string Offoe { get; set; } = string.Empty;
     }
 }

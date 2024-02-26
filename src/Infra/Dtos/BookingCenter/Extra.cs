@@ -19,4 +19,7 @@ public class Extra:IAggregateRoot {
     public List<ExtraPax> Paxes { get; set; } = new List<ExtraPax>();
     public List<string> Rooms { get; set; } = new List<string>();
     public List<string> Regimes { get; set; } = new List<string>();
+    public List<string> ContractClients { get; set; } = new List<string>();
+    public List<ExtraOfferAndSuplement> OfferAndSuplements { get; set; } = new List<ExtraOfferAndSuplement>();
+
 }
