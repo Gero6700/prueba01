@@ -26,7 +26,12 @@ public static class ConextraExtension {
 
         if (conextra.OriginType == OriginType.Contract) {
             extra.ContractClients.Add(conextra.OriginCode);
-        };
+        }else if (conextra.OriginType == OriginType.Offer) {
+            extra.OfferAndSuplements.Add(new ExtraOfferAndSuplement {
+                OfferAndSuplementCode = conextra.OriginCode,
+                ApplyStayPriceType = ApplyStayPriceType.D,
+            });
+        }
 
         return extra;
     }
