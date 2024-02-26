@@ -2328,6 +2328,22 @@ public class CreateExtraShould {
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Stay to date is less than stay from date");
     }
 
+    [Test]
+    public async Task do_not_create_extra_when_origincode_is_empty() {
+        // Given
+        const string anyOriginCode = "";
+
+        var anyConextra = ConextraBuilder.AConextraBuilder()
+            .WithOriginCode(anyOriginCode)
+            .Build();
+
+        // When
+        Func<Task> function = async () => await createExtra.Execute(anyConextra);
+
+        // Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Origin code is empty");
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
