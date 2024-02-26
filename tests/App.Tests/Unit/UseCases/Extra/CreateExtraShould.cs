@@ -605,6 +605,8 @@ public class CreateExtraShould {
     [Test]
     public async Task create_extra_when_c5dtn_is_not_zero() {
         //Given
+        const string anyOriginCode = "anyOriginCode";
+        const OriginType anyOriginType = OriginType.Contract;
         const int anyC5fred = 2024001;
         const int anyC5freh = 2024366;
         const int anyC5fec1 = 2024001;
@@ -673,6 +675,8 @@ public class CreateExtraShould {
             .WithC5reg3(anyC5reg3)
             .WithC5reg4(anyC5reg4)
             .WithC5reg5(anyC5reg5)
+            .WithOriginCode(anyOriginCode)
+            .WithOriginType(anyOriginType)
             .Build();
 
         //when
@@ -734,6 +738,7 @@ public class CreateExtraShould {
                     AmountType = PaymentType.Percent
                 }
             },
+            ContractClients = new List<string> { anyOriginCode }
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -744,6 +749,8 @@ public class CreateExtraShould {
     [Test]
     public async Task create_extra_when_c5th_is_not_empty() {
         //Given
+        const string anyOriginCode = "anyOriginCode";
+        const OriginType anyOriginType = OriginType.Contract;
         const int anyC5fred = 2024001;
         const int anyC5freh = 2024366;
         const int anyC5fec1 = 2024001;
@@ -812,6 +819,8 @@ public class CreateExtraShould {
             .WithC5reg3(anyC5reg3)
             .WithC5reg4(anyC5reg4)
             .WithC5reg5(anyC5reg5)
+            .WithOriginCode(anyOriginCode)
+            .WithOriginType(anyOriginType)
             .Build();
 
         //when
@@ -852,7 +861,8 @@ public class CreateExtraShould {
                 anyC5th13,
                 anyC5th14,
                 anyC5th15
-            }
+            },
+            ContractClients = new List<string> { anyOriginCode }
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -862,6 +872,8 @@ public class CreateExtraShould {
     [Test]
     public async Task create_extra_when_c5reg_is_not_empty() {
         // Given
+        const string anyOriginCode = "anyOriginCode";
+        const OriginType anyOriginType = OriginType.Contract;
         const int anyC5fred = 2024001;
         const int anyC5freh = 2024366;
         const int anyC5fec1 = 2024001;
@@ -930,6 +942,8 @@ public class CreateExtraShould {
             .WithC5reg3(anyC5reg3)
             .WithC5reg4(anyC5reg4)
             .WithC5reg5(anyC5reg5)
+            .WithOriginCode(anyOriginCode)
+            .WithOriginType(anyOriginType)
             .Build();
 
         //when
@@ -961,7 +975,8 @@ public class CreateExtraShould {
                 anyC5reg3,
                 anyC5reg4,
                 anyC5reg5
-            }
+            },
+            ContractClients = new List<string> { anyOriginCode }
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -971,6 +986,8 @@ public class CreateExtraShould {
     [Test]
     public async Task create_extra_when_c5dta_is_not_zero() {
         //Given
+        const string anyOriginCode = "anyOriginCode";
+        const OriginType anyOriginType = OriginType.Contract;
         const int anyC5fred = 2024001;
         const int anyC5freh = 2024366;
         const int anyC5fec1 = 2024001;
@@ -1039,6 +1056,8 @@ public class CreateExtraShould {
             .WithC5reg3(anyC5reg3)
             .WithC5reg4(anyC5reg4)
             .WithC5reg5(anyC5reg5)
+            .WithOriginCode(anyOriginCode)
+            .WithOriginType(anyOriginType)
             .Build();
 
         //When
@@ -1099,7 +1118,8 @@ public class CreateExtraShould {
                     Amount = anyC5dta4,
                     AmountType = PaymentType.Percent
                 }
-            }
+            },
+            ContractClients = new List<string> () { anyOriginCode }
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -1109,6 +1129,8 @@ public class CreateExtraShould {
     [Test]
     public async Task create_extra_when_c5sele_is_not_s() {
         //Then
+        const string anyOriginCode = "anyOriginCode";
+        const OriginType anyOriginType = OriginType.Contract;
         const int anyC5fred = 2024001;
         const int anyC5freh = 2024366;
         const int anyC5fec1 = 2024001;
@@ -1183,6 +1205,8 @@ public class CreateExtraShould {
             .WithC5reg3(anyC5reg3)
             .WithC5reg4(anyC5reg4)
             .WithC5reg5(anyC5reg5)
+            .WithOriginCode(anyOriginCode)
+            .WithOriginType(anyOriginType)
             .Build();
 
         //When
@@ -1205,7 +1229,8 @@ public class CreateExtraShould {
             PriceApplication = ApplyStayPriceType.U,
             ApplyOtherSuplementsOrDiscounts = ApplyOtherSuplementsOrDiscounts.All,
             IsCancellationGuarantee = anyConextra.Cogc,
-            OccupancyRateCod = anyConextra.C5cocu.ToString()            
+            OccupancyRateCod = anyConextra.C5cocu.ToString(),
+            ContractClients = new List<string> { anyOriginCode }
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -1216,6 +1241,8 @@ public class CreateExtraShould {
     [Test]
     public async Task create_extra_when_c5cocu_is_zero() {
         //Given
+        const string anyOriginCode = "anyOriginCode";
+        const OriginType anyOriginType = OriginType.Contract;
         const int anyC5cocu = 0;
         const int anyC5fred = 2024001;
         const int anyC5freh = 2024366;
@@ -1290,6 +1317,8 @@ public class CreateExtraShould {
             .WithC5reg3(anyC5reg3)
             .WithC5reg4(anyC5reg4)
             .WithC5reg5(anyC5reg5)
+            .WithOriginCode(anyOriginCode)
+            .WithOriginType(anyOriginType)
             .Build();
 
         //When
@@ -1312,7 +1341,8 @@ public class CreateExtraShould {
             PriceApplication = anyConextra.C5form == "D" ? ApplyStayPriceType.D : anyConextra.C5form == "P" ? ApplyStayPriceType.P : anyConextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             ApplyOtherSuplementsOrDiscounts = ApplyOtherSuplementsOrDiscounts.All,
             IsCancellationGuarantee = anyConextra.Cogc,
-            OccupancyRateCod = ""
+            OccupancyRateCod = "",
+            ContractClients = new List<string>() { anyOriginCode },
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -1323,6 +1353,8 @@ public class CreateExtraShould {
     [Test]
     public async Task create_extra_when_c5foun_is_d() {
         //Given
+        const string anyOriginCode = "anyOriginCode";
+        const OriginType anyOriginType = OriginType.Contract;
         const int anyC5fred = 2024001;
         const int anyC5freh = 2024366;
         const int anyC5fec1 = 2024001;
@@ -1395,6 +1427,8 @@ public class CreateExtraShould {
             .WithC5reg3(anyC5reg3)
             .WithC5reg4(anyC5reg4)
             .WithC5reg5(anyC5reg5)
+            .WithOriginCode(anyOriginCode)
+            .WithOriginType(anyOriginType)
             .Build();
 
         //When
@@ -1417,7 +1451,8 @@ public class CreateExtraShould {
             PriceApplication = ApplyStayPriceType.U,
             ApplyOtherSuplementsOrDiscounts = ApplyOtherSuplementsOrDiscounts.All,
             IsCancellationGuarantee = anyConextra.Cogc,
-            OccupancyRateCod = anyConextra.C5cocu.ToString()
+            OccupancyRateCod = anyConextra.C5cocu.ToString(),
+            ContractClients = new List<string>() { anyOriginCode },
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -1429,6 +1464,8 @@ public class CreateExtraShould {
     [Test]
     public async Task create_extra_when_c5foun_is_p() {
         //Given
+        const string anyOriginCode = "anyOriginCode";
+        const OriginType anyOriginType = OriginType.Contract;
         const int anyC5fred = 2024001;
         const int anyC5freh = 2024366;
         const int anyC5fec1 = 2024001;
@@ -1501,6 +1538,8 @@ public class CreateExtraShould {
             .WithC5reg3(anyC5reg3)
             .WithC5reg4(anyC5reg4)
             .WithC5reg5(anyC5reg5)
+            .WithOriginCode(anyOriginCode)
+            .WithOriginType(anyOriginType)
             .Build();
 
         //When
@@ -1523,7 +1562,8 @@ public class CreateExtraShould {
             PriceApplication = ApplyStayPriceType.U,
             ApplyOtherSuplementsOrDiscounts = ApplyOtherSuplementsOrDiscounts.All,
             IsCancellationGuarantee = anyConextra.Cogc,
-            OccupancyRateCod = anyConextra.C5cocu.ToString()
+            OccupancyRateCod = anyConextra.C5cocu.ToString(),
+            ContractClients = new List<string>() { anyOriginCode },
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -1533,6 +1573,8 @@ public class CreateExtraShould {
     [Test]
     public async Task create_extra_when_c5foun_is_x() {
         //Given
+        const string anyOriginCode = "anyOriginCode";
+        const OriginType anyOriginType = OriginType.Contract;
         const int anyC5fred = 2024001;
         const int anyC5freh = 2024366;
         const int anyC5fec1 = 2024001;
@@ -1605,6 +1647,8 @@ public class CreateExtraShould {
             .WithC5reg3(anyC5reg3)
             .WithC5reg4(anyC5reg4)
             .WithC5reg5(anyC5reg5)
+            .WithOriginCode(anyOriginCode)
+            .WithOriginType(anyOriginType)
             .Build();
 
         //When
@@ -1627,7 +1671,8 @@ public class CreateExtraShould {
             PriceApplication = ApplyStayPriceType.U,
             ApplyOtherSuplementsOrDiscounts = ApplyOtherSuplementsOrDiscounts.All,
             IsCancellationGuarantee = anyConextra.Cogc,
-            OccupancyRateCod = anyConextra.C5cocu.ToString()
+            OccupancyRateCod = anyConextra.C5cocu.ToString(),
+            ContractClients = new List<string>() { anyOriginCode },
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -1637,6 +1682,8 @@ public class CreateExtraShould {
     [Test]
     public async Task create_extra_when_c5form_is_d() {
         //Given
+        const string anyOriginCode = "anyOriginCode";
+        const OriginType anyOriginType = OriginType.Contract;
         const int anyC5fred = 2024001;
         const int anyC5freh = 2024366;
         const int anyC5fec1 = 2024001;
@@ -1707,6 +1754,8 @@ public class CreateExtraShould {
             .WithC5reg3(anyC5reg3)
             .WithC5reg4(anyC5reg4)
             .WithC5reg5(anyC5reg5)
+            .WithOriginCode(anyOriginCode)
+            .WithOriginType(anyOriginType)
             .Build();
 
         //When
@@ -1729,7 +1778,8 @@ public class CreateExtraShould {
             PriceApplication = ApplyStayPriceType.D,
             ApplyOtherSuplementsOrDiscounts = ApplyOtherSuplementsOrDiscounts.All,
             IsCancellationGuarantee = anyConextra.Cogc,
-            OccupancyRateCod = anyConextra.C5cocu.ToString()
+            OccupancyRateCod = anyConextra.C5cocu.ToString(),
+            ContractClients = new List<string>() { anyOriginCode }
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -1739,6 +1789,8 @@ public class CreateExtraShould {
     [Test]
     public async Task create_extra_when_c5form_is_p() {
         //Given
+        const string anyOriginCode = "anyOriginCode";
+        const OriginType anyOriginType = OriginType.Contract;
         const int anyC5fred = 2024001;
         const int anyC5freh = 2024366;
         const int anyC5fec1 = 2024001;
@@ -1809,6 +1861,8 @@ public class CreateExtraShould {
             .WithC5reg3(anyC5reg3)
             .WithC5reg4(anyC5reg4)
             .WithC5reg5(anyC5reg5)
+            .WithOriginCode(anyOriginCode)
+            .WithOriginType(anyOriginType)
             .Build();
 
         //When
@@ -1831,7 +1885,8 @@ public class CreateExtraShould {
             PriceApplication = ApplyStayPriceType.P,
             ApplyOtherSuplementsOrDiscounts = ApplyOtherSuplementsOrDiscounts.All,
             IsCancellationGuarantee = anyConextra.Cogc,
-            OccupancyRateCod = anyConextra.C5cocu.ToString()
+            OccupancyRateCod = anyConextra.C5cocu.ToString(),
+            ContractClients = new List<string>() { anyOriginCode }
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -1841,6 +1896,8 @@ public class CreateExtraShould {
     [Test]
     public async Task create_extra_when_c5form_is_x() {
         //Given
+        const string anyOriginCode = "anyOriginCode";
+        const OriginType anyOriginType = OriginType.Contract;
         const int anyC5fred = 2024001;
         const int anyC5freh = 2024366;
         const int anyC5fec1 = 2024001;
@@ -1911,6 +1968,8 @@ public class CreateExtraShould {
             .WithC5reg3(anyC5reg3)
             .WithC5reg4(anyC5reg4)
             .WithC5reg5(anyC5reg5)
+            .WithOriginCode(anyOriginCode)
+            .WithOriginType(anyOriginType)
             .Build();
 
         //When
@@ -1933,7 +1992,8 @@ public class CreateExtraShould {
             PriceApplication = ApplyStayPriceType.X,
             ApplyOtherSuplementsOrDiscounts = ApplyOtherSuplementsOrDiscounts.All,
             IsCancellationGuarantee = anyConextra.Cogc,
-            OccupancyRateCod = anyConextra.C5cocu.ToString()
+            OccupancyRateCod = anyConextra.C5cocu.ToString(),
+            ContractClients = new List<string>() { anyOriginCode }
         };
 
         await availabilitySynchronizerApiClient.Received()
