@@ -13,7 +13,7 @@ public static class CongasanExtension {
             ApplicationMargin = congasan.C6marg,
             ApplicationType = congasan.C6medi.ToUpper() == "S" ? CancellationPolicyApplicationType.Avarage : CancellationPolicyApplicationType.FirstNight,
             ApplyInOfferPrice = congasan.C6ofer.ToUpper() == "S" ? true: false,
-            ApplyIfInsurance = false,
+            ApplyIfInsurance = congasan.C6segu.ToUpper() == "S" ? true: false,
             RefundAsBonus = false
         };
 
