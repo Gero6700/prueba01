@@ -7,7 +7,7 @@ public class CreateCancellationPolicyLineShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        createCancellationPolicyLine = new CreateCancellationPolicyLine();
+        createCancellationPolicyLine = new CreateCancellationPolicyLine(availabilitySynchronizerApiClient);
     }
 
     [Test]
@@ -38,7 +38,7 @@ public class CreateCancellationPolicyLineShould {
         var expectedCancellationPolicyLine = new Infrastructure.Dtos.BookingCenter.CancellationPolicyLine {
             Code = anyCongasan.Code,
             From = new DateTime(2024, 01, 01),
-            To = new DateTime(2021, 12, 31),
+            To = new DateTime(2024, 12, 31),
             ReleaseDays = anyCongasan.C6gcdi,
             ReleaseHours = anyCongasan.C6gcho,
             PenaltyNights = anyCongasan.C6gcno,
