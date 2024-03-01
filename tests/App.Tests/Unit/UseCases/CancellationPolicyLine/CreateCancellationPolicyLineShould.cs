@@ -312,7 +312,7 @@ public class CreateCancellationPolicyLineShould {
         const int anyC6fec2 = 2024;
 
         var anyCongasan = CongasanBuilder.ACongasanBuilder()
-            .WithC6fec1(anyC6fec2)
+            .WithC6fec2(anyC6fec2)
             .Build();
 
         //When
