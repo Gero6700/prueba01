@@ -13,6 +13,9 @@ public class CreateCancellationPolicyLine {
         if (DateTimeHelper.ConvertIntegerToDatetime(congasan.C6fec2) == DateTime.MinValue) {
             throw new ArgumentException("Invalid to date");
         }
+        if (congasan.C6fec2 < congasan.C6fec1) {
+            throw new ArgumentException("From date is less than to date");
+        }
         var cancellationPolicyLine=congasan.ToCancellationPolicyLine();
 
         await availabilitySynchronizerApiClient.CreateCancellationPolicyLine(cancellationPolicyLine);
