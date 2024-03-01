@@ -322,6 +322,24 @@ public class CreateCancellationPolicyLineShould {
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Invalid to date");
     }
 
+    [Test]
+    public async Task do_not_create_cancellation_policy_line_when_c6fec2_is_less_than_c6fec1() {
+        //Given
+        const int anyC6fec1 = 20240103;
+        const int anyC6fec2 = 20240101;
+
+        var anyCongasan = CongasanBuilder.ACongasanBuilder()
+            .WithC6fec1(anyC6fec1)
+            .WithC6fec2(anyC6fec2)
+            .Build();
+
+        //When
+        Func<Task> function = async () => await createCancellationPolicyLine.Execute(anyCongasan);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("From date is less than to date");
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
