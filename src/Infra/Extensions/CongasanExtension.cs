@@ -14,7 +14,7 @@ public static class CongasanExtension {
             ApplicationType = congasan.C6medi.ToUpper() == "S" ? CancellationPolicyApplicationType.Avarage : CancellationPolicyApplicationType.FirstNight,
             ApplyInOfferPrice = congasan.C6ofer.ToUpper() == "S" ? true: false,
             ApplyIfInsurance = congasan.C6segu.ToUpper() == "S" ? true: false,
-            RefundAsBonus = false
+            RefundAsBonus = congasan.C6bono.ToUpper() == "S" ? true: false
         };
 
         if (congasan.OriginType == OriginType.Contract) {
