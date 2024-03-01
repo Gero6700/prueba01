@@ -8,7 +8,7 @@ public class UpdateCancellationPolicyLineShould {
     [SetUp]
     public void Setup() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        updateCancellationPolicyLine = new UpdateCancellationPolicyLine();
+        updateCancellationPolicyLine = new UpdateCancellationPolicyLine(availabilitySynchronizerApiClient);
     }
 
     [Test]
