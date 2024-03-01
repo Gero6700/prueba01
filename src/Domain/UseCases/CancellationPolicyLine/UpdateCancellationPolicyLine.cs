@@ -10,6 +10,9 @@ public class UpdateCancellationPolicyLine {
         if (DateTimeHelper.ConvertIntegerToDatetime(congasan.C6fec1) == DateTime.MinValue) {
             throw new ArgumentException("Invalid from date");
         }
+        if (DateTimeHelper.ConvertIntegerToDatetime(congasan.C6fec2) == DateTime.MinValue) {
+            throw new ArgumentException("Invalid to date");
+        }
         var cancellationPolicyLine = congasan.ToCancellationPolicyLine();
 
         await availabilitySynchronizerApiClient.UpdateCancellationPolicyLine(cancellationPolicyLine);
