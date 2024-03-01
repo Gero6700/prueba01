@@ -6,7 +6,7 @@ public class CreateCancellationPolicyLine {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(Congasan congasan) {
+    public async Task Execute(Congasan congasan) { 
         var cancellationPolicyLine=congasan.ToCancellationPolicyLine();
 
         await availabilitySynchronizerApiClient.CreateCancellationPolicyLine(cancellationPolicyLine);

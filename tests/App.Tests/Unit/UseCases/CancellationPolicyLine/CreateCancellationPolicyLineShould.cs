@@ -1,3 +1,4 @@
+using FluentAssertions.Specialized;
 using Senator.As400.Cloud.Sync.Infrastructure.Dtos.As400;
 
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.CancellationPolicyLine;
@@ -287,6 +288,22 @@ public class CreateCancellationPolicyLineShould {
 
         await availabilitySynchronizerApiClient.Received()
             .CreateCancellationPolicyLine(Arg.Is<Infrastructure.Dtos.BookingCenter.CancellationPolicyLine>(x => IsEquivalent(x, expectedCancellationPolicyLine)));
+    }
+
+    [Test]
+    public async Task do_not_create_cancellation_policy_line_when_c6fec1_is_invalid() {
+        //Given
+        const int anyC6fec1 = 2024;
+
+        var anyCongasan = CongasanBuilder.ACongasanBuilder()
+            .WithC6fec1(anyC6fec1)
+            .Build();
+
+        //When
+        Func<Task> function = async () => await createCancellationPolicyLine.Execute(anyCongasan);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Invalid from date");
     }
 
     private bool IsEquivalent(object source, object expected) {
