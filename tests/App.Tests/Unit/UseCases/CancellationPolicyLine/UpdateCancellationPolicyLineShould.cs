@@ -57,6 +57,22 @@ public class UpdateCancellationPolicyLineShould {
             .UpdateCancellationPolicyLine(Arg.Is<Infrastructure.Dtos.BookingCenter.CancellationPolicyLine>(x => IsEquivalent(x, expectedCancellationPolicyLine)));
     }
 
+    [Test]
+    public async Task do_not_update_cancellation_policy_line_when_c6fec1_is_invalid() {
+        //Given
+        const int anyC6fec1 = 2024;
+
+        var anyCongasan = CongasanBuilder.ACongasanBuilder()
+            .WithC6fec1(anyC6fec1)
+            .Build();
+
+        //When
+        Func<Task> function = async () => await updateCancellationPolicyLine.Execute(anyCongasan);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Invalid from date");
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
