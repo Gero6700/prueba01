@@ -883,7 +883,7 @@ public class CreateOfferAndSupplementShould {
     }
 
     [Test]
-    public async Task create_offer_and_supplement_when_ofthab_is_not_empty() {
+    public async Task create_offer_and_supplement_when_all_ofthab_is_not_empty() {
         //Given
         const int anyOffec = 2024001;
         const int anyOffec2 = 2024002;
@@ -963,7 +963,7 @@ public class CreateOfferAndSupplementShould {
         await availabilitySynchronizerApiClient.Received()
             .CreateOfferAndSupplement(Arg.Is<Infrastructure.Dtos.BookingCenter.OfferAndSupplement>(x => IsEquivalent(x, expectedOfferAndSupplement)));
     }
-
+    
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
