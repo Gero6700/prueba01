@@ -1,5 +1,3 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Dtos.As400;
-
 namespace Senator.As400.Cloud.Sync.Infrastructure.Extensions;
 public static class ConofegeExtension{
     public static OfferAndSupplement ToOfferAndSupplement(this Conofege conofege) {
