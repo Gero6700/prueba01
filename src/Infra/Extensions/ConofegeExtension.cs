@@ -16,7 +16,7 @@ public static class ConofegeExtension{
             Conditions = new List<OfferAndSupplementCondition> {
                 new OfferAndSupplementCondition {
                     Optional = conofege.Ofopci.ToUpper() == "S",
-                    StayType = conofege.Ofties.ToUpper() == "P" ? StayType.Period : StayType.CheckInDay,
+                    StayType = conofege.Ofties.ToUpper() == "P" ? StayType.Period : conofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = PaxType.All,
                     MinStayDays = conofege.Ofdiae,
                     MaxStayDays = conofege.Ofdieh,
