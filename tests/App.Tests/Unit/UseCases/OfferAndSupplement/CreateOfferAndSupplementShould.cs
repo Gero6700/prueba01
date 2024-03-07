@@ -81,7 +81,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = PaymentType.Fixed,
             DepositBeforeDate = new DateTime(2024, 06, 04),
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = new List<OfferAndSupplementCondition> {
+            Conditions = [
                 new OfferAndSupplementCondition {
                     Optional = false,
                     StayType = StayType.CheckInDay,
@@ -96,7 +96,7 @@ public class CreateOfferAndSupplementShould {
                     Rooms = [],
                     Regimes = []
                 }
-            },
+            ],
             Configurations = []
         };  
         
@@ -171,7 +171,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = PaymentType.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = new List<OfferAndSupplementCondition> {
+            Conditions = [
                 new OfferAndSupplementCondition {
                     Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = StayType.CheckInDay,
@@ -186,7 +186,7 @@ public class CreateOfferAndSupplementShould {
                     Rooms = [],
                     Regimes = []
                 }
-            },
+            ],
             Configurations = []
         };
 
@@ -261,7 +261,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = PaymentType.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = new List<OfferAndSupplementCondition> {
+            Conditions = [
                 new OfferAndSupplementCondition {
                     Optional = true,
                     StayType = StayType.CheckInDay,
@@ -276,7 +276,7 @@ public class CreateOfferAndSupplementShould {
                     Rooms = [],
                     Regimes = []
                 }
-            },
+            ],
             Configurations = []
         };
 
@@ -349,7 +349,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = PaymentType.Percent,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = new List<OfferAndSupplementCondition> {
+            Conditions = [
                 new OfferAndSupplementCondition {
                     Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = StayType.CheckInDay,
@@ -364,7 +364,7 @@ public class CreateOfferAndSupplementShould {
                     Rooms = [],
                     Regimes = []
                 }
-            },
+            ],
             Configurations = []
         };
 
@@ -437,7 +437,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = PaymentType.Percent,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = new List<OfferAndSupplementCondition> {
+            Conditions = [
                 new OfferAndSupplementCondition {
                     Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = StayType.Period,
@@ -452,7 +452,7 @@ public class CreateOfferAndSupplementShould {
                     Rooms = [],
                     Regimes = []
                 }
-            },
+            ],
             Configurations = []
         };
 
@@ -525,7 +525,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = PaymentType.Percent,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = new List<OfferAndSupplementCondition> {
+            Conditions = [
                 new OfferAndSupplementCondition {
                     Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = StayType.Stay,
@@ -540,7 +540,7 @@ public class CreateOfferAndSupplementShould {
                     Rooms = [],
                     Regimes = []
                 }
-            },
+            ],
             Configurations = []
         };
 
@@ -611,7 +611,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = PaymentType.Percent,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = new List<OfferAndSupplementCondition> {
+            Conditions = [
                 new OfferAndSupplementCondition {
                     Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
@@ -626,7 +626,7 @@ public class CreateOfferAndSupplementShould {
                     Rooms = [],
                     Regimes = []
                 }
-            },
+            ],
             Configurations = []
         };
 
@@ -695,7 +695,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = new List<OfferAndSupplementCondition> {
+            Conditions = [
                 new OfferAndSupplementCondition {
                     Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
@@ -710,7 +710,7 @@ public class CreateOfferAndSupplementShould {
                     Rooms = [],
                     Regimes = []
                 }
-            },
+            ],
             Configurations = []
         };
 
