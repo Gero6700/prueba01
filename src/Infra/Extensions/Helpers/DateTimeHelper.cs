@@ -34,12 +34,11 @@ public static class DateTimeHelper {
 
     }
 
+    public static DateTime ConvertYYMMDDToDatetime(int integerDate) {
+        if (DateTime.TryParseExact(integerDate.ToString(), "yyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var date)) {
+            return date;
+        }
 
-
-    //    public static bool IsValidJulianDate(int integerDate) {
-    //        if (ConvertJulianDateToDateTime(integerDate) is not DateTime.MinValue) {
-    //            return true;
-    //        }
-    //        return false;
-    //    }
+        return DateTime.MinValue;
+    }
 }

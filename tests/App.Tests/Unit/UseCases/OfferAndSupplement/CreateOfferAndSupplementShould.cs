@@ -8,7 +8,7 @@ public class CreateOfferAndSupplementShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        createOfferAndSupplement = new CreateOfferAndSupplement();
+        createOfferAndSupplement = new CreateOfferAndSupplement(availabilitySynchronizerApiClient);
     }
 
     [Test]
@@ -18,7 +18,7 @@ public class CreateOfferAndSupplementShould {
         const int anyOffec2 = 2024002;
         const string anyOfopci = "";
         const string anyOffode = "";
-        const int anyOfftop = 240607;
+        const int anyOfftop = 240604;
         const string anyOfTies = "";
         const string anyOfadni = "";
         const int anyOfgrbd = 2024001;
@@ -70,13 +70,13 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
-            Type = OfferSupplementType.Supplement,
+            Type = OfferSupplementType.Offer,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
             DepositType = PaymentType.Fixed,
-            DepositBeforeDate = new DateTime(2024, 06, 07),
+            DepositBeforeDate = new DateTime(2024, 06, 04),
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [],
             Configurations = []
