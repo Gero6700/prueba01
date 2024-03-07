@@ -171,7 +171,22 @@ public class CreateOfferAndSupplementShould {
             DepositType = PaymentType.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [],
+            Conditions = new List<OfferAndSupplementCondition> {
+                new OfferAndSupplementCondition {
+                    Optional = anyConofege.Ofopci.ToUpper() == "S",
+                    StayType = StayType.CheckInDay,
+                    ApplyToPax = PaxType.All,
+                    MinStayDays = anyConofege.Ofdiae,
+                    MaxStayDays = anyConofege.Ofdieh,
+                    MinReleaseDays = anyConofege.Offred,
+                    MaxReleaseDays = anyConofege.Offres,
+                    BookingWindowFrom =  new DateTime(2024, 03, 01),
+                    BookingWindowTo =  new DateTime(2024, 03, 05),
+                    OccupancyRateCod = anyConofege.Ofcocu.ToString(),
+                    Rooms = [],
+                    Regimes = []
+                }
+            },
             Configurations = []
         };
 
