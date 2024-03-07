@@ -97,7 +97,22 @@ public class CreateOfferAndSupplementShould {
                     Regimes = []
                 }
             ],
-            Configurations = []
+            Configurations = [
+                new OfferAndSupplementConfiguration {
+                    FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
+                    RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
+                    RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
+                    ApplyStayPriceType = ApplyStayPriceType.D,
+                    ApplyStayPrice = anyConofege.Ofpree,
+                    ApplyRegimePriceType = ApplyStayPriceType.D,
+                    ApplyRegimePrice = anyConofege.Ofpres,
+                    DiscountAmount = anyConofege.Ofdtos,
+                    DicountAmountType = PaymentType.Percent,
+                    DiscountTarget = DiscountTargetType.Pvp,
+                    DiscountScope = DiscountScopeType.All,
+                    Paxes = []
+                }
+            ]
         };  
         
         await availabilitySynchronizerApiClient.Received()
@@ -1205,7 +1220,6 @@ public class CreateOfferAndSupplementShould {
         await availabilitySynchronizerApiClient.Received()
             .CreateOfferAndSupplement(Arg.Is<Infrastructure.Dtos.BookingCenter.OfferAndSupplement>(x => IsEquivalent(x, expectedOfferAndSupplement)));
     }
-
 
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);

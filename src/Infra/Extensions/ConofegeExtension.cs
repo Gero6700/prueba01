@@ -27,7 +27,22 @@ public static class ConofegeExtension{
                     Regimes = conofege.GetRegimeCodes.Where(value => value != "").ToList(),
                 }
             ],
-            Configurations = []
+            Configurations = [
+                new OfferAndSupplementConfiguration {
+                    FreeDays = conofege.Ofdiae - conofege.Ofdiaf,
+                    RoomTypeCodeToCalculatePrice = conofege.Ofthaf,
+                    RegimeTypeCodeToCalculatePrice = conofege.Oftsef,
+                    ApplyStayPriceType = ApplyStayPriceType.D,
+                    ApplyStayPrice = conofege.Ofpree,
+                    ApplyRegimePriceType = ApplyStayPriceType.D,
+                    ApplyRegimePrice = conofege.Ofpres,
+                    DiscountAmount = conofege.Ofdtos,
+                    DicountAmountType = PaymentType.Percent,
+                    DiscountTarget = DiscountTargetType.Pvp,
+                    DiscountScope = DiscountScopeType.All,
+                    Paxes = []
+                }    
+            ]
         };
     }
 }
