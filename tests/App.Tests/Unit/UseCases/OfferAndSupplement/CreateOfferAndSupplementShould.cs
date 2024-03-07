@@ -1,4 +1,5 @@
 using Senator.As400.Cloud.Sync.Infrastructure.Dtos.As400;
+using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Helpers;
 
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.OfferAndSupplement;
 
@@ -23,8 +24,8 @@ public class CreateOfferAndSupplementShould {
         const int anyOfftop = 240604;
         const string anyOfTies = "";
         const string anyOfadni = "";
-        const int anyOfgrbd = 2024001;
-        const int anyOfgrbh = 2024002;
+        const int anyOfgrbd = 20240301;
+        const int anyOfgrbh = 20240305;
         const string anyOfdfac = " ";
         const string anyOffore = "";
         const string anyOffors = "";
@@ -80,7 +81,22 @@ public class CreateOfferAndSupplementShould {
             DepositType = PaymentType.Fixed,
             DepositBeforeDate = new DateTime(2024, 06, 04),
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [],
+            Conditions = new List<OfferAndSupplementCondition> {
+                new OfferAndSupplementCondition {
+                    Optional = false,
+                    StayType = StayType.CheckInDay,
+                    ApplyToPax = PaxType.All,
+                    MinStayDays = anyConofege.Ofdiae,
+                    MaxStayDays = anyConofege.Ofdieh,
+                    MinReleaseDays = anyConofege.Offred,
+                    MaxReleaseDays = anyConofege.Offres,
+                    BookingWindowFrom =  new DateTime(2024, 03, 01),
+                    BookingWindowTo =  new DateTime(2024, 03, 05),
+                    OccupancyRateCod = anyConofege.Ofcocu.ToString(),
+                    Rooms = [],
+                    Regimes = []
+                }
+            },
             Configurations = []
         };  
         
@@ -98,8 +114,8 @@ public class CreateOfferAndSupplementShould {
         const int anyOfftop = 0;
         const string anyOfTies = "";
         const string anyOfadni = "";
-        const int anyOfgrbd = 2024001;
-        const int anyOfgrbh = 2024002;
+        const int anyOfgrbd = 20240301;
+        const int anyOfgrbh = 20240305;
         const string anyOfdfac = " ";
         const string anyOffore = "";
         const string anyOffors = "";
@@ -173,8 +189,8 @@ public class CreateOfferAndSupplementShould {
         const int anyOfftop = 0;
         const string anyOfTies = "";
         const string anyOfadni = "";
-        const int anyOfgrbd = 2024001;
-        const int anyOfgrbh = 2024002;
+        const int anyOfgrbd = 20240301;
+        const int anyOfgrbh = 20240305;
         const string anyOfdfac = " ";
         const string anyOffore = "";
         const string anyOffors = "";
@@ -247,8 +263,8 @@ public class CreateOfferAndSupplementShould {
         const int anyOfftop = 0;
         const string anyOfTies = "";
         const string anyOfadni = "";
-        const int anyOfgrbd = 2024001;
-        const int anyOfgrbh = 2024002;
+        const int anyOfgrbd = 20240301;
+        const int anyOfgrbh = 20240305;
         const string anyOfdfac = " ";
         const string anyOffore = "";
         const string anyOffors = "";
@@ -311,7 +327,7 @@ public class CreateOfferAndSupplementShould {
             .CreateOfferAndSupplement(Arg.Is<Infrastructure.Dtos.BookingCenter.OfferAndSupplement>(x => IsEquivalent(x, expectedOfferAndSupplement)));
     }
 
-    private bool IsEquivalent(object source, object expected) {
+   private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
     }

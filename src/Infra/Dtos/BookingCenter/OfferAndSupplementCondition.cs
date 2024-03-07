@@ -7,8 +7,8 @@ public class OfferAndSupplementCondition:IAggregateRoot {
     public int MaxStayDays { get; set; }
     public int MinReleaseDays { get; set; }
     public int MaxReleaseDays { get; set; }
-    public DateTime? BookingWindowFrom { get; set; }
-    public DateTime? BookingWindowTo { get; set; }
+    public DateTime BookingWindowFrom { get; set; }
+    public DateTime BookingWindowTo { get; set; }
     public string OccupancyRateCod { get; set; } = string.Empty;
     public List<string> Rooms { get; set; } = new List<string>();
     public List<string> Regimes { get; set; } = new List<string>();

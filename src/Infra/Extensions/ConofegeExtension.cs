@@ -13,7 +13,22 @@ public static class ConofegeExtension{
             DepositType = conofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
             DepositBeforeDate = conofege.Offtop == 0 ? null : DateTimeHelper.ConvertYYMMDDToDatetime(conofege.Offtop),
             ModificationCostsAmount = conofege.Gmimpo,
-            Conditions = [],
+            Conditions = new List<OfferAndSupplementCondition> {
+                new OfferAndSupplementCondition {
+                    Optional = conofege.Ofopci.ToUpper() == "S",
+                    StayType = StayType.CheckInDay,
+                    ApplyToPax = PaxType.All,
+                    MinStayDays = conofege.Ofdiae,
+                    MaxStayDays = conofege.Ofdieh,
+                    MinReleaseDays = conofege.Offred,
+                    MaxReleaseDays = conofege.Offres,
+                    BookingWindowFrom = DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Ofgrbd),
+                    BookingWindowTo = DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Ofgrbh),
+                    OccupancyRateCod = conofege.Ofcocu.ToString(),
+                    Rooms = [],
+                    Regimes = []
+                }
+            },
             Configurations = []
         };
     }
