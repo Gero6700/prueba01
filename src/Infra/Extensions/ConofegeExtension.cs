@@ -32,7 +32,7 @@ public static class ConofegeExtension{
                     FreeDays = conofege.Ofdfac.Trim() == "" ? conofege.Ofdiae - conofege.Ofdiaf : conofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = conofege.Ofthaf,
                     RegimeTypeCodeToCalculatePrice = conofege.Oftsef,
-                    ApplyStayPriceType = ApplyStayPriceType.D,
+                    ApplyStayPriceType = conofege.Offore == "P" ? ApplyStayPriceType.P : ApplyStayPriceType.D,
                     ApplyStayPrice = conofege.Ofpree,
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = conofege.Ofpres,
