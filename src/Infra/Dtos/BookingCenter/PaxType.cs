@@ -4,5 +4,6 @@ public enum PaxType{
     Adult,
     Child,
     Teenager,
-    Infant
+    Infant,
+    All
 }

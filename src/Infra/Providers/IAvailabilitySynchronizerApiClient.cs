@@ -39,5 +39,6 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Providers {
         Task<Response> CreateMarkupHotel(MarkupHotel markupHotel);
         Task<Response> CreateCancellationPolicyLine(CancellationPolicyLine cancellationPolicyLine);
         Task<Response> UpdateCancellationPolicyLine(CancellationPolicyLine cancellationPolicyLine);
+        Task<Response> CreateOfferAndSupplement(OfferAndSupplement offerAndSupplement);
     }
 }
