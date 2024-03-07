@@ -29,7 +29,7 @@ public static class ConofegeExtension{
             ],
             Configurations = [
                 new OfferAndSupplementConfiguration {
-                    FreeDays = conofege.Ofdiae - conofege.Ofdiaf,
+                    FreeDays = conofege.Ofdfac.Trim() == "" ? conofege.Ofdiae - conofege.Ofdiaf : conofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = conofege.Ofthaf,
                     RegimeTypeCodeToCalculatePrice = conofege.Oftsef,
                     ApplyStayPriceType = ApplyStayPriceType.D,
