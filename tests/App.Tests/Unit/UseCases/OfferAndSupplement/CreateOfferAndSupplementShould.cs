@@ -70,7 +70,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
-            Type = OfferSupplementType.Offer,
+            Type = OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
@@ -145,7 +145,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
-            Type = OfferSupplementType.Offer,
+            Type = OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
@@ -160,6 +160,7 @@ public class CreateOfferAndSupplementShould {
         await availabilitySynchronizerApiClient.Received()
             .CreateOfferAndSupplement(Arg.Is<Infrastructure.Dtos.BookingCenter.OfferAndSupplement>(x => IsEquivalent(x, expectedOfferAndSupplement)));
     }
+
 
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
