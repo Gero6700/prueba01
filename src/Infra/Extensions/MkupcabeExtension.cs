@@ -6,8 +6,8 @@ public static class MkupcabeExtension {
             CreationDate = mkupcabe.Mkcgrb,
             BookingWindowFrom = mkupcabe.Mkcbwd,
             BookingWindowTo = mkupcabe.Mkcbwh,
-            StayFrom = DateTimeHelper.ConvertIntegerToDatetime(mkupcabe.Mkcfed),
-            StayTo = DateTimeHelper.ConvertIntegerToDatetime(mkupcabe.Mkcfeh),
+            StayFrom = DateTimeHelper.ConvertYYYYMMDDToDatetime(mkupcabe.Mkcfed),
+            StayTo = DateTimeHelper.ConvertYYYYMMDDToDatetime(mkupcabe.Mkcfeh),
             Amount = mkupcabe.Mkccpor
         };
     }

@@ -7,7 +7,7 @@ public class CreateInventory {
     }
 
     public async Task Execute(Resplaht resplaht) {
-        if (DateTimeHelper.ConvertIntegerToDatetime(resplaht.Ptfec) == DateTime.MinValue) {
+        if (DateTimeHelper.ConvertYYYYMMDDToDatetime(resplaht.Ptfec) == DateTime.MinValue) {
             throw new ArgumentException("Invalid date");
         }
         if (resplaht.Pthot == 0) {

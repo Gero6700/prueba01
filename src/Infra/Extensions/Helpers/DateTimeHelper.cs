@@ -16,7 +16,7 @@ public static class DateTimeHelper {
         return date;
     }
 
-    public static DateTime? ConvertIntegerToNullableDatetime(int integerDate) {
+    public static DateTime? ConvertYYYYMMDDToNullableDatetime(int integerDate) {
         if (DateTime.TryParseExact(integerDate.ToString(), "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var date)) {
             return date;
         }
@@ -25,7 +25,7 @@ public static class DateTimeHelper {
 
     }
 
-    public static DateTime ConvertIntegerToDatetime(int integerDate) {
+    public static DateTime ConvertYYYYMMDDToDatetime(int integerDate) {
         if (DateTime.TryParseExact(integerDate.ToString(), "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var date)) {
             return date;
         }

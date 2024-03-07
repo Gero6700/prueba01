@@ -3,8 +3,8 @@ public static class CongasanExtension {
     public static CancellationPolicyLine ToCancellationPolicyLine(this Congasan congasan) {
         var line =  new CancellationPolicyLine {
             Code = congasan.Code,
-            From = DateTimeHelper.ConvertIntegerToDatetime(congasan.C6fec1),
-            To = DateTimeHelper.ConvertIntegerToDatetime(congasan.C6fec2),
+            From = DateTimeHelper.ConvertYYYYMMDDToDatetime(congasan.C6fec1),
+            To = DateTimeHelper.ConvertYYYYMMDDToDatetime(congasan.C6fec2),
             ReleaseDays = congasan.C6gcdi,
             ReleaseHours = congasan.C6gcho,
             PenaltyNights = congasan.C6gcno,

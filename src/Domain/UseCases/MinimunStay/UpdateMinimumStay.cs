@@ -7,16 +7,16 @@ public class UpdateMinimumStay {
     }
 
     public async Task Execute(Conestmi conestmi) {
-        if (DateTimeHelper.ConvertIntegerToDatetime(conestmi.C7fec1) == DateTime.MinValue) {
+        if (DateTimeHelper.ConvertYYYYMMDDToDatetime(conestmi.C7fec1) == DateTime.MinValue) {
             throw new ArgumentException("Invalid start date");
         }
-        if (DateTimeHelper.ConvertIntegerToDatetime(conestmi.C7fec2) == DateTime.MinValue) {
+        if (DateTimeHelper.ConvertYYYYMMDDToDatetime(conestmi.C7fec2) == DateTime.MinValue) {
             throw new ArgumentException("Invalid end date");
         }
         if (DateTimeHelper.ConvertJulianDateToDateTime(conestmi.Cofec1) == DateTime.MinValue) {
             throw new ArgumentException("Invalid contract start date");
         }
-        if (DateTimeHelper.ConvertIntegerToDatetime(conestmi.C7fec1) < DateTimeHelper.ConvertJulianDateToDateTime(conestmi.Cofec1)) {
+        if (DateTimeHelper.ConvertYYYYMMDDToDatetime(conestmi.C7fec1) < DateTimeHelper.ConvertJulianDateToDateTime(conestmi.Cofec1)) {
             throw new ArgumentException("Start date is less than contract start date");
         }
         if (conestmi.C7fec1 > conestmi.C7fec2) {

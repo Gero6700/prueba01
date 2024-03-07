@@ -20,10 +20,10 @@ public class UpdateMarkup {
         if (mkupcabe.Mkcfeh == 0) {
             throw new ArgumentException("Stay date to is required");
         }
-        if (DateTimeHelper.ConvertIntegerToDatetime(mkupcabe.Mkcfed) == DateTime.MinValue) {
+        if (DateTimeHelper.ConvertYYYYMMDDToDatetime(mkupcabe.Mkcfed) == DateTime.MinValue) {
             throw new ArgumentException("Stay date from is invalid");
         }
-        if (DateTimeHelper.ConvertIntegerToDatetime(mkupcabe.Mkcfeh) == DateTime.MinValue) {
+        if (DateTimeHelper.ConvertYYYYMMDDToDatetime(mkupcabe.Mkcfeh) == DateTime.MinValue) {
             throw new ArgumentException("Stay date to is invalid");
         }
         if (mkupcabe.Mkcbwh < mkupcabe.Mkcbwd) {

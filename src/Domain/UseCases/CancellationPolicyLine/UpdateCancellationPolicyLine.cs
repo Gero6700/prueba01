@@ -7,10 +7,10 @@ public class UpdateCancellationPolicyLine {
     }
 
     public async Task Execute(Congasan congasan) {
-        if (DateTimeHelper.ConvertIntegerToDatetime(congasan.C6fec1) == DateTime.MinValue) {
+        if (DateTimeHelper.ConvertYYYYMMDDToDatetime(congasan.C6fec1) == DateTime.MinValue) {
             throw new ArgumentException("Invalid from date");
         }
-        if (DateTimeHelper.ConvertIntegerToDatetime(congasan.C6fec2) == DateTime.MinValue) {
+        if (DateTimeHelper.ConvertYYYYMMDDToDatetime(congasan.C6fec2) == DateTime.MinValue) {
             throw new ArgumentException("Invalid to date");
         }
         if (congasan.C6fec2 < congasan.C6fec1) {

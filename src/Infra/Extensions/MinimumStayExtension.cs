@@ -3,8 +3,8 @@ public static class MinimumStayExtension {
     public static MinimumStay toMinimumStay(this Conestmi conestmi) {
         return new MinimumStay {
             Code = conestmi.GetNewCode,
-            From = DateTimeHelper.ConvertIntegerToDatetime(conestmi.C7fec1),
-            To = DateTimeHelper.ConvertIntegerToDatetime(conestmi.C7fec2),
+            From = DateTimeHelper.ConvertYYYYMMDDToDatetime(conestmi.C7fec1),
+            To = DateTimeHelper.ConvertYYYYMMDDToDatetime(conestmi.C7fec2),
             Days = conestmi.C7dmin,
             StrictPeriod = conestmi.C7peri.ToString().ToUpper() == "S",
             ContractClientCode = conestmi.GetContractClientCode,
