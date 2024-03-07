@@ -34,7 +34,7 @@ public static class ConofegeExtension{
                     RegimeTypeCodeToCalculatePrice = conofege.Oftsef,
                     ApplyStayPriceType = conofege.Offore.ToString() == "P" ? ApplyStayPriceType.P : conofege.Offore.ToString() == "X" ? ApplyStayPriceType.X : conofege.Offore.ToString() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
                     ApplyStayPrice = conofege.Ofpree,
-                    ApplyRegimePriceType = ApplyStayPriceType.D,
+                    ApplyRegimePriceType = conofege.Offors == "P" ? ApplyStayPriceType.P : ApplyStayPriceType.D,
                     ApplyRegimePrice = conofege.Ofpres,
                     DiscountAmount = conofege.Ofdtos,
                     DicountAmountType = PaymentType.Percent,
