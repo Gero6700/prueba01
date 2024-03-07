@@ -202,7 +202,22 @@ public class CreateOfferAndSupplementShould {
                     Regimes = []
                 }
             ],
-            Configurations = []
+            Configurations = [
+                new OfferAndSupplementConfiguration {
+                    FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
+                    RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
+                    RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
+                    ApplyStayPriceType = ApplyStayPriceType.D,
+                    ApplyStayPrice = anyConofege.Ofpree,
+                    ApplyRegimePriceType = ApplyStayPriceType.D,
+                    ApplyRegimePrice = anyConofege.Ofpres,
+                    DiscountAmount = anyConofege.Ofdtos,
+                    DicountAmountType = PaymentType.Percent,
+                    DiscountTarget = DiscountTargetType.Pvp,
+                    DiscountScope = DiscountScopeType.All,
+                    Paxes = []
+                }
+            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -292,7 +307,22 @@ public class CreateOfferAndSupplementShould {
                     Regimes = []
                 }
             ],
-            Configurations = []
+            Configurations = [
+                new OfferAndSupplementConfiguration {
+                    FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
+                    RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
+                    RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
+                    ApplyStayPriceType = ApplyStayPriceType.D,
+                    ApplyStayPrice = anyConofege.Ofpree,
+                    ApplyRegimePriceType = ApplyStayPriceType.D,
+                    ApplyRegimePrice = anyConofege.Ofpres,
+                    DiscountAmount = anyConofege.Ofdtos,
+                    DicountAmountType = PaymentType.Percent,
+                    DiscountTarget = DiscountTargetType.Pvp,
+                    DiscountScope = DiscountScopeType.All,
+                    Paxes = []
+                }
+            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -380,7 +410,22 @@ public class CreateOfferAndSupplementShould {
                     Regimes = []
                 }
             ],
-            Configurations = []
+            Configurations = [
+                new OfferAndSupplementConfiguration {
+                    FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
+                    RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
+                    RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
+                    ApplyStayPriceType = ApplyStayPriceType.D,
+                    ApplyStayPrice = anyConofege.Ofpree,
+                    ApplyRegimePriceType = ApplyStayPriceType.D,
+                    ApplyRegimePrice = anyConofege.Ofpres,
+                    DiscountAmount = anyConofege.Ofdtos,
+                    DicountAmountType = PaymentType.Percent,
+                    DiscountTarget = DiscountTargetType.Pvp,
+                    DiscountScope = DiscountScopeType.All,
+                    Paxes = []
+                }
+            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -468,7 +513,22 @@ public class CreateOfferAndSupplementShould {
                     Regimes = []
                 }
             ],
-            Configurations = []
+            Configurations = [
+                new OfferAndSupplementConfiguration {
+                    FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
+                    RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
+                    RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
+                    ApplyStayPriceType = ApplyStayPriceType.D,
+                    ApplyStayPrice = anyConofege.Ofpree,
+                    ApplyRegimePriceType = ApplyStayPriceType.D,
+                    ApplyRegimePrice = anyConofege.Ofpres,
+                    DiscountAmount = anyConofege.Ofdtos,
+                    DicountAmountType = PaymentType.Percent,
+                    DiscountTarget = DiscountTargetType.Pvp,
+                    DiscountScope = DiscountScopeType.All,
+                    Paxes = []
+                }
+            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -556,7 +616,22 @@ public class CreateOfferAndSupplementShould {
                     Regimes = []
                 }
             ],
-            Configurations = []
+            Configurations = [
+                new OfferAndSupplementConfiguration {
+                    FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
+                    RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
+                    RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
+                    ApplyStayPriceType = ApplyStayPriceType.D,
+                    ApplyStayPrice = anyConofege.Ofpree,
+                    ApplyRegimePriceType = ApplyStayPriceType.D,
+                    ApplyRegimePrice = anyConofege.Ofpres,
+                    DiscountAmount = anyConofege.Ofdtos,
+                    DicountAmountType = PaymentType.Percent,
+                    DiscountTarget = DiscountTargetType.Pvp,
+                    DiscountScope = DiscountScopeType.All,
+                    Paxes = []
+                }
+            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -642,7 +717,22 @@ public class CreateOfferAndSupplementShould {
                     Regimes = []
                 }
             ],
-            Configurations = []
+            Configurations = [
+                new OfferAndSupplementConfiguration {
+                    FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
+                    RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
+                    RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
+                    ApplyStayPriceType = ApplyStayPriceType.D,
+                    ApplyStayPrice = anyConofege.Ofpree,
+                    ApplyRegimePriceType = ApplyStayPriceType.D,
+                    ApplyRegimePrice = anyConofege.Ofpres,
+                    DiscountAmount = anyConofege.Ofdtos,
+                    DicountAmountType = PaymentType.Percent,
+                    DiscountTarget = DiscountTargetType.Pvp,
+                    DiscountScope = DiscountScopeType.All,
+                    Paxes = []
+                }
+            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -726,7 +816,22 @@ public class CreateOfferAndSupplementShould {
                     Regimes = []
                 }
             ],
-            Configurations = []
+            Configurations = [
+                new OfferAndSupplementConfiguration {
+                    FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
+                    RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
+                    RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
+                    ApplyStayPriceType = ApplyStayPriceType.D,
+                    ApplyStayPrice = anyConofege.Ofpree,
+                    ApplyRegimePriceType = ApplyStayPriceType.D,
+                    ApplyRegimePrice = anyConofege.Ofpres,
+                    DiscountAmount = anyConofege.Ofdtos,
+                    DicountAmountType = PaymentType.Percent,
+                    DiscountTarget = DiscountTargetType.Pvp,
+                    DiscountScope = DiscountScopeType.All,
+                    Paxes = []
+                }
+            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -808,7 +913,22 @@ public class CreateOfferAndSupplementShould {
                     Regimes = []
                 }
             ],
-            Configurations = []
+            Configurations = [
+                new OfferAndSupplementConfiguration {
+                    FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
+                    RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
+                    RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
+                    ApplyStayPriceType = ApplyStayPriceType.D,
+                    ApplyStayPrice = anyConofege.Ofpree,
+                    ApplyRegimePriceType = ApplyStayPriceType.D,
+                    ApplyRegimePrice = anyConofege.Ofpres,
+                    DiscountAmount = anyConofege.Ofdtos,
+                    DicountAmountType = PaymentType.Percent,
+                    DiscountTarget = DiscountTargetType.Pvp,
+                    DiscountScope = DiscountScopeType.All,
+                    Paxes = []
+                }
+            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -890,7 +1010,22 @@ public class CreateOfferAndSupplementShould {
                     Regimes = []
                 }
             ],
-            Configurations = []
+            Configurations = [
+                new OfferAndSupplementConfiguration {
+                    FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
+                    RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
+                    RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
+                    ApplyStayPriceType = ApplyStayPriceType.D,
+                    ApplyStayPrice = anyConofege.Ofpree,
+                    ApplyRegimePriceType = ApplyStayPriceType.D,
+                    ApplyRegimePrice = anyConofege.Ofpres,
+                    DiscountAmount = anyConofege.Ofdtos,
+                    DicountAmountType = PaymentType.Percent,
+                    DiscountTarget = DiscountTargetType.Pvp,
+                    DiscountScope = DiscountScopeType.All,
+                    Paxes = []
+                }
+            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -972,7 +1107,22 @@ public class CreateOfferAndSupplementShould {
                     Regimes = []
                 }
             ],
-            Configurations = []
+            Configurations = [
+                new OfferAndSupplementConfiguration {
+                    FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
+                    RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
+                    RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
+                    ApplyStayPriceType = ApplyStayPriceType.D,
+                    ApplyStayPrice = anyConofege.Ofpree,
+                    ApplyRegimePriceType = ApplyStayPriceType.D,
+                    ApplyRegimePrice = anyConofege.Ofpres,
+                    DiscountAmount = anyConofege.Ofdtos,
+                    DicountAmountType = PaymentType.Percent,
+                    DiscountTarget = DiscountTargetType.Pvp,
+                    DiscountScope = DiscountScopeType.All,
+                    Paxes = []
+                }
+            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -1054,7 +1204,22 @@ public class CreateOfferAndSupplementShould {
                     Regimes = []
                 }
             ],
-            Configurations = []
+            Configurations = [
+                new OfferAndSupplementConfiguration {
+                    FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
+                    RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
+                    RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
+                    ApplyStayPriceType = ApplyStayPriceType.D,
+                    ApplyStayPrice = anyConofege.Ofpree,
+                    ApplyRegimePriceType = ApplyStayPriceType.D,
+                    ApplyRegimePrice = anyConofege.Ofpres,
+                    DiscountAmount = anyConofege.Ofdtos,
+                    DicountAmountType = PaymentType.Percent,
+                    DiscountTarget = DiscountTargetType.Pvp,
+                    DiscountScope = DiscountScopeType.All,
+                    Paxes = []
+                }
+            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -1134,7 +1299,22 @@ public class CreateOfferAndSupplementShould {
                     Regimes = [.. anyOftser]
                 }
             ],
-            Configurations = []
+            Configurations = [
+                new OfferAndSupplementConfiguration {
+                    FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
+                    RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
+                    RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
+                    ApplyStayPriceType = ApplyStayPriceType.D,
+                    ApplyStayPrice = anyConofege.Ofpree,
+                    ApplyRegimePriceType = ApplyStayPriceType.D,
+                    ApplyRegimePrice = anyConofege.Ofpres,
+                    DiscountAmount = anyConofege.Ofdtos,
+                    DicountAmountType = PaymentType.Percent,
+                    DiscountTarget = DiscountTargetType.Pvp,
+                    DiscountScope = DiscountScopeType.All,
+                    Paxes = []
+                }
+            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -1214,7 +1394,22 @@ public class CreateOfferAndSupplementShould {
                     Regimes = { "A", "C", "D", "E" }
                 }
             ],
-            Configurations = []
+            Configurations = [
+                new OfferAndSupplementConfiguration {
+                    FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
+                    RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
+                    RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
+                    ApplyStayPriceType = ApplyStayPriceType.D,
+                    ApplyStayPrice = anyConofege.Ofpree,
+                    ApplyRegimePriceType = ApplyStayPriceType.D,
+                    ApplyRegimePrice = anyConofege.Ofpres,
+                    DiscountAmount = anyConofege.Ofdtos,
+                    DicountAmountType = PaymentType.Percent,
+                    DiscountTarget = DiscountTargetType.Pvp,
+                    DiscountScope = DiscountScopeType.All,
+                    Paxes = []
+                }
+            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
