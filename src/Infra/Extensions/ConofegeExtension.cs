@@ -23,7 +23,7 @@ public static class ConofegeExtension{
                     BookingWindowFrom = DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Ofgrbd),
                     BookingWindowTo = DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Ofgrbh),
                     OccupancyRateCod = conofege.Ofcocu.ToString(),
-                    Rooms = [],
+                    Rooms = conofege.GetRoomCodes,
                     Regimes = []
                 }
             ],
