@@ -11,7 +11,7 @@ public static class ConofegeExtension{
             ApplyOrder = null,
             DepositAmount = conofege.Ofdpto,
             DepositType = PaymentType.Fixed,
-            DepositBeforeDate = DateTimeHelper.ConvertYYMMDDToDatetime(conofege.Offtop),
+            DepositBeforeDate = conofege.Offtop == 0 ? null : DateTimeHelper.ConvertYYMMDDToDatetime(conofege.Offtop),
             ModificationCostsAmount = conofege.Gmimpo,
             Conditions = [],
             Configurations = []
