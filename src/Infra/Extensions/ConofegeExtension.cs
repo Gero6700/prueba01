@@ -10,7 +10,7 @@ public static class ConofegeExtension{
             ApplyTo = DateTimeHelper.ConvertJulianDateToDateTime(conofege.Offec2),
             ApplyOrder = null,
             DepositAmount = conofege.Ofdpto,
-            DepositType = PaymentType.Fixed,
+            DepositType = conofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
             DepositBeforeDate = conofege.Offtop == 0 ? null : DateTimeHelper.ConvertYYMMDDToDatetime(conofege.Offtop),
             ModificationCostsAmount = conofege.Gmimpo,
             Conditions = [],
