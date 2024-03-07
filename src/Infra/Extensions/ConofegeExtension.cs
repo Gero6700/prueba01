@@ -5,7 +5,7 @@ public static class ConofegeExtension{
     public static OfferAndSupplement ToOfferAndSupplement(this Conofege conofege) {
         return new OfferAndSupplement {
             Code = conofege.Code,
-            Type = OfferSupplementType.Supplement,
+            Type = conofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = DateTimeHelper.ConvertJulianDateToDateTime(conofege.Offec),
             ApplyTo = DateTimeHelper.ConvertJulianDateToDateTime(conofege.Offec2),
             ApplyOrder = null,
