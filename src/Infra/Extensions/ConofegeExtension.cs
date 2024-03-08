@@ -37,7 +37,7 @@ public static class ConofegeExtension{
                     ApplyRegimePriceType = conofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : conofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : conofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
                     ApplyRegimePrice = conofege.Ofpres,
                     DiscountAmount = conofege.Ofdtos,
-                    DicountAmountType = PaymentType.Percent,
+                    DicountAmountType = conofege.Oftidt.ToUpper() == "C" ? PaymentType.Fixed : PaymentType.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.All,
                     Paxes = []
