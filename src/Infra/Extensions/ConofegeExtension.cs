@@ -38,7 +38,7 @@ public static class ConofegeExtension{
                     ApplyRegimePrice = conofege.Ofpres,
                     DiscountAmount = conofege.Ofdtos,
                     DicountAmountType = conofege.Oftidt.ToUpper() == "C" ? PaymentType.Fixed : PaymentType.Percent,
-                    DiscountTarget = conofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : DiscountTargetType.Pvp,
+                    DiscountTarget = conofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : conofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.All,
                     Paxes = []
                 }    
