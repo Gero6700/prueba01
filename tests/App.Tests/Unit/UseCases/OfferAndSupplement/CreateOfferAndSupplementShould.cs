@@ -2867,7 +2867,16 @@ public class CreateOfferAndSupplementShould {
                             Scope = ScopeType.Regime,
                             AgeFrom = 0,
                             AgeTo = 0,
-                            Amount = anyOfdae[0],
+                            Amount = anyOfdas[0],
+                            AmountType = PaymentType.Percent
+                        },
+                        new OfferAndSupplementConfigurationPax {
+                            PaxOrder = 2,
+                            PaxType = PaxType.Adult,
+                            Scope = ScopeType.Regime,
+                            AgeFrom = 0,
+                            AgeTo = 0,
+                            Amount = anyOfdas[1],
                             AmountType = PaymentType.Percent
                         },
                         new OfferAndSupplementConfigurationPax {
@@ -2876,7 +2885,7 @@ public class CreateOfferAndSupplementShould {
                             Scope = ScopeType.Regime,
                             AgeFrom = 0,
                             AgeTo = 0,
-                            Amount = anyOfdae[2],
+                            Amount = anyOfdas[2],
                             AmountType = PaymentType.Percent
                         },
                         new OfferAndSupplementConfigurationPax {
@@ -2885,7 +2894,7 @@ public class CreateOfferAndSupplementShould {
                             Scope = ScopeType.Regime,
                             AgeFrom = 0,
                             AgeTo = 0,
-                            Amount = anyOfdae[3],
+                            Amount = anyOfdas[3],
                             AmountType = PaymentType.Percent
                         }
                     ]
