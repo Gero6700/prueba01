@@ -41,13 +41,15 @@ public static class ConofegeExtension{
                     DiscountTarget = conofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : conofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
                     DiscountScope = conofege.Ofapli.ToUpper() == "E" ? DiscountScopeType.Stay : conofege.Ofapli.ToUpper() == "S" ? DiscountScopeType.Regime : DiscountScopeType.All,
                     Paxes = conofege.GetAdultStayDiscounts
-                        .Select((value, index) => new OfferAndSupplementConfigurationPax {
-                            PaxOrder = index + 1,
+                        .Select((value, index) => new { Value = value, Index = index })
+                        .Where(item => item.Value > 0)
+                        .Select(item => new OfferAndSupplementConfigurationPax {
+                            PaxOrder = item.Index + 1,
                             PaxType = PaxType.Adult,
                             Scope = ScopeType.Stay,
                             AgeFrom = 0,
                             AgeTo = 0,
-                            Amount = value,
+                            Amount = item.Value,
                             AmountType = PaymentType.Percent
                         }).ToList()
                 }    
