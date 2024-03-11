@@ -78,4 +78,5 @@ public class Conofege {
     public List<decimal> GetAdultStayDiscounts => new () { Ofdae1, Ofdae2, Ofdae3, Ofdae4 };
     public List<decimal> GetAdultRegimeDiscounts => new() { Ofdas1, Ofdas2, Ofdas3, Ofdas4 };
     public List<decimal> GetChildStayDiscounts => new() { Ofdne1, Ofdne2, Ofdne3, Ofdne4 };
+    public List<decimal> GetChildRegimeDiscounts => new() { Ofdns1, Ofdns2, Ofdns3, Ofdns4 };
 }

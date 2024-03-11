@@ -99,6 +99,16 @@ public static class ConofegeExtension{
                             AgeTo = 0,
                             Amount = item.Value,
                             AmountType = PaymentType.Percent
+                        }))
+                        .Union(conofege.GetChildRegimeDiscounts
+                        .Select((item, index) => new OfferAndSupplementConfigurationPax {
+                            PaxOrder = index + 1,
+                            PaxType = PaxType.Child,
+                            Scope = ScopeType.Regime,
+                            AgeFrom = 0,
+                            AgeTo = 0,
+                            Amount = item,
+                            AmountType = PaymentType.Percent
                         })).ToList()
                 }    
             ]
