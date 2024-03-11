@@ -51,7 +51,19 @@ public static class ConofegeExtension{
                             AgeTo = 0,
                             Amount = item.Value,
                             AmountType = PaymentType.Percent
-                        })
+                        }) 
+                        .Union(conofege.GetAdultStayDiscounts
+                        .Select((value, index) => new { Value = value, Index = index })
+                        .Where(item => item.Value > 0)
+                        .Select(item => new OfferAndSupplementConfigurationPax {
+                            PaxOrder = item.Index + 1,
+                            PaxType = PaxType.Teenager,
+                            Scope = ScopeType.Stay,
+                            AgeFrom = 0,
+                            AgeTo = 0,
+                            Amount = item.Value,
+                            AmountType = PaymentType.Percent
+                        }))
                         .Union(conofege.GetAdultRegimeDiscounts
                         .Select((value, index) => new { Value = value, Index = index })
                         .Where(item => item.Value > 0)
@@ -63,6 +75,18 @@ public static class ConofegeExtension{
                                 AgeTo = 0,
                                 Amount = item.Value,
                                 AmountType = PaymentType.Percent
+                        }))
+                        .Union(conofege.GetAdultRegimeDiscounts
+                        .Select((value, index) => new { Value = value, Index = index })
+                        .Where(item => item.Value > 0)
+                        .Select(item => new OfferAndSupplementConfigurationPax {
+                            PaxOrder = item.Index + 1,
+                            PaxType = PaxType.Teenager,
+                            Scope = ScopeType.Regime,
+                            AgeFrom = 0,
+                            AgeTo = 0,
+                            Amount = item.Value,
+                            AmountType = PaymentType.Percent
                         })).ToList()
                 }    
             ]
