@@ -39,7 +39,7 @@ public static class ConofegeExtension{
                     DiscountAmount = conofege.Ofdtos,
                     DicountAmountType = conofege.Oftidt.ToUpper() == "C" ? PaymentType.Fixed : PaymentType.Percent,
                     DiscountTarget = conofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : conofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
-                    DiscountScope = conofege.Ofapli.ToUpper() == "E" ? DiscountScopeType.Stay : DiscountScopeType.All,
+                    DiscountScope = conofege.Ofapli.ToUpper() == "E" ? DiscountScopeType.Stay : conofege.Ofapli.ToUpper() == "S" ? DiscountScopeType.Regime : DiscountScopeType.All,
                     Paxes = []
                 }    
             ]
