@@ -1432,7 +1432,7 @@ public class CreateOfferAndSupplementShould {
         const string anyOfapli = "";
         const string anyO4tipa = "ADULT1";
         const string anyO4tdto = "";
-        var anyOfdae = new[] { 10.0m, 0.0m, 30.5m, 0.0m }; //Descuentos adulto/estancia
+        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
         var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
@@ -1524,7 +1524,7 @@ public class CreateOfferAndSupplementShould {
         const string anyOfapli = "";
         const string anyO4tipa = "ADULT1";
         const string anyO4tdto = "";
-        var anyOfdae = new[] { 10.0m, 0.0m, 30.5m, 0.0m }; //Descuentos adulto/estancia
+        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
         var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
@@ -1615,7 +1615,7 @@ public class CreateOfferAndSupplementShould {
         const string anyOfapli = "";
         const string anyO4tipa = "ADULT1";
         const string anyO4tdto = "";
-        var anyOfdae = new[] { 10.0m, 0.0m, 30.5m, 0.0m }; //Descuentos adulto/estancia
+        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
         var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
@@ -1706,7 +1706,7 @@ public class CreateOfferAndSupplementShould {
         const string anyOfapli = "";
         const string anyO4tipa = "ADULT1";
         const string anyO4tdto = "";
-        var anyOfdae = new[] { 10.0m, 0.0m, 30.5m, 0.0m }; //Descuentos adulto/estancia
+        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
         var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
@@ -1796,7 +1796,7 @@ public class CreateOfferAndSupplementShould {
         const string anyOfapli = "";
         const string anyO4tipa = "ADULT1";
         const string anyO4tdto = "";
-        var anyOfdae = new[] { 10.0m, 0.0m, 30.5m, 0.0m }; //Descuentos adulto/estancia
+        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
         var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
@@ -1885,7 +1885,7 @@ public class CreateOfferAndSupplementShould {
         const string anyOfapli = "";
         const string anyO4tipa = "ADULT1";
         const string anyO4tdto = "";
-        var anyOfdae = new[] { 10.0m, 0.0m, 30.5m, 0.0m }; //Descuentos adulto/estancia
+        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
         var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
@@ -1974,7 +1974,7 @@ public class CreateOfferAndSupplementShould {
         const string anyOfapli = "";
         const string anyO4tipa = "ADULT1";
         const string anyO4tdto = "";
-        var anyOfdae = new[] { 10.0m, 0.0m, 30.5m, 0.0m }; //Descuentos adulto/estancia
+        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
         var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
@@ -2062,7 +2062,7 @@ public class CreateOfferAndSupplementShould {
         const string anyOfapli = "";
         const string anyO4tipa = "ADULT1";
         const string anyO4tdto = "";
-        var anyOfdae = new[] { 10.0m, 0.0m, 30.5m, 0.0m }; //Descuentos adulto/estancia
+        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
         var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
@@ -2148,7 +2148,7 @@ public class CreateOfferAndSupplementShould {
         const string anyOfapli = "";
         const string anyO4tipa = "ADULT1";
         const string anyO4tdto = "";
-        var anyOfdae = new[] { 10.0m, 0.0m, 30.5m, 0.0m }; //Descuentos adulto/estancia
+        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
         var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
@@ -2233,7 +2233,7 @@ public class CreateOfferAndSupplementShould {
         const string anyOfapli = "";
         const string anyO4tipa = "ADULT1";
         const string anyO4tdto = "";
-        var anyOfdae = new[] { 10.0m, 0.0m, 30.5m, 0.0m }; //Descuentos adulto/estancia
+        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
         var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
@@ -2317,7 +2317,7 @@ public class CreateOfferAndSupplementShould {
         const string anyOfapli = "E";
         const string anyO4tipa = "ADULT1";
         const string anyO4tdto = "";
-        var anyOfdae = new[] { 10.0m, 0.0m, 30.5m, 0.0m }; //Descuentos adulto/estancia
+        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
         var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
@@ -2400,7 +2400,7 @@ public class CreateOfferAndSupplementShould {
         const string anyOfapli = "S";
         const string anyO4tipa = "ADULT1";
         const string anyO4tdto = "";
-        var anyOfdae = new[] { 10.0m, 0.0m, 30.5m, 0.0m }; //Descuentos adulto/estancia
+        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
         var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
