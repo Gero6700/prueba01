@@ -3356,6 +3356,126 @@ public class CreateOfferAndSupplementShould {
             .CreateOfferAndSupplement(Arg.Is<Infrastructure.Dtos.BookingCenter.OfferAndSupplement>(x => IsEquivalent(x, expectedOfferAndSupplement)));
     }
 
+    [Test]
+    public async Task create_offer_and_supplement_when_all_ofdns_values_are_not_zero() {
+        //Given
+        const int anyOffec = 2024001;
+        const int anyOffec2 = 2024002;
+        const int anyOfftop = 0;
+        const int anyOfgrbd = 0;
+        const int anyOfgrbh = 0;
+        const string anyOfapli = "S";
+        const string anyO4tipa = "ADULT1";
+        const string anyO4tdto = "";
+        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
+        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
+        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
+        var anyOfdns = new[] { 10.0m, 20.0m, 30.0m, 40.0m }; //Descuentos niño/servicio
+
+        var anyConofege = ConofegeBuilder.AConofegeBuilder()
+            .WithOffec(anyOffec)
+            .WithOffec2(anyOffec2)
+            .WithOfftop(anyOfftop)
+            .WithOfgrbd(anyOfgrbd)
+            .WithOfgrbh(anyOfgrbh)
+            .WithOfapli(anyOfapli)
+            .WithO4tipa(anyO4tipa)
+            .WithO4tdto(anyO4tdto)
+            .WithOfdae(anyOfdae)
+            .WithOfdas(anyOfdas)
+            .WithOfdne(anyOfdne)
+            .WithOfdns(anyOfdns)
+            .Build();
+
+        //When
+        await createOfferAndSupplement.Execute(anyConofege);
+
+        //Then
+        var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
+            Code = anyConofege.Code,
+            Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
+            ApplyFrom = new DateTime(2024, 01, 01),
+            ApplyTo = new DateTime(2024, 01, 02),
+            ApplyOrder = null,
+            DepositAmount = anyConofege.Ofdpto,
+            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
+            DepositBeforeDate = null,
+            ModificationCostsAmount = anyConofege.Gmimpo,
+            Conditions = [
+                new OfferAndSupplementCondition {
+                    Optional = anyConofege.Ofopci.ToUpper() == "S",
+                    StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
+                    ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
+                    MinStayDays = anyConofege.Ofdiae,
+                    MaxStayDays = anyConofege.Ofdieh,
+                    MinReleaseDays = anyConofege.Offred,
+                    MaxReleaseDays = anyConofege.Offres,
+                    BookingWindowFrom = DateTime.MinValue,
+                    BookingWindowTo = DateTime.MinValue,
+                    OccupancyRateCod = anyConofege.Ofcocu.ToString(),
+                    Rooms = anyConofege.GetRoomCodes.Where(value => value != "").ToList(),
+                    Regimes = anyConofege.GetRegimeCodes.Where(value => value != "").ToList(),
+                }
+            ],
+            Configurations = [
+                new OfferAndSupplementConfiguration {
+                    FreeDays = anyConofege.Ofdfac.Trim() == "" ? anyConofege.Ofdiae - anyConofege.Ofdiaf : anyConofege.Ofdiaf,
+                    RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
+                    RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
+                    ApplyStayPriceType = anyConofege.Offore.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offore.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offore.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
+                    ApplyStayPrice = anyConofege.Ofpree,
+                    ApplyRegimePriceType = anyConofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
+                    ApplyRegimePrice = anyConofege.Ofpres,
+                    DiscountAmount = anyConofege.Ofdtos,
+                    DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? PaymentType.Fixed : PaymentType.Percent,
+                    DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
+                    DiscountScope = DiscountScopeType.Regime,
+                    Paxes = [
+                        new OfferAndSupplementConfigurationPax {
+                            PaxOrder = 1,
+                            PaxType = PaxType.Child,
+                            Scope = ScopeType.Regime,
+                            AgeFrom = 0,
+                            AgeTo = 0,
+                            Amount = anyOfdns[0],
+                            AmountType = PaymentType.Percent
+                        },
+                        new OfferAndSupplementConfigurationPax {
+                            PaxOrder = 2,
+                            PaxType = PaxType.Child,
+                            Scope = ScopeType.Regime,
+                            AgeFrom = 0,
+                            AgeTo = 0,
+                            Amount = anyOfdns[1],
+                            AmountType = PaymentType.Percent
+                        },
+                        new OfferAndSupplementConfigurationPax {
+                            PaxOrder = 3,
+                            PaxType = PaxType.Child,
+                            Scope = ScopeType.Regime,
+                            AgeFrom = 0,
+                            AgeTo = 0,
+                            Amount = anyOfdns[2],
+                            AmountType = PaymentType.Percent
+                        },
+                        new OfferAndSupplementConfigurationPax {
+                            PaxOrder = 4,
+                            PaxType = PaxType.Child,
+                            Scope = ScopeType.Regime,
+                            AgeFrom = 0,
+                            AgeTo = 0,
+                            Amount = anyOfdns[3],
+                            AmountType = PaymentType.Percent
+                        }
+                    ]
+                }
+            ]
+        };
+
+        await availabilitySynchronizerApiClient.Received()
+            .CreateOfferAndSupplement(Arg.Is<Infrastructure.Dtos.BookingCenter.OfferAndSupplement>(x => IsEquivalent(x, expectedOfferAndSupplement)));
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
