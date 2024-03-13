@@ -13,6 +13,9 @@ public class CreateOfferAndSupplement {
         if (DateTimeHelper.ConvertJulianDateToDateTime(conofege.Offec2) == DateTime.MinValue) {
             throw new ArgumentException("Invalid apply to date");
         }
+        if (conofege.Offec > conofege.Offec2) {
+            throw new ArgumentException("Apply to date is less than apply from date");
+        }
 
         var offerAndSupplement = conofege.ToOfferAndSupplement();
         await availabilitySynchronizerApiClient.CreateOfferAndSupplement(offerAndSupplement);
