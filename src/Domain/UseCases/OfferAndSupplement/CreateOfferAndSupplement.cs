@@ -7,8 +7,11 @@ public class CreateOfferAndSupplement {
     }
 
     public async Task Execute(Conofege conofege) {
-        var offerAndSupplement = conofege.ToOfferAndSupplement();
+        if (DateTimeHelper.ConvertJulianDateToDateTime(conofege.Offec) == DateTime.MinValue) {
+            throw new ArgumentException("Invalid apply from date");
+        }
 
+        var offerAndSupplement = conofege.ToOfferAndSupplement();
         await availabilitySynchronizerApiClient.CreateOfferAndSupplement(offerAndSupplement);
     }
 }
