@@ -75,11 +75,6 @@ public class ConofegeBuilder {
             .RuleFor(x => x.Oftse4, f => f.Random.String(1,'A','Z').ToUpper())
             .RuleFor(x => x.Oftse5, f => f.Random.String(1,'A','Z').ToUpper())
             .RuleFor(x => x.Gmimpo, f => f.Random.Decimal(0,200))
-            .RuleFor(x => x.O4tipa, f => string.Concat(f.Random.ArrayElement(new string[] {"ADULT", "NIÑOS"}), f.Random.Int(0,10)))
-            .RuleFor(x => x.O4tdto, f => f.Random.ArrayElement(new string[] {"E", "S", ""}))
-            .RuleFor(x => x.O4desd, f => f.Random.Decimal(0,99))
-            .RuleFor(x => x.O4hast, f => f.Random.Decimal(0,99))
-            .RuleFor(x => x.O4dtos, f => f.Random.Decimal(0,100))
             .Generate();
     }
 
@@ -149,12 +144,7 @@ public class ConofegeBuilder {
             Oftse3 = raw.Oftse3,
             Oftse4 = raw.Oftse4,
             Oftse5 = raw.Oftse5,
-            Gmimpo = raw.Gmimpo,
-            O4tipa = raw.O4tipa,
-            O4tdto = raw.O4tdto,
-            O4desd = raw.O4desd,
-            O4hast = raw.O4hast,
-            O4dtos = raw.O4dtos
+            Gmimpo = raw.Gmimpo
         };
     }
 
@@ -483,31 +473,6 @@ public class ConofegeBuilder {
         return this;
     }
 
-    public ConofegeBuilder WithO4tipa(string newO4tipa) {
-        raw.O4tipa = newO4tipa;
-        return this;
-    }
-
-    public ConofegeBuilder WithO4tdto(string newO4tdto) {
-        raw.O4tdto = newO4tdto;
-        return this;
-    }
-
-    public ConofegeBuilder WithO4desd(decimal newO4desd) {
-        raw.O4desd = newO4desd;
-        return this;
-    }
-
-    public ConofegeBuilder WithO4hast(decimal newO4hast) {
-        raw.O4hast = newO4hast;
-        return this;
-    }
-
-    public ConofegeBuilder WithO4dtos(decimal newO4dtos) {
-        raw.O4dtos = newO4dtos;
-        return this;
-    }
-
     public ConofegeBuilder WithOfdae(decimal[] newOfdae) {
         raw.Ofdae1 = newOfdae[0];
         raw.Ofdae2 = newOfdae[1];
@@ -634,10 +599,5 @@ public class ConofegeBuilder {
         public string Oftse4 { get; set; } = string.Empty;
         public string Oftse5 { get; set; } = string.Empty;
         public decimal Gmimpo { get; set; }
-        public string O4tipa { get; set; } = string.Empty;
-        public string O4tdto { get; set; } = string.Empty;
-        public decimal O4desd { get; set; }
-        public decimal O4hast { get; set; }
-        public decimal O4dtos { get; set; }
     }
 }

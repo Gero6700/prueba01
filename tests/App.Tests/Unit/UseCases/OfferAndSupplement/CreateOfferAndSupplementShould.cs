@@ -31,9 +31,7 @@ public class CreateOfferAndSupplementShould {
         const string anyOffors = "";
         const string anyOftidt = "";
         const string anyOfsobr = "";
-        const string anyOfapli = "";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
+        const string anyOfapli = "";        
         var anyOfdae = new[] {0.0m, 0.0m, 0.0m, 0.0m}; //Descuentos adulto/estancia
         var anyOfdas = new[] {0.0m, 0.0m, 0.0m, 0.0m}; //Descuentos adulto/regimen
         var anyOfdne = new[] {0.0m, 0.0m, 0.0m, 0.0m}; //Descuentos niño/estancia
@@ -56,9 +54,7 @@ public class CreateOfferAndSupplementShould {
             .WithOffors(anyOffors)
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
-            .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
+            .WithOfapli(anyOfapli)            
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -136,9 +132,7 @@ public class CreateOfferAndSupplementShould {
         const string anyOffors = "";
         const string anyOftidt = "";
         const string anyOfsobr = "";
-        const string anyOfapli = "";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
+        const string anyOfapli = "";        
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -161,9 +155,7 @@ public class CreateOfferAndSupplementShould {
             .WithOffors(anyOffors)
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
-            .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
+            .WithOfapli(anyOfapli)            
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -242,8 +234,8 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
+        
+        
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -267,8 +259,8 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
+            
+            
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -346,8 +338,8 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
+        
+        
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -370,8 +362,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -449,8 +439,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -473,8 +461,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -552,8 +538,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -576,8 +560,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -654,8 +636,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -677,8 +657,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -754,8 +732,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -776,8 +752,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -852,8 +826,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -873,8 +845,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -949,8 +919,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -970,8 +938,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -1046,8 +1012,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -1067,8 +1031,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -1143,8 +1105,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -1164,8 +1124,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -1240,8 +1198,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -1260,8 +1216,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -1335,8 +1289,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -1355,8 +1307,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -1430,8 +1380,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -1449,8 +1397,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -1522,8 +1468,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -1540,8 +1484,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -1613,8 +1555,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -1631,8 +1571,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -1704,8 +1642,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -1722,8 +1658,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -1794,8 +1728,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -1811,8 +1743,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -1883,8 +1813,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -1900,8 +1828,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -1972,8 +1898,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -1989,8 +1913,8 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
+            
+            
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -2060,8 +1984,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "C";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -2076,8 +1998,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -2146,8 +2066,6 @@ public class CreateOfferAndSupplementShould {
         const int anyOfgrbh = 0;
         const string anyOfsobr = "B";
         const string anyOfapli = "";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -2161,8 +2079,6 @@ public class CreateOfferAndSupplementShould {
             .WithOfgrbh(anyOfgrbh)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -2231,8 +2147,6 @@ public class CreateOfferAndSupplementShould {
         const int anyOfgrbh = 0;
         const string anyOfsobr = "C";
         const string anyOfapli = "";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -2246,8 +2160,6 @@ public class CreateOfferAndSupplementShould {
             .WithOfgrbh(anyOfgrbh)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -2315,8 +2227,6 @@ public class CreateOfferAndSupplementShould {
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
         const string anyOfapli = "E";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -2329,8 +2239,6 @@ public class CreateOfferAndSupplementShould {
             .WithOfgrbd(anyOfgrbd)
             .WithOfgrbh(anyOfgrbh)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -2398,8 +2306,6 @@ public class CreateOfferAndSupplementShould {
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
         const string anyOfapli = "S";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -2412,8 +2318,6 @@ public class CreateOfferAndSupplementShould {
             .WithOfgrbd(anyOfgrbd)
             .WithOfgrbh(anyOfgrbh)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -2481,8 +2385,6 @@ public class CreateOfferAndSupplementShould {
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
         const string anyOfapli = "S";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 10.0m, 20.0m, 30.0m, 40.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -2495,8 +2397,6 @@ public class CreateOfferAndSupplementShould {
             .WithOfgrbd(anyOfgrbd)
             .WithOfgrbh(anyOfgrbh)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -2637,8 +2537,6 @@ public class CreateOfferAndSupplementShould {
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
         const string anyOfapli = "S";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 10.0m, 0.0m, 30.0m, 40.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -2651,8 +2549,6 @@ public class CreateOfferAndSupplementShould {
             .WithOfgrbd(anyOfgrbd)
             .WithOfgrbh(anyOfgrbh)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -2775,8 +2671,6 @@ public class CreateOfferAndSupplementShould {
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
         const string anyOfapli = "S";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -2789,8 +2683,6 @@ public class CreateOfferAndSupplementShould {
             .WithOfgrbd(anyOfgrbd)
             .WithOfgrbh(anyOfgrbh)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -2858,8 +2750,6 @@ public class CreateOfferAndSupplementShould {
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
         const string anyOfapli = "S";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 10.0m, 20.0m, 30.0m, 40.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -2872,8 +2762,6 @@ public class CreateOfferAndSupplementShould {
             .WithOfgrbd(anyOfgrbd)
             .WithOfgrbh(anyOfgrbh)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -3014,8 +2902,6 @@ public class CreateOfferAndSupplementShould {
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
         const string anyOfapli = "S";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 30.0m, 40.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -3028,8 +2914,6 @@ public class CreateOfferAndSupplementShould {
             .WithOfgrbd(anyOfgrbd)
             .WithOfgrbh(anyOfgrbh)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -3134,8 +3018,6 @@ public class CreateOfferAndSupplementShould {
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
         const string anyOfapli = "S";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 10.0m, 20.0m, 30.0m, 40.0m }; //Descuentos niño/estancia
@@ -3148,8 +3030,6 @@ public class CreateOfferAndSupplementShould {
             .WithOfgrbd(anyOfgrbd)
             .WithOfgrbh(anyOfgrbh)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -3254,8 +3134,6 @@ public class CreateOfferAndSupplementShould {
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
         const string anyOfapli = "S";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 20.0m, 30.0m, 40.0m }; //Descuentos niño/estancia
@@ -3268,8 +3146,6 @@ public class CreateOfferAndSupplementShould {
             .WithOfgrbd(anyOfgrbd)
             .WithOfgrbh(anyOfgrbh)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -3365,8 +3241,6 @@ public class CreateOfferAndSupplementShould {
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
         const string anyOfapli = "S";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -3379,8 +3253,6 @@ public class CreateOfferAndSupplementShould {
             .WithOfgrbd(anyOfgrbd)
             .WithOfgrbh(anyOfgrbh)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -3485,8 +3357,6 @@ public class CreateOfferAndSupplementShould {
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
         const string anyOfapli = "S";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -3499,8 +3369,6 @@ public class CreateOfferAndSupplementShould {
             .WithOfgrbd(anyOfgrbd)
             .WithOfgrbh(anyOfgrbh)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
@@ -3596,8 +3464,6 @@ public class CreateOfferAndSupplementShould {
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
         const string anyOfapli = "S";
-        const string anyO4tipa = "ADULT1";
-        const string anyO4tdto = "";
         var anyOfdae = new[] { 10.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
         var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
         var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
@@ -3610,8 +3476,6 @@ public class CreateOfferAndSupplementShould {
             .WithOfgrbd(anyOfgrbd)
             .WithOfgrbh(anyOfgrbh)
             .WithOfapli(anyOfapli)
-            .WithO4tipa(anyO4tipa)
-            .WithO4tdto(anyO4tdto)
             .WithOfdae(anyOfdae)
             .WithOfdas(anyOfdas)
             .WithOfdne(anyOfdne)
