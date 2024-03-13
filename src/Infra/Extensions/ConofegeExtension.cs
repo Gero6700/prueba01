@@ -15,7 +15,7 @@ public static class ConofegeExtension{
                 new OfferAndSupplementCondition {
                     Optional = conofege.Ofopci.ToUpper() == "S",
                     StayType = conofege.Ofties.ToUpper() == "P" ? StayType.Period : conofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
-                    ApplyToPax = conofege.Ofadni.ToUpper() == "A" ? PaxType.Adult :  conofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
+                    ApplyToPax = conofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : conofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
                     MinStayDays = conofege.Ofdiae,
                     MaxStayDays = conofege.Ofdieh,
                     MinReleaseDays = conofege.Offred,
@@ -40,80 +40,30 @@ public static class ConofegeExtension{
                     DicountAmountType = conofege.Oftidt.ToUpper() == "C" ? PaymentType.Fixed : PaymentType.Percent,
                     DiscountTarget = conofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : conofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
                     DiscountScope = conofege.Ofapli.ToUpper() == "E" ? DiscountScopeType.Stay : conofege.Ofapli.ToUpper() == "S" ? DiscountScopeType.Regime : DiscountScopeType.All,
-                    Paxes = conofege.GetAdultStayDiscounts
-                        .Select((value, index) => new { Value = value, Index = index })
-                        .Where(item => item.Value > 0)
-                        .Select(item => new OfferAndSupplementConfigurationPax {
-                            PaxOrder = item.Index + 1,
-                            PaxType = PaxType.Adult,
-                            Scope = ScopeType.Stay,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = item.Value,
-                            AmountType = PaymentType.Percent
-                        }) 
-                        .Union(conofege.GetAdultStayDiscounts
-                        .Select((value, index) => new { Value = value, Index = index })
-                        .Where(item => item.Value > 0)
-                        .Select(item => new OfferAndSupplementConfigurationPax {
-                            PaxOrder = item.Index + 1,
-                            PaxType = PaxType.Teenager,
-                            Scope = ScopeType.Stay,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = item.Value,
-                            AmountType = PaymentType.Percent
-                        }))
-                        .Union(conofege.GetAdultRegimeDiscounts
-                        .Select((value, index) => new { Value = value, Index = index })
-                        .Where(item => item.Value > 0)
-                        .Select(item => new OfferAndSupplementConfigurationPax {
-                                PaxOrder = item.Index + 1,
-                                PaxType = PaxType.Adult,
-                                Scope = ScopeType.Regime,
-                                AgeFrom = 0,
-                                AgeTo = 0,
-                                Amount = item.Value,
-                                AmountType = PaymentType.Percent
-                        }))
-                        .Union(conofege.GetAdultRegimeDiscounts
-                        .Select((value, index) => new { Value = value, Index = index })
-                        .Where(item => item.Value > 0)
-                        .Select(item => new OfferAndSupplementConfigurationPax {
-                            PaxOrder = item.Index + 1,
-                            PaxType = PaxType.Teenager,
-                            Scope = ScopeType.Regime,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = item.Value,
-                            AmountType = PaymentType.Percent
-                        }))
-                        .Union(conofege.GetChildStayDiscounts
-                        .Select((value, index) => new { Value = value, Index = index })
-                        .Where(item => item.Value > 0)
-                        .Select(item => new OfferAndSupplementConfigurationPax {
-                            PaxOrder = item.Index + 1,
-                            PaxType = PaxType.Child,
-                            Scope = ScopeType.Stay,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = item.Value,
-                            AmountType = PaymentType.Percent
-                        }))
-                        .Union(conofege.GetChildRegimeDiscounts
-                        .Select((value, index) => new { Value = value, Index = index })
-                        .Where(item => item.Value > 0)
-                        .Select(item => new OfferAndSupplementConfigurationPax {
-                            PaxOrder = item.Index + 1,
-                            PaxType = PaxType.Child,
-                            Scope = ScopeType.Regime,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = item.Value,
-                            AmountType = PaymentType.Percent
-                        })).ToList()
-                }    
+                    Paxes = CreatePaxConfigurations(conofege.GetAdultStayDiscounts, PaxType.Adult, ScopeType.Stay)
+                        .Union(CreatePaxConfigurations(conofege.GetAdultStayDiscounts, PaxType.Teenager, ScopeType.Stay))
+                        .Union(CreatePaxConfigurations(conofege.GetAdultRegimeDiscounts, PaxType.Adult, ScopeType.Regime))
+                        .Union(CreatePaxConfigurations(conofege.GetAdultRegimeDiscounts, PaxType.Teenager, ScopeType.Regime))
+                        .Union(CreatePaxConfigurations(conofege.GetChildStayDiscounts, PaxType.Child, ScopeType.Stay))
+                        .Union(CreatePaxConfigurations(conofege.GetChildRegimeDiscounts, PaxType.Child, ScopeType.Regime))
+                        .ToList()
+                }
             ]
         };
+    }
+
+    private static IEnumerable<OfferAndSupplementConfigurationPax> CreatePaxConfigurations(List<decimal> discounts, PaxType paxType, ScopeType scopeType) {
+        return discounts
+            .Select((value, index) => new { Value = value, Index = index })
+            .Where(item => item.Value > 0)
+            .Select(item => new OfferAndSupplementConfigurationPax {
+                PaxOrder = item.Index + 1,
+                PaxType = paxType,
+                Scope = scopeType,
+                AgeFrom = 0,
+                AgeTo = 0,
+                Amount = item.Value,
+                AmountType = PaymentType.Percent
+            });
     }
 }
