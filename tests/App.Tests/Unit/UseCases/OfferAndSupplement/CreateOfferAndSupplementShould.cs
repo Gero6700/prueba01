@@ -3562,6 +3562,22 @@ public class CreateOfferAndSupplementShould {
             .CreateOfferAndSupplement(Arg.Is<Infrastructure.Dtos.BookingCenter.OfferAndSupplement>(x => IsEquivalent(x, expectedOfferAndSupplement)));
     }
 
+    [Test]
+    public async Task do_not_create_offer_and_supplement_when_offec_is_invalid() {
+        //Given
+        const int anyOffec = 2024;
+
+        var anyConofege = ConofegeBuilder.AConofegeBuilder()
+            .WithOffec(anyOffec)
+            .Build();
+
+        //When
+        Func<Task> function = async () => await createOfferAndSupplement.Execute(anyConofege);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Invalid apply from date");
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
