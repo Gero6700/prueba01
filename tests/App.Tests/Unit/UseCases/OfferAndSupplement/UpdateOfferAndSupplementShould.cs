@@ -90,6 +90,8 @@ public class UpdateOfferAndSupplementShould {
                 }
             ]
         };
+        await availabilitySynchronizerApiClient.Received()
+            .UpdateOfferAndSupplement(Arg.Is<Infrastructure.Dtos.BookingCenter.OfferAndSupplement>(x => IsEquivalent(x, expectedOfferAndSupplement)));
     }
 
     [Test]
