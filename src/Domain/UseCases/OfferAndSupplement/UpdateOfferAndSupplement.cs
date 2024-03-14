@@ -16,6 +16,9 @@ public class UpdateOfferAndSupplement {
         if (conofege.Offec > conofege.Offec2) {
             throw new ArgumentException("Apply to date is less than apply from date");
         }
+        if (conofege.Offtop != 0 && DateTimeHelper.ConvertYYMMDDToDatetime(conofege.Offtop) == DateTime.MinValue) {
+            throw new ArgumentException("Invalid deposit date");
+        }
 
         var offerAndSupplement = conofege.ToOfferAndSupplement();
         return availabilitySynchronizerApiClient.UpdateOfferAndSupplement(offerAndSupplement);
