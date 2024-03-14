@@ -7,6 +7,10 @@ public class UpdateOfferAndSupplement {
     }
 
     public Task Execute(Conofege conofege) {
+        if (DateTimeHelper.ConvertJulianDateToDateTime(conofege.Offec) == DateTime.MinValue) {
+            throw new ArgumentException("Invalid apply from date");
+        }
+
         var offerAndSupplement = conofege.ToOfferAndSupplement();
         return availabilitySynchronizerApiClient.UpdateOfferAndSupplement(offerAndSupplement);
     }
