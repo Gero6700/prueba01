@@ -7,6 +7,9 @@ public class CreateOfferAndSupplementConfigurationPax {
     }
 
     public async Task Execute(Condtof condtof) {
+        if (condtof.Code == "") {
+            throw new ArgumentException("Code is required");
+        }
         var offerAndSupplementConfigurationPax = condtof.ToOfferAndSupplementConfigurationPax();
         await availabilitySynchronizerApiClient.CreateOfferAndSupplementConfigurationPax(offerAndSupplementConfigurationPax);
     }    
