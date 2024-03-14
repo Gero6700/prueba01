@@ -10,7 +10,7 @@ public class UpdateOfferAndSupplementShould {
     [SetUp]
     public void Setup() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        updateOfferAndSupplement = new UpdateOfferAndSupplement();
+        updateOfferAndSupplement = new UpdateOfferAndSupplement(availabilitySynchronizerApiClient);
     }
 
     [Test]
