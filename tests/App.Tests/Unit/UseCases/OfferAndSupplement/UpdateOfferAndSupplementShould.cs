@@ -142,6 +142,22 @@ public class UpdateOfferAndSupplementShould {
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Apply to date is less than apply from date");
     }
 
+    [Test]
+    public async Task do_not_update_offer_and_supplement_when_offtop_is_invalid() {
+        //Given
+        const int anyOfftop = 2406004;
+
+        var anyConofege = ConofegeBuilder.AConofegeBuilder()
+            .WithOfftop(anyOfftop)
+            .Build();
+
+        //When
+        Func<Task> function = async () => await updateOfferAndSupplement.Execute(anyConofege);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Invalid deposit date");
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
