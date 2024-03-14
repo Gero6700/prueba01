@@ -1,6 +1,6 @@
 namespace Senator.As400.Cloud.Sync.Application.UseCases.OfferAndSupplement;
 public class UpdateOfferAndSupplement {
-    public Task Execute() {
+    public Task Execute(Conofege conofege) {
         throw new NotImplementedException();
     }
 }
