@@ -25,6 +25,9 @@ public class CreateOfferAndSupplement {
         if (conofege.Ofdieh < conofege.Ofdiae && conofege.Ofdieh > 0) {
             throw new ArgumentException("Max stay days is less than min stay days");
         }
+        if (conofege.Offred > conofege.Offres && conofege.Offres > 0) {
+            throw new ArgumentException("Max release days is less than min release days");
+        }
 
         var offerAndSupplement = conofege.ToOfferAndSupplement();
         await availabilitySynchronizerApiClient.CreateOfferAndSupplement(offerAndSupplement);

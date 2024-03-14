@@ -3663,12 +3663,12 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task do_not_create_offer_and_supplement_when_offres_is_less_than_offred_and_offres_is_greater_than_zero() {
         //Given
-        const int anyOffred = 1;
-        const int anyOfdiae = 2;
+        const int anyOffred = 2;
+        const int anyOffres = 1;
 
         var anyConofege = ConofegeBuilder.AConofegeBuilder()
             .WithOffred(anyOffred)
-            .WithOfdiae(anyOfdiae)
+            .WithOffres(anyOffres)
             .Build();
 
         //When
