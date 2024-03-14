@@ -3660,6 +3660,24 @@ public class CreateOfferAndSupplementShould {
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Max stay days is less than min stay days");
     }
 
+    [Test]
+    public async Task do_not_create_offer_and_supplement_when_offres_is_less_than_offred_and_offres_is_greater_than_zero() {
+        //Given
+        const int anyOffred = 1;
+        const int anyOfdiae = 2;
+
+        var anyConofege = ConofegeBuilder.AConofegeBuilder()
+            .WithOffred(anyOffred)
+            .WithOfdiae(anyOfdiae)
+            .Build();
+
+        //When
+        Func<Task> function = async () => await createOfferAndSupplement.Execute(anyConofege);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Max release days is less than min release days");
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
