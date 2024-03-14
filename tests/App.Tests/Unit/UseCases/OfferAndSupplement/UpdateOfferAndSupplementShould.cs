@@ -124,6 +124,24 @@ public class UpdateOfferAndSupplementShould {
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Invalid apply to date");
     }
 
+    [Test]
+    public async Task do_not_update_offer_and_supplement_when_offec2_is_less_than_offec() {
+        //Given
+        const int anyOffec = 2024002;
+        const int anyOffec2 = 2024001;
+
+        var anyConofege = ConofegeBuilder.AConofegeBuilder()
+            .WithOffec(anyOffec)
+            .WithOffec2(anyOffec2)
+            .Build();
+
+        //When
+        Func<Task> function = async () => await updateOfferAndSupplement.Execute(anyConofege);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Apply to date is less than apply from date");
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
