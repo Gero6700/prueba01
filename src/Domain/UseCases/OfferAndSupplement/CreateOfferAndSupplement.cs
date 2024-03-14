@@ -18,7 +18,10 @@ public class CreateOfferAndSupplement {
         }
         if (conofege.Offtop != 0 && DateTimeHelper.ConvertYYMMDDToDatetime(conofege.Offtop) == DateTime.MinValue) {
             throw new ArgumentException("Invalid deposit date");
-        }       
+        }
+        if (conofege.Code == "") {
+            throw new ArgumentException("Code is required");
+        }
 
         var offerAndSupplement = conofege.ToOfferAndSupplement();
         await availabilitySynchronizerApiClient.CreateOfferAndSupplement(offerAndSupplement);
