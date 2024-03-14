@@ -43,7 +43,9 @@ public class CreateOfferAndSupplementConfigurationPaxShould {
            AgeFrom = anyO4desd,
            AgeTo = anyO4has,
            Amount = anyO4dtos,
-           AmountType = PaymentType.Percent
+           AmountType = PaymentType.Percent,
+           OfferAndSupplementConfigurationCode = anyOfferAndSupplementCode,
+           Code = anyCode
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -82,7 +84,9 @@ public class CreateOfferAndSupplementConfigurationPaxShould {
             AgeFrom = anyO4desd,
             AgeTo = anyO4has,
             Amount = anyO4dtos,
-            AmountType = PaymentType.Percent
+            AmountType = PaymentType.Percent,
+            OfferAndSupplementConfigurationCode = anyOfferAndSupplementCode,
+            Code = anyCode
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -121,7 +125,9 @@ public class CreateOfferAndSupplementConfigurationPaxShould {
             AgeFrom = anyO4desd,
             AgeTo = anyO4has,
             Amount = anyO4dtos,
-            AmountType = PaymentType.Percent
+            AmountType = PaymentType.Percent,
+            OfferAndSupplementConfigurationCode = anyOfferAndSupplementCode,
+            Code = anyCode
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -160,7 +166,9 @@ public class CreateOfferAndSupplementConfigurationPaxShould {
             AgeFrom = anyO4desd,
             AgeTo = anyO4has,
             Amount = anyO4dtos,
-            AmountType = PaymentType.Percent
+            AmountType = PaymentType.Percent,
+            OfferAndSupplementConfigurationCode = anyOfferAndSupplementCode,
+            Code = anyCode
         };
 
         await availabilitySynchronizerApiClient.Received()

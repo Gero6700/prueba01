@@ -7,4 +7,6 @@ public class OfferAndSupplementConfigurationPax{
     public decimal AgeTo { get; set; }
     public decimal Amount { get; set; }
     public PaymentType AmountType { get; set; }
+    public string OfferAndSupplementConfigurationCode { get; set; } = string.Empty;
+    public string Code { get; set; } = string.Empty;
 }
