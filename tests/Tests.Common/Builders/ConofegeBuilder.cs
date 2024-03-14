@@ -16,7 +16,7 @@ public class ConofegeBuilder {
             .RuleFor(x => x.Offec2, f => ((DateTime.Now.Year + 1) * 1000) + f.Random.Int(0, 365))
             .RuleFor(x => x.Ofdpto, f => f.Random.Decimal())
             .RuleFor(x => x.Offode, f => f.Random.ArrayElement(new string[] {"%", "I", ""}))
-            .RuleFor(x => x.Offtop, f => int.Parse(f.Date.Future().ToString("yyyyMMdd")))
+            .RuleFor(x => x.Offtop, f => int.Parse(f.Date.Future().ToString("yyMMdd")))
             .RuleFor(x => x.Ofties, f => f.Random.ArrayElement(new string[] {"L", "P", "E", ""}))
             .RuleFor(x => x.Ofadni, f => f.Random.ArrayElement(new string[] {"T", "A", "N", ""}))
             .RuleFor(x => x.Ofdiae, f => f.Random.Int(0,99))
