@@ -28,6 +28,9 @@ public class UpdateOfferAndSupplement {
         if (conofege.Offred > conofege.Offres && conofege.Offres > 0) {
             throw new ArgumentException("Max release days is less than min release days");
         }
+        if (DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Ofgrbd) > DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Ofgrbh) && conofege.Ofgrbh > 0 && conofege.Ofgrbd > 0) {
+            throw new ArgumentException("Booking window to date is less than booking window from date");
+        }
 
         var offerAndSupplement = conofege.ToOfferAndSupplement();
         return availabilitySynchronizerApiClient.UpdateOfferAndSupplement(offerAndSupplement);
