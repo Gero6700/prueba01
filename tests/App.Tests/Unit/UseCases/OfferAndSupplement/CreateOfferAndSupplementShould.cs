@@ -3643,7 +3643,7 @@ public class CreateOfferAndSupplementShould {
     }
 
     [Test]
-    public async Task do_not_create_offer_ands_supplement_when_ofdieh_is_less_than_ofdiae() {
+    public async Task do_not_create_offer_and_supplement_when_ofdieh_is_less_than_ofdiae_and_ofdieh_is_greater_than_zero() {
         //Given
         const int anyOfdieh = 1;
         const int anyOfdiae = 2;
