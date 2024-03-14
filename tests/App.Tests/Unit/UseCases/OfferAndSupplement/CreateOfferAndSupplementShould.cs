@@ -3678,6 +3678,24 @@ public class CreateOfferAndSupplementShould {
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Max release days is less than min release days");
     }
 
+    [Test]
+    public async Task do_not_create_offer_and_supplement_when_ofgrbh_is_less_than_ofgrbd_and_are_not_zero() {
+        //Given
+        const int anyOfgrbd = 20240130;
+        const int anyOfgrbh = 20240129;
+
+        var anyConofege = ConofegeBuilder.AConofegeBuilder()
+            .WithOfgrbd(anyOfgrbd)
+            .WithOfgrbh(anyOfgrbh)
+            .Build();
+
+        //When
+        Func<Task> function = async () => await createOfferAndSupplement.Execute(anyConofege);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Booking window to date is less than booking window from date");
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
