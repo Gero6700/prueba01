@@ -1,3 +1,4 @@
+using Senator.As400.Cloud.Sync.Application.UseCases.OfferAndSupplement;
 using Senator.As400.Cloud.Sync.Infrastructure.Dtos.As400;
 
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.OfferAndSupplement;
@@ -89,6 +90,22 @@ public class UpdateOfferAndSupplementShould {
                 }
             ]
         };
+    }
+
+    [Test]
+    public async Task do_not_update_offer_and_supplement_when_offec_is_invalid() {
+        //Given
+        const int anyOffec = 2024;
+
+        var anyConofege = ConofegeBuilder.AConofegeBuilder()
+        .WithOffec(anyOffec)
+            .Build();
+
+        //When
+        Func<Task> function = async () => await updateOfferAndSupplement.Execute(anyConofege);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Invalid apply from date");
     }
 
     private bool IsEquivalent(object source, object expected) {
