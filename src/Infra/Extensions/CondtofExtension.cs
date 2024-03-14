@@ -3,7 +3,7 @@ public static class CondtofExtension {
     public static OfferAndSupplementConfigurationPax ToOfferAndSupplementConfigurationPax(this Condtof condtof) {
         return new OfferAndSupplementConfigurationPax {
             PaxOrder = int.Parse(condtof.O4tipa.Trim()[5..]),
-            PaxType = condtof.O4tipa[..4].ToUpper() == "ADULT" ? PaxType.Adult : PaxType.Adult,
+            PaxType = condtof.O4tipa[..5].ToUpper() == "ADULT" ? PaxType.Adult : condtof.O4tipa[..5].ToUpper() == "NIÑOS" ? PaxType.Child : PaxType.Adult,
             Scope = condtof.O4tdto.ToUpper() == "E" ? ScopeType.Stay : ScopeType.Stay,
             AgeFrom = condtof.O4desd,
             AgeTo = condtof.O4has,
