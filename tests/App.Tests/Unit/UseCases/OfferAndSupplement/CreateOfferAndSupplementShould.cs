@@ -3628,6 +3628,20 @@ public class CreateOfferAndSupplementShould {
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Invalid deposit date");
     }
 
+    [Test]
+    public async Task do_not_create_offer_and_supplement_when_code_is_empty() {
+        //Given
+        var anyConofege = ConofegeBuilder.AConofegeBuilder()
+            .WithCode("")
+            .Build();
+
+        //When
+        Func<Task> function = async () => await createOfferAndSupplement.Execute(anyConofege);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Code is required");
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
