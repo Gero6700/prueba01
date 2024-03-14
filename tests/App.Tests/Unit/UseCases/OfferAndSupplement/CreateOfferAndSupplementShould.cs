@@ -2447,7 +2447,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.Regime,
                     Paxes = [
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 1,
                             PaxType = PaxType.Adult,
                             Scope = ScopeType.Stay,
@@ -2456,7 +2456,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdae[0],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 1,
                             PaxType = PaxType.Teenager,
                             Scope = ScopeType.Stay,
@@ -2465,7 +2465,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdae[0],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 2,
                             PaxType = PaxType.Adult,
                             Scope = ScopeType.Stay,
@@ -2474,7 +2474,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdae[1],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 2,
                             PaxType = PaxType.Teenager,
                             Scope = ScopeType.Stay,
@@ -2483,7 +2483,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdae[1],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 3,
                             PaxType = PaxType.Adult,
                             Scope = ScopeType.Stay,
@@ -2492,7 +2492,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdae[2],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 3,
                             PaxType = PaxType.Teenager,
                             Scope = ScopeType.Stay,
@@ -2501,7 +2501,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdae[2],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 4,
                             PaxType = PaxType.Adult,
                             Scope = ScopeType.Stay,
@@ -2510,7 +2510,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdae[3],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 4,
                             PaxType = PaxType.Teenager,
                             Scope = ScopeType.Stay,
@@ -2599,7 +2599,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.Regime,
                     Paxes = [
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 1,
                             PaxType = PaxType.Adult,
                             Scope = ScopeType.Stay,
@@ -2608,7 +2608,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdae[0],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 1,
                             PaxType = PaxType.Teenager,
                             Scope = ScopeType.Stay,
@@ -2617,7 +2617,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdae[0],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 3,
                             PaxType = PaxType.Adult,
                             Scope = ScopeType.Stay,
@@ -2626,7 +2626,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdae[2],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 3,
                             PaxType = PaxType.Teenager,
                             Scope = ScopeType.Stay,
@@ -2635,7 +2635,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdae[2],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 4,
                             PaxType = PaxType.Adult,
                             Scope = ScopeType.Stay,
@@ -2644,7 +2644,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdae[3],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 4,
                             PaxType = PaxType.Teenager,
                             Scope = ScopeType.Stay,
@@ -2812,7 +2812,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.Regime,
                     Paxes = [
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 1,
                             PaxType = PaxType.Adult,
                             Scope = ScopeType.Regime,
@@ -2821,7 +2821,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdas[0],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 1,
                             PaxType = PaxType.Teenager,
                             Scope = ScopeType.Regime,
@@ -2830,7 +2830,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdas[0],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 2,
                             PaxType = PaxType.Adult,
                             Scope = ScopeType.Regime,
@@ -2839,7 +2839,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdas[1],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 2,
                             PaxType = PaxType.Teenager,
                             Scope = ScopeType.Regime,
@@ -2848,7 +2848,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdas[1],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 3,
                             PaxType = PaxType.Adult,
                             Scope = ScopeType.Regime,
@@ -2857,7 +2857,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdas[2],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 3,
                             PaxType = PaxType.Teenager,
                             Scope = ScopeType.Regime,
@@ -2866,7 +2866,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdas[2],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 4,
                             PaxType = PaxType.Adult,
                             Scope = ScopeType.Regime,
@@ -2875,7 +2875,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdas[3],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 4,
                             PaxType = PaxType.Teenager,
                             Scope = ScopeType.Regime,
@@ -2964,7 +2964,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.Regime,
                     Paxes = [
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 3,
                             PaxType = PaxType.Adult,
                             Scope = ScopeType.Regime,
@@ -2973,7 +2973,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdas[2],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 3,
                             PaxType = PaxType.Teenager,
                             Scope = ScopeType.Regime,
@@ -2982,7 +2982,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdas[2],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 4,
                             PaxType = PaxType.Adult,
                             Scope = ScopeType.Regime,
@@ -2991,7 +2991,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdas[3],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 4,
                             PaxType = PaxType.Teenager,
                             Scope = ScopeType.Regime,
@@ -3080,7 +3080,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.Regime,
                     Paxes = [
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 1,
                             PaxType = PaxType.Child,
                             Scope = ScopeType.Stay,
@@ -3089,7 +3089,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdne[0],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 2,
                             PaxType = PaxType.Child,
                             Scope = ScopeType.Stay,
@@ -3098,7 +3098,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdne[1],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 3,
                             PaxType = PaxType.Child,
                             Scope = ScopeType.Stay,
@@ -3107,7 +3107,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdne[2],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 4,
                             PaxType = PaxType.Child,
                             Scope = ScopeType.Stay,
@@ -3196,7 +3196,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.Regime,
                     Paxes = [
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 2,
                             PaxType = PaxType.Child,
                             Scope = ScopeType.Stay,
@@ -3205,7 +3205,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdne[1],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 3,
                             PaxType = PaxType.Child,
                             Scope = ScopeType.Stay,
@@ -3214,7 +3214,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdne[2],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 4,
                             PaxType = PaxType.Child,
                             Scope = ScopeType.Stay,
@@ -3303,7 +3303,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.Regime,
                     Paxes = [
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 1,
                             PaxType = PaxType.Child,
                             Scope = ScopeType.Regime,
@@ -3312,7 +3312,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdns[0],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 2,
                             PaxType = PaxType.Child,
                             Scope = ScopeType.Regime,
@@ -3321,7 +3321,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdns[1],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 3,
                             PaxType = PaxType.Child,
                             Scope = ScopeType.Regime,
@@ -3330,7 +3330,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdns[2],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 4,
                             PaxType = PaxType.Child,
                             Scope = ScopeType.Regime,
@@ -3419,7 +3419,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.Regime,
                     Paxes = [
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 1,
                             PaxType = PaxType.Child,
                             Scope = ScopeType.Regime,
@@ -3428,7 +3428,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdns[0],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 2,
                             PaxType = PaxType.Child,
                             Scope = ScopeType.Regime,
@@ -3437,7 +3437,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdns[1],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 4,
                             PaxType = PaxType.Child,
                             Scope = ScopeType.Regime,
@@ -3526,7 +3526,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.Regime,
                     Paxes = [
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 1,
                             PaxType = PaxType.Adult,
                             Scope = ScopeType.Stay,
@@ -3535,7 +3535,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdae[0],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 1,
                             PaxType = PaxType.Teenager,
                             Scope = ScopeType.Stay,
@@ -3544,7 +3544,7 @@ public class CreateOfferAndSupplementShould {
                             Amount = anyOfdae[0],
                             AmountType = PaymentType.Percent
                         },
-                        new OfferAndSupplementConfigurationPax {
+                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
                             PaxOrder = 2,
                             PaxType = PaxType.Child,
                             Scope = ScopeType.Regime,
