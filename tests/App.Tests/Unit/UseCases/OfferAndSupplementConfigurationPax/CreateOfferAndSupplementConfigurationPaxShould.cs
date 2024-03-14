@@ -8,7 +8,7 @@ public class CreateOfferAndSupplementConfigurationPaxShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        createOfferAndSupplementConfigurationPax = new CreateOfferAndSupplementConfigurationPax();
+        createOfferAndSupplementConfigurationPax = new CreateOfferAndSupplementConfigurationPax(availabilitySynchronizerApiClient);
     }
 
     [Test]
@@ -24,7 +24,7 @@ public class CreateOfferAndSupplementConfigurationPaxShould {
 
         var condtof = new Condtof {
             O4tipa = anyO4tipa,
-            O4dto = anyO4dto,
+            O4tdto = anyO4dto,
             O4desd = anyO4desd,
             O4has = anyO4has,
             O4dtos = anyO4dtos,
