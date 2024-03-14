@@ -41,5 +41,6 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Providers {
         Task<Response> UpdateCancellationPolicyLine(CancellationPolicyLine cancellationPolicyLine);
         Task<Response> CreateOfferAndSupplement(OfferAndSupplement offerAndSupplement);
         Task<Response> UpdateOfferAndSupplement(OfferAndSupplement offerAndSupplement);
+        Task<Response> CreateOfferAndSupplementConfigurationPax(OfferAndSupplementConfigurationPax offerAndSupplementConfigurationPax);
     }
 }
