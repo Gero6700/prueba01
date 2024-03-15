@@ -22,6 +22,9 @@ public class CreateOfferAndSupplementConfigurationPax {
         if (condtof.O4has < condtof.O4desd) {
             throw new ArgumentException("Age to is less than age from");
         }
+        if (condtof.O4tipa == "") {
+            throw new ArgumentException("Pax type is required");
+        }
         
         var offerAndSupplementConfigurationPax = condtof.ToOfferAndSupplementConfigurationPax();
         await availabilitySynchronizerApiClient.CreateOfferAndSupplementConfigurationPax(offerAndSupplementConfigurationPax);
