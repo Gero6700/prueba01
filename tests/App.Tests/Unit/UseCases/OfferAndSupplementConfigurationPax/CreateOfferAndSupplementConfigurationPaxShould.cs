@@ -438,7 +438,7 @@ public class CreateOfferAndSupplementConfigurationPaxShould {
         Func<Task> function = async () => await createOfferAndSupplementConfigurationPax.Execute(condtof);
 
         //Then
-        await function.Should().ThrowAsync<FormatException>().WithMessage("Pax type has a incorrect format");
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Pax order is not a number");
     }
 
     private bool IsEquivalent(object source, object expected) {

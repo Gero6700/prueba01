@@ -28,7 +28,10 @@ public class CreateOfferAndSupplementConfigurationPax {
         if (condtof.O4tipa.Length < 6) {
             throw new ArgumentException("Pax type lenght is less than 6");
         }
-        
+        if (int.TryParse(condtof.O4tipa[5..], out _) == false) {
+            throw new ArgumentException("Pax order is not a number");
+        }
+                
         var offerAndSupplementConfigurationPax = condtof.ToOfferAndSupplementConfigurationPax();
         await availabilitySynchronizerApiClient.CreateOfferAndSupplementConfigurationPax(offerAndSupplementConfigurationPax);
     }    
