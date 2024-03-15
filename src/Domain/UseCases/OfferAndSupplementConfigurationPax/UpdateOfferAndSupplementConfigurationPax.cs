@@ -10,6 +10,9 @@ public class UpdateOfferAndSupplementConfigurationPax {
         if (condtof.Code == "") {
             throw new ArgumentException("Code is required");
         }
+        if (condtof.OfferAndSupplementCode == "") {
+            throw new ArgumentException("OfferAndSupplement code is required");
+        }
 
         var offerAndSupplementConfigurationPax = condtof.ToOfferAndSupplementConfigurationPax();
         await availabilitySynchronizerApiClient.UpdateOfferAndSupplementConfigurationPax(offerAndSupplementConfigurationPax);
