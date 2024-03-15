@@ -176,6 +176,47 @@ public class CreateOfferAndSupplementConfigurationPaxShould {
     }
 
     [Test]
+    public async Task create_offer_and_supplement_configuration_pax_when_o4tipa_is_adult_and_o4has_is_less_18() {
+        //Given
+        const string anyO4tipa = "ADULT1";
+        const string anyO4dto = "";
+        const decimal anyO4desd = 13.00m;
+        const decimal anyO4has = 17.99m;
+        const decimal anyO4dtos = 10.00m;
+        const string anyCode = "anyCode";
+        const string anyOfferAndSupplementCode = "anyOfferAndSupplementCode";
+
+        var condtof = new Condtof {
+            O4tipa = anyO4tipa,
+            O4tdto = anyO4dto,
+            O4desd = anyO4desd,
+            O4has = anyO4has,
+            O4dtos = anyO4dtos,
+            Code = anyCode,
+            OfferAndSupplementCode = anyOfferAndSupplementCode
+        };
+
+        //When
+        await createOfferAndSupplementConfigurationPax.Execute(condtof);
+
+        //Then
+        var expectedOfferAndSupplementConfigurationPax = new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
+            PaxOrder = 1,
+            PaxType = PaxType.Teenager,
+            Scope = ScopeType.Stay,
+            AgeFrom = anyO4desd,
+            AgeTo = anyO4has,
+            Amount = anyO4dtos,
+            AmountType = PaymentType.Percent,
+            OfferAndSupplementConfigurationCode = anyOfferAndSupplementCode,
+            Code = anyCode
+        };
+
+        await availabilitySynchronizerApiClient.Received()
+            .CreateOfferAndSupplementConfigurationPax(Arg.Is<Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax>(x => IsEquivalent(x, expectedOfferAndSupplementConfigurationPax)));
+    }
+
+    [Test]
     public async Task do_not_create_offer_and_supplement_configuration_pax_when_code_is_empty() {
         //Given
         const string anyO4tipa = "ADULT1";
