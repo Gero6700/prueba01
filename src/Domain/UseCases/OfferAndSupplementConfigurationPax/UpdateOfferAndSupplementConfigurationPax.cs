@@ -13,6 +13,9 @@ public class UpdateOfferAndSupplementConfigurationPax {
         if (condtof.OfferAndSupplementCode == "") {
             throw new ArgumentException("OfferAndSupplement code is required");
         }
+        if (condtof.O4has < condtof.O4desd) {
+            throw new ArgumentException("Age to is less than age from");
+        }
 
         var offerAndSupplementConfigurationPax = condtof.ToOfferAndSupplementConfigurationPax();
         await availabilitySynchronizerApiClient.UpdateOfferAndSupplementConfigurationPax(offerAndSupplementConfigurationPax);
