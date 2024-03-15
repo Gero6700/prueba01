@@ -7,8 +7,11 @@ public class UpdateOfferAndSupplementConfigurationPax {
     }
         
     public async Task Execute(Condtof condtof) {
-        var offerAndSupplementConfigurationPax = condtof.ToOfferAndSupplementConfigurationPax();
+        if (condtof.Code == "") {
+            throw new ArgumentException("Code is required");
+        }
 
+        var offerAndSupplementConfigurationPax = condtof.ToOfferAndSupplementConfigurationPax();
         await availabilitySynchronizerApiClient.UpdateOfferAndSupplementConfigurationPax(offerAndSupplementConfigurationPax);
     }
 }
