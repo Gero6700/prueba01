@@ -1,3 +1,5 @@
+using Senator.As400.Cloud.Sync.Application.UseCases.OfferAndSupplementConfigurationPax;
+
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.OfferAndSupplementConfigurationPax;
 
 [TestFixture]
@@ -50,6 +52,34 @@ public class UpdateOfferAndSupplementConfigurationPaxShould {
 
         await availabilitySynchronizerApiClient.Received()
             .UpdateOfferAndSupplementConfigurationPax(Arg.Is<Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax>(x => IsEquivalent(x, expectedOfferAndSupplementConfigurationPax)));
+    }
+
+    [Test]
+    public async Task do_not_update_offer_and_supplement_configuration_pax_when_code_is_empty() {
+        //Given
+        const string anyO4tipa = "ADULT1";
+        const string anyO4dto = "";
+        const decimal anyO4desd = 20.00m;
+        const decimal anyO4has = 21.99m;
+        const decimal anyO4dtos = 10.00m;
+        const string anyCode = "";
+        const string anyOfferAndSupplementCode = "anyOfferAndSupplementCode";
+
+        var condtof = new Condtof {
+            O4tipa = anyO4tipa,
+            O4tdto = anyO4dto,
+            O4desd = anyO4desd,
+            O4has = anyO4has,
+            O4dtos = anyO4dtos,
+            Code = anyCode,
+            OfferAndSupplementCode = anyOfferAndSupplementCode
+        };
+
+        //When
+        Func<Task> function = async () => await updateOfferAndSupplementConfigurationPax.Execute(condtof);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Code is required");
     }
 
     private bool IsEquivalent(object source, object expected) {
