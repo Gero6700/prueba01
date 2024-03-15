@@ -8,7 +8,7 @@ public class UpdateOfferAndSupplementConfigurationPaxShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        updateOfferAndSupplementConfigurationPax = new UpdateOfferAndSupplementConfigurationPax();
+        updateOfferAndSupplementConfigurationPax = new UpdateOfferAndSupplementConfigurationPax(availabilitySynchronizerApiClient);
     }
 
     [Test]

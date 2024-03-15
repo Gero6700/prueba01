@@ -1,7 +1,14 @@
 namespace Senator.As400.Cloud.Sync.Application.UseCases.OfferAndSupplementConfigurationPax;
 public class UpdateOfferAndSupplementConfigurationPax {
-    
-    public Task Execute(Condtof condtof) {
-        throw new NotImplementedException();
+    private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
+
+    public UpdateOfferAndSupplementConfigurationPax(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {
+        this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
+    }
+        
+    public async Task Execute(Condtof condtof) {
+        var offerAndSupplementConfigurationPax = condtof.ToOfferAndSupplementConfigurationPax();
+
+        await availabilitySynchronizerApiClient.UpdateOfferAndSupplementConfigurationPax(offerAndSupplementConfigurationPax);
     }
 }
