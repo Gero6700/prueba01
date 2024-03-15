@@ -167,6 +167,34 @@ public class UpdateOfferAndSupplementConfigurationPaxShould {
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Age from is required");
     }
 
+    [Test]
+    public async Task do_not_update_offer_and_supplement_configuration_pax_when_o4has_is_zero() {
+        //Given
+        const string anyO4tipa = "ADULT1";
+        const string anyO4dto = "";
+        const decimal anyO4desd = 20.00m;
+        const decimal anyO4has = 0.00m;
+        const decimal anyO4dtos = 10.00m;
+        const string anyCode = "anyCode";
+        const string anyOfferAndSupplementCode = "anyOfferAndSupplementCode";
+
+        var condtof = new Condtof {
+            O4tipa = anyO4tipa,
+            O4tdto = anyO4dto,
+            O4desd = anyO4desd,
+            O4has = anyO4has,
+            O4dtos = anyO4dtos,
+            Code = anyCode,
+            OfferAndSupplementCode = anyOfferAndSupplementCode
+        };
+
+        //When
+        Func<Task> function = async () => await updateOfferAndSupplementConfigurationPax.Execute(condtof);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Age to is required");
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
