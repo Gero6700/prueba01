@@ -25,6 +25,9 @@ public class UpdateOfferAndSupplementConfigurationPax {
         if (condtof.O4tipa == "") {
             throw new ArgumentException("Pax type is required");
         }
+        if (condtof.O4tipa.Length < 6) {
+            throw new ArgumentException("Pax type lenght is less than 6");
+        }
 
         var offerAndSupplementConfigurationPax = condtof.ToOfferAndSupplementConfigurationPax();
         await availabilitySynchronizerApiClient.UpdateOfferAndSupplementConfigurationPax(offerAndSupplementConfigurationPax);
