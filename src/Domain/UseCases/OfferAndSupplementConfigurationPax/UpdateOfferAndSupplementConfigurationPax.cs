@@ -13,6 +13,9 @@ public class UpdateOfferAndSupplementConfigurationPax {
         if (condtof.OfferAndSupplementCode == "") {
             throw new ArgumentException("OfferAndSupplement code is required");
         }
+        if (condtof.O4has == 0) {
+            throw new ArgumentException("Age to is required");
+        }
         if (condtof.O4desd == 0) {
             throw new ArgumentException("Age from is required");
         }
