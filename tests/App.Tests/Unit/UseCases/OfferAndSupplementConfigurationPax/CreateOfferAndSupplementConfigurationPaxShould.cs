@@ -413,6 +413,34 @@ public class CreateOfferAndSupplementConfigurationPaxShould {
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Pax type lenght is less than 6");
     }
 
+    [Test]
+    public async Task do_not_create_offer_and_supplement_configuration_pax_when_o4tipa_position_5_is_not_a_number() {
+        //Given
+        const string anyO4tipa = "ADULTA";
+        const string anyO4dto = "";
+        const decimal anyO4desd = 20.00m;
+        const decimal anyO4has = 21.99m;
+        const decimal anyO4dtos = 10.00m;
+        const string anyCode = "anyCode";
+        const string anyOfferAndSupplementCode = "anyOfferAndSupplementCode";
+
+        var condtof = new Condtof {
+            O4tipa = anyO4tipa,
+            O4tdto = anyO4dto,
+            O4desd = anyO4desd,
+            O4has = anyO4has,
+            O4dtos = anyO4dtos,
+            Code = anyCode,
+            OfferAndSupplementCode = anyOfferAndSupplementCode
+        };
+
+        //When
+        Func<Task> function = async () => await createOfferAndSupplementConfigurationPax.Execute(condtof);
+
+        //Then
+        await function.Should().ThrowAsync<FormatException>().WithMessage("Pax type has a incorrect format");
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
