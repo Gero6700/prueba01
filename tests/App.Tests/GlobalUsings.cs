@@ -17,6 +17,7 @@ global using Senator.As400.Cloud.Sync.Application.UseCases.MarkupHotel;
 global using Senator.As400.Cloud.Sync.Application.UseCases.CancellationPolicyLine;
 global using Senator.As400.Cloud.Sync.Application.UseCases.OfferAndSupplement;
 global using Senator.As400.Cloud.Sync.Application.UseCases.OfferAndSupplementConfigurationPax;
+global using Senator.As400.Cloud.Sync.Application.UseCases.OfferAndSupplementGroup;
 global using Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter;
 global using Senator.As400.Cloud.Sync.Infrastructure.Dtos.As400;
 global using Senator.As400.Cloud.Sync.Infrastructure.Providers;
