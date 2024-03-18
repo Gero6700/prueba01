@@ -8,7 +8,7 @@ public class CreateOfferAndSupplementGroupShould{
     [SetUp]
     public void Setup() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        createOfferAndSupplementGroup = new CreateOfferAndSupplementGroup();    
+        createOfferAndSupplementGroup = new CreateOfferAndSupplementGroup(availabilitySynchronizerApiClient);    
     }
 
     [Test]
@@ -31,7 +31,7 @@ public class CreateOfferAndSupplementGroupShould{
         var expectedOfferAndSupplementGroup = new Infrastructure.Dtos.BookingCenter.OfferAndSupplementGroup {
             Code = "1",
             ApplyFrom = new DateTime(2024, 1, 1),
-            ApplyTo = new DateTime(202, 1, 2)
+            ApplyTo = new DateTime(2024, 1, 2)
         };
 
         await availabilitySynchronizerApiClient.Received()
