@@ -8,6 +8,9 @@ public class DeleteOfferAndSupplementConfigurationPax{
     }
 
     public async Task Execute(string code) {
+        if (code == "") {
+            throw new ArgumentException("Code is required");
+        }
         await availabilitySynchronizerApiClient.DeleteOfferAndSupplementConfigurationPax(code);
     }
 }
