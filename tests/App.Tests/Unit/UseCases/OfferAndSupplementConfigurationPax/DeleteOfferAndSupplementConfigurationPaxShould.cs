@@ -7,7 +7,7 @@ public class DeleteOfferAndSupplementConfigurationPaxShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        deleteOfferAndSupplementConfigurationPax = new DeleteOfferAndSupplementConfigurationPax();
+        deleteOfferAndSupplementConfigurationPax = new DeleteOfferAndSupplementConfigurationPax(availabilitySynchronizerApiClient);
     }
 
     [Test]
