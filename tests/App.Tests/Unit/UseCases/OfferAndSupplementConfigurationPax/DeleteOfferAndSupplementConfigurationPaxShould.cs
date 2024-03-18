@@ -21,4 +21,16 @@ public class DeleteOfferAndSupplementConfigurationPaxShould {
         //Then
         await availabilitySynchronizerApiClient.Received().DeleteOfferAndSupplementConfigurationPax(anyCode);
     }
+
+    [Test]
+    public async Task do_not_delete_offer_and_supplement_configuration_pax_when_code_is_empty() {
+        //Given
+        const string anyCode = "";
+
+        //When
+        Func<Task> function = async () => await deleteOfferAndSupplementConfigurationPax.Execute(anyCode);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Code is required");
+    }
 }
