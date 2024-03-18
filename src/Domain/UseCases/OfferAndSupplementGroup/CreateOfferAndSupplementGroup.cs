@@ -7,8 +7,11 @@ public class CreateOfferAndSupplementGroup {
     }
 
     public async Task Execute(ConofcomHeader conofcomHeader) {
-        var offerAndSupplementGroup = conofcomHeader.ToOfferAndSupplementGroup();
+        if (conofcomHeader.Ocfec2 < conofcomHeader.Ocfec1) {
+            throw new ArgumentException("Apply to date is less than apply from date");
+        }
 
+        var offerAndSupplementGroup = conofcomHeader.ToOfferAndSupplementGroup();
         await availabilitySynchronizerApiClient.CreateOfferAndSupplementGroup(offerAndSupplementGroup);
     }
 }
