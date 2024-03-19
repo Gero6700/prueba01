@@ -8,7 +8,7 @@ public class DeleteOfferAndSupplementGroupOfferAndSupplementShould {
     [SetUp]
     public void Setup() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        deleteOfferAndSupplementGroupOfferAndSupplement = new DeleteOfferAndSupplementGroupOfferAndSupplement();
+        deleteOfferAndSupplementGroupOfferAndSupplement = new DeleteOfferAndSupplementGroupOfferAndSupplement(availabilitySynchronizerApiClient);
     }
 
     [Test]
