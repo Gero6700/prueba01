@@ -7,7 +7,7 @@ public class UpdateOfferAndSupplementGroupShould {
     [SetUp]
     public void Setup() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        updateOfferAndSupplementGroup = new UpdateOfferAndSupplementGroup();
+        updateOfferAndSupplementGroup = new UpdateOfferAndSupplementGroup(availabilitySynchronizerApiClient);
     }
 
     [Test]
