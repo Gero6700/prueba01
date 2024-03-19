@@ -8,7 +8,7 @@ public class CreateOfferAndSupplementGroupOfferAndSupplementShould {
     [SetUp]
     public void Setup() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        createOfferAndSupplementGroupOfferAndSupplement = new CreateOfferAndSupplementGroupOfferAndSupplement();    
+        createOfferAndSupplementGroupOfferAndSupplement = new CreateOfferAndSupplementGroupOfferAndSupplement(availabilitySynchronizerApiClient);    
     }
 
     [Test]
