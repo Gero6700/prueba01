@@ -10,6 +10,9 @@ public class CreateOfferAndSupplementGroupOfferAndSupplement {
         if (conofcomLine.Occin == 0) {
             throw new ArgumentException("Group code is zero");
         }
+        if (conofcomLine.OfferSupCode == "") {
+            throw new ArgumentException("Offer code is empty");
+        }
 
         var offerAndSupplementGroupOfferAndSupplement = conofcomLine.ToOfferAndSupplementGroupOfferAndSupplement();
         await availabilitySynchronizerApiClient.CreateOfferAndSupplementGroupOfferAndSupplement(offerAndSupplementGroupOfferAndSupplement);
