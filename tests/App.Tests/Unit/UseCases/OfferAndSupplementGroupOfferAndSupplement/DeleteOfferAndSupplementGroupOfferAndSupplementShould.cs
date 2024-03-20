@@ -50,6 +50,24 @@ public class DeleteOfferAndSupplementGroupOfferAndSupplementShould {
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Group code is zero");
     }
 
+    [Test]
+    public async Task do_not_delete_offer_and_supplement_group_offer_and_supplement_when_offer_code_is_empty() {
+        //Given
+        const int anyOccin = 1;
+        const string anyOfferSupplementCode = "";
+
+        var conofcomLine = new ConofcomLine {
+            Occin = anyOccin,
+            OfferSupCode = anyOfferSupplementCode
+        };
+
+        //When
+        Func<Task> function = async () => await deleteOfferAndSupplementGroupOfferAndSupplement.Execute(conofcomLine);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Offer code is empty");
+    }
+
 
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
