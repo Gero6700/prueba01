@@ -7,8 +7,11 @@ public class DeleteOfferAndSupplementGroupOfferAndSupplement {
     }
 
     public async Task Execute(ConofcomLine conofcomLine) {
-        var offerAndSupplementGroupOfferAndSupplement = conofcomLine.ToOfferAndSupplementGroupOfferAndSupplement();
+        if (conofcomLine.Occin == 0) {
+            throw new ArgumentException("Group code is zero");
+        }
 
+        var offerAndSupplementGroupOfferAndSupplement = conofcomLine.ToOfferAndSupplementGroupOfferAndSupplement();
         await availabilitySynchronizerApiClient.DeleteOfferAndSupplementGroupOfferAndSupplement(offerAndSupplementGroupOfferAndSupplement);
     }
 }
