@@ -7,6 +7,7 @@ public class DeleteOfferAndSupplementGroup {
     }
 
     public async Task Execute(ConofcomHeader conofcomHeader) {
-        throw new NotImplementedException();
+        var offerAndSupplementGroup = conofcomHeader.ToOfferAndSupplementGroup();
+        await availabilitySynchronizerApiClient.DeleteOfferAndSupplementGroup(offerAndSupplementGroup.Code);
     }
 }
