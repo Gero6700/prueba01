@@ -6,16 +6,20 @@ public class DeleteOfferAndSupplementGroupShould {
     [SetUp]
     public void Setup() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        deleteOfferAndSupplementGroup = new DeleteOfferAndSupplementGroup();    
+        deleteOfferAndSupplementGroup = new DeleteOfferAndSupplementGroup(availabilitySynchronizerApiClient);    
     }
 
     [Test]
     public async Task delete_offer_and_supplement_group() {
         //Given
         const int anyOccin = 1;
+
+       var conofcomHeader = new ConofcomHeader {
+            Occin = anyOccin
+        };
         
         //When
-        await deleteOfferAndSupplementGroup.Execute(anyOccin);
+        await deleteOfferAndSupplementGroup.Execute(conofcomHeader);
 
         //Then
         var expectedCode = "1";
