@@ -7,6 +7,9 @@ public class DeleteOfferAndSupplementGroup {
     }
 
     public async Task Execute(ConofcomHeader conofcomHeader) {
+        if (conofcomHeader.Occin == 0) {
+            throw new ArgumentException("Group code is zero");
+        }
         var offerAndSupplementGroup = conofcomHeader.ToOfferAndSupplementGroup();
         await availabilitySynchronizerApiClient.DeleteOfferAndSupplementGroup(offerAndSupplementGroup.Code);
     }
