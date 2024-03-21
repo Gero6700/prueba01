@@ -49,6 +49,7 @@ public class UpdateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -75,7 +76,7 @@ public class UpdateOfferAndSupplementShould {
             ],
             Configurations = [
                 new OfferAndSupplementConfiguration {
-                    FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
+                    FreeDays = anyConofege.Ofdfac.Trim() == "" ? anyConofege.Ofdiae - anyConofege.Ofdiaf : anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
                     RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
                     ApplyStayPriceType = anyConofege.Offore.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offore.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offore.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
