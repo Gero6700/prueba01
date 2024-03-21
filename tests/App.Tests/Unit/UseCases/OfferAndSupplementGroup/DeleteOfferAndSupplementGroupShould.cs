@@ -10,7 +10,7 @@ public class DeleteOfferAndSupplementGroupShould {
     }
 
     [Test]
-    public async Task delete_offer_and_supplement_group() {
+     public async Task delete_offer_and_supplement_group() {
         //Given
         const int anyOccin = 1;
 

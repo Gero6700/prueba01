@@ -15,11 +15,13 @@ public class UpdateOfferAndSupplementGroupShould {
     [Test]
     public async Task update_offer_and_supplement_group() {
         //Given
+        const string anyContractClientCode = "anyContractClientCode";
         const int anyOccin = 1;
         const int anyOcfec1 = 20240101;
         const int anyOcfec2 = 20240102;
 
         var anyConofcomHeader = new ConofcomHeader {
+            ContractClientCode = anyContractClientCode,
             Occin = anyOccin,
             Ocfec1 = anyOcfec1,
             Ocfec2 = anyOcfec2
@@ -32,7 +34,8 @@ public class UpdateOfferAndSupplementGroupShould {
         var expectedOfferAndSupplementGroup = new Infrastructure.Dtos.BookingCenter.OfferAndSupplementGroup {
             Code = "1",
             ApplyFrom = new DateTime(2024, 1, 1),
-            ApplyTo = new DateTime(2024, 1, 2)
+            ApplyTo = new DateTime(2024, 1, 2),
+            ContractClients = new List<string> { anyContractClientCode }
         };
 
         await availabilitySynchronizerApiClient.Received()
