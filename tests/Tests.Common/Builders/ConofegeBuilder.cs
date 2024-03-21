@@ -11,6 +11,7 @@ public class ConofegeBuilder {
     private static ConofegeRaw GenerateRaw() {
         return new Faker<ConofegeRaw>()
             .RuleFor(x => x.Code, f => f.Random.String(10,'A','Z').ToUpper())
+            .RuleFor(x => x.ContractClientCode, f => f.Random.String(10,'A','Z').ToUpper())
             .RuleFor(x => x.Ofopci, f => f.Random.ArrayElement(new string[] {"S", ""}))
             .RuleFor(x => x.Offec, f => (DateTime.Now.Year * 1000) + f.Random.Int(0, 365))
             .RuleFor(x => x.Offec2, f => ((DateTime.Now.Year + 1) * 1000) + f.Random.Int(0, 365))
@@ -81,6 +82,7 @@ public class ConofegeBuilder {
     public Conofege Build() {
         return new Conofege {
             Code = raw.Code,
+            ContractClientCode = raw.ContractClientCode,
             Ofopci = raw.Ofopci,
             Offec = raw.Offec,
             Offec2 = raw.Offec2,
@@ -150,6 +152,11 @@ public class ConofegeBuilder {
 
     public ConofegeBuilder WithCode(string newCode) {
         raw.Code = newCode;
+        return this;
+    }
+
+    public ConofegeBuilder WithContractClientCode(string newContractClientCode) {
+        raw.ContractClientCode = newContractClientCode;
         return this;
     }
 
@@ -535,6 +542,7 @@ public class ConofegeBuilder {
 
     private class ConofegeRaw {
         public string Code { get; set; } = string.Empty;
+        public string ContractClientCode { get; set; } = string.Empty;
         public string Ofopci { get; set; } = string.Empty;
         public int Offec { get; set; }
         public int Offec2 { get; set; }

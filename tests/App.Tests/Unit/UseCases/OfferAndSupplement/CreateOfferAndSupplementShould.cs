@@ -69,6 +69,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -170,6 +171,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -275,6 +277,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = OfferSupplementType.Offer,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -376,6 +379,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -475,6 +479,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -574,6 +579,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -671,6 +677,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -766,6 +773,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -859,6 +867,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -952,6 +961,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -1045,6 +1055,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -1138,6 +1149,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -1229,6 +1241,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -1320,6 +1333,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -1409,6 +1423,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -1496,6 +1511,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -1583,6 +1599,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -1670,6 +1687,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -1755,6 +1773,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -1840,6 +1859,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -1927,6 +1947,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -2010,6 +2031,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -2091,6 +2113,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -2172,6 +2195,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -2251,6 +2275,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -2330,6 +2355,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -2409,6 +2435,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -2561,6 +2588,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -2695,6 +2723,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -2774,6 +2803,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -2926,6 +2956,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -3042,6 +3073,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -3158,6 +3190,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -3265,6 +3298,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -3381,6 +3415,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
@@ -3488,6 +3523,7 @@ public class CreateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
             Code = anyConofege.Code,
+            ContractClients = new List<string> { anyConofege.ContractClientCode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),

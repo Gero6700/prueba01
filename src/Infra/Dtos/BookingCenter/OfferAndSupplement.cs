@@ -9,6 +9,7 @@ public class OfferAndSupplement: IAggregateRoot {
     public PaymentType DepositType { get; set; }
     public DateTime? DepositBeforeDate { get; set; }
     public decimal ModificationCostsAmount { get; set; }
+    public List<string> ContractClients { get; set; } = new List<string>();
     public List<OfferAndSupplementCondition> Conditions { get; set; } = new List<OfferAndSupplementCondition>();
     public List<OfferAndSupplementConfiguration> Configurations { get; set; } = new List<OfferAndSupplementConfiguration>();
 }

@@ -1,6 +1,7 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Dtos.As400;
 public class Conofege {
     public string Code { get; set; } = string.Empty;
+    public string ContractClientCode { get; set; } = string.Empty;
     public string Ofopci { get; set; } = string.Empty;
     public int Offec { get; set; }
     public int Offec2 { get; set; }
