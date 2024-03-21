@@ -14,17 +14,11 @@ public class CreateContractShould {
     [Test]
     public async Task create_contract() {
         // Given
-        const int anyCoagen = 10600;
-        const int anyCosucu = 1;
         const int anyCohote = 150;
-        const string anyCocont = "01";
         const int anyCofec1 = 2024001;
         const int anyCofec2 = 2024366;
         const string anyCodesc = "CONTRACT 01 2024";
-        const int anyCoagcl = 10600;
-        const int anyCosucl = 0;
         const string anyDinom2 = "EUR";
-        const int anyCovers = 0;
         const string anyCodmerca = "E";
         const int anyCoftop = 20240601;
         const decimal anyCodpto = 0.00m;
@@ -41,17 +35,11 @@ public class CreateContractShould {
         const string anyCobaco = "B";
         
         var anyConcabec = ConcabecBuilder.AConcabecBuilder()
-            .WithCoagen(anyCoagen)
-            .WithCosucu(anyCosucu)
             .WithCohote(anyCohote)
-            .WithCocont(anyCocont)
             .WithCofec1(anyCofec1)
             .WithCofec2(anyCofec2)
             .WithCodesc(anyCodesc)
-            .WithCoagcl(anyCoagcl)
-            .WithCosucl(anyCosucl)
             .WithDinom2(anyDinom2)
-            .WithCovers(anyCovers)
             .WithCodmerca(anyCodmerca)
             .WithCoftop(anyCoftop)
             .WithCodpto(anyCodpto)
@@ -73,7 +61,7 @@ public class CreateContractShould {
 
         // Then
         var expectedContract = new Infrastructure.Dtos.BookingCenter.Contract {
-            Code = string.Concat(anyCohote, anyCocont, anyCofec1, anyCovers),
+            Code = anyConcabec.ContractCode,
             Description = anyCodesc,
             ValidDateFrom = new DateTime(2024, 01, 01),
             ValidDateTo = new DateTime(2024, 12, 31),
@@ -87,7 +75,7 @@ public class CreateContractShould {
             Market = anyCodmerca
         };
         var expectedContractClient = new ContractClient {
-            Code = string.Concat(expectedContract.Code, anyCoagen, anyCosucu, anyCoagcl, anyCosucl),
+            Code = anyConcabec.ContractClientCode,
             MinAgeOfBabies = 0,
             MaxAgeOfBabies = anyCeinma,
             MinAgeOfChildren = anyCenimi,
@@ -126,7 +114,7 @@ public class CreateContractShould {
 
         // Then
         var expectedContract = new Infrastructure.Dtos.BookingCenter.Contract {
-            Code =anyConcabec.GetNewCode,
+            Code =anyConcabec.ContractCode,
             Description = anyConcabec.Codesc,
             ValidDateFrom = new DateTime(2024, 01, 01),
             ValidDateTo = new DateTime(2024, 12, 31),
@@ -140,7 +128,7 @@ public class CreateContractShould {
             Market = anyConcabec.Codmerca
         };
         var expectedContractClient = new ContractClient {
-            Code = string.Concat(expectedContract.Code, anyConcabec.Coagen, anyConcabec.Cosucu, anyConcabec.Coagcl, anyConcabec.Cosucl),
+            Code = anyConcabec.ContractClientCode,
             MinAgeOfBabies = anyConcabec.Ceinmi,
             MaxAgeOfBabies = anyConcabec.Ceinma,
             MinAgeOfChildren = anyConcabec.Cenimi,
@@ -182,7 +170,7 @@ public class CreateContractShould {
 
         // Then
         var expectedContract = new Infrastructure.Dtos.BookingCenter.Contract {
-            Code = anyConcabec.GetNewCode,
+            Code = anyConcabec.ContractCode,
             Description = anyConcabec.Codesc,
             ValidDateFrom = new DateTime(2024, 01, 01),
             ValidDateTo = new DateTime(2024, 12, 31),
@@ -196,7 +184,7 @@ public class CreateContractShould {
             Market = anyConcabec.Codmerca
         };
         var expectedContractClient = new ContractClient {
-            Code = string.Concat(expectedContract.Code, anyConcabec.Coagen, anyConcabec.Cosucu, anyConcabec.Coagcl, anyConcabec.Cosucl),
+            Code = anyConcabec.ContractClientCode,
             MinAgeOfBabies = anyConcabec.Ceinmi,
             MaxAgeOfBabies = anyConcabec.Ceinma,
             MinAgeOfChildren = anyConcabec.Cenimi,
@@ -239,7 +227,7 @@ public class CreateContractShould {
 
         // Then
         var expectedContract = new Infrastructure.Dtos.BookingCenter.Contract {
-            Code = anyConcabec.GetNewCode,
+            Code = anyConcabec.ContractCode,
             Description = anyConcabec.Codesc,
             ValidDateFrom = new DateTime(2024, 01, 01),
             ValidDateTo = new DateTime(2024, 12, 31),
@@ -253,7 +241,7 @@ public class CreateContractShould {
             Market = anyConcabec.Codmerca
         };
         var expectedContractClient = new ContractClient {
-            Code = string.Concat(expectedContract.Code, anyConcabec.Coagen, anyConcabec.Cosucu, anyConcabec.Coagcl, anyConcabec.Cosucl),
+            Code = anyConcabec.ContractClientCode,
             MinAgeOfBabies = anyConcabec.Ceinmi,
             MaxAgeOfBabies = anyConcabec.Ceinma,
             MinAgeOfChildren = anyConcabec.Cenimi,
@@ -292,7 +280,7 @@ public class CreateContractShould {
 
         // Then
         var expectedContract = new Infrastructure.Dtos.BookingCenter.Contract {
-            Code = anyConcabec.GetNewCode,
+            Code = anyConcabec.ContractCode,
             Description = anyConcabec.Codesc,
             ValidDateFrom = new DateTime(2024, 01, 01),
             ValidDateTo = new DateTime(2024, 12, 31),
@@ -306,7 +294,7 @@ public class CreateContractShould {
             Market = anyConcabec.Codmerca
         };
         var expectedContractClient = new ContractClient {
-            Code = string.Concat(expectedContract.Code, anyConcabec.Coagen, anyConcabec.Cosucu, anyConcabec.Coagcl, anyConcabec.Cosucl),
+            Code = anyConcabec.ContractClientCode,
             MinAgeOfBabies = anyConcabec.Ceinmi,
             MaxAgeOfBabies = anyConcabec.Ceinma,
             MinAgeOfChildren = anyConcabec.Cenimi,
@@ -347,7 +335,7 @@ public class CreateContractShould {
 
         // Then
         var expectedContract = new Infrastructure.Dtos.BookingCenter.Contract {
-            Code = anyConcabec.GetNewCode,
+            Code = anyConcabec.ContractCode,
             Description = anyConcabec.Codesc,
             ValidDateFrom = new DateTime(2024, 01, 01),
             ValidDateTo = new DateTime(2024, 12, 31),
@@ -361,7 +349,7 @@ public class CreateContractShould {
             Market = anyConcabec.Codmerca
         };
         var expectedContractClient = new ContractClient {
-            Code = string.Concat(expectedContract.Code, anyConcabec.Coagen, anyConcabec.Cosucu, anyConcabec.Coagcl, anyConcabec.Cosucl),
+            Code = anyConcabec.ContractClientCode,
             MinAgeOfBabies = anyConcabec.Ceinmi,
             MaxAgeOfBabies = anyConcabec.Ceinma,
             MinAgeOfChildren = anyConcabec.Cenimi,

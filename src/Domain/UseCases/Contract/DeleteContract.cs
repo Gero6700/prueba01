@@ -7,9 +7,8 @@ public class DeleteContract {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(Concabec concabec) {
-        var code = concabec.GetNewCode;
-
+    public async Task Execute(String code) {
+       
         await availabilitySynchronizerApiClient.DeleteContract(code);
     }
 }

@@ -14,23 +14,14 @@ public class DeleteContractShould {
     [Test]
     public async Task delete_contract() {
         // Given
-        const int anyCohote = 150;
-        const string anyCocont = "01";
-        const int anyCofec1 = 2024001;
-        const int anyCovers = 0;
+        const string anyContractCode = "anyContractCode";
         
-        var anyConcabec = ConcabecBuilder.AConcabecBuilder()
-            .WithCohote(anyCohote)
-            .WithCocont(anyCocont)
-            .WithCofec1(anyCofec1)
-            .WithCovers(anyCovers)
-            .Build();
-
+       
         // When
-        await createContract.Execute(anyConcabec);
+        await createContract.Execute(anyContractCode);
 
         // Then
-        var expectedCode = string.Concat(anyCohote, anyCocont, anyCofec1, anyCovers);
+        var expectedCode = anyContractCode;
        
         await availabilitySynchronizerApiClient.Received()
             .DeleteContract(Arg.Is<String>(c => IsEquivalent(c, expectedCode)));

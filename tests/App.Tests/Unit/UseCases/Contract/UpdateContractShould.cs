@@ -16,17 +16,11 @@ public class UpdateContractShould {
     [Test]
     public async Task update_contract() {
         // Given
-        const int anyCoagen = 10600;
-        const int anyCosucu = 1;
         const int anyCohote = 150;
-        const string anyCocont = "01";
         const int anyCofec1 = 2024001;
         const int anyCofec2 = 2024366;
         const string anyCodesc = "CONTRACT 01 2024";
-        const int anyCoagcl = 10600;
-        const int anyCosucl = 0;
         const string anyDinom2 = "EUR";
-        const int anyCovers = 0;
         const string anyCodmerca = "E";
         const int anyCoftop = 20240605;
         const decimal anyCodpto = 0.00m;
@@ -43,17 +37,11 @@ public class UpdateContractShould {
 
 
         var anyConcabec = ConcabecBuilder.AConcabecBuilder()
-            .WithCoagen(anyCoagen)
-            .WithCosucu(anyCosucu)
             .WithCohote(anyCohote)
-            .WithCocont(anyCocont)
             .WithCofec1(anyCofec1)
             .WithCofec2(anyCofec2)
             .WithCodesc(anyCodesc)
-            .WithCoagcl(anyCoagcl)
-            .WithCosucl(anyCosucl)
             .WithDinom2(anyDinom2)
-            .WithCovers(anyCovers)
             .WithCodmerca(anyCodmerca)
             .WithCoftop(anyCoftop)
             .WithCodpto(anyCodpto)
@@ -74,7 +62,7 @@ public class UpdateContractShould {
 
         // Then
         var expectedContract = new Infrastructure.Dtos.BookingCenter.Contract {
-            Code = string.Concat(anyCohote, anyCocont, anyCofec1, anyCovers),
+            Code = anyConcabec.ContractCode,
             Description = anyCodesc,
             ValidDateFrom = new DateTime(2024, 01, 01),
             ValidDateTo = new DateTime(2024, 12, 31),
@@ -88,7 +76,7 @@ public class UpdateContractShould {
             Market = anyCodmerca
         };
         var expectedContractClient = new ContractClient {
-            Code = string.Concat(anyCoagen, anyCosucu, anyCoagcl, anyCosucl),
+            Code = anyConcabec.ContractClientCode,
             MinAgeOfBabies = 0,
             MaxAgeOfBabies = anyCeinma,
             MinAgeOfChildren = anyCenimi,
