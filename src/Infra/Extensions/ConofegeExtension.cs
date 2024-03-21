@@ -3,7 +3,7 @@ public static class ConofegeExtension{
     public static OfferAndSupplement ToOfferAndSupplement(this Conofege conofege) {
         return new OfferAndSupplement {
             Code = conofege.Code,
-            ContractClients = new List<string> { conofege.ContractClientCode },
+            ContractClients = conofege.ContractClientCode == "" ? [] :  new List<string> { conofege.ContractClientCode },
             Type = conofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = DateTimeHelper.ConvertJulianDateToDateTime(conofege.Offec),
             ApplyTo = DateTimeHelper.ConvertJulianDateToDateTime(conofege.Offec2),
