@@ -72,6 +72,36 @@ public class CreateOfferAndSupplementGroupShould{
     }
 
     [Test]
+    public async Task create_offer_and_supplement_group_when_contract_client_code_is_empty() {
+        //Given
+        const string anyContractClientCode = "";
+        const int anyOccin = 1;
+        const int anyOcfec1 = 20240101;
+        const int anyOcfec2 = 20240102;
+
+        var anyConofcomHeader = new ConofcomHeader {
+            ContractClientCode = anyContractClientCode,
+            Occin = anyOccin,
+            Ocfec1 = anyOcfec1,
+            Ocfec2 = anyOcfec2
+        };
+
+        //When
+        await createOfferAndSupplementGroup.Execute(anyConofcomHeader);
+
+        //Then
+        var expectedOfferAndSupplementGroup = new Infrastructure.Dtos.BookingCenter.OfferAndSupplementGroup {
+            Code = "1",
+            ApplyFrom = new DateTime(2024, 1, 1),
+            ApplyTo = new DateTime(2024, 1, 2),
+            ContractClients = []
+        };
+
+        await availabilitySynchronizerApiClient.Received()
+            .CreateOfferAndSupplementGroup(Arg.Is<Infrastructure.Dtos.BookingCenter.OfferAndSupplementGroup>(x => IsEquivalent(x, expectedOfferAndSupplementGroup)));
+    }
+
+    [Test]
     public async Task create_offer_and_supplement_group_when_ocfec2_is_zero() {
         //Given
         const string anyContractClientCode = "anyContractClientCode";
