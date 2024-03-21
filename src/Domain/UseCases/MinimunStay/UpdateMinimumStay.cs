@@ -13,22 +13,10 @@ public class UpdateMinimumStay {
         if (DateTimeHelper.ConvertYYYYMMDDToDatetime(conestmi.C7fec2) == DateTime.MinValue) {
             throw new ArgumentException("Invalid end date");
         }
-        if (DateTimeHelper.ConvertJulianDateToDateTime(conestmi.Cofec1) == DateTime.MinValue) {
-            throw new ArgumentException("Invalid contract start date");
-        }
-        if (DateTimeHelper.ConvertYYYYMMDDToDatetime(conestmi.C7fec1) < DateTimeHelper.ConvertJulianDateToDateTime(conestmi.Cofec1)) {
-            throw new ArgumentException("Start date is less than contract start date");
-        }
         if (conestmi.C7fec1 > conestmi.C7fec2) {
             throw new ArgumentException("End date is less than start date");
         }
-        if (conestmi.C7hote == 0) {
-            throw new ArgumentException("Incorrect hotel code");
-        }
-        if (conestmi.C7agen == 0 && conestmi.C7agcl == 0) {
-            throw new ArgumentException("Incorrect client code");
-        }
-
+        
         var minimumStay = conestmi.toMinimumStay();
         await availabilitySynchronizerApiClient.UpdateMinimumStay(minimumStay);
     }
