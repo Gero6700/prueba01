@@ -22,6 +22,9 @@ public class CreatePeriodPricing {
         if (string.IsNullOrWhiteSpace(conpreci.ContractClientCode)) {
             throw new ArgumentException("Contract client code is required");
         }
+        if (string.IsNullOrWhiteSpace(conpreci.RateCode)) {
+            throw new ArgumentException("Rate code is required");
+        }
         var periodPricing = conpreci.ToPeriodPricing();
 
         return availabilitySynchronizerApiClient.CreatePeriodPricing(periodPricing);
