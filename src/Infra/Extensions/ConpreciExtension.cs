@@ -8,7 +8,7 @@ public static class ConpreciExtension {
             StayPvp = conpreci.C4esta,
             StayPvpApplyMode = conpreci.C4form.ToUpper() == "P" ? ApplyStayPriceType.P : conpreci.C4form.ToUpper() == "D" ? ApplyStayPriceType.D : ApplyStayPriceType.P,
             RegimePvp = conpreci.C4serv,
-            RegimePvpApplyMode = conpreci.C4fors.ToUpper() == "P" ? ApplyStayPriceType.P : ApplyStayPriceType.P,
+            RegimePvpApplyMode = conpreci.C4fors.ToUpper() == "P" ? ApplyStayPriceType.P : conpreci.C4fors.ToUpper() == "D" ? ApplyStayPriceType.D : ApplyStayPriceType.P,
             OnRequest = false,
             Release = conpreci.Acrele,
             RoomCode = conpreci.C4thab,
