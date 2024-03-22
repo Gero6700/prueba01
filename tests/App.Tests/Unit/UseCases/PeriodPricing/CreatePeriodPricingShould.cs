@@ -170,7 +170,7 @@ public class CreatePeriodPricingShould {
     }
 
     [Test]
-    public async Task create_period_princing_when_c4fors_is_p() {
+    public async Task create_period_pricing_when_c4fors_is_p() {
         //Given
         const string anyRateCode = "anyRateCode";
         const int anyCffec = 2024001;
@@ -222,7 +222,7 @@ public class CreatePeriodPricingShould {
     }
 
     [Test]
-    public async Task create_period_princing_when_c4fors_is_d() {
+    public async Task create_period_pricing_when_c4fors_is_d() {
         //Given
         const string anyRateCode = "anyRateCode";
         const int anyCffec = 2024001;
