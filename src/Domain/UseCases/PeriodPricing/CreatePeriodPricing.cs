@@ -7,6 +7,9 @@ public class CreatePeriodPricing {
     }
 
     public Task Execute(Conpreci conpreci) {
+        if (conpreci.Cffec == 0) {
+            throw new ArgumentException("Price date is required");
+        }
         var periodPricing = conpreci.ToPeriodPricing();
 
         return availabilitySynchronizerApiClient.CreatePeriodPricing(periodPricing);
