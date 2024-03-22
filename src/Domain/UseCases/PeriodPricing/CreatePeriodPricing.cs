@@ -1,6 +1,14 @@
 namespace Senator.As400.Cloud.Sync.Application.UseCases.PeriodPricing;
 public class CreatePeriodPricing {
+    private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
+
+    public CreatePeriodPricing(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {
+        this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
+    }
+
     public Task Execute(Conpreci conpreci) {
-        throw new NotImplementedException();
+        var periodPricing = conpreci.ToPeriodPricing();
+
+        return availabilitySynchronizerApiClient.CreatePeriodPricing(periodPricing);
     }
 }
