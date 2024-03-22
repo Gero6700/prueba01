@@ -2,7 +2,7 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Extensions;
 public static class ConpreciExtension {
     public static PeriodPricing ToPeriodPricing(this Conpreci conpreci) {
         return new PeriodPricing {
-            ClosingSales = false,
+            ClosingSales = conpreci.Rerele.ToUpper() == "CV" ? true : false,
             RateCode = conpreci.RateCode,
             PricingDate = DateTimeHelper.ConvertJulianDateToDateTime(conpreci.Cffec),
             StayPvp = conpreci.C4esta,
