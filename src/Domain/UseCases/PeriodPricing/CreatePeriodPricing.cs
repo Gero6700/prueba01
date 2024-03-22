@@ -10,6 +10,9 @@ public class CreatePeriodPricing {
         if (conpreci.Cffec == 0) {
             throw new ArgumentException("Price date is required");
         }
+        if (DateTimeHelper.ConvertJulianDateToDateTime(conpreci.Cffec) == DateTime.MinValue) {
+            throw new ArgumentException("Invalid price date");
+        }
         var periodPricing = conpreci.ToPeriodPricing();
 
         return availabilitySynchronizerApiClient.CreatePeriodPricing(periodPricing);
