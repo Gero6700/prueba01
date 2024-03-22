@@ -16,6 +16,9 @@ public class CreatePeriodPricing {
         if (string.IsNullOrWhiteSpace(conpreci.C4thab)) {
             throw new ArgumentException("Room code is required");
         }
+        if (string.IsNullOrWhiteSpace(conpreci.C4tser)) {
+            throw new ArgumentException("Regime code is required");
+        }
         var periodPricing = conpreci.ToPeriodPricing();
 
         return availabilitySynchronizerApiClient.CreatePeriodPricing(periodPricing);
