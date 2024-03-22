@@ -6,7 +6,7 @@ public static class ConpreciExtension {
             RateCode = conpreci.RateCode,
             PricingDate = DateTimeHelper.ConvertJulianDateToDateTime(conpreci.Cffec),
             StayPvp = conpreci.C4esta,
-            StayPvpApplyMode = conpreci.C4form.ToUpper() == "P" ? ApplyStayPriceType.P : ApplyStayPriceType.P,
+            StayPvpApplyMode = conpreci.C4form.ToUpper() == "P" ? ApplyStayPriceType.P : conpreci.C4form.ToUpper() == "D" ? ApplyStayPriceType.D : ApplyStayPriceType.P,
             RegimePvp = conpreci.C4serv,
             RegimePvpApplyMode = ApplyStayPriceType.P,
             OnRequest = false,
