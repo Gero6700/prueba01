@@ -10,5 +10,6 @@ public class Conpreci {
     public string C4thab { get; set; } = string.Empty;
     public string C4tser { get; set; } = string.Empty;
     public string Rerele { get; set; } = string.Empty;
+    public string Tior { get; set; } = string.Empty;
     public int Acrele { get; set; }
 }

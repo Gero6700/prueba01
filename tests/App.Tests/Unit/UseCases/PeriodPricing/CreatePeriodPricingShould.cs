@@ -26,6 +26,7 @@ public class CreatePeriodPricingShould {
         const string anyC4thab = "anyC4thab";
         const string anyC4tser = "anyC4tser";
         const string anyRerele = "";
+        const string anyTior = "";
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
@@ -39,6 +40,7 @@ public class CreatePeriodPricingShould {
             C4thab = anyC4thab,
             C4tser = anyC4tser,
             Rerele = anyRerele,
+            Tior = anyTior,
             Acrele = anyAcrele
         };
 
@@ -78,6 +80,7 @@ public class CreatePeriodPricingShould {
         const string anyC4thab = "anyC4thab";
         const string anyC4tser = "anyC4tser";
         const string anyRerele = "";
+        const string anyTior = "";
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
@@ -91,6 +94,7 @@ public class CreatePeriodPricingShould {
             C4thab = anyC4thab,
             C4tser = anyC4tser,
             Rerele = anyRerele,
+            Tior = anyTior,
             Acrele = anyAcrele
         };
 
@@ -130,6 +134,7 @@ public class CreatePeriodPricingShould {
         const string anyC4thab = "anyC4thab";
         const string anyC4tser = "anyC4tser";
         const string anyRerele = "";
+        const string anyTior = "";
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
@@ -143,6 +148,7 @@ public class CreatePeriodPricingShould {
             C4thab = anyC4thab,
             C4tser = anyC4tser,
             Rerele = anyRerele,
+            Tior = anyTior,
             Acrele = anyAcrele
         };
 
@@ -182,6 +188,7 @@ public class CreatePeriodPricingShould {
         const string anyC4thab = "anyC4thab";
         const string anyC4tser = "anyC4tser";
         const string anyRerele = "";
+        const string anyTior = "";
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
@@ -195,6 +202,7 @@ public class CreatePeriodPricingShould {
             C4thab = anyC4thab,
             C4tser = anyC4tser,
             Rerele = anyRerele,
+            Tior = anyTior,
             Acrele = anyAcrele
         };
 
@@ -234,6 +242,7 @@ public class CreatePeriodPricingShould {
         const string anyC4thab = "anyC4thab";
         const string anyC4tser = "anyC4tser";
         const string anyRerele = "";
+        const string anyTior = "";
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
@@ -247,6 +256,7 @@ public class CreatePeriodPricingShould {
             C4thab = anyC4thab,
             C4tser = anyC4tser,
             Rerele = anyRerele,
+            Tior = anyTior,
             Acrele = anyAcrele
         };
 
@@ -286,6 +296,7 @@ public class CreatePeriodPricingShould {
         const string anyC4thab = "anyC4thab";
         const string anyC4tser = "anyC4tser";
         const string anyRerele = "OR";
+        const string anyTior = "";
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
@@ -299,6 +310,7 @@ public class CreatePeriodPricingShould {
             C4thab = anyC4thab,
             C4tser = anyC4tser,
             Rerele = anyRerele,
+            Tior = anyTior,
             Acrele = anyAcrele
         };
 
@@ -338,6 +350,7 @@ public class CreatePeriodPricingShould {
         const string anyC4thab = "anyC4thab";
         const string anyC4tser = "anyC4tser";
         const string anyRerele = "CV";
+        const string anyTior = "";
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
@@ -351,6 +364,7 @@ public class CreatePeriodPricingShould {
             C4thab = anyC4thab,
             C4tser = anyC4tser,
             Rerele = anyRerele,
+            Tior = anyTior,
             Acrele = anyAcrele
         };
 
@@ -390,6 +404,7 @@ public class CreatePeriodPricingShould {
         const string anyC4thab = "anyC4thab";
         const string anyC4tser = "anyC4tser";
         const string anyRerele = "";
+        const string anyTior = "";
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
@@ -403,6 +418,7 @@ public class CreatePeriodPricingShould {
             C4thab = anyC4thab,
             C4tser = anyC4tser,
             Rerele = anyRerele,
+            Tior = anyTior,
             Acrele = anyAcrele
         };
 
@@ -426,6 +442,7 @@ public class CreatePeriodPricingShould {
         const string anyC4thab = "anyC4thab";
         const string anyC4tser = "anyC4tser";
         const string anyRerele = "";
+        const string anyTior = "";
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
@@ -439,6 +456,7 @@ public class CreatePeriodPricingShould {
             C4thab = anyC4thab,
             C4tser = anyC4tser,
             Rerele = anyRerele,
+            Tior = anyTior,
             Acrele = anyAcrele
         };
 
@@ -462,6 +480,7 @@ public class CreatePeriodPricingShould {
         const string anyC4thab = "";
         const string anyC4tser = "anyC4tser";
         const string anyRerele = "";
+        const string anyTior = "";
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
@@ -475,6 +494,7 @@ public class CreatePeriodPricingShould {
             C4thab = anyC4thab,
             C4tser = anyC4tser,
             Rerele = anyRerele,
+            Tior = anyTior,
             Acrele = anyAcrele
         };
 
@@ -498,6 +518,7 @@ public class CreatePeriodPricingShould {
         const string anyC4thab = "anyC4thab";
         const string anyC4tser = "";
         const string anyRerele = "";
+        const string anyTior = "";
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
@@ -511,6 +532,7 @@ public class CreatePeriodPricingShould {
             C4thab = anyC4thab,
             C4tser = anyC4tser,
             Rerele = anyRerele,
+            Tior = anyTior,
             Acrele = anyAcrele
         };
 
@@ -534,6 +556,7 @@ public class CreatePeriodPricingShould {
         const string anyC4thab = "anyC4thab";
         const string anyC4tser = "anyC4tser";
         const string anyRerele = "";
+        const string anyTior = "";
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
@@ -547,6 +570,7 @@ public class CreatePeriodPricingShould {
             C4thab = anyC4thab,
             C4tser = anyC4tser,
             Rerele = anyRerele,
+            Tior = anyTior,
             Acrele = anyAcrele
         };
 
@@ -570,6 +594,7 @@ public class CreatePeriodPricingShould {
         const string anyC4thab = "anyC4thab";
         const string anyC4tser = "anyC4tser";
         const string anyRerele = "";
+        const string anyTior = "";
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
@@ -583,6 +608,7 @@ public class CreatePeriodPricingShould {
             C4thab = anyC4thab,
             C4tser = anyC4tser,
             Rerele = anyRerele,
+            Tior = anyTior,
             Acrele = anyAcrele
         };
 
@@ -606,6 +632,7 @@ public class CreatePeriodPricingShould {
         const string anyC4thab = "anyC4thab";
         const string anyC4tser = "anyC4tser";
         const string anyRerele = "";
+        const string anyTior = "";
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
@@ -619,6 +646,7 @@ public class CreatePeriodPricingShould {
             C4thab = anyC4thab,
             C4tser = anyC4tser,
             Rerele = anyRerele,
+            Tior = anyTior,
             Acrele = anyAcrele
         };
 
@@ -643,6 +671,7 @@ public class CreatePeriodPricingShould {
         const string anyC4thab = "anyC4thab";
         const string anyC4tser = "anyC4tser";
         const string anyRerele = "";
+        const string anyTior = "";
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
@@ -656,6 +685,7 @@ public class CreatePeriodPricingShould {
             C4thab = anyC4thab,
             C4tser = anyC4tser,
             Rerele = anyRerele,
+            Tior = anyTior,
             Acrele = anyAcrele
         };
 
