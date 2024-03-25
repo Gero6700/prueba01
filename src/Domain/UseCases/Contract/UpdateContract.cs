@@ -35,6 +35,9 @@ public class UpdateContract {
         if (string.IsNullOrWhiteSpace(concabec.ContractCode)) {
             throw new ArgumentException("Contract code is required");
         }
+        if (string.IsNullOrWhiteSpace(concabec.ContractClientCode)) {
+            throw new ArgumentException("Contract client code is required");
+        }
 
         var contract = concabec.ToContract();
         var contractClient = concabec.ToContractClient();
