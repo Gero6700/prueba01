@@ -13,6 +13,9 @@ public class UpdatePeriodPricing {
         if (DateTimeHelper.ConvertJulianDateToDateTime(conpreci.Cffec) == DateTime.MinValue) {
             throw new ArgumentException("Invalid price date");
         }
+        if (string.IsNullOrWhiteSpace(conpreci.C4thab)) {
+            throw new ArgumentException("Room code is required");
+        }
         var periodPricing = conpreci.ToPeriodPricing();
 
         await availabilitySynchronizerApiClient.UpdatePeriodPricing(periodPricing);
