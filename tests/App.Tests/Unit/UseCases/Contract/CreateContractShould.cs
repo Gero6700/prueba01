@@ -31,9 +31,9 @@ public class CreateContractShould {
         const decimal anyD4hast = 17.99m;
         const decimal anyCocoag = 0.0m;
         const long anyIdusuario = 123456789012;
-        const int anyCofext= 20241231;
+        const int anyCofext = 20241231;
         const string anyCobaco = "B";
-        
+
         var anyConcabec = ConcabecBuilder.AConcabecBuilder()
             .WithCohote(anyCohote)
             .WithCofec1(anyCofec1)
@@ -67,7 +67,7 @@ public class CreateContractShould {
             ValidDateTo = new DateTime(2024, 12, 31),
             TaxIncluded = true,
             TypeOfAgeOrdering = TypeOfAgeOrdering.Asc,
-            DepositDate = new DateTime(2024,6,1),
+            DepositDate = new DateTime(2024, 6, 1),
             DepositAmount = anyCodpto,
             DepositType = DepositType.Percent,
             HotelCode = anyCohote.ToString(),
@@ -85,7 +85,7 @@ public class CreateContractShould {
             ExpiredDate = new DateTime(2024, 12, 31),
             Comission = anyCocoag,
             ComissionType = IncomeType.Net,
-            ContractCode= expectedContract.Code,
+            ContractCode = expectedContract.Code,
             ClientCode = anyIdusuario.ToString()
         };
         await availabilitySynchronizerApiClient.Received()
@@ -114,7 +114,7 @@ public class CreateContractShould {
 
         // Then
         var expectedContract = new Infrastructure.Dtos.BookingCenter.Contract {
-            Code =anyConcabec.ContractCode,
+            Code = anyConcabec.ContractCode,
             Description = anyConcabec.Codesc,
             ValidDateFrom = new DateTime(2024, 01, 01),
             ValidDateTo = new DateTime(2024, 12, 31),
@@ -165,7 +165,7 @@ public class CreateContractShould {
            .WithCofext(anyCofext)
            .WithCoftop(anyCoftop)
            .Build();
-        
+
         await createContract.Execute(anyConcabec);
 
         // Then
@@ -560,6 +560,32 @@ public class CreateContractShould {
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Invalid currency iso code");
 
     }
+
+    [Test]
+    public async Task do_not_create_contract_when_contract_code_is_empty() {
+        //Given
+        const string anyContracCode = "";
+        const int anyCofec1 = 2024001;
+        const int anyCofec2 = 2024366;
+        const int anyCofext = 20241231;
+        const int anyCoftop = 20240601;
+
+        var anyConcabec = ConcabecBuilder.AConcabecBuilder()
+            .WithContractCode(anyContracCode)
+            .WithCofec1(anyCofec1)
+            .WithCofec2(anyCofec2)
+            .WithCofext(anyCofext)
+            .WithCoftop(anyCoftop)
+            .Build();
+
+        //When
+        Func<Task> function = async () => await createContract.Execute(anyConcabec);
+
+        // Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Contract code is required");
+
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;

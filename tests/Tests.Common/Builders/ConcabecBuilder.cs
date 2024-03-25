@@ -103,6 +103,16 @@ public class ConcabecBuilder {
         raw.Cobaco = newCobaco;
         return this;
     }
+
+    public ConcabecBuilder WithContractCode(string newContractCode) {
+        raw.ContractCode = newContractCode;
+        return this;
+    }
+
+    public ConcabecBuilder WithContractClientCode(string newContractClientCode) {
+        raw.ContractClientCode = newContractClientCode;
+        return this;
+    }
     
     public Concabec Build() {
         return new Faker<Concabec>()
