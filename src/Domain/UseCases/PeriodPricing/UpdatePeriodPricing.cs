@@ -25,6 +25,9 @@ public class UpdatePeriodPricing {
         if (string.IsNullOrWhiteSpace(conpreci.RateCode)) {
             throw new ArgumentException("Rate code is required");
         }
+        if (conpreci.C4esta <= 0) {
+            throw new ArgumentException("Stay price must be greater than zero");
+        }
         var periodPricing = conpreci.ToPeriodPricing();
 
         await availabilitySynchronizerApiClient.UpdatePeriodPricing(periodPricing);
