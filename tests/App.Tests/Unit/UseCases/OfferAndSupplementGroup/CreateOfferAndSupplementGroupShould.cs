@@ -155,7 +155,4 @@ public class CreateOfferAndSupplementGroupShould{
         source.Should().BeEquivalentTo(expected);
         return true;
     }
-
-
-
 }
