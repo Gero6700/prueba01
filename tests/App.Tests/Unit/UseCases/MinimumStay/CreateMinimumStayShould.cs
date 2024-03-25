@@ -146,6 +146,22 @@ public class CreateMinimumStayShould {
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Code is required");
     }
 
+    [Test]
+    public async Task do_not_create_minimum_stay_when_contract_client_code_is_empty() {
+        //Given
+        const string anyContractClientCode = "";
+
+        var anyConestmi = ConestmiBuilder.AConestmiBuilder()
+            .WithContractClientCode(anyContractClientCode)
+            .Build();
+
+        //When
+        Func<Task> function = async () => await createMinimumStay.Execute(anyConestmi);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Contract client code is required");
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
