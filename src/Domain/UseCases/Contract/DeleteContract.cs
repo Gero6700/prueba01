@@ -9,6 +9,6 @@ public class DeleteContract {
 
     public async Task Execute(String code) {
        
-        await availabilitySynchronizerApiClient.DeleteContract(code);
+        await availabilitySynchronizerApiClient.DeleteContractClient(code);
     }
 }

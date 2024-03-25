@@ -2,29 +2,28 @@ namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Contract;
 
 [TestFixture]
 public class DeleteContractShould {
-    private DeleteContract createContract = null!;
+    private DeleteContract deleteContract = null!;
     private IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient = null!;
 
     [SetUp]
     public void Setup() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        createContract = new DeleteContract(availabilitySynchronizerApiClient);
+        deleteContract = new DeleteContract(availabilitySynchronizerApiClient);
     }
 
     [Test]
     public async Task delete_contract() {
         // Given
-        const string anyContractCode = "anyContractCode";
-        
+        const string anyContractClientCode = "anyContractClientCode";        
        
         // When
-        await createContract.Execute(anyContractCode);
+        await deleteContract.Execute(anyContractClientCode);
 
         // Then
-        var expectedCode = anyContractCode;
+        var expectedCode = anyContractClientCode;
        
         await availabilitySynchronizerApiClient.Received()
-            .DeleteContract(Arg.Is<String>(c => IsEquivalent(c, expectedCode)));
+            .DeleteContractClient(Arg.Is<String>(c => IsEquivalent(c, expectedCode)));
     }
 
     private bool IsEquivalent(object source, object expected) {
