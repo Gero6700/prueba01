@@ -26,6 +26,7 @@ public class UpdatePeriodPricingShould {
         const string anyC4thab = "anyC4thab";
         const string anyC4tser = "anyC4tser";
         const string anyRerele = "";
+        const string anyTior = "";
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
@@ -39,6 +40,7 @@ public class UpdatePeriodPricingShould {
             C4thab = anyC4thab,
             C4tser = anyC4tser,
             Rerele = anyRerele,
+            Tior = anyTior,
             Acrele = anyAcrele
         };
 
@@ -78,6 +80,7 @@ public class UpdatePeriodPricingShould {
         const string anyC4thab = "anyC4thab";
         const string anyC4tser = "anyC4tser";
         const string anyRerele = "";
+        const string anyTior = "";
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
@@ -91,6 +94,7 @@ public class UpdatePeriodPricingShould {
             C4thab = anyC4thab,
             C4tser = anyC4tser,
             Rerele = anyRerele,
+            Tior = anyTior,
             Acrele = anyAcrele
         };
 
@@ -114,6 +118,7 @@ public class UpdatePeriodPricingShould {
         const string anyC4thab = "anyC4thab";
         const string anyC4tser = "anyC4tser";
         const string anyRerele = "";
+        const string anyTior = "";
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
@@ -127,6 +132,7 @@ public class UpdatePeriodPricingShould {
             C4thab = anyC4thab,
             C4tser = anyC4tser,
             Rerele = anyRerele,
+            Tior = anyTior,
             Acrele = anyAcrele
         };
 
@@ -150,6 +156,7 @@ public class UpdatePeriodPricingShould {
         const string anyC4thab = "";
         const string anyC4tser = "anyC4tser";
         const string anyRerele = "";
+        const string anyTior = "";
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
@@ -163,6 +170,7 @@ public class UpdatePeriodPricingShould {
             C4thab = anyC4thab,
             C4tser = anyC4tser,
             Rerele = anyRerele,
+            Tior = anyTior,
             Acrele = anyAcrele
         };
 
