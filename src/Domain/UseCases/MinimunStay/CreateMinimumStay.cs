@@ -19,6 +19,9 @@ public class CreateMinimumStay {
         if (String.IsNullOrWhiteSpace(conestmi.Code)) {
             throw new ArgumentException("Code is required");
         }
+        if (String.IsNullOrWhiteSpace(conestmi.ContractClientCode)) {
+            throw new ArgumentException("Contract client code is required");
+        }
        
         var minimumStay = conestmi.toMinimumStay();
         await availabilitySynchronizerApiClient.CreateMinimumStay(minimumStay);
