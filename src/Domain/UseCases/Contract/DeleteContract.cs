@@ -8,7 +8,9 @@ public class DeleteContract {
     }
 
     public async Task Execute(String code) {
-       
+        if (string.IsNullOrWhiteSpace(code)) {
+            throw new ArgumentException("Contract client code is required");
+        }       
         await availabilitySynchronizerApiClient.DeleteContractClient(code);
     }
 }
