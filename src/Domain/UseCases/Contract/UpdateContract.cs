@@ -32,6 +32,9 @@ public class UpdateContract {
         if (concabec.Dinom2.Length != 3 || !concabec.Dinom2.All(char.IsLetter)) {
             throw new ArgumentException("Invalid currency iso code");
         }
+        if (string.IsNullOrWhiteSpace(concabec.ContractCode)) {
+            throw new ArgumentException("Contract code is required");
+        }
 
         var contract = concabec.ToContract();
         var contractClient = concabec.ToContractClient();
