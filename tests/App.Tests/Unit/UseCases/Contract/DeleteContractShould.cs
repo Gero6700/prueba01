@@ -1,3 +1,5 @@
+using System;
+
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Contract;
 
 [TestFixture]
@@ -24,6 +26,19 @@ public class DeleteContractShould {
        
         await availabilitySynchronizerApiClient.Received()
             .DeleteContractClient(Arg.Is<String>(c => IsEquivalent(c, expectedCode)));
+    }
+
+    [Test]
+    public async Task do_not_delete_contract_when_contract_client_code_is_empty() {
+        // Given
+        const string anyContractClientCode = "";
+
+        // When
+        Func<Task> function = async () => await deleteContract.Execute(anyContractClientCode);
+
+        // Then
+        await function.Should().ThrowAsync<ArgumentException>()
+            .WithMessage("Contract client code is required");
     }
 
     private bool IsEquivalent(object source, object expected) {
