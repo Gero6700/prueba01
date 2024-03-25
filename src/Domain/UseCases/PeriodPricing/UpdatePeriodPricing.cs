@@ -7,6 +7,9 @@ public class UpdatePeriodPricing {
     }
 
     public async Task Execute(Conpreci conpreci) {
+        if (conpreci.Cffec == 0) {
+            throw new ArgumentException("Price date is required");
+        }
         var periodPricing = conpreci.ToPeriodPricing();
 
         await availabilitySynchronizerApiClient.UpdatePeriodPricing(periodPricing);
