@@ -16,6 +16,9 @@ public class CreateMinimumStay {
         if (DateTimeHelper.ConvertYYYYMMDDToDatetime(conestmi.C7fec1) > DateTimeHelper.ConvertYYYYMMDDToDatetime(conestmi.C7fec2)) {
             throw new ArgumentException("End date is less than start date");
         }
+        if (String.IsNullOrWhiteSpace(conestmi.Code)) {
+            throw new ArgumentException("Code is required");
+        }
        
         var minimumStay = conestmi.toMinimumStay();
         await availabilitySynchronizerApiClient.CreateMinimumStay(minimumStay);
