@@ -15,6 +15,9 @@ public class CreatePeriodPricingPax {
         if (string.IsNullOrEmpty(condtos.PeriodPricingCode)) {
             throw new ArgumentException("Period pricing code is required");
         }
+        if (string.IsNullOrEmpty(condtos.D4tipa)) {
+            throw new ArgumentException("Pax type is required");
+        }
         var periodPricingPax = condtos.ToPeriodPricingPax();
         await availabilitySynchronizerApiClient.CreatePeriodPricingPax(periodPricingPax);
     }
