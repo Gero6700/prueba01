@@ -30,6 +30,9 @@ public class CreatePeriodPricingPax {
         if (condtos.D4has == 0) {
             throw new ArgumentException("Age to is required");
         }
+        if (condtos.D4has < condtos.D4desd) {
+            throw new ArgumentException("Age to is less than age from");
+        }
         var periodPricingPax = condtos.ToPeriodPricingPax();
         await availabilitySynchronizerApiClient.CreatePeriodPricingPax(periodPricingPax);
     }
