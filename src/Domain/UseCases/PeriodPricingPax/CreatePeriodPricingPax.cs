@@ -9,8 +9,11 @@ public class CreatePeriodPricingPax {
     }
 
     public async Task Execute(Condtos condtos) {
-        if (String.IsNullOrEmpty(condtos.Code)) {
+        if (string.IsNullOrEmpty(condtos.Code)) {
             throw new ArgumentException("Code is required");
+        }
+        if (string.IsNullOrEmpty(condtos.PeriodPricingCode)) {
+            throw new ArgumentException("Period pricing code is required");
         }
         var periodPricingPax = condtos.ToPeriodPricingPax();
         await availabilitySynchronizerApiClient.CreatePeriodPricingPax(periodPricingPax);
