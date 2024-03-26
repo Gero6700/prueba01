@@ -7,7 +7,7 @@ public static class CondtosExtension {
         return new PeriodPricingPax {
             PaxOrder = int.Parse(condtos.D4tipa.Trim()[5..]),
             PaxType = paxTypeString == "NIÑOS" ? PaxType.Child : paxTypeString == "ADULT" && condtos.D4has < 18 ? PaxType.Teenager : PaxType.Adult,
-            Scope = ScopeType.Stay,
+            Scope = condtos.D4tdto.ToUpper() == "E" ? ScopeType.Stay : ScopeType.Stay,
             AgeFrom = condtos.D4desd,
             AgeTo = condtos.D4has,
             Amount = condtos.D4dtos,
