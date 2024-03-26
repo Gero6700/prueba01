@@ -18,6 +18,9 @@ public class CreatePeriodPricingPax {
         if (string.IsNullOrEmpty(condtos.D4tipa)) {
             throw new ArgumentException("Pax type is required");
         }
+        if (condtos.D4tipa.Length < 6) {
+            throw new ArgumentException("Pax type length is less than 6");
+        }
         var periodPricingPax = condtos.ToPeriodPricingPax();
         await availabilitySynchronizerApiClient.CreatePeriodPricingPax(periodPricingPax);
     }
