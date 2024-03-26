@@ -1,7 +1,15 @@
+using System.Runtime.CompilerServices;
+
 namespace Senator.As400.Cloud.Sync.Application.UseCases.PeriodPricingPax;
 public class CreatePeriodPricingPax {
+    private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
-    public Task Execute(Condtos condtos) {
-        throw new NotImplementedException();
+    public CreatePeriodPricingPax(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {
+        this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
+    }
+
+    public async Task Execute(Condtos condtos) {
+        var periodPricingPax = condtos.ToPeriodPricingPax();
+        await availabilitySynchronizerApiClient.CreatePeriodPricingPax(periodPricingPax);
     }
 }
