@@ -356,6 +356,34 @@ public class CreatePeriodPricingPaxShould {
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Pax order is not a number");
     }
 
+    [Test]
+    public async Task do_not_create_period_pricing_pax_when_d4desd_is_zero() {
+        //Given
+        const string anyD4tipa = "ADULT1";
+        const string anyD4tdto = "";
+        const decimal anyD4desd = 0.00m;
+        const decimal anyD4has = 21.99m;
+        const decimal anyD4dtos = 10.00m;
+        const string anyCode = "anyCode";
+        const string anyPeriodPricingCode = "anyPeriodPricingCode";
+
+        var condtos = new Condtos {
+            Code = anyCode,
+            D4tipa = anyD4tipa,
+            D4tdto = anyD4tdto,
+            D4desd = anyD4desd,
+            D4has = anyD4has,
+            D4dtos = anyD4dtos,
+            PeriodPricingCode = anyPeriodPricingCode
+        };
+
+        //When
+        Func<Task> function = async () =>  await createPeriodPricingPax.Execute(condtos);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Age from is required");
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
