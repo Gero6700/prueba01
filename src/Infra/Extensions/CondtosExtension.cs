@@ -3,9 +3,10 @@ using Senator.As400.Cloud.Sync.Infrastructure.Dtos.As400;
 namespace Senator.As400.Cloud.Sync.Infrastructure.Extensions;
 public static class CondtosExtension {
     public static PeriodPricingPax ToPeriodPricingPax(this Condtos condtos) {
+        var paxTypeString = condtos.D4tipa[..5].ToUpper();
         return new PeriodPricingPax {
             PaxOrder = int.Parse(condtos.D4tipa.Trim()[5..]),
-            PaxType = PaxType.Adult,
+            PaxType = paxTypeString == "NIÑOS" ? PaxType.Child : PaxType.Adult,
             Scope = ScopeType.Stay,
             AgeFrom = condtos.D4desd,
             AgeTo = condtos.D4has,
