@@ -301,7 +301,7 @@ public class CreatePeriodPricingPaxShould {
     }
 
     [Test]
-    public async Task do_not_create_period_pricing_pax_when_d4tipa_lenght_is_less_than_6() {
+    public async Task do_not_create_period_pricing_pax_when_d4tipa_length_is_less_than_6() {
         //Given
         const string anyD4tipa = "ADULT";
         const string anyD4tdto = "";
@@ -325,7 +325,7 @@ public class CreatePeriodPricingPaxShould {
         Func<Task> function = async () =>  await createPeriodPricingPax.Execute(condtos);
 
         //Then
-        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Pax type lenght is less than 6");
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Pax type length is less than 6");
     }
 
     private bool IsEquivalent(object source, object expected) {
