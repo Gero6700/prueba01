@@ -27,6 +27,9 @@ public class UpdatePeriodPricingPax {
         if (condtos.D4desd < 0) {
             throw new ArgumentException("Age from is negative");
         }
+        if (condtos.D4has < 0) {
+            throw new ArgumentException("Age to is negative");
+        }
         if (condtos.D4has < condtos.D4desd) {
             throw new ArgumentException("Age to is less than age from");
         }
