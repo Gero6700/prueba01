@@ -27,6 +27,9 @@ public class UpdatePeriodPricingPax {
         if (condtos.D4desd == 0) {
             throw new ArgumentException("Age from is required");
         }
+        if (condtos.D4has == 0) {
+            throw new ArgumentException("Age to is required");
+        }
         var periodPricingPax = condtos.ToPeriodPricingPax();
         await availabilitySynchronizerApiClient.UpdatePeriodPricingPax(periodPricingPax);
     }
