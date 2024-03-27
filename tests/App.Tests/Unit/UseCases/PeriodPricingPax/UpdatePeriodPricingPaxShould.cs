@@ -1,3 +1,5 @@
+using Senator.As400.Cloud.Sync.Application.UseCases.PeriodPricingPax;
+
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.PeriodPricingPax;
 
 [TestFixture]
@@ -103,6 +105,34 @@ public class UpdatePeriodPricingPaxShould {
 
         //Then
         await action.Should().ThrowAsync<ArgumentException>().WithMessage("Period pricing code is required");
+    }
+
+    [Test]
+    public async Task do_not_update_period_pricing_pax_when_d4tipa_is_empty() {
+        //Given
+        const string anyD4tipa = "";
+        const string anyD4tdto = "E";
+        const decimal anyD4desd = 20.00m;
+        const decimal anyD4has = 21.99m;
+        const decimal anyD4dtos = 10.00m;
+        const string anyCode = "anyCode";
+        const string anyPeriodPricingCode = "anyPeriodPricingCode";
+
+        var condtos = new Condtos {
+            Code = anyCode,
+            D4tipa = anyD4tipa,
+            D4tdto = anyD4tdto,
+            D4desd = anyD4desd,
+            D4has = anyD4has,
+            D4dtos = anyD4dtos,
+            PeriodPricingCode = anyPeriodPricingCode
+        };
+
+        //When
+        Func<Task> function = async () => await updatePeriodPricingPax.Execute(condtos);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Pax type is required");
     }
 
     private bool IsEquivalent(object source, object expected) {
