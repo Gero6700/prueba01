@@ -24,12 +24,6 @@ public class UpdatePeriodPricingPax {
         if (int.TryParse(condtos.D4tipa.Trim()[5..], out _) == false) {
             throw new ArgumentException("Pax order is not a number");
         }
-        if (condtos.D4desd == 0) {
-            throw new ArgumentException("Age from is required");
-        }
-        if (condtos.D4has == 0) {
-            throw new ArgumentException("Age to is required");
-        }
         if (condtos.D4has < condtos.D4desd) {
             throw new ArgumentException("Age to is less than age from");
         }
