@@ -8,7 +8,7 @@ public class DeletePeriodPricingPaxShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        deletePeriodPricingPax = new DeletePeriodPricingPax();
+        deletePeriodPricingPax = new DeletePeriodPricingPax(availabilitySynchronizerApiClient);
     }
 
     [Test]
