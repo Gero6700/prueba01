@@ -409,7 +409,7 @@ public class CreatePeriodPricingPaxShould {
         Func<Task> function = async () => await createPeriodPricingPax.Execute(condtos);
 
         //Then
-        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Age to is negative");
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Age from is negative");
     }
 
     [Test]

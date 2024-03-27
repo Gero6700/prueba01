@@ -25,7 +25,7 @@ public class CreatePeriodPricingPax {
             throw new ArgumentException("Pax order is not a number");
         }
         if (condtos.D4desd < 0) {
-            throw new ArgumentException("Age to is negative");
+            throw new ArgumentException("Age from is negative");
         }
         if (condtos.D4has < 0) {
             throw new ArgumentException("Age to is negative");
