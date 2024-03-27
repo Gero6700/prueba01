@@ -8,7 +8,7 @@ public class UpdatePeriodPricingPaxShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        updatePeriodPricingPax = new UpdatePeriodPricingPax();
+        updatePeriodPricingPax = new UpdatePeriodPricingPax(availabilitySynchronizerApiClient);
     }
 
     [Test]

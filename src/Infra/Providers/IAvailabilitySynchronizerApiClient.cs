@@ -53,5 +53,6 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Providers {
         Task<Response> CreatePeriodPricing(PeriodPricing periodPricing);
         Task<Response> UpdatePeriodPricing(PeriodPricing periodPricing);
         Task<Response> CreatePeriodPricingPax(PeriodPricingPax periodPricingPax);
+        Task<Response> UpdatePeriodPricingPax(PeriodPricingPax periodPricingPax);
     }
 }
