@@ -123,6 +123,22 @@ public class CreateOcuppancyRateShould {
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Max child is less than min child");
     }
 
+    [Test]
+    public async Task do_not_create_ocuppancy_rate_when_cmaxin_is_less_than_cminin() {
+        //Given
+        var anyResthaco = new Resthaco {
+            Cocod = "anyCocod",
+            Cminin = 2,
+            Cmaxin = 1
+        };
+
+        //When
+        Func<Task> function = async () => await createOcuppancyRate.Execute(anyResthaco);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Max infant is less than min infant");
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
