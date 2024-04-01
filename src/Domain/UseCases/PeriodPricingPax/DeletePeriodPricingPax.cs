@@ -7,6 +7,9 @@ public class DeletePeriodPricingPax{
     }
 
     public async Task Execute(string Code) {
+        if (string.IsNullOrEmpty(Code)) {
+            throw new ArgumentException("Code is required");
+        }
         await availabilitySynchronizerApiClient.DeletePeriodPricingPax(Code);
     }
 }
