@@ -7,7 +7,7 @@ public class UpdateOcuppancyRateShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        updateOcuppancyRate = new UpdateOcuppancyRate();
+        updateOcuppancyRate = new UpdateOcuppancyRate(availabilitySynchronizerApiClient);
     }
 
     [Test]
