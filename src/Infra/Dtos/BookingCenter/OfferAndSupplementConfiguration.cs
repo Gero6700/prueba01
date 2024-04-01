@@ -11,5 +11,4 @@ public class OfferAndSupplementConfiguration: IAggregateRoot {
     public PaymentType DicountAmountType { get; set; }
     public DiscountTargetType DiscountTarget { get; set; }
     public DiscountScopeType DiscountScope { get; set; }
-    public List<OfferAndSupplementConfigurationPax> Paxes { get; set; } = new List<OfferAndSupplementConfigurationPax>();
 }

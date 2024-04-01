@@ -22,10 +22,6 @@ public class UpdateOfferAndSupplementShould {
         const int anyOfftop = 240604;
         const int anyOfgrbd = 20240301;
         const int anyOfgrbh = 20240305;
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
         var anyOfthab = new[] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" }; //Tipos de habitacion
         var anyOftser = new[] { "", "", "", "", "" }; //Tipos de servicio
 
@@ -35,10 +31,6 @@ public class UpdateOfferAndSupplementShould {
             .WithOfftop(anyOfftop)
             .WithOfgrbd(anyOfgrbd)
             .WithOfgrbh(anyOfgrbh)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .WithOfthab(anyOfthab)
             .WithOftser(anyOftser)
             .Build();
@@ -87,7 +79,6 @@ public class UpdateOfferAndSupplementShould {
                     DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? PaymentType.Fixed : PaymentType.Percent,
                     DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
                     DiscountScope = anyConofege.Ofapli.ToUpper() == "E" ? DiscountScopeType.Stay : anyConofege.Ofapli.ToUpper() == "S" ? DiscountScopeType.Regime : DiscountScopeType.All,
-                    Paxes = []
                 }
             ]
         };

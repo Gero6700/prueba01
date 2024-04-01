@@ -39,22 +39,6 @@ public class ConofegeBuilder {
             .RuleFor(x => x.Oftidt, f => f.Random.ArrayElement(new string[] {"C", ""}))
             .RuleFor(x => x.Ofsobr, f => f.Random.ArrayElement(new string[] {"B", "C", ""}))
             .RuleFor(x => x.Ofapli, f => f.Random.ArrayElement(new string[] {"E", "S", ""}))
-            .RuleFor(x => x.Ofdae1, f => f.Random.Decimal(0,200))
-            .RuleFor(x => x.Ofdae2, f => f.Random.Decimal(0,200))
-            .RuleFor(x => x.Ofdae3, f => f.Random.Decimal(0,200))
-            .RuleFor(x => x.Ofdae4, f => f.Random.Decimal(0,200))
-            .RuleFor(x => x.Ofdas1, f => f.Random.Decimal(0,200))
-            .RuleFor(x => x.Ofdas2, f => f.Random.Decimal(0,200))
-            .RuleFor(x => x.Ofdas3, f => f.Random.Decimal(0,200))
-            .RuleFor(x => x.Ofdas4, f => f.Random.Decimal(0,200))
-            .RuleFor(x => x.Ofdne1, f => f.Random.Decimal(0,200))
-            .RuleFor(x => x.Ofdne2, f => f.Random.Decimal(0,200))
-            .RuleFor(x => x.Ofdne3, f => f.Random.Decimal(0,200))
-            .RuleFor(x => x.Ofdne4, f => f.Random.Decimal(0,200))
-            .RuleFor(x => x.Ofdns1, f => f.Random.Decimal(0,200))
-            .RuleFor(x => x.Ofdns2, f => f.Random.Decimal(0,200))
-            .RuleFor(x => x.Ofdns3, f => f.Random.Decimal(0,200))
-            .RuleFor(x => x.Ofdns4, f => f.Random.Decimal(0,200))
             .RuleFor(x => x.Ofthab, f => f.Random.String(1,'A','Z').ToUpper())
             .RuleFor(x => x.Oftha2, f => f.Random.String(1,'A','Z').ToUpper())
             .RuleFor(x => x.Oftha3, f => f.Random.String(1,'A','Z').ToUpper())
@@ -110,22 +94,6 @@ public class ConofegeBuilder {
             Oftidt = raw.Oftidt,
             Ofsobr = raw.Ofsobr,
             Ofapli = raw.Ofapli,
-            Ofdae1 = raw.Ofdae1,
-            Ofdae2 = raw.Ofdae2,
-            Ofdae3 = raw.Ofdae3,
-            Ofdae4 = raw.Ofdae4,
-            Ofdas1 = raw.Ofdas1,
-            Ofdas2 = raw.Ofdas2,
-            Ofdas3 = raw.Ofdas3,
-            Ofdas4 = raw.Ofdas4,
-            Ofdne1 = raw.Ofdne1,
-            Ofdne2 = raw.Ofdne2,
-            Ofdne3 = raw.Ofdne3,
-            Ofdne4 = raw.Ofdne4,
-            Ofdns1 = raw.Ofdns1,
-            Ofdns2 = raw.Ofdns2,
-            Ofdns3 = raw.Ofdns3,
-            Ofdns4 = raw.Ofdns4,
             Ofthab = raw.Ofthab,
             Oftha2 = raw.Oftha2,
             Oftha3 = raw.Oftha3,
@@ -295,86 +263,6 @@ public class ConofegeBuilder {
         return this;
     }
 
-    public ConofegeBuilder WithOfdae1(decimal newOfdae1) {
-        raw.Ofdae1 = newOfdae1;
-        return this;
-    }
-
-    public ConofegeBuilder WithOfdae2(decimal newOfdae2) {
-        raw.Ofdae2 = newOfdae2;
-        return this;
-    }
-
-    public ConofegeBuilder WithOfdae3(decimal newOfdae3) {
-        raw.Ofdae3 = newOfdae3;
-        return this;
-    }
-
-    public ConofegeBuilder WithOfdae4(decimal newOfdae4) {
-        raw.Ofdae4 = newOfdae4;
-        return this;
-    }
-
-    public ConofegeBuilder WithOfdas1(decimal newOfdas1) {
-        raw.Ofdas1 = newOfdas1;
-        return this;
-    }
-
-    public ConofegeBuilder WithOfdas2(decimal newOfdas2) {
-        raw.Ofdas2 = newOfdas2;
-        return this;
-    }
-
-    public ConofegeBuilder WithOfdas3(decimal newOfdas3) {
-        raw.Ofdas3 = newOfdas3;
-        return this;
-    }
-
-    public ConofegeBuilder WithOfdas4(decimal newOfdas4) {
-        raw.Ofdas4 = newOfdas4;
-        return this;
-    }
-
-    public ConofegeBuilder WithOfdne1(decimal newOfdne1) {
-        raw.Ofdne1 = newOfdne1;
-        return this;
-    }
-
-    public ConofegeBuilder WithOfdne2(decimal newOfdne2) {
-        raw.Ofdne2 = newOfdne2;
-        return this;
-    }
-
-    public ConofegeBuilder WithOfdne3(decimal newOfdne3) {
-        raw.Ofdne3 = newOfdne3;
-        return this;
-    }
-
-    public ConofegeBuilder WithOfdne4(decimal newOfdne4) {
-        raw.Ofdne4 = newOfdne4;
-        return this;
-    }
-
-    public ConofegeBuilder WithOfdns1(decimal newOfdns1) {
-        raw.Ofdns1 = newOfdns1;
-        return this;
-    }
-
-    public ConofegeBuilder WithOfdns2(decimal newOfdns2) {
-        raw.Ofdns2 = newOfdns2;
-        return this;
-    }
-
-    public ConofegeBuilder WithOfdns3(decimal newOfdns3) {
-        raw.Ofdns3 = newOfdns3;
-        return this;
-    }
-
-    public ConofegeBuilder WithOfdns4(decimal newOfdns4) {
-        raw.Ofdns4 = newOfdns4;
-        return this;
-    }
-
     public ConofegeBuilder WithOfthab(string newOfthab) {
         raw.Ofthab = newOfthab;
         return this;
@@ -480,38 +368,6 @@ public class ConofegeBuilder {
         return this;
     }
 
-    public ConofegeBuilder WithOfdae(decimal[] newOfdae) {
-        raw.Ofdae1 = newOfdae[0];
-        raw.Ofdae2 = newOfdae[1];
-        raw.Ofdae3 = newOfdae[2];
-        raw.Ofdae4 = newOfdae[3];
-        return this;
-    }
-
-    public ConofegeBuilder WithOfdas(decimal[] newOfdas) {
-        raw.Ofdas1 = newOfdas[0];
-        raw.Ofdas2 = newOfdas[1];
-        raw.Ofdas3 = newOfdas[2];
-        raw.Ofdas4 = newOfdas[3];
-        return this;
-    }
-
-    public ConofegeBuilder WithOfdne(decimal[] newOfdne) {
-        raw.Ofdne1 = newOfdne[0];
-        raw.Ofdne2 = newOfdne[1];
-        raw.Ofdne3 = newOfdne[2];
-        raw.Ofdne4 = newOfdne[3];
-        return this;
-    }
-
-    public ConofegeBuilder WithOfdns(decimal[] newOfdns) {
-        raw.Ofdns1 = newOfdns[0];
-        raw.Ofdns2 = newOfdns[1];
-        raw.Ofdns3 = newOfdns[2];
-        raw.Ofdns4 = newOfdns[3];
-        return this;
-    }
-
     public ConofegeBuilder WithOfthab(string[] newOfthab) {
         raw.Ofthab = newOfthab[0];
         raw.Oftha2 = newOfthab[1];
@@ -570,22 +426,6 @@ public class ConofegeBuilder {
         public string Oftidt { get; set; } = string.Empty;
         public string Ofsobr { get; set; } = string.Empty;
         public string Ofapli { get; set; } = string.Empty;
-        public decimal Ofdae1 { get; set; }
-        public decimal Ofdae2 { get; set; }
-        public decimal Ofdae3 { get; set; }
-        public decimal Ofdae4 { get; set; }
-        public decimal Ofdas1 { get; set; }
-        public decimal Ofdas2 { get; set; }
-        public decimal Ofdas3 { get; set; }
-        public decimal Ofdas4 { get; set; }
-        public decimal Ofdne1 { get; set; }
-        public decimal Ofdne2 { get; set; }
-        public decimal Ofdne3 { get; set; }
-        public decimal Ofdne4 { get; set; }
-        public decimal Ofdns1 { get; set; }
-        public decimal Ofdns2 { get; set; }
-        public decimal Ofdns3 { get; set; }
-        public decimal Ofdns4 { get; set; }
         public string Ofthab { get; set; } = string.Empty;
         public string Oftha2 { get; set; } = string.Empty;
         public string Oftha3 { get; set; } = string.Empty;

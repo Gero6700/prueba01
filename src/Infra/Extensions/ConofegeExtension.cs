@@ -40,14 +40,7 @@ public static class ConofegeExtension{
                     DiscountAmount = conofege.Ofdtos,
                     DicountAmountType = conofege.Oftidt.ToUpper() == "C" ? PaymentType.Fixed : PaymentType.Percent,
                     DiscountTarget = conofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : conofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
-                    DiscountScope = conofege.Ofapli.ToUpper() == "E" ? DiscountScopeType.Stay : conofege.Ofapli.ToUpper() == "S" ? DiscountScopeType.Regime : DiscountScopeType.All,
-                    Paxes = CreatePaxConfigurations(conofege.GetAdultStayDiscounts, PaxType.Adult, ScopeType.Stay)
-                        .Union(CreatePaxConfigurations(conofege.GetAdultStayDiscounts, PaxType.Teenager, ScopeType.Stay))
-                        .Union(CreatePaxConfigurations(conofege.GetAdultRegimeDiscounts, PaxType.Adult, ScopeType.Regime))
-                        .Union(CreatePaxConfigurations(conofege.GetAdultRegimeDiscounts, PaxType.Teenager, ScopeType.Regime))
-                        .Union(CreatePaxConfigurations(conofege.GetChildStayDiscounts, PaxType.Child, ScopeType.Stay))
-                        .Union(CreatePaxConfigurations(conofege.GetChildRegimeDiscounts, PaxType.Child, ScopeType.Regime))
-                        .ToList()
+                    DiscountScope = conofege.Ofapli.ToUpper() == "E" ? DiscountScopeType.Stay : conofege.Ofapli.ToUpper() == "S" ? DiscountScopeType.Regime : DiscountScopeType.All
                 }
             ]
         };

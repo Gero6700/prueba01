@@ -29,22 +29,22 @@ public class Conofege {
     public string Oftidt { get; set; } = string.Empty;
     public string Ofsobr { get; set; } = string.Empty;
     public string Ofapli { get; set; } = string.Empty;
-    public decimal Ofdae1 { get; set; }
-    public decimal Ofdae2 { get; set; }
-    public decimal Ofdae3 { get; set; }
-    public decimal Ofdae4 { get; set; }
-    public decimal Ofdas1 { get; set; }
-    public decimal Ofdas2 { get; set; }
-    public decimal Ofdas3 { get; set; }
-    public decimal Ofdas4 { get; set; }
-    public decimal Ofdne1 { get; set; }
-    public decimal Ofdne2 { get; set; }
-    public decimal Ofdne3 { get; set; }
-    public decimal Ofdne4 { get; set; }
-    public decimal Ofdns1 { get; set; }
-    public decimal Ofdns2 { get; set; }
-    public decimal Ofdns3 { get; set; }
-    public decimal Ofdns4 { get; set; }
+    //public decimal Ofdae1 { get; set; }
+    //public decimal Ofdae2 { get; set; }
+    //public decimal Ofdae3 { get; set; }
+    //public decimal Ofdae4 { get; set; }
+    //public decimal Ofdas1 { get; set; }
+    //public decimal Ofdas2 { get; set; }
+    //public decimal Ofdas3 { get; set; }
+    //public decimal Ofdas4 { get; set; }
+    //public decimal Ofdne1 { get; set; }
+    //public decimal Ofdne2 { get; set; }
+    //public decimal Ofdne3 { get; set; }
+    //public decimal Ofdne4 { get; set; }
+    //public decimal Ofdns1 { get; set; }
+    //public decimal Ofdns2 { get; set; }
+    //public decimal Ofdns3 { get; set; }
+    //public decimal Ofdns4 { get; set; }
     public string Ofthab { get; set; } = string.Empty;
     public string Oftha2 { get; set; } = string.Empty;
     public string Oftha3 { get; set; } = string.Empty;
@@ -69,8 +69,8 @@ public class Conofege {
     public decimal Gmimpo { get; set; } 
     public List<string> GetRoomCodes => new () { Ofthab, Oftha2, Oftha3, Oftha4, Oftha5, Oftha6, Oftha7, Oftha8, Oftha9, Ofth10, Ofth11, Ofth12, Ofth13, Ofth14, Ofth15 };
     public List<string> GetRegimeCodes => new () { Oftser, Oftse2, Oftse3, Oftse4, Oftse5 };
-    public List<decimal> GetAdultStayDiscounts => new () { Ofdae1, Ofdae2, Ofdae3, Ofdae4 };
-    public List<decimal> GetAdultRegimeDiscounts => new() { Ofdas1, Ofdas2, Ofdas3, Ofdas4 };
-    public List<decimal> GetChildStayDiscounts => new() { Ofdne1, Ofdne2, Ofdne3, Ofdne4 };
-    public List<decimal> GetChildRegimeDiscounts => new() { Ofdns1, Ofdns2, Ofdns3, Ofdns4 };
+    //public List<decimal> GetAdultStayDiscounts => new () { Ofdae1, Ofdae2, Ofdae3, Ofdae4 };
+    //public List<decimal> GetAdultRegimeDiscounts => new() { Ofdas1, Ofdas2, Ofdas3, Ofdas4 };
+    //public List<decimal> GetChildStayDiscounts => new() { Ofdne1, Ofdne2, Ofdne3, Ofdne4 };
+    //public List<decimal> GetChildRegimeDiscounts => new() { Ofdns1, Ofdns2, Ofdns3, Ofdns4 };
 }

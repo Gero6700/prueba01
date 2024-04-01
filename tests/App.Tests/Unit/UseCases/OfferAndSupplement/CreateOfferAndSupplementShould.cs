@@ -32,10 +32,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";        
-        var anyOfdae = new[] {0.0m, 0.0m, 0.0m, 0.0m}; //Descuentos adulto/estancia
-        var anyOfdas = new[] {0.0m, 0.0m, 0.0m, 0.0m}; //Descuentos adulto/regimen
-        var anyOfdne = new[] {0.0m, 0.0m, 0.0m, 0.0m}; //Descuentos niño/estancia
-        var anyOfdns = new[] {0.0m, 0.0m, 0.0m, 0.0m}; //Descuentos niño/servicio
         var anyOfthab = new[] {"", "", "", "", "", "", "", "", "", "", "", "", "", "", ""}; //Tipos de habitacion
         var anyOftser = new[] {"", "", "", "", ""}; //Tipos de servicio
 
@@ -55,10 +51,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)            
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .WithOfthab(anyOfthab)
             .WithOftser(anyOftser)
             .Build();
@@ -106,8 +98,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountAmount = anyConofege.Ofdtos,
                     DicountAmountType = PaymentType.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All,
-                    Paxes = []
+                    DiscountScope = DiscountScopeType.All
                 }
             ]
         };  
@@ -135,10 +126,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOfsobr = "";
         const string anyOfapli = "";
         const string anyContractClientCode = "";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
         var anyOfthab = new[] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" }; //Tipos de habitacion
         var anyOftser = new[] { "", "", "", "", "" }; //Tipos de servicio
 
@@ -159,10 +146,6 @@ public class CreateOfferAndSupplementShould {
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
             .WithContractClientCode(anyContractClientCode)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .WithOfthab(anyOfthab)
             .WithOftser(anyOftser)
             .Build();
@@ -210,8 +193,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountAmount = anyConofege.Ofdtos,
                     DicountAmountType = PaymentType.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All,
-                    Paxes = []
+                    DiscountScope = DiscountScopeType.All
                 }
             ]
         };
@@ -238,10 +220,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";        
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
         var anyOfthab = new[] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" }; //Tipos de habitacion
         var anyOftser = new[] { "", "", "", "", "" }; //Tipos de servicio
 
@@ -261,10 +239,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)            
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .WithOfthab(anyOfthab)
             .WithOftser(anyOftser)
             .Build();
@@ -312,8 +286,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountAmount = anyConofege.Ofdtos,
                     DicountAmountType = PaymentType.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All,
-                    Paxes = []
+                    DiscountScope = DiscountScopeType.All
                 }
             ]
         };
@@ -340,12 +313,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        
-        
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
         var anyOfthab = new[] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" }; //Tipos de habitacion
         var anyOftser = new[] { "", "", "", "", "" }; //Tipos de servicio
 
@@ -365,12 +332,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            
-            
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .WithOfthab(anyOfthab)
             .WithOftser(anyOftser)
             .Build();
@@ -418,8 +379,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountAmount = anyConofege.Ofdtos,
                     DicountAmountType = PaymentType.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All,
-                    Paxes = []
+                    DiscountScope = DiscountScopeType.All
                 }
             ]
         };
@@ -445,12 +405,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        
-        
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
         var anyOfthab = new[] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" }; //Tipos de habitacion
         var anyOftser = new[] { "", "", "", "", "" }; //Tipos de servicio
 
@@ -469,10 +423,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .WithOfthab(anyOfthab)
             .WithOftser(anyOftser)
             .Build();
@@ -520,8 +470,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountAmount = anyConofege.Ofdtos,
                     DicountAmountType = PaymentType.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All,
-                    Paxes = []
+                    DiscountScope = DiscountScopeType.All
                 }
             ]
         };
@@ -547,10 +496,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
         var anyOfthab = new[] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" }; //Tipos de habitacion
         var anyOftser = new[] { "", "", "", "", "" }; //Tipos de servicio
 
@@ -569,10 +514,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .WithOfthab(anyOfthab)
             .WithOftser(anyOftser)
             .Build();
@@ -620,8 +561,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountAmount = anyConofege.Ofdtos,
                     DicountAmountType = PaymentType.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All,
-                    Paxes = []
+                    DiscountScope = DiscountScopeType.All
                 }
             ]
         };
@@ -647,10 +587,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
         var anyOfthab = new[] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" }; //Tipos de habitacion
         var anyOftser = new[] { "", "", "", "", "" }; //Tipos de servicio
 
@@ -669,10 +605,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .WithOfthab(anyOfthab)
             .WithOftser(anyOftser)
             .Build();
@@ -720,8 +652,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountAmount = anyConofege.Ofdtos,
                     DicountAmountType = PaymentType.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All,
-                    Paxes = []
+                    DiscountScope = DiscountScopeType.All
                 }
             ]
         };
@@ -746,10 +677,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
         var anyOfthab = new[] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" }; //Tipos de habitacion
         var anyOftser = new[] { "", "", "", "", "" }; //Tipos de servicio
 
@@ -767,10 +694,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .WithOfthab(anyOfthab)
             .WithOftser(anyOftser)
             .Build();
@@ -818,8 +741,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountAmount = anyConofege.Ofdtos,
                     DicountAmountType = PaymentType.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All,
-                    Paxes = []
+                    DiscountScope = DiscountScopeType.All
                 }
             ]
         };
@@ -843,10 +765,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
         var anyOfthab = new[] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" }; //Tipos de habitacion
         var anyOftser = new[] { "", "", "", "", "" }; //Tipos de servicio
 
@@ -863,10 +781,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .WithOfthab(anyOfthab)
             .WithOftser(anyOftser)
             .Build();
@@ -914,8 +828,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountAmount = anyConofege.Ofdtos,
                     DicountAmountType = PaymentType.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All,
-                    Paxes = []
+                    DiscountScope = DiscountScopeType.All
                 }
             ]
         };
@@ -938,10 +851,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
         var anyOfthab = new[] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" }; //Tipos de habitacion
         var anyOftser = new[] { "", "", "", "", "" }; //Tipos de servicio
 
@@ -957,10 +866,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .WithOfthab(anyOfthab)
             .WithOftser(anyOftser)
             .Build();
@@ -1008,8 +913,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountAmount = anyConofege.Ofdtos,
                     DicountAmountType = PaymentType.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All,
-                    Paxes = []
+                    DiscountScope = DiscountScopeType.All
                 }
             ]
         };
@@ -1032,10 +936,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
         var anyOfthab = new[] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" }; //Tipos de habitacion
         var anyOftser = new[] { "", "", "", "", "" }; //Tipos de servicio
 
@@ -1051,10 +951,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .WithOfthab(anyOfthab)
             .WithOftser(anyOftser)
             .Build();
@@ -1102,8 +998,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountAmount = anyConofege.Ofdtos,
                     DicountAmountType = PaymentType.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All,
-                    Paxes = []
+                    DiscountScope = DiscountScopeType.All
                 }
             ]
         };
@@ -1126,10 +1021,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
         var anyOfthab = new[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O" }; //Tipos de habitacion
         var anyOftser = new[] { "", "", "", "", "" }; //Tipos de servicio
 
@@ -1145,10 +1036,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .WithOfthab(anyOfthab)
             .WithOftser(anyOftser)
             .Build();
@@ -1196,8 +1083,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountAmount = anyConofege.Ofdtos,
                     DicountAmountType = PaymentType.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All,
-                    Paxes = []
+                    DiscountScope = DiscountScopeType.All
                 }
             ]
         };
@@ -1220,10 +1106,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
         var anyOfthab = new[] { "A", "", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O" }; //Tipos de habitacion
         var anyOftser = new[] { "", "", "", "", "" }; //Tipos de servicio
 
@@ -1239,10 +1121,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .WithOfthab(anyOfthab)
             .WithOftser(anyOftser)
             .Build();
@@ -1290,8 +1168,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountAmount = anyConofege.Ofdtos,
                     DicountAmountType = PaymentType.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All,
-                    Paxes = []
+                    DiscountScope = DiscountScopeType.All
                 }
             ]
         };
@@ -1314,10 +1191,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
         var anyOftser = new[] { "A", "B", "C", "D", "E" }; //Tipos de servicio
 
         var anyConofege = ConofegeBuilder.AConofegeBuilder()
@@ -1332,10 +1205,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .WithOftser(anyOftser)
             .Build();
 
@@ -1382,8 +1251,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountAmount = anyConofege.Ofdtos,
                     DicountAmountType = PaymentType.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All,
-                    Paxes = []
+                    DiscountScope = DiscountScopeType.All
                 }
             ]
         };
@@ -1406,10 +1274,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
         var anyOftser = new[] { "A", "", "C", "D", "E" }; //Tipos de servicio
 
         var anyConofege = ConofegeBuilder.AConofegeBuilder()
@@ -1424,10 +1288,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .WithOftser(anyOftser)
             .Build();
 
@@ -1474,8 +1334,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountAmount = anyConofege.Ofdtos,
                     DicountAmountType = PaymentType.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All,
-                    Paxes = []
+                    DiscountScope = DiscountScopeType.All
                 }
             ]
         };
@@ -1498,11 +1357,7 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
-        
+              
         var anyConofege = ConofegeBuilder.AConofegeBuilder()
             .WithOffec(anyOffec)
             .WithOffec2(anyOffec2)
@@ -1515,10 +1370,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .Build();
 
         //When
@@ -1564,8 +1415,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountAmount = anyConofege.Ofdtos,
                     DicountAmountType = PaymentType.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All,
-                    Paxes = []
+                    DiscountScope = DiscountScopeType.All
                 }
             ]
         };
@@ -1587,11 +1437,7 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
-
+        
         var anyConofege = ConofegeBuilder.AConofegeBuilder()
             .WithOffec(anyOffec)
             .WithOffec2(anyOffec2)
@@ -1603,10 +1449,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .Build();
 
         //When
@@ -1652,8 +1494,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountAmount = anyConofege.Ofdtos,
                     DicountAmountType = PaymentType.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All,
-                    Paxes = []
+                    DiscountScope = DiscountScopeType.All
                 }
             ]
         };
@@ -1675,11 +1516,7 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
-
+        
         var anyConofege = ConofegeBuilder.AConofegeBuilder()
             .WithOffec(anyOffec)
             .WithOffec2(anyOffec2)
@@ -1691,10 +1528,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .Build();
 
         //When
@@ -1740,8 +1573,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountAmount = anyConofege.Ofdtos,
                     DicountAmountType = PaymentType.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All,
-                    Paxes = []
+                    DiscountScope = DiscountScopeType.All
                 }
             ]
         };
@@ -1763,11 +1595,7 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
-
+        
         var anyConofege = ConofegeBuilder.AConofegeBuilder()
             .WithOffec(anyOffec)
             .WithOffec2(anyOffec2)
@@ -1779,10 +1607,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .Build();
 
         //When
@@ -1828,8 +1652,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountAmount = anyConofege.Ofdtos,
                     DicountAmountType = PaymentType.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All,
-                    Paxes = []
+                    DiscountScope = DiscountScopeType.All
                 }
             ]
         };
@@ -1850,11 +1673,7 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
-
+        
         var anyConofege = ConofegeBuilder.AConofegeBuilder()
             .WithOffec(anyOffec)
             .WithOffec2(anyOffec2)
@@ -1865,10 +1684,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .Build();
 
         //When
@@ -1914,8 +1729,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountAmount = anyConofege.Ofdtos,
                     DicountAmountType = PaymentType.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All,
-                    Paxes = []
+                    DiscountScope = DiscountScopeType.All
                 }
             ]
         };
@@ -1936,11 +1750,7 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
-
+        
         var anyConofege = ConofegeBuilder.AConofegeBuilder()
             .WithOffec(anyOffec)
             .WithOffec2(anyOffec2)
@@ -1951,10 +1761,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .Build();
 
         //When
@@ -2000,8 +1806,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountAmount = anyConofege.Ofdtos,
                     DicountAmountType = PaymentType.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All,
-                    Paxes = []
+                    DiscountScope = DiscountScopeType.All
                 }
             ]
         };
@@ -2022,11 +1827,7 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
-
+        
         var anyConofege = ConofegeBuilder.AConofegeBuilder()
             .WithOffec(anyOffec)
             .WithOffec2(anyOffec2)
@@ -2037,12 +1838,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            
-            
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .Build();
 
         //When
@@ -2088,8 +1883,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountAmount = anyConofege.Ofdtos,
                     DicountAmountType = PaymentType.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All,
-                    Paxes = []
+                    DiscountScope = DiscountScopeType.All
                 }
             ]
         };
@@ -2109,10 +1903,6 @@ public class CreateOfferAndSupplementShould {
         const string anyOftidt = "C";
         const string anyOfsobr = "";
         const string anyOfapli = "";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
 
         var anyConofege = ConofegeBuilder.AConofegeBuilder()
             .WithOffec(anyOffec)
@@ -2123,10 +1913,6 @@ public class CreateOfferAndSupplementShould {
             .WithOftidt(anyOftidt)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .Build();
 
         //When
@@ -2172,8 +1958,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountAmount = anyConofege.Ofdtos,
                     DicountAmountType = PaymentType.Fixed,
                     DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All,
-                    Paxes = []
+                    DiscountScope = DiscountScopeType.All
                 }
             ]
         };
@@ -2192,10 +1977,6 @@ public class CreateOfferAndSupplementShould {
         const int anyOfgrbh = 0;
         const string anyOfsobr = "B";
         const string anyOfapli = "";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
 
         var anyConofege = ConofegeBuilder.AConofegeBuilder()
             .WithOffec(anyOffec)
@@ -2205,10 +1986,6 @@ public class CreateOfferAndSupplementShould {
             .WithOfgrbh(anyOfgrbh)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .Build();
 
         //When
@@ -2254,8 +2031,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountAmount = anyConofege.Ofdtos,
                     DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? PaymentType.Fixed : PaymentType.Percent,
                     DiscountTarget = DiscountTargetType.Net,
-                    DiscountScope = DiscountScopeType.All,
-                    Paxes = []
+                    DiscountScope = DiscountScopeType.All
                 }
             ]
         };
@@ -2274,11 +2050,7 @@ public class CreateOfferAndSupplementShould {
         const int anyOfgrbh = 0;
         const string anyOfsobr = "C";
         const string anyOfapli = "";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
-
+        
         var anyConofege = ConofegeBuilder.AConofegeBuilder()
             .WithOffec(anyOffec)
             .WithOffec2(anyOffec2)
@@ -2287,10 +2059,6 @@ public class CreateOfferAndSupplementShould {
             .WithOfgrbh(anyOfgrbh)
             .WithOfsobr(anyOfsobr)
             .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .Build();
 
         //When
@@ -2336,8 +2104,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountAmount = anyConofege.Ofdtos,
                     DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? PaymentType.Fixed : PaymentType.Percent,
                     DiscountTarget = DiscountTargetType.Commission,
-                    DiscountScope = DiscountScopeType.All,
-                    Paxes = []
+                    DiscountScope = DiscountScopeType.All
                 }
             ]
         };
@@ -2355,11 +2122,7 @@ public class CreateOfferAndSupplementShould {
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
         const string anyOfapli = "E";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
-
+        
         var anyConofege = ConofegeBuilder.AConofegeBuilder()
             .WithOffec(anyOffec)
             .WithOffec2(anyOffec2)
@@ -2367,10 +2130,6 @@ public class CreateOfferAndSupplementShould {
             .WithOfgrbd(anyOfgrbd)
             .WithOfgrbh(anyOfgrbh)
             .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .Build();
 
         //When
@@ -2416,8 +2175,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountAmount = anyConofege.Ofdtos,
                     DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? PaymentType.Fixed : PaymentType.Percent,
                     DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.Stay,
-                    Paxes = []
+                    DiscountScope = DiscountScopeType.Stay
                 }
             ]
         };
@@ -2435,11 +2193,7 @@ public class CreateOfferAndSupplementShould {
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
         const string anyOfapli = "S";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
-
+        
         var anyConofege = ConofegeBuilder.AConofegeBuilder()
             .WithOffec(anyOffec)
             .WithOffec2(anyOffec2)
@@ -2447,10 +2201,6 @@ public class CreateOfferAndSupplementShould {
             .WithOfgrbd(anyOfgrbd)
             .WithOfgrbh(anyOfgrbh)
             .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
             .Build();
 
         //When
@@ -2496,1204 +2246,7 @@ public class CreateOfferAndSupplementShould {
                     DiscountAmount = anyConofege.Ofdtos,
                     DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? PaymentType.Fixed : PaymentType.Percent,
                     DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.Regime,
-                    Paxes = []
-                }
-            ]
-        };
-
-        await availabilitySynchronizerApiClient.Received()
-            .CreateOfferAndSupplement(Arg.Is<Infrastructure.Dtos.BookingCenter.OfferAndSupplement>(x => IsEquivalent(x, expectedOfferAndSupplement)));
-    }
-
-    [Test]
-    public async Task create_offer_and_supplement_when_all_ofdae_values_are_not_zero() {
-        //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
-        const int anyOfftop = 0;
-        const int anyOfgrbd = 0;
-        const int anyOfgrbh = 0;
-        const string anyOfapli = "S";
-        var anyOfdae = new[] { 10.0m, 20.0m, 30.0m, 40.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
-
-        var anyConofege = ConofegeBuilder.AConofegeBuilder()
-            .WithOffec(anyOffec)
-            .WithOffec2(anyOffec2)
-            .WithOfftop(anyOfftop)
-            .WithOfgrbd(anyOfgrbd)
-            .WithOfgrbh(anyOfgrbh)
-            .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
-            .Build();
-
-        //When
-        await createOfferAndSupplement.Execute(anyConofege);
-
-        //Then
-        var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
-            Code = anyConofege.Code,
-            ContractClients = new List<string> { anyConofege.ContractClientCode },
-            Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
-            ApplyFrom = new DateTime(2024, 01, 01),
-            ApplyTo = new DateTime(2024, 01, 02),
-            ApplyOrder = null,
-            DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
-            DepositBeforeDate = null,
-            ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
-                new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
-                    StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
-                    ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
-                    MinStayDays = anyConofege.Ofdiae,
-                    MaxStayDays = anyConofege.Ofdieh,
-                    MinReleaseDays = anyConofege.Offred,
-                    MaxReleaseDays = anyConofege.Offres,
-                    BookingWindowFrom = DateTime.MinValue,
-                    BookingWindowTo = DateTime.MinValue,
-                    OccupancyRateCod = anyConofege.Ofcocu.ToString(),
-                    Rooms = anyConofege.GetRoomCodes.Where(value => value != "").ToList(),
-                    Regimes = anyConofege.GetRegimeCodes.Where(value => value != "").ToList(),
-                }
-            ],
-            Configurations = [
-                new OfferAndSupplementConfiguration {
-                    FreeDays = anyConofege.Ofdfac.Trim() == "" ? anyConofege.Ofdiae - anyConofege.Ofdiaf : anyConofege.Ofdiaf,
-                    RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
-                    RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
-                    ApplyStayPriceType = anyConofege.Offore.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offore.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offore.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
-                    ApplyStayPrice = anyConofege.Ofpree,
-                    ApplyRegimePriceType = anyConofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
-                    ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? PaymentType.Fixed : PaymentType.Percent,
-                    DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.Regime,
-                    Paxes = [
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 1,
-                            PaxType = PaxType.Adult,
-                            Scope = ScopeType.Stay,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdae[0],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 1,
-                            PaxType = PaxType.Teenager,
-                            Scope = ScopeType.Stay,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdae[0],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 2,
-                            PaxType = PaxType.Adult,
-                            Scope = ScopeType.Stay,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdae[1],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 2,
-                            PaxType = PaxType.Teenager,
-                            Scope = ScopeType.Stay,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdae[1],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 3,
-                            PaxType = PaxType.Adult,
-                            Scope = ScopeType.Stay,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdae[2],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 3,
-                            PaxType = PaxType.Teenager,
-                            Scope = ScopeType.Stay,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdae[2],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 4,
-                            PaxType = PaxType.Adult,
-                            Scope = ScopeType.Stay,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdae[3],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 4,
-                            PaxType = PaxType.Teenager,
-                            Scope = ScopeType.Stay,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdae[3],
-                            AmountType = PaymentType.Percent
-                        }
-                    ]
-                }
-            ]
-        };
-
-        await availabilitySynchronizerApiClient.Received()
-            .CreateOfferAndSupplement(Arg.Is<Infrastructure.Dtos.BookingCenter.OfferAndSupplement>(x => IsEquivalent(x, expectedOfferAndSupplement)));
-    }
-
-     [Test]
-    public async Task create_offer_and_supplement_when_all_ofdae_values_are_not_zero_except_ofdae2() {
-        //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
-        const int anyOfftop = 0;
-        const int anyOfgrbd = 0;
-        const int anyOfgrbh = 0;
-        const string anyOfapli = "S";
-        var anyOfdae = new[] { 10.0m, 0.0m, 30.0m, 40.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
-
-        var anyConofege = ConofegeBuilder.AConofegeBuilder()
-            .WithOffec(anyOffec)
-            .WithOffec2(anyOffec2)
-            .WithOfftop(anyOfftop)
-            .WithOfgrbd(anyOfgrbd)
-            .WithOfgrbh(anyOfgrbh)
-            .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
-            .Build();
-
-        //When
-        await createOfferAndSupplement.Execute(anyConofege);
-
-        //Then
-        var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
-            Code = anyConofege.Code,
-            ContractClients = new List<string> { anyConofege.ContractClientCode },
-            Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
-            ApplyFrom = new DateTime(2024, 01, 01),
-            ApplyTo = new DateTime(2024, 01, 02),
-            ApplyOrder = null,
-            DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
-            DepositBeforeDate = null,
-            ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
-                new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
-                    StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
-                    ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
-                    MinStayDays = anyConofege.Ofdiae,
-                    MaxStayDays = anyConofege.Ofdieh,
-                    MinReleaseDays = anyConofege.Offred,
-                    MaxReleaseDays = anyConofege.Offres,
-                    BookingWindowFrom = DateTime.MinValue,
-                    BookingWindowTo = DateTime.MinValue,
-                    OccupancyRateCod = anyConofege.Ofcocu.ToString(),
-                    Rooms = anyConofege.GetRoomCodes.Where(value => value != "").ToList(),
-                    Regimes = anyConofege.GetRegimeCodes.Where(value => value != "").ToList(),
-                }
-            ],
-            Configurations = [
-                new OfferAndSupplementConfiguration {
-                    FreeDays = anyConofege.Ofdfac.Trim() == "" ? anyConofege.Ofdiae - anyConofege.Ofdiaf : anyConofege.Ofdiaf,
-                    RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
-                    RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
-                    ApplyStayPriceType = anyConofege.Offore.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offore.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offore.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
-                    ApplyStayPrice = anyConofege.Ofpree,
-                    ApplyRegimePriceType = anyConofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
-                    ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? PaymentType.Fixed : PaymentType.Percent,
-                    DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.Regime,
-                    Paxes = [
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 1,
-                            PaxType = PaxType.Adult,
-                            Scope = ScopeType.Stay,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdae[0],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 1,
-                            PaxType = PaxType.Teenager,
-                            Scope = ScopeType.Stay,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdae[0],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 3,
-                            PaxType = PaxType.Adult,
-                            Scope = ScopeType.Stay,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdae[2],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 3,
-                            PaxType = PaxType.Teenager,
-                            Scope = ScopeType.Stay,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdae[2],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 4,
-                            PaxType = PaxType.Adult,
-                            Scope = ScopeType.Stay,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdae[3],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 4,
-                            PaxType = PaxType.Teenager,
-                            Scope = ScopeType.Stay,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdae[3],
-                            AmountType = PaymentType.Percent
-                        }
-                    ]
-                }
-            ]
-        };
-
-        await availabilitySynchronizerApiClient.Received()
-            .CreateOfferAndSupplement(Arg.Is<Infrastructure.Dtos.BookingCenter.OfferAndSupplement>(x => IsEquivalent(x, expectedOfferAndSupplement)));
-    }
-
-    [Test]
-    public async Task create_offer_and_supplement_when_all_ofdae_values_are_zero() {
-        //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
-        const int anyOfftop = 0;
-        const int anyOfgrbd = 0;
-        const int anyOfgrbh = 0;
-        const string anyOfapli = "S";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
-
-        var anyConofege = ConofegeBuilder.AConofegeBuilder()
-            .WithOffec(anyOffec)
-            .WithOffec2(anyOffec2)
-            .WithOfftop(anyOfftop)
-            .WithOfgrbd(anyOfgrbd)
-            .WithOfgrbh(anyOfgrbh)
-            .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
-            .Build();
-
-        //When
-        await createOfferAndSupplement.Execute(anyConofege);
-
-        //Then
-        var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
-            Code = anyConofege.Code,
-            ContractClients = new List<string> { anyConofege.ContractClientCode },
-            Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
-            ApplyFrom = new DateTime(2024, 01, 01),
-            ApplyTo = new DateTime(2024, 01, 02),
-            ApplyOrder = null,
-            DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
-            DepositBeforeDate = null,
-            ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
-                new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
-                    StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
-                    ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
-                    MinStayDays = anyConofege.Ofdiae,
-                    MaxStayDays = anyConofege.Ofdieh,
-                    MinReleaseDays = anyConofege.Offred,
-                    MaxReleaseDays = anyConofege.Offres,
-                    BookingWindowFrom = DateTime.MinValue,
-                    BookingWindowTo = DateTime.MinValue,
-                    OccupancyRateCod = anyConofege.Ofcocu.ToString(),
-                    Rooms = anyConofege.GetRoomCodes.Where(value => value != "").ToList(),
-                    Regimes = anyConofege.GetRegimeCodes.Where(value => value != "").ToList(),
-                }
-            ],
-            Configurations = [
-                new OfferAndSupplementConfiguration {
-                    FreeDays = anyConofege.Ofdfac.Trim() == "" ? anyConofege.Ofdiae - anyConofege.Ofdiaf : anyConofege.Ofdiaf,
-                    RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
-                    RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
-                    ApplyStayPriceType = anyConofege.Offore.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offore.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offore.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
-                    ApplyStayPrice = anyConofege.Ofpree,
-                    ApplyRegimePriceType = anyConofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
-                    ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? PaymentType.Fixed : PaymentType.Percent,
-                    DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.Regime,
-                    Paxes = []
-                }
-            ]
-        };
-
-        await availabilitySynchronizerApiClient.Received()
-            .CreateOfferAndSupplement(Arg.Is<Infrastructure.Dtos.BookingCenter.OfferAndSupplement>(x => IsEquivalent(x, expectedOfferAndSupplement)));
-    }
-
-    [Test]
-    public async Task create_offer_and_supplement_when_all_ofdas_values_are_not_zero() {
-        //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
-        const int anyOfftop = 0;
-        const int anyOfgrbd = 0;
-        const int anyOfgrbh = 0;
-        const string anyOfapli = "S";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 10.0m, 20.0m, 30.0m, 40.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
-
-        var anyConofege = ConofegeBuilder.AConofegeBuilder()
-            .WithOffec(anyOffec)
-            .WithOffec2(anyOffec2)
-            .WithOfftop(anyOfftop)
-            .WithOfgrbd(anyOfgrbd)
-            .WithOfgrbh(anyOfgrbh)
-            .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
-            .Build();
-
-        //When
-        await createOfferAndSupplement.Execute(anyConofege);
-
-        //Then
-        var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
-            Code = anyConofege.Code,
-            ContractClients = new List<string> { anyConofege.ContractClientCode },
-            Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
-            ApplyFrom = new DateTime(2024, 01, 01),
-            ApplyTo = new DateTime(2024, 01, 02),
-            ApplyOrder = null,
-            DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
-            DepositBeforeDate = null,
-            ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
-                new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
-                    StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
-                    ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
-                    MinStayDays = anyConofege.Ofdiae,
-                    MaxStayDays = anyConofege.Ofdieh,
-                    MinReleaseDays = anyConofege.Offred,
-                    MaxReleaseDays = anyConofege.Offres,
-                    BookingWindowFrom = DateTime.MinValue,
-                    BookingWindowTo = DateTime.MinValue,
-                    OccupancyRateCod = anyConofege.Ofcocu.ToString(),
-                    Rooms = anyConofege.GetRoomCodes.Where(value => value != "").ToList(),
-                    Regimes = anyConofege.GetRegimeCodes.Where(value => value != "").ToList(),
-                }
-            ],
-            Configurations = [
-                new OfferAndSupplementConfiguration {
-                    FreeDays = anyConofege.Ofdfac.Trim() == "" ? anyConofege.Ofdiae - anyConofege.Ofdiaf : anyConofege.Ofdiaf,
-                    RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
-                    RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
-                    ApplyStayPriceType = anyConofege.Offore.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offore.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offore.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
-                    ApplyStayPrice = anyConofege.Ofpree,
-                    ApplyRegimePriceType = anyConofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
-                    ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? PaymentType.Fixed : PaymentType.Percent,
-                    DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.Regime,
-                    Paxes = [
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 1,
-                            PaxType = PaxType.Adult,
-                            Scope = ScopeType.Regime,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdas[0],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 1,
-                            PaxType = PaxType.Teenager,
-                            Scope = ScopeType.Regime,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdas[0],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 2,
-                            PaxType = PaxType.Adult,
-                            Scope = ScopeType.Regime,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdas[1],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 2,
-                            PaxType = PaxType.Teenager,
-                            Scope = ScopeType.Regime,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdas[1],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 3,
-                            PaxType = PaxType.Adult,
-                            Scope = ScopeType.Regime,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdas[2],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 3,
-                            PaxType = PaxType.Teenager,
-                            Scope = ScopeType.Regime,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdas[2],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 4,
-                            PaxType = PaxType.Adult,
-                            Scope = ScopeType.Regime,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdas[3],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 4,
-                            PaxType = PaxType.Teenager,
-                            Scope = ScopeType.Regime,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdas[3],
-                            AmountType = PaymentType.Percent
-                        }
-                    ]
-                }
-            ]
-        };
-
-        await availabilitySynchronizerApiClient.Received()
-            .CreateOfferAndSupplement(Arg.Is<Infrastructure.Dtos.BookingCenter.OfferAndSupplement>(x => IsEquivalent(x, expectedOfferAndSupplement)));
-    }
-
-    [Test]
-    public async Task create_offer_and_supplement_when_all_ofdas_values_are_not_zero_except_ofdas1_and_ofdas2() {
-        //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
-        const int anyOfftop = 0;
-        const int anyOfgrbd = 0;
-        const int anyOfgrbh = 0;
-        const string anyOfapli = "S";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 30.0m, 40.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
-
-        var anyConofege = ConofegeBuilder.AConofegeBuilder()
-            .WithOffec(anyOffec)
-            .WithOffec2(anyOffec2)
-            .WithOfftop(anyOfftop)
-            .WithOfgrbd(anyOfgrbd)
-            .WithOfgrbh(anyOfgrbh)
-            .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
-            .Build();
-
-        //When
-        await createOfferAndSupplement.Execute(anyConofege);
-
-        //Then
-        var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
-            Code = anyConofege.Code,
-            ContractClients = new List<string> { anyConofege.ContractClientCode },
-            Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
-            ApplyFrom = new DateTime(2024, 01, 01),
-            ApplyTo = new DateTime(2024, 01, 02),
-            ApplyOrder = null,
-            DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
-            DepositBeforeDate = null,
-            ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
-                new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
-                    StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
-                    ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
-                    MinStayDays = anyConofege.Ofdiae,
-                    MaxStayDays = anyConofege.Ofdieh,
-                    MinReleaseDays = anyConofege.Offred,
-                    MaxReleaseDays = anyConofege.Offres,
-                    BookingWindowFrom = DateTime.MinValue,
-                    BookingWindowTo = DateTime.MinValue,
-                    OccupancyRateCod = anyConofege.Ofcocu.ToString(),
-                    Rooms = anyConofege.GetRoomCodes.Where(value => value != "").ToList(),
-                    Regimes = anyConofege.GetRegimeCodes.Where(value => value != "").ToList(),
-                }
-            ],
-            Configurations = [
-                new OfferAndSupplementConfiguration {
-                    FreeDays = anyConofege.Ofdfac.Trim() == "" ? anyConofege.Ofdiae - anyConofege.Ofdiaf : anyConofege.Ofdiaf,
-                    RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
-                    RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
-                    ApplyStayPriceType = anyConofege.Offore.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offore.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offore.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
-                    ApplyStayPrice = anyConofege.Ofpree,
-                    ApplyRegimePriceType = anyConofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
-                    ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? PaymentType.Fixed : PaymentType.Percent,
-                    DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.Regime,
-                    Paxes = [
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 3,
-                            PaxType = PaxType.Adult,
-                            Scope = ScopeType.Regime,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdas[2],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 3,
-                            PaxType = PaxType.Teenager,
-                            Scope = ScopeType.Regime,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdas[2],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 4,
-                            PaxType = PaxType.Adult,
-                            Scope = ScopeType.Regime,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdas[3],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 4,
-                            PaxType = PaxType.Teenager,
-                            Scope = ScopeType.Regime,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdas[3],
-                            AmountType = PaymentType.Percent
-                        }
-                    ]
-                }
-            ]
-        };
-
-        await availabilitySynchronizerApiClient.Received()
-            .CreateOfferAndSupplement(Arg.Is<Infrastructure.Dtos.BookingCenter.OfferAndSupplement>(x => IsEquivalent(x, expectedOfferAndSupplement)));
-    }
-
-    [Test]
-    public async Task create_offer_and_supplement_when_all_ofdne_values_are_not_zero() {
-        //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
-        const int anyOfftop = 0;
-        const int anyOfgrbd = 0;
-        const int anyOfgrbh = 0;
-        const string anyOfapli = "S";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 10.0m, 20.0m, 30.0m, 40.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
-
-        var anyConofege = ConofegeBuilder.AConofegeBuilder()
-            .WithOffec(anyOffec)
-            .WithOffec2(anyOffec2)
-            .WithOfftop(anyOfftop)
-            .WithOfgrbd(anyOfgrbd)
-            .WithOfgrbh(anyOfgrbh)
-            .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
-            .Build();
-
-        //When
-        await createOfferAndSupplement.Execute(anyConofege);
-
-        //Then
-        var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
-            Code = anyConofege.Code,
-            ContractClients = new List<string> { anyConofege.ContractClientCode },
-            Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
-            ApplyFrom = new DateTime(2024, 01, 01),
-            ApplyTo = new DateTime(2024, 01, 02),
-            ApplyOrder = null,
-            DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
-            DepositBeforeDate = null,
-            ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
-                new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
-                    StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
-                    ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
-                    MinStayDays = anyConofege.Ofdiae,
-                    MaxStayDays = anyConofege.Ofdieh,
-                    MinReleaseDays = anyConofege.Offred,
-                    MaxReleaseDays = anyConofege.Offres,
-                    BookingWindowFrom = DateTime.MinValue,
-                    BookingWindowTo = DateTime.MinValue,
-                    OccupancyRateCod = anyConofege.Ofcocu.ToString(),
-                    Rooms = anyConofege.GetRoomCodes.Where(value => value != "").ToList(),
-                    Regimes = anyConofege.GetRegimeCodes.Where(value => value != "").ToList(),
-                }
-            ],
-            Configurations = [
-                new OfferAndSupplementConfiguration {
-                    FreeDays = anyConofege.Ofdfac.Trim() == "" ? anyConofege.Ofdiae - anyConofege.Ofdiaf : anyConofege.Ofdiaf,
-                    RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
-                    RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
-                    ApplyStayPriceType = anyConofege.Offore.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offore.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offore.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
-                    ApplyStayPrice = anyConofege.Ofpree,
-                    ApplyRegimePriceType = anyConofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
-                    ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? PaymentType.Fixed : PaymentType.Percent,
-                    DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.Regime,
-                    Paxes = [
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 1,
-                            PaxType = PaxType.Child,
-                            Scope = ScopeType.Stay,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdne[0],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 2,
-                            PaxType = PaxType.Child,
-                            Scope = ScopeType.Stay,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdne[1],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 3,
-                            PaxType = PaxType.Child,
-                            Scope = ScopeType.Stay,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdne[2],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 4,
-                            PaxType = PaxType.Child,
-                            Scope = ScopeType.Stay,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdne[3],
-                            AmountType = PaymentType.Percent
-                        }
-                    ]
-                }
-            ]
-        };
-
-        await availabilitySynchronizerApiClient.Received()
-            .CreateOfferAndSupplement(Arg.Is<Infrastructure.Dtos.BookingCenter.OfferAndSupplement>(x => IsEquivalent(x, expectedOfferAndSupplement)));
-    }
-
-    [Test]
-    public async Task create_offer_and_supplement_when_all_ofdne_values_are_not_zero_except_ofdne1() {
-        //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
-        const int anyOfftop = 0;
-        const int anyOfgrbd = 0;
-        const int anyOfgrbh = 0;
-        const string anyOfapli = "S";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 20.0m, 30.0m, 40.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
-
-        var anyConofege = ConofegeBuilder.AConofegeBuilder()
-            .WithOffec(anyOffec)
-            .WithOffec2(anyOffec2)
-            .WithOfftop(anyOfftop)
-            .WithOfgrbd(anyOfgrbd)
-            .WithOfgrbh(anyOfgrbh)
-            .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
-            .Build();
-
-        //When
-        await createOfferAndSupplement.Execute(anyConofege);
-
-        //Then
-        var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
-            Code = anyConofege.Code,
-            ContractClients = new List<string> { anyConofege.ContractClientCode },
-            Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
-            ApplyFrom = new DateTime(2024, 01, 01),
-            ApplyTo = new DateTime(2024, 01, 02),
-            ApplyOrder = null,
-            DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
-            DepositBeforeDate = null,
-            ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
-                new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
-                    StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
-                    ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
-                    MinStayDays = anyConofege.Ofdiae,
-                    MaxStayDays = anyConofege.Ofdieh,
-                    MinReleaseDays = anyConofege.Offred,
-                    MaxReleaseDays = anyConofege.Offres,
-                    BookingWindowFrom = DateTime.MinValue,
-                    BookingWindowTo = DateTime.MinValue,
-                    OccupancyRateCod = anyConofege.Ofcocu.ToString(),
-                    Rooms = anyConofege.GetRoomCodes.Where(value => value != "").ToList(),
-                    Regimes = anyConofege.GetRegimeCodes.Where(value => value != "").ToList(),
-                }
-            ],
-            Configurations = [
-                new OfferAndSupplementConfiguration {
-                    FreeDays = anyConofege.Ofdfac.Trim() == "" ? anyConofege.Ofdiae - anyConofege.Ofdiaf : anyConofege.Ofdiaf,
-                    RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
-                    RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
-                    ApplyStayPriceType = anyConofege.Offore.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offore.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offore.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
-                    ApplyStayPrice = anyConofege.Ofpree,
-                    ApplyRegimePriceType = anyConofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
-                    ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? PaymentType.Fixed : PaymentType.Percent,
-                    DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.Regime,
-                    Paxes = [
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 2,
-                            PaxType = PaxType.Child,
-                            Scope = ScopeType.Stay,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdne[1],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 3,
-                            PaxType = PaxType.Child,
-                            Scope = ScopeType.Stay,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdne[2],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 4,
-                            PaxType = PaxType.Child,
-                            Scope = ScopeType.Stay,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdne[3],
-                            AmountType = PaymentType.Percent
-                        }
-                    ]
-                }
-            ]
-        };
-
-        await availabilitySynchronizerApiClient.Received()
-            .CreateOfferAndSupplement(Arg.Is<Infrastructure.Dtos.BookingCenter.OfferAndSupplement>(x => IsEquivalent(x, expectedOfferAndSupplement)));
-    }
-
-    [Test]
-    public async Task create_offer_and_supplement_when_all_ofdns_values_are_not_zero() {
-        //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
-        const int anyOfftop = 0;
-        const int anyOfgrbd = 0;
-        const int anyOfgrbh = 0;
-        const string anyOfapli = "S";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 10.0m, 20.0m, 30.0m, 40.0m }; //Descuentos niño/servicio
-
-        var anyConofege = ConofegeBuilder.AConofegeBuilder()
-            .WithOffec(anyOffec)
-            .WithOffec2(anyOffec2)
-            .WithOfftop(anyOfftop)
-            .WithOfgrbd(anyOfgrbd)
-            .WithOfgrbh(anyOfgrbh)
-            .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
-            .Build();
-
-        //When
-        await createOfferAndSupplement.Execute(anyConofege);
-
-        //Then
-        var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
-            Code = anyConofege.Code,
-            ContractClients = new List<string> { anyConofege.ContractClientCode },
-            Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
-            ApplyFrom = new DateTime(2024, 01, 01),
-            ApplyTo = new DateTime(2024, 01, 02),
-            ApplyOrder = null,
-            DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
-            DepositBeforeDate = null,
-            ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
-                new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
-                    StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
-                    ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
-                    MinStayDays = anyConofege.Ofdiae,
-                    MaxStayDays = anyConofege.Ofdieh,
-                    MinReleaseDays = anyConofege.Offred,
-                    MaxReleaseDays = anyConofege.Offres,
-                    BookingWindowFrom = DateTime.MinValue,
-                    BookingWindowTo = DateTime.MinValue,
-                    OccupancyRateCod = anyConofege.Ofcocu.ToString(),
-                    Rooms = anyConofege.GetRoomCodes.Where(value => value != "").ToList(),
-                    Regimes = anyConofege.GetRegimeCodes.Where(value => value != "").ToList(),
-                }
-            ],
-            Configurations = [
-                new OfferAndSupplementConfiguration {
-                    FreeDays = anyConofege.Ofdfac.Trim() == "" ? anyConofege.Ofdiae - anyConofege.Ofdiaf : anyConofege.Ofdiaf,
-                    RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
-                    RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
-                    ApplyStayPriceType = anyConofege.Offore.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offore.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offore.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
-                    ApplyStayPrice = anyConofege.Ofpree,
-                    ApplyRegimePriceType = anyConofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
-                    ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? PaymentType.Fixed : PaymentType.Percent,
-                    DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.Regime,
-                    Paxes = [
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 1,
-                            PaxType = PaxType.Child,
-                            Scope = ScopeType.Regime,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdns[0],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 2,
-                            PaxType = PaxType.Child,
-                            Scope = ScopeType.Regime,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdns[1],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 3,
-                            PaxType = PaxType.Child,
-                            Scope = ScopeType.Regime,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdns[2],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 4,
-                            PaxType = PaxType.Child,
-                            Scope = ScopeType.Regime,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdns[3],
-                            AmountType = PaymentType.Percent
-                        }
-                    ]
-                }
-            ]
-        };
-
-        await availabilitySynchronizerApiClient.Received()
-            .CreateOfferAndSupplement(Arg.Is<Infrastructure.Dtos.BookingCenter.OfferAndSupplement>(x => IsEquivalent(x, expectedOfferAndSupplement)));
-    }
-
-    [Test]
-    public async Task create_offer_and_supplement_when_all_ofdns_values_are_not_zero_except_ofdns3() {
-        //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
-        const int anyOfftop = 0;
-        const int anyOfgrbd = 0;
-        const int anyOfgrbh = 0;
-        const string anyOfapli = "S";
-        var anyOfdae = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 10.0m, 20.0m, 0.0m, 40.0m }; //Descuentos niño/servicio
-
-        var anyConofege = ConofegeBuilder.AConofegeBuilder()
-            .WithOffec(anyOffec)
-            .WithOffec2(anyOffec2)
-            .WithOfftop(anyOfftop)
-            .WithOfgrbd(anyOfgrbd)
-            .WithOfgrbh(anyOfgrbh)
-            .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
-            .Build();
-
-        //When
-        await createOfferAndSupplement.Execute(anyConofege);
-
-        //Then
-        var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
-            Code = anyConofege.Code,
-            ContractClients = new List<string> { anyConofege.ContractClientCode },
-            Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
-            ApplyFrom = new DateTime(2024, 01, 01),
-            ApplyTo = new DateTime(2024, 01, 02),
-            ApplyOrder = null,
-            DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
-            DepositBeforeDate = null,
-            ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
-                new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
-                    StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
-                    ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
-                    MinStayDays = anyConofege.Ofdiae,
-                    MaxStayDays = anyConofege.Ofdieh,
-                    MinReleaseDays = anyConofege.Offred,
-                    MaxReleaseDays = anyConofege.Offres,
-                    BookingWindowFrom = DateTime.MinValue,
-                    BookingWindowTo = DateTime.MinValue,
-                    OccupancyRateCod = anyConofege.Ofcocu.ToString(),
-                    Rooms = anyConofege.GetRoomCodes.Where(value => value != "").ToList(),
-                    Regimes = anyConofege.GetRegimeCodes.Where(value => value != "").ToList(),
-                }
-            ],
-            Configurations = [
-                new OfferAndSupplementConfiguration {
-                    FreeDays = anyConofege.Ofdfac.Trim() == "" ? anyConofege.Ofdiae - anyConofege.Ofdiaf : anyConofege.Ofdiaf,
-                    RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
-                    RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
-                    ApplyStayPriceType = anyConofege.Offore.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offore.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offore.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
-                    ApplyStayPrice = anyConofege.Ofpree,
-                    ApplyRegimePriceType = anyConofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
-                    ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? PaymentType.Fixed : PaymentType.Percent,
-                    DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.Regime,
-                    Paxes = [
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 1,
-                            PaxType = PaxType.Child,
-                            Scope = ScopeType.Regime,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdns[0],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 2,
-                            PaxType = PaxType.Child,
-                            Scope = ScopeType.Regime,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdns[1],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 4,
-                            PaxType = PaxType.Child,
-                            Scope = ScopeType.Regime,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdns[3],
-                            AmountType = PaymentType.Percent
-                        }
-                    ]
-                }
-            ]
-        };
-
-        await availabilitySynchronizerApiClient.Received()
-            .CreateOfferAndSupplement(Arg.Is<Infrastructure.Dtos.BookingCenter.OfferAndSupplement>(x => IsEquivalent(x, expectedOfferAndSupplement)));
-    }
-
-    [Test]
-    public async Task create_offer_and_supplement_when_ofdae1_and_ofdns2_are_not_zero() {
-        //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
-        const int anyOfftop = 0;
-        const int anyOfgrbd = 0;
-        const int anyOfgrbh = 0;
-        const string anyOfapli = "S";
-        var anyOfdae = new[] { 10.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/estancia
-        var anyOfdas = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos adulto/regimen
-        var anyOfdne = new[] { 0.0m, 0.0m, 0.0m, 0.0m }; //Descuentos niño/estancia
-        var anyOfdns = new[] { 0.0m, 20.0m, 0.0m, 0.0m }; //Descuentos niño/servicio
-
-        var anyConofege = ConofegeBuilder.AConofegeBuilder()
-            .WithOffec(anyOffec)
-            .WithOffec2(anyOffec2)
-            .WithOfftop(anyOfftop)
-            .WithOfgrbd(anyOfgrbd)
-            .WithOfgrbh(anyOfgrbh)
-            .WithOfapli(anyOfapli)
-            .WithOfdae(anyOfdae)
-            .WithOfdas(anyOfdas)
-            .WithOfdne(anyOfdne)
-            .WithOfdns(anyOfdns)
-            .Build();
-
-        //When
-        await createOfferAndSupplement.Execute(anyConofege);
-
-        //Then
-        var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.OfferAndSupplement {
-            Code = anyConofege.Code,
-            ContractClients = new List<string> { anyConofege.ContractClientCode },
-            Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
-            ApplyFrom = new DateTime(2024, 01, 01),
-            ApplyTo = new DateTime(2024, 01, 02),
-            ApplyOrder = null,
-            DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
-            DepositBeforeDate = null,
-            ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
-                new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
-                    StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
-                    ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
-                    MinStayDays = anyConofege.Ofdiae,
-                    MaxStayDays = anyConofege.Ofdieh,
-                    MinReleaseDays = anyConofege.Offred,
-                    MaxReleaseDays = anyConofege.Offres,
-                    BookingWindowFrom = DateTime.MinValue,
-                    BookingWindowTo = DateTime.MinValue,
-                    OccupancyRateCod = anyConofege.Ofcocu.ToString(),
-                    Rooms = anyConofege.GetRoomCodes.Where(value => value != "").ToList(),
-                    Regimes = anyConofege.GetRegimeCodes.Where(value => value != "").ToList(),
-                }
-            ],
-            Configurations = [
-                new OfferAndSupplementConfiguration {
-                    FreeDays = anyConofege.Ofdfac.Trim() == "" ? anyConofege.Ofdiae - anyConofege.Ofdiaf : anyConofege.Ofdiaf,
-                    RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
-                    RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
-                    ApplyStayPriceType = anyConofege.Offore.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offore.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offore.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
-                    ApplyStayPrice = anyConofege.Ofpree,
-                    ApplyRegimePriceType = anyConofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
-                    ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? PaymentType.Fixed : PaymentType.Percent,
-                    DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.Regime,
-                    Paxes = [
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 1,
-                            PaxType = PaxType.Adult,
-                            Scope = ScopeType.Stay,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdae[0],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 1,
-                            PaxType = PaxType.Teenager,
-                            Scope = ScopeType.Stay,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdae[0],
-                            AmountType = PaymentType.Percent
-                        },
-                        new Infrastructure.Dtos.BookingCenter.OfferAndSupplementConfigurationPax {
-                            PaxOrder = 2,
-                            PaxType = PaxType.Child,
-                            Scope = ScopeType.Regime,
-                            AgeFrom = 0,
-                            AgeTo = 0,
-                            Amount = anyOfdns[1],
-                            AmountType = PaymentType.Percent
-                        },                        
-                    ]
+                    DiscountScope = DiscountScopeType.Regime
                 }
             ]
         };
