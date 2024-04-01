@@ -61,6 +61,20 @@ public class CreateOcuppancyRateShould {
             .CreateOcuppancyRate(Arg.Is<Infrastructure.Dtos.BookingCenter.OcuppancyRate>(x => IsEquivalent(x, expectedOcuppancyRate)));
     }
 
+    [Test]
+    public async Task do_not_create_ocuppancy_rate_when_cocod_is_empty() {
+        //Given
+        var anyResthaco = new Resthaco {
+            Cocod = string.Empty
+        };
+
+        //When
+        Func<Task> function = async () => await createOcuppancyRate.Execute(anyResthaco);     
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Code is required");
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
