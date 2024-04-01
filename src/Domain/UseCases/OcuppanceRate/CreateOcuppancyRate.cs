@@ -19,6 +19,9 @@ public class CreateOcuppancyRate {
         if (resthaco.Cmaxni < resthaco.Cminni) {
             throw new ArgumentException("Max child is less than min child");
         }
+        if (resthaco.Cmaxin < resthaco.Cminin) {
+            throw new ArgumentException("Max infant is less than min infant");
+        }
         var occuppancyRate = resthaco.ToOcuppancyRate();
         await availabilitySynchronizerApiClient.CreateOcuppancyRate(occuppancyRate);
     }
