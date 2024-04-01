@@ -13,6 +13,9 @@ public class CreateOcuppancyRate {
         if (resthaco.Cmaxad < resthaco.Cminad) {
             throw new ArgumentException("Max adult is less than min adult");
         }
+        if (resthaco.Cmaxat < resthaco.Cminat) {
+            throw new ArgumentException("Max teen is less than min teen");
+        }
         var occuppancyRate = resthaco.ToOcuppancyRate();
         await availabilitySynchronizerApiClient.CreateOcuppancyRate(occuppancyRate);
     }
