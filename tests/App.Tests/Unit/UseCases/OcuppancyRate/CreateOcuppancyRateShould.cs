@@ -1,0 +1,68 @@
+namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.OcuppancyRate;
+
+[TestFixture]
+public class CreateOcuppancyRateShould {
+    private IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
+    private CreateOcuppancyRate createOcuppancyRate;
+
+    [SetUp]
+    public void SetUp() {
+        availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
+        createOcuppancyRate = new CreateOcuppancyRate();
+    }
+
+    [Test]
+    public async Task create_ocuppancy_rate() {
+        //Given
+        const string anyCocod = "anyCocod";
+        const int anyCminad = 1;
+        const int anyCminat = 0;
+        const int anyCminni = 0;
+        const int anyCminin = 0;
+        const int anyCmaxad = 2;
+        const int anyCmaxat = 0;
+        const int anyCmaxni = 3;
+        const int anyCmaxin = 3;
+        const decimal anyCmaxto = 1.10m;
+        const decimal anyCminto = 0.10m;
+
+        var anyResthaco = new Resthaco {
+            Cocod = anyCocod,
+            Cminad = anyCminad,
+            Cminat = anyCminat,
+            Cminni = anyCminni,
+            Cminin = anyCminin,
+            Cmaxad = anyCmaxad,
+            Cmaxat = anyCmaxat,
+            Cmaxni = anyCmaxni,
+            Cmaxin = anyCmaxin,
+            Cmaxto = anyCmaxto,
+            Cminto = anyCminto
+        };
+
+        //When
+        await createOcuppancyRate.Execute(anyResthaco);
+
+        //Then
+        var expectedOcuppancyRate = new Infrastructure.Dtos.BookingCenter.OcuppancyRate {
+            Code = anyCocod,
+            MinAdult = anyCminad,
+            MinTeen = anyCminat,
+            MinChild = anyCminni,
+            MinInfant = anyCminin,
+            MaxAdult = anyCmaxad,
+            MaxTeen = anyCmaxat,
+            MaxChild = anyCmaxni,
+            MaxScore = anyCmaxto,
+            MinScore = anyCminto
+        };
+
+        await availabilitySynchronizerApiClient.Received()
+            .CreateOcuppancyRate(Arg.Is<Infrastructure.Dtos.BookingCenter.OcuppancyRate>(x => IsEquivalent(x, expectedOcuppancyRate)));
+    }
+
+    private bool IsEquivalent(object source, object expected) {
+        source.Should().BeEquivalentTo(expected);
+        return true;
+    }
+}

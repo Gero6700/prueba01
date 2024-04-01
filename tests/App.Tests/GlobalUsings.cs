@@ -21,6 +21,7 @@ global using Senator.As400.Cloud.Sync.Application.UseCases.OfferAndSupplementGro
 global using Senator.As400.Cloud.Sync.Application.UseCases.OfferAndSupplementGroupOfferAndSupplement;
 global using Senator.As400.Cloud.Sync.Application.UseCases.PeriodPricing;
 global using Senator.As400.Cloud.Sync.Application.UseCases.PeriodPricingPax;
+global using Senator.As400.Cloud.Sync.Application.UseCases.OcuppanceRate;
 global using Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter;
 global using Senator.As400.Cloud.Sync.Infrastructure.Dtos.As400;
 global using Senator.As400.Cloud.Sync.Infrastructure.Providers;
