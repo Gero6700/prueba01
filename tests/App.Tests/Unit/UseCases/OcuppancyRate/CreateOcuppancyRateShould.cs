@@ -8,7 +8,7 @@ public class CreateOcuppancyRateShould {
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        createOcuppancyRate = new CreateOcuppancyRate();
+        createOcuppancyRate = new CreateOcuppancyRate(availabilitySynchronizerApiClient);
     }
 
     [Test]
@@ -16,13 +16,13 @@ public class CreateOcuppancyRateShould {
         //Given
         const string anyCocod = "anyCocod";
         const int anyCminad = 1;
-        const int anyCminat = 0;
-        const int anyCminni = 0;
+        const int anyCminat = 2;
+        const int anyCminni = 3;
         const int anyCminin = 0;
-        const int anyCmaxad = 2;
-        const int anyCmaxat = 0;
-        const int anyCmaxni = 3;
-        const int anyCmaxin = 3;
+        const int anyCmaxad = 4;
+        const int anyCmaxat = 5;
+        const int anyCmaxni = 6;
+        const int anyCmaxin = 7;
         const decimal anyCmaxto = 1.10m;
         const decimal anyCminto = 0.10m;
 
