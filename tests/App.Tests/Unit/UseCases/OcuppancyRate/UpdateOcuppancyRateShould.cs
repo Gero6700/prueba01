@@ -1,3 +1,5 @@
+using Senator.As400.Cloud.Sync.Application.UseCases.OcuppanceRate;
+
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.OcuppancyRate;
 [TestFixture]
 public class UpdateOcuppancyRateShould {
@@ -58,6 +60,20 @@ public class UpdateOcuppancyRateShould {
 
         await availabilitySynchronizerApiClient.Received()
             .UpdateOcuppancyRate(Arg.Is<Infrastructure.Dtos.BookingCenter.OcuppancyRate>(x => IsEquivalent(x, expectedOcuppancyRate)));
+    }
+
+    [Test]
+    public async Task do_not_update_ocuppancy_rate_when_cocod_is_empty() {
+        //Given
+        var anyResthaco = new Resthaco {
+            Cocod = string.Empty
+        };
+
+        //When
+        Func<Task> function = async () => await updateOcuppancyRate.Execute(anyResthaco);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Code is required");
     }
 
     private bool IsEquivalent(object source, object expected) {
