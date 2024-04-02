@@ -57,5 +57,6 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Providers {
         Task<Response> DeletePeriodPricingPax(string code);
         Task<Response> CreateOccupancyRate(OccupancyRate occupancyRate);
         Task<Response> UpdateOccupancyRate(OccupancyRate occupancyRate);
+        Task<Response> DeleteOccupancyRate(string code);
     }
 }
