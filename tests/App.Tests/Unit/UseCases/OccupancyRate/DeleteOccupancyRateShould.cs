@@ -24,4 +24,15 @@ public class DeleteOccupancyRateShould {
             .DeleteOccupancyRate(anyCocod);
     }
 
+    [Test]
+    public async Task do_not_delete_occupancy_rate_when_cocod_is_empty() {
+        //Given
+        const string anyCocod = "";
+
+        //When
+        Func<Task> act = async () => await deleteOccupancyRate.Execute(anyCocod);
+
+        //Then
+        await act.Should().ThrowAsync<ArgumentException>().WithMessage("Code is required");
+    }
 }
