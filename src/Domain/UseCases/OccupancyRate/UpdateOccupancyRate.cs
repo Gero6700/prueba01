@@ -1,4 +1,4 @@
-namespace Senator.As400.Cloud.Sync.Application.UseCases.OcuppanceRate;
+namespace Senator.As400.Cloud.Sync.Application.UseCases.OccupancyRate;
 public class UpdateOccupancyRate {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 

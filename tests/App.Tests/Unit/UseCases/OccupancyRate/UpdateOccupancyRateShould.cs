@@ -1,5 +1,3 @@
-using Senator.As400.Cloud.Sync.Application.UseCases.OcuppanceRate;
-
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.OccupancyRate;
 [TestFixture]
 public class UpdateOccupancyRateShould {
