@@ -7,6 +7,9 @@ public class UpdateOcuppancyRate {
     }
 
     public async Task Execute(Resthaco resthaco) {
+        if (string.IsNullOrWhiteSpace(resthaco.Cocod)) {
+            throw new ArgumentException("Code is required");
+        }
         var occuppancyRate = resthaco.ToOcuppancyRate();
         await availabilitySynchronizerApiClient.UpdateOcuppancyRate(occuppancyRate);
     }
