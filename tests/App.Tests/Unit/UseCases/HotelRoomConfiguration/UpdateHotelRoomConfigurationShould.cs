@@ -34,7 +34,7 @@ public class UpdateHotelRoomConfigurationShould {
             HotelCode = anyTihote.ToString(),
             RoomCode = anyTihab,
             InventoryRoomTypeCode = anyTihabg,
-            OcuppancyRateCode = anyTiconf.ToString()
+            OccupancyRateCode = anyTiconf.ToString()
         };
 
         await availabilitySynchronizerApiClient.Received()

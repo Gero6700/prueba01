@@ -1,19 +1,19 @@
 using Senator.As400.Cloud.Sync.Application.UseCases.OcuppanceRate;
 
-namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.OcuppancyRate;
+namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.OccupancyRate;
 [TestFixture]
-public class UpdateOcuppancyRateShould {
+public class UpdateOccupancyRateShould {
     private IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
-    private UpdateOcuppancyRate updateOcuppancyRate;
+    private UpdateOccupancyRate updateOccupancyRate;
 
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        updateOcuppancyRate = new UpdateOcuppancyRate(availabilitySynchronizerApiClient);
+        updateOccupancyRate = new UpdateOccupancyRate(availabilitySynchronizerApiClient);
     }
 
     [Test]
-    public async Task update_ocuppancy_rate() {
+    public async Task update_occupancy_rate() {
         //Given
         const string anyCocod = "anyCocod";
         const int anyCminad = 1;
@@ -42,10 +42,10 @@ public class UpdateOcuppancyRateShould {
         };
 
         //When
-        await updateOcuppancyRate.Execute(anyResthaco);
+        await updateOccupancyRate.Execute(anyResthaco);
 
         //Then
-        var expectedOcuppancyRate = new Infrastructure.Dtos.BookingCenter.OcuppancyRate {
+        var expectedOccupancyRate = new Infrastructure.Dtos.BookingCenter.OccupancyRate {
             Code = anyCocod,
             MinAdult = anyCminad,
             MinTeen = anyCminat,
@@ -59,18 +59,18 @@ public class UpdateOcuppancyRateShould {
         };
 
         await availabilitySynchronizerApiClient.Received()
-            .UpdateOcuppancyRate(Arg.Is<Infrastructure.Dtos.BookingCenter.OcuppancyRate>(x => IsEquivalent(x, expectedOcuppancyRate)));
+            .UpdateOccupancyRate(Arg.Is<Infrastructure.Dtos.BookingCenter.OccupancyRate>(x => IsEquivalent(x, expectedOccupancyRate)));
     }
 
     [Test]
-    public async Task do_not_update_ocuppancy_rate_when_cocod_is_empty() {
+    public async Task do_not_update_occupancy_rate_when_cocod_is_empty() {
         //Given
         var anyResthaco = new Resthaco {
             Cocod = string.Empty
         };
 
         //When
-        Func<Task> function = async () => await updateOcuppancyRate.Execute(anyResthaco);
+        Func<Task> function = async () => await updateOccupancyRate.Execute(anyResthaco);
 
         //Then
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Code is required");

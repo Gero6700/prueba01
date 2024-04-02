@@ -1,8 +1,8 @@
 namespace Senator.As400.Cloud.Sync.Application.UseCases.OcuppanceRate;
-public class UpdateOcuppancyRate {
+public class UpdateOccupancyRate {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
-    public UpdateOcuppancyRate(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {
+    public UpdateOccupancyRate(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
@@ -10,7 +10,7 @@ public class UpdateOcuppancyRate {
         if (string.IsNullOrWhiteSpace(resthaco.Cocod)) {
             throw new ArgumentException("Code is required");
         }
-        var occuppancyRate = resthaco.ToOcuppancyRate();
-        await availabilitySynchronizerApiClient.UpdateOcuppancyRate(occuppancyRate);
+        var occuppancyRate = resthaco.ToOccupancyRate();
+        await availabilitySynchronizerApiClient.UpdateOccupancyRate(occuppancyRate);
     }
 }

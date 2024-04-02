@@ -1,7 +1,7 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Extensions;
 public static class ResthacoExtension {
-    public static OcuppancyRate ToOcuppancyRate(this Resthaco resthaco) {
-        return new OcuppancyRate {
+    public static OccupancyRate ToOccupancyRate(this Resthaco resthaco) {
+        return new OccupancyRate {
             Code = resthaco.Cocod,
             MinAdult = resthaco.Cminad,
             MinTeen = resthaco.Cminat,

@@ -1,18 +1,18 @@
-namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.OcuppancyRate;
+namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.OccupancyRate;
 
 [TestFixture]
-public class CreateOcuppancyRateShould {
+public class CreateOccupancyRateShould {
     private IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
-    private CreateOcuppancyRate createOcuppancyRate;
+    private CreateOccupancyRate createOccupancyRate;
 
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        createOcuppancyRate = new CreateOcuppancyRate(availabilitySynchronizerApiClient);
+        createOccupancyRate = new CreateOccupancyRate(availabilitySynchronizerApiClient);
     }
 
     [Test]
-    public async Task create_ocuppancy_rate() {
+    public async Task create_occupancy_rate() {
         //Given
         const string anyCocod = "anyCocod";
         const int anyCminad = 1;
@@ -41,10 +41,10 @@ public class CreateOcuppancyRateShould {
         };
 
         //When
-        await createOcuppancyRate.Execute(anyResthaco);
+        await createOccupancyRate.Execute(anyResthaco);
 
         //Then
-        var expectedOcuppancyRate = new Infrastructure.Dtos.BookingCenter.OcuppancyRate {
+        var expectedOccupancyRate = new Infrastructure.Dtos.BookingCenter.OccupancyRate {
             Code = anyCocod,
             MinAdult = anyCminad,
             MinTeen = anyCminat,
@@ -58,25 +58,25 @@ public class CreateOcuppancyRateShould {
         };
 
         await availabilitySynchronizerApiClient.Received()
-            .CreateOcuppancyRate(Arg.Is<Infrastructure.Dtos.BookingCenter.OcuppancyRate>(x => IsEquivalent(x, expectedOcuppancyRate)));
+            .CreateOccupancyRate(Arg.Is<Infrastructure.Dtos.BookingCenter.OccupancyRate>(x => IsEquivalent(x, expectedOccupancyRate)));
     }
 
     [Test]
-    public async Task do_not_create_ocuppancy_rate_when_cocod_is_empty() {
+    public async Task do_not_create_occupancy_rate_when_cocod_is_empty() {
         //Given
         var anyResthaco = new Resthaco {
             Cocod = string.Empty
         };
 
         //When
-        Func<Task> function = async () => await createOcuppancyRate.Execute(anyResthaco);     
+        Func<Task> function = async () => await createOccupancyRate.Execute(anyResthaco);     
 
         //Then
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Code is required");
     }
 
     [Test]
-    public async Task do_not_create_ocuppancy_rate_when_cmaxad_is_less_than_cminad() {
+    public async Task do_not_create_occupancy_rate_when_cmaxad_is_less_than_cminad() {
         //Given
         var anyResthaco = new Resthaco {
             Cocod = "anyCocod",
@@ -85,14 +85,14 @@ public class CreateOcuppancyRateShould {
         };
 
         //When
-        Func<Task> function = async () => await createOcuppancyRate.Execute(anyResthaco);
+        Func<Task> function = async () => await createOccupancyRate.Execute(anyResthaco);
 
         //Then
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Max adult is less than min adult");
     }
 
     [Test]
-    public async Task do_not_create_ocuppancy_rate_when_cmaxat_is_less_than_cminat() {
+    public async Task do_not_create_occupancy_rate_when_cmaxat_is_less_than_cminat() {
         //Given
         var anyResthaco = new Resthaco {
             Cocod = "anyCocod",
@@ -101,14 +101,14 @@ public class CreateOcuppancyRateShould {
         };
 
         //When
-        Func<Task> function = async () => await createOcuppancyRate.Execute(anyResthaco);
+        Func<Task> function = async () => await createOccupancyRate.Execute(anyResthaco);
 
         //Then
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Max teen is less than min teen");
     }
 
     [Test]
-    public async Task do_not_create_ocuppancy_rate_when_cmaxni_is_less_than_cminni() {
+    public async Task do_not_create_occupancy_rate_when_cmaxni_is_less_than_cminni() {
         //Given
         var anyResthaco = new Resthaco {
             Cocod = "anyCocod",
@@ -117,14 +117,14 @@ public class CreateOcuppancyRateShould {
         };
 
         //When
-        Func<Task> function = async () => await createOcuppancyRate.Execute(anyResthaco);
+        Func<Task> function = async () => await createOccupancyRate.Execute(anyResthaco);
 
         //Then
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Max child is less than min child");
     }
 
     [Test]
-    public async Task do_not_create_ocuppancy_rate_when_cmaxin_is_less_than_cminin() {
+    public async Task do_not_create_occupancy_rate_when_cmaxin_is_less_than_cminin() {
         //Given
         var anyResthaco = new Resthaco {
             Cocod = "anyCocod",
@@ -133,14 +133,14 @@ public class CreateOcuppancyRateShould {
         };
 
         //When
-        Func<Task> function = async () => await createOcuppancyRate.Execute(anyResthaco);
+        Func<Task> function = async () => await createOccupancyRate.Execute(anyResthaco);
 
         //Then
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Max infant is less than min infant");
     }
 
     [Test]
-    public async Task do_not_create_ocuppancy_rate_when_cmaxto_is_less_than_cminto() {
+    public async Task do_not_create_occupancy_rate_when_cmaxto_is_less_than_cminto() {
         //Given
         var anyResthaco = new Resthaco {
             Cocod = "anyCocod",
@@ -149,7 +149,7 @@ public class CreateOcuppancyRateShould {
         };
 
         //When
-        Func<Task> function = async () => await createOcuppancyRate.Execute(anyResthaco);
+        Func<Task> function = async () => await createOccupancyRate.Execute(anyResthaco);
 
         //Then
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Max score is less than min score");

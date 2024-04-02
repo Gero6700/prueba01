@@ -1,8 +1,8 @@
 namespace Senator.As400.Cloud.Sync.Application.UseCases.OcuppanceRate;
-public class CreateOcuppancyRate {
+public class CreateOccupancyRate {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
     
-    public CreateOcuppancyRate(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {
+    public CreateOccupancyRate(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
@@ -25,7 +25,7 @@ public class CreateOcuppancyRate {
         if (resthaco.Cmaxto < resthaco.Cminto) {
             throw new ArgumentException("Max score is less than min score");
         }
-        var occuppancyRate = resthaco.ToOcuppancyRate();
-        await availabilitySynchronizerApiClient.CreateOcuppancyRate(occuppancyRate);
+        var occuppancyRate = resthaco.ToOccupancyRate();
+        await availabilitySynchronizerApiClient.CreateOccupancyRate(occuppancyRate);
     }
 }

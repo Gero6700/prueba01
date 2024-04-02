@@ -1,5 +1,5 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter;
-public class OcuppancyRate {
+public class OccupancyRate {
     public string Code { get; set; } = string.Empty;
     public int MinAdult { get; set; }
     public int MinTeen { get; set; }
