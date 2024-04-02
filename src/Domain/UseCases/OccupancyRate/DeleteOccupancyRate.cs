@@ -7,6 +7,9 @@ public class DeleteOccupancyRate {
     }
 
     public async Task Execute(string cocod) {
+        if (string.IsNullOrWhiteSpace(cocod)) {
+            throw new ArgumentException("Code is required");
+        }
         await availabilitySynchronizerApiClient.DeleteOccupancyRate(cocod);
     }
 }
