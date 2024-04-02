@@ -108,6 +108,22 @@ public class UpdateOccupancyRateShould {
         await function.Should().ThrowAsync<ArgumentException>().WithMessage("Max teen is less than min teen");
     }
 
+    [Test]
+    public async Task do_not_update_occupancy_rate_when_cmaxni_is_less_than_cminni() {
+        //Given
+        var anyResthaco = new Resthaco {
+            Cocod = "anyCocod",
+            Cminni = 2,
+            Cmaxni = 1
+        };
+
+        //When
+        Func<Task> function = async () => await updateOccupancyRate.Execute(anyResthaco);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Max child is less than min child");
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
