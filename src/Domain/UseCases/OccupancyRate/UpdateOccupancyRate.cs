@@ -22,6 +22,9 @@ public class UpdateOccupancyRate {
         if (resthaco.Cmaxin < resthaco.Cminin) {
             throw new ArgumentException("Max infant is less than min infant");
         }
+        if (resthaco.Cmaxto < resthaco.Cminto) {
+            throw new ArgumentException("Max score is less than min score");
+        }
         var occuppancyRate = resthaco.ToOccupancyRate();
         await availabilitySynchronizerApiClient.UpdateOccupancyRate(occuppancyRate);
     }
