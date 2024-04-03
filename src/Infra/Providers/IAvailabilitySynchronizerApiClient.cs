@@ -1,4 +1,4 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter;
+using Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter.Availability;
 
 namespace Senator.As400.Cloud.Sync.Infrastructure.Providers {
     public interface IAvailabilitySynchronizerApiClient {

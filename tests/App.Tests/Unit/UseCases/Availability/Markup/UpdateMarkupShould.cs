@@ -1,0 +1,309 @@
+namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Availability.Markup;
+[TestFixture]
+public class UpdateMarkupShould {
+    private IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
+    private UpdateMarkup updateMarkup;
+
+    [SetUp]
+    public void SetUp() {
+        availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
+        updateMarkup = new UpdateMarkup(availabilitySynchronizerApiClient);
+    }
+
+    [Test]
+    public async Task update_markup() {
+        //Given
+        const int anyMkcid = 1;
+        const int anyMkcfed = 20240601;
+        const int anyMkcfeh = 20240602;
+        const decimal anyMkccpor = 5;
+        var anyMkcgrb = new DateTime(2024, 1, 1);
+        var anyMkcbwd = new DateTime(2024, 1, 1);
+        var anyMkcbwh = new DateTime(2024, 12, 31);
+
+        var anyMkupcabe = new Mkupcabe {
+            Mkcid = anyMkcid,
+            Mkcgrb = anyMkcgrb,
+            Mkcbwd = anyMkcbwd,
+            Mkcbwh = anyMkcbwh,
+            Mkcfed = anyMkcfed,
+            Mkcfeh = anyMkcfeh,
+            Mkccpor = anyMkccpor
+        };
+
+        //When
+        await updateMarkup.Execute(anyMkupcabe);
+
+        //Then
+        var expectedMarkup = new Infrastructure.Dtos.BookingCenter.Availability.Markup {
+            Code = anyMkcid.ToString(),
+            CreationDate = anyMkcgrb,
+            BookingWindowFrom = anyMkcbwd,
+            BookingWindowTo = anyMkcbwh,
+            StayFrom = new DateTime(2024, 6, 1),
+            StayTo = new DateTime(2024, 6, 2),
+            Amount = anyMkccpor
+        };
+
+        await availabilitySynchronizerApiClient.Received()
+            .UpdateMarkup(Arg.Is<Infrastructure.Dtos.BookingCenter.Availability.Markup>(x => IsEquivalent(x, expectedMarkup)));
+
+    }
+
+    [Test]
+    public async Task do_not_update_markup_when_mkcbwd_is_null() {
+        //Given
+        const int anyMkcid = 1;
+        const int anyMkcfed = 20240601;
+        const int anyMkcfeh = 20240602;
+        const decimal anyMkccpor = 5;
+        var anyMkcgrb = new DateTime(2024, 1, 1);
+        var anyMkcbwd = DateTime.MinValue;
+        var anyMkcbwh = new DateTime(2024, 12, 31);
+
+        var anyMkupcabe = new Mkupcabe {
+            Mkcid = anyMkcid,
+            Mkcgrb = anyMkcgrb,
+            Mkcbwd = anyMkcbwd,
+            Mkcbwh = anyMkcbwh,
+            Mkcfed = anyMkcfed,
+            Mkcfeh = anyMkcfeh,
+            Mkccpor = anyMkccpor
+        };
+
+        //When
+        Func<Task> function = async () => await updateMarkup.Execute(anyMkupcabe);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Booking window from is required");
+    }
+
+    [Test]
+    public async Task do_not_update_markup_when_mkcbwh_is_null() {
+        //Given
+        const int anyMkcid = 1;
+        const int anyMkcfed = 20240601;
+        const int anyMkcfeh = 20240602;
+        const decimal anyMkccpor = 5;
+        var anyMkcgrb = new DateTime(2024, 1, 1);
+        var anyMkcbwd = new DateTime(2024, 1, 1);
+        var anyMkcbwh = DateTime.MinValue;
+
+        var anyMkupcabe = new Mkupcabe {
+            Mkcid = anyMkcid,
+            Mkcgrb = anyMkcgrb,
+            Mkcbwd = anyMkcbwd,
+            Mkcbwh = anyMkcbwh,
+            Mkcfed = anyMkcfed,
+            Mkcfeh = anyMkcfeh,
+            Mkccpor = anyMkccpor
+        };
+
+        //When
+        Func<Task> function = async () => await updateMarkup.Execute(anyMkupcabe);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Booking window to is required");
+    }
+
+    [Test]
+    public async Task do_not_update_markup_when_mkcfed_is_zero() {
+        //Given
+        const int anyMkcid = 1;
+        const int anyMkcfed = 0;
+        const int anyMkcfeh = 20240602;
+        const decimal anyMkccpor = 5;
+        var anyMkcgrb = new DateTime(2024, 1, 1);
+        var anyMkcbwd = new DateTime(2024, 1, 1);
+        var anyMkcbwh = new DateTime(2024, 12, 31);
+
+        var anyMkupcabe = new Mkupcabe {
+            Mkcid = anyMkcid,
+            Mkcgrb = anyMkcgrb,
+            Mkcbwd = anyMkcbwd,
+            Mkcbwh = anyMkcbwh,
+            Mkcfed = anyMkcfed,
+            Mkcfeh = anyMkcfeh,
+            Mkccpor = anyMkccpor
+        };
+
+        //When
+        Func<Task> function = async () => await updateMarkup.Execute(anyMkupcabe);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Stay date from is required");
+    }
+
+    [Test]
+    public async Task do_not_update_markup_when_mkcfeh_is_zero() {
+        //Given
+        const int anyMkcid = 1;
+        const int anyMkcfed = 20240601;
+        const int anyMkcfeh = 0;
+        const decimal anyMkccpor = 5;
+        var anyMkcgrb = new DateTime(2024, 1, 1);
+        var anyMkcbwd = new DateTime(2024, 1, 1);
+        var anyMkcbwh = new DateTime(2024, 12, 31);
+
+        var anyMkupcabe = new Mkupcabe {
+            Mkcid = anyMkcid,
+            Mkcgrb = anyMkcgrb,
+            Mkcbwd = anyMkcbwd,
+            Mkcbwh = anyMkcbwh,
+            Mkcfed = anyMkcfed,
+            Mkcfeh = anyMkcfeh,
+            Mkccpor = anyMkccpor
+        };
+
+        //When
+        Func<Task> function = async () => await updateMarkup.Execute(anyMkupcabe);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Stay date to is required");
+    }
+
+    [Test]
+    public async Task do_not_update_markup_when_mkcfed_is_invalid() {
+        //Given
+        const int anyMkcid = 1;
+        const int anyMkcfed = 20240600;
+        const int anyMkcfeh = 20240602;
+        const decimal anyMkccpor = 5;
+        var anyMkcgrb = new DateTime(2024, 1, 1);
+        var anyMkcbwd = new DateTime(2024, 1, 1);
+        var anyMkcbwh = new DateTime(2024, 12, 31);
+
+        var anyMkupcabe = new Mkupcabe {
+            Mkcid = anyMkcid,
+            Mkcgrb = anyMkcgrb,
+            Mkcbwd = anyMkcbwd,
+            Mkcbwh = anyMkcbwh,
+            Mkcfed = anyMkcfed,
+            Mkcfeh = anyMkcfeh,
+            Mkccpor = anyMkccpor
+        };
+
+        //When
+        Func<Task> function = async () => await updateMarkup.Execute(anyMkupcabe);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Stay date from is invalid");
+    }
+
+    [Test]
+    public async Task do_not_update_markup_when_mkcfeh_is_invalid() {
+        //Given
+        const int anyMkcid = 1;
+        const int anyMkcfed = 20240601;
+        const int anyMkcfeh = 20240600;
+        const decimal anyMkccpor = 5;
+        var anyMkcgrb = new DateTime(2024, 1, 1);
+        var anyMkcbwd = new DateTime(2024, 1, 1);
+        var anyMkcbwh = new DateTime(2024, 12, 31);
+
+        var anyMkupcabe = new Mkupcabe {
+            Mkcid = anyMkcid,
+            Mkcgrb = anyMkcgrb,
+            Mkcbwd = anyMkcbwd,
+            Mkcbwh = anyMkcbwh,
+            Mkcfed = anyMkcfed,
+            Mkcfeh = anyMkcfeh,
+            Mkccpor = anyMkccpor
+        };
+
+        //When
+        Func<Task> function = async () => await updateMarkup.Execute(anyMkupcabe);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Stay date to is invalid");
+    }
+
+    [Test]
+    public async Task do_not_update_markup_when_mkcbwh_is_less_than_mkcbwd() {
+        //Given
+        const int anyMkcid = 1;
+        const int anyMkcfed = 20240601;
+        const int anyMkcfeh = 20240602;
+        const decimal anyMkccpor = 5;
+        var anyMkcgrb = new DateTime(2024, 1, 1);
+        var anyMkcbwd = new DateTime(2024, 12, 31);
+        var anyMkcbwh = new DateTime(2024, 1, 1);
+
+        var anyMkupcabe = new Mkupcabe {
+            Mkcid = anyMkcid,
+            Mkcgrb = anyMkcgrb,
+            Mkcbwd = anyMkcbwd,
+            Mkcbwh = anyMkcbwh,
+            Mkcfed = anyMkcfed,
+            Mkcfeh = anyMkcfeh,
+            Mkccpor = anyMkccpor
+        };
+
+        //When
+        Func<Task> function = async () => await updateMarkup.Execute(anyMkupcabe);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Booking window to is less than boking window from");
+    }
+
+    [Test]
+    public async Task do_not_update_markup_when_mkcfeh_is_less_than_mkcfed() {
+        //Given
+        const int anyMkcid = 1;
+        const int anyMkcfed = 20240602;
+        const int anyMkcfeh = 20240601;
+        const decimal anyMkccpor = 5;
+        var anyMkcgrb = new DateTime(2024, 1, 1);
+        var anyMkcbwd = new DateTime(2024, 1, 1);
+        var anyMkcbwh = new DateTime(2024, 12, 31);
+
+        var anyMkupcabe = new Mkupcabe {
+            Mkcid = anyMkcid,
+            Mkcgrb = anyMkcgrb,
+            Mkcbwd = anyMkcbwd,
+            Mkcbwh = anyMkcbwh,
+            Mkcfed = anyMkcfed,
+            Mkcfeh = anyMkcfeh,
+            Mkccpor = anyMkccpor
+        };
+
+        //When
+        Func<Task> function = async () => await updateMarkup.Execute(anyMkupcabe);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Stay date to is less than stay date from");
+    }
+
+    [Test]
+    public async Task do_not_update_markup_when_mkcpor_is_zero() {
+        //Given
+        const int anyMkcid = 1;
+        const int anyMkcfed = 20240601;
+        const int anyMkcfeh = 20240602;
+        const decimal anyMkccpor = 0;
+        var anyMkcgrb = new DateTime(2024, 1, 1);
+        var anyMkcbwd = new DateTime(2024, 1, 1);
+        var anyMkcbwh = new DateTime(2024, 12, 31);
+
+        var anyMkupcabe = new Mkupcabe {
+            Mkcid = anyMkcid,
+            Mkcgrb = anyMkcgrb,
+            Mkcbwd = anyMkcbwd,
+            Mkcbwh = anyMkcbwh,
+            Mkcfed = anyMkcfed,
+            Mkcfeh = anyMkcfeh,
+            Mkccpor = anyMkccpor
+        };
+
+        //When
+        Func<Task> function = async () => await updateMarkup.Execute(anyMkupcabe);
+
+        //Then
+        await function.Should().ThrowAsync<ArgumentException>().WithMessage("Incorrect amount");
+    }
+
+    private bool IsEquivalent(object source, object expected) {
+        source.Should().BeEquivalentTo(expected);
+        return true;
+    }
+}

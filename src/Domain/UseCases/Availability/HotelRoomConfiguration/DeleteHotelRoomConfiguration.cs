@@ -1,0 +1,16 @@
+using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
+
+namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.HotelRoomConfiguration;
+
+public class DeleteHotelRoomConfiguration {
+    private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
+
+    public DeleteHotelRoomConfiguration(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {
+        this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
+    }
+
+    public Task Execute(Resthaho resthaho) {
+        var hotelRoomConfiguration = resthaho.ToHotelRoomConfiguration();
+        return availabilitySynchronizerApiClient.DeleteHotelRoomConfiguration(hotelRoomConfiguration);
+    }
+}
