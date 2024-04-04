@@ -7,6 +7,9 @@ public class UpdateCategory {
     }
 
     public async Task Execute(MarcaComercial marcaComercial) {
+        if (marcaComercial.Id == 0) {
+            throw new ArgumentException("Category code is required");
+        }
         var category = marcaComercial.ToCategory();
         await staticSynchronizerApiClient.UpdateCategory(category);
     }
