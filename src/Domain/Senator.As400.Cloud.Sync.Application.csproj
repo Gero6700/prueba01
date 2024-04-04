@@ -10,8 +10,4 @@
     <ProjectReference Include="..\Infra\Senator.As400.Cloud.Sync.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UseCases\Static\" />
-  </ItemGroup>
-
 </Project>

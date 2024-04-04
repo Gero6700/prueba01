@@ -24,8 +24,4 @@
     <ProjectReference Include="..\Tests.Common\Senator.As400.Cloud.Sync.Tests.Common.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Unit\UseCases\Static\Category\" />
-  </ItemGroup>
-
 </Project>
