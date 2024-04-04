@@ -7,6 +7,9 @@ public class DeleteCategory {
     }
 
     public async Task Execute(int id) {
+        if (id == 0) {
+            throw new ArgumentException("Category code is required");
+        }
         await staticSynchronizerApiClient.DeleteCategory(id.ToString());
     }
 }
