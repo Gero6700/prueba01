@@ -40,6 +40,24 @@ public class CreateCategoryShould {
             .CreateCategory(Arg.Is<Infrastructure.Dtos.BookingCenter.Static.Category>(x => IsEquivalent(x, expectedCategory)));
     }
 
+    [Test]
+    public async Task do_not_create_category_when_id_is_zero() {
+        //Given
+        const int anyId = 0;
+        const string anyName = "anyName";
+
+        var anyMarcaComercial = new MarcaComercial {
+            Id = anyId,
+            Nombre = anyName
+        };
+
+        //When
+        Func<Task> action = async () => await createCategory.Execute(anyMarcaComercial);
+
+        //Then
+        await action.Should().ThrowAsync<ArgumentException>().WithMessage("Category code is required");
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
