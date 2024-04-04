@@ -8,13 +8,13 @@ public class CreateCategoryShould {
     [SetUp]
     public void SetUp() {
         staticSynchronizerApiClient = Substitute.For<IStaticSynchronizerApiClient>();
-        createCategory = new CreateCategory();
+        createCategory = new CreateCategory(staticSynchronizerApiClient);
     }
 
     [Test]
     public async Task create_category() {
         //Given
-        const string anyId = "anyId";
+        const int anyId = 1;
         const string anyName = "anyName";
 
         var anyMarcaComercial = new MarcaComercial {
@@ -27,13 +27,13 @@ public class CreateCategoryShould {
 
         //Then
         var expectedCategory = new Infrastructure.Dtos.BookingCenter.Static.Category {
-            Code = anyId,
-            Translations = new List<Translation> {
+            Code = anyId.ToString(),
+            Translations = [
                 new() {
                     Name = anyName,
                     LanguageIsoCode = "es-ES"
                 }
-            }
+            ]
         };
 
         await staticSynchronizerApiClient.Received()

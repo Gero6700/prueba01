@@ -3,6 +3,7 @@ global using IdentityModel.Client;
 global using RabbitMQ.Client;
 global using RabbitMQ.Client.Events;
 global using Senator.As400.Cloud.Sync.Infrastructure.Dtos.As400;
+global using Senator.As400.Cloud.Sync.Infrastructure.Dtos.SqlServer;
 global using Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter.Static;
 global using Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter.Availability;
 global using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Helpers;
