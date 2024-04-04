@@ -8,7 +8,7 @@ public class DeleteCategoryShould {
     [SetUp]
     public void SetUp() {
         staticSynchronizerApiClient = Substitute.For<IStaticSynchronizerApiClient>();
-        deleteCategory = new DeleteCategory();
+        deleteCategory = new DeleteCategory(staticSynchronizerApiClient);
     }
 
     [Test]
