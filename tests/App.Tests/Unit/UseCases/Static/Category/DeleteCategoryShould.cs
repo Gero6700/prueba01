@@ -25,6 +25,18 @@ public class DeleteCategoryShould {
             .DeleteCategory(Arg.Is<string>(x => IsEquivalent(x, expectedId)));
     }
 
+    [Test]
+    public async Task do_not_delete_category_when_id_is_zero() {
+        //Given
+        const int anyId = 0;
+
+        //When
+        Func<Task> action = async () => await deleteCategory.Execute(anyId);
+
+        //Then
+        await action.Should().ThrowAsync<ArgumentException>().WithMessage("Category code is required");
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
