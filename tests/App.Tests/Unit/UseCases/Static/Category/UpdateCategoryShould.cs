@@ -8,7 +8,7 @@ public class UpdateCategoryShould {
     [SetUp]
     public void SetUp() {
         staticSynchronizerApiClient = Substitute.For<IStaticSynchronizerApiClient>();
-        updateCategory = new UpdateCategory();
+        updateCategory = new UpdateCategory(staticSynchronizerApiClient);
     }
 
     [Test]
