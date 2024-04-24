@@ -14,8 +14,8 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Providers {
         Task<Response> CreateClientType(ClientType clientType);
         Task<Response> UpdateClientType(ClientType clientType);
         Task<Response> DeleteClientType(string ClientTypeCode);
-        Task<Response> CreateHotel(Hotel hotel);
-        Task<Response> UpdateHotel(Hotel hotel);
+        Task<Response> CreateHotel(Infrastructure.Dtos.BookingCenter.Availability.Hotel hotel);
+        Task<Response> UpdateHotel(Infrastructure.Dtos.BookingCenter.Availability.Hotel hotel);
         Task<Response> DeleteHotel(string hotelCode);
         Task<Response> CreateHotelRoomConfiguration(HotelRoomConfiguration hotelRoomConfiguration);
         Task<Response> UpdateHotelRoomConfiguration(HotelRoomConfiguration hotelRoomConfiguration);
@@ -26,8 +26,8 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Providers {
         Task<Response> CreateInventory(Inventory inventory);
         Task<Response> UpdateInventory(Inventory inventory);
         Task<Response> DeleteInventory(Inventory inventory);
-        Task<Response> CreateRoom(Room room);
-        Task<Response> UpdateRoom(Room room);
+        Task<Response> CreateRoom(Infrastructure.Dtos.BookingCenter.Availability.Room room);
+        Task<Response> UpdateRoom(Infrastructure.Dtos.BookingCenter.Availability.Room room);
         Task<Response> DeleteRoom(string roomCode);
         Task<Response> CreateExtra(Extra extra);
         Task<Response> UpdateExtra(Extra extra);
