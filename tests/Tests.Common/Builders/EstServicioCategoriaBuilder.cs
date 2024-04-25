@@ -50,7 +50,7 @@ public class EstServicioCategoriaBuilder {
     }
     private static EstServicioCategoriaRaw GenerateRaw() {
         return new Faker<EstServicioCategoriaRaw>()
-            .RuleFor(x => x.Id, f => f.Random.Number())
+            .RuleFor(x => x.Id, f => f.Random.Number(1,99))
             .RuleFor(x => x.EsNombre, f => f.Lorem.Sentence(2))
             .RuleFor(x => x.EnNombre, f => f.Lorem.Sentence(5))
             .RuleFor(x => x.FrNombre, f => f.Lorem.Sentence(5))
