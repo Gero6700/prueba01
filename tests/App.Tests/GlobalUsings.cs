@@ -23,6 +23,7 @@ global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.PeriodPr
 global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.PeriodPricingPax;
 global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.OccupancyRate;
 global using Senator.As400.Cloud.Sync.Application.UseCases.Static.Hotel;
+global using Senator.As400.Cloud.Sync.Application.UseCases.Static;
 global using Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter.Availability;
 global using Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter.Static;
 global using Senator.As400.Cloud.Sync.Infrastructure.Dtos.As400;
