@@ -20,6 +20,16 @@ public class EstHotelBuilder {
         return this;
     }
 
+    public EstHotelBuilder WithCerradoDesde(DateTime? newCerradoDesde) {
+        raw.CerradoDesde = newCerradoDesde;
+        return this;
+    }
+
+    public EstHotelBuilder WithCerradoHasta(DateTime? newCerradoHasta) {
+        raw.CerradoHasta = newCerradoHasta;
+        return this;
+    }
+
     public EstHotelBuilder WithCodigoCategoria(string newCodigoCategoria) {
         raw.CodigoCategoria = newCodigoCategoria;
         return this;
@@ -254,6 +264,8 @@ public class EstHotelBuilder {
         return new Faker<EstHotel>()
             .RuleFor(x => x.CodigoInterno, raw.CodigoInterno)
             .RuleFor(x => x.NombreHotel, raw.NombreHotel)
+            .RuleFor(x => x.CerradoDesde, raw.CerradoDesde)
+            .RuleFor(x => x.CerradoHasta, raw.CerradoHasta)
             .RuleFor(x => x.CodigoCategoria, raw.CodigoCategoria)
             .RuleFor(x => x.NombreMarcaComercial, raw.NombreMarcaComercial)
             .RuleFor(x => x.CodigoTipoHotel, raw.CodigoTipoHotel)
@@ -307,6 +319,8 @@ public class EstHotelBuilder {
         return new Faker<EstHotelRaw>()
             .RuleFor(x => x.CodigoInterno, f => f.Random.Number(0, 999))
             .RuleFor(x => x.NombreHotel, f => f.Lorem.Sentence(2))
+            .RuleFor(x => x.CerradoDesde, f => f.Date.Future(1))
+            .RuleFor(x => x.CerradoHasta, (_, x) => x.CerradoDesde.Value.AddMonths(3))
             .RuleFor(x => x.CodigoCategoria, f => f.Random.Number(1, 5) + "*")
             .RuleFor(x => x.NombreMarcaComercial, f => f.Lorem.Sentence(1))
             .RuleFor(x => x.CodigoTipoHotel, f => f.Random.String(2, 'A', 'Z'))
@@ -359,6 +373,8 @@ public class EstHotelBuilder {
     private class EstHotelRaw {
         public int CodigoInterno { get; set; }
         public string NombreHotel { get; set; } = string.Empty;
+        public DateTime? CerradoDesde { get; set; }
+        public DateTime? CerradoHasta { get; set; }
         public string CodigoCategoria { get; set; } = string.Empty;
         public string NombreMarcaComercial { get; set; } = string.Empty;
         public string CodigoTipoHotel { get; set; } = string.Empty;

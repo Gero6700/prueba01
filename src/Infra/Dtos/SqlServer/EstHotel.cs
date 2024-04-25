@@ -2,6 +2,8 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Dtos.SqlServer;
 public class EstHotel : IAggregateRoot {
     public int CodigoInterno { get; set; }
     public string NombreHotel { get; set; } = string.Empty;
+    public DateTime? CerradoDesde { get; set; }
+    public DateTime? CerradoHasta { get; set; }
     public string CodigoCategoria { get; set; } = string.Empty;
     public string NombreMarcaComercial { get; set; } = string.Empty;
     public string CodigoTipoHotel { get; set; } = string.Empty;

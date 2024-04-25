@@ -2,8 +2,8 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter.Static;
 public class Hotel : IAggregateRoot {
     public string Code { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;
-    public DateTime OpeningDate { get; set; }
-    public DateTime ClosingDate { get; set; }
+    public DateTime? OpeningDate { get; set; }
+    public DateTime? ClosingDate { get; set; }
     public string Category { get; set; } = string.Empty;
     public string CodeType { get; set; } = string.Empty;
     public string Type { get; set; } = string.Empty;
@@ -45,6 +45,4 @@ public class Hotel : IAggregateRoot {
     public List<Salon> Salons { get; set; } = [];
     public List<string> Services { get; set; } = [];
     public List<string> Taxes { get; set; } = [];
-    //References
-    public string HotelChainCode { get; set; } = string.Empty;
 }

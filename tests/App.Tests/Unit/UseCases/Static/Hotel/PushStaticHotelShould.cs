@@ -8,7 +8,7 @@ public class PushStaticHotelShould {
     [SetUp]
     public void SetUp() {
         staticSynchronizerApiClient = Substitute.For<IStaticSynchronizerApiClient>();
-        pushStaticHotel = new PushStaticHotel();
+        pushStaticHotel = new PushStaticHotel(staticSynchronizerApiClient);
     }
 
     [Test]
@@ -23,8 +23,8 @@ public class PushStaticHotelShould {
         var expectedHotel = new Infrastructure.Dtos.BookingCenter.Static.Hotel {
             Code = givenEstHotel.CodigoInterno.ToString(),
             Name = givenEstHotel.NombreHotel,
-            OpeningDate = DateTime.MinValue,
-            ClosingDate = DateTime.MinValue,
+            OpeningDate = givenEstHotel.CerradoHasta?.AddDays(1),
+            ClosingDate = givenEstHotel.CerradoDesde,
             Category = givenEstHotel.CodigoCategoria,
             CodeType = givenEstHotel.NombreMarcaComercial,
             Type = givenEstHotel.CodigoTipoHotel,
@@ -158,6 +158,69 @@ public class PushStaticHotelShould {
                         }
                         ]
                 }).ToList(),
+                Images = habitacion.Imagenes.Select(imagen => new Image {
+                    Order = imagen.Prioridad,
+                    Url = imagen.Url,
+                    Translations = [
+                        new() {
+                            Title = imagen.EsTitulo,
+                            Description = imagen.EsDescripcion,
+                            LanguageIsoCode = "es-ES"
+                        },
+                        new() {
+                            Title = imagen.EnTitulo,
+                            Description = imagen.EnDescripcion,
+                            LanguageIsoCode = "en-GB"
+                        },
+                        new() {
+                            Title = imagen.FrTitulo,
+                            Description = imagen.FrDescripcion,
+                            LanguageIsoCode = "fr-FR"
+                        },
+                        new() {
+                            Title = imagen.DeTitulo,
+                            Description = imagen.DeDescripcion,
+                            LanguageIsoCode = "de-DE"
+                        },
+                        new() {
+                            Title = imagen.PtTitulo,
+                            Description = imagen.PtDescripcion,
+                            LanguageIsoCode = "pt-PT"
+                        }
+                        ]
+                }).ToList(),
+                Translations = [
+                    new() {
+                        Name = habitacion.EsNombreVerano,
+                        Description = habitacion.EsDescripcion,
+                        ShortDescription = habitacion.EsEntradilla,
+                        LanguageIsoCode = "es-ES"
+                    },
+                    new() {
+                        Name = habitacion.EnNombreVerano,
+                        Description = habitacion.EnDescripcion,
+                        ShortDescription = habitacion.EnEntradilla,
+                        LanguageIsoCode = "en-GB"
+                    },
+                    new() {
+                        Name = habitacion.FrNombreVerano,
+                        Description = habitacion.FrDescripcion,
+                        ShortDescription = habitacion.FrEntradilla,
+                        LanguageIsoCode = "fr-FR"
+                    },
+                    new() {
+                        Name = habitacion.DeNombreVerano,
+                        Description = habitacion.DeDescripcion,
+                        ShortDescription = habitacion.DeEntradilla,
+                        LanguageIsoCode = "de-DE"
+                    },
+                    new() {
+                        Name = habitacion.PtNombreVerano,
+                        Description = habitacion.PtDescripcion,
+                        ShortDescription = habitacion.PtEntradilla,
+                        LanguageIsoCode = "pt-PT"
+                    }
+                    ]
             }).ToList(),
             SwimmingPools = givenEstHotel.Piscinas.Select(piscina => new SwimmingPool {
                 Code = piscina.Id.ToString(),
@@ -252,10 +315,40 @@ public class PushStaticHotelShould {
                         LanguageIsoCode = "pt-PT"
                     }
                     ],
+                Images = salon.Imagenes.Select(imagen => new Image {
+                    Order = imagen.Prioridad,
+                    Url = imagen.Url,
+                    Translations = [
+                        new() {
+                            Title = imagen.EsTitulo,
+                            Description = imagen.EsDescripcion,
+                            LanguageIsoCode = "es-ES"
+                        },
+                        new() {
+                            Title = imagen.EnTitulo,
+                            Description = imagen.EnDescripcion,
+                            LanguageIsoCode = "en-GB"
+                        },
+                        new() {
+                            Title = imagen.FrTitulo,
+                            Description = imagen.FrDescripcion,
+                            LanguageIsoCode = "fr-FR"
+                        },
+                        new() {
+                            Title = imagen.DeTitulo,
+                            Description = imagen.DeDescripcion,
+                            LanguageIsoCode = "de-DE"
+                        },
+                        new() {
+                            Title = imagen.PtTitulo,
+                            Description = imagen.PtDescripcion,
+                            LanguageIsoCode = "pt-PT"
+                        }
+                        ]
+                }).ToList()
             }).ToList(),
             Services = givenEstHotel.IdServicios.Select(i => i.ToString()).ToList(),
-            Taxes = givenEstHotel.IdReszoims,
-            HotelChainCode = ""
+            Taxes = givenEstHotel.IdReszoims
         };
         await staticSynchronizerApiClient.Received()
             .PushHotel(Arg.Is<Infrastructure.Dtos.BookingCenter.Static.Hotel>(x => IsEquivalent(x, expectedHotel)));

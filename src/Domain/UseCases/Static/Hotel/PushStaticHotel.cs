@@ -1,6 +1,13 @@
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Static.Hotel;
 public class PushStaticHotel {
-    public Task Execute(EstHotel estHabitacion) {
-        throw new NotImplementedException();
+    private readonly IStaticSynchronizerApiClient staticSynchronizerApiClient;
+
+    public PushStaticHotel(IStaticSynchronizerApiClient staticSynchronizerApiClient) {
+        this.staticSynchronizerApiClient = staticSynchronizerApiClient;
+    }
+
+    public async Task Execute(EstHotel estHotel) {
+        var hotel = estHotel.ToHotel();
+        await staticSynchronizerApiClient.PushHotel(hotel);
     }
 }
