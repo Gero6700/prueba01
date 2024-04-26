@@ -12,11 +12,11 @@ public static class EstServiceExtension {
         var translations = new List<ServiceTranslation>();
 
         var languages = new Dictionary<string, string> {
-            { "es-ES", estServicio.EsServicio },
-            { "en-GB", estServicio.EnServicio },
-            { "fr-FR", estServicio.FrServicio },
-            { "de-DE", estServicio.DeServicio },
-            { "pt-PT", estServicio.PtServicio }
+            { Language.Es.GetIsoCode(), estServicio.EsServicio },
+            { Language.En.GetIsoCode(), estServicio.EnServicio },
+            { Language.Fr.GetIsoCode(), estServicio.FrServicio },
+            { Language.De.GetIsoCode(), estServicio.DeServicio },
+            { Language.Pt.GetIsoCode(), estServicio.PtServicio }
         };
 
         foreach (var language in languages) {

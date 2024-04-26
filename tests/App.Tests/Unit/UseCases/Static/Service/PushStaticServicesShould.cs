@@ -1,3 +1,5 @@
+using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Helpers;
+
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Static.Service;
 
 [TestFixture]
@@ -28,22 +30,22 @@ public class PushStaticServicesShould{
                 Code = givenEstServicios[0].Id.ToString(),
                 CategoryCode = givenEstServicios[0].IdCategoria.ToString(),
                 Translations = [
-                    new() { Name = givenEstServicios[0].EsServicio, LanguageIsoCode = "es-ES" },
-                    new() { Name = givenEstServicios[0].EnServicio, LanguageIsoCode = "en-GB" },
-                    new() { Name = givenEstServicios[0].FrServicio, LanguageIsoCode = "fr-FR" },
-                    new() { Name = givenEstServicios[0].DeServicio, LanguageIsoCode = "de-DE" },
-                    new() { Name = givenEstServicios[0].PtServicio, LanguageIsoCode = "pt-PT" }
+                    new() { Name = givenEstServicios[0].EsServicio, LanguageIsoCode = Language.Es.GetIsoCode() },
+                    new() { Name = givenEstServicios[0].EnServicio, LanguageIsoCode = Language.En.GetIsoCode() },
+                    new() { Name = givenEstServicios[0].FrServicio, LanguageIsoCode = Language.Fr.GetIsoCode() },
+                    new() { Name = givenEstServicios[0].DeServicio, LanguageIsoCode = Language.De.GetIsoCode() },
+                    new() { Name = givenEstServicios[0].PtServicio, LanguageIsoCode = Language.Pt.GetIsoCode() }
                 ]
             },
             new () {
                 Code = givenEstServicios[1].Id.ToString(),
                 CategoryCode = givenEstServicios[1].IdCategoria.ToString(),
                 Translations = [
-                    new() { Name = givenEstServicios[1].EsServicio, LanguageIsoCode = "es-ES" },
-                    new() { Name = givenEstServicios[1].EnServicio, LanguageIsoCode = "en-GB" },
-                    new() { Name = givenEstServicios[1].FrServicio, LanguageIsoCode = "fr-FR" },
-                    new() { Name = givenEstServicios[1].DeServicio, LanguageIsoCode = "de-DE" },
-                    new() { Name = givenEstServicios[1].PtServicio, LanguageIsoCode = "pt-PT" }
+                    new() { Name = givenEstServicios[1].EsServicio, LanguageIsoCode = Language.Es.GetIsoCode() },
+                    new() { Name = givenEstServicios[1].EnServicio, LanguageIsoCode = Language.En.GetIsoCode() },
+                    new() { Name = givenEstServicios[1].FrServicio, LanguageIsoCode = Language.Fr.GetIsoCode() },
+                    new() { Name = givenEstServicios[1].DeServicio, LanguageIsoCode = Language.De.GetIsoCode() },
+                    new() { Name = givenEstServicios[1].PtServicio, LanguageIsoCode = Language.Pt.GetIsoCode() }
                 ]
             }
         };
