@@ -8,7 +8,7 @@ public class PushStaticServicesShould{
     [SetUp]
     public void SetUp() {
         staticSynchronizerApiClient = Substitute.For<IStaticSynchronizerApiClient>();
-        pushStaticServices = new PushStaticServices();
+        pushStaticServices = new PushStaticServices(staticSynchronizerApiClient);
     }
 
     [Test]
