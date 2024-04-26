@@ -111,11 +111,11 @@ public static class EstHotelExtension {
 
         var languages = new Dictionary<string, (string ShortDescription, string LargeDescription, string LocationDescription)>
         {
-            { "es-ES", (estHotel.EsEntradilla, estHotel.EsDescripcion, estHotel.EsSituacion) },
-            { "en-GB", (estHotel.EnEntradilla, estHotel.EnDescripcion, estHotel.EnSituacion) },
-            { "fr-FR", (estHotel.FrEntradilla, estHotel.FrDescripcion, estHotel.FrSituacion) },
-            { "de-DE", (estHotel.DeEntradilla, estHotel.DeDescripcion, estHotel.DeSituacion) },
-            { "pt-PT", (estHotel.PtEntradilla, estHotel.PtDescripcion, estHotel.PtSituacion) }
+            { Language.Es.GetIsoCode(), (estHotel.EsEntradilla, estHotel.EsDescripcion, estHotel.EsSituacion) },
+            { Language.En.GetIsoCode(), (estHotel.EnEntradilla, estHotel.EnDescripcion, estHotel.EnSituacion) },
+            { Language.Fr.GetIsoCode(), (estHotel.FrEntradilla, estHotel.FrDescripcion, estHotel.FrSituacion) },
+            { Language.De.GetIsoCode(), (estHotel.DeEntradilla, estHotel.DeDescripcion, estHotel.DeSituacion) },
+            { Language.Pt.GetIsoCode(), (estHotel.PtEntradilla, estHotel.PtDescripcion, estHotel.PtSituacion) }
         };
 
         foreach (var language in languages) {
@@ -136,11 +136,11 @@ public static class EstHotelExtension {
         var translations = new List<ImageTranslation>();
 
         var languages = new Dictionary<string, (string Title, string Description)> {
-            { "es-ES", (imagen.EsTitulo, imagen.EsDescripcion) },
-            { "en-GB", (imagen.EnTitulo, imagen.EnDescripcion) },
-            { "fr-FR", (imagen.FrTitulo, imagen.FrDescripcion) },
-            { "de-DE", (imagen.DeTitulo, imagen.DeDescripcion) },
-            { "pt-PT", (imagen.PtTitulo, imagen.PtDescripcion) }
+            { Language.Es.GetIsoCode(), (imagen.EsTitulo, imagen.EsDescripcion) },
+            { Language.En.GetIsoCode(), (imagen.EnTitulo, imagen.EnDescripcion) },
+            { Language.Fr.GetIsoCode(), (imagen.FrTitulo, imagen.FrDescripcion) },
+            { Language.De.GetIsoCode(), (imagen.DeTitulo, imagen.DeDescripcion) },
+            { Language.Pt.GetIsoCode(), (imagen.PtTitulo, imagen.PtDescripcion) }
         };
 
         foreach (var language in languages) {
@@ -160,11 +160,11 @@ public static class EstHotelExtension {
         var translations = new List<Translation>();
 
         var languages = new Dictionary<string, string> {
-            { "es-ES", cama.EsNombre },
-            { "en-GB", cama.EnNombre },
-            { "fr-FR", cama.FrNombre },
-            { "de-DE", cama.DeNombre },
-            { "pt-PT", cama.PtNombre }
+            { Language.Es.GetIsoCode(), cama.EsNombre },
+            { Language.En.GetIsoCode(), cama.EnNombre },
+            { Language.Fr.GetIsoCode(), cama.FrNombre },
+            { Language.De.GetIsoCode(), cama.DeNombre },
+            { Language.Pt.GetIsoCode(), cama.PtNombre }
         };
 
         foreach (var language in languages) {
@@ -183,11 +183,11 @@ public static class EstHotelExtension {
         var translations = new List<RoomTranslation>();
 
         var languages = new Dictionary<string, (string Name, string Description, string ShortDescription)> {
-            { "es-ES", (habitacion.EsNombreVerano, habitacion.EsDescripcion, habitacion.EsEntradilla) },
-            { "en-GB", (habitacion.EnNombreVerano, habitacion.EnDescripcion, habitacion.EnEntradilla) },
-            { "fr-FR", (habitacion.FrNombreVerano, habitacion.FrDescripcion, habitacion.FrEntradilla) },
-            { "de-DE", (habitacion.DeNombreVerano, habitacion.DeDescripcion, habitacion.DeEntradilla) },
-            { "pt-PT", (habitacion.PtNombreVerano, habitacion.PtDescripcion, habitacion.PtEntradilla) }
+            { Language.Es.GetIsoCode(), (habitacion.EsNombreVerano, habitacion.EsDescripcion, habitacion.EsEntradilla) },
+            { Language.En.GetIsoCode(), (habitacion.EnNombreVerano, habitacion.EnDescripcion, habitacion.EnEntradilla) },
+            { Language.Fr.GetIsoCode(), (habitacion.FrNombreVerano, habitacion.FrDescripcion, habitacion.FrEntradilla) },
+            { Language.De.GetIsoCode(), (habitacion.DeNombreVerano, habitacion.DeDescripcion, habitacion.DeEntradilla) },
+            { Language.Pt.GetIsoCode(), (habitacion.PtNombreVerano, habitacion.PtDescripcion, habitacion.PtEntradilla) }
         };
 
         foreach (var language in languages) {
@@ -208,11 +208,11 @@ public static class EstHotelExtension {
         var translations = new List<Translation>();
 
         var languages = new Dictionary<string, string> {
-            { "es-ES", piscina.EsPiscina },
-            { "en-GB", piscina.EnPiscina },
-            { "fr-FR", piscina.FrPiscina },
-            { "de-DE", piscina.DePiscina },
-            { "pt-PT", piscina.PtPiscina }
+            { Language.Es.GetIsoCode(), piscina.EsPiscina },
+            { Language.En.GetIsoCode(), piscina.EnPiscina },
+            { Language.Fr.GetIsoCode(), piscina.FrPiscina },
+            { Language.De.GetIsoCode(), piscina.DePiscina },
+            { Language.Pt.GetIsoCode(), piscina.PtPiscina }
         };
 
         foreach (var language in languages) {
@@ -231,11 +231,11 @@ public static class EstHotelExtension {
         var translations = new List<Translation>();
 
         var languages = new Dictionary<string, string> {
-            { "es-ES", salon.EsDescripcion },
-            { "en-GB", salon.EnDescripcion },
-            { "fr-FR", salon.FrDescripcion },
-            { "de-DE", salon.DeDescripcion },
-            { "pt-PT", salon.PtDescripcion }
+            { Language.Es.GetIsoCode(), salon.EsDescripcion },
+            { Language.En.GetIsoCode(), salon.EnDescripcion },
+            { Language.Fr.GetIsoCode(), salon.FrDescripcion },
+            { Language.De.GetIsoCode(), salon.DeDescripcion },
+            { Language.Pt.GetIsoCode(), salon.PtDescripcion }
         };
 
         foreach (var language in languages) {

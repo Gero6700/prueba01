@@ -1,3 +1,5 @@
+using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Helpers;
+
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Static.Hotel;
 
 [TestFixture]
@@ -59,31 +61,31 @@ public class PushStaticHotelShould {
                     ShortDescription = givenEstHotel.EsEntradilla,
                     LargeDescription = givenEstHotel.EsDescripcion,
                     LocationDescription = givenEstHotel.EsSituacion,
-                    LanguageIsoCode = "es-ES"
+                    LanguageIsoCode = Language.Es.GetIsoCode()
                 },
                 new() {
                     ShortDescription = givenEstHotel.EnEntradilla,
                     LargeDescription = givenEstHotel.EnDescripcion,
                     LocationDescription = givenEstHotel.EnSituacion,
-                    LanguageIsoCode = "en-GB"
+                    LanguageIsoCode = Language.En.GetIsoCode()
                 },
                 new() {
                     ShortDescription = givenEstHotel.FrEntradilla,
                     LargeDescription = givenEstHotel.FrDescripcion,
                     LocationDescription = givenEstHotel.FrSituacion,
-                    LanguageIsoCode = "fr-FR"
+                    LanguageIsoCode = Language.Fr.GetIsoCode()
                 },
                 new() {
                     ShortDescription = givenEstHotel.DeEntradilla,
                     LargeDescription = givenEstHotel.DeDescripcion,
                     LocationDescription = givenEstHotel.DeSituacion,
-                    LanguageIsoCode = "de-DE"
+                    LanguageIsoCode = Language.De.GetIsoCode()
                 },
                 new() {
                     ShortDescription = givenEstHotel.PtEntradilla,
                     LargeDescription = givenEstHotel.PtDescripcion,
                     LocationDescription = givenEstHotel.PtSituacion,
-                    LanguageIsoCode = "pt-PT"
+                    LanguageIsoCode = Language.Pt.GetIsoCode()
                 }
             ],
             Images = givenEstHotel.Imagenes.Select(imagen => new Image {
@@ -93,27 +95,27 @@ public class PushStaticHotelShould {
                     new() {
                         Title = imagen.EsTitulo,
                         Description = imagen.EsDescripcion,
-                        LanguageIsoCode = "es-ES"
+                        LanguageIsoCode = Language.Es.GetIsoCode()
                     },
                     new() {
                         Title = imagen.EnTitulo,
                         Description = imagen.EnDescripcion,
-                        LanguageIsoCode = "en-GB"
+                        LanguageIsoCode = Language.En.GetIsoCode()
                     },
                     new() {
                         Title = imagen.FrTitulo,
                         Description = imagen.FrDescripcion,
-                        LanguageIsoCode = "fr-FR"
+                        LanguageIsoCode = Language.Fr.GetIsoCode()
                     },
                     new() {
                         Title = imagen.DeTitulo,
                         Description = imagen.DeDescripcion,
-                        LanguageIsoCode = "de-DE"
+                        LanguageIsoCode = Language.De.GetIsoCode()
                     },
                     new() {
                         Title = imagen.PtTitulo,
                         Description = imagen.PtDescripcion,
-                        LanguageIsoCode = "pt-PT"
+                        LanguageIsoCode = Language.Pt.GetIsoCode()
                     }
                     ]
             }).ToList(),
@@ -138,23 +140,23 @@ public class PushStaticHotelShould {
                     Translations = [
                         new() {
                             Name = cama.EsNombre,
-                            LanguageIsoCode = "es-ES"
+                            LanguageIsoCode = Language.Es.GetIsoCode()
                         },
                         new() {
                             Name = cama.EnNombre,
-                            LanguageIsoCode = "en-GB"
+                            LanguageIsoCode = Language.En.GetIsoCode()
                         },
                         new() {
                             Name = cama.FrNombre,
-                            LanguageIsoCode = "fr-FR"
+                            LanguageIsoCode = Language.Fr.GetIsoCode()
                         },
                         new() {
                             Name = cama.DeNombre,
-                            LanguageIsoCode = "de-DE"
+                            LanguageIsoCode = Language.De.GetIsoCode()
                         },
                         new() {
                             Name = cama.PtNombre,
-                            LanguageIsoCode = "pt-PT"
+                            LanguageIsoCode = Language.Pt.GetIsoCode()
                         }
                         ]
                 }).ToList(),
@@ -165,27 +167,27 @@ public class PushStaticHotelShould {
                         new() {
                             Title = imagen.EsTitulo,
                             Description = imagen.EsDescripcion,
-                            LanguageIsoCode = "es-ES"
+                            LanguageIsoCode = Language.Es.GetIsoCode()
                         },
                         new() {
                             Title = imagen.EnTitulo,
                             Description = imagen.EnDescripcion,
-                            LanguageIsoCode = "en-GB"
+                            LanguageIsoCode = Language.En.GetIsoCode()
                         },
                         new() {
                             Title = imagen.FrTitulo,
                             Description = imagen.FrDescripcion,
-                            LanguageIsoCode = "fr-FR"
+                            LanguageIsoCode = Language.Fr.GetIsoCode()
                         },
                         new() {
                             Title = imagen.DeTitulo,
                             Description = imagen.DeDescripcion,
-                            LanguageIsoCode = "de-DE"
+                            LanguageIsoCode = Language.De.GetIsoCode()
                         },
                         new() {
                             Title = imagen.PtTitulo,
                             Description = imagen.PtDescripcion,
-                            LanguageIsoCode = "pt-PT"
+                            LanguageIsoCode = Language.Pt.GetIsoCode()
                         }
                         ]
                 }).ToList(),
@@ -194,31 +196,31 @@ public class PushStaticHotelShould {
                         Name = habitacion.EsNombreVerano,
                         Description = habitacion.EsDescripcion,
                         ShortDescription = habitacion.EsEntradilla,
-                        LanguageIsoCode = "es-ES"
+                        LanguageIsoCode = Language.Es.GetIsoCode()
                     },
                     new() {
                         Name = habitacion.EnNombreVerano,
                         Description = habitacion.EnDescripcion,
                         ShortDescription = habitacion.EnEntradilla,
-                        LanguageIsoCode = "en-GB"
+                        LanguageIsoCode = Language.En.GetIsoCode()
                     },
                     new() {
                         Name = habitacion.FrNombreVerano,
                         Description = habitacion.FrDescripcion,
                         ShortDescription = habitacion.FrEntradilla,
-                        LanguageIsoCode = "fr-FR"
+                        LanguageIsoCode = Language.Fr.GetIsoCode()
                     },
                     new() {
                         Name = habitacion.DeNombreVerano,
                         Description = habitacion.DeDescripcion,
                         ShortDescription = habitacion.DeEntradilla,
-                        LanguageIsoCode = "de-DE"
+                        LanguageIsoCode = Language.De.GetIsoCode()
                     },
                     new() {
                         Name = habitacion.PtNombreVerano,
                         Description = habitacion.PtDescripcion,
                         ShortDescription = habitacion.PtEntradilla,
-                        LanguageIsoCode = "pt-PT"
+                        LanguageIsoCode = Language.Pt.GetIsoCode()
                     }
                     ]
             }).ToList(),
@@ -230,23 +232,23 @@ public class PushStaticHotelShould {
                 Translations = [
                     new() {
                         Name = piscina.EsPiscina,
-                        LanguageIsoCode = "es-ES"
+                        LanguageIsoCode = Language.Es.GetIsoCode()
                     },
                     new() {
                         Name = piscina.EnPiscina,
-                        LanguageIsoCode = "en-GB"
+                        LanguageIsoCode = Language.En.GetIsoCode()
                     },
                     new() {
                         Name = piscina.FrPiscina,
-                        LanguageIsoCode = "fr-FR"
+                        LanguageIsoCode = Language.Fr.GetIsoCode()
                     },
                     new() {
                         Name = piscina.DePiscina,
-                        LanguageIsoCode = "de-DE"
+                        LanguageIsoCode = Language.De.GetIsoCode()
                     },
                     new() {
                         Name = piscina.PtPiscina,
-                        LanguageIsoCode = "pt-PT"
+                        LanguageIsoCode = Language.Pt.GetIsoCode()
                     }
                     ],
                 Images = piscina.Imagenes.Select(imagen => new Image { 
@@ -256,27 +258,27 @@ public class PushStaticHotelShould {
                         new() {
                             Title = imagen.EsTitulo,
                             Description = imagen.EsDescripcion,
-                            LanguageIsoCode = "es-ES"
+                            LanguageIsoCode = Language.Es.GetIsoCode()
                         },
                         new() {
                             Title = imagen.EnTitulo,
                             Description = imagen.EnDescripcion,
-                            LanguageIsoCode = "en-GB"
+                            LanguageIsoCode = Language.En.GetIsoCode()
                         },
                         new() {
                             Title = imagen.FrTitulo,
                             Description = imagen.FrDescripcion,
-                            LanguageIsoCode = "fr-FR"
+                            LanguageIsoCode = Language.Fr.GetIsoCode()
                         },
                         new() {
                             Title = imagen.DeTitulo,
                             Description = imagen.DeDescripcion,
-                            LanguageIsoCode = "de-DE"
+                            LanguageIsoCode = Language.De.GetIsoCode()
                         },
                         new() {
                             Title = imagen.PtTitulo,
                             Description = imagen.PtDescripcion,
-                            LanguageIsoCode = "pt-PT"
+                            LanguageIsoCode = Language.Pt.GetIsoCode()
                         }
                         ]
                 }).ToList()
@@ -296,23 +298,23 @@ public class PushStaticHotelShould {
                 Translations = [
                     new() {
                         Name = salon.EsDescripcion,
-                        LanguageIsoCode = "es-ES"
+                        LanguageIsoCode = Language.Es.GetIsoCode()
                     },
                     new() {
                         Name = salon.EnDescripcion,
-                        LanguageIsoCode = "en-GB"
+                        LanguageIsoCode = Language.En.GetIsoCode()
                     },
                     new() {
                         Name = salon.FrDescripcion,
-                        LanguageIsoCode = "fr-FR"
+                        LanguageIsoCode = Language.Fr.GetIsoCode()
                     },
                     new() {
                         Name = salon.DeDescripcion,
-                        LanguageIsoCode = "de-DE"
+                        LanguageIsoCode = Language.De.GetIsoCode()
                     },
                     new() {
                         Name = salon.PtDescripcion,
-                        LanguageIsoCode = "pt-PT"
+                        LanguageIsoCode = Language.Pt.GetIsoCode()
                     }
                     ],
                 Images = salon.Imagenes.Select(imagen => new Image {
@@ -322,27 +324,27 @@ public class PushStaticHotelShould {
                         new() {
                             Title = imagen.EsTitulo,
                             Description = imagen.EsDescripcion,
-                            LanguageIsoCode = "es-ES"
+                            LanguageIsoCode = Language.Es.GetIsoCode()
                         },
                         new() {
                             Title = imagen.EnTitulo,
                             Description = imagen.EnDescripcion,
-                            LanguageIsoCode = "en-GB"
+                            LanguageIsoCode = Language.En.GetIsoCode()
                         },
                         new() {
                             Title = imagen.FrTitulo,
                             Description = imagen.FrDescripcion,
-                            LanguageIsoCode = "fr-FR"
+                            LanguageIsoCode = Language.Fr.GetIsoCode()
                         },
                         new() {
                             Title = imagen.DeTitulo,
                             Description = imagen.DeDescripcion,
-                            LanguageIsoCode = "de-DE"
+                            LanguageIsoCode = Language.De.GetIsoCode()
                         },
                         new() {
                             Title = imagen.PtTitulo,
                             Description = imagen.PtDescripcion,
-                            LanguageIsoCode = "pt-PT"
+                            LanguageIsoCode = Language.Pt.GetIsoCode()
                         }
                         ]
                 }).ToList()
