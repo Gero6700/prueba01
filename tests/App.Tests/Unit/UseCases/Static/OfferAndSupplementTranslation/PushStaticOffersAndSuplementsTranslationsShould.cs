@@ -10,7 +10,7 @@ public class PushStaticOffersAndSuplementsTranslationsShould {
     [SetUp]
     public void SetUp() {
         staticSynchronizerApiClient = Substitute.For<IStaticSynchronizerApiClient>();
-        pushStaticOffersAndSupplementsTranslations = new PushStaticOffersAndSupplementsTranslations();
+        pushStaticOffersAndSupplementsTranslations = new PushStaticOffersAndSupplementsTranslations(staticSynchronizerApiClient);
     }
 
     [Test]
