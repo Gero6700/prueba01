@@ -8,7 +8,7 @@ public class PushStaticRegimesShould {
     [SetUp]
     public void SetUp() {
         staticSynchronizerApiClient = Substitute.For<IStaticSynchronizerApiClient>();
-        pushStaticRegimes = new PushStaticRegimes();
+        pushStaticRegimes = new PushStaticRegimes(staticSynchronizerApiClient);
     }
 
     [Test]
@@ -54,7 +54,6 @@ public class PushStaticRegimesShould {
 
         await staticSynchronizerApiClient.Received()
             .PushRegimes(Arg.Is<List<Infrastructure.Dtos.BookingCenter.Static.Regime>>(x => IsEquivalent(x, expectedRegimes)));
-       
     }
 
     private bool IsEquivalent(object source, object expected) {
