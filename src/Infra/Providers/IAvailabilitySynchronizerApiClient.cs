@@ -33,8 +33,8 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Providers {
         Task<Response> UpdateExtra(Extra extra);
         Task<Response> CreateMinimumStay(MinimumStay minimumStay);
         Task<Response> UpdateMinimumStay(MinimumStay minimumStay);
-        Task<Response> CreateRegime(Regime regime);
-        Task<Response> UpdateRegime(Regime regime);
+        Task<Response> CreateRegime(Dtos.BookingCenter.Availability.Regime regime);
+        Task<Response> UpdateRegime(Dtos.BookingCenter.Availability.Regime regime);
         Task<Response> CreateMarkup(Markup markup);
         Task<Response> UpdateMarkup(Markup markup);
         Task<Response> CreateMarkupHotel(MarkupHotel markupHotel);

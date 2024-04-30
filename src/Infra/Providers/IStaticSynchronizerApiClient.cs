@@ -6,4 +6,5 @@ public interface IStaticSynchronizerApiClient {
     Task<Response> PushOffersAndSupplementsTranslations(List<OfferAndSupplementTranslation> offerAndSupplementTranslations);
     Task<Response> PushExtrasTranslations(List<ExtraTranslation> extraTranslations);
     Task<Response> PushPaymentTypes(List<PaymentType> paymentTypes);
+    Task<Response> PushRegimes(List<Dtos.BookingCenter.Static.Regime> regimes);
 }
