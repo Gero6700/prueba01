@@ -4,7 +4,7 @@ public static class ForpagoExtension {
         return new PaymentType {
             Code = forpago.Codpag,
             Description = forpago.Despag,
-            CreditOrPrepay = CreditOrPrepayType.Credit
+            CreditOrPrepay = forpago.Precre == "C" ? CreditOrPrepayType.Credit : CreditOrPrepayType.Prepay
         };
     }
 }
