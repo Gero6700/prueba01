@@ -6,7 +6,7 @@ public class PushStaticPaymentTypesShould {
     [SetUp]
     public void SetUp() {
         staticSynchronizerApiClient = Substitute.For<IStaticSynchronizerApiClient>();
-        pushStaticPaymentTypes = new PushStaticPaymentTypes();
+        pushStaticPaymentTypes = new PushStaticPaymentTypes(staticSynchronizerApiClient);
     }
 
     [Test]
@@ -29,14 +29,14 @@ public class PushStaticPaymentTypesShould {
         await pushStaticPaymentTypes.Execute(anyForpagos);
 
         //Then
-        var expectedPaymentTypes = anyForpagos.Select(x => new Infrastructure.Dtos.BookingCenter.Static.PaymentForm {
+        var expectedPaymentTypes = anyForpagos.Select(x => new Infrastructure.Dtos.BookingCenter.Static.PaymentType {
             Code = x.Codpag,
             Description = x.Despag,
             CreditOrPrepay = CreditOrPrepayType.Credit
         }).ToList();       
 
         await staticSynchronizerApiClient.Received()
-            .PushPaymentTypes(Arg.Is<List<Infrastructure.Dtos.BookingCenter.Static.PaymentForm>>(x => IsEquivalent(x, expectedPaymentTypes)));
+            .PushPaymentTypes(Arg.Is<List<Infrastructure.Dtos.BookingCenter.Static.PaymentType>>(x => IsEquivalent(x, expectedPaymentTypes)));
     }
 
     private bool IsEquivalent(object source, object expected) {
