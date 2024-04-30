@@ -10,7 +10,7 @@ public class PushStaticExtrasTranslationsShould {
     [SetUp]
     public void SetUp() {
         staticSynchronizerApiClient = Substitute.For<IStaticSynchronizerApiClient>();
-        pushStaticExtrasTranslations = new PushStaticExtrasTranslations();
+        pushStaticExtrasTranslations = new PushStaticExtrasTranslations(staticSynchronizerApiClient);
     }
 
     [Test]
