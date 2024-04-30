@@ -1,5 +1,3 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Helpers;
-
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Static.OfferAndSupplementTranslation;
 
 [TestFixture]

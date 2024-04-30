@@ -1,6 +1,3 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter.Static;
-using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Helpers;
-
 namespace Senator.As400.Cloud.Sync.Tests.Common.Builders;
 public class DesoferBuilder {
     private DesoferRaw raw = null!;
