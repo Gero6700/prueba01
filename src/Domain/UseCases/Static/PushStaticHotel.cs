@@ -1,4 +1,4 @@
-namespace Senator.As400.Cloud.Sync.Application.UseCases.Static.Hotel;
+namespace Senator.As400.Cloud.Sync.Application.UseCases.Static;
 public class PushStaticHotel {
     private readonly IStaticSynchronizerApiClient staticSynchronizerApiClient;
 
