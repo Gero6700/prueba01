@@ -39,6 +39,36 @@ public class PushStaticPaymentTypesShould {
             .PushPaymentTypes(Arg.Is<List<Infrastructure.Dtos.BookingCenter.Static.PaymentType>>(x => IsEquivalent(x, expectedPaymentTypes)));
     }
 
+    [Test]
+    public async Task push_static_payment_types_when_precre_is_p() {
+        //Given
+        var anyForpagos = new List<Forpago>() {
+            new() {
+                Codpag = "anyCodPag1",
+                Despag = "anyDesPag2",
+                Precre = "P"
+            },
+            new() {
+                Codpag = "anyCodPag2",
+                Despag = "anyDesPag2",
+                Precre = "P"
+            },
+        };
+
+        //when
+        await pushStaticPaymentTypes.Execute(anyForpagos);
+
+        //Then
+        var expectedPaymentTypes = anyForpagos.Select(x => new Infrastructure.Dtos.BookingCenter.Static.PaymentType {
+            Code = x.Codpag,
+            Description = x.Despag,
+            CreditOrPrepay = CreditOrPrepayType.Prepay
+        }).ToList();       
+
+        await staticSynchronizerApiClient.Received()
+            .PushPaymentTypes(Arg.Is<List<Infrastructure.Dtos.BookingCenter.Static.PaymentType>>(x => IsEquivalent(x, expectedPaymentTypes)));
+    }
+
     private bool IsEquivalent(object source, object expected) {
         source.Should().BeEquivalentTo(expected);
         return true;
