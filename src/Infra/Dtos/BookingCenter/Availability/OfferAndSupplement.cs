@@ -6,7 +6,7 @@ public class OfferAndSupplement : IAggregateRoot {
     public DateTime ApplyTo { get; set; }
     public int? ApplyOrder { get; set; }
     public decimal DepositAmount { get; set; }
-    public PaymentType DepositType { get; set; }
+    public TypeOfPayment DepositType { get; set; }
     public DateTime? DepositBeforeDate { get; set; }
     public decimal ModificationCostsAmount { get; set; }
     public List<string> ContractClients { get; set; } = new List<string>();

@@ -11,7 +11,7 @@ public static class CondtofExtension {
             AgeFrom = condtof.O4desd,
             AgeTo = condtof.O4has,
             Amount = condtof.O4dtos,
-            AmountType = PaymentType.Percent,
+            AmountType = Dtos.BookingCenter.Availability.TypeOfPayment.Percent,
             OfferAndSupplementConfigurationCode = condtof.OfferAndSupplementCode,
             Code = condtof.Code
         };

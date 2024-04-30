@@ -7,6 +7,6 @@ public class PeriodPricingPax {
     public decimal AgeFrom { get; set; }
     public decimal AgeTo { get; set; }
     public decimal Amount { get; set; }
-    public PaymentType AmountType { get; set; }
+    public TypeOfPayment AmountType { get; set; }
     public string PeriodPricingCode { get; set; } = string.Empty;
 }

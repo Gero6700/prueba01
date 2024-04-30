@@ -11,7 +11,7 @@ public static class ConofegeExtension {
             ApplyTo = DateTimeHelper.ConvertJulianDateToDateTime(conofege.Offec2),
             ApplyOrder = null,
             DepositAmount = conofege.Ofdpto,
-            DepositType = conofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
+            DepositType = conofege.Offode == "%" ? Dtos.BookingCenter.Availability.TypeOfPayment.Percent : Dtos.BookingCenter.Availability.TypeOfPayment.Fixed,
             DepositBeforeDate = conofege.Offtop == 0 ? null : DateTimeHelper.ConvertYYMMDDToDatetime(conofege.Offtop),
             ModificationCostsAmount = conofege.Gmimpo,
             Conditions = [
@@ -40,7 +40,7 @@ public static class ConofegeExtension {
                     ApplyRegimePriceType = conofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : conofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : conofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
                     ApplyRegimePrice = conofege.Ofpres,
                     DiscountAmount = conofege.Ofdtos,
-                    DicountAmountType = conofege.Oftidt.ToUpper() == "C" ? PaymentType.Fixed : PaymentType.Percent,
+                    DicountAmountType = conofege.Oftidt.ToUpper() == "C" ? Dtos.BookingCenter.Availability.TypeOfPayment.Fixed : Dtos.BookingCenter.Availability.TypeOfPayment.Percent,
                     DiscountTarget = conofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : conofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
                     DiscountScope = conofege.Ofapli.ToUpper() == "E" ? DiscountScopeType.Stay : conofege.Ofapli.ToUpper() == "S" ? DiscountScopeType.Regime : DiscountScopeType.All
                 }
@@ -59,7 +59,7 @@ public static class ConofegeExtension {
                 AgeFrom = 0,
                 AgeTo = 0,
                 Amount = item.Value,
-                AmountType = PaymentType.Percent
+                AmountType = Dtos.BookingCenter.Availability.TypeOfPayment.Percent
             });
     }
 }

@@ -705,7 +705,7 @@ public class CreateExtraShould {
                     AgeFrom = 2,
                     AgeTo = 14.99m,
                     Amount = anyC5dtn1,
-                    AmountType = PaymentType.Percent
+                    AmountType = TypeOfPayment.Percent
                 },
                 new ExtraPax {
                     PaxOrder = 2,
@@ -714,7 +714,7 @@ public class CreateExtraShould {
                     AgeFrom = 2,
                     AgeTo = 14.99m,
                     Amount = anyC5dtn2,
-                    AmountType = PaymentType.Percent
+                    AmountType = TypeOfPayment.Percent
                 },
                 new ExtraPax {
                     PaxOrder = 3,
@@ -723,7 +723,7 @@ public class CreateExtraShould {
                     AgeFrom = 2,
                     AgeTo = 14.99m,
                     Amount = anyC5dtn3,
-                    AmountType = PaymentType.Percent
+                    AmountType = TypeOfPayment.Percent
                 },
                 new ExtraPax {
                     PaxOrder = 4,
@@ -732,7 +732,7 @@ public class CreateExtraShould {
                     AgeFrom = 2,
                     AgeTo = 14.99m,
                     Amount = anyC5dtn4,
-                    AmountType = PaymentType.Percent
+                    AmountType = TypeOfPayment.Percent
                 }
             },
             ContractClients = new List<string> { anyOriginCode }
@@ -1086,7 +1086,7 @@ public class CreateExtraShould {
                     AgeFrom = 15,
                     AgeTo = 999,
                     Amount = anyC5dta1,
-                    AmountType = PaymentType.Percent
+                    AmountType = TypeOfPayment.Percent
                 },
                 new ExtraPax {
                     PaxOrder = 2,
@@ -1095,7 +1095,7 @@ public class CreateExtraShould {
                     AgeFrom = 15,
                     AgeTo = 999,
                     Amount = anyC5dta2,
-                    AmountType = PaymentType.Percent
+                    AmountType = TypeOfPayment.Percent
                 },
                 new ExtraPax {
                     PaxOrder = 3,
@@ -1104,7 +1104,7 @@ public class CreateExtraShould {
                     AgeFrom = 15,
                     AgeTo = 999,
                     Amount = anyC5dta3,
-                    AmountType = PaymentType.Percent
+                    AmountType = TypeOfPayment.Percent
                 },
                 new ExtraPax {
                     PaxOrder = 4,
@@ -1113,7 +1113,7 @@ public class CreateExtraShould {
                     AgeFrom = 15,
                     AgeTo = 999,
                     Amount = anyC5dta4,
-                    AmountType = PaymentType.Percent
+                    AmountType = TypeOfPayment.Percent
                 }
             },
             ContractClients = new List<string>() { anyOriginCode }

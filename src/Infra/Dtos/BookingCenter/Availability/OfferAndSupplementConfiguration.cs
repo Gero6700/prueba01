@@ -8,7 +8,7 @@ public class OfferAndSupplementConfiguration : IAggregateRoot {
     public ApplyStayPriceType ApplyRegimePriceType { get; set; }
     public decimal ApplyRegimePrice { get; set; }
     public decimal DiscountAmount { get; set; }
-    public PaymentType DicountAmountType { get; set; }
+    public TypeOfPayment DicountAmountType { get; set; }
     public DiscountTargetType DiscountTarget { get; set; }
     public DiscountScopeType DiscountScope { get; set; }
 }

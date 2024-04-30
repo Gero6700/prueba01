@@ -43,7 +43,7 @@ public class UpdatePeriodPricingPaxShould {
             AgeFrom = anyD4desd,
             AgeTo = anyD4has,
             Amount = anyD4dtos,
-            AmountType = PaymentType.Percent,
+            AmountType = TypeOfPayment.Percent,
             PeriodPricingCode = anyPeriodPricingCode,
             Code = anyCode
         };

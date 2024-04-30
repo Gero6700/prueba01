@@ -43,7 +43,7 @@ public class CreateOfferAndSupplementConfigurationPaxShould {
             AgeFrom = anyO4desd,
             AgeTo = anyO4has,
             Amount = anyO4dtos,
-            AmountType = PaymentType.Percent,
+            AmountType = TypeOfPayment.Percent,
             OfferAndSupplementConfigurationCode = anyOfferAndSupplementCode,
             Code = anyCode
         };
@@ -84,7 +84,7 @@ public class CreateOfferAndSupplementConfigurationPaxShould {
             AgeFrom = anyO4desd,
             AgeTo = anyO4has,
             Amount = anyO4dtos,
-            AmountType = PaymentType.Percent,
+            AmountType = TypeOfPayment.Percent,
             OfferAndSupplementConfigurationCode = anyOfferAndSupplementCode,
             Code = anyCode
         };
@@ -125,7 +125,7 @@ public class CreateOfferAndSupplementConfigurationPaxShould {
             AgeFrom = anyO4desd,
             AgeTo = anyO4has,
             Amount = anyO4dtos,
-            AmountType = PaymentType.Percent,
+            AmountType = TypeOfPayment.Percent,
             OfferAndSupplementConfigurationCode = anyOfferAndSupplementCode,
             Code = anyCode
         };
@@ -166,7 +166,7 @@ public class CreateOfferAndSupplementConfigurationPaxShould {
             AgeFrom = anyO4desd,
             AgeTo = anyO4has,
             Amount = anyO4dtos,
-            AmountType = PaymentType.Percent,
+            AmountType = TypeOfPayment.Percent,
             OfferAndSupplementConfigurationCode = anyOfferAndSupplementCode,
             Code = anyCode
         };
@@ -207,7 +207,7 @@ public class CreateOfferAndSupplementConfigurationPaxShould {
             AgeFrom = anyO4desd,
             AgeTo = anyO4has,
             Amount = anyO4dtos,
-            AmountType = PaymentType.Percent,
+            AmountType = TypeOfPayment.Percent,
             OfferAndSupplementConfigurationCode = anyOfferAndSupplementCode,
             Code = anyCode
         };

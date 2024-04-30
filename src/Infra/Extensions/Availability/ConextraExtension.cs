@@ -44,7 +44,7 @@ public static class ConextraExtension {
         const decimal ageTo = 14.99m;
         const PaxType type = PaxType.Child;
         const ScopeType scope = ScopeType.Regime;
-        const PaymentType payment = PaymentType.Percent;
+        const Dtos.BookingCenter.Availability.TypeOfPayment payment = Dtos.BookingCenter.Availability.TypeOfPayment.Percent;
 
         var paxes = new List<ExtraPax>();
         if (conextra.C5dtn1 != 0) {
@@ -100,7 +100,7 @@ public static class ConextraExtension {
         const decimal ageTo = 999;
         const PaxType type = PaxType.Adult;
         const ScopeType scope = ScopeType.Regime;
-        const PaymentType payment = PaymentType.Percent;
+        const Dtos.BookingCenter.Availability.TypeOfPayment payment = Dtos.BookingCenter.Availability.TypeOfPayment.Percent;
 
         var paxes = new List<ExtraPax>();
         if (conextra.C5dta1 != 0) {

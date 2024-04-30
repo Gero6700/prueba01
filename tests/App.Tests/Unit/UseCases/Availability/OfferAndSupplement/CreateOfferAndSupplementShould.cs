@@ -64,7 +64,7 @@ public class CreateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = PaymentType.Fixed,
+            DepositType = TypeOfPayment.Fixed,
             DepositBeforeDate = new DateTime(2024, 06, 04),
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -93,7 +93,7 @@ public class CreateOfferAndSupplementShould {
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = PaymentType.Percent,
+                    DicountAmountType = TypeOfPayment.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.All
                 }
@@ -159,7 +159,7 @@ public class CreateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = PaymentType.Fixed,
+            DepositType = TypeOfPayment.Fixed,
             DepositBeforeDate = new DateTime(2024, 06, 04),
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -188,7 +188,7 @@ public class CreateOfferAndSupplementShould {
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = PaymentType.Percent,
+                    DicountAmountType = TypeOfPayment.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.All
                 }
@@ -252,7 +252,7 @@ public class CreateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = PaymentType.Fixed,
+            DepositType = TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -281,7 +281,7 @@ public class CreateOfferAndSupplementShould {
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = PaymentType.Percent,
+                    DicountAmountType = TypeOfPayment.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.All
                 }
@@ -345,7 +345,7 @@ public class CreateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = PaymentType.Fixed,
+            DepositType = TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -374,7 +374,7 @@ public class CreateOfferAndSupplementShould {
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = PaymentType.Percent,
+                    DicountAmountType = TypeOfPayment.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.All
                 }
@@ -436,7 +436,7 @@ public class CreateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = PaymentType.Percent,
+            DepositType = TypeOfPayment.Percent,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -465,7 +465,7 @@ public class CreateOfferAndSupplementShould {
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = PaymentType.Percent,
+                    DicountAmountType = TypeOfPayment.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.All
                 }
@@ -527,7 +527,7 @@ public class CreateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = PaymentType.Percent,
+            DepositType = TypeOfPayment.Percent,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -556,7 +556,7 @@ public class CreateOfferAndSupplementShould {
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = PaymentType.Percent,
+                    DicountAmountType = TypeOfPayment.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.All
                 }
@@ -618,7 +618,7 @@ public class CreateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = PaymentType.Percent,
+            DepositType = TypeOfPayment.Percent,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -647,7 +647,7 @@ public class CreateOfferAndSupplementShould {
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = PaymentType.Percent,
+                    DicountAmountType = TypeOfPayment.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.All
                 }
@@ -707,7 +707,7 @@ public class CreateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = PaymentType.Percent,
+            DepositType = TypeOfPayment.Percent,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -736,7 +736,7 @@ public class CreateOfferAndSupplementShould {
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = PaymentType.Percent,
+                    DicountAmountType = TypeOfPayment.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.All
                 }
@@ -794,7 +794,7 @@ public class CreateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
+            DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -823,7 +823,7 @@ public class CreateOfferAndSupplementShould {
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = PaymentType.Percent,
+                    DicountAmountType = TypeOfPayment.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.All
                 }
@@ -879,7 +879,7 @@ public class CreateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
+            DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -908,7 +908,7 @@ public class CreateOfferAndSupplementShould {
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = PaymentType.Percent,
+                    DicountAmountType = TypeOfPayment.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.All
                 }
@@ -964,7 +964,7 @@ public class CreateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
+            DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -993,7 +993,7 @@ public class CreateOfferAndSupplementShould {
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = PaymentType.Percent,
+                    DicountAmountType = TypeOfPayment.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.All
                 }
@@ -1049,7 +1049,7 @@ public class CreateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
+            DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -1078,7 +1078,7 @@ public class CreateOfferAndSupplementShould {
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = PaymentType.Percent,
+                    DicountAmountType = TypeOfPayment.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.All
                 }
@@ -1134,7 +1134,7 @@ public class CreateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
+            DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -1163,7 +1163,7 @@ public class CreateOfferAndSupplementShould {
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = PaymentType.Percent,
+                    DicountAmountType = TypeOfPayment.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.All
                 }
@@ -1217,7 +1217,7 @@ public class CreateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
+            DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -1246,7 +1246,7 @@ public class CreateOfferAndSupplementShould {
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = PaymentType.Percent,
+                    DicountAmountType = TypeOfPayment.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.All
                 }
@@ -1300,7 +1300,7 @@ public class CreateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
+            DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -1329,7 +1329,7 @@ public class CreateOfferAndSupplementShould {
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = PaymentType.Percent,
+                    DicountAmountType = TypeOfPayment.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.All
                 }
@@ -1381,7 +1381,7 @@ public class CreateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
+            DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -1410,7 +1410,7 @@ public class CreateOfferAndSupplementShould {
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = PaymentType.Percent,
+                    DicountAmountType = TypeOfPayment.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.All
                 }
@@ -1460,7 +1460,7 @@ public class CreateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
+            DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -1489,7 +1489,7 @@ public class CreateOfferAndSupplementShould {
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = PaymentType.Percent,
+                    DicountAmountType = TypeOfPayment.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.All
                 }
@@ -1539,7 +1539,7 @@ public class CreateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
+            DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -1568,7 +1568,7 @@ public class CreateOfferAndSupplementShould {
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = PaymentType.Percent,
+                    DicountAmountType = TypeOfPayment.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.All
                 }
@@ -1618,7 +1618,7 @@ public class CreateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
+            DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -1647,7 +1647,7 @@ public class CreateOfferAndSupplementShould {
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = PaymentType.Percent,
+                    DicountAmountType = TypeOfPayment.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.All
                 }
@@ -1695,7 +1695,7 @@ public class CreateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
+            DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -1724,7 +1724,7 @@ public class CreateOfferAndSupplementShould {
                     ApplyRegimePriceType = ApplyStayPriceType.P,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = PaymentType.Percent,
+                    DicountAmountType = TypeOfPayment.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.All
                 }
@@ -1772,7 +1772,7 @@ public class CreateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
+            DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -1801,7 +1801,7 @@ public class CreateOfferAndSupplementShould {
                     ApplyRegimePriceType = ApplyStayPriceType.X,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = PaymentType.Percent,
+                    DicountAmountType = TypeOfPayment.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.All
                 }
@@ -1849,7 +1849,7 @@ public class CreateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
+            DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -1878,7 +1878,7 @@ public class CreateOfferAndSupplementShould {
                     ApplyRegimePriceType = ApplyStayPriceType.U,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = PaymentType.Percent,
+                    DicountAmountType = TypeOfPayment.Percent,
                     DiscountTarget = DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.All
                 }
@@ -1924,7 +1924,7 @@ public class CreateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
+            DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -1953,7 +1953,7 @@ public class CreateOfferAndSupplementShould {
                     ApplyRegimePriceType = anyConofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = PaymentType.Fixed,
+                    DicountAmountType = TypeOfPayment.Fixed,
                     DiscountTarget = DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.All
                 }
@@ -1997,7 +1997,7 @@ public class CreateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
+            DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -2026,7 +2026,7 @@ public class CreateOfferAndSupplementShould {
                     ApplyRegimePriceType = anyConofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? PaymentType.Fixed : PaymentType.Percent,
+                    DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? TypeOfPayment.Fixed : TypeOfPayment.Percent,
                     DiscountTarget = DiscountTargetType.Net,
                     DiscountScope = DiscountScopeType.All
                 }
@@ -2070,7 +2070,7 @@ public class CreateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
+            DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -2099,7 +2099,7 @@ public class CreateOfferAndSupplementShould {
                     ApplyRegimePriceType = anyConofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? PaymentType.Fixed : PaymentType.Percent,
+                    DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? TypeOfPayment.Fixed : TypeOfPayment.Percent,
                     DiscountTarget = DiscountTargetType.Commission,
                     DiscountScope = DiscountScopeType.All
                 }
@@ -2141,7 +2141,7 @@ public class CreateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
+            DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -2170,7 +2170,7 @@ public class CreateOfferAndSupplementShould {
                     ApplyRegimePriceType = anyConofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? PaymentType.Fixed : PaymentType.Percent,
+                    DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? TypeOfPayment.Fixed : TypeOfPayment.Percent,
                     DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.Stay
                 }
@@ -2212,7 +2212,7 @@ public class CreateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
+            DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -2241,7 +2241,7 @@ public class CreateOfferAndSupplementShould {
                     ApplyRegimePriceType = anyConofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? PaymentType.Fixed : PaymentType.Percent,
+                    DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? TypeOfPayment.Fixed : TypeOfPayment.Percent,
                     DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
                     DiscountScope = DiscountScopeType.Regime
                 }

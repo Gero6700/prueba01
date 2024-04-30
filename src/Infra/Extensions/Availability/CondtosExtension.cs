@@ -12,7 +12,7 @@ public static class CondtosExtension {
             AgeFrom = condtos.D4desd,
             AgeTo = condtos.D4has,
             Amount = condtos.D4dtos,
-            AmountType = PaymentType.Percent,
+            AmountType = Dtos.BookingCenter.Availability.TypeOfPayment.Percent,
             PeriodPricingCode = condtos.PeriodPricingCode,
             Code = condtos.Code
         };

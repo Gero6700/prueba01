@@ -44,7 +44,7 @@ public class UpdateOfferAndSupplementShould {
             ApplyTo = new DateTime(2024, 01, 02),
             ApplyOrder = null,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? PaymentType.Percent : PaymentType.Fixed,
+            DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = new DateTime(2024, 06, 04),
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
@@ -73,7 +73,7 @@ public class UpdateOfferAndSupplementShould {
                     ApplyRegimePriceType = anyConofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
                     DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? PaymentType.Fixed : PaymentType.Percent,
+                    DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? TypeOfPayment.Fixed : TypeOfPayment.Percent,
                     DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
                     DiscountScope = anyConofege.Ofapli.ToUpper() == "E" ? DiscountScopeType.Stay : anyConofege.Ofapli.ToUpper() == "S" ? DiscountScopeType.Regime : DiscountScopeType.All,
                 }
