@@ -8,7 +8,7 @@ public class PushStaticTaxesShould {
     [SetUp]
     public void SetUp() {
         staticSynchronizerApiClient = Substitute.For<IStaticSynchronizerApiClient>();
-        pushStaticTaxes = new PushStaticTaxes();
+        pushStaticTaxes = new PushStaticTaxes(staticSynchronizerApiClient);
     }
 
     [Test]
