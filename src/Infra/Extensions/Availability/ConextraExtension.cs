@@ -4,7 +4,7 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
 public static class ConextraExtension {
     public static Extra ToExtra(this Conextra conextra) {
         var extra = new Extra {
-            Code = conextra.Code,
+            Code = conextra.Code, //TODO: Tener en cuenta las fechas pueden ser nulas
             ApplyFrom = DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5fred),
             ApplyTo = DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5freh),
             CheckInFrom = DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5fec1),
@@ -17,7 +17,7 @@ public static class ConextraExtension {
             ApplyBy = conextra.C5foun == "D" ? ApplyStayPriceType.D : conextra.C5foun == "P" ? ApplyStayPriceType.P : conextra.C5foun == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             Price = conextra.C5prec,
             PriceApplication = conextra.C5form == "D" ? ApplyStayPriceType.D : conextra.C5form == "P" ? ApplyStayPriceType.P : conextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
-            ApplyOtherSuplementsOrDiscounts = conextra.C5apdt == "C" ? ApplyOtherSuplementsOrDiscounts.Contract : conextra.C5apdt == "S" ? ApplyOtherSuplementsOrDiscounts.Offer : ApplyOtherSuplementsOrDiscounts.All,
+            ApplyOtherSuplementsOrDiscounts = conextra.C5apdt == "C" ? ApplyOtherSuplementsOrDiscounts.Contract : conextra.C5apdt == "S" ? ApplyOtherSuplementsOrDiscounts.Offer : ApplyOtherSuplementsOrDiscounts.All, //TODO: Tener en cuenta que si viene de oferta puede ser nulo y el valor vacio que indica ninguno
             IsCancellationGuarantee = conextra.Cogc,
             OccupancyRateCod = conextra.C5cocu == 0 ? "" : conextra.C5cocu.ToString()
         };

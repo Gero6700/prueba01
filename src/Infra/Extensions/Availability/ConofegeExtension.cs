@@ -1,6 +1,8 @@
 using Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter.Availability;
 
 namespace Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
+
+//TODO: Tener en cuenta los nullables
 public static class ConofegeExtension {
     public static OfferAndSupplement ToOfferAndSupplement(this Conofege conofege) {
         return new OfferAndSupplement {
@@ -25,21 +27,21 @@ public static class ConofegeExtension {
                     MaxReleaseDays = conofege.Offres,
                     BookingWindowFrom = DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Ofgrbd),
                     BookingWindowTo = DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Ofgrbh),
-                    OccupancyRateCod = conofege.Ofcocu.ToString(),
+                    OccupancyRateCod = conofege.Ofcocu.ToString(), //TODO: Poner nulo cuando llegue cero
                     Rooms = conofege.GetRoomCodes.Where(value => value != "").ToList(),
                     Regimes = conofege.GetRegimeCodes.Where(value => value != "").ToList(),
                 }
             ],
             Configurations = [
                 new OfferAndSupplementConfiguration {
-                    FreeDays = conofege.Ofdfac.Trim() == "" ? conofege.Ofdiae - conofege.Ofdiaf : conofege.Ofdiaf,
+                    FreeDays = conofege.Ofdfac.Trim() == "" && conofege.Ofdiaf > 0 ? conofege.Ofdiae - conofege.Ofdiaf : conofege.Ofdiaf, //TODO: Sólo tendra valos si ofdiaf >0
                     RoomTypeCodeToCalculatePrice = conofege.Ofthaf,
                     RegimeTypeCodeToCalculatePrice = conofege.Oftsef,
                     ApplyStayPriceType = conofege.Offore.ToUpper() == "P" ? ApplyStayPriceType.P : conofege.Offore.ToUpper() == "X" ? ApplyStayPriceType.X : conofege.Offore.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
                     ApplyStayPrice = conofege.Ofpree,
                     ApplyRegimePriceType = conofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : conofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : conofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
                     ApplyRegimePrice = conofege.Ofpres,
-                    DiscountAmount = conofege.Ofdtos,
+                    DiscountAmount = conofege.Ofdtos, //TODO:Transformar a positivo si es negativo
                     DicountAmountType = conofege.Oftidt.ToUpper() == "C" ? Dtos.BookingCenter.Availability.TypeOfPayment.Fixed : Dtos.BookingCenter.Availability.TypeOfPayment.Percent,
                     DiscountTarget = conofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : conofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
                     DiscountScope = conofege.Ofapli.ToUpper() == "E" ? DiscountScopeType.Stay : conofege.Ofapli.ToUpper() == "S" ? DiscountScopeType.Regime : DiscountScopeType.All
