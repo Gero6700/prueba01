@@ -30,7 +30,6 @@ public class CreateExtraShould {
         const decimal anyC5prec = 5.50m;
         const string anyC5form = "U";
         const string anyC5apdt = "";
-        const bool anyCogc = false;
         const int anyC5cocu = 1;
         const decimal anyC5dtn1 = 0.0m;
         const decimal anyC5dtn2 = 0.0m;
@@ -79,7 +78,6 @@ public class CreateExtraShould {
             .WithC5prec(anyC5prec)
             .WithC5form(anyC5form)
             .WithC5apdt(anyC5apdt)
-            .WithCogc(anyCogc)
             .WithC5cocu(anyC5cocu)
             .WithC5dtn1(anyC5dtn1)
             .WithC5dtn2(anyC5dtn2)
@@ -131,7 +129,8 @@ public class CreateExtraShould {
             Price = anyC5prec,
             PriceApplication = ApplyStayPriceType.U,
             DiscountApplicationType = ExtrasDiscountApplicationType.All,
-            IsCancellationGuarantee = anyCogc,
+            TaxesIncluded = false,
+            IsCommissionable = true,
             OccupancyRateCod = anyC5cocu.ToString(),
             Paxes = new List<ExtraPax>(),
             Rooms = new List<string>(),
@@ -244,7 +243,8 @@ public class CreateExtraShould {
             Price = anyConextra.C5prec,
             PriceApplication = anyConextra.C5form == "D" ? ApplyStayPriceType.D : anyConextra.C5form == "P" ? ApplyStayPriceType.P : anyConextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             DiscountApplicationType = ExtrasDiscountApplicationType.All,
-            IsCancellationGuarantee = anyConextra.Cogc,
+            TaxesIncluded = false,
+            IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
             OfferAndSuplements = new List<ExtraOfferAndSuplement> {
                 new ExtraOfferAndSuplement {
@@ -358,7 +358,8 @@ public class CreateExtraShould {
             Price = anyConextra.C5prec,
             PriceApplication = anyConextra.C5form == "D" ? ApplyStayPriceType.D : anyConextra.C5form == "P" ? ApplyStayPriceType.P : anyConextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             DiscountApplicationType = ExtrasDiscountApplicationType.All,
-            IsCancellationGuarantee = anyConextra.Cogc,
+            TaxesIncluded = false,
+            IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
             OfferAndSuplements = new List<ExtraOfferAndSuplement> {
                 new ExtraOfferAndSuplement {
@@ -472,7 +473,8 @@ public class CreateExtraShould {
             Price = anyConextra.C5prec,
             PriceApplication = anyConextra.C5form == "D" ? ApplyStayPriceType.D : anyConextra.C5form == "P" ? ApplyStayPriceType.P : anyConextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             DiscountApplicationType = ExtrasDiscountApplicationType.All,
-            IsCancellationGuarantee = anyConextra.Cogc,
+            TaxesIncluded = false,
+            IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
             OfferAndSuplements = new List<ExtraOfferAndSuplement> {
                 new ExtraOfferAndSuplement {
@@ -586,7 +588,8 @@ public class CreateExtraShould {
             Price = anyConextra.C5prec,
             PriceApplication = anyConextra.C5form == "D" ? ApplyStayPriceType.D : anyConextra.C5form == "P" ? ApplyStayPriceType.P : anyConextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             DiscountApplicationType = ExtrasDiscountApplicationType.All,
-            IsCancellationGuarantee = anyConextra.Cogc,
+            TaxesIncluded = false,
+            IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
             OfferAndSuplements = new List<ExtraOfferAndSuplement> {
                 new ExtraOfferAndSuplement {
@@ -695,7 +698,8 @@ public class CreateExtraShould {
             Price = anyConextra.C5prec,
             PriceApplication = anyConextra.C5form == "D" ? ApplyStayPriceType.D : anyConextra.C5form == "P" ? ApplyStayPriceType.P : anyConextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             DiscountApplicationType = ExtrasDiscountApplicationType.All,
-            IsCancellationGuarantee = anyConextra.Cogc,
+            TaxesIncluded = false,
+            IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
             Paxes = new List<ExtraPax> {
                 new ExtraPax {
@@ -835,7 +839,8 @@ public class CreateExtraShould {
             Price = anyConextra.C5prec,
             PriceApplication = anyConextra.C5form == "D" ? ApplyStayPriceType.D : anyConextra.C5form == "P" ? ApplyStayPriceType.P : anyConextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             DiscountApplicationType = ExtrasDiscountApplicationType.All,
-            IsCancellationGuarantee = anyConextra.Cogc,
+            TaxesIncluded = false,
+            IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
             Paxes = new List<ExtraPax>(),
             Rooms = new List<string> {
@@ -958,7 +963,8 @@ public class CreateExtraShould {
             Price = anyConextra.C5prec,
             PriceApplication = anyConextra.C5form == "D" ? ApplyStayPriceType.D : anyConextra.C5form == "P" ? ApplyStayPriceType.P : anyConextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             DiscountApplicationType = ExtrasDiscountApplicationType.All,
-            IsCancellationGuarantee = anyConextra.Cogc,
+            TaxesIncluded = false,
+            IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
             Paxes = new List<ExtraPax>(),
             Rooms = new List<string>(),
@@ -1072,7 +1078,8 @@ public class CreateExtraShould {
             Price = anyConextra.C5prec,
             PriceApplication = anyConextra.C5form == "D" ? ApplyStayPriceType.D : anyConextra.C5form == "P" ? ApplyStayPriceType.P : anyConextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             DiscountApplicationType = ExtrasDiscountApplicationType.All,
-            IsCancellationGuarantee = anyConextra.Cogc,
+            TaxesIncluded = false,
+            IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
             Paxes = new List<ExtraPax> {
                 new ExtraPax {
@@ -1183,7 +1190,6 @@ public class CreateExtraShould {
             .WithC5prec(anyC5prec)
             .WithC5form(anyC5form)
             .WithC5apdt(anyC5apdt)
-            .WithCogc(anyCogc)
             .WithC5cocu(anyC5cocu)
             .WithC5dtn1(anyC5dtn1)
             .WithC5dtn2(anyC5dtn2)
@@ -1235,7 +1241,8 @@ public class CreateExtraShould {
             Price = anyC5prec,
             PriceApplication = ApplyStayPriceType.U,
             DiscountApplicationType = ExtrasDiscountApplicationType.All,
-            IsCancellationGuarantee = anyCogc,
+            TaxesIncluded = false,
+            IsCommissionable = true,
             OccupancyRateCod = anyC5cocu.ToString(),
             Paxes = new List<ExtraPax>(),
             Rooms = new List<string>(),
@@ -1315,7 +1322,6 @@ public class CreateExtraShould {
             .WithC5prec(anyC5prec)
             .WithC5form(anyC5form)
             .WithC5apdt(anyC5apdt)
-            .WithCogc(anyCogc)
             .WithC5cocu(anyC5cocu)
             .WithC5dtn1(anyC5dtn1)
             .WithC5dtn2(anyC5dtn2)
@@ -1367,7 +1373,8 @@ public class CreateExtraShould {
             Price = anyC5prec,
             PriceApplication = ApplyStayPriceType.U,
             DiscountApplicationType = ExtrasDiscountApplicationType.All,
-            IsCancellationGuarantee = anyCogc,
+            TaxesIncluded = false,
+            IsCommissionable = true,
             OccupancyRateCod = anyC5cocu.ToString(),
             Paxes = new List<ExtraPax>(),
             Rooms = new List<string>(),
@@ -1481,7 +1488,8 @@ public class CreateExtraShould {
             Price = anyConextra.C5prec,
             PriceApplication = ApplyStayPriceType.U,
             DiscountApplicationType = ExtrasDiscountApplicationType.All,
-            IsCancellationGuarantee = anyConextra.Cogc,
+            TaxesIncluded = false,
+            IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
             ContractClients = new List<string> { anyOriginCode }
         };
@@ -1593,7 +1601,8 @@ public class CreateExtraShould {
             Price = anyConextra.C5prec,
             PriceApplication = anyConextra.C5form == "D" ? ApplyStayPriceType.D : anyConextra.C5form == "P" ? ApplyStayPriceType.P : anyConextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             DiscountApplicationType = ExtrasDiscountApplicationType.All,
-            IsCancellationGuarantee = anyConextra.Cogc,
+            TaxesIncluded = false,
+            IsCommissionable = true,
             OccupancyRateCod = "",
             ContractClients = new List<string>() { anyOriginCode },
         };
@@ -1703,7 +1712,8 @@ public class CreateExtraShould {
             Price = anyConextra.C5prec,
             PriceApplication = ApplyStayPriceType.U,
             DiscountApplicationType = ExtrasDiscountApplicationType.All,
-            IsCancellationGuarantee = anyConextra.Cogc,
+            TaxesIncluded = false,
+            IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
             ContractClients = new List<string>() { anyOriginCode },
         };
@@ -1814,7 +1824,8 @@ public class CreateExtraShould {
             Price = anyConextra.C5prec,
             PriceApplication = ApplyStayPriceType.U,
             DiscountApplicationType = ExtrasDiscountApplicationType.All,
-            IsCancellationGuarantee = anyConextra.Cogc,
+            TaxesIncluded = false,
+            IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
             ContractClients = new List<string>() { anyOriginCode },
         };
@@ -1923,7 +1934,8 @@ public class CreateExtraShould {
             Price = anyConextra.C5prec,
             PriceApplication = ApplyStayPriceType.U,
             DiscountApplicationType = ExtrasDiscountApplicationType.All,
-            IsCancellationGuarantee = anyConextra.Cogc,
+            TaxesIncluded = false,
+            IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
             ContractClients = new List<string>() { anyOriginCode },
         };
@@ -2030,7 +2042,8 @@ public class CreateExtraShould {
             Price = anyConextra.C5prec,
             PriceApplication = ApplyStayPriceType.D,
             DiscountApplicationType = ExtrasDiscountApplicationType.All,
-            IsCancellationGuarantee = anyConextra.Cogc,
+            TaxesIncluded = false,
+            IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
             ContractClients = new List<string>() { anyOriginCode }
         };
@@ -2137,7 +2150,8 @@ public class CreateExtraShould {
             Price = anyConextra.C5prec,
             PriceApplication = ApplyStayPriceType.P,
             DiscountApplicationType = ExtrasDiscountApplicationType.All,
-            IsCancellationGuarantee = anyConextra.Cogc,
+            TaxesIncluded = false,
+            IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
             ContractClients = new List<string>() { anyOriginCode }
         };
@@ -2244,7 +2258,8 @@ public class CreateExtraShould {
             Price = anyConextra.C5prec,
             PriceApplication = ApplyStayPriceType.X,
             DiscountApplicationType = ExtrasDiscountApplicationType.All,
-            IsCancellationGuarantee = anyConextra.Cogc,
+            TaxesIncluded = false,
+            IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
             ContractClients = new List<string>() { anyOriginCode }
         };
@@ -2349,7 +2364,8 @@ public class CreateExtraShould {
             Price = anyConextra.C5prec,
             PriceApplication = anyConextra.C5form == "D" ? ApplyStayPriceType.D : anyConextra.C5form == "P" ? ApplyStayPriceType.P : anyConextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             DiscountApplicationType = ExtrasDiscountApplicationType.Contract,
-            IsCancellationGuarantee = anyConextra.Cogc,
+            TaxesIncluded = false,
+            IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
             ContractClients = new List<string>() { anyOriginCode },
         };
@@ -2454,7 +2470,8 @@ public class CreateExtraShould {
             Price = anyConextra.C5prec,
             PriceApplication = anyConextra.C5form == "D" ? ApplyStayPriceType.D : anyConextra.C5form == "P" ? ApplyStayPriceType.P : anyConextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             DiscountApplicationType = ExtrasDiscountApplicationType.Offer,
-            IsCancellationGuarantee = anyConextra.Cogc,
+            TaxesIncluded = false,
+            IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
             ContractClients = new List<string>() { anyOriginCode },
         };

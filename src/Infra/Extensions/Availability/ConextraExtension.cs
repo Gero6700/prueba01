@@ -3,7 +3,7 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
 public static class ConextraExtension {
     public static Extra ToExtra(this Conextra conextra) {
         var extra = new Extra {
-            Code = conextra.Code, 
+            Code = conextra.Code,
             ApplyFrom = conextra.C5fred > 0 ? DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5fred) : null,
             ApplyTo = conextra.C5freh > 0 ? DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5freh) : null,
             CheckInFrom = DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5fec1),
@@ -17,7 +17,8 @@ public static class ConextraExtension {
             Price = conextra.C5prec,
             PriceApplication = conextra.C5form == "D" ? ApplyStayPriceType.D : conextra.C5form == "P" ? ApplyStayPriceType.P : conextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             DiscountApplicationType = conextra.C5apdt == "C" ? ExtrasDiscountApplicationType.Contract : conextra.C5apdt == "S" ? ExtrasDiscountApplicationType.Offer : ExtrasDiscountApplicationType.All, //TODO: Tener en cuenta que si viene de oferta puede ser nulo y el valor vacio que indica ninguno
-            IsCancellationGuarantee = conextra.Cogc,
+            TaxesIncluded = false, //TODO: pendiente de Leiva
+            IsCommissionable = true, //TODO: pendiente de Leiva
             OccupancyRateCod = conextra.C5cocu == 0 ? "" : conextra.C5cocu.ToString()
         };
         extra.AddAdultPaxes(conextra);

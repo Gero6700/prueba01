@@ -16,7 +16,6 @@ public class Conextra {
     public decimal C5prec { get; set; }
     public string C5form { get; set; } = string.Empty;
     public string C5apdt { get; set; } = string.Empty;
-    public bool Cogc { get; set; }
     public int C5cocu { get; set; } 
     public decimal C5dtn1 { get; set; }
     public decimal C5dtn2 { get; set; }

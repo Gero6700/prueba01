@@ -113,7 +113,8 @@ public class UpdateExtraShould {
             Price = anyConextra.C5prec,
             PriceApplication = ApplyStayPriceType.U,
             DiscountApplicationType = ExtrasDiscountApplicationType.All,
-            IsCancellationGuarantee = anyConextra.Cogc,
+            TaxesIncluded = false,
+            IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
             ContractClients = new List<string> { anyOriginCode },
         };
@@ -223,7 +224,8 @@ public class UpdateExtraShould {
             Price = anyConextra.C5prec,
             PriceApplication = ApplyStayPriceType.U,
             DiscountApplicationType = ExtrasDiscountApplicationType.All,
-            IsCancellationGuarantee = anyConextra.Cogc,
+            TaxesIncluded = false,
+            IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
             ContractClients = new List<string> { anyOriginCode },
         };
@@ -333,7 +335,8 @@ public class UpdateExtraShould {
             Price = anyConextra.C5prec,
             PriceApplication = ApplyStayPriceType.U,
             DiscountApplicationType = ExtrasDiscountApplicationType.All,
-            IsCancellationGuarantee = anyConextra.Cogc,
+            TaxesIncluded = false,
+            IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
             ContractClients = new List<string> { anyOriginCode },
         };

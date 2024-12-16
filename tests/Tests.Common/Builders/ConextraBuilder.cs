@@ -29,7 +29,6 @@ public class ConextraBuilder {
             .RuleFor(x => x.C5prec, f => f.Random.Decimal())
             .RuleFor(x => x.C5form, f => f.Random.ArrayElement(new string[] { "D", "P", "U", "X" }))
             .RuleFor(x => x.C5apdt, f => f.Random.ArrayElement(new string[] { "C", "S", "" }))
-            .RuleFor(x => x.Cogc, f => f.Random.Bool())
             .RuleFor(x => x.C5cocu, f => f.Random.Int(0, 99))
             .RuleFor(x => x.C5dtn1, f => f.Random.Decimal(0, 100))
             .RuleFor(x => x.C5dtn2, f => f.Random.Decimal(0, 100))
@@ -140,11 +139,6 @@ public class ConextraBuilder {
 
     public ConextraBuilder WithC5apdt(string newC5apdt) {
         raw.C5apdt = newC5apdt;
-        return this;
-    }
-
-    public ConextraBuilder WithCogc(bool newCogc) {
-        raw.Cogc = newCogc;
         return this;
     }
 
@@ -316,7 +310,6 @@ public class ConextraBuilder {
             .RuleFor(x => x.C5prec, raw.C5prec)
             .RuleFor(x => x.C5form, raw.C5form)
             .RuleFor(x => x.C5apdt, raw.C5apdt)
-            .RuleFor(x => x.Cogc, raw.Cogc)
             .RuleFor(x => x.C5cocu, raw.C5cocu)
             .RuleFor(x => x.C5dtn1, raw.C5dtn1)
             .RuleFor(x => x.C5dtn2, raw.C5dtn2)
@@ -368,7 +361,6 @@ public class ConextraBuilder {
         public decimal C5prec { get; set; }
         public string C5form { get; set; } = string.Empty;
         public string C5apdt { get; set; } = string.Empty;
-        public bool Cogc { get; set; }
         public int C5cocu { get; set; }
         public decimal C5dtn1 { get; set; }
         public decimal C5dtn2 { get; set; }

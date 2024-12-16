@@ -14,7 +14,8 @@ public class Extra : IAggregateRoot {
     public decimal Price { get; set; }
     public ApplyStayPriceType PriceApplication { get; set; }
     public ExtrasDiscountApplicationType DiscountApplicationType { get; set; }
-    public bool IsCancellationGuarantee { get; set; }
+    public bool TaxesIncluded { get; set; }
+    public bool IsCommissionable { get; set; }
     public string OccupancyRateCod { get; set; } = string.Empty;
     public List<ExtraPax> Paxes { get; set; } = new List<ExtraPax>();
     public List<string> Rooms { get; set; } = new List<string>();
