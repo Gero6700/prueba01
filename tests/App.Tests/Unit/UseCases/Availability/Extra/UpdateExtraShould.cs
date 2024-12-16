@@ -113,7 +113,7 @@ public class UpdateExtraShould {
             ApplyBy = ApplyStayPriceType.U,
             Price = anyConextra.C5prec,
             PriceApplication = ApplyStayPriceType.U,
-            ApplyOtherSuplementsOrDiscounts = ApplyOtherSuplementsOrDiscounts.All,
+            DiscountApplicationType = ExtrasDiscountApplicationType.All,
             IsCancellationGuarantee = anyConextra.Cogc,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
             ContractClients = new List<string> { anyOriginCode },

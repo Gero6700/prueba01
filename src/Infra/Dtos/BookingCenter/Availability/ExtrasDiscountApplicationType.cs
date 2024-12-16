@@ -1,6 +1,7 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter.Availability;
-public enum ApplyOtherSuplementsOrDiscounts {
+public enum ExtrasDiscountApplicationType {
     Contract,
     Offer,
-    All
+    All,
+    None
 }

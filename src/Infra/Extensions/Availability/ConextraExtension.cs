@@ -1,12 +1,11 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter.Availability;
 
 namespace Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
 public static class ConextraExtension {
     public static Extra ToExtra(this Conextra conextra) {
         var extra = new Extra {
-            Code = conextra.Code, //TODO: Tener en cuenta las fechas pueden ser nulas
-            ApplyFrom = DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5fred),
-            ApplyTo = DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5freh),
+            Code = conextra.Code, 
+            ApplyFrom = conextra.C5fred > 0 ? DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5fred) : null,
+            ApplyTo = conextra.C5freh > 0 ? DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5freh) : null,
             CheckInFrom = DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5fec1),
             CheckInTo = DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5fec2),
             StayFrom = conextra.C5died,
@@ -17,7 +16,7 @@ public static class ConextraExtension {
             ApplyBy = conextra.C5foun == "D" ? ApplyStayPriceType.D : conextra.C5foun == "P" ? ApplyStayPriceType.P : conextra.C5foun == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             Price = conextra.C5prec,
             PriceApplication = conextra.C5form == "D" ? ApplyStayPriceType.D : conextra.C5form == "P" ? ApplyStayPriceType.P : conextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
-            ApplyOtherSuplementsOrDiscounts = conextra.C5apdt == "C" ? ApplyOtherSuplementsOrDiscounts.Contract : conextra.C5apdt == "S" ? ApplyOtherSuplementsOrDiscounts.Offer : ApplyOtherSuplementsOrDiscounts.All, //TODO: Tener en cuenta que si viene de oferta puede ser nulo y el valor vacio que indica ninguno
+            DiscountApplicationType = conextra.C5apdt == "C" ? ExtrasDiscountApplicationType.Contract : conextra.C5apdt == "S" ? ExtrasDiscountApplicationType.Offer : ExtrasDiscountApplicationType.All, //TODO: Tener en cuenta que si viene de oferta puede ser nulo y el valor vacio que indica ninguno
             IsCancellationGuarantee = conextra.Cogc,
             OccupancyRateCod = conextra.C5cocu == 0 ? "" : conextra.C5cocu.ToString()
         };
@@ -43,15 +42,13 @@ public static class ConextraExtension {
         const decimal ageFrom = 2;
         const decimal ageTo = 14.99m;
         const PaxType type = PaxType.Child;
-        const ScopeType scope = ScopeType.Regime;
         const Dtos.BookingCenter.Availability.TypeOfPayment payment = Dtos.BookingCenter.Availability.TypeOfPayment.Percent;
 
         var paxes = new List<ExtraPax>();
         if (conextra.C5dtn1 != 0) {
             paxes.Add(new ExtraPax {
                 PaxOrder = 1,
-                PaxType = type,
-                Scope = scope,
+                PaxType = type,                
                 AgeFrom = ageFrom,
                 AgeTo = ageTo,
                 Amount = conextra.C5dtn1,
@@ -62,7 +59,6 @@ public static class ConextraExtension {
             paxes.Add(new ExtraPax {
                 PaxOrder = 2,
                 PaxType = type,
-                Scope = scope,
                 AgeFrom = ageFrom,
                 AgeTo = ageTo,
                 Amount = conextra.C5dtn2,
@@ -73,7 +69,6 @@ public static class ConextraExtension {
             paxes.Add(new ExtraPax {
                 PaxOrder = 3,
                 PaxType = type,
-                Scope = scope,
                 AgeFrom = ageFrom,
                 AgeTo = ageTo,
                 Amount = conextra.C5dtn3,
@@ -84,7 +79,6 @@ public static class ConextraExtension {
             paxes.Add(new ExtraPax {
                 PaxOrder = 4,
                 PaxType = type,
-                Scope = scope,
                 AgeFrom = ageFrom,
                 AgeTo = ageTo,
                 Amount = conextra.C5dtn4,
@@ -99,15 +93,13 @@ public static class ConextraExtension {
         const decimal ageFrom = 15;
         const decimal ageTo = 999;
         const PaxType type = PaxType.Adult;
-        const ScopeType scope = ScopeType.Regime;
-        const Dtos.BookingCenter.Availability.TypeOfPayment payment = Dtos.BookingCenter.Availability.TypeOfPayment.Percent;
+        const TypeOfPayment payment = TypeOfPayment.Percent;
 
         var paxes = new List<ExtraPax>();
         if (conextra.C5dta1 != 0) {
             paxes.Add(new ExtraPax {
                 PaxOrder = 1,
                 PaxType = type,
-                Scope = scope,
                 AgeFrom = ageFrom,
                 AgeTo = ageTo,
                 Amount = conextra.C5dta1,
@@ -118,7 +110,6 @@ public static class ConextraExtension {
             paxes.Add(new ExtraPax {
                 PaxOrder = 2,
                 PaxType = type,
-                Scope = scope,
                 AgeFrom = ageFrom,
                 AgeTo = ageTo,
                 Amount = conextra.C5dta2,
@@ -129,7 +120,6 @@ public static class ConextraExtension {
             paxes.Add(new ExtraPax {
                 PaxOrder = 3,
                 PaxType = type,
-                Scope = scope,
                 AgeFrom = ageFrom,
                 AgeTo = ageTo,
                 Amount = conextra.C5dta3,
@@ -140,7 +130,6 @@ public static class ConextraExtension {
             paxes.Add(new ExtraPax {
                 PaxOrder = 4,
                 PaxType = type,
-                Scope = scope,
                 AgeFrom = ageFrom,
                 AgeTo = ageTo,
                 Amount = conextra.C5dta4,
