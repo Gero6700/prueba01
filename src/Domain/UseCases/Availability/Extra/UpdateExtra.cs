@@ -10,7 +10,7 @@ public class UpdateExtra {
     }
 
     public async Task Execute(Conextra conextra) {
-        if (DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5fred) == DateTime.MinValue) {
+        if (conextra.C5fred > 0 && DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5fred) == DateTime.MinValue) {
             throw new ArgumentException("Invalid apply from date");
         }
         if (DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5freh) == DateTime.MinValue) {

@@ -210,7 +210,7 @@ public class UpdateExtraShould {
         //Then
         var expectedExtra = new Infrastructure.Dtos.BookingCenter.Availability.Extra {
             Code = anyConextra.Code,
-            ApplyFrom = new DateTime(2024, 01, 01),
+            ApplyFrom = null,
             ApplyTo = new DateTime(2024, 12, 31),
             CheckInFrom = new DateTime(2024, 01, 01),
             CheckInTo = new DateTime(2024, 12, 31),
