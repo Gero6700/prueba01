@@ -13,7 +13,7 @@ public class UpdateExtra {
         if (conextra.C5fred > 0 && DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5fred) == DateTime.MinValue) {
             throw new ArgumentException("Invalid apply from date");
         }
-        if (DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5freh) == DateTime.MinValue) {
+        if (conextra.C5freh > 0 && DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5freh) == DateTime.MinValue) {
             throw new ArgumentException("Invalid apply to date");
         }
         if (DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5fec1) == DateTime.MinValue) {
