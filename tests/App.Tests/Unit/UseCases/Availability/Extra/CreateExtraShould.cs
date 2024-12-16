@@ -1116,6 +1116,138 @@ public class CreateExtraShould {
     }
 
     [Test]
+    public async Task create_extra_when_c5fred_is_zero() {
+        //Given
+        const string anyCode = "anyCode";
+        const string anyOriginCode = "anyOriginCode";
+        const OriginType anyOriginType = OriginType.Contract;
+        const int anyC5fred = 0;
+        const int anyC5freh = 2024366;
+        const int anyC5fec1 = 2024001;
+        const int anyC5fec2 = 2024366;
+        const int anyC5died = 1;
+        const int anyC5dihd = 2;
+        const string anyC5Sele = "S";
+        const int anyC5unid = 1;
+        const int anyC5inta = 1;
+        const string anyC5foun = "U";
+        const decimal anyC5prec = 5.50m;
+        const string anyC5form = "U";
+        const string anyC5apdt = "";
+        const bool anyCogc = false;
+        const int anyC5cocu = 1;
+        const decimal anyC5dtn1 = 0.0m;
+        const decimal anyC5dtn2 = 0.0m;
+        const decimal anyC5dtn3 = 0.0m;
+        const decimal anyC5dtn4 = 0.0m;
+        const decimal anyC5dta1 = 0.0m;
+        const decimal anyC5dta2 = 0.0m;
+        const decimal anyC5dta3 = 0.0m;
+        const decimal anyC5dta4 = 0.0m;
+        const string anyC5th01 = "";
+        const string anyC5th02 = "";
+        const string anyC5th03 = "";
+        const string anyC5th04 = "";
+        const string anyC5th05 = "";
+        const string anyC5th06 = "";
+        const string anyC5th07 = "";
+        const string anyC5th08 = "";
+        const string anyC5th09 = "";
+        const string anyC5th10 = "";
+        const string anyC5th11 = "";
+        const string anyC5th12 = "";
+        const string anyC5th13 = "";
+        const string anyC5th14 = "";
+        const string anyC5th15 = "";
+        const string anyC5reg1 = "";
+        const string anyC5reg2 = "";
+        const string anyC5reg3 = "";
+        const string anyC5reg4 = "";
+        const string anyC5reg5 = "";
+        const string anyOffoe = "";
+
+        var anyConextra = ConextraBuilder.AConextraBuilder()
+            .WithCode(anyCode)
+            .WithOriginCode(anyOriginCode)
+            .WithOriginType(anyOriginType)
+            .WithC5fred(anyC5fred)
+            .WithC5freh(anyC5freh)
+            .WithC5fec1(anyC5fec1)
+            .WithC5fec2(anyC5fec2)
+            .WithC5died(anyC5died)
+            .WithC5dieh(anyC5dihd)
+            .WithC5Sele(anyC5Sele)
+            .WithC5unid(anyC5unid)
+            .WithC5inta(anyC5inta)
+            .WithC5foun(anyC5foun)
+            .WithC5prec(anyC5prec)
+            .WithC5form(anyC5form)
+            .WithC5apdt(anyC5apdt)
+            .WithCogc(anyCogc)
+            .WithC5cocu(anyC5cocu)
+            .WithC5dtn1(anyC5dtn1)
+            .WithC5dtn2(anyC5dtn2)
+            .WithC5dtn3(anyC5dtn3)
+            .WithC5dtn4(anyC5dtn4)
+            .WithC5dta1(anyC5dta1)
+            .WithC5dta2(anyC5dta2)
+            .WithC5dta3(anyC5dta3)
+            .WithC5dta4(anyC5dta4)
+            .WithC5th01(anyC5th01)
+            .WithC5th02(anyC5th02)
+            .WithC5th03(anyC5th03)
+            .WithC5th04(anyC5th04)
+            .WithC5th05(anyC5th05)
+            .WithC5th06(anyC5th06)
+            .WithC5th07(anyC5th07)
+            .WithC5th08(anyC5th08)
+            .WithC5th09(anyC5th09)
+            .WithC5th10(anyC5th10)
+            .WithC5th11(anyC5th11)
+            .WithC5th12(anyC5th12)
+            .WithC5th13(anyC5th13)
+            .WithC5th14(anyC5th14)
+            .WithC5th15(anyC5th15)
+            .WithC5reg1(anyC5reg1)
+            .WithC5reg2(anyC5reg2)
+            .WithC5reg3(anyC5reg3)
+            .WithC5reg4(anyC5reg4)
+            .WithC5reg5(anyC5reg5)
+            .WithOffoe(anyOffoe)
+            .Build();
+
+        //When
+        await createExtra.Execute(anyConextra);
+
+        //Then
+        var expectedConextra = new Infrastructure.Dtos.BookingCenter.Availability.Extra {
+            Code = anyCode,
+            ApplyFrom = null,
+            ApplyTo = new DateTime(2024, 12, 31),
+            CheckInFrom = new DateTime(2024, 01, 01),
+            CheckInTo = new DateTime(2024, 12, 31),
+            StayFrom = anyC5died,
+            StayTo = anyC5dihd,
+            Mandatory = anyC5Sele != "S",
+            Quantity = anyC5unid,
+            ByDay = anyC5inta,
+            ApplyBy = ApplyStayPriceType.U,
+            Price = anyC5prec,
+            PriceApplication = ApplyStayPriceType.U,
+            DiscountApplicationType = ExtrasDiscountApplicationType.All,
+            IsCancellationGuarantee = anyCogc,
+            OccupancyRateCod = anyC5cocu.ToString(),
+            Paxes = new List<ExtraPax>(),
+            Rooms = new List<string>(),
+            Regimes = new List<string>(),
+            ContractClients = new List<string>() { anyOriginCode },
+            OfferAndSuplements = new List<ExtraOfferAndSuplement>()
+        };
+        await availabilitySynchronizerApiClient.Received()
+            .CreateExtra(Arg.Is<Infrastructure.Dtos.BookingCenter.Availability.Extra>(x => IsEquivalent(x, expectedConextra)));
+    }
+
+    [Test]
     public async Task create_extra_when_c5sele_is_not_s() {
         //Then
         const string anyOriginCode = "anyOriginCode";
