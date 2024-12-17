@@ -11,5 +11,5 @@ public class PeriodPricing {
     public int Release { get; set; }
     public string RoomCode { get; set; } = string.Empty;
     public string RegimeCode { get; set; } = string.Empty;
-    public string ContractClientCode { get; set; } = string.Empty;
+    public string IntegrationContractId { get; set; } = string.Empty;
 }

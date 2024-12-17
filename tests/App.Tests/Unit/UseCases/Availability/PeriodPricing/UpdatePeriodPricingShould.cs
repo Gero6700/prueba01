@@ -50,7 +50,7 @@ public class UpdatePeriodPricingShould {
             ClosingSales = false,
             RateCode = anyRateCode,
             PricingDate = new DateTime(2024, 01, 01),
-            ContractClientCode = anyContractClientCode,
+            IntegrationContractId = anyContractClientCode,
             StayPvp = anyC4esta,
             StayPvpApplyMode = ApplyStayPriceType.P,
             RegimePvp = anyC4serv,

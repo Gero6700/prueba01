@@ -15,7 +15,7 @@ public static class ConpreciExtension {
             Release = conpreci.Acrele,
             RoomCode = conpreci.C4thab,
             RegimeCode = conpreci.C4tser,
-            ContractClientCode = conpreci.ContractClientCode,
+            IntegrationContractId = conpreci.ContractClientCode,
         };
     }
 }
