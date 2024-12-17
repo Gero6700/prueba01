@@ -31,6 +31,7 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Providers {
         Task<Response> DeleteRoom(string roomCode);
         Task<Response> CreateExtra(Extra extra);
         Task<Response> UpdateExtra(Extra extra);
+        Task<Response> DeleteExtra(string extraCode);
         Task<Response> CreateMinimumStay(MinimumStay minimumStay);
         Task<Response> UpdateMinimumStay(MinimumStay minimumStay);
         Task<Response> CreateRegime(Dtos.BookingCenter.Availability.Regime regime);
