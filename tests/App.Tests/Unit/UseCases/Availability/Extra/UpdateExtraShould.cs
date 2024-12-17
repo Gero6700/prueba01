@@ -92,6 +92,8 @@ public class UpdateExtraShould {
             .WithC5reg5(anyC5reg5)
             .WithOriginCode(anyOriginCode)
             .WithOriginType(anyOriginType)
+            .WithIsCommissionable(true)
+            .WithTaxesIncluded(false)
             .Build();
 
         //When
@@ -112,7 +114,7 @@ public class UpdateExtraShould {
             ApplyBy = ApplyStayPriceType.U,
             Price = anyConextra.C5prec,
             PriceApplication = ApplyStayPriceType.U,
-            DiscountApplicationType = ExtrasDiscountApplicationType.All,
+            DiscountApplicationType = ExtrasDiscountApplicationType.None,
             TaxesIncluded = false,
             IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
@@ -203,6 +205,8 @@ public class UpdateExtraShould {
             .WithC5reg5(anyC5reg5)
             .WithOriginCode(anyOriginCode)
             .WithOriginType(anyOriginType)
+            .WithIsCommissionable(true)
+            .WithTaxesIncluded(false)
             .Build();
 
         //When
@@ -223,7 +227,7 @@ public class UpdateExtraShould {
             ApplyBy = ApplyStayPriceType.U,
             Price = anyConextra.C5prec,
             PriceApplication = ApplyStayPriceType.U,
-            DiscountApplicationType = ExtrasDiscountApplicationType.All,
+            DiscountApplicationType = ExtrasDiscountApplicationType.None,
             TaxesIncluded = false,
             IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
@@ -314,6 +318,8 @@ public class UpdateExtraShould {
             .WithC5reg5(anyC5reg5)
             .WithOriginCode(anyOriginCode)
             .WithOriginType(anyOriginType)
+            .WithIsCommissionable(true)
+            .WithTaxesIncluded(false)
             .Build();
 
         //When
@@ -334,7 +340,7 @@ public class UpdateExtraShould {
             ApplyBy = ApplyStayPriceType.U,
             Price = anyConextra.C5prec,
             PriceApplication = ApplyStayPriceType.U,
-            DiscountApplicationType = ExtrasDiscountApplicationType.All,
+            DiscountApplicationType = ExtrasDiscountApplicationType.None,
             TaxesIncluded = false,
             IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),

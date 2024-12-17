@@ -226,6 +226,8 @@ public class CreateExtraShould {
             .WithC5reg4(anyC5reg4)
             .WithC5reg5(anyC5reg5)
             .WithOffoe(anyOffoe)
+            .WithIsCommissionable(true)
+            .WithTaxesIncluded(false)
             .Build();
 
         //When
@@ -246,7 +248,7 @@ public class CreateExtraShould {
             ApplyBy = anyConextra.C5foun == "D" ? ApplyStayPriceType.D : anyConextra.C5foun == "P" ? ApplyStayPriceType.P : anyConextra.C5foun == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             Price = anyConextra.C5prec,
             PriceApplication = anyConextra.C5form == "D" ? ApplyStayPriceType.D : anyConextra.C5form == "P" ? ApplyStayPriceType.P : anyConextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
-            DiscountApplicationType = ExtrasDiscountApplicationType.All,
+            DiscountApplicationType = ExtrasDiscountApplicationType.None,
             TaxesIncluded = false,
             IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
@@ -341,6 +343,8 @@ public class CreateExtraShould {
             .WithC5reg4(anyC5reg4)
             .WithC5reg5(anyC5reg5)
             .WithOffoe(anyOffoe)
+            .WithIsCommissionable(true)
+            .WithTaxesIncluded(false)
             .Build();
 
         //When
@@ -361,7 +365,7 @@ public class CreateExtraShould {
             ApplyBy = anyConextra.C5foun == "D" ? ApplyStayPriceType.D : anyConextra.C5foun == "P" ? ApplyStayPriceType.P : anyConextra.C5foun == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             Price = anyConextra.C5prec,
             PriceApplication = anyConextra.C5form == "D" ? ApplyStayPriceType.D : anyConextra.C5form == "P" ? ApplyStayPriceType.P : anyConextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
-            DiscountApplicationType = ExtrasDiscountApplicationType.All,
+            DiscountApplicationType = ExtrasDiscountApplicationType.None,
             TaxesIncluded = false,
             IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
@@ -456,6 +460,8 @@ public class CreateExtraShould {
             .WithC5reg4(anyC5reg4)
             .WithC5reg5(anyC5reg5)
             .WithOffoe(anyOffoe)
+            .WithIsCommissionable(true)
+            .WithTaxesIncluded(false)
             .Build();
 
         //When
@@ -476,7 +482,7 @@ public class CreateExtraShould {
             ApplyBy = anyConextra.C5foun == "D" ? ApplyStayPriceType.D : anyConextra.C5foun == "P" ? ApplyStayPriceType.P : anyConextra.C5foun == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             Price = anyConextra.C5prec,
             PriceApplication = anyConextra.C5form == "D" ? ApplyStayPriceType.D : anyConextra.C5form == "P" ? ApplyStayPriceType.P : anyConextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
-            DiscountApplicationType = ExtrasDiscountApplicationType.All,
+            DiscountApplicationType = ExtrasDiscountApplicationType.None,
             TaxesIncluded = false,
             IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
@@ -571,6 +577,8 @@ public class CreateExtraShould {
             .WithC5reg4(anyC5reg4)
             .WithC5reg5(anyC5reg5)
             .WithOffoe(anyOffoe)
+            .WithIsCommissionable(true)
+            .WithTaxesIncluded(false)
             .Build();
 
         //When
@@ -591,7 +599,7 @@ public class CreateExtraShould {
             ApplyBy = anyConextra.C5foun == "D" ? ApplyStayPriceType.D : anyConextra.C5foun == "P" ? ApplyStayPriceType.P : anyConextra.C5foun == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             Price = anyConextra.C5prec,
             PriceApplication = anyConextra.C5form == "D" ? ApplyStayPriceType.D : anyConextra.C5form == "P" ? ApplyStayPriceType.P : anyConextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
-            DiscountApplicationType = ExtrasDiscountApplicationType.All,
+            DiscountApplicationType = ExtrasDiscountApplicationType.None,
             TaxesIncluded = false,
             IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
@@ -681,6 +689,8 @@ public class CreateExtraShould {
             .WithC5reg5(anyC5reg5)
             .WithOriginCode(anyOriginCode)
             .WithOriginType(anyOriginType)
+            .WithIsCommissionable(true)
+            .WithTaxesIncluded(false)
             .Build();
 
         //when
@@ -701,7 +711,7 @@ public class CreateExtraShould {
             ApplyBy = anyConextra.C5foun == "D" ? ApplyStayPriceType.D : anyConextra.C5foun == "P" ? ApplyStayPriceType.P : anyConextra.C5foun == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             Price = anyConextra.C5prec,
             PriceApplication = anyConextra.C5form == "D" ? ApplyStayPriceType.D : anyConextra.C5form == "P" ? ApplyStayPriceType.P : anyConextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
-            DiscountApplicationType = ExtrasDiscountApplicationType.All,
+            DiscountApplicationType = ExtrasDiscountApplicationType.None,
             TaxesIncluded = false,
             IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
@@ -822,6 +832,8 @@ public class CreateExtraShould {
             .WithC5reg5(anyC5reg5)
             .WithOriginCode(anyOriginCode)
             .WithOriginType(anyOriginType)
+            .WithIsCommissionable(true)
+            .WithTaxesIncluded(false)
             .Build();
 
         //when
@@ -842,7 +854,7 @@ public class CreateExtraShould {
             ApplyBy = anyConextra.C5foun == "D" ? ApplyStayPriceType.D : anyConextra.C5foun == "P" ? ApplyStayPriceType.P : anyConextra.C5foun == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             Price = anyConextra.C5prec,
             PriceApplication = anyConextra.C5form == "D" ? ApplyStayPriceType.D : anyConextra.C5form == "P" ? ApplyStayPriceType.P : anyConextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
-            DiscountApplicationType = ExtrasDiscountApplicationType.All,
+            DiscountApplicationType = ExtrasDiscountApplicationType.None,
             TaxesIncluded = false,
             IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
@@ -946,6 +958,8 @@ public class CreateExtraShould {
             .WithC5reg5(anyC5reg5)
             .WithOriginCode(anyOriginCode)
             .WithOriginType(anyOriginType)
+            .WithIsCommissionable(true)
+            .WithTaxesIncluded(false)
             .Build();
 
         //when
@@ -966,7 +980,7 @@ public class CreateExtraShould {
             ApplyBy = anyConextra.C5foun == "D" ? ApplyStayPriceType.D : anyConextra.C5foun == "P" ? ApplyStayPriceType.P : anyConextra.C5foun == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             Price = anyConextra.C5prec,
             PriceApplication = anyConextra.C5form == "D" ? ApplyStayPriceType.D : anyConextra.C5form == "P" ? ApplyStayPriceType.P : anyConextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
-            DiscountApplicationType = ExtrasDiscountApplicationType.All,
+            DiscountApplicationType = ExtrasDiscountApplicationType.None,
             TaxesIncluded = false,
             IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
@@ -1061,6 +1075,8 @@ public class CreateExtraShould {
             .WithC5reg5(anyC5reg5)
             .WithOriginCode(anyOriginCode)
             .WithOriginType(anyOriginType)
+            .WithIsCommissionable(true)
+            .WithTaxesIncluded(false)
             .Build();
 
         //When
@@ -1081,7 +1097,7 @@ public class CreateExtraShould {
             ApplyBy = anyConextra.C5foun == "D" ? ApplyStayPriceType.D : anyConextra.C5foun == "P" ? ApplyStayPriceType.P : anyConextra.C5foun == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             Price = anyConextra.C5prec,
             PriceApplication = anyConextra.C5form == "D" ? ApplyStayPriceType.D : anyConextra.C5form == "P" ? ApplyStayPriceType.P : anyConextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
-            DiscountApplicationType = ExtrasDiscountApplicationType.All,
+            DiscountApplicationType = ExtrasDiscountApplicationType.None,
             TaxesIncluded = false,
             IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
@@ -1224,6 +1240,8 @@ public class CreateExtraShould {
             .WithC5reg4(anyC5reg4)
             .WithC5reg5(anyC5reg5)
             .WithOffoe(anyOffoe)
+            .WithIsCommissionable(true)
+            .WithTaxesIncluded(false)
             .Build();
 
         //When
@@ -1244,7 +1262,7 @@ public class CreateExtraShould {
             ApplyBy = ApplyStayPriceType.U,
             Price = anyC5prec,
             PriceApplication = ApplyStayPriceType.U,
-            DiscountApplicationType = ExtrasDiscountApplicationType.All,
+            DiscountApplicationType = ExtrasDiscountApplicationType.None,
             TaxesIncluded = false,
             IsCommissionable = true,
             OccupancyRateCod = anyC5cocu.ToString(),
@@ -1356,6 +1374,8 @@ public class CreateExtraShould {
             .WithC5reg4(anyC5reg4)
             .WithC5reg5(anyC5reg5)
             .WithOffoe(anyOffoe)
+            .WithIsCommissionable(true)
+            .WithTaxesIncluded(false)
             .Build();
 
         //When
@@ -1376,7 +1396,7 @@ public class CreateExtraShould {
             ApplyBy = ApplyStayPriceType.U,
             Price = anyC5prec,
             PriceApplication = ApplyStayPriceType.U,
-            DiscountApplicationType = ExtrasDiscountApplicationType.All,
+            DiscountApplicationType = ExtrasDiscountApplicationType.None,
             TaxesIncluded = false,
             IsCommissionable = true,
             OccupancyRateCod = anyC5cocu.ToString(),
@@ -1471,6 +1491,8 @@ public class CreateExtraShould {
             .WithC5reg5(anyC5reg5)
             .WithOriginCode(anyOriginCode)
             .WithOriginType(anyOriginType)
+            .WithIsCommissionable(true)
+            .WithTaxesIncluded(false)
             .Build();
 
         //When
@@ -1491,7 +1513,7 @@ public class CreateExtraShould {
             ApplyBy = ApplyStayPriceType.U,
             Price = anyConextra.C5prec,
             PriceApplication = ApplyStayPriceType.U,
-            DiscountApplicationType = ExtrasDiscountApplicationType.All,
+            DiscountApplicationType = ExtrasDiscountApplicationType.None,
             TaxesIncluded = false,
             IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
@@ -1584,6 +1606,8 @@ public class CreateExtraShould {
             .WithC5reg5(anyC5reg5)
             .WithOriginCode(anyOriginCode)
             .WithOriginType(anyOriginType)
+            .WithTaxesIncluded(false)
+            .WithIsCommissionable(true)
             .Build();
 
         //When
@@ -1604,7 +1628,7 @@ public class CreateExtraShould {
             ApplyBy = anyConextra.C5foun == "D" ? ApplyStayPriceType.D : anyConextra.C5foun == "P" ? ApplyStayPriceType.P : anyConextra.C5foun == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             Price = anyConextra.C5prec,
             PriceApplication = anyConextra.C5form == "D" ? ApplyStayPriceType.D : anyConextra.C5form == "P" ? ApplyStayPriceType.P : anyConextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
-            DiscountApplicationType = ExtrasDiscountApplicationType.All,
+            DiscountApplicationType = ExtrasDiscountApplicationType.None,
             TaxesIncluded = false,
             IsCommissionable = true,
             OccupancyRateCod = "",
@@ -1695,6 +1719,8 @@ public class CreateExtraShould {
             .WithC5reg5(anyC5reg5)
             .WithOriginCode(anyOriginCode)
             .WithOriginType(anyOriginType)
+            .WithIsCommissionable(true)
+            .WithTaxesIncluded(false)
             .Build();
 
         //When
@@ -1715,7 +1741,7 @@ public class CreateExtraShould {
             ApplyBy = ApplyStayPriceType.D,
             Price = anyConextra.C5prec,
             PriceApplication = ApplyStayPriceType.U,
-            DiscountApplicationType = ExtrasDiscountApplicationType.All,
+            DiscountApplicationType = ExtrasDiscountApplicationType.None,
             TaxesIncluded = false,
             IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
@@ -1807,6 +1833,8 @@ public class CreateExtraShould {
             .WithC5reg5(anyC5reg5)
             .WithOriginCode(anyOriginCode)
             .WithOriginType(anyOriginType)
+            .WithIsCommissionable(true)
+            .WithTaxesIncluded(false)
             .Build();
 
         //When
@@ -1827,7 +1855,7 @@ public class CreateExtraShould {
             ApplyBy = ApplyStayPriceType.P,
             Price = anyConextra.C5prec,
             PriceApplication = ApplyStayPriceType.U,
-            DiscountApplicationType = ExtrasDiscountApplicationType.All,
+            DiscountApplicationType = ExtrasDiscountApplicationType.None,
             TaxesIncluded = false,
             IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
@@ -1917,6 +1945,8 @@ public class CreateExtraShould {
             .WithC5reg5(anyC5reg5)
             .WithOriginCode(anyOriginCode)
             .WithOriginType(anyOriginType)
+            .WithIsCommissionable(true)
+            .WithTaxesIncluded(false)
             .Build();
 
         //When
@@ -1937,7 +1967,7 @@ public class CreateExtraShould {
             ApplyBy = ApplyStayPriceType.X,
             Price = anyConextra.C5prec,
             PriceApplication = ApplyStayPriceType.U,
-            DiscountApplicationType = ExtrasDiscountApplicationType.All,
+            DiscountApplicationType = ExtrasDiscountApplicationType.None,
             TaxesIncluded = false,
             IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
@@ -2025,6 +2055,8 @@ public class CreateExtraShould {
             .WithC5reg5(anyC5reg5)
             .WithOriginCode(anyOriginCode)
             .WithOriginType(anyOriginType)
+            .WithIsCommissionable(true)
+            .WithTaxesIncluded(false)
             .Build();
 
         //When
@@ -2045,7 +2077,7 @@ public class CreateExtraShould {
             ApplyBy = anyConextra.C5foun == "D" ? ApplyStayPriceType.D : anyConextra.C5foun == "P" ? ApplyStayPriceType.P : anyConextra.C5foun == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             Price = anyConextra.C5prec,
             PriceApplication = ApplyStayPriceType.D,
-            DiscountApplicationType = ExtrasDiscountApplicationType.All,
+            DiscountApplicationType = ExtrasDiscountApplicationType.None,
             TaxesIncluded = false,
             IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
@@ -2133,6 +2165,8 @@ public class CreateExtraShould {
             .WithC5reg5(anyC5reg5)
             .WithOriginCode(anyOriginCode)
             .WithOriginType(anyOriginType)
+            .WithIsCommissionable(true)
+            .WithTaxesIncluded(false)
             .Build();
 
         //When
@@ -2153,7 +2187,7 @@ public class CreateExtraShould {
             ApplyBy = anyConextra.C5foun == "D" ? ApplyStayPriceType.D : anyConextra.C5foun == "P" ? ApplyStayPriceType.P : anyConextra.C5foun == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             Price = anyConextra.C5prec,
             PriceApplication = ApplyStayPriceType.P,
-            DiscountApplicationType = ExtrasDiscountApplicationType.All,
+            DiscountApplicationType = ExtrasDiscountApplicationType.None,
             TaxesIncluded = false,
             IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
@@ -2241,6 +2275,8 @@ public class CreateExtraShould {
             .WithC5reg5(anyC5reg5)
             .WithOriginCode(anyOriginCode)
             .WithOriginType(anyOriginType)
+            .WithIsCommissionable(true)
+            .WithTaxesIncluded(false)
             .Build();
 
         //When
@@ -2261,7 +2297,7 @@ public class CreateExtraShould {
             ApplyBy = anyConextra.C5foun == "D" ? ApplyStayPriceType.D : anyConextra.C5foun == "P" ? ApplyStayPriceType.P : anyConextra.C5foun == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             Price = anyConextra.C5prec,
             PriceApplication = ApplyStayPriceType.X,
-            DiscountApplicationType = ExtrasDiscountApplicationType.All,
+            DiscountApplicationType = ExtrasDiscountApplicationType.None,
             TaxesIncluded = false,
             IsCommissionable = true,
             OccupancyRateCod = anyConextra.C5cocu.ToString(),
@@ -2347,6 +2383,8 @@ public class CreateExtraShould {
             .WithC5reg5(anyC5reg5)
             .WithOriginCode(anyOriginCode)
             .WithOriginType(anyOriginType)
+            .WithIsCommissionable(true)
+            .WithTaxesIncluded(false)
             .Build();
 
         //When
@@ -2453,6 +2491,8 @@ public class CreateExtraShould {
             .WithC5reg5(anyC5reg5)
             .WithOriginCode(anyOriginCode)
             .WithOriginType(anyOriginType)
+            .WithIsCommissionable(true)
+            .WithTaxesIncluded(false)
             .Build();
 
         //When
@@ -2559,6 +2599,8 @@ public class CreateExtraShould {
             .WithC5reg5(anyC5reg5)
             .WithOriginCode(anyOriginCode)
             .WithOriginType(anyOriginType)
+            .WithIsCommissionable(true)
+            .WithTaxesIncluded(false)
             .Build();
 
         //When
@@ -2665,6 +2707,8 @@ public class CreateExtraShould {
             .WithC5reg5(anyC5reg5)
             .WithOriginCode(anyOriginCode)
             .WithOriginType(anyOriginType)
+            .WithIsCommissionable(true)
+            .WithTaxesIncluded(false)
             .Build();
 
         //When
