@@ -16,7 +16,9 @@ public static class ConextraExtension {
             ApplyBy = conextra.C5foun == "D" ? ApplyStayPriceType.D : conextra.C5foun == "P" ? ApplyStayPriceType.P : conextra.C5foun == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
             Price = conextra.C5prec,
             PriceApplication = conextra.C5form == "D" ? ApplyStayPriceType.D : conextra.C5form == "P" ? ApplyStayPriceType.P : conextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
-            DiscountApplicationType = conextra.C5apdt == "C" ? ExtrasDiscountApplicationType.Contract : conextra.C5apdt == "S" ? ExtrasDiscountApplicationType.Offer : ExtrasDiscountApplicationType.All, //TODO: Tener en cuenta que si viene de oferta puede ser nulo y el valor vacio que indica ninguno
+            DiscountApplicationType = conextra.C5apdt == "C" ? ExtrasDiscountApplicationType.Contract : 
+                conextra.C5apdt == "S" ? ExtrasDiscountApplicationType.Offer : 
+                conextra.C5apdt == "T" ? ExtrasDiscountApplicationType.All : ExtrasDiscountApplicationType.None, 
             TaxesIncluded = false, //TODO: pendiente de Leiva
             IsCommissionable = true, //TODO: pendiente de Leiva
             OccupancyRateCod = conextra.C5cocu == 0 ? "" : conextra.C5cocu.ToString()
