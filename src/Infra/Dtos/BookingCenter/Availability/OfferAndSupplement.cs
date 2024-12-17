@@ -5,11 +5,11 @@ public class OfferAndSupplement : IAggregateRoot {
     public DateTime ApplyFrom { get; set; }
     public DateTime ApplyTo { get; set; }
     public int? ApplyOrder { get; set; }
-    public decimal DepositAmount { get; set; }
-    public TypeOfPayment DepositType { get; set; }
+    public decimal? DepositAmount { get; set; }
+    public TypeOfPayment? DepositType { get; set; }
     public DateTime? DepositBeforeDate { get; set; }
-    public decimal ModificationCostsAmount { get; set; }
-    public List<string> ContractClients { get; set; } = new List<string>();
-    public List<OfferAndSupplementCondition> Conditions { get; set; } = new List<OfferAndSupplementCondition>();
-    public List<OfferAndSupplementConfiguration> Configurations { get; set; } = new List<OfferAndSupplementConfiguration>();
+    public decimal? ModificationCostsAmount { get; set; }
+    public List<string> ContractClients { get; set; } = [];
+    public OfferAndSupplementCondition Condition { get; set; } = new OfferAndSupplementCondition();
+    public OfferAndSupplementConfiguration Configuration { get; set; } = new OfferAndSupplementConfiguration();
 }

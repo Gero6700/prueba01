@@ -69,7 +69,6 @@ public class CreateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = false,
                     StayType = StayType.CheckInDay,
                     ApplyToPax = PaxType.All,
                     MinStayDays = anyConofege.Ofdiae,
@@ -92,10 +91,10 @@ public class CreateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = TypeOfPayment.Percent,
-                    DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = TypeOfPayment.Percent,
+                    Target = DiscountTargetType.Pvp,
+                    Scope = DiscountScopeType.All
                 }
             ]
         };
@@ -164,7 +163,6 @@ public class CreateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = false,
                     StayType = StayType.CheckInDay,
                     ApplyToPax = PaxType.All,
                     MinStayDays = anyConofege.Ofdiae,
@@ -187,10 +185,10 @@ public class CreateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = TypeOfPayment.Percent,
-                    DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = TypeOfPayment.Percent,
+                    Target = DiscountTargetType.Pvp,
+                    Scope = DiscountScopeType.All
                 }
             ]
         };
@@ -257,7 +255,6 @@ public class CreateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = StayType.CheckInDay,
                     ApplyToPax = PaxType.All,
                     MinStayDays = anyConofege.Ofdiae,
@@ -280,10 +277,10 @@ public class CreateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = TypeOfPayment.Percent,
-                    DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = TypeOfPayment.Percent,
+                    Target = DiscountTargetType.Pvp,
+                    Scope = DiscountScopeType.All
                 }
             ]
         };
@@ -350,7 +347,6 @@ public class CreateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = true,
                     StayType = StayType.CheckInDay,
                     ApplyToPax = PaxType.All,
                     MinStayDays = anyConofege.Ofdiae,
@@ -373,10 +369,10 @@ public class CreateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = TypeOfPayment.Percent,
-                    DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = TypeOfPayment.Percent,
+                    Target = DiscountTargetType.Pvp,
+                    Scope = DiscountScopeType.All
                 }
             ]
         };
@@ -441,7 +437,6 @@ public class CreateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = StayType.CheckInDay,
                     ApplyToPax = PaxType.All,
                     MinStayDays = anyConofege.Ofdiae,
@@ -464,10 +459,10 @@ public class CreateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = TypeOfPayment.Percent,
-                    DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = TypeOfPayment.Percent,
+                    Target = DiscountTargetType.Pvp,
+                    Scope = DiscountScopeType.All
                 }
             ]
         };
@@ -532,7 +527,6 @@ public class CreateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = StayType.Period,
                     ApplyToPax = PaxType.All,
                     MinStayDays = anyConofege.Ofdiae,
@@ -555,10 +549,10 @@ public class CreateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = TypeOfPayment.Percent,
-                    DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = TypeOfPayment.Percent,
+                    Target = DiscountTargetType.Pvp,
+                    Scope = DiscountScopeType.All
                 }
             ]
         };
@@ -623,7 +617,6 @@ public class CreateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = StayType.Stay,
                     ApplyToPax = PaxType.All,
                     MinStayDays = anyConofege.Ofdiae,
@@ -646,10 +639,10 @@ public class CreateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = TypeOfPayment.Percent,
-                    DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = TypeOfPayment.Percent,
+                    Target = DiscountTargetType.Pvp,
+                    Scope = DiscountScopeType.All
                 }
             ]
         };
@@ -712,7 +705,6 @@ public class CreateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = PaxType.Adult,
                     MinStayDays = anyConofege.Ofdiae,
@@ -735,10 +727,10 @@ public class CreateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = TypeOfPayment.Percent,
-                    DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = TypeOfPayment.Percent,
+                    Target = DiscountTargetType.Pvp,
+                    Scope = DiscountScopeType.All
                 }
             ]
         };
@@ -799,7 +791,6 @@ public class CreateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = PaxType.Child,
                     MinStayDays = anyConofege.Ofdiae,
@@ -822,10 +813,10 @@ public class CreateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = TypeOfPayment.Percent,
-                    DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = TypeOfPayment.Percent,
+                    Target = DiscountTargetType.Pvp,
+                    Scope = DiscountScopeType.All
                 }
             ]
         };
@@ -884,7 +875,6 @@ public class CreateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
                     MinStayDays = anyConofege.Ofdiae,
@@ -907,10 +897,10 @@ public class CreateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = TypeOfPayment.Percent,
-                    DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = TypeOfPayment.Percent,
+                    Target = DiscountTargetType.Pvp,
+                    Scope = DiscountScopeType.All
                 }
             ]
         };
@@ -969,7 +959,6 @@ public class CreateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
                     MinStayDays = anyConofege.Ofdiae,
@@ -992,10 +981,10 @@ public class CreateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = TypeOfPayment.Percent,
-                    DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = TypeOfPayment.Percent,
+                    Target = DiscountTargetType.Pvp,
+                    Scope = DiscountScopeType.All
                 }
             ]
         };
@@ -1054,7 +1043,6 @@ public class CreateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
                     MinStayDays = anyConofege.Ofdiae,
@@ -1077,10 +1065,10 @@ public class CreateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = TypeOfPayment.Percent,
-                    DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = TypeOfPayment.Percent,
+                    Target = DiscountTargetType.Pvp,
+                    Scope = DiscountScopeType.All
                 }
             ]
         };
@@ -1139,7 +1127,6 @@ public class CreateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
                     MinStayDays = anyConofege.Ofdiae,
@@ -1162,10 +1149,10 @@ public class CreateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = TypeOfPayment.Percent,
-                    DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = TypeOfPayment.Percent,
+                    Target = DiscountTargetType.Pvp,
+                    Scope = DiscountScopeType.All
                 }
             ]
         };
@@ -1222,7 +1209,6 @@ public class CreateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
                     MinStayDays = anyConofege.Ofdiae,
@@ -1245,10 +1231,10 @@ public class CreateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = TypeOfPayment.Percent,
-                    DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = TypeOfPayment.Percent,
+                    Target = DiscountTargetType.Pvp,
+                    Scope = DiscountScopeType.All
                 }
             ]
         };
@@ -1305,7 +1291,6 @@ public class CreateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
                     MinStayDays = anyConofege.Ofdiae,
@@ -1328,10 +1313,10 @@ public class CreateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = TypeOfPayment.Percent,
-                    DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = TypeOfPayment.Percent,
+                    Target = DiscountTargetType.Pvp,
+                    Scope = DiscountScopeType.All
                 }
             ]
         };
@@ -1386,7 +1371,6 @@ public class CreateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
                     MinStayDays = anyConofege.Ofdiae,
@@ -1409,10 +1393,10 @@ public class CreateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = TypeOfPayment.Percent,
-                    DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = TypeOfPayment.Percent,
+                    Target = DiscountTargetType.Pvp,
+                    Scope = DiscountScopeType.All
                 }
             ]
         };
@@ -1465,7 +1449,6 @@ public class CreateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
                     MinStayDays = anyConofege.Ofdiae,
@@ -1488,10 +1471,10 @@ public class CreateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = TypeOfPayment.Percent,
-                    DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = TypeOfPayment.Percent,
+                    Target = DiscountTargetType.Pvp,
+                    Scope = DiscountScopeType.All
                 }
             ]
         };
@@ -1544,7 +1527,6 @@ public class CreateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
                     MinStayDays = anyConofege.Ofdiae,
@@ -1567,10 +1549,10 @@ public class CreateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = TypeOfPayment.Percent,
-                    DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = TypeOfPayment.Percent,
+                    Target = DiscountTargetType.Pvp,
+                    Scope = DiscountScopeType.All
                 }
             ]
         };
@@ -1623,7 +1605,6 @@ public class CreateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
                     MinStayDays = anyConofege.Ofdiae,
@@ -1646,10 +1627,10 @@ public class CreateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = TypeOfPayment.Percent,
-                    DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = TypeOfPayment.Percent,
+                    Target = DiscountTargetType.Pvp,
+                    Scope = DiscountScopeType.All
                 }
             ]
         };
@@ -1700,7 +1681,6 @@ public class CreateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
                     MinStayDays = anyConofege.Ofdiae,
@@ -1723,10 +1703,10 @@ public class CreateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = ApplyStayPriceType.P,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = TypeOfPayment.Percent,
-                    DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = TypeOfPayment.Percent,
+                    Target = DiscountTargetType.Pvp,
+                    Scope = DiscountScopeType.All
                 }
             ]
         };
@@ -1777,7 +1757,6 @@ public class CreateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
                     MinStayDays = anyConofege.Ofdiae,
@@ -1800,10 +1779,10 @@ public class CreateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = ApplyStayPriceType.X,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = TypeOfPayment.Percent,
-                    DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = TypeOfPayment.Percent,
+                    Target = DiscountTargetType.Pvp,
+                    Scope = DiscountScopeType.All
                 }
             ]
         };
@@ -1854,7 +1833,6 @@ public class CreateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
                     MinStayDays = anyConofege.Ofdiae,
@@ -1877,10 +1855,10 @@ public class CreateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = ApplyStayPriceType.U,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = TypeOfPayment.Percent,
-                    DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = TypeOfPayment.Percent,
+                    Target = DiscountTargetType.Pvp,
+                    Scope = DiscountScopeType.All
                 }
             ]
         };
@@ -1929,7 +1907,6 @@ public class CreateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
                     MinStayDays = anyConofege.Ofdiae,
@@ -1952,10 +1929,10 @@ public class CreateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = anyConofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = TypeOfPayment.Fixed,
-                    DiscountTarget = DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.All
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = TypeOfPayment.Fixed,
+                    Target = DiscountTargetType.Pvp,
+                    Scope = DiscountScopeType.All
                 }
             ]
         };
@@ -2002,7 +1979,6 @@ public class CreateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
                     MinStayDays = anyConofege.Ofdiae,
@@ -2025,10 +2001,10 @@ public class CreateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = anyConofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? TypeOfPayment.Fixed : TypeOfPayment.Percent,
-                    DiscountTarget = DiscountTargetType.Net,
-                    DiscountScope = DiscountScopeType.All
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = anyConofege.Oftidt.ToUpper() == "C" ? TypeOfPayment.Fixed : TypeOfPayment.Percent,
+                    Target = DiscountTargetType.Net,
+                    Scope = DiscountScopeType.All
                 }
             ]
         };
@@ -2075,7 +2051,6 @@ public class CreateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
                     MinStayDays = anyConofege.Ofdiae,
@@ -2098,10 +2073,10 @@ public class CreateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = anyConofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? TypeOfPayment.Fixed : TypeOfPayment.Percent,
-                    DiscountTarget = DiscountTargetType.Commission,
-                    DiscountScope = DiscountScopeType.All
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = anyConofege.Oftidt.ToUpper() == "C" ? TypeOfPayment.Fixed : TypeOfPayment.Percent,
+                    Target = DiscountTargetType.Commission,
+                    Scope = DiscountScopeType.All
                 }
             ]
         };
@@ -2146,7 +2121,6 @@ public class CreateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
                     MinStayDays = anyConofege.Ofdiae,
@@ -2169,10 +2143,10 @@ public class CreateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = anyConofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? TypeOfPayment.Fixed : TypeOfPayment.Percent,
-                    DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.Stay
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = anyConofege.Oftidt.ToUpper() == "C" ? TypeOfPayment.Fixed : TypeOfPayment.Percent,
+                    Target = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
+                    Scope = DiscountScopeType.Stay
                 }
             ]
         };
@@ -2217,7 +2191,6 @@ public class CreateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
                     MinStayDays = anyConofege.Ofdiae,
@@ -2240,10 +2213,10 @@ public class CreateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = anyConofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? TypeOfPayment.Fixed : TypeOfPayment.Percent,
-                    DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
-                    DiscountScope = DiscountScopeType.Regime
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = anyConofege.Oftidt.ToUpper() == "C" ? TypeOfPayment.Fixed : TypeOfPayment.Percent,
+                    Target = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
+                    Scope = DiscountScopeType.Regime
                 }
             ]
         };

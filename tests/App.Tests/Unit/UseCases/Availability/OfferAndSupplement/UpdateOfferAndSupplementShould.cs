@@ -49,7 +49,6 @@ public class UpdateOfferAndSupplementShould {
             ModificationCostsAmount = anyConofege.Gmimpo,
             Conditions = [
                 new OfferAndSupplementCondition {
-                    Optional = anyConofege.Ofopci.ToUpper() == "S",
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
                     MinStayDays = anyConofege.Ofdiae,
@@ -72,10 +71,10 @@ public class UpdateOfferAndSupplementShould {
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = anyConofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
                     ApplyRegimePrice = anyConofege.Ofpres,
-                    DiscountAmount = anyConofege.Ofdtos,
-                    DicountAmountType = anyConofege.Oftidt.ToUpper() == "C" ? TypeOfPayment.Fixed : TypeOfPayment.Percent,
-                    DiscountTarget = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
-                    DiscountScope = anyConofege.Ofapli.ToUpper() == "E" ? DiscountScopeType.Stay : anyConofege.Ofapli.ToUpper() == "S" ? DiscountScopeType.Regime : DiscountScopeType.All,
+                    Amount = anyConofege.Ofdtos,
+                    AmountType = anyConofege.Oftidt.ToUpper() == "C" ? TypeOfPayment.Fixed : TypeOfPayment.Percent,
+                    Target = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
+                    Scope = anyConofege.Ofapli.ToUpper() == "E" ? DiscountScopeType.Stay : anyConofege.Ofapli.ToUpper() == "S" ? DiscountScopeType.Regime : DiscountScopeType.All,
                 }
             ]
         };
