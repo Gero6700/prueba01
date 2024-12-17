@@ -19,8 +19,8 @@ public static class ConextraExtension {
             DiscountApplicationType = conextra.C5apdt == "C" ? ExtrasDiscountApplicationType.Contract : 
                 conextra.C5apdt == "S" ? ExtrasDiscountApplicationType.Offer : 
                 conextra.C5apdt == "T" ? ExtrasDiscountApplicationType.All : ExtrasDiscountApplicationType.None, 
-            TaxesIncluded = false, //TODO: pendiente de Leiva
-            IsCommissionable = true, //TODO: pendiente de Leiva
+            TaxesIncluded = conextra.TaxesIncluded, 
+            IsCommissionable = conextra.IsCommissionable, 
             OccupancyRateCod = conextra.C5cocu == 0 ? "" : conextra.C5cocu.ToString()
         };
         extra.AddAdultPaxes(conextra);

@@ -60,6 +60,8 @@ public class CreateExtraShould {
         const string anyC5reg4 = "";
         const string anyC5reg5 = "";
         const string anyOffoe = "";
+        const bool anyIsCommissionable = true;
+        const bool anyTaxesIncluded = false;
 
         var anyConextra = ConextraBuilder.AConextraBuilder()
             .WithCode(anyCode)
@@ -108,6 +110,8 @@ public class CreateExtraShould {
             .WithC5reg4(anyC5reg4)
             .WithC5reg5(anyC5reg5)
             .WithOffoe(anyOffoe)
+            .WithIsCommissionable(anyIsCommissionable)
+            .WithTaxesIncluded(anyTaxesIncluded)
             .Build();
 
         //When
@@ -128,9 +132,9 @@ public class CreateExtraShould {
             ApplyBy = ApplyStayPriceType.U,
             Price = anyC5prec,
             PriceApplication = ApplyStayPriceType.U,
-            DiscountApplicationType = ExtrasDiscountApplicationType.All,
-            TaxesIncluded = false,
-            IsCommissionable = true,
+            DiscountApplicationType = ExtrasDiscountApplicationType.None,
+            TaxesIncluded = anyTaxesIncluded,
+            IsCommissionable = anyIsCommissionable,
             OccupancyRateCod = anyC5cocu.ToString(),
             Paxes = new List<ExtraPax>(),
             Rooms = new List<string>(),

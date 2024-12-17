@@ -59,6 +59,8 @@ public class ConextraBuilder {
             .RuleFor(x => x.C5reg4, f => f.Random.String(2, 'A', 'Z').ToUpper())
             .RuleFor(x => x.C5reg5, f => f.Random.String(2, 'A', 'Z').ToUpper())
             .RuleFor(x => x.Offoe, f => f.Random.String(1, 'A', 'Z').ToUpper())
+            .RuleFor(x => x.IsCommissionable, f => f.Random.Bool())
+            .RuleFor(x => x.TaxesIncluded, f => f.Random.Bool())
             .Generate();
     }
 
@@ -292,6 +294,16 @@ public class ConextraBuilder {
         return this;
     }
 
+    public ConextraBuilder WithIsCommissionable(bool newIsCommissionable) {
+        raw.IsCommissionable = newIsCommissionable;
+        return this;
+    }
+
+    public ConextraBuilder WithTaxesIncluded(bool newTaxesIncluded) {
+        raw.TaxesIncluded = newTaxesIncluded;
+        return this;
+    }
+
     public Conextra Build() {
         return new Faker<Conextra>()
             .RuleFor(x => x.Code, raw.Code)
@@ -340,6 +352,8 @@ public class ConextraBuilder {
             .RuleFor(x => x.C5reg4, raw.C5reg4)
             .RuleFor(x => x.C5reg5, raw.C5reg5)
             .RuleFor(x => x.Offoe, raw.Offoe)
+            .RuleFor(x => x.IsCommissionable, raw.IsCommissionable)
+            .RuleFor(x => x.TaxesIncluded, raw.TaxesIncluded)
             .Generate();
 
     }
@@ -391,5 +405,7 @@ public class ConextraBuilder {
         public string C5reg4 { get; set; } = string.Empty;
         public string C5reg5 { get; set; } = string.Empty;
         public string Offoe { get; set; } = string.Empty;
+        public bool IsCommissionable { get; set; }
+        public bool TaxesIncluded { get; set; }
     }
 }

@@ -46,4 +46,6 @@ public class Conextra {
     public string C5reg4 { get; set; } = string.Empty;
     public string C5reg5 { get; set; } = string.Empty;
     public string Offoe { get; set; } = string.Empty;
+    public bool IsCommissionable { get; set; }
+    public bool TaxesIncluded { get; set; }
 }
