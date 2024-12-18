@@ -9,10 +9,10 @@ public class CreateOfferAndSupplement {
     }
 
     public async Task Execute(Conofege conofege) {
-        if (DateTimeHelper.ConvertJulianDateToDateTime(conofege.Offec) == DateTime.MinValue) {
+        if (DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Offec) == DateTime.MinValue) {
             throw new ArgumentException("Invalid apply from date");
         }
-        if (DateTimeHelper.ConvertJulianDateToDateTime(conofege.Offec2) == DateTime.MinValue) {
+        if (DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Offec2) == DateTime.MinValue) {
             throw new ArgumentException("Invalid apply to date");
         }
         if (conofege.Offec > conofege.Offec2) {
@@ -36,7 +36,7 @@ public class CreateOfferAndSupplement {
         if (conofege.Ofgrbh > 0 && DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Ofgrbh) == DateTime.MinValue) {
             throw new ArgumentException("Invalid booking window to date");
         }
-        if (conofege.Ofgrbd > 0 && conofege.Ofgrbh > 0 && DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Ofgrbd) > DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Ofgrbh) && conofege.Ofgrbh > 0 && conofege.Ofgrbd > 0) {
+        if (conofege.Ofgrbd > 0 && conofege.Ofgrbh > 0 && DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Ofgrbd) > DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Ofgrbh)) {
             throw new ArgumentException("Booking window to date is less than booking window from date");
         }
 

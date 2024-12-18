@@ -14,8 +14,8 @@ public class UpdateOfferAndSupplementShould {
     [Test]
     public async Task update_offer_and_supplement() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const int anyOfftop = 240604;
         const int anyOfgrbd = 20240301;
         const int anyOfgrbh = 20240305;
@@ -42,12 +42,12 @@ public class UpdateOfferAndSupplementShould {
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
-            ApplyOrder = null,
+            ApplyOrder = anyConofege.Ofpri == 0 ? null : anyConofege.Ofpri,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
+            DepositType = anyConofege.Ofdpto == 0 ? null : anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = new DateTime(2024, 06, 04),
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
+            Condition =
                 new OfferAndSupplementCondition {
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
@@ -58,13 +58,15 @@ public class UpdateOfferAndSupplementShould {
                     BookingWindowFrom = new DateTime(2024, 03, 01),
                     BookingWindowTo = new DateTime(2024, 03, 05),
                     OccupancyRateCod = anyConofege.Ofcocu.ToString(),
+                    OnlyApplyIfRecordDatesOnWeekDays = "", //TODO: Pendiente de Jose
+                    OnlyApplyIfStayDatesOnWeekDays = "", //TODO: Pendiente de Jose
+                    WeekDaysApplicationMode = WeekDaysApplicationType.Always, //TODO: Pendiente de Jose
                     Rooms = [],
                     Regimes = []
-                }
-            ],
-            Configurations = [
+                },
+            Configuration =
                 new OfferAndSupplementConfiguration {
-                    FreeDays = anyConofege.Ofdfac.Trim() == "" ? anyConofege.Ofdiae - anyConofege.Ofdiaf : anyConofege.Ofdiaf,
+                    FreeDays = anyConofege.Ofdfac.Trim() == "" && anyConofege.Ofdiaf > 0 ? anyConofege.Ofdiae - anyConofege.Ofdiaf : anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
                     RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
                     ApplyStayPriceType = anyConofege.Offore.ToUpper() == "P" ? ApplyStayPriceType.P : anyConofege.Offore.ToUpper() == "X" ? ApplyStayPriceType.X : anyConofege.Offore.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
@@ -76,7 +78,6 @@ public class UpdateOfferAndSupplementShould {
                     Target = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
                     Scope = anyConofege.Ofapli.ToUpper() == "E" ? DiscountScopeType.Stay : anyConofege.Ofapli.ToUpper() == "S" ? DiscountScopeType.Regime : DiscountScopeType.All,
                 }
-            ]
         };
         await availabilitySynchronizerApiClient.Received()
             .UpdateOfferAndSupplement(Arg.Is<Infrastructure.Dtos.BookingCenter.Availability.OfferAndSupplement>(x => IsEquivalent(x, expectedOfferAndSupplement)));
@@ -117,8 +118,8 @@ public class UpdateOfferAndSupplementShould {
     [Test]
     public async Task do_not_update_offer_and_supplement_when_offec2_is_less_than_offec() {
         //Given
-        const int anyOffec = 2024002;
-        const int anyOffec2 = 2024001;
+        const int anyOffec = 20240102;
+        const int anyOffec2 = 20240101;
 
         var anyConofege = ConofegeBuilder.AConofegeBuilder()
             .WithOffec(anyOffec)

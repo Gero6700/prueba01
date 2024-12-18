@@ -1,3 +1,5 @@
+using Senator.As400.Cloud.Sync.Infrastructure.Dtos.As400;
+
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Availability.OfferAndSupplement;
 
 [TestFixture]
@@ -14,8 +16,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task create_offer_and_supplement() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const string anyOfopci = "";
         const string anyOffode = "";
         const int anyOfftop = 240604;
@@ -62,13 +64,12 @@ public class CreateOfferAndSupplementShould {
             Type = OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),
-            ApplyOrder = null,
+            ApplyOrder = anyConofege.Ofpri == 0 ? null : anyConofege.Ofpri,
             DepositAmount = anyConofege.Ofdpto,
-            DepositType = TypeOfPayment.Fixed,
+            DepositType = anyConofege.Ofdpto == 0 ? null : anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = new DateTime(2024, 06, 04),
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
-                new OfferAndSupplementCondition {
+            Condition = new OfferAndSupplementCondition {
                     StayType = StayType.CheckInDay,
                     ApplyToPax = PaxType.All,
                     MinStayDays = anyConofege.Ofdiae,
@@ -77,16 +78,17 @@ public class CreateOfferAndSupplementShould {
                     MaxReleaseDays = anyConofege.Offres,
                     BookingWindowFrom = new DateTime(2024, 03, 01),
                     BookingWindowTo = new DateTime(2024, 03, 05),
-                    OccupancyRateCod = anyConofege.Ofcocu.ToString(),
+                    OccupancyRateCod = anyConofege.Ofcocu == 0 ? null : anyConofege.Ofcocu.ToString(),
+                    OnlyApplyIfRecordDatesOnWeekDays = "", //TODO: Pendiente de Jose
+                    OnlyApplyIfStayDatesOnWeekDays = "", //TODO: Pendiente de Jose
+                    WeekDaysApplicationMode = WeekDaysApplicationType.Always, //TODO: Pendiente de Jose
                     Rooms = [],
                     Regimes = []
-                }
-            ],
-            Configurations = [
-                new OfferAndSupplementConfiguration {
-                    FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
-                    RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
-                    RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef,
+                },
+            Configuration = new OfferAndSupplementConfiguration {
+                    FreeDays = anyConofege.Ofdfac.Trim() == "" && anyConofege.Ofdiaf > 0 ? anyConofege.Ofdiae - anyConofege.Ofdiaf : anyConofege.Ofdiaf,
+                    RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf.Trim() == "" ? null : anyConofege.Ofthaf,
+                    RegimeTypeCodeToCalculatePrice = anyConofege.Oftsef.Trim() == "" ? null : anyConofege.Oftsef,
                     ApplyStayPriceType = ApplyStayPriceType.D,
                     ApplyStayPrice = anyConofege.Ofpree,
                     ApplyRegimePriceType = ApplyStayPriceType.D,
@@ -96,7 +98,6 @@ public class CreateOfferAndSupplementShould {
                     Target = DiscountTargetType.Pvp,
                     Scope = DiscountScopeType.All
                 }
-            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -106,8 +107,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task create_offer_and_supplement_when_contract_client_code_is_empty() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const string anyOfopci = "";
         const string anyOffode = "";
         const int anyOfftop = 240604;
@@ -161,7 +162,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = TypeOfPayment.Fixed,
             DepositBeforeDate = new DateTime(2024, 06, 04),
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
+            Condition =
                 new OfferAndSupplementCondition {
                     StayType = StayType.CheckInDay,
                     ApplyToPax = PaxType.All,
@@ -174,9 +175,8 @@ public class CreateOfferAndSupplementShould {
                     OccupancyRateCod = anyConofege.Ofcocu.ToString(),
                     Rooms = [],
                     Regimes = []
-                }
-            ],
-            Configurations = [
+                },
+            Configuration =
                 new OfferAndSupplementConfiguration {
                     FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
@@ -190,7 +190,6 @@ public class CreateOfferAndSupplementShould {
                     Target = DiscountTargetType.Pvp,
                     Scope = DiscountScopeType.All
                 }
-            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -200,8 +199,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task create_offer_and_supplement_when_offtop_is_zero() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const string anyOfopci = "";
         const string anyOffode = "";
         const int anyOfftop = 0;
@@ -253,7 +252,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
+            Condition =
                 new OfferAndSupplementCondition {
                     StayType = StayType.CheckInDay,
                     ApplyToPax = PaxType.All,
@@ -266,9 +265,8 @@ public class CreateOfferAndSupplementShould {
                     OccupancyRateCod = anyConofege.Ofcocu.ToString(),
                     Rooms = [],
                     Regimes = []
-                }
-            ],
-            Configurations = [
+                },
+            Configuration =
                 new OfferAndSupplementConfiguration {
                     FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
@@ -282,7 +280,6 @@ public class CreateOfferAndSupplementShould {
                     Target = DiscountTargetType.Pvp,
                     Scope = DiscountScopeType.All
                 }
-            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -292,8 +289,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task create_offer_and_supplement_when_ofopci_is_s() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const string anyOfopci = "S";
         const string anyOffode = "";
         const int anyOfftop = 0;
@@ -345,7 +342,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
+            Condition =
                 new OfferAndSupplementCondition {
                     StayType = StayType.CheckInDay,
                     ApplyToPax = PaxType.All,
@@ -358,9 +355,8 @@ public class CreateOfferAndSupplementShould {
                     OccupancyRateCod = anyConofege.Ofcocu.ToString(),
                     Rooms = [],
                     Regimes = []
-                }
-            ],
-            Configurations = [
+                },
+            Configuration =
                 new OfferAndSupplementConfiguration {
                     FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
@@ -374,7 +370,6 @@ public class CreateOfferAndSupplementShould {
                     Target = DiscountTargetType.Pvp,
                     Scope = DiscountScopeType.All
                 }
-            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -384,8 +379,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task create_offer_and_supplement_when_offode_is_percent() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const string anyOffode = "%";
         const int anyOfftop = 0;
         const string anyOfTies = "";
@@ -435,7 +430,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = TypeOfPayment.Percent,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
+            Condition =
                 new OfferAndSupplementCondition {
                     StayType = StayType.CheckInDay,
                     ApplyToPax = PaxType.All,
@@ -448,9 +443,8 @@ public class CreateOfferAndSupplementShould {
                     OccupancyRateCod = anyConofege.Ofcocu.ToString(),
                     Rooms = [],
                     Regimes = []
-                }
-            ],
-            Configurations = [
+                },
+            Configuration =
                 new OfferAndSupplementConfiguration {
                     FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
@@ -464,7 +458,6 @@ public class CreateOfferAndSupplementShould {
                     Target = DiscountTargetType.Pvp,
                     Scope = DiscountScopeType.All
                 }
-            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -474,8 +467,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task create_offer_and_supplement_when_ofties_is_period() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const string anyOffode = "%";
         const int anyOfftop = 0;
         const string anyOfTies = "P";
@@ -525,7 +518,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = TypeOfPayment.Percent,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
+            Condition =
                 new OfferAndSupplementCondition {
                     StayType = StayType.Period,
                     ApplyToPax = PaxType.All,
@@ -538,9 +531,8 @@ public class CreateOfferAndSupplementShould {
                     OccupancyRateCod = anyConofege.Ofcocu.ToString(),
                     Rooms = [],
                     Regimes = []
-                }
-            ],
-            Configurations = [
+                },
+            Configuration =
                 new OfferAndSupplementConfiguration {
                     FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
@@ -554,7 +546,6 @@ public class CreateOfferAndSupplementShould {
                     Target = DiscountTargetType.Pvp,
                     Scope = DiscountScopeType.All
                 }
-            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -564,8 +555,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task create_offer_and_supplement_when_ofties_is_stay() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const string anyOffode = "%";
         const int anyOfftop = 0;
         const string anyOfTies = "E";
@@ -615,7 +606,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = TypeOfPayment.Percent,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
+            Condition =
                 new OfferAndSupplementCondition {
                     StayType = StayType.Stay,
                     ApplyToPax = PaxType.All,
@@ -628,9 +619,8 @@ public class CreateOfferAndSupplementShould {
                     OccupancyRateCod = anyConofege.Ofcocu.ToString(),
                     Rooms = [],
                     Regimes = []
-                }
-            ],
-            Configurations = [
+                },
+            Configuration =
                 new OfferAndSupplementConfiguration {
                     FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
@@ -644,7 +634,6 @@ public class CreateOfferAndSupplementShould {
                     Target = DiscountTargetType.Pvp,
                     Scope = DiscountScopeType.All
                 }
-            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -654,8 +643,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task create_offer_and_supplement_when_ofadni_is_adult() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const string anyOffode = "%";
         const int anyOfftop = 0;
         const string anyOfadni = "A";
@@ -703,7 +692,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = TypeOfPayment.Percent,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
+            Condition =
                 new OfferAndSupplementCondition {
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = PaxType.Adult,
@@ -716,9 +705,8 @@ public class CreateOfferAndSupplementShould {
                     OccupancyRateCod = anyConofege.Ofcocu.ToString(),
                     Rooms = [],
                     Regimes = []
-                }
-            ],
-            Configurations = [
+                },
+            Configuration =
                 new OfferAndSupplementConfiguration {
                     FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
@@ -732,7 +720,6 @@ public class CreateOfferAndSupplementShould {
                     Target = DiscountTargetType.Pvp,
                     Scope = DiscountScopeType.All
                 }
-            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -742,8 +729,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task create_offer_and_supplement_when_ofadni_is_child() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const int anyOfftop = 0;
         const string anyOfadni = "N";
         const int anyOfgrbd = 20240301;
@@ -789,7 +776,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
+            Condition =
                 new OfferAndSupplementCondition {
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = PaxType.Child,
@@ -802,9 +789,8 @@ public class CreateOfferAndSupplementShould {
                     OccupancyRateCod = anyConofege.Ofcocu.ToString(),
                     Rooms = [],
                     Regimes = []
-                }
-            ],
-            Configurations = [
+                },
+            Configuration =
                 new OfferAndSupplementConfiguration {
                     FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
@@ -818,7 +804,6 @@ public class CreateOfferAndSupplementShould {
                     Target = DiscountTargetType.Pvp,
                     Scope = DiscountScopeType.All
                 }
-            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -828,8 +813,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task create_offer_and_supplement_when_ofgrbd_is_zero() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const int anyOfftop = 0;
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 20240305;
@@ -873,7 +858,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
+            Condition =
                 new OfferAndSupplementCondition {
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
@@ -886,9 +871,8 @@ public class CreateOfferAndSupplementShould {
                     OccupancyRateCod = anyConofege.Ofcocu.ToString(),
                     Rooms = [],
                     Regimes = []
-                }
-            ],
-            Configurations = [
+                },
+            Configuration =
                 new OfferAndSupplementConfiguration {
                     FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
@@ -902,7 +886,6 @@ public class CreateOfferAndSupplementShould {
                     Target = DiscountTargetType.Pvp,
                     Scope = DiscountScopeType.All
                 }
-            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -912,8 +895,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task create_offer_and_supplement_when_ofgrbh_is_zero() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const int anyOfftop = 0;
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
@@ -957,7 +940,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
+            Condition =
                 new OfferAndSupplementCondition {
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
@@ -970,9 +953,8 @@ public class CreateOfferAndSupplementShould {
                     OccupancyRateCod = anyConofege.Ofcocu.ToString(),
                     Rooms = [],
                     Regimes = []
-                }
-            ],
-            Configurations = [
+                },
+            Configuration =
                 new OfferAndSupplementConfiguration {
                     FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
@@ -986,7 +968,6 @@ public class CreateOfferAndSupplementShould {
                     Target = DiscountTargetType.Pvp,
                     Scope = DiscountScopeType.All
                 }
-            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -996,8 +977,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task create_offer_and_supplement_when_ofthab_is_not_empty() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const int anyOfftop = 0;
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
@@ -1041,7 +1022,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
+            Condition =
                 new OfferAndSupplementCondition {
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
@@ -1054,9 +1035,8 @@ public class CreateOfferAndSupplementShould {
                     OccupancyRateCod = anyConofege.Ofcocu.ToString(),
                     Rooms = [.. anyOfthab],
                     Regimes = []
-                }
-            ],
-            Configurations = [
+                },
+            Configuration =
                 new OfferAndSupplementConfiguration {
                     FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
@@ -1070,7 +1050,6 @@ public class CreateOfferAndSupplementShould {
                     Target = DiscountTargetType.Pvp,
                     Scope = DiscountScopeType.All
                 }
-            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -1080,8 +1059,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task create_offer_and_supplement_when_ofthab2_is_empty() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const int anyOfftop = 0;
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
@@ -1125,7 +1104,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
+            Condition =
                 new OfferAndSupplementCondition {
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
@@ -1138,9 +1117,8 @@ public class CreateOfferAndSupplementShould {
                     OccupancyRateCod = anyConofege.Ofcocu.ToString(),
                     Rooms = anyOfthab.Where(value => value != "").ToList(),
                     Regimes = []
-                }
-            ],
-            Configurations = [
+                },
+            Configuration =
                 new OfferAndSupplementConfiguration {
                     FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
@@ -1154,7 +1132,6 @@ public class CreateOfferAndSupplementShould {
                     Target = DiscountTargetType.Pvp,
                     Scope = DiscountScopeType.All
                 }
-            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -1164,8 +1141,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task create_offer_and_supplement_when_oftser_is_not_empty() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const int anyOfftop = 0;
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
@@ -1207,7 +1184,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
+            Condition =
                 new OfferAndSupplementCondition {
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
@@ -1220,9 +1197,8 @@ public class CreateOfferAndSupplementShould {
                     OccupancyRateCod = anyConofege.Ofcocu.ToString(),
                     Rooms = anyConofege.GetRoomCodes.Where(value => value != "").ToList(),
                     Regimes = [.. anyOftser]
-                }
-            ],
-            Configurations = [
+                },
+            Configuration =
                 new OfferAndSupplementConfiguration {
                     FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
@@ -1236,7 +1212,6 @@ public class CreateOfferAndSupplementShould {
                     Target = DiscountTargetType.Pvp,
                     Scope = DiscountScopeType.All
                 }
-            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -1246,8 +1221,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task create_offer_and_supplement_when_oftse2_is_empty() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const int anyOfftop = 0;
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
@@ -1289,7 +1264,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
+            Condition =
                 new OfferAndSupplementCondition {
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
@@ -1302,9 +1277,8 @@ public class CreateOfferAndSupplementShould {
                     OccupancyRateCod = anyConofege.Ofcocu.ToString(),
                     Rooms = anyConofege.GetRoomCodes.Where(value => value != "").ToList(),
                     Regimes = { "A", "C", "D", "E" }
-                }
-            ],
-            Configurations = [
+                },
+            Configuration =
                 new OfferAndSupplementConfiguration {
                     FreeDays = anyConofege.Ofdiae - anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
@@ -1318,7 +1292,6 @@ public class CreateOfferAndSupplementShould {
                     Target = DiscountTargetType.Pvp,
                     Scope = DiscountScopeType.All
                 }
-            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -1328,8 +1301,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task create_offer_and_supplement_when_ofdfac_is_not_empty() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const int anyOfftop = 0;
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
@@ -1369,7 +1342,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
+            Condition =
                 new OfferAndSupplementCondition {
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
@@ -1382,9 +1355,8 @@ public class CreateOfferAndSupplementShould {
                     OccupancyRateCod = anyConofege.Ofcocu.ToString(),
                     Rooms = anyConofege.GetRoomCodes.Where(value => value != "").ToList(),
                     Regimes = anyConofege.GetRegimeCodes.Where(value => value != "").ToList(),
-                }
-            ],
-            Configurations = [
+                },
+            Configuration =
                 new OfferAndSupplementConfiguration {
                     FreeDays = anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
@@ -1398,7 +1370,6 @@ public class CreateOfferAndSupplementShould {
                     Target = DiscountTargetType.Pvp,
                     Scope = DiscountScopeType.All
                 }
-            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -1408,8 +1379,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task create_offer_and_supplement_when_offore_is_p() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const int anyOfftop = 0;
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
@@ -1447,7 +1418,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
+            Condition =
                 new OfferAndSupplementCondition {
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
@@ -1460,9 +1431,8 @@ public class CreateOfferAndSupplementShould {
                     OccupancyRateCod = anyConofege.Ofcocu.ToString(),
                     Rooms = anyConofege.GetRoomCodes.Where(value => value != "").ToList(),
                     Regimes = anyConofege.GetRegimeCodes.Where(value => value != "").ToList(),
-                }
-            ],
-            Configurations = [
+                },
+            Configuration =
                 new OfferAndSupplementConfiguration {
                     FreeDays = anyConofege.Ofdfac.Trim() == "" ? anyConofege.Ofdiae - anyConofege.Ofdiaf : anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
@@ -1476,7 +1446,6 @@ public class CreateOfferAndSupplementShould {
                     Target = DiscountTargetType.Pvp,
                     Scope = DiscountScopeType.All
                 }
-            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -1486,8 +1455,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task create_offer_and_supplement_when_offore_is_x() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const int anyOfftop = 0;
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
@@ -1525,7 +1494,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
+            Condition =
                 new OfferAndSupplementCondition {
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
@@ -1538,9 +1507,8 @@ public class CreateOfferAndSupplementShould {
                     OccupancyRateCod = anyConofege.Ofcocu.ToString(),
                     Rooms = anyConofege.GetRoomCodes.Where(value => value != "").ToList(),
                     Regimes = anyConofege.GetRegimeCodes.Where(value => value != "").ToList(),
-                }
-            ],
-            Configurations = [
+                },
+            Configuration =
                 new OfferAndSupplementConfiguration {
                     FreeDays = anyConofege.Ofdfac.Trim() == "" ? anyConofege.Ofdiae - anyConofege.Ofdiaf : anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
@@ -1554,7 +1522,6 @@ public class CreateOfferAndSupplementShould {
                     Target = DiscountTargetType.Pvp,
                     Scope = DiscountScopeType.All
                 }
-            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -1564,8 +1531,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task create_offer_and_supplement_when_offore_is_u() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const int anyOfftop = 0;
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
@@ -1603,7 +1570,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
+            Condition =
                 new OfferAndSupplementCondition {
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
@@ -1616,9 +1583,8 @@ public class CreateOfferAndSupplementShould {
                     OccupancyRateCod = anyConofege.Ofcocu.ToString(),
                     Rooms = anyConofege.GetRoomCodes.Where(value => value != "").ToList(),
                     Regimes = anyConofege.GetRegimeCodes.Where(value => value != "").ToList(),
-                }
-            ],
-            Configurations = [
+                },
+            Configuration =
                 new OfferAndSupplementConfiguration {
                     FreeDays = anyConofege.Ofdfac.Trim() == "" ? anyConofege.Ofdiae - anyConofege.Ofdiaf : anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
@@ -1632,7 +1598,6 @@ public class CreateOfferAndSupplementShould {
                     Target = DiscountTargetType.Pvp,
                     Scope = DiscountScopeType.All
                 }
-            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -1642,8 +1607,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task create_offer_and_supplement_when_offors_is_p() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const int anyOfftop = 0;
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
@@ -1679,7 +1644,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
+            Condition =
                 new OfferAndSupplementCondition {
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
@@ -1692,9 +1657,8 @@ public class CreateOfferAndSupplementShould {
                     OccupancyRateCod = anyConofege.Ofcocu.ToString(),
                     Rooms = anyConofege.GetRoomCodes.Where(value => value != "").ToList(),
                     Regimes = anyConofege.GetRegimeCodes.Where(value => value != "").ToList(),
-                }
-            ],
-            Configurations = [
+                },
+            Configuration =
                 new OfferAndSupplementConfiguration {
                     FreeDays = anyConofege.Ofdfac.Trim() == "" ? anyConofege.Ofdiae - anyConofege.Ofdiaf : anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
@@ -1708,7 +1672,6 @@ public class CreateOfferAndSupplementShould {
                     Target = DiscountTargetType.Pvp,
                     Scope = DiscountScopeType.All
                 }
-            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -1718,8 +1681,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task create_offer_and_supplement_when_offors_is_x() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const int anyOfftop = 0;
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
@@ -1755,7 +1718,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
+            Condition =
                 new OfferAndSupplementCondition {
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
@@ -1768,9 +1731,8 @@ public class CreateOfferAndSupplementShould {
                     OccupancyRateCod = anyConofege.Ofcocu.ToString(),
                     Rooms = anyConofege.GetRoomCodes.Where(value => value != "").ToList(),
                     Regimes = anyConofege.GetRegimeCodes.Where(value => value != "").ToList(),
-                }
-            ],
-            Configurations = [
+                },
+            Configuration =
                 new OfferAndSupplementConfiguration {
                     FreeDays = anyConofege.Ofdfac.Trim() == "" ? anyConofege.Ofdiae - anyConofege.Ofdiaf : anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
@@ -1784,7 +1746,6 @@ public class CreateOfferAndSupplementShould {
                     Target = DiscountTargetType.Pvp,
                     Scope = DiscountScopeType.All
                 }
-            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -1794,8 +1755,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task create_offer_and_supplement_when_offors_is_u() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const int anyOfftop = 0;
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
@@ -1831,7 +1792,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
+            Condition =
                 new OfferAndSupplementCondition {
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
@@ -1844,9 +1805,8 @@ public class CreateOfferAndSupplementShould {
                     OccupancyRateCod = anyConofege.Ofcocu.ToString(),
                     Rooms = anyConofege.GetRoomCodes.Where(value => value != "").ToList(),
                     Regimes = anyConofege.GetRegimeCodes.Where(value => value != "").ToList(),
-                }
-            ],
-            Configurations = [
+                },
+            Configuration =
                 new OfferAndSupplementConfiguration {
                     FreeDays = anyConofege.Ofdfac.Trim() == "" ? anyConofege.Ofdiae - anyConofege.Ofdiaf : anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
@@ -1860,7 +1820,6 @@ public class CreateOfferAndSupplementShould {
                     Target = DiscountTargetType.Pvp,
                     Scope = DiscountScopeType.All
                 }
-            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -1870,8 +1829,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task create_offer_and_supplement_when_oftidt_is_c() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const int anyOfftop = 0;
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
@@ -1905,7 +1864,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
+            Condition =
                 new OfferAndSupplementCondition {
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
@@ -1918,9 +1877,8 @@ public class CreateOfferAndSupplementShould {
                     OccupancyRateCod = anyConofege.Ofcocu.ToString(),
                     Rooms = anyConofege.GetRoomCodes.Where(value => value != "").ToList(),
                     Regimes = anyConofege.GetRegimeCodes.Where(value => value != "").ToList(),
-                }
-            ],
-            Configurations = [
+                },
+            Configuration =
                 new OfferAndSupplementConfiguration {
                     FreeDays = anyConofege.Ofdfac.Trim() == "" ? anyConofege.Ofdiae - anyConofege.Ofdiaf : anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
@@ -1934,7 +1892,6 @@ public class CreateOfferAndSupplementShould {
                     Target = DiscountTargetType.Pvp,
                     Scope = DiscountScopeType.All
                 }
-            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -1944,8 +1901,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task create_offer_and_supplement_when_ofsobr_is_b() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const int anyOfftop = 0;
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
@@ -1977,7 +1934,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
+            Condition =
                 new OfferAndSupplementCondition {
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
@@ -1990,9 +1947,8 @@ public class CreateOfferAndSupplementShould {
                     OccupancyRateCod = anyConofege.Ofcocu.ToString(),
                     Rooms = anyConofege.GetRoomCodes.Where(value => value != "").ToList(),
                     Regimes = anyConofege.GetRegimeCodes.Where(value => value != "").ToList(),
-                }
-            ],
-            Configurations = [
+                },
+            Configuration =
                 new OfferAndSupplementConfiguration {
                     FreeDays = anyConofege.Ofdfac.Trim() == "" ? anyConofege.Ofdiae - anyConofege.Ofdiaf : anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
@@ -2006,7 +1962,6 @@ public class CreateOfferAndSupplementShould {
                     Target = DiscountTargetType.Net,
                     Scope = DiscountScopeType.All
                 }
-            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -2016,8 +1971,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task create_offer_and_supplement_when_ofsobr_is_c() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const int anyOfftop = 0;
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
@@ -2049,7 +2004,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
+            Condition =
                 new OfferAndSupplementCondition {
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
@@ -2062,9 +2017,8 @@ public class CreateOfferAndSupplementShould {
                     OccupancyRateCod = anyConofege.Ofcocu.ToString(),
                     Rooms = anyConofege.GetRoomCodes.Where(value => value != "").ToList(),
                     Regimes = anyConofege.GetRegimeCodes.Where(value => value != "").ToList(),
-                }
-            ],
-            Configurations = [
+                },
+            Configuration =
                 new OfferAndSupplementConfiguration {
                     FreeDays = anyConofege.Ofdfac.Trim() == "" ? anyConofege.Ofdiae - anyConofege.Ofdiaf : anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
@@ -2078,7 +2032,6 @@ public class CreateOfferAndSupplementShould {
                     Target = DiscountTargetType.Commission,
                     Scope = DiscountScopeType.All
                 }
-            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -2088,8 +2041,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task create_offer_and_supplement_when_ofapli_is_e() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const int anyOfftop = 0;
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
@@ -2119,7 +2072,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
+            Condition =
                 new OfferAndSupplementCondition {
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
@@ -2132,9 +2085,8 @@ public class CreateOfferAndSupplementShould {
                     OccupancyRateCod = anyConofege.Ofcocu.ToString(),
                     Rooms = anyConofege.GetRoomCodes.Where(value => value != "").ToList(),
                     Regimes = anyConofege.GetRegimeCodes.Where(value => value != "").ToList(),
-                }
-            ],
-            Configurations = [
+                },
+            Configuration =
                 new OfferAndSupplementConfiguration {
                     FreeDays = anyConofege.Ofdfac.Trim() == "" ? anyConofege.Ofdiae - anyConofege.Ofdiaf : anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
@@ -2148,7 +2100,6 @@ public class CreateOfferAndSupplementShould {
                     Target = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
                     Scope = DiscountScopeType.Stay
                 }
-            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -2158,8 +2109,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task create_offer_and_supplement_when_ofapli_is_s() {
         //Given
-        const int anyOffec = 2024001;
-        const int anyOffec2 = 2024002;
+        const int anyOffec = 20240101;
+        const int anyOffec2 = 20240102;
         const int anyOfftop = 0;
         const int anyOfgrbd = 0;
         const int anyOfgrbh = 0;
@@ -2189,7 +2140,7 @@ public class CreateOfferAndSupplementShould {
             DepositType = anyConofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = null,
             ModificationCostsAmount = anyConofege.Gmimpo,
-            Conditions = [
+            Condition =
                 new OfferAndSupplementCondition {
                     StayType = anyConofege.Ofties.ToUpper() == "P" ? StayType.Period : anyConofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = anyConofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : anyConofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
@@ -2202,9 +2153,8 @@ public class CreateOfferAndSupplementShould {
                     OccupancyRateCod = anyConofege.Ofcocu.ToString(),
                     Rooms = anyConofege.GetRoomCodes.Where(value => value != "").ToList(),
                     Regimes = anyConofege.GetRegimeCodes.Where(value => value != "").ToList(),
-                }
-            ],
-            Configurations = [
+                },
+            Configuration =
                 new OfferAndSupplementConfiguration {
                     FreeDays = anyConofege.Ofdfac.Trim() == "" ? anyConofege.Ofdiae - anyConofege.Ofdiaf : anyConofege.Ofdiaf,
                     RoomTypeCodeToCalculatePrice = anyConofege.Ofthaf,
@@ -2218,7 +2168,6 @@ public class CreateOfferAndSupplementShould {
                     Target = anyConofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : anyConofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,
                     Scope = DiscountScopeType.Regime
                 }
-            ]
         };
 
         await availabilitySynchronizerApiClient.Received()
@@ -2260,8 +2209,8 @@ public class CreateOfferAndSupplementShould {
     [Test]
     public async Task do_not_create_offer_and_supplement_when_offec2_is_less_than_offec() {
         //Given
-        const int anyOffec = 2024002;
-        const int anyOffec2 = 2024001;
+        const int anyOffec = 20240102;
+        const int anyOffec2 = 20240101;
 
         var anyConofege = ConofegeBuilder.AConofegeBuilder()
             .WithOffec(anyOffec)
