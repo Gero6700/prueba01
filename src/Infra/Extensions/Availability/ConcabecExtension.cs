@@ -16,7 +16,7 @@ public static class ConcabecExtension {
             DepositType = concabec.Cofode == "%" ? DepositType.Percent : DepositType.Fixed,
             HotelCode = concabec.Cohote.ToString(),
             CurrencyIsoCode = concabec.Dinom2,
-            Market = concabec.Codmerca
+            MarketCode = concabec.Codmerca
         };
     }
 

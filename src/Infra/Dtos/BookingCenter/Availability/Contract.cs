@@ -12,5 +12,5 @@ public class Contract {
     public DepositType DepositType { get; set; }
     public string HotelCode { get; set; } = string.Empty;
     public string CurrencyIsoCode { get; set; } = string.Empty;
-    public string Market { get; set; } = string.Empty;
+    public string MarketCode { get; set; } = string.Empty;
 }

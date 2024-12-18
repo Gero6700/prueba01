@@ -72,7 +72,7 @@ public class CreateContractShould {
             DepositType = DepositType.Percent,
             HotelCode = anyCohote.ToString(),
             CurrencyIsoCode = anyDinom2,
-            Market = anyCodmerca
+            MarketCode = anyCodmerca
         };
         var expectedContractClient = new ContractClient {
             Code = anyConcabec.ContractClientCode,
@@ -125,7 +125,7 @@ public class CreateContractShould {
             DepositType = anyConcabec.Cofode == "%" ? DepositType.Percent : DepositType.Fixed,
             HotelCode = anyConcabec.Cohote.ToString(),
             CurrencyIsoCode = anyConcabec.Dinom2,
-            Market = anyConcabec.Codmerca
+            MarketCode = anyConcabec.Codmerca
         };
         var expectedContractClient = new ContractClient {
             Code = anyConcabec.ContractClientCode,
@@ -181,7 +181,7 @@ public class CreateContractShould {
             DepositType = anyConcabec.Cofode == "%" ? DepositType.Percent : DepositType.Fixed,
             HotelCode = anyConcabec.Cohote.ToString(),
             CurrencyIsoCode = anyConcabec.Dinom2,
-            Market = anyConcabec.Codmerca
+            MarketCode = anyConcabec.Codmerca
         };
         var expectedContractClient = new ContractClient {
             Code = anyConcabec.ContractClientCode,
@@ -238,7 +238,7 @@ public class CreateContractShould {
             DepositType = DepositType.Fixed,
             HotelCode = anyConcabec.Cohote.ToString(),
             CurrencyIsoCode = anyConcabec.Dinom2,
-            Market = anyConcabec.Codmerca
+            MarketCode = anyConcabec.Codmerca
         };
         var expectedContractClient = new ContractClient {
             Code = anyConcabec.ContractClientCode,
@@ -291,7 +291,7 @@ public class CreateContractShould {
             DepositType = anyConcabec.Cofode == "%" ? DepositType.Percent : DepositType.Fixed,
             HotelCode = anyConcabec.Cohote.ToString(),
             CurrencyIsoCode = anyConcabec.Dinom2,
-            Market = anyConcabec.Codmerca
+            MarketCode = anyConcabec.Codmerca
         };
         var expectedContractClient = new ContractClient {
             Code = anyConcabec.ContractClientCode,
@@ -346,7 +346,7 @@ public class CreateContractShould {
             DepositType = anyConcabec.Cofode == "%" ? DepositType.Percent : DepositType.Fixed,
             HotelCode = anyConcabec.Cohote.ToString(),
             CurrencyIsoCode = anyConcabec.Dinom2,
-            Market = anyConcabec.Codmerca
+            MarketCode = anyConcabec.Codmerca
         };
         var expectedContractClient = new ContractClient {
             Code = anyConcabec.ContractClientCode,

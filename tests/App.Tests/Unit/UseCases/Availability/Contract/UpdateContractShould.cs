@@ -71,7 +71,7 @@ public class UpdateContractShould {
             DepositType = DepositType.Percent,
             HotelCode = anyCohote.ToString(),
             CurrencyIsoCode = anyDinom2,
-            Market = anyCodmerca
+            MarketCode = anyCodmerca
         };
         var expectedContractClient = new ContractClient {
             Code = anyConcabec.ContractClientCode,
