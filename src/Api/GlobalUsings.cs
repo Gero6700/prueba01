@@ -16,3 +16,4 @@ global using Serilog.Sinks.File.Header;
 global using Swashbuckle.AspNetCore.SwaggerGen;
 global using Senator.As400.Cloud.Sync.Api.HealthChecks;
 global using Senator.As400.Cloud.Sync.Api.Settings;
+global using Senator.As400.Cloud.Sync.Infrastructure.Providers;

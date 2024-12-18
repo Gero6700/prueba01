@@ -45,4 +45,8 @@
     <Folder Include="HostedService\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Infra\Senator.As400.Cloud.Sync.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

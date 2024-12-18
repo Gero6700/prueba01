@@ -1,3 +1,5 @@
+using Microsoft.Extensions.DependencyInjection;
+
 var builder = WebApplication.CreateBuilder(args);
 
 var configuration = new ConfigurationBuilder()
@@ -20,6 +22,10 @@ builder.Services.AddHealthChecksService();
 builder.Services.AddSwaggerGen();
 builder.Services.ConfigureOptions<ConfigureSwaggerOptions>();
 builder.Services.AddErrorHandling();
+
+//TODO: Pendiente de ver con Jesus
+builder.Services.AddHttpClients(configuration);
+
 
 var app = builder.Build();
 
