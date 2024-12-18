@@ -6,6 +6,6 @@ public class MinimumStay {
     public int Days { get; set; }
     public bool StrictPeriod { get; set; }
     public string ContractClientCode { get; set; } = string.Empty;
-    public string RoomCode { get; set; } = string.Empty;
-    public string RegimeCode { get; set; } = string.Empty;
+    public string? RoomCode { get; set; } = string.Empty;
+    public string? RegimeCode { get; set; } = string.Empty;
 }

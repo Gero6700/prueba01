@@ -5,6 +5,7 @@ public static class ConofegeExtension {
         return new OfferAndSupplement {
             Code = conofege.Code,
             ContractClients = conofege.ContractClientCode == "" ? [] : [conofege.ContractClientCode],
+            Name = conofege.OfDesc,
             Type = conofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Offec),
             ApplyTo = DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Offec2),

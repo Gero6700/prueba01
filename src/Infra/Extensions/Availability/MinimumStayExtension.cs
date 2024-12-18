@@ -1,5 +1,3 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter.Availability;
-
 namespace Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
 public static class MinimumStayExtension {
     public static MinimumStay toMinimumStay(this Conestmi conestmi) {
@@ -10,8 +8,8 @@ public static class MinimumStayExtension {
             Days = conestmi.C7dmin,
             StrictPeriod = conestmi.C7peri.ToString().ToUpper() == "S",
             ContractClientCode = conestmi.ContractClientCode,
-            RoomCode = conestmi.C7thab,
-            RegimeCode = conestmi.C7regi
+            RoomCode = conestmi.C7thab.Trim() == "" ? null : conestmi.C7thab,
+            RegimeCode = conestmi.C7regi.Trim() == "" ? null : conestmi.C7regi
         };
     }
 }

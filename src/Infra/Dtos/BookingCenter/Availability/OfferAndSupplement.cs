@@ -1,6 +1,7 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter.Availability;
 public class OfferAndSupplement : IAggregateRoot {
     public string Code { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
     public OfferSupplementType Type { get; set; }
     public DateTime ApplyFrom { get; set; }
     public DateTime ApplyTo { get; set; }
