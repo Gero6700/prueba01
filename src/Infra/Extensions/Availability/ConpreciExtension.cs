@@ -6,7 +6,7 @@ public static class ConpreciExtension {
         return new PeriodPricing {
             ClosingSales = conpreci.Rerele.ToUpper() == "CV" ? true : false,
             RateCode = conpreci.RateCode,
-            PricingDate = DateTimeHelper.ConvertJulianDateToDateTime(conpreci.Cffec),
+            PricingDate = DateTimeHelper.ConvertYYYYMMDDToDatetime(conpreci.Cffec),
             StayPvp = conpreci.C4esta,
             StayPvpApplyMode = conpreci.C4form.ToUpper() == "P" ? ApplyStayPriceType.P : conpreci.C4form.ToUpper() == "D" ? ApplyStayPriceType.D : ApplyStayPriceType.P,
             RegimePvp = conpreci.C4serv,

@@ -6,8 +6,8 @@ public static class ConofegeExtension {
             Code = conofege.Code,
             ContractClients = conofege.ContractClientCode == "" ? [] : [conofege.ContractClientCode],
             Type = conofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
-            ApplyFrom = DateTimeHelper.ConvertJulianDateToDateTime(conofege.Offec),
-            ApplyTo = DateTimeHelper.ConvertJulianDateToDateTime(conofege.Offec2),
+            ApplyFrom = DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Offec),
+            ApplyTo = DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Offec2),
             ApplyOrder = conofege.Ofpri == 0 ? null : conofege.Ofpri,
             DepositAmount = conofege.Ofdpto == 0 ? null : conofege.Ofdpto,
             DepositType = conofege.Ofdpto == 0 ? null : conofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
@@ -20,8 +20,8 @@ public static class ConofegeExtension {
                     MaxStayDays = conofege.Ofdieh == 0 ? null : conofege.Ofdieh,
                     MinReleaseDays = conofege.Offred == 0 ? null : conofege.Offred,
                     MaxReleaseDays = conofege.Offres == 0 ? null : conofege.Offres,
-                    BookingWindowFrom = conofege.Ofgrbd == 0 ? null : DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Ofgrbd),
-                    BookingWindowTo = conofege.Ofgrbh == 0 ? null : DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Ofgrbh),
+                    BookingWindowFrom = DateTimeHelper.ConvertYYYYMMDDToNullableDatetime(conofege.Ofgrbd),
+                    BookingWindowTo = DateTimeHelper.ConvertYYYYMMDDToNullableDatetime(conofege.Ofgrbh),
                     OccupancyRateCod = conofege.Ofcocu == 0 ? null : conofege.Ofcocu.ToString(),
                     OnlyApplyIfRecordDatesOnWeekDays = "", //TODO: Pendiente de Jose
                     OnlyApplyIfStayDatesOnWeekDays = "", //TODO: Pendiente de Jose

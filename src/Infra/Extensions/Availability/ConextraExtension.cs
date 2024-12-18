@@ -4,10 +4,10 @@ public static class ConextraExtension {
     public static Extra ToExtra(this Conextra conextra) {
         var extra = new Extra {
             Code = conextra.Code,
-            ApplyFrom = conextra.C5fred > 0 ? DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5fred) : null,
-            ApplyTo = conextra.C5freh > 0 ? DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5freh) : null,
-            CheckInFrom = DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5fec1),
-            CheckInTo = DateTimeHelper.ConvertJulianDateToDateTime(conextra.C5fec2),
+            ApplyFrom = DateTimeHelper.ConvertYYYYMMDDToNullableDatetime(conextra.C5fred),
+            ApplyTo = DateTimeHelper.ConvertYYYYMMDDToNullableDatetime(conextra.C5freh),
+            CheckInFrom = DateTimeHelper.ConvertYYYYMMDDToDatetime(conextra.C5fec1),
+            CheckInTo = DateTimeHelper.ConvertYYYYMMDDToDatetime(conextra.C5fec2),
             StayFrom = conextra.C5died,
             StayTo = conextra.C5dieh,
             Mandatory = conextra.C5Sele == "S" ? false : true,

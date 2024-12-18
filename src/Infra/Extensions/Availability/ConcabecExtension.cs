@@ -7,8 +7,8 @@ public static class ConcabecExtension {
         return new Contract {
             Code = concabec.ContractCode,
             Description = concabec.Codesc,
-            ValidDateFrom = DateTimeHelper.ConvertJulianDateToDateTime(concabec.Cofec1),
-            ValidDateTo = DateTimeHelper.ConvertJulianDateToDateTime(concabec.Cofec2),
+            ValidDateFrom = DateTimeHelper.ConvertYYYYMMDDToDatetime(concabec.Cofec1),
+            ValidDateTo = DateTimeHelper.ConvertYYYYMMDDToDatetime(concabec.Cofec2),
             TaxIncluded = string.Equals(concabec.Coiva, "I"),
             TypeOfAgeOrdering = TypeOfAgeOrdering.Asc,
             DepositDate = concabec.Coftop != 0 ? DateTimeHelper.ConvertYYYYMMDDToNullableDatetime(concabec.Coftop) : null,

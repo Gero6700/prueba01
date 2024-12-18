@@ -12,7 +12,7 @@ public class CreatePeriodPricing {
         if (conpreci.Cffec == 0) {
             throw new ArgumentException("Price date is required");
         }
-        if (DateTimeHelper.ConvertJulianDateToDateTime(conpreci.Cffec) == DateTime.MinValue) {
+        if (DateTimeHelper.ConvertYYYYMMDDToDatetime(conpreci.Cffec) == DateTime.MinValue) {
             throw new ArgumentException("Invalid price date");
         }
         if (string.IsNullOrWhiteSpace(conpreci.C4thab)) {
