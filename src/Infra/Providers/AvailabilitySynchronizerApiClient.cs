@@ -19,14 +19,12 @@ public class AvailabilitySynchronizerApiClient : IAvailabilitySynchronizerApiCli
         throw new NotImplementedException();
     }
 
-    public async Task<Response> CreateContract(Contract contract) {
-        var response = await httpClient.PostAsJsonAsync("api/contracts", contract);
-        response.EnsureSuccessStatusCode();
-        return await response.Content.ReadFromJsonAsync<Response>();
+    public async Task<HttpResponseMessage> CreateContract(Contract contract) {
+        return await httpClient.PostAsJsonAsync("api/create-contract", contract);
     }
 
-    public Task<Response> CreateContractClient(ContractClient contractClient) {
-        throw new NotImplementedException();
+    public async Task<HttpResponseMessage> CreateContractClient(ContractClient contractClient) {
+        return await httpClient.PostAsJsonAsync("api/create-contract-client", contractClient);
     }
 
     public Task<Response> CreateExtra(Extra extra) {

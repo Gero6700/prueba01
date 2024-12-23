@@ -1,4 +1,6 @@
+using Google.Cloud.PubSub.V1;
 using Microsoft.Extensions.DependencyInjection;
+using Senator.As400.Cloud.Sync.Api.HostedService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,7 +27,9 @@ builder.Services.AddErrorHandling();
 
 //TODO: Pendiente de ver con Jesus
 builder.Services.AddHttpClients(configuration);
-
+builder.Services.AddSingleton<IAvailabilitySynchronizerApiClient, AvailabilitySynchronizerApiClient>();
+builder.Services.AddSingleton<SubscriberServiceApiClient>(SubscriberServiceApiClient.Create());
+builder.Services.AddHostedService<AvailSubscriptionPullService>();
 
 var app = builder.Build();
 
