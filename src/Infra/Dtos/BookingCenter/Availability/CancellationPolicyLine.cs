@@ -1,8 +1,9 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter.Availability;
 
 public class CancellationPolicyLine : IAggregateRoot {
+    //TODO: Actualizar campos
     public string Code { get; set; } = string.Empty;
-    public DateTime From { get; set; }
+    public DateTime From { get; set; } 
     public DateTime To { get; set; }
     public int ReleaseDays { get; set; }
     public int ReleaseHours { get; set; }

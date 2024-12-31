@@ -1,6 +1,7 @@
-using Google.Cloud.PubSub.V1;
-using Microsoft.Extensions.DependencyInjection;
-using Senator.As400.Cloud.Sync.Api.HostedService;
+
+
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Client;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Hotel;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,9 +28,17 @@ builder.Services.AddErrorHandling();
 
 //TODO: Pendiente de ver con Jesus
 builder.Services.AddHttpClients(configuration);
-builder.Services.AddSingleton<IAvailabilitySynchronizerApiClient, AvailabilitySynchronizerApiClient>();
-builder.Services.AddSingleton<SubscriberServiceApiClient>(SubscriberServiceApiClient.Create());
-builder.Services.AddHostedService<AvailSubscriptionPullService>();
+//builder.Services.AddSingleton<IAvailabilitySynchronizerApiClient, AvailabilitySynchronizerApiClient>();
+builder.Services.AddSingleton<ICreateClient, CreateClient>();
+builder.Services.AddSingleton<ICreateContract, CreateContract>();
+builder.Services.AddSingleton<IUpdateContract, UpdateContract>();
+builder.Services.AddSingleton<IDeleteContract, DeleteContract>();
+builder.Services.AddSingleton<ICreateHotel, CreateHotel>();
+builder.Services.AddSingleton<IUpdateHotel, UpdateHotel>();
+//builder.Services.AddSingleton<SubscriberServiceApiClient>(SubscriberServiceApiClient.Create());
+//builder.Services.AddSingleton<SubscriberClient>(); 
+//builder.Services.AddHostedService<AvailSubscriptionPullService>();
+builder.Services.AddSingleton<AvailSubscriptionPullService>();
 
 var app = builder.Build();
 

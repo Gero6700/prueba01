@@ -2,7 +2,7 @@ using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
 
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.Contract;
 
-public class CreateContract {
+public class CreateContract : ICreateContract {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
     public CreateContract(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {

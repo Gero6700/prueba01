@@ -6,6 +6,7 @@ public static class ConcabecExtension {
     public static Contract ToContract(this Concabec concabec) {
         return new Contract {
             Code = concabec.ContractCode,
+            ClosingSales = false,
             Description = concabec.Codesc,
             ValidDateFrom = DateTimeHelper.ConvertYYYYMMDDToDatetime(concabec.Cofec1),
             ValidDateTo = DateTimeHelper.ConvertYYYYMMDDToDatetime(concabec.Cofec2),
@@ -23,6 +24,7 @@ public static class ConcabecExtension {
     public static ContractClient ToContractClient(this Concabec concabec) {
         return new ContractClient {
             Code = concabec.ContractClientCode,
+            ClosingSales = false,
             MinAgeOfBabies = concabec.Ceinmi,
             MaxAgeOfBabies = concabec.Ceinma,
             MinAgeOfChildren = concabec.Cenimi,
@@ -31,7 +33,9 @@ public static class ConcabecExtension {
             MaxAgeOfTeenagers = concabec.D4hast,
             ExpiredDate = concabec.Cofext != 0 ? DateTimeHelper.ConvertYYYYMMDDToNullableDatetime(concabec.Cofext) : null,
             Comission = concabec.Cocoag,
-            ComissionType = concabec.Cobaco == "B" ? IncomeType.Net : IncomeType.Pvp,
+            IsPvp = concabec.Cocoag == 0,
+            CancellationGuarantee = concabec.Cogcpo,
+            CancellationGuaranteeIsCommissionable = concabec.Cocose == "S",
             ContractCode = concabec.ContractCode,
             ClientCode = concabec.Idusuario.ToString()
         };

@@ -4,10 +4,10 @@ public static class ReshotelExtension {
     public static Dtos.BookingCenter.Availability.Hotel ToHotel(this Reshotel resHotel) {
         return new Dtos.BookingCenter.Availability.Hotel
         {
-            Code = resHotel.Hotcod.ToString(),
+            Code = resHotel.Hotcod,
             TimeZone = resHotel.Hozhor,
-            ProvinceCode = resHotel.ProvinceCode,
-            CityCode = resHotel.CityCode,
+            ProvinceCode = resHotel.Hotpri,
+            CityCode = resHotel.HotPoi,
         };
     }
 }

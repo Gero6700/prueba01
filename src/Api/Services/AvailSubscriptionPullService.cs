@@ -1,7 +1,4 @@
-using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Client;
-using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Hotel;
-
-namespace Senator.As400.Cloud.Sync.Api.HostedService;
+namespace Senator.As400.Cloud.Sync.Api.Services;
 public class AvailSubscriptionPullService(
         IConfiguration configuration, 
         ILogger<AvailSubscriptionPullService> logger,
@@ -11,27 +8,11 @@ public class AvailSubscriptionPullService(
         IDeleteContract deleteContract,
         ICreateHotel createHotel,
         IUpdateHotel updateHotel
-    ) : IHostedService {
-    private Timer topicAvailPullTimer =  null!;
+    ) {
     private SubscriberClient subscriberClient = null!;
 
-    public Task StartAsync(CancellationToken cancellationToken) {
-        CreateAvailSubscriptionPullTimer();
-        return Task.CompletedTask;
-    }
 
-    public Task StopAsync(CancellationToken cancellationToken) {
-        topicAvailPullTimer.Change(Timeout.Infinite, 0);
-        topicAvailPullTimer.Dispose();
-        return Task.CompletedTask;
-    }
-
-    private void CreateAvailSubscriptionPullTimer() {
-        var pullInterval = configuration.GetSection("AvailGooglePubSub").Get<PubSubSettings>()!.IntervalInMinutes;
-        topicAvailPullTimer = new Timer(HandleAvailSubscriptionPull, null, TimeSpan.Zero, TimeSpan.FromMinutes(pullInterval));
-    }
-
-    private async void HandleAvailSubscriptionPull(object? state) {
+    private async void AvailSubscriptionPullService(object? state) {
         var projectId = configuration["AvailGooglePubSub:ProjectId"];
         var subscriptionId = configuration["AvailGooglePubSub:SubscriptionId"];
         var subscriptionName = SubscriptionName.FromProjectSubscription(projectId, subscriptionId);

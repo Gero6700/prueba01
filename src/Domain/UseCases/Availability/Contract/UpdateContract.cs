@@ -1,8 +1,6 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
-
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.Contract;
 
-public class UpdateContract {
+public class UpdateContract : IUpdateContract {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
     public UpdateContract(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {

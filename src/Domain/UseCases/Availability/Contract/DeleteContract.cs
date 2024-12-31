@@ -1,6 +1,6 @@
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.Contract;
 
-public class DeleteContract {
+public class DeleteContract : IDeleteContract {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
     public DeleteContract(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {

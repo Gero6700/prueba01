@@ -28,4 +28,7 @@ public class Concabec {
     public long Idusuario { get; set; }
     //contgral.divisa
     public string Dinom2 { get; set; } = string.Empty;
+
+    public decimal Cogcpo { get; set; }
+    public string Cocose { get; set; } = string.Empty;
 }

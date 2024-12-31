@@ -2,7 +2,7 @@ using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
 
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.Hotel;
 
-public class CreateHotel {
+public class CreateHotel : ICreateHotel {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
     public CreateHotel(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {
@@ -10,7 +10,7 @@ public class CreateHotel {
     }
 
     public async Task Execute(Reshotel reshotel) {
-        if (reshotel.Hotcod == 0) {
+        if (string.IsNullOrWhiteSpace(reshotel.Hotcod)) {
             throw new ArgumentException("Invalid hotel code");
         }
         var hotel = reshotel.ToHotel();
