@@ -1,6 +1,3 @@
-using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Client;
-using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Hotel;
-
 namespace Senator.As400.Cloud.Sync.Api.HostedService;
 public class AvailSubscriptionPullService(
         IConfiguration configuration, 
