@@ -24,3 +24,7 @@ global using Senator.As400.Cloud.Sync.Api.HostedService;
 global using Senator.As400.Cloud.Sync.Infrastructure.Providers;
 global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Client;
 global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Hotel;
+global using Senator.As400.Cloud.Sync.Application.Events;
+global using Senator.As400.Cloud.Sync.Application.Handlers;
+global using Senator.As400.Cloud.Sync.Application.Interfaces;
+global using Senator.As400.Cloud.Sync.Application.Enums;

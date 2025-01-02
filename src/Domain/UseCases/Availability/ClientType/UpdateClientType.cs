@@ -1,8 +1,6 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
-
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.ClientType;
 
-public class UpdateClientType {
+public class UpdateClientType : IUpdateClientType {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
     public UpdateClientType(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {

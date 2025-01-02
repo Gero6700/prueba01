@@ -1,4 +1,4 @@
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.CancellationPolicyLine;
-public interface IActionCancellationPolicyLine {
+public interface IUpdateCancellationPolicyLine {
     Task Execute(Congasan congasan);
 }

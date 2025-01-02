@@ -1,14 +1,10 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Dtos.As400;
-using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
-
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.Extra;
-public class CreateExtra {
+public class CreateExtra : ICreateExtra {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
     public CreateExtra(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
-
 
     public async Task Execute(Conextra conextra) {
         if (conextra.C5fred >0 && DateTimeHelper.ConvertYYYYMMDDToDatetime(conextra.C5fred) == DateTime.MinValue) {

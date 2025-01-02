@@ -1,7 +1,5 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
-
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.ClientType;
-public class CreateClientType {
+public class CreateClientType : ICreateClientType {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
     public CreateClientType(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {

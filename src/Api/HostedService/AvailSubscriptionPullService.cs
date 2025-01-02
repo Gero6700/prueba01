@@ -2,15 +2,19 @@ namespace Senator.As400.Cloud.Sync.Api.HostedService;
 public class AvailSubscriptionPullService(
         IConfiguration configuration, 
         ILogger<AvailSubscriptionPullService> logger,
-        ICreateClient createClient,
-        ICreateContract createContract,
-        IUpdateContract updateContract,
-        IDeleteContract deleteContract,
-        ICreateHotel createHotel,
-        IUpdateHotel updateHotel
+        IEventHandler<GenericNotificationEvent> eventHandler
     ) : IHostedService {
     private Timer topicAvailPullTimer =  null!;
     private SubscriberClient subscriberClient = null!;
+    private readonly JsonSerializerOptions serializeOptions = new () { PropertyNameCaseInsensitive = true };
+    private readonly Dictionary<string, Type>  typeMap = new () {
+        {nameof(TableType.CancellationPolicyLine), typeof(Congasan)},
+        {nameof(TableType.Client), typeof(Usureg)},
+        {nameof(TableType.ClientType), typeof(Restagen)},
+        {nameof(TableType.Contract), typeof(Concabec)},
+        {nameof(TableType.Extra), typeof(Conextra)},
+        {nameof(TableType.Hotel), typeof(Reshotel)}
+    };
 
     public Task StartAsync(CancellationToken cancellationToken) {
         CreateAvailSubscriptionPullTimer();
@@ -39,51 +43,17 @@ public class AvailSubscriptionPullService(
         await subscriberClient.StartAsync(async (PubsubMessage message, CancellationToken cancel) =>
         {
             //Se recupera y deserializa el mensaje
-            var messageData = message.Data.ToStringUtf8();
-            
+            var messageData = message.Data.ToStringUtf8();            
             try {                
                 var notification = JsonSerializer.Deserialize<As400Notification>(messageData, options);
                 if (notification != null) {
-                    switch (notification.Table) {
-                        case nameof(TableType.Client):
-                            var client = JsonSerializer.Deserialize<Usureg>(notification.Data);
-                            if (client != null) {
-                                if (notification.Operation == OperationType.Create.ToString()) {
-                                    await createClient.Execute(client);
-                                }
-                                else if (notification.Operation == OperationType.Update.ToString()) {
-                                    //await updateClient.Execute(client);
-                                }
-                            }
-                            break;
-                        case nameof(TableType.Contract):
-                            var concabec = JsonSerializer.Deserialize<Concabec>(notification.Data);
-                            if (concabec != null) {
-                                if (notification.Operation == OperationType.Create.ToString()) {
-                                    await createContract.Execute(concabec);                                
-                                } else if (notification.Operation == OperationType.Update.ToString()) {                                
-                                    await updateContract.Execute(concabec);
-                                }
-                                else if (notification.Operation == OperationType.Delete.ToString()) {
-                                    await deleteContract.Execute(concabec.ContractCode);
-                                }
-                            }
-                            break;
-                        case nameof(TableType.Hotel):
-                            var hotel = JsonSerializer.Deserialize<Reshotel>(notification.Data);
-                            if (hotel != null) {
-                                if (notification.Operation == OperationType.Create.ToString()) {
-                                    await createHotel.Execute(hotel);
-                                }
-                                else if (notification.Operation == OperationType.Update.ToString()) {
-                                    await updateHotel.Execute(hotel);
-                                }
-                            }
-                            break;
-                        default:
-                            logger.LogWarning("Table {Table} is not supported", notification.Table);
-                            break;
-                    }
+                    var genericNotificationEvent = new GenericNotificationEvent {
+                        Operation = notification.Operation,
+                        Table = notification.Table,
+                        Data = notification.Data,
+                        Entity = DeserializeEntity(notification)
+                    };
+                    await eventHandler.HandleAsync(genericNotificationEvent);
                 }
             }
             catch (JsonException ex) {
@@ -97,22 +67,14 @@ public class AvailSubscriptionPullService(
         });
     }
 
-    private class As400Notification {
-        public string Operation { get; set; } = string.Empty;
-        public string Table { get; set; } = string.Empty;
-        public string Data { get; set; } = string.Empty;
+    private object DeserializeEntity(As400Notification notification) {             
+        if (typeMap.TryGetValue(notification.Table, out var type)) {
+            var entity = JsonSerializer.Deserialize(notification.Data, type, serializeOptions);
+            return entity ?? throw new InvalidOperationException($"Deserialization returned null for table type: {notification.Table}");
+        }
+
+        throw new InvalidOperationException($"Unsupported table type: {notification.Table}");
     }
 
-    private enum OperationType {
-        Create,
-        Update,
-        Delete
-    }
-
-    private enum TableType {
-        Client,
-        Contract,
-        Hotel,
-        Regime
-    }
+    private class As400Notification : NotificationEvent { }
 }

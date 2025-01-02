@@ -1,8 +1,6 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
-
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.ClientType;
 
-public class DeleteClientType {
+public class DeleteClientType : IDeleteClientType {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
     public DeleteClientType(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {

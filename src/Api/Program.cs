@@ -1,7 +1,8 @@
 
 
-using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Client;
-using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Hotel;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.CancellationPolicyLine;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.ClientType;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Extra;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,14 +29,29 @@ builder.Services.AddErrorHandling();
 
 //TODO: Pendiente de ver con Jesus
 builder.Services.AddHttpClients(configuration);
+builder.Services.AddSingleton<ICreateCancellationPolicyLine, CreateCancellationPolicyLine>();
+builder.Services.AddSingleton<IUpdateCancellationPolicyLine, UpdateCancellationPolicyLine>();
+
+builder.Services.AddSingleton<ICreateClientType, CreateClientType>();
+builder.Services.AddSingleton<IUpdateClientType, UpdateClientType>();
+builder.Services.AddSingleton<IDeleteClientType, DeleteClientType>();
+
 builder.Services.AddSingleton<ICreateClient, CreateClient>();
+builder.Services.AddSingleton<IUpdateClient, UpdateClient>();
+builder.Services.AddSingleton<IDeleteClient, DeleteClient>();
+
 builder.Services.AddSingleton<ICreateContract, CreateContract>();
 builder.Services.AddSingleton<IUpdateContract, UpdateContract>();
 builder.Services.AddSingleton<IDeleteContract, DeleteContract>();
+
+builder.Services.AddSingleton<ICreateExtra, CreateExtra>();
+builder.Services.AddSingleton<IUpdateExtra, UpdateExtra>();
+builder.Services.AddSingleton<IDeleteExtra, DeleteExtra>();
+
 builder.Services.AddSingleton<ICreateHotel, CreateHotel>();
 builder.Services.AddSingleton<IUpdateHotel, UpdateHotel>();
-//builder.Services.AddSingleton<SubscriberServiceApiClient>(SubscriberServiceApiClient.Create());
-//builder.Services.AddSingleton<SubscriberClient>(); 
+
+builder.Services.AddSingleton<IEventHandler<GenericNotificationEvent>, GenericEventHandler>();
 builder.Services.AddHostedService<AvailSubscriptionPullService>();
 
 

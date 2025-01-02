@@ -1,5 +1,5 @@
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.CancellationPolicyLine;
-public class CreateCancellationPolicyLine : IActionCancellationPolicyLine {
+public class CreateCancellationPolicyLine : ICreateCancellationPolicyLine {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
     public CreateCancellationPolicyLine(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {
