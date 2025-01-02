@@ -1,7 +1,5 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
-
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.Inventory;
-public class DeleteInventory {
+public class DeleteInventory :IDeleteInventory {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
     public DeleteInventory(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {

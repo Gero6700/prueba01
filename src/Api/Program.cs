@@ -3,6 +3,10 @@
 using Senator.As400.Cloud.Sync.Application.UseCases.Availability.CancellationPolicyLine;
 using Senator.As400.Cloud.Sync.Application.UseCases.Availability.ClientType;
 using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Extra;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.HotelRoomConfiguration;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Inventory;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Market;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.MinimunStay;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -50,6 +54,21 @@ builder.Services.AddSingleton<IDeleteExtra, DeleteExtra>();
 
 builder.Services.AddSingleton<ICreateHotel, CreateHotel>();
 builder.Services.AddSingleton<IUpdateHotel, UpdateHotel>();
+
+builder.Services.AddSingleton<ICreateHotelRoomConfiguration, CreateHotelRoomConfiguration>();
+builder.Services.AddSingleton<IUpdateHotelRoomConfiguration, UpdateHotelRoomConfiguration>();
+builder.Services.AddSingleton<IDeleteHotelRoomConfiguration, DeleteHotelRoomConfiguration>();
+
+builder.Services.AddSingleton<ICreateInventory, CreateInventory>();
+builder.Services.AddSingleton<IUpdateInventory, UpdateInventory>();
+builder.Services.AddSingleton<IDeleteInventory, DeleteInventory>();
+
+builder.Services.AddSingleton<ICreateMarket, CreateMarket>();
+builder.Services.AddSingleton<IUpdateMarket, UpdateMarket>();
+builder.Services.AddSingleton<IDeleteMarket, DeleteMarket>();
+
+builder.Services.AddSingleton<ICreateMinimumStay, CreateMinimumStay>();
+builder.Services.AddSingleton<IUpdateMinimumStay, UpdateMinimumStay>();
 
 builder.Services.AddSingleton<IEventHandler<GenericNotificationEvent>, GenericEventHandler>();
 builder.Services.AddHostedService<AvailSubscriptionPullService>();

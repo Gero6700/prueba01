@@ -6,5 +6,9 @@ public enum TableType {
     Contract,
     Extra,
     Hotel,
+    HotelRoomConfiguration,
+    Inventory,
+    Market,
+    MinimunStay,
     Regime
 }

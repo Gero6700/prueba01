@@ -1,8 +1,6 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
-
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.Inventory;
 
-public class UpdateInventory {
+public class UpdateInventory :IUpdateInventory {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
     public UpdateInventory(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {

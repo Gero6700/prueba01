@@ -10,3 +10,7 @@ global using Senator.As400.Cloud.Sync.Application.Interfaces;
 global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Client;
 global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Contract;
 global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Hotel;
+global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.CancellationPolicyLine;
+global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.ClientType;
+global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Extra;
+global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.HotelRoomConfiguration;

@@ -13,7 +13,11 @@ public class AvailSubscriptionPullService(
         {nameof(TableType.ClientType), typeof(Restagen)},
         {nameof(TableType.Contract), typeof(Concabec)},
         {nameof(TableType.Extra), typeof(Conextra)},
-        {nameof(TableType.Hotel), typeof(Reshotel)}
+        {nameof(TableType.Hotel), typeof(Reshotel)},
+        {nameof(TableType.HotelRoomConfiguration), typeof(Resthaho)},
+        {nameof(TableType.Inventory), typeof(Resplaht)},
+        {nameof(TableType.Market), typeof(Merca)},
+        {nameof(TableType.MinimunStay), typeof(Conestmi)},
     };
 
     public Task StartAsync(CancellationToken cancellationToken) {

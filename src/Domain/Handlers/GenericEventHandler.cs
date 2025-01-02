@@ -1,6 +1,6 @@
-using Senator.As400.Cloud.Sync.Application.UseCases.Availability.CancellationPolicyLine;
-using Senator.As400.Cloud.Sync.Application.UseCases.Availability.ClientType;
-using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Extra;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Inventory;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Market;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.MinimunStay;
 
 namespace Senator.As400.Cloud.Sync.Application.Handlers;
 public class GenericEventHandler(
@@ -19,7 +19,19 @@ public class GenericEventHandler(
     IUpdateExtra updateExtra,
     IDeleteExtra deleteExtra,
     ICreateHotel createHotel,
-    IUpdateHotel updateHotel) : IEventHandler<GenericNotificationEvent> {
+    IUpdateHotel updateHotel,
+    ICreateHotelRoomConfiguration createHotelRoomConfiguration,
+    IUpdateHotelRoomConfiguration updateHotelRoomConfiguration,
+    IDeleteHotelRoomConfiguration deleteHotelRoomConfiguration,
+    ICreateInventory createInventory,
+    IUpdateInventory updateInventory,
+    IDeleteInventory deleteInventory,
+    ICreateMarket createMarket,
+    IUpdateMarket updateMarket,
+    IDeleteMarket deleteMarket,
+    ICreateMinimumStay createMinimumStay,
+    IUpdateMinimumStay updateMinimumStay
+    ) : IEventHandler<GenericNotificationEvent> {
     private readonly ICreateCancellationPolicyLine createCancellationPolicyLine = createCancellationPolicyLine;
     private readonly IUpdateCancellationPolicyLine updateCancellationPolicyLine = updateCancellationPolicyLine;
     private readonly ICreateClient createClient = createClient;
@@ -36,6 +48,17 @@ public class GenericEventHandler(
     private readonly IDeleteExtra deleteExtra = deleteExtra;
     private readonly ICreateHotel createHotel = createHotel;
     private readonly IUpdateHotel updateHotel = updateHotel;
+    private readonly ICreateHotelRoomConfiguration createHotelRoomConfiguration = createHotelRoomConfiguration;
+    private readonly IUpdateHotelRoomConfiguration updateHotelRoomConfiguration = updateHotelRoomConfiguration;
+    private readonly IDeleteHotelRoomConfiguration deleteHotelRoomConfiguration = deleteHotelRoomConfiguration;
+    private readonly ICreateInventory createInventory = createInventory;
+    private readonly IUpdateInventory updateInventory = updateInventory;
+    private readonly IDeleteInventory deleteInventory = deleteInventory;
+    private readonly ICreateMarket createMarket = createMarket;
+    private readonly IUpdateMarket updateMarket = updateMarket;
+    private readonly IDeleteMarket deleteMarket = deleteMarket;
+    private readonly ICreateMinimumStay createMinimumStay = createMinimumStay;
+    private readonly IUpdateMinimumStay updateMinimumStay = updateMinimumStay;
 
     public async Task HandleAsync(GenericNotificationEvent @event) {
         switch (@event.Table) {
@@ -62,6 +85,18 @@ public class GenericEventHandler(
             case nameof(TableType.Hotel):
                 var hotel = (Reshotel)@event.Entity;
                 await HandleHotelEventAsync(hotel, @event.Operation);
+                break;
+            case nameof(TableType.HotelRoomConfiguration):
+                var hotelRoomConfiguration = (Resthaho)@event.Entity;
+                await HandleHotelRoomConfigurationEventAsync(hotelRoomConfiguration, @event.Operation);
+                break;
+            case nameof(TableType.Inventory):
+                var inventory = (Resplaht)@event.Entity;
+                await HandleInventoryEventAsync(inventory, @event.Operation);
+                break;
+            case nameof(TableType.Market):
+                var market = (Merca)@event.Entity;
+                await HandleMarketEventAsync(market, @event.Operation);
                 break;
             default:
                 throw new InvalidOperationException($"Unsupported table type: {@event.Table}");
@@ -155,6 +190,54 @@ public class GenericEventHandler(
                 break;
             default:
                 throw new InvalidOperationException($"Unsupported operation: {operation} in table Hotel");
+        }
+    }
+
+    private async Task HandleHotelRoomConfigurationEventAsync(Resthaho hotelRoomConfiguration, string operation) {
+        switch (operation) {
+            case nameof(OperationType.Create):
+                await createHotelRoomConfiguration.Execute(hotelRoomConfiguration);
+                break;
+            case nameof(OperationType.Update):
+                await updateHotelRoomConfiguration.Execute(hotelRoomConfiguration);
+                break;
+            case nameof(OperationType.Delete):
+                await deleteHotelRoomConfiguration.Execute(hotelRoomConfiguration);
+                break;
+            default:
+                throw new InvalidOperationException($"Unsupported operation: {operation} in HotelRoomConfiguration");
+        }
+    }
+
+    private async Task HandleInventoryEventAsync(Resplaht inventory, string operation) {
+        switch (operation) {
+            case nameof(OperationType.Create):
+                await createInventory.Execute(inventory);
+                break;
+            case nameof(OperationType.Update):
+                await updateInventory.Execute(inventory);
+                break;
+            case nameof(OperationType.Delete):
+                await deleteInventory.Execute(inventory);
+                break;
+            default:
+                throw new InvalidOperationException($"Unsupported operation: {operation} in Inventory");
+        }
+    }
+
+    private async Task HandleMarketEventAsync(Merca market, string operation) {
+        switch (operation) {
+            case nameof(OperationType.Create):
+                await createMarket.Execute(market);
+                break;
+            case nameof(OperationType.Update):
+                await updateMarket.Execute(market);
+                break;
+            case nameof(OperationType.Delete):
+                await deleteMarket.Execute(market);
+                break;
+            default:
+                throw new InvalidOperationException($"Unsupported operation: {operation} in Market");
         }
     }
 }

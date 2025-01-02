@@ -1,7 +1,5 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
-
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.Market;
-public class CreateMarket {
+public class CreateMarket :ICreateMarket {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
     public CreateMarket(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {
