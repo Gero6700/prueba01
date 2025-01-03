@@ -1,7 +1,5 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
-
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.OfferAndSupplementGroup;
-public class DeleteOfferAndSupplementGroup {
+public class DeleteOfferAndSupplementGroup :IDeleteOfferAndSupplementGroup {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
     public DeleteOfferAndSupplementGroup(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {

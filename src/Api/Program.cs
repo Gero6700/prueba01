@@ -7,6 +7,14 @@ using Senator.As400.Cloud.Sync.Application.UseCases.Availability.HotelRoomConfig
 using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Inventory;
 using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Market;
 using Senator.As400.Cloud.Sync.Application.UseCases.Availability.MinimunStay;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.OccupancyRate;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.OfferAndSupplement;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.OfferAndSupplementConfigurationPax;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.OfferAndSupplementGroup;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.OfferAndSupplementGroupOfferAndSupplement;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.PeriodPricing;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.PeriodPricingPax;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Regime;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -69,6 +77,34 @@ builder.Services.AddSingleton<IDeleteMarket, DeleteMarket>();
 
 builder.Services.AddSingleton<ICreateMinimumStay, CreateMinimumStay>();
 builder.Services.AddSingleton<IUpdateMinimumStay, UpdateMinimumStay>();
+
+builder.Services.AddSingleton<ICreateOccupancyRate, CreateOccupancyRate>();
+builder.Services.AddSingleton<IUpdateOccupancyRate, UpdateOccupancyRate>();
+builder.Services.AddSingleton<IDeleteOccupancyRate, DeleteOccupancyRate>();
+
+builder.Services.AddSingleton<ICreateOfferAndSupplement, CreateOfferAndSupplement>();
+builder.Services.AddSingleton<IUpdateOfferAndSupplement, UpdateOfferAndSupplement>();
+
+builder.Services.AddSingleton<ICreateOfferAndSupplementConfigurationPax, CreateOfferAndSupplementConfigurationPax>();
+builder.Services.AddSingleton<IUpdateOfferAndSupplementConfigurationPax, UpdateOfferAndSupplementConfigurationPax>();
+builder.Services.AddSingleton<IDeleteOfferAndSupplementConfigurationPax, DeleteOfferAndSupplementConfigurationPax>();
+
+builder.Services.AddSingleton<ICreateOfferAndSupplementGroup, ICreateOfferAndSupplementGroup>();
+builder.Services.AddSingleton<IUpdateOfferAndSupplementGroup, IUpdateOfferAndSupplementGroup>();
+builder.Services.AddSingleton<IDeleteOfferAndSupplementGroup, IDeleteOfferAndSupplementGroup>();
+
+builder.Services.AddSingleton<ICreateOfferAndSupplementGroupOfferAndSupplement, CreateOfferAndSupplementGroupOfferAndSupplement>();
+builder.Services.AddSingleton<IDeleteOfferAndSupplementGroupOfferAndSupplement, DeleteOfferAndSupplementGroupOfferAndSupplement>();
+
+builder.Services.AddSingleton<ICreatePeriodPricing, CreatePeriodPricing>();
+builder.Services.AddSingleton<IUpdatePeriodPricing, UpdatePeriodPricing>();
+
+builder.Services.AddSingleton<ICreatePeriodPricingPax, CreatePeriodPricingPax>();
+builder.Services.AddSingleton<IUpdatePeriodPricingPax, UpdatePeriodPricingPax>();
+builder.Services.AddSingleton<IDeletePeriodPricingPax, DeletePeriodPricingPax>();
+
+builder.Services.AddSingleton<ICreateRegimen, CreateRegime>();
+builder.Services.AddSingleton<IUpdateRegimen, UpdateRegime>();
 
 builder.Services.AddSingleton<IEventHandler<GenericNotificationEvent>, GenericEventHandler>();
 builder.Services.AddHostedService<AvailSubscriptionPullService>();

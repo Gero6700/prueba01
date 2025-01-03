@@ -1,7 +1,5 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
-
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.Room;
-public class DeleteRoom {
+public class DeleteRoom : IDeleteRoom {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
     public DeleteRoom(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {

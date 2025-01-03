@@ -1,5 +1,5 @@
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.OccupancyRate;
-public class DeleteOccupancyRate {
+public class DeleteOccupancyRate :IDeleteOccupancyRate {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
     public DeleteOccupancyRate(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {

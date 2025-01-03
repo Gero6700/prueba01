@@ -1,7 +1,5 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
-
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.Room;
-public class UpdateRoom {
+public class UpdateRoom : IUpdateRoom {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
     public UpdateRoom(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {
@@ -15,5 +13,4 @@ public class UpdateRoom {
         var room = resthabi.ToRoom();
         await availabilitySynchronizerApiClient.UpdateRoom(room);
     }
-
 }

@@ -1,6 +1,14 @@
 using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Inventory;
 using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Market;
 using Senator.As400.Cloud.Sync.Application.UseCases.Availability.MinimunStay;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.OccupancyRate;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.OfferAndSupplement;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.OfferAndSupplementConfigurationPax;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.OfferAndSupplementGroup;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.OfferAndSupplementGroupOfferAndSupplement;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.PeriodPricing;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.PeriodPricingPax;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Regime;
 
 namespace Senator.As400.Cloud.Sync.Application.Handlers;
 public class GenericEventHandler(
@@ -30,7 +38,27 @@ public class GenericEventHandler(
     IUpdateMarket updateMarket,
     IDeleteMarket deleteMarket,
     ICreateMinimumStay createMinimumStay,
-    IUpdateMinimumStay updateMinimumStay
+    IUpdateMinimumStay updateMinimumStay,
+    ICreateOccupancyRate createOccupancyRate,
+    IUpdateOccupancyRate updateOccupancyRate,
+    IDeleteOccupancyRate deleteOccupancyRate,
+    ICreateOfferAndSupplement createOfferAndSupplement,
+    IUpdateOfferAndSupplement updateOfferAndSupplement,
+    ICreateOfferAndSupplementConfigurationPax createOfferAndSupplementConfigurationPax,
+    IUpdateOfferAndSupplementConfigurationPax updateOfferAndSupplementConfigurationPax,
+    IDeleteOfferAndSupplementConfigurationPax deleteOfferAndSupplementConfigurationPax,
+    ICreateOfferAndSupplementGroup createOfferAndSupplementGroup,
+    IUpdateOfferAndSupplementGroup updateOfferAndSupplementGroup,
+    IDeleteOfferAndSupplementGroup deleteOfferAndSupplementGroup,
+    ICreateOfferAndSupplementGroupOfferAndSupplement createOfferAndSupplementGroupOfferAndSupplement,
+    IDeleteOfferAndSupplementGroupOfferAndSupplement deleteOfferAndSupplementGroupOfferAndSupplement,
+    ICreatePeriodPricing createPeriodPricing,
+    IUpdatePeriodPricing updatePeriodPricing,
+    ICreatePeriodPricingPax createPeriodPricingPax,
+    IUpdatePeriodPricingPax updatePeriodPricingPax,
+    IDeletePeriodPricingPax deletePeriodPricingPax,
+    ICreateRegimen createRegimen,
+    IUpdateRegimen updateRegimen
     ) : IEventHandler<GenericNotificationEvent> {
     private readonly ICreateCancellationPolicyLine createCancellationPolicyLine = createCancellationPolicyLine;
     private readonly IUpdateCancellationPolicyLine updateCancellationPolicyLine = updateCancellationPolicyLine;
@@ -59,6 +87,25 @@ public class GenericEventHandler(
     private readonly IDeleteMarket deleteMarket = deleteMarket;
     private readonly ICreateMinimumStay createMinimumStay = createMinimumStay;
     private readonly IUpdateMinimumStay updateMinimumStay = updateMinimumStay;
+    private readonly ICreateOccupancyRate createOccupancyRate = createOccupancyRate;
+    private readonly IUpdateOccupancyRate updateOccupancyRate = updateOccupancyRate;
+    private readonly ICreateOfferAndSupplement createOfferAndSupplement = createOfferAndSupplement;
+    private readonly IUpdateOfferAndSupplement updateOfferAndSupplement = updateOfferAndSupplement;
+    private readonly ICreateOfferAndSupplementConfigurationPax createOfferAndSupplementConfigurationPax = createOfferAndSupplementConfigurationPax;
+    private readonly IUpdateOfferAndSupplementConfigurationPax updateOfferAndSupplementConfigurationPax = updateOfferAndSupplementConfigurationPax;
+    private readonly IDeleteOfferAndSupplementConfigurationPax deleteOfferAndSupplementConfigurationPax = deleteOfferAndSupplementConfigurationPax;
+    private readonly ICreateOfferAndSupplementGroup createOfferAndSupplementGroup = createOfferAndSupplementGroup;
+    private readonly IUpdateOfferAndSupplementGroup updateOfferAndSupplementGroup = updateOfferAndSupplementGroup;
+    private readonly IDeleteOfferAndSupplementGroup deleteOfferAndSupplementGroup = deleteOfferAndSupplementGroup;
+    private readonly ICreateOfferAndSupplementGroupOfferAndSupplement createOfferAndSupplementGroupOfferAndSupplement = createOfferAndSupplementGroupOfferAndSupplement;
+    private readonly IDeleteOfferAndSupplementGroupOfferAndSupplement deleteOfferAndSupplementGroupOfferAndSupplement = deleteOfferAndSupplementGroupOfferAndSupplement;
+    private readonly ICreatePeriodPricing createPeriodPricing = createPeriodPricing;
+    private readonly IUpdatePeriodPricing updatePeriodPricing = updatePeriodPricing;
+    private readonly ICreatePeriodPricingPax createPeriodPricingPax = createPeriodPricingPax;
+    private readonly IUpdatePeriodPricingPax updatePeriodPricingPax = updatePeriodPricingPax;
+    private readonly IDeletePeriodPricingPax deletePeriodPricingPax = deletePeriodPricingPax;
+    private readonly ICreateRegimen createRegimen = createRegimen;
+    private readonly IUpdateRegimen updateRegimen = updateRegimen;
 
     public async Task HandleAsync(GenericNotificationEvent @event) {
         switch (@event.Table) {
@@ -97,6 +144,42 @@ public class GenericEventHandler(
             case nameof(TableType.Market):
                 var market = (Merca)@event.Entity;
                 await HandleMarketEventAsync(market, @event.Operation);
+                break;
+            case nameof(TableType.MinimumStay):
+                var minimumStay = (Conestmi)@event.Entity;
+                await HandleMinimumStayEventAsync(minimumStay, @event.Operation);
+                break;
+            case nameof(TableType.OccupancyRate):
+                var occupancyRate = (Resthaco)@event.Entity;
+                await HandleOccupancyRateEventAsync(occupancyRate, @event.Operation);
+                break;
+            case nameof(TableType.OfferAndSupplement):
+                var offerAndSupplement = (Conofege)@event.Entity;
+                await HandleOfferAndSupplementEventAsync(offerAndSupplement, @event.Operation);
+                break;
+            case nameof(TableType.OfferAndSupplementConfigurationPax):
+                var offerAndSupplementConfigurationPax = (Condtof)@event.Entity;
+                await HandleOfferAndSupplementConfigurationPaxEventAsync(offerAndSupplementConfigurationPax, @event.Operation);
+                break;
+            case nameof(TableType.OfferAndSupplementGroup):
+                var offerAndSupplementGroup = (ConofcomHeader)@event.Entity;
+                await HandleOfferAndSupplementGroupEventAsync(offerAndSupplementGroup, @event.Operation);
+                break;
+            case nameof(TableType.OfferAndSupplementGroupOfferAndSupplement):
+                var offerAndSupplementGroupOfferAndSupplement = (ConofcomLine)@event.Entity;
+                await HandleOfferAndSupplementGroupOfferAndSupplementEventAsync(offerAndSupplementGroupOfferAndSupplement, @event.Operation);
+                break;
+            case nameof(TableType.PeriodPricing):
+                var periodPricing = (Conpreci)@event.Entity;
+                await HandlePeriodPricingEventAsync(periodPricing, @event.Operation);
+                break;
+            case nameof(TableType.PeriodPricingPax):
+                var periodPricingPax = (Condtos)@event.Entity;
+                await HandlePeriodPricingPaxEventAsync(periodPricingPax, @event.Operation);
+                break;
+            case nameof(TableType.Regimen):
+                var regimen = (Restregi)@event.Entity;
+                await HandleRegimenEventAsync(regimen, @event.Operation);
                 break;
             default:
                 throw new InvalidOperationException($"Unsupported table type: {@event.Table}");
@@ -238,6 +321,135 @@ public class GenericEventHandler(
                 break;
             default:
                 throw new InvalidOperationException($"Unsupported operation: {operation} in Market");
+        }
+    }
+
+    private async Task HandleMinimumStayEventAsync(Conestmi minimumStay, string operation) {
+        switch (operation) {
+            case nameof(OperationType.Create):
+                await createMinimumStay.Execute(minimumStay);
+                break;
+            case nameof(OperationType.Update):
+                await updateMinimumStay.Execute(minimumStay);
+                break;
+            default:
+                throw new InvalidOperationException($"Unsupported operation: {operation} in MinimumStay");
+        }
+    }
+
+    private async Task HandleOccupancyRateEventAsync(Resthaco occupancyRate, string operation) {
+        switch (operation) {
+            case nameof(OperationType.Create):
+                await createOccupancyRate.Execute(occupancyRate);
+                break;
+            case nameof(OperationType.Update):
+                await updateOccupancyRate.Execute(occupancyRate);
+                break;
+            case nameof(OperationType.Delete):
+                await deleteOccupancyRate.Execute(occupancyRate.Cocod);
+                break;
+            default:
+                throw new InvalidOperationException($"Unsupported operation: {operation} in OccupancyRate");
+        }
+    }
+
+    private async Task HandleOfferAndSupplementEventAsync(Conofege offerAndSupplement, string operation) {
+        switch (operation) {
+            case nameof(OperationType.Create):
+                await createOfferAndSupplement.Execute(offerAndSupplement);
+                break;
+            case nameof(OperationType.Update):
+                await updateOfferAndSupplement.Execute(offerAndSupplement);
+                break;
+            default:
+                throw new InvalidOperationException($"Unsupported operation: {operation} in OfferAndSupplement");
+        }
+    }
+
+    private async Task HandleOfferAndSupplementConfigurationPaxEventAsync(Condtof offerAndSupplementConfigurationPax, string operation) {
+        switch (operation) {
+            case nameof(OperationType.Create):
+                await createOfferAndSupplementConfigurationPax.Execute(offerAndSupplementConfigurationPax);
+                break;
+            case nameof(OperationType.Update):
+                await updateOfferAndSupplementConfigurationPax.Execute(offerAndSupplementConfigurationPax);
+                break;
+            case nameof(OperationType.Delete):
+                await deleteOfferAndSupplementConfigurationPax.Execute(offerAndSupplementConfigurationPax.Code);
+                break;
+            default:
+                throw new InvalidOperationException($"Unsupported operation: {operation} in OfferAndSupplementConfigurationPax");
+        }
+    }
+
+    private async Task HandleOfferAndSupplementGroupEventAsync(ConofcomHeader offerAndSupplementGroup, string operation) {
+        switch (operation) {
+            case nameof(OperationType.Create):
+                await createOfferAndSupplementGroup.Execute(offerAndSupplementGroup);
+                break;
+            case nameof(OperationType.Update):
+                await updateOfferAndSupplementGroup.Execute(offerAndSupplementGroup);
+                break;
+            case nameof(OperationType.Delete):
+                await deleteOfferAndSupplementGroup.Execute(offerAndSupplementGroup);
+                break;
+            default:
+                throw new InvalidOperationException($"Unsupported operation: {operation} in OfferAndSupplementGroup");
+        }
+    }
+
+    private async Task HandleOfferAndSupplementGroupOfferAndSupplementEventAsync(ConofcomLine offerAndSupplementGroupOfferAndSupplement, string operation) {
+        switch (operation) {
+            case nameof(OperationType.Create):
+                await createOfferAndSupplementGroupOfferAndSupplement.Execute(offerAndSupplementGroupOfferAndSupplement);
+                break;
+            case nameof(OperationType.Delete):
+                await deleteOfferAndSupplementGroupOfferAndSupplement.Execute(offerAndSupplementGroupOfferAndSupplement);
+                break;
+            default:
+                throw new InvalidOperationException($"Unsupported operation: {operation} in OfferAndSupplementGroupOfferAndSupplement");
+        }
+    }
+
+    private async Task HandlePeriodPricingEventAsync(Conpreci periodPricing, string operation) {
+        switch (operation) {
+            case nameof(OperationType.Create):
+                await createPeriodPricing.Execute(periodPricing);
+                break;
+            case nameof(OperationType.Update):
+                await updatePeriodPricing.Execute(periodPricing);
+                break;
+            default:
+                throw new InvalidOperationException($"Unsupported operation: {operation} in PeriodPricing");
+        }
+    }
+
+    private async Task HandlePeriodPricingPaxEventAsync(Condtos periodPricingPax, string operation) {
+        switch (operation) {
+            case nameof(OperationType.Create):
+                await createPeriodPricingPax.Execute(periodPricingPax);
+                break;
+            case nameof(OperationType.Update):
+                await updatePeriodPricingPax.Execute(periodPricingPax);
+                break;
+            case nameof(OperationType.Delete):
+                await deletePeriodPricingPax.Execute(periodPricingPax.Code);
+                break;
+            default:
+                throw new InvalidOperationException($"Unsupported operation: {operation} in PeriodPricingPax");
+        }
+    }
+
+    private async Task HandleRegimenEventAsync(Restregi regimen, string operation) {
+        switch (operation) {
+            case nameof(OperationType.Create):
+                await createRegimen.Execute(regimen);
+                break;
+            case nameof(OperationType.Update):
+                await updateRegimen.Execute(regimen);
+                break;
+            default:
+                throw new InvalidOperationException($"Unsupported operation: {operation} in Regimen");
         }
     }
 }

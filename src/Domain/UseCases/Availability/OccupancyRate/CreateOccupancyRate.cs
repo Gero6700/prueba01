@@ -1,7 +1,5 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
-
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.OccupancyRate;
-public class CreateOccupancyRate {
+public class CreateOccupancyRate : ICreateOccupancyRate {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
     public CreateOccupancyRate(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {

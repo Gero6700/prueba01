@@ -1,7 +1,5 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
-
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.OfferAndSupplement;
-public class UpdateOfferAndSupplement {
+public class UpdateOfferAndSupplement :IUpdateOfferAndSupplement {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
     public UpdateOfferAndSupplement(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {

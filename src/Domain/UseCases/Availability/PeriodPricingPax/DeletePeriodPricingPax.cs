@@ -1,5 +1,5 @@
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.PeriodPricingPax;
-public class DeletePeriodPricingPax {
+public class DeletePeriodPricingPax : IDeletePeriodPricingPax {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
     public DeletePeriodPricingPax(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {

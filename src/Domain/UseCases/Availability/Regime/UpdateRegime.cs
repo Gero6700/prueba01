@@ -1,7 +1,5 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
-
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.Regime;
-public class UpdateRegime {
+public class UpdateRegime : IUpdateRegimen {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
     public UpdateRegime(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {

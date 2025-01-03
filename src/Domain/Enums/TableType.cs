@@ -9,6 +9,14 @@ public enum TableType {
     HotelRoomConfiguration,
     Inventory,
     Market,
-    MinimunStay,
-    Regime
+    MinimumStay,
+    Regime,
+    OccupancyRate,
+    OfferAndSupplement,
+    OfferAndSupplementConfigurationPax,
+    OfferAndSupplementGroup,
+    OfferAndSupplementGroupOfferAndSupplement,
+    PeriodPricing,
+    PeriodPricingPax,
+    Regimen
 }

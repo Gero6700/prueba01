@@ -1,8 +1,5 @@
-using CommunityToolkit.Diagnostics;
-using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
-
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.PeriodPricingPax;
-public class UpdatePeriodPricingPax {
+public class UpdatePeriodPricingPax : IUpdatePeriodPricingPax {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
     public UpdatePeriodPricingPax(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {

@@ -1,7 +1,5 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
-
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.PeriodPricing;
-public class UpdatePeriodPricing {
+public class UpdatePeriodPricing : IUpdatePeriodPricing {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
     public UpdatePeriodPricing(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {

@@ -1,8 +1,5 @@
-using System.Runtime.CompilerServices;
-using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
-
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.PeriodPricingPax;
-public class CreatePeriodPricingPax {
+public class CreatePeriodPricingPax : ICreatePeriodPricingPax {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
     public CreatePeriodPricingPax(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {

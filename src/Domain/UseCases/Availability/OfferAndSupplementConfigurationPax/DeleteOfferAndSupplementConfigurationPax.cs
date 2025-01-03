@@ -1,6 +1,6 @@
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.OfferAndSupplementConfigurationPax;
 
-public class DeleteOfferAndSupplementConfigurationPax {
+public class DeleteOfferAndSupplementConfigurationPax : IDeleteOfferAndSupplementConfigurationPax {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
     public DeleteOfferAndSupplementConfigurationPax(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {

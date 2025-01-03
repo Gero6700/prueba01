@@ -1,7 +1,5 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
-
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.Regime;
-public class CreateRegime {
+public class CreateRegime : ICreateRegimen {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
     public CreateRegime(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {

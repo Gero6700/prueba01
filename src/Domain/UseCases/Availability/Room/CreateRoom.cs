@@ -1,7 +1,5 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
-
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.Room;
-public class CreateRoom {
+public class CreateRoom : ICreateRoom {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
 
     public CreateRoom(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {

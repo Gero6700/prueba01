@@ -17,7 +17,15 @@ public class AvailSubscriptionPullService(
         {nameof(TableType.HotelRoomConfiguration), typeof(Resthaho)},
         {nameof(TableType.Inventory), typeof(Resplaht)},
         {nameof(TableType.Market), typeof(Merca)},
-        {nameof(TableType.MinimunStay), typeof(Conestmi)},
+        {nameof(TableType.MinimumStay), typeof(Conestmi)},
+        {nameof(TableType.OccupancyRate), typeof(Resthaco)},
+        {nameof(TableType.OfferAndSupplement), typeof(Conofege)},
+        {nameof(TableType.OfferAndSupplementConfigurationPax), typeof(Condtof)},
+        {nameof(TableType.OfferAndSupplementGroup), typeof(ConofcomHeader)},
+        {nameof(TableType.OfferAndSupplementGroupOfferAndSupplement), typeof(ConofcomLine)},
+        {nameof(TableType.PeriodPricing), typeof(Conpreci)},
+        {nameof(TableType.PeriodPricingPax), typeof(Condtos)},
+        {nameof(TableType.Regimen), typeof(Restregi)}
     };
 
     public Task StartAsync(CancellationToken cancellationToken) {
