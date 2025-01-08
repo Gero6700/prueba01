@@ -6,7 +6,7 @@ public class UpdateOccupancyRate :IUpdateOccupancyRate {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(Resthaco resthaco) {
+    public async Task<HttpResponseMessage> Execute(Resthaco resthaco) {
         if (string.IsNullOrWhiteSpace(resthaco.Cocod)) {
             throw new ArgumentException("Code is required");
         }
@@ -26,6 +26,6 @@ public class UpdateOccupancyRate :IUpdateOccupancyRate {
             throw new ArgumentException("Max score is less than min score");
         }
         var occuppancyRate = resthaco.ToOccupancyRate();
-        await availabilitySynchronizerApiClient.UpdateOccupancyRate(occuppancyRate);
+        return await availabilitySynchronizerApiClient.UpdateOccupancyRate(occuppancyRate);
     }
 }

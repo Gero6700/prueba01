@@ -6,8 +6,8 @@ public class PushStaticExtrasTranslations {
         this.staticSynchronizerApiClient = staticSynchronizerApiClient;
     }
 
-    public async Task Execute(List<Desextr> desextrs) {
+    public async Task<HttpResponseMessage> Execute(List<Desextr> desextrs) {
         var extrasTranslations = desextrs.Select(x => x.ToExtraTranslation()).ToList();
-        await staticSynchronizerApiClient.PushExtrasTranslations(extrasTranslations);
+        return await staticSynchronizerApiClient.PushExtrasTranslations(extrasTranslations);
     }
 }

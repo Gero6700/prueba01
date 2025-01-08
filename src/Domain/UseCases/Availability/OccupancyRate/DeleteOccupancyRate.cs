@@ -6,10 +6,10 @@ public class DeleteOccupancyRate :IDeleteOccupancyRate {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(string cocod) {
+    public async Task<HttpResponseMessage> Execute(string cocod) {
         if (string.IsNullOrWhiteSpace(cocod)) {
             throw new ArgumentException("Code is required");
         }
-        await availabilitySynchronizerApiClient.DeleteOccupancyRate(cocod);
+        return await availabilitySynchronizerApiClient.DeleteOccupancyRate(cocod);
     }
 }

@@ -6,8 +6,8 @@ public class PushStaticHotel {
         this.staticSynchronizerApiClient = staticSynchronizerApiClient;
     }
 
-    public async Task Execute(EstHotel estHotel) {
+    public async Task<HttpResponseMessage> Execute(EstHotel estHotel) {
         var hotel = estHotel.ToHotel();
-        await staticSynchronizerApiClient.PushHotel(hotel);
+        return await staticSynchronizerApiClient.PushHotel(hotel);
     }
 }

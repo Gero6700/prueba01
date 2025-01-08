@@ -6,8 +6,8 @@ public class PushStaticPaymentTypes {
         this.staticSynchronizerApiClient = staticSynchronizerApiClient;
     }
 
-    public async Task Execute(List<Forpago> forpagos) {
+    public async Task<HttpResponseMessage> Execute(List<Forpago> forpagos) {
         var paymentTypes = forpagos.Select(x => x.ToPaymentType()).ToList();
-        await staticSynchronizerApiClient.PushPaymentTypes(paymentTypes);
+        return await staticSynchronizerApiClient.PushPaymentTypes(paymentTypes);
     }
 }

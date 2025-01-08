@@ -6,7 +6,7 @@ public class UpdateOfferAndSupplement :IUpdateOfferAndSupplement {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public Task Execute(Conofege conofege) {
+    public Task<HttpResponseMessage> Execute(Conofege conofege) {
         if (DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Offec) == DateTime.MinValue) {
             throw new ArgumentException("Invalid apply from date");
         }

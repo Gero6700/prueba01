@@ -6,7 +6,7 @@ public class CreateMarket :ICreateMarket {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public Task Execute(Merca merca) {
+    public Task<HttpResponseMessage> Execute(Merca merca) {
         if (merca.Cod == "") {
             throw new ArgumentException("Incorrect market code");
         }

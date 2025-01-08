@@ -6,11 +6,11 @@ public class UpdateRegime : IUpdateRegimen {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(Restregi restregi) {
+    public async Task<HttpResponseMessage> Execute(Restregi restregi) {
         if (restregi.Mrhab == "") {
             throw new ArgumentException("Incorrect regime code");
         }
         var regime = restregi.ToRegime();
-        await availabilitySynchronizerApiClient.UpdateRegime(regime);
+        return await availabilitySynchronizerApiClient.UpdateRegime(regime);
     }
 }

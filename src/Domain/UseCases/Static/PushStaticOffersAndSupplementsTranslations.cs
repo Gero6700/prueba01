@@ -6,8 +6,8 @@ public class PushStaticOffersAndSupplementsTranslations {
         this.staticSynchronizerApiClient = staticSynchronizerApiClient;
     }
 
-    public async Task Execute(List<Desofer> desofers) {
+    public async Task<HttpResponseMessage> Execute(List<Desofer> desofers) {
         var offersAndSupplementsTranslations = desofers.Select(desofer => desofer.ToOfferAndSupplementTranslation()).ToList();
-        await staticSynchronizerApiClient.PushOffersAndSupplementsTranslations(offersAndSupplementsTranslations);
+        return await staticSynchronizerApiClient.PushOffersAndSupplementsTranslations(offersAndSupplementsTranslations);
     }
 }

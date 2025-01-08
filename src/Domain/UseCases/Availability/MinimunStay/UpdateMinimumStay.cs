@@ -6,7 +6,7 @@ public class UpdateMinimumStay : IUpdateMinimumStay {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(Conestmi conestmi) {
+    public async Task<HttpResponseMessage> Execute(Conestmi conestmi) {
         if (DateTimeHelper.ConvertYYYYMMDDToDatetime(conestmi.C7fec1) == DateTime.MinValue) {
             throw new ArgumentException("Invalid start date");
         }
@@ -24,6 +24,6 @@ public class UpdateMinimumStay : IUpdateMinimumStay {
         }
 
         var minimumStay = conestmi.toMinimumStay();
-        await availabilitySynchronizerApiClient.UpdateMinimumStay(minimumStay);
+        return await availabilitySynchronizerApiClient.UpdateMinimumStay(minimumStay);
     }
 }

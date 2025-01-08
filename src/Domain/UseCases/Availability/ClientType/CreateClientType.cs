@@ -5,8 +5,8 @@ public class CreateClientType : ICreateClientType {
     public CreateClientType(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
-    public async Task Execute(Restagen restagen) {
+    public async Task<HttpResponseMessage> Execute(Restagen restagen) {
         var clientType = restagen.ToClientType();
-        await availabilitySynchronizerApiClient.CreateClientType(clientType);
+        return await availabilitySynchronizerApiClient.CreateClientType(clientType);
     }
 }

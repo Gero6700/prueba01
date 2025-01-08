@@ -7,12 +7,12 @@ public class UpdateMarket :IUpdateMarket {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(Merca merca) {
+    public async Task<HttpResponseMessage> Execute(Merca merca) {
         if (merca.Cod == "") {
             throw new ArgumentException("Incorrect market code");
         }
         var market = merca.ToMarket();
-        await availabilitySynchronizerApiClient.UpdateMarket(market);
+        return await availabilitySynchronizerApiClient.UpdateMarket(market);
     }
 
 }

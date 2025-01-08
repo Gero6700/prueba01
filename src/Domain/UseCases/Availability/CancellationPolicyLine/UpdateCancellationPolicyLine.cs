@@ -6,7 +6,7 @@ public class UpdateCancellationPolicyLine : IUpdateCancellationPolicyLine {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(Congasan congasan) {
+    public async Task<HttpResponseMessage> Execute(Congasan congasan) {
         if (DateTimeHelper.ConvertYYYYMMDDToDatetime(congasan.C6fec1) == DateTime.MinValue) {
             throw new ArgumentException("Invalid from date");
         }
@@ -18,6 +18,6 @@ public class UpdateCancellationPolicyLine : IUpdateCancellationPolicyLine {
         }
         var cancellationPolicyLine = congasan.ToCancellationPolicyLine();
 
-        await availabilitySynchronizerApiClient.UpdateCancellationPolicyLine(cancellationPolicyLine);
+        return await availabilitySynchronizerApiClient.UpdateCancellationPolicyLine(cancellationPolicyLine);
     }
 }

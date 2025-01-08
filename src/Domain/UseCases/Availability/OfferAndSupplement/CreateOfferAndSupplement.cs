@@ -6,7 +6,7 @@ public class CreateOfferAndSupplement :ICreateOfferAndSupplement {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(Conofege conofege) {
+    public async Task<HttpResponseMessage> Execute(Conofege conofege) {
         if (DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Offec) == DateTime.MinValue) {
             throw new ArgumentException("Invalid apply from date");
         }
@@ -39,6 +39,6 @@ public class CreateOfferAndSupplement :ICreateOfferAndSupplement {
         }
 
         var offerAndSupplement = conofege.ToOfferAndSupplement();
-        await availabilitySynchronizerApiClient.CreateOfferAndSupplement(offerAndSupplement);
+        return await availabilitySynchronizerApiClient.CreateOfferAndSupplement(offerAndSupplement);
     }
 }

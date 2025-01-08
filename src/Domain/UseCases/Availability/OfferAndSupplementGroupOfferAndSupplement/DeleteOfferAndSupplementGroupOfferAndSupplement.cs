@@ -6,7 +6,7 @@ public class DeleteOfferAndSupplementGroupOfferAndSupplement : IDeleteOfferAndSu
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(ConofcomLine conofcomLine) {
+    public async Task<HttpResponseMessage> Execute(ConofcomLine conofcomLine) {
         if (conofcomLine.Occin == 0) {
             throw new ArgumentException("Group code is zero");
         }
@@ -15,6 +15,6 @@ public class DeleteOfferAndSupplementGroupOfferAndSupplement : IDeleteOfferAndSu
         }
 
         var offerAndSupplementGroupOfferAndSupplement = conofcomLine.ToOfferAndSupplementGroupOfferAndSupplement();
-        await availabilitySynchronizerApiClient.DeleteOfferAndSupplementGroupOfferAndSupplement(offerAndSupplementGroupOfferAndSupplement);
+        return await availabilitySynchronizerApiClient.DeleteOfferAndSupplementGroupOfferAndSupplement(offerAndSupplementGroupOfferAndSupplement);
     }
 }

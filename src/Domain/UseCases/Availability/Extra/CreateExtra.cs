@@ -6,7 +6,7 @@ public class CreateExtra : ICreateExtra {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(Conextra conextra) {
+    public async Task<HttpResponseMessage> Execute(Conextra conextra) {
         if (conextra.C5fred >0 && DateTimeHelper.ConvertYYYYMMDDToDatetime(conextra.C5fred) == DateTime.MinValue) {
             throw new ArgumentException("Invalid apply from date");
         }
@@ -33,7 +33,7 @@ public class CreateExtra : ICreateExtra {
         }
 
         var extra = conextra.ToExtra();
-        await availabilitySynchronizerApiClient.CreateExtra(extra);
+        return await availabilitySynchronizerApiClient.CreateExtra(extra);
     }
 
 }

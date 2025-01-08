@@ -89,9 +89,9 @@ builder.Services.AddSingleton<ICreateOfferAndSupplementConfigurationPax, CreateO
 builder.Services.AddSingleton<IUpdateOfferAndSupplementConfigurationPax, UpdateOfferAndSupplementConfigurationPax>();
 builder.Services.AddSingleton<IDeleteOfferAndSupplementConfigurationPax, DeleteOfferAndSupplementConfigurationPax>();
 
-builder.Services.AddSingleton<ICreateOfferAndSupplementGroup, ICreateOfferAndSupplementGroup>();
-builder.Services.AddSingleton<IUpdateOfferAndSupplementGroup, IUpdateOfferAndSupplementGroup>();
-builder.Services.AddSingleton<IDeleteOfferAndSupplementGroup, IDeleteOfferAndSupplementGroup>();
+builder.Services.AddSingleton<ICreateOfferAndSupplementGroup, CreateOfferAndSupplementGroup>();
+builder.Services.AddSingleton<IUpdateOfferAndSupplementGroup, UpdateOfferAndSupplementGroup>();
+builder.Services.AddSingleton<IDeleteOfferAndSupplementGroup, DeleteOfferAndSupplementGroup>();
 
 builder.Services.AddSingleton<ICreateOfferAndSupplementGroupOfferAndSupplement, CreateOfferAndSupplementGroupOfferAndSupplement>();
 builder.Services.AddSingleton<IDeleteOfferAndSupplementGroupOfferAndSupplement, DeleteOfferAndSupplementGroupOfferAndSupplement>();

@@ -6,7 +6,7 @@ public class UpdateHotelRoomConfiguration :IUpdateHotelRoomConfiguration {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(Resthaho resthaho) {
+    public async Task<HttpResponseMessage> Execute(Resthaho resthaho) {
         if (resthaho.Tihote == 0) {
             throw new ArgumentException("Incorrect hotel code");
         }
@@ -21,6 +21,6 @@ public class UpdateHotelRoomConfiguration :IUpdateHotelRoomConfiguration {
         }
 
         var hotelRoomConfiguration = resthaho.ToHotelRoomConfiguration();
-        await availabilitySynchronizerApiClient.UpdateHotelRoomConfiguration(hotelRoomConfiguration);
+        return await availabilitySynchronizerApiClient.UpdateHotelRoomConfiguration(hotelRoomConfiguration);
     }
 }

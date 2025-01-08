@@ -6,7 +6,7 @@ public class CreatePeriodPricingPax : ICreatePeriodPricingPax {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(Condtos condtos) {
+    public async Task<HttpResponseMessage> Execute(Condtos condtos) {
         if (string.IsNullOrEmpty(condtos.Code)) {
             throw new ArgumentException("Code is required");
         }
@@ -32,6 +32,6 @@ public class CreatePeriodPricingPax : ICreatePeriodPricingPax {
             throw new ArgumentException("Age to is less than age from");
         }
         var periodPricingPax = condtos.ToPeriodPricingPax();
-        await availabilitySynchronizerApiClient.CreatePeriodPricingPax(periodPricingPax);
+        return await availabilitySynchronizerApiClient.CreatePeriodPricingPax(periodPricingPax);
     }
 }

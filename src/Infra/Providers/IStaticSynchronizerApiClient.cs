@@ -1,11 +1,11 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Providers;
 public interface IStaticSynchronizerApiClient {
-    Task<Response> PushHotel(Dtos.BookingCenter.Static.Hotel hotel);
-    Task<Response> PushServiceCategories(List<ServiceCategory> serviceCategories);
-    Task<Response> PushServices(List<Service> services);
-    Task<Response> PushOffersAndSupplementsTranslations(List<OfferAndSupplementTranslation> offerAndSupplementTranslations);
-    Task<Response> PushExtrasTranslations(List<ExtraTranslation> extraTranslations);
-    Task<Response> PushPaymentTypes(List<PaymentType> paymentTypes);
-    Task<Response> PushRegimes(List<Dtos.BookingCenter.Static.Regime> regimes);
-    Task<Response> PushTaxes(List<Tax> taxes);
+    Task<HttpResponseMessage> PushHotel(Dtos.BookingCenter.Static.Hotel hotel);
+    Task<HttpResponseMessage> PushServiceCategories(List<ServiceCategory> serviceCategories);
+    Task<HttpResponseMessage> PushServices(List<Service> services);
+    Task<HttpResponseMessage> PushOffersAndSupplementsTranslations(List<OfferAndSupplementTranslation> offerAndSupplementTranslations);
+    Task<HttpResponseMessage> PushExtrasTranslations(List<ExtraTranslation> extraTranslations);
+    Task<HttpResponseMessage> PushPaymentTypes(List<PaymentType> paymentTypes);
+    Task<HttpResponseMessage> PushRegimes(List<Dtos.BookingCenter.Static.Regime> regimes);
+    Task<HttpResponseMessage> PushTaxes(List<Tax> taxes);
 }

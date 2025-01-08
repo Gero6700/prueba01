@@ -8,7 +8,7 @@ public class DeleteHotel {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public Task Execute(Reshotel reshotel) {
+    public Task<HttpResponseMessage> Execute(Reshotel reshotel) {
         var hotel = reshotel.ToHotel();
         return availabilitySynchronizerApiClient.DeleteHotel(hotel.Code);
     }

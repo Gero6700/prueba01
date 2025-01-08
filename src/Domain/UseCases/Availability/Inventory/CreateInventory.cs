@@ -6,7 +6,7 @@ public class CreateInventory : ICreateInventory {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(Resplaht resplaht) {
+    public async Task<HttpResponseMessage> Execute(Resplaht resplaht) {
         if (DateTimeHelper.ConvertYYYYMMDDToDatetime(resplaht.Ptfec) == DateTime.MinValue) {
             throw new ArgumentException("Invalid date");
         }
@@ -17,7 +17,7 @@ public class CreateInventory : ICreateInventory {
             throw new ArgumentException("Incorrect room code");
         }
         var inventory = resplaht.ToInventory();
-        await availabilitySynchronizerApiClient.CreateInventory(inventory);
+        return await availabilitySynchronizerApiClient.CreateInventory(inventory);
     }
 }
 

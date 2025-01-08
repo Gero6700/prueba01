@@ -9,7 +9,7 @@ public class UpdateMarkup {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(Mkupcabe mkupcabe) {
+    public async Task<HttpResponseMessage> Execute(Mkupcabe mkupcabe) {
         if (mkupcabe.Mkcbwd == DateTime.MinValue) {
             throw new ArgumentException("Booking window from is required");
         }
@@ -38,7 +38,7 @@ public class UpdateMarkup {
             throw new ArgumentException("Incorrect amount");
         }
         var markup = mkupcabe.ToMarkup();
-        await availabilitySynchronizerApiClient.UpdateMarkup(markup);
+        return await availabilitySynchronizerApiClient.UpdateMarkup(markup);
     }
 
 }

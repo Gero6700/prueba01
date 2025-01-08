@@ -6,13 +6,13 @@ public class UpdateOfferAndSupplementGroup : IUpdateOfferAndSupplementGroup {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(ConofcomHeader conofcomHeader) {
+    public async Task<HttpResponseMessage> Execute(ConofcomHeader conofcomHeader) {
         if (conofcomHeader.Ocfec1 != 0 && conofcomHeader.Ocfec2 != 0 && DateTimeHelper.ConvertYYYYMMDDToDatetime(conofcomHeader.Ocfec2) < DateTimeHelper.ConvertYYYYMMDDToDatetime(conofcomHeader.Ocfec1)) {
             throw new ArgumentException("Apply to date is less than apply from date");
         }
 
         var offerAndSupplementGroup = conofcomHeader.ToOfferAndSupplementGroup();
 
-        await availabilitySynchronizerApiClient.UpdateOfferAndSupplementGroup(offerAndSupplementGroup);
+        return await availabilitySynchronizerApiClient.UpdateOfferAndSupplementGroup(offerAndSupplementGroup);
     }
 }

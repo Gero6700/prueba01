@@ -7,7 +7,7 @@ public class UpdateHotel : IUpdateHotel {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public Task Execute(Reshotel reshotel) {
+    public Task<HttpResponseMessage> Execute(Reshotel reshotel) {
         if (string.IsNullOrWhiteSpace(reshotel.Hotcod)) {
             throw new ArgumentException("Invalid hotel code");
         }

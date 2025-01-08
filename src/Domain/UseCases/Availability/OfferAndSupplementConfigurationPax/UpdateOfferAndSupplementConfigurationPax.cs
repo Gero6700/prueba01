@@ -6,7 +6,7 @@ public class UpdateOfferAndSupplementConfigurationPax : IUpdateOfferAndSupplemen
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(Condtof condtof) {
+    public async Task<HttpResponseMessage> Execute(Condtof condtof) {
         if (condtof.Code == "") {
             throw new ArgumentException("Code is required");
         }
@@ -27,6 +27,6 @@ public class UpdateOfferAndSupplementConfigurationPax : IUpdateOfferAndSupplemen
         }
 
         var offerAndSupplementConfigurationPax = condtof.ToOfferAndSupplementConfigurationPax();
-        await availabilitySynchronizerApiClient.UpdateOfferAndSupplementConfigurationPax(offerAndSupplementConfigurationPax);
+        return await availabilitySynchronizerApiClient.UpdateOfferAndSupplementConfigurationPax(offerAndSupplementConfigurationPax);
     }
 }

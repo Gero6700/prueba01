@@ -6,8 +6,8 @@ public class PushStaticServiceCategories {
         this.staticSynchronizerApiClient = staticSynchronizerApiClient;
     }
 
-    public async Task Execute(List<EstServicioCategoria> estServicioCategorias) {
+    public async Task<HttpResponseMessage> Execute(List<EstServicioCategoria> estServicioCategorias) {
         var serviceCategories = estServicioCategorias.Select(estServicioCategoria => estServicioCategoria.ToServiceCategory()).ToList();
-        await staticSynchronizerApiClient.PushServiceCategories(serviceCategories);
+        return await staticSynchronizerApiClient.PushServiceCategories(serviceCategories);
     }
 }

@@ -5,9 +5,9 @@ public class DeleteMarket :IDeleteMarket {
     public DeleteMarket(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
-    public async Task Execute(Merca merca) {
+    public async Task<HttpResponseMessage> Execute(Merca merca) {
         var market = merca.ToMarket();
-        await availabilitySynchronizerApiClient.DeleteMarket(market.Code);
+        return await availabilitySynchronizerApiClient.DeleteMarket(market.Code);
     }
 
 }

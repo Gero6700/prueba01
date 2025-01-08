@@ -6,8 +6,8 @@ public class DeleteRoom : IDeleteRoom {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(Resthabi resthabi) {
+    public async Task<HttpResponseMessage> Execute(Resthabi resthabi) {
         var room = resthabi.ToRoom();
-        await availabilitySynchronizerApiClient.DeleteRoom(room.Code);
+        return await availabilitySynchronizerApiClient.DeleteRoom(room.Code);
     }
 }

@@ -9,12 +9,12 @@ public class CreateHotel : ICreateHotel {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(Reshotel reshotel) {
+    public async Task<HttpResponseMessage> Execute(Reshotel reshotel) {
         if (string.IsNullOrWhiteSpace(reshotel.Hotcod)) {
             throw new ArgumentException("Invalid hotel code");
         }
         var hotel = reshotel.ToHotel();
-        await availabilitySynchronizerApiClient.CreateHotel(hotel);
+        return await availabilitySynchronizerApiClient.CreateHotel(hotel);
     }
 }
 

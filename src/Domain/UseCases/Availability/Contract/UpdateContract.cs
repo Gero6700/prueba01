@@ -7,7 +7,7 @@ public class UpdateContract : IUpdateContract {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(Concabec concabec) {
+    public async Task<HttpResponseMessage> Execute(Concabec concabec) {
         if (DateTimeHelper.ConvertYYYYMMDDToDatetime(concabec.Cofec1) == DateTime.MinValue) {
             throw new ArgumentException("Invalid start date");
         }
@@ -41,7 +41,11 @@ public class UpdateContract : IUpdateContract {
 
         var contract = concabec.ToContract();
         var contractClient = concabec.ToContractClient();
-        await availabilitySynchronizerApiClient.UpdateContract(contract);
-        await availabilitySynchronizerApiClient.UpdateContractClient(contractClient);
+        var responseContract = await availabilitySynchronizerApiClient.UpdateContract(contract);
+        var responseContractClient = await availabilitySynchronizerApiClient.UpdateContractClient(contractClient);
+
+        return responseContract.IsSuccessStatusCode
+            ? responseContractClient
+            : responseContract;
     }
 }

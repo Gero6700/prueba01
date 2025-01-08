@@ -6,13 +6,13 @@ public class CreateClient : ICreateClient {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(Usureg usureg) {
+    public async Task<HttpResponseMessage> Execute(Usureg usureg) {
         if (usureg.IdUsuario == 0) {
             throw new ArgumentException("Incorrect user code");
         }
 
         var client = usureg.ToClient();
-        await availabilitySynchronizerApiClient.CreateClient(client);
+        return await availabilitySynchronizerApiClient.CreateClient(client);
     }
 }
 

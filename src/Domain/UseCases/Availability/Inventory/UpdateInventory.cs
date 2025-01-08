@@ -7,7 +7,7 @@ public class UpdateInventory :IUpdateInventory {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(Resplaht resplaht) {
+    public async Task<HttpResponseMessage> Execute(Resplaht resplaht) {
         if (DateTimeHelper.ConvertYYYYMMDDToDatetime(resplaht.Ptfec) == DateTime.MinValue) {
             throw new ArgumentException("Invalid date");
         }
@@ -18,6 +18,6 @@ public class UpdateInventory :IUpdateInventory {
             throw new ArgumentException("Incorrect room code");
         }
         var inventory = resplaht.ToInventory();
-        await availabilitySynchronizerApiClient.UpdateInventory(inventory);
+        return await availabilitySynchronizerApiClient.UpdateInventory(inventory);
     }
 }

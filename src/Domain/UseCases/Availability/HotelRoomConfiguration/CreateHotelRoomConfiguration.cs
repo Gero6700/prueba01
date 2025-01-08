@@ -6,7 +6,7 @@ public class CreateHotelRoomConfiguration :ICreateHotelRoomConfiguration {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(Resthaho resthaho) {
+    public async Task<HttpResponseMessage> Execute(Resthaho resthaho) {
         if (resthaho.Tihote == 0) {
             throw new ArgumentException("Incorrect hotel code");
         }
@@ -20,6 +20,6 @@ public class CreateHotelRoomConfiguration :ICreateHotelRoomConfiguration {
             throw new ArgumentException("Incorrect occupancy rate code");
         }
         var hotelRoomConfiguration = resthaho.ToHotelRoomConfiguration();
-        await availabilitySynchronizerApiClient.CreateHotelRoomConfiguration(hotelRoomConfiguration);
+        return await availabilitySynchronizerApiClient.CreateHotelRoomConfiguration(hotelRoomConfiguration);
     }
 }

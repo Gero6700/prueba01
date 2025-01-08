@@ -1,4 +1,4 @@
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.Hotel;
 public interface ICreateHotel {
-    Task Execute(Reshotel reshotel);
+    Task<HttpResponseMessage> Execute(Reshotel reshotel);
 }

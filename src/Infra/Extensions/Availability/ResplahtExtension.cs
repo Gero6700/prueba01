@@ -1,5 +1,3 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter.Availability;
-
 namespace Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
 
 public static class ResplahtExtension {
@@ -7,6 +5,7 @@ public static class ResplahtExtension {
         return new Inventory {
             InventoryDate = DateTimeHelper.ConvertYYYYMMDDToDatetime(resplaht.Ptfec),
             RoomQuantity = resplaht.GetRoomQuantity,
+            OccupiedRooms = resplaht.GetOccupiedRooms,
             HotelCode = resplaht.Pthot.ToString(),
             RoomCode = resplaht.Pthab
         };

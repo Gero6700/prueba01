@@ -8,8 +8,8 @@ public class CreateMarkupHotel {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(Mkuphote mkuphote) {
+    public async Task<HttpResponseMessage> Execute(Mkuphote mkuphote) {
         var markupHotel = mkuphote.ToMarkupHotel();
-        await availabilitySynchronizerApiClient.CreateMarkupHotel(markupHotel);
+        return await availabilitySynchronizerApiClient.CreateMarkupHotel(markupHotel);
     }
 }

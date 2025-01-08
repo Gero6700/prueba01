@@ -6,13 +6,13 @@ public class UpdateClient : IUpdateClient {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(Usureg usureg) {
+    public async Task<HttpResponseMessage> Execute(Usureg usureg) {
         if (usureg.IdUsuario == 0) {
             throw new ArgumentException("Incorrect user code");
         }
 
         var client = usureg.ToClient();
-        await availabilitySynchronizerApiClient.UpdateClient(client);
+        return await availabilitySynchronizerApiClient.UpdateClient(client);
     }
 }
 

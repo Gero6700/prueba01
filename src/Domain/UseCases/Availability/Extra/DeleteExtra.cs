@@ -5,7 +5,7 @@ public class DeleteExtra :IDeleteExtra {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public Task Execute(Conextra conextra) {
+    public Task<HttpResponseMessage> Execute(Conextra conextra) {
         var extra = conextra.ToExtra();
         return availabilitySynchronizerApiClient.DeleteExtra(extra.Code);
     }

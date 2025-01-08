@@ -7,7 +7,7 @@ public class DeleteHotelRoomConfiguration :IDeleteHotelRoomConfiguration {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public Task Execute(Resthaho resthaho) {
+    public Task<HttpResponseMessage> Execute(Resthaho resthaho) {
         var hotelRoomConfiguration = resthaho.ToHotelRoomConfiguration();
         return availabilitySynchronizerApiClient.DeleteHotelRoomConfiguration(hotelRoomConfiguration);
     }

@@ -1,5 +1,3 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
-
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.Contract;
 
 public class CreateContract : ICreateContract {
@@ -9,7 +7,7 @@ public class CreateContract : ICreateContract {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(Concabec concabec) {
+    public async Task<HttpResponseMessage> Execute(Concabec concabec) {
         if (DateTimeHelper.ConvertYYYYMMDDToDatetime(concabec.Cofec1) == DateTime.MinValue) {
             throw new ArgumentException("Invalid start date");
         }
@@ -43,7 +41,11 @@ public class CreateContract : ICreateContract {
 
         var contract = concabec.ToContract();
         var contractClient = concabec.ToContractClient();
-        await availabilitySynchronizerApiClient.CreateContract(contract);
-        await availabilitySynchronizerApiClient.CreateContractClient(contractClient);
+        var responseContract = await availabilitySynchronizerApiClient.CreateContract(contract);
+        var responseContractClient = await availabilitySynchronizerApiClient.CreateContractClient(contractClient);
+        
+        return responseContract.IsSuccessStatusCode
+            ? responseContractClient
+            : responseContract;
     }
 }

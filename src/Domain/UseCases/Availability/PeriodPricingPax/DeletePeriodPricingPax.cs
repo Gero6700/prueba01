@@ -6,10 +6,10 @@ public class DeletePeriodPricingPax : IDeletePeriodPricingPax {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(string Code) {
+    public async Task<HttpResponseMessage> Execute(string Code) {
         if (string.IsNullOrEmpty(Code)) {
             throw new ArgumentException("Code is required");
         }
-        await availabilitySynchronizerApiClient.DeletePeriodPricingPax(Code);
+        return await availabilitySynchronizerApiClient.DeletePeriodPricingPax(Code);
     }
 }

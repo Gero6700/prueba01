@@ -1,15 +1,3 @@
-using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Inventory;
-using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Market;
-using Senator.As400.Cloud.Sync.Application.UseCases.Availability.MinimunStay;
-using Senator.As400.Cloud.Sync.Application.UseCases.Availability.OccupancyRate;
-using Senator.As400.Cloud.Sync.Application.UseCases.Availability.OfferAndSupplement;
-using Senator.As400.Cloud.Sync.Application.UseCases.Availability.OfferAndSupplementConfigurationPax;
-using Senator.As400.Cloud.Sync.Application.UseCases.Availability.OfferAndSupplementGroup;
-using Senator.As400.Cloud.Sync.Application.UseCases.Availability.OfferAndSupplementGroupOfferAndSupplement;
-using Senator.As400.Cloud.Sync.Application.UseCases.Availability.PeriodPricing;
-using Senator.As400.Cloud.Sync.Application.UseCases.Availability.PeriodPricingPax;
-using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Regime;
-
 namespace Senator.As400.Cloud.Sync.Application.Handlers;
 public class GenericEventHandler(
     ICreateCancellationPolicyLine createCancellationPolicyLine,
@@ -107,349 +95,218 @@ public class GenericEventHandler(
     private readonly ICreateRegimen createRegimen = createRegimen;
     private readonly IUpdateRegimen updateRegimen = updateRegimen;
 
-    public async Task HandleAsync(GenericNotificationEvent @event) {
+    public async Task<HttpResponseMessage> HandleAsync(GenericNotificationEvent @event) {
         switch (@event.Table) {
             case nameof(TableType.CancellationPolicyLine):
                 var cancellationPolicyLine = (Congasan)@event.Entity;
-                await HandleCancellationPolicyLineEventAsync(cancellationPolicyLine, @event.Operation);
-                break;
+                return await HandleCancellationPolicyLineEventAsync(cancellationPolicyLine, @event.Operation);
             case nameof(TableType.Client):
                 var client = (Usureg)@event.Entity;
-                await HandleClientEventAsync(client, @event.Operation);
-                break;
+                return await HandleClientEventAsync(client, @event.Operation);
             case nameof(TableType.ClientType):
                 var clientType = (Restagen)@event.Entity;
-                await HandleClientTypeEventAsync(clientType, @event.Operation);
-                break;
+                return await HandleClientTypeEventAsync(clientType, @event.Operation);
             case nameof(TableType.Contract):
                 var contract = (Concabec)@event.Entity;
-                await HandleContractEventAsync(contract, @event.Operation);
-                break;
+                return await HandleContractEventAsync(contract, @event.Operation);
             case nameof(TableType.Extra):
                 var extra = (Conextra)@event.Entity;
-                await HandleExtraEventAsync(extra, @event.Operation);
-                break;
+                return await HandleExtraEventAsync(extra, @event.Operation);
             case nameof(TableType.Hotel):
                 var hotel = (Reshotel)@event.Entity;
-                await HandleHotelEventAsync(hotel, @event.Operation);
-                break;
+                return await HandleHotelEventAsync(hotel, @event.Operation);
             case nameof(TableType.HotelRoomConfiguration):
                 var hotelRoomConfiguration = (Resthaho)@event.Entity;
-                await HandleHotelRoomConfigurationEventAsync(hotelRoomConfiguration, @event.Operation);
-                break;
+                return await HandleHotelRoomConfigurationEventAsync(hotelRoomConfiguration, @event.Operation);
             case nameof(TableType.Inventory):
                 var inventory = (Resplaht)@event.Entity;
-                await HandleInventoryEventAsync(inventory, @event.Operation);
-                break;
+                return await HandleInventoryEventAsync(inventory, @event.Operation);
             case nameof(TableType.Market):
                 var market = (Merca)@event.Entity;
-                await HandleMarketEventAsync(market, @event.Operation);
-                break;
+                return await HandleMarketEventAsync(market, @event.Operation);
             case nameof(TableType.MinimumStay):
                 var minimumStay = (Conestmi)@event.Entity;
-                await HandleMinimumStayEventAsync(minimumStay, @event.Operation);
-                break;
+                return await HandleMinimumStayEventAsync(minimumStay, @event.Operation);
             case nameof(TableType.OccupancyRate):
                 var occupancyRate = (Resthaco)@event.Entity;
-                await HandleOccupancyRateEventAsync(occupancyRate, @event.Operation);
-                break;
+                return await HandleOccupancyRateEventAsync(occupancyRate, @event.Operation);
             case nameof(TableType.OfferAndSupplement):
                 var offerAndSupplement = (Conofege)@event.Entity;
-                await HandleOfferAndSupplementEventAsync(offerAndSupplement, @event.Operation);
-                break;
+                return await HandleOfferAndSupplementEventAsync(offerAndSupplement, @event.Operation);
             case nameof(TableType.OfferAndSupplementConfigurationPax):
                 var offerAndSupplementConfigurationPax = (Condtof)@event.Entity;
-                await HandleOfferAndSupplementConfigurationPaxEventAsync(offerAndSupplementConfigurationPax, @event.Operation);
-                break;
+                return await HandleOfferAndSupplementConfigurationPaxEventAsync(offerAndSupplementConfigurationPax, @event.Operation);
             case nameof(TableType.OfferAndSupplementGroup):
                 var offerAndSupplementGroup = (ConofcomHeader)@event.Entity;
-                await HandleOfferAndSupplementGroupEventAsync(offerAndSupplementGroup, @event.Operation);
-                break;
+                return await HandleOfferAndSupplementGroupEventAsync(offerAndSupplementGroup, @event.Operation);
             case nameof(TableType.OfferAndSupplementGroupOfferAndSupplement):
                 var offerAndSupplementGroupOfferAndSupplement = (ConofcomLine)@event.Entity;
-                await HandleOfferAndSupplementGroupOfferAndSupplementEventAsync(offerAndSupplementGroupOfferAndSupplement, @event.Operation);
-                break;
+                return await HandleOfferAndSupplementGroupOfferAndSupplementEventAsync(offerAndSupplementGroupOfferAndSupplement, @event.Operation);
             case nameof(TableType.PeriodPricing):
                 var periodPricing = (Conpreci)@event.Entity;
-                await HandlePeriodPricingEventAsync(periodPricing, @event.Operation);
-                break;
+                return await HandlePeriodPricingEventAsync(periodPricing, @event.Operation);
             case nameof(TableType.PeriodPricingPax):
                 var periodPricingPax = (Condtos)@event.Entity;
-                await HandlePeriodPricingPaxEventAsync(periodPricingPax, @event.Operation);
-                break;
+                return await HandlePeriodPricingPaxEventAsync(periodPricingPax, @event.Operation);
             case nameof(TableType.Regimen):
                 var regimen = (Restregi)@event.Entity;
-                await HandleRegimenEventAsync(regimen, @event.Operation);
-                break;
+                return await HandleRegimenEventAsync(regimen, @event.Operation);
             default:
                 throw new InvalidOperationException($"Unsupported table type: {@event.Table}");
         }
     }
 
-    private async Task HandleCancellationPolicyLineEventAsync(Congasan congasan, string operation) {
-        switch (operation) {
-            case nameof(OperationType.Create):
-                await createCancellationPolicyLine.Execute(congasan);
-                break;
-            case nameof(OperationType.Update):
-                await updateCancellationPolicyLine.Execute(congasan);
-                break;
-            default:
-                throw new InvalidOperationException($"Unsupported operation: {operation} in CancellationPolicyLine");
-        }
+    private async Task<HttpResponseMessage> HandleCancellationPolicyLineEventAsync(Congasan congasan, string operation) {
+        return operation switch {
+            nameof(OperationType.Create) => await createCancellationPolicyLine.Execute(congasan),
+            nameof(OperationType.Update) => await updateCancellationPolicyLine.Execute(congasan),
+            _ => throw new InvalidOperationException($"Unsupported operation: {operation} in CancellationPolicyLine"),
+        };
     }
 
-    private async Task HandleClientEventAsync(Usureg client, string operation) {
-        switch (operation) {
-            case nameof(OperationType.Create):
-                await createClient.Execute(client);
-                break;
-            case nameof(OperationType.Update):
-                await updateClient.Execute(client);
-                break;
-            case nameof(OperationType.Delete):
-                await deleteClient.Execute(client);
-                break;
-            default:
-                throw new InvalidOperationException($"Unsupported operation: {operation} in Client");
-        }
+    private async Task<HttpResponseMessage> HandleClientEventAsync(Usureg client, string operation) {
+        return operation switch {
+            nameof(OperationType.Create) => await createClient.Execute(client),
+            nameof(OperationType.Update) => await updateClient.Execute(client),
+            nameof(OperationType.Delete) => await deleteClient.Execute(client),
+            _ => throw new InvalidOperationException($"Unsupported operation: {operation} in Client"),
+        };
     }
 
-    private async Task HandleClientTypeEventAsync(Restagen clientType, string operation) {
-        switch (operation) {
-            case nameof(OperationType.Create):
-                await createClientType.Execute(clientType);
-                break;
-            case nameof(OperationType.Update):
-                await updateClientType.Execute(clientType);
-                break;
-            case nameof(OperationType.Delete):
-                await deleteClientType.Execute(clientType);
-                break;
-            default:
-                throw new InvalidOperationException($"Unsupported operation: {operation} in ClientType");
-        }
+    private async Task<HttpResponseMessage> HandleClientTypeEventAsync(Restagen clientType, string operation) {
+        return operation switch {
+            nameof(OperationType.Create) => await createClientType.Execute(clientType),
+            nameof(OperationType.Update) => await updateClientType.Execute(clientType),
+            nameof(OperationType.Delete) => await deleteClientType.Execute(clientType),
+            _ => throw new InvalidOperationException($"Unsupported operation: {operation} in ClientType"),
+        };
     }
 
-    private async Task HandleContractEventAsync(Concabec contract, string operation) {
-        switch (operation) {
-            case nameof(OperationType.Create):
-                await createContract.Execute(contract);
-                break;
-            case nameof(OperationType.Update):
-                await updateContract.Execute(contract);
-                break;
-            case nameof(OperationType.Delete):
-                await deleteContract.Execute(contract.ContractCode);
-                break;
-            default:
-                throw new InvalidOperationException($"Unsupported operation: {operation} in Contract");
-        }
+    private async Task<HttpResponseMessage> HandleContractEventAsync(Concabec contract, string operation) {
+        return operation switch {
+            nameof(OperationType.Create) => await createContract.Execute(contract),
+            nameof(OperationType.Update) => await updateContract.Execute(contract),
+            _ => throw new InvalidOperationException($"Unsupported operation: {operation} in Contract"),
+        };
     }
 
-    private async Task HandleExtraEventAsync(Conextra extra, string operation) {
-        switch (operation) {
-            case nameof(OperationType.Create):
-                await createExtra.Execute(extra);
-                break;
-            case nameof(OperationType.Update):
-                await updateExtra.Execute(extra);
-                break;
-            case nameof(OperationType.Delete):
-                await deleteExtra.Execute(extra);
-                break;
-            default:
-                throw new InvalidOperationException($"Unsupported operation: {operation} in Extra");
-        }
+    private async Task<HttpResponseMessage> HandleExtraEventAsync(Conextra extra, string operation) {
+        return operation switch {
+            nameof(OperationType.Create) => await createExtra.Execute(extra),
+            nameof(OperationType.Update) => await updateExtra.Execute(extra),
+            nameof(OperationType.Delete) => await deleteExtra.Execute(extra),
+            _ => throw new InvalidOperationException($"Unsupported operation: {operation} in Extra"),
+        };
     }
 
-    private async Task HandleHotelEventAsync(Reshotel hotel, string operation) {
-        switch (operation) {
-            case nameof(OperationType.Create):
-                await createHotel.Execute(hotel);
-                break;
-            case nameof(OperationType.Update):
-                await updateHotel.Execute(hotel);
-                break;
-            default:
-                throw new InvalidOperationException($"Unsupported operation: {operation} in table Hotel");
-        }
+    private async Task<HttpResponseMessage> HandleHotelEventAsync(Reshotel hotel, string operation) {
+        return operation switch {
+            nameof(OperationType.Create) => await createHotel.Execute(hotel),
+            nameof(OperationType.Update) => await updateHotel.Execute(hotel),
+            _ => throw new InvalidOperationException($"Unsupported operation: {operation} in Hotel"),
+        };
     }
 
-    private async Task HandleHotelRoomConfigurationEventAsync(Resthaho hotelRoomConfiguration, string operation) {
-        switch (operation) {
-            case nameof(OperationType.Create):
-                await createHotelRoomConfiguration.Execute(hotelRoomConfiguration);
-                break;
-            case nameof(OperationType.Update):
-                await updateHotelRoomConfiguration.Execute(hotelRoomConfiguration);
-                break;
-            case nameof(OperationType.Delete):
-                await deleteHotelRoomConfiguration.Execute(hotelRoomConfiguration);
-                break;
-            default:
-                throw new InvalidOperationException($"Unsupported operation: {operation} in HotelRoomConfiguration");
-        }
+    private async Task<HttpResponseMessage> HandleHotelRoomConfigurationEventAsync(Resthaho hotelRoomConfiguration, string operation) {
+        return operation switch {
+            nameof(OperationType.Create) => await createHotelRoomConfiguration.Execute(hotelRoomConfiguration),
+            nameof(OperationType.Update) => await updateHotelRoomConfiguration.Execute(hotelRoomConfiguration),
+            nameof(OperationType.Delete) => await deleteHotelRoomConfiguration.Execute(hotelRoomConfiguration),
+            _ => throw new InvalidOperationException($"Unsupported operation: {operation} in HotelRoomConfiguration"),
+        };
     }
 
-    private async Task HandleInventoryEventAsync(Resplaht inventory, string operation) {
-        switch (operation) {
-            case nameof(OperationType.Create):
-                await createInventory.Execute(inventory);
-                break;
-            case nameof(OperationType.Update):
-                await updateInventory.Execute(inventory);
-                break;
-            case nameof(OperationType.Delete):
-                await deleteInventory.Execute(inventory);
-                break;
-            default:
-                throw new InvalidOperationException($"Unsupported operation: {operation} in Inventory");
-        }
+    private async Task<HttpResponseMessage> HandleInventoryEventAsync(Resplaht inventory, string operation) {
+        return operation switch {
+            nameof(OperationType.Create) => await createInventory.Execute(inventory),
+            nameof(OperationType.Update) => await updateInventory.Execute(inventory),
+            nameof(OperationType.Delete) => await deleteInventory.Execute(inventory),
+            _ => throw new InvalidOperationException($"Unsupported operation: {operation} in Inventory"),
+        };
     }
 
-    private async Task HandleMarketEventAsync(Merca market, string operation) {
-        switch (operation) {
-            case nameof(OperationType.Create):
-                await createMarket.Execute(market);
-                break;
-            case nameof(OperationType.Update):
-                await updateMarket.Execute(market);
-                break;
-            case nameof(OperationType.Delete):
-                await deleteMarket.Execute(market);
-                break;
-            default:
-                throw new InvalidOperationException($"Unsupported operation: {operation} in Market");
-        }
+    private async Task<HttpResponseMessage> HandleMarketEventAsync(Merca market, string operation) {
+        return operation switch {
+            nameof(OperationType.Create) => await createMarket.Execute(market),
+            nameof(OperationType.Update) => await updateMarket.Execute(market),
+            nameof(OperationType.Delete) => await deleteMarket.Execute(market),
+            _ => throw new InvalidOperationException($"Unsupported operation: {operation} in Market"),
+        };
     }
 
-    private async Task HandleMinimumStayEventAsync(Conestmi minimumStay, string operation) {
-        switch (operation) {
-            case nameof(OperationType.Create):
-                await createMinimumStay.Execute(minimumStay);
-                break;
-            case nameof(OperationType.Update):
-                await updateMinimumStay.Execute(minimumStay);
-                break;
-            default:
-                throw new InvalidOperationException($"Unsupported operation: {operation} in MinimumStay");
-        }
+    private async Task<HttpResponseMessage> HandleMinimumStayEventAsync(Conestmi minimumStay, string operation) {
+        return operation switch {
+            nameof(OperationType.Create) => await createMinimumStay.Execute(minimumStay),
+            nameof(OperationType.Update) => await updateMinimumStay.Execute(minimumStay),
+            _ => throw new InvalidOperationException($"Unsupported operation: {operation} in MinimumStay"),
+        };
     }
 
-    private async Task HandleOccupancyRateEventAsync(Resthaco occupancyRate, string operation) {
-        switch (operation) {
-            case nameof(OperationType.Create):
-                await createOccupancyRate.Execute(occupancyRate);
-                break;
-            case nameof(OperationType.Update):
-                await updateOccupancyRate.Execute(occupancyRate);
-                break;
-            case nameof(OperationType.Delete):
-                await deleteOccupancyRate.Execute(occupancyRate.Cocod);
-                break;
-            default:
-                throw new InvalidOperationException($"Unsupported operation: {operation} in OccupancyRate");
-        }
+    private async Task<HttpResponseMessage> HandleOccupancyRateEventAsync(Resthaco occupancyRate, string operation) {
+        return operation switch {
+            nameof(OperationType.Create) => await createOccupancyRate.Execute(occupancyRate),
+            nameof(OperationType.Update) => await updateOccupancyRate.Execute(occupancyRate),
+            nameof(OperationType.Delete) => await deleteOccupancyRate.Execute(occupancyRate.Cocod),
+            _ => throw new InvalidOperationException($"Unsupported operation: {operation} in OccupancyRate"),
+        };
     }
 
-    private async Task HandleOfferAndSupplementEventAsync(Conofege offerAndSupplement, string operation) {
-        switch (operation) {
-            case nameof(OperationType.Create):
-                await createOfferAndSupplement.Execute(offerAndSupplement);
-                break;
-            case nameof(OperationType.Update):
-                await updateOfferAndSupplement.Execute(offerAndSupplement);
-                break;
-            default:
-                throw new InvalidOperationException($"Unsupported operation: {operation} in OfferAndSupplement");
-        }
+    private async Task<HttpResponseMessage> HandleOfferAndSupplementEventAsync(Conofege offerAndSupplement, string operation) {
+        return operation switch {
+            nameof(OperationType.Create) => await createOfferAndSupplement.Execute(offerAndSupplement),
+            nameof(OperationType.Update) => await updateOfferAndSupplement.Execute(offerAndSupplement),
+            _ => throw new InvalidOperationException($"Unsupported operation: {operation} in OfferAndSupplement"),
+        };
     }
 
-    private async Task HandleOfferAndSupplementConfigurationPaxEventAsync(Condtof offerAndSupplementConfigurationPax, string operation) {
-        switch (operation) {
-            case nameof(OperationType.Create):
-                await createOfferAndSupplementConfigurationPax.Execute(offerAndSupplementConfigurationPax);
-                break;
-            case nameof(OperationType.Update):
-                await updateOfferAndSupplementConfigurationPax.Execute(offerAndSupplementConfigurationPax);
-                break;
-            case nameof(OperationType.Delete):
-                await deleteOfferAndSupplementConfigurationPax.Execute(offerAndSupplementConfigurationPax.Code);
-                break;
-            default:
-                throw new InvalidOperationException($"Unsupported operation: {operation} in OfferAndSupplementConfigurationPax");
-        }
+    private async Task<HttpResponseMessage> HandleOfferAndSupplementConfigurationPaxEventAsync(Condtof offerAndSupplementConfigurationPax, string operation) {
+        return operation switch {
+            nameof(OperationType.Create) => await createOfferAndSupplementConfigurationPax.Execute(offerAndSupplementConfigurationPax),
+            nameof(OperationType.Update) => await updateOfferAndSupplementConfigurationPax.Execute(offerAndSupplementConfigurationPax),
+            nameof(OperationType.Delete) => await deleteOfferAndSupplementConfigurationPax.Execute(offerAndSupplementConfigurationPax.Code),
+            _ => throw new InvalidOperationException($"Unsupported operation: {operation} in OfferAndSupplementConfigurationPax"),
+        };
     }
 
-    private async Task HandleOfferAndSupplementGroupEventAsync(ConofcomHeader offerAndSupplementGroup, string operation) {
-        switch (operation) {
-            case nameof(OperationType.Create):
-                await createOfferAndSupplementGroup.Execute(offerAndSupplementGroup);
-                break;
-            case nameof(OperationType.Update):
-                await updateOfferAndSupplementGroup.Execute(offerAndSupplementGroup);
-                break;
-            case nameof(OperationType.Delete):
-                await deleteOfferAndSupplementGroup.Execute(offerAndSupplementGroup);
-                break;
-            default:
-                throw new InvalidOperationException($"Unsupported operation: {operation} in OfferAndSupplementGroup");
-        }
+    private async Task<HttpResponseMessage> HandleOfferAndSupplementGroupEventAsync(ConofcomHeader offerAndSupplementGroup, string operation) {
+        return operation switch {
+            nameof(OperationType.Create) => await createOfferAndSupplementGroup.Execute(offerAndSupplementGroup),
+            nameof(OperationType.Update) => await updateOfferAndSupplementGroup.Execute(offerAndSupplementGroup),
+            nameof(OperationType.Delete) => await deleteOfferAndSupplementGroup.Execute(offerAndSupplementGroup),
+            _ => throw new InvalidOperationException($"Unsupported operation: {operation} in OfferAndSupplementGroup"),
+        };
     }
 
-    private async Task HandleOfferAndSupplementGroupOfferAndSupplementEventAsync(ConofcomLine offerAndSupplementGroupOfferAndSupplement, string operation) {
-        switch (operation) {
-            case nameof(OperationType.Create):
-                await createOfferAndSupplementGroupOfferAndSupplement.Execute(offerAndSupplementGroupOfferAndSupplement);
-                break;
-            case nameof(OperationType.Delete):
-                await deleteOfferAndSupplementGroupOfferAndSupplement.Execute(offerAndSupplementGroupOfferAndSupplement);
-                break;
-            default:
-                throw new InvalidOperationException($"Unsupported operation: {operation} in OfferAndSupplementGroupOfferAndSupplement");
-        }
+    private async Task<HttpResponseMessage> HandleOfferAndSupplementGroupOfferAndSupplementEventAsync(ConofcomLine offerAndSupplementGroupOfferAndSupplement, string operation) {
+        return operation switch {
+            nameof(OperationType.Create) => await createOfferAndSupplementGroupOfferAndSupplement.Execute(offerAndSupplementGroupOfferAndSupplement),
+            nameof(OperationType.Delete) => await deleteOfferAndSupplementGroupOfferAndSupplement.Execute(offerAndSupplementGroupOfferAndSupplement),
+            _ => throw new InvalidOperationException($"Unsupported operation: {operation} in OfferAndSupplementGroupOfferAndSupplement"),
+        };
     }
 
-    private async Task HandlePeriodPricingEventAsync(Conpreci periodPricing, string operation) {
-        switch (operation) {
-            case nameof(OperationType.Create):
-                await createPeriodPricing.Execute(periodPricing);
-                break;
-            case nameof(OperationType.Update):
-                await updatePeriodPricing.Execute(periodPricing);
-                break;
-            default:
-                throw new InvalidOperationException($"Unsupported operation: {operation} in PeriodPricing");
-        }
+    private async Task<HttpResponseMessage> HandlePeriodPricingEventAsync(Conpreci periodPricing, string operation) {
+        return operation switch {
+            nameof(OperationType.Create) => await createPeriodPricing.Execute(periodPricing),
+            nameof(OperationType.Update) => await updatePeriodPricing.Execute(periodPricing),
+            _ => throw new InvalidOperationException($"Unsupported operation: {operation} in PeriodPricing"),
+        };
     }
 
-    private async Task HandlePeriodPricingPaxEventAsync(Condtos periodPricingPax, string operation) {
-        switch (operation) {
-            case nameof(OperationType.Create):
-                await createPeriodPricingPax.Execute(periodPricingPax);
-                break;
-            case nameof(OperationType.Update):
-                await updatePeriodPricingPax.Execute(periodPricingPax);
-                break;
-            case nameof(OperationType.Delete):
-                await deletePeriodPricingPax.Execute(periodPricingPax.Code);
-                break;
-            default:
-                throw new InvalidOperationException($"Unsupported operation: {operation} in PeriodPricingPax");
-        }
+    private async Task<HttpResponseMessage> HandlePeriodPricingPaxEventAsync(Condtos periodPricingPax, string operation) {
+        return operation switch {
+            nameof(OperationType.Create) => await createPeriodPricingPax.Execute(periodPricingPax),
+            nameof(OperationType.Update) => await updatePeriodPricingPax.Execute(periodPricingPax),
+            nameof(OperationType.Delete) => await deletePeriodPricingPax.Execute(periodPricingPax.Code),
+            _ => throw new InvalidOperationException($"Unsupported operation: {operation} in PeriodPricingPax"),
+        };
     }
 
-    private async Task HandleRegimenEventAsync(Restregi regimen, string operation) {
-        switch (operation) {
-            case nameof(OperationType.Create):
-                await createRegimen.Execute(regimen);
-                break;
-            case nameof(OperationType.Update):
-                await updateRegimen.Execute(regimen);
-                break;
-            default:
-                throw new InvalidOperationException($"Unsupported operation: {operation} in Regimen");
-        }
+    private async Task<HttpResponseMessage> HandleRegimenEventAsync(Restregi regimen, string operation) {
+        return operation switch {
+            nameof(OperationType.Create) => await createRegimen.Execute(regimen),
+            nameof(OperationType.Update) => await updateRegimen.Execute(regimen),
+            _ => throw new InvalidOperationException($"Unsupported operation: {operation} in Regimen"),
+        };
     }
 }

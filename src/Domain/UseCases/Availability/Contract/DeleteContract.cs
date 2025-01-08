@@ -7,10 +7,10 @@ public class DeleteContract : IDeleteContract {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(string code) {
+    public async Task<HttpResponseMessage> Execute(string code) {
         if (string.IsNullOrWhiteSpace(code)) {
             throw new ArgumentException("Contract client code is required");
         }
-        await availabilitySynchronizerApiClient.DeleteContractClient(code);
+        return await availabilitySynchronizerApiClient.DeleteContractClient(code);
     }
 }

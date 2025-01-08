@@ -7,9 +7,9 @@ public class DeleteClient : IDeleteClient {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(Usureg usureg) {
+    public async Task<HttpResponseMessage> Execute(Usureg usureg) {
         var client = usureg.ToClient();
-        await availabilitySynchronizerApiClient.DeleteClient(client.Code);
+        return await availabilitySynchronizerApiClient.DeleteClient(client.Code);
     }
 
 }

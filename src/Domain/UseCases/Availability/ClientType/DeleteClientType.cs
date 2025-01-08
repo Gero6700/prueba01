@@ -6,8 +6,8 @@ public class DeleteClientType : IDeleteClientType {
     public DeleteClientType(IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient) {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
-    public async Task Execute(Restagen restagen) {
+    public async Task<HttpResponseMessage> Execute(Restagen restagen) {
         var clientType = restagen.ToClientType();
-        await availabilitySynchronizerApiClient.DeleteClientType(clientType.Code);
+        return await availabilitySynchronizerApiClient.DeleteClientType(clientType.Code);
     }
 }

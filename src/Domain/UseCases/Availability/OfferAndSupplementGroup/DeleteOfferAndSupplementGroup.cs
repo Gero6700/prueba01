@@ -6,11 +6,11 @@ public class DeleteOfferAndSupplementGroup :IDeleteOfferAndSupplementGroup {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(ConofcomHeader conofcomHeader) {
+    public async Task<HttpResponseMessage> Execute(ConofcomHeader conofcomHeader) {
         if (conofcomHeader.Occin == 0) {
             throw new ArgumentException("Group code is zero");
         }
         var offerAndSupplementGroup = conofcomHeader.ToOfferAndSupplementGroup();
-        await availabilitySynchronizerApiClient.DeleteOfferAndSupplementGroup(offerAndSupplementGroup.Code);
+        return await availabilitySynchronizerApiClient.DeleteOfferAndSupplementGroup(offerAndSupplementGroup.Code);
     }
 }

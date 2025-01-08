@@ -7,8 +7,8 @@ public class UpdateClientType : IUpdateClientType {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(Restagen restagen) {
+    public async Task<HttpResponseMessage> Execute(Restagen restagen) {
         var clientType = restagen.ToClientType();
-        await availabilitySynchronizerApiClient.UpdateClientType(clientType);
+        return await availabilitySynchronizerApiClient.UpdateClientType(clientType);
     }
 }

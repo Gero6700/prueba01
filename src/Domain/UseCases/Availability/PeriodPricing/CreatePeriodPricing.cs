@@ -6,7 +6,7 @@ public class CreatePeriodPricing : ICreatePeriodPricing {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public Task Execute(Conpreci conpreci) {
+    public Task<HttpResponseMessage> Execute(Conpreci conpreci) {
         if (conpreci.Cffec == 0) {
             throw new ArgumentException("Price date is required");
         }

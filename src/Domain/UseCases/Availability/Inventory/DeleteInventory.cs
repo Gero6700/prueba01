@@ -6,9 +6,9 @@ public class DeleteInventory :IDeleteInventory {
         this.availabilitySynchronizerApiClient = availabilitySynchronizerApiClient;
     }
 
-    public async Task Execute(Resplaht resplaht) {
+    public async Task<HttpResponseMessage> Execute(Resplaht resplaht) {
         var inventory = resplaht.ToInventory();
-        await availabilitySynchronizerApiClient.DeleteInventory(inventory);
+        return await availabilitySynchronizerApiClient.DeleteInventory(inventory);
     }
 }
 

@@ -14,3 +14,14 @@ global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Cancella
 global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.ClientType;
 global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Extra;
 global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.HotelRoomConfiguration;
+global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Inventory;
+global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Market;
+global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.MinimunStay;
+global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.OccupancyRate;
+global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.OfferAndSupplement;
+global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.OfferAndSupplementConfigurationPax;
+global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.OfferAndSupplementGroup;
+global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.OfferAndSupplementGroupOfferAndSupplement;
+global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.PeriodPricing;
+global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.PeriodPricingPax;
+global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Regime;

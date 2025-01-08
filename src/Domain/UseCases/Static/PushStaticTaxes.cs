@@ -6,8 +6,8 @@ public class PushStaticTaxes {
         this.staticSynchronizerApiClient = staticSynchronizerApiClient;
     }
 
-    public async Task Execute(List<Reszoim> reszoims) {
+    public async Task<HttpResponseMessage> Execute(List<Reszoim> reszoims) {
         var taxes = reszoims.Select(x => x.ToTax()).ToList();
-        await staticSynchronizerApiClient.PushTaxes(taxes);
+        return await staticSynchronizerApiClient.PushTaxes(taxes);
     }
 }

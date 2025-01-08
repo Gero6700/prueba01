@@ -7,231 +7,240 @@ public class AvailabilitySynchronizerApiClient : IAvailabilitySynchronizerApiCli
         this.httpClient = httpClient;
     }
 
-    public Task<Response> CreateCancellationPolicyLine(CancellationPolicyLine cancellationPolicyLine) {
+    public Task<HttpResponseMessage> CreateCancellationPolicyLine(CancellationPolicyLine cancellationPolicyLine) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> CreateClient(Client client) {
+    public Task<HttpResponseMessage> CreateClient(Client client) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> CreateClientType(ClientType clientType) {
+    public Task<HttpResponseMessage> CreateClientType(ClientType clientType) {
         throw new NotImplementedException();
     }
 
     public async Task<HttpResponseMessage> CreateContract(Contract contract) {
-        return await httpClient.PostAsJsonAsync("api/create-contract", contract);
+        return await httpClient.PostAsJsonAsync("api/v1/contractheader/create", contract);
+    }
+
+    public async Task<HttpResponseMessage> UpdateContract(Contract contract) {
+        return await httpClient.PutAsJsonAsync("api/v1/contractheader/update", contract);
     }
 
     public async Task<HttpResponseMessage> CreateContractClient(ContractClient contractClient) {
         return await httpClient.PostAsJsonAsync("api/create-contract-client", contractClient);
     }
+   
 
-    public Task<Response> CreateExtra(Extra extra) {
+    public Task<HttpResponseMessage> UpdateContractClient(ContractClient contractClient) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> CreateHotel(Dtos.BookingCenter.Availability.Hotel hotel) {
+    public Task<HttpResponseMessage> CreateExtra(Extra extra) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> CreateHotelRoomConfiguration(HotelRoomConfiguration hotelRoomConfiguration) {
+    public Task<HttpResponseMessage> CreateHotel(Dtos.BookingCenter.Availability.Hotel hotel) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> CreateInventory(Inventory inventory) {
+    public Task<HttpResponseMessage> CreateHotelRoomConfiguration(HotelRoomConfiguration hotelRoomConfiguration) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> CreateMarket(Market market) {
+    public Task<HttpResponseMessage> CreateInventory(Inventory inventory) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> CreateMarkup(Markup markup) {
+    public Task<HttpResponseMessage> CreateMarket(Market market) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> CreateMarkupHotel(MarkupHotel markupHotel) {
+    public Task<HttpResponseMessage> CreateMarkup(Markup markup) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> CreateMinimumStay(MinimumStay minimumStay) {
+    public Task<HttpResponseMessage> CreateMarkupHotel(MarkupHotel markupHotel) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> CreateOccupancyRate(OccupancyRate occupancyRate) {
+    public Task<HttpResponseMessage> CreateMinimumStay(MinimumStay minimumStay) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> CreateOfferAndSupplement(OfferAndSupplement offerAndSupplement) {
+    public Task<HttpResponseMessage> CreateOccupancyRate(OccupancyRate occupancyRate) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> CreateOfferAndSupplementConfigurationPax(OfferAndSupplementConfigurationPax offerAndSupplementConfigurationPax) {
+    public Task<HttpResponseMessage> CreateOfferAndSupplement(OfferAndSupplement offerAndSupplement) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> CreateOfferAndSupplementGroup(OfferAndSupplementGroup offerAndSupplementGroup) {
+    public Task<HttpResponseMessage> CreateOfferAndSupplementConfigurationPax(OfferAndSupplementConfigurationPax offerAndSupplementConfigurationPax) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> CreateOfferAndSupplementGroupOfferAndSupplement(OfferAndSupplementGroupOfferAndSupplement offerAndSupplementGroupOfferAndSupplement) {
+    public Task<HttpResponseMessage> CreateOfferAndSupplementGroup(OfferAndSupplementGroup offerAndSupplementGroup) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> CreatePeriodPricing(PeriodPricing periodPricing) {
+    public Task<HttpResponseMessage> CreateOfferAndSupplementGroupOfferAndSupplement(OfferAndSupplementGroupOfferAndSupplement offerAndSupplementGroupOfferAndSupplement) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> CreatePeriodPricingPax(PeriodPricingPax periodPricingPax) {
+    public Task<HttpResponseMessage> CreatePeriodPricing(PeriodPricing periodPricing) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> CreateRegime(Dtos.BookingCenter.Availability.Regime regime) {
+    public Task<HttpResponseMessage> CreatePeriodPricingPax(PeriodPricingPax periodPricingPax) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> CreateRoom(Dtos.BookingCenter.Availability.Room room) {
+    public Task<HttpResponseMessage> CreateRegime(Dtos.BookingCenter.Availability.Regime regime) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> DeleteClient(string clientCode) {
+    public Task<HttpResponseMessage> CreateRoom(Dtos.BookingCenter.Availability.Room room) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> DeleteClientType(string ClientTypeCode) {
+    public Task<HttpResponseMessage> DeleteClient(string clientCode) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> DeleteContract(string contractCode) {
+    public Task<HttpResponseMessage> DeleteClientType(string ClientTypeCode) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> DeleteContractClient(string contractClientCode) {
+    public Task<HttpResponseMessage> DeleteContract(string contractCode) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> DeleteExtra(string extraCode) {
+    public Task<HttpResponseMessage> DeleteContractClient(string contractClientCode) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> DeleteHotel(string hotelCode) {
+    public Task<HttpResponseMessage> DeleteExtra(string extraCode) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> DeleteHotelRoomConfiguration(HotelRoomConfiguration hotelRoomConfiguration) {
+    public Task<HttpResponseMessage> DeleteHotel(string hotelCode) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> DeleteInventory(Inventory inventory) {
+    public Task<HttpResponseMessage> DeleteHotelRoomConfiguration(HotelRoomConfiguration hotelRoomConfiguration) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> DeleteMarket(string marketCode) {
+    public Task<HttpResponseMessage> DeleteInventory(Inventory inventory) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> DeleteOccupancyRate(string code) {
+    public Task<HttpResponseMessage> DeleteMarket(string marketCode) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> DeleteOfferAndSupplementConfigurationPax(string code) {
+    public Task<HttpResponseMessage> DeleteOccupancyRate(string code) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> DeleteOfferAndSupplementGroup(string code) {
+    public Task<HttpResponseMessage> DeleteOfferAndSupplementConfigurationPax(string code) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> DeleteOfferAndSupplementGroupOfferAndSupplement(OfferAndSupplementGroupOfferAndSupplement offerAndSupplementGroupOfferAndSupplement) {
+    public Task<HttpResponseMessage> DeleteOfferAndSupplementGroup(string code) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> DeletePeriodPricingPax(string code) {
+    public Task<HttpResponseMessage> DeleteOfferAndSupplementGroupOfferAndSupplement(OfferAndSupplementGroupOfferAndSupplement offerAndSupplementGroupOfferAndSupplement) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> DeleteRoom(string roomCode) {
+    public Task<HttpResponseMessage> DeletePeriodPricingPax(string code) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> UpdateCancellationPolicyLine(CancellationPolicyLine cancellationPolicyLine) {
+    public Task<HttpResponseMessage> DeleteRoom(string roomCode) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> UpdateClient(Client client) {
+    public Task<HttpResponseMessage> UpdateCancellationPolicyLine(CancellationPolicyLine cancellationPolicyLine) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> UpdateClientType(ClientType clientType) {
+    public Task<HttpResponseMessage> UpdateClient(Client client) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> UpdateContract(Contract contract) {
+    public Task<HttpResponseMessage> UpdateClientType(ClientType clientType) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> UpdateContractClient(ContractClient contractClient) {
+    //public Task<HttpResponseMessage> UpdateContract(Contract contract) {
+    //    throw new NotImplementedException();
+    //}
+
+    //public Task<HttpResponseMessage> UpdateContractClient(ContractClient contractClient) {
+    //    throw new NotImplementedException();
+    //}
+
+    public Task<HttpResponseMessage> UpdateExtra(Extra extra) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> UpdateExtra(Extra extra) {
+    public Task<HttpResponseMessage> UpdateHotel(Dtos.BookingCenter.Availability.Hotel hotel) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> UpdateHotel(Dtos.BookingCenter.Availability.Hotel hotel) {
+    public Task<HttpResponseMessage> UpdateHotelRoomConfiguration(HotelRoomConfiguration hotelRoomConfiguration) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> UpdateHotelRoomConfiguration(HotelRoomConfiguration hotelRoomConfiguration) {
+    public Task<HttpResponseMessage> UpdateInventory(Inventory inventory) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> UpdateInventory(Inventory inventory) {
+    public Task<HttpResponseMessage> UpdateMarket(Market market) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> UpdateMarket(Market market) {
+    public Task<HttpResponseMessage> UpdateMarkup(Markup markup) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> UpdateMarkup(Markup markup) {
+    public Task<HttpResponseMessage> UpdateMinimumStay(MinimumStay minimumStay) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> UpdateMinimumStay(MinimumStay minimumStay) {
+    public Task<HttpResponseMessage> UpdateOccupancyRate(OccupancyRate occupancyRate) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> UpdateOccupancyRate(OccupancyRate occupancyRate) {
+    public Task<HttpResponseMessage> UpdateOfferAndSupplement(OfferAndSupplement offerAndSupplement) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> UpdateOfferAndSupplement(OfferAndSupplement offerAndSupplement) {
+    public Task<HttpResponseMessage> UpdateOfferAndSupplementConfigurationPax(OfferAndSupplementConfigurationPax offerAndSupplementConfigurationPax) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> UpdateOfferAndSupplementConfigurationPax(OfferAndSupplementConfigurationPax offerAndSupplementConfigurationPax) {
+    public Task<HttpResponseMessage> UpdateOfferAndSupplementGroup(OfferAndSupplementGroup offerAndSupplementGroup) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> UpdateOfferAndSupplementGroup(OfferAndSupplementGroup offerAndSupplementGroup) {
+    public Task<HttpResponseMessage> UpdatePeriodPricing(PeriodPricing periodPricing) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> UpdatePeriodPricing(PeriodPricing periodPricing) {
+    public Task<HttpResponseMessage> UpdatePeriodPricingPax(PeriodPricingPax periodPricingPax) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> UpdatePeriodPricingPax(PeriodPricingPax periodPricingPax) {
+    public Task<HttpResponseMessage> UpdateRegime(Dtos.BookingCenter.Availability.Regime regime) {
         throw new NotImplementedException();
     }
 
-    public Task<Response> UpdateRegime(Dtos.BookingCenter.Availability.Regime regime) {
-        throw new NotImplementedException();
-    }
-
-    public Task<Response> UpdateRoom(Dtos.BookingCenter.Availability.Room room) {
+    public Task<HttpResponseMessage> UpdateRoom(Dtos.BookingCenter.Availability.Room room) {
         throw new NotImplementedException();
     }
 }
