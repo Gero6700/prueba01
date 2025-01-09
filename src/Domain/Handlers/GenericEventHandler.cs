@@ -47,7 +47,7 @@ public class GenericEventHandler(
     IDeletePeriodPricingPax deletePeriodPricingPax,
     ICreateRegimen createRegimen,
     IUpdateRegimen updateRegimen
-    ) : IEventHandler<GenericNotificationEvent> {
+    ) : ISynchronizerHandler<GenericSynchronizationEvent> {
     private readonly ICreateCancellationPolicyLine createCancellationPolicyLine = createCancellationPolicyLine;
     private readonly IUpdateCancellationPolicyLine updateCancellationPolicyLine = updateCancellationPolicyLine;
     private readonly ICreateClient createClient = createClient;
@@ -95,7 +95,7 @@ public class GenericEventHandler(
     private readonly ICreateRegimen createRegimen = createRegimen;
     private readonly IUpdateRegimen updateRegimen = updateRegimen;
 
-    public async Task<HttpResponseMessage> HandleAsync(GenericNotificationEvent @event) {
+    public async Task<HttpResponseMessage> HandleAsync(GenericSynchronizationEvent @event) {
         switch (@event.Table) {
             case nameof(TableType.CancellationPolicyLine):
                 var cancellationPolicyLine = (Congasan)@event.Entity;

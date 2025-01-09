@@ -1,5 +1,5 @@
 namespace Senator.As400.Cloud.Sync.Application.Interfaces;
-public interface IEventHandler<TEvent> {
+public interface ISynchronizerHandler<TEvent> {
     Task<HttpResponseMessage> HandleAsync(TEvent @event);
 }
 

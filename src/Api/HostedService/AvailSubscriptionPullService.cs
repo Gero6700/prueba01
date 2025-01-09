@@ -1,13 +1,12 @@
 namespace Senator.As400.Cloud.Sync.Api.HostedService;
 public class AvailSubscriptionPullService(
-        IConfiguration configuration, 
+        IConfiguration configuration,
+        SubscriberServiceApiClient subscriberClient,
         ILogger<AvailSubscriptionPullService> logger,
-        IEventHandler<GenericNotificationEvent> eventHandler
-    ) : IHostedService {
-    private Timer topicAvailPullTimer =  null!;
-    private SubscriberClient subscriberClient = null!;
-    private readonly JsonSerializerOptions serializeOptions = new () { PropertyNameCaseInsensitive = true };
-    private readonly Dictionary<string, Type>  typeMap = new () {
+        ISynchronizerHandler<GenericSynchronizationEvent> synchronizationHandler
+    ) : BackgroundService {
+    private readonly JsonSerializerOptions serializeOptions = new() { PropertyNameCaseInsensitive = true };
+    private readonly Dictionary<string, Type> typeMap = new() {
         {nameof(TableType.CancellationPolicyLine), typeof(Congasan)},
         {nameof(TableType.Client), typeof(Usureg)},
         {nameof(TableType.ClientType), typeof(Restagen)},
@@ -28,92 +27,85 @@ public class AvailSubscriptionPullService(
         {nameof(TableType.Regimen), typeof(Restregi)}
     };
 
-    public Task StartAsync(CancellationToken cancellationToken) {
-        CreateAvailSubscriptionPullTimer();
-        return Task.CompletedTask;
-    }
-
-    public Task StopAsync(CancellationToken cancellationToken) {
-        topicAvailPullTimer.Change(Timeout.Infinite, 0);
-        topicAvailPullTimer.Dispose();
-        return Task.CompletedTask;
-    }
-
-    private void CreateAvailSubscriptionPullTimer() {
-        var pullInterval = configuration.GetSection("AvailGooglePubSub").Get<PubSubSettings>()!.IntervalInMinutes;
-        topicAvailPullTimer = new Timer(HandleAvailSubscriptionPull, null, TimeSpan.Zero, TimeSpan.FromMinutes(pullInterval));
-    }
-
-    private async void HandleAvailSubscriptionPull(object? state) {
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken) {
+        var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
         var projectId = configuration["AvailGooglePubSub:ProjectId"];
         var subscriptionId = configuration["AvailGooglePubSub:SubscriptionId"];
         var subscriptionName = SubscriptionName.FromProjectSubscription(projectId, subscriptionId);
-        var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+        
+        while (!stoppingToken.IsCancellationRequested) {
+            try {
+                // Realiza una operación de extracción (pull) asincrónica
+                var response = await subscriberClient.PullAsync(subscriptionName, 10, stoppingToken);
 
-        subscriberClient ??= await SubscriberClient.CreateAsync(subscriptionName);
+                foreach (var receivedMessage in response.ReceivedMessages) {
+                    var messageData = receivedMessage.Message.Data.ToStringUtf8();
+                    try {
+                        var notification = JsonSerializer.Deserialize<As400Notification>(messageData, options);
+                        if (notification != null) {
+                            var genericSynchronizationEvent = new GenericSynchronizationEvent {
+                                Operation = notification.Operation,
+                                Table = notification.Table,
+                                Data = notification.Data,
+                                Entity = DeserializeEntity(notification)
+                            };
+                            var httpresponse = await synchronizationHandler.HandleAsync(genericSynchronizationEvent);
+                            if (httpresponse.StatusCode == System.Net.HttpStatusCode.OK) {
+                                // Reconoce el mensaje
+                                await subscriberClient.AcknowledgeAsync(subscriptionName, new[] { receivedMessage.AckId });
+                            }
+                            else {
+                                var content = await httpresponse.Content.ReadAsStringAsync();
+                                var errorCode = (int)httpresponse.StatusCode;
+                                if (!string.IsNullOrWhiteSpace(content)) {
+                                    try {
+                                        var problemDetails = JsonSerializer.Deserialize<ProblemDetails>(content, options);
+                                        if (problemDetails != null) {
+                                            logger.LogError("Api synchronizer error. Status: {Status} - Type: {Type} - Title: {Title} - Detail: {Detail} - Instance: {Instance}",
+                                            problemDetails.Status,
+                                            problemDetails.Type,
+                                            problemDetails.Title,
+                                            problemDetails.Detail,
+                                            problemDetails.Instance);
+                                        }
+                                    }
+                                    catch (Exception) {
+                                        logger.LogError("Api synchronizer error. Status: {Status} ", errorCode);
+                                    }
+                                }
+                                else {
+                                    logger.LogError("Api synchronizer error. Status: {Status} ", errorCode);
+                                }
 
-        await subscriberClient.StartAsync(async (PubsubMessage message, CancellationToken cancel) =>
-        {
-            //Se recupera y deserializa el mensaje
-            var messageData = message.Data.ToStringUtf8();
-            return await Task.FromResult(SubscriberClient.Reply.Nack);
-            //try {
-            //    var notification = JsonSerializer.Deserialize<As400Notification>(messageData, options);
-            //    if (notification != null) {
-            //        var genericNotificationEvent = new GenericNotificationEvent {
-            //            Operation = notification.Operation,
-            //            Table = notification.Table,
-            //            Data = notification.Data,
-            //            Entity = DeserializeEntity(notification)
-            //        };
-            //        var httpresponse = await eventHandler.HandleAsync(genericNotificationEvent);
-            //        if (httpresponse.StatusCode == System.Net.HttpStatusCode.OK) {
-            //            return await Task.FromResult(SubscriberClient.Reply.Ack);
-            //        }
-            //        else {
-            //            var problemDetails = await httpresponse.Content.ReadFromJsonAsync<ProblemDetails>();
-            //            if (problemDetails != null) {
-            //                logger.LogError("Api synchronizer error. Status: {Status} - Type: {Type} - Title: {Title} - Detail: {Detail} - Instance: {Instance}",
-            //                problemDetails.Status,
-            //                problemDetails.Type,
-            //                problemDetails.Title,
-            //                problemDetails.Detail,
-            //                problemDetails.Instance);
+                                //TODO: Pendiente de ver si se debe reintentar o no.
+                                //404: Not Found, 500: Internal Server Error, 422: Unprocessable Entity, 400: Bad Request
+                                if (errorCode == 404 || errorCode == 500) {
 
-            //                switch (problemDetails.Status) {
-            //                    case 404: // Not Found. Se para la subscripcion
-            //                              //TODO
-            //                        break;
-            //                    case 500: // Internal Server Error. No se marca para reintentar
+                                }
+                            }
+                        }
+                    }
+                    catch (JsonException ex) {
+                        logger.LogError(ex, "An exception occurred while deserializing the message: {Message}", ex.Message);
+                    }
+                    //catch (HttpRequestException ex) {
+                    //    // TODO: ver que hacer cuando la api no este disponible 
+                    //}
+                    catch (Exception ex) {
+                        logger.LogError(ex, "An exception occurred while processing the message: {Message}", ex.Message);
+                    }
+                }
+            }
+            catch (Exception ex) {
+                logger.LogError(ex, "An exception occurred while pulling messages: {Message}", ex.Message);
+            }
 
-            //                    case 422: // Unprocessable Entity. Se marca con error
-            //                              //return await Task.FromResult(SubscriberClient.Reply.Nack);
-            //                    case 400: // Bad Request. Se marca con error
-            //                              //return await Task.FromResult(SubscriberClient.Reply.Nack);
-            //                    default:
-            //                        return await Task.FromResult(SubscriberClient.Reply.Nack);
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
-            ////catch (JsonException ex) {
-            ////    logger.LogError(ex, "An exception occurred while deserializing the message: {Message}", ex.Message);
-            ////    return await Task.FromResult(SubscriberClient.Reply.Nack);
-            ////}
-            //catch (HttpRequestException ex) {
-            //    //TODO: ver que hacer cuando la api no este disponible 
-            //    return await Task.FromResult(SubscriberClient.Reply.Nack);
-            //}
-            ////catch (Exception ex) {
-            ////    logger.LogError(ex, "An exception occurred while processing the message: {Message}", ex.Message);
-            ////}
-            ////// Acknowledge the message
-            //return await Task.FromResult(SubscriberClient.Reply.Nack);
-        });
+            // Espera un breve período antes de la siguiente extracción
+            await Task.Delay(TimeSpan.FromSeconds(10), stoppingToken);
+        }
     }
 
-    private object DeserializeEntity(As400Notification notification) {             
+    private object DeserializeEntity(As400Notification notification) {
         if (typeMap.TryGetValue(notification.Table, out var type)) {
             var entity = JsonSerializer.Deserialize(notification.Data, type, serializeOptions);
             return entity ?? throw new InvalidOperationException($"Deserialization returned null for table type: {notification.Table}");
@@ -122,5 +114,5 @@ public class AvailSubscriptionPullService(
         throw new InvalidOperationException($"Unsupported table type: {notification.Table}");
     }
 
-    private class As400Notification : NotificationEvent { }
+    private class As400Notification : SynchronizationEvent { }
 }
