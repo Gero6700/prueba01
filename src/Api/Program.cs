@@ -106,15 +106,16 @@ builder.Services.AddSingleton<IDeletePeriodPricingPax, DeletePeriodPricingPax>()
 builder.Services.AddSingleton<ICreateRegimen, CreateRegime>();
 builder.Services.AddSingleton<IUpdateRegimen, UpdateRegime>();
 
+//Cupo
 var projectId = configuration["AvailGooglePubSub:ProjectId"];
 var subscriptionId = configuration["AvailGooglePubSub:SubscriptionId"];
 var subscriptionName = SubscriptionName.FromProjectSubscription(projectId, subscriptionId);
 builder.Services.AddSubscriberClient(subscriptionName);
-//builder.Services.AddSubscriberServiceApiClient();
 
+builder.Services.AddSubscriberServiceApiClient();
 builder.Services.AddSingleton<ISynchronizerHandler<GenericSynchronizationEvent>, GenericEventHandler>();
-builder.Services.AddHostedService<AvailSubscriptionStreamingService>();
-//builder.Services.AddHostedService<AvailSubscriptionPullService>();
+//builder.Services.AddHostedService<PubSubPullStreamingService>();
+builder.Services.AddHostedService<AvailSubscriptionPullService>();
 
 
 var app = builder.Build();

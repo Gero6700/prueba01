@@ -1,7 +1,7 @@
 namespace Senator.As400.Cloud.Sync.Api.HostedService;
-public class AvailSubscriptionStreamingService(
+public class PubSubPullStreamingService(
         SubscriberClient subscriberClient,
-        ILogger<AvailSubscriptionStreamingService> logger,
+        ILogger<PubSubPullStreamingService> logger,
         ISynchronizerHandler<GenericSynchronizationEvent> synchronizerHandler
     ) : BackgroundService {
     private readonly JsonSerializerOptions serializeOptions = new() { PropertyNameCaseInsensitive = true };
@@ -26,13 +26,14 @@ public class AvailSubscriptionStreamingService(
         {nameof(TableType.Regimen), typeof(Restregi)}
     };
 
-    
+
     protected override async Task ExecuteAsync(CancellationToken stoppingToken) {
-        await subscriberClient.StartAsync(async (PubsubMessage message, CancellationToken stoppingToken) => {
+        await subscriberClient.StartAsync(async (PubsubMessage message, CancellationToken messageToken) => {
             if (stoppingToken.IsCancellationRequested) {
-                return await Task.FromResult(SubscriberClient.Reply.Nack);
+                return SubscriberClient.Reply.Nack;
             }
-            //Se recupera y deserializa el mensaje
+
+            // Se recupera y deserializa el mensaje
             var messageData = message.Data.ToStringUtf8();
             try {
                 var notification = JsonSerializer.Deserialize<As400Notification>(messageData, serializeOptions);
@@ -43,54 +44,42 @@ public class AvailSubscriptionStreamingService(
                         Data = notification.Data,
                         Entity = DeserializeEntity(notification)
                     };
-                    var httpresponse = await synchronizerHandler.HandleAsync(genericSynchronizationEvent);
-                    if (!httpresponse.IsSuccessStatusCode) {
-                        var content = await httpresponse.Content.ReadAsStringAsync();
-                        var errorCode = (int)httpresponse.StatusCode;
-                        if (!string.IsNullOrWhiteSpace(content)) {
-                            try {
-                                var problemDetails = JsonSerializer.Deserialize<ProblemDetails>(content, serializeOptions);
-                                if (problemDetails != null) {
-                                    logger.LogError("Api synchronizer error. Status: {Status} - Type: {Type} - Title: {Title} - Detail: {Detail} - Instance: {Instance}",
-                                    problemDetails.Status,
-                                    problemDetails.Type,
-                                    problemDetails.Title,
-                                    problemDetails.Detail,
-                                    problemDetails.Instance);
-                                }
-                            }
-                            catch (Exception) {
-                                logger.LogError("Api synchronizer error. Status: {Status} ", errorCode);
-                            }
-                        } else {
-                            logger.LogError("Api synchronizer error. Status: {Status} ", errorCode);
-                        }
-
-                        //TODO: Pendiente de ver si se debe reintentar o no. Tener en cuenta que en streaming los reintentos pueden conllevar a un procesamiento desordenado ya que
-                        //mientras se reintentan los mensajes, los nuevos siguen llegando.
-                        //404: Not Found, 500: Internal Server Error, 422: Unprocessable Entity, 400: Bad Request
-                        if (errorCode == 404 || errorCode == 500) {                            
-                            
-                        }
+                    var httpResponse = await synchronizerHandler.HandleAsync(genericSynchronizationEvent);
+                    if (!httpResponse.IsSuccessStatusCode) {
+                        await LogHttpErrorResponse(httpResponse);
                     }
                 }
-            }
-            catch (JsonException ex) {
+            } catch (JsonException ex) {
                 logger.LogError(ex, "An exception occurred while deserializing the message: {Message}", ex.Message);
-            }
-            //catch (HttpRequestException ex) {
-            //    //TODO: ver que hacer cuando la api no este disponible 
-            //    return await Task.FromResult(SubscriberClient.Reply.Nack);
-            //}
-            catch (Exception ex) {
+            } catch (Exception ex) {
                 logger.LogError(ex, "An exception occurred while processing the message: {Message}", ex.Message);
             }
-            //No contemplo el caso de error en el procesamiento del mensaje, porque podria producir que se procesara desordenado. 
-            //En su lugar habria que contemplar un mecanismo de reintentos.
-            return await Task.FromResult(SubscriberClient.Reply.Ack);
+            return SubscriberClient.Reply.Ack;
         });
     }
 
+    private async Task LogHttpErrorResponse(HttpResponseMessage httpResponse) {
+        var content = await httpResponse.Content.ReadAsStringAsync();
+        var errorCode = (int)httpResponse.StatusCode;
+
+        if (string.IsNullOrWhiteSpace(content)) {
+            logger.LogError("Api synchronizer error. Status: {Status} ", errorCode);
+        } else {
+            try {
+                var problemDetails = JsonSerializer.Deserialize<ProblemDetails>(content, serializeOptions);
+                if (problemDetails != null) {
+                    logger.LogError("Api synchronizer error. Status: {Status} - Type: {Type} - Title: {Title} - Detail: {Detail} - Instance: {Instance}",
+                        problemDetails.Status,
+                        problemDetails.Type,
+                        problemDetails.Title,
+                        problemDetails.Detail,
+                        problemDetails.Instance);
+                    }
+            } catch (Exception) {
+                logger.LogError("Api synchronizer error. Status: {Status} ", errorCode);
+            }
+        }
+    }
     public override async Task StopAsync(CancellationToken stoppingToken) =>
         await subscriberClient.StopAsync(stoppingToken);
 

@@ -11,8 +11,8 @@ public class AvailabilitySynchronizerApiClient : IAvailabilitySynchronizerApiCli
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> CreateClient(Client client) {
-        throw new NotImplementedException();
+    public async Task<HttpResponseMessage> CreateClient(Client client) {
+        return await httpClient.PutAsJsonAsync("api/v1/client/create", client);
     }
 
     public Task<HttpResponseMessage> CreateClientType(ClientType clientType) {

@@ -36,10 +36,11 @@ public class AvailSubscriptionPullService(
         while (!stoppingToken.IsCancellationRequested) {
             try {
                 // Realiza una operación de extracción (pull) asincrónica
-                var response = await subscriberClient.PullAsync(subscriptionName, 10, stoppingToken);
+                var response = await subscriberClient.PullAsync(subscriptionName, 50, stoppingToken);
 
                 foreach (var receivedMessage in response.ReceivedMessages) {
                     var messageData = receivedMessage.Message.Data.ToStringUtf8();
+                    //await subscriberClient.AcknowledgeAsync(subscriptionName, [receivedMessage.AckId]);
                     try {
                         var notification = JsonSerializer.Deserialize<As400Notification>(messageData, options);
                         if (notification != null) {
@@ -50,59 +51,68 @@ public class AvailSubscriptionPullService(
                                 Entity = DeserializeEntity(notification)
                             };
                             var httpresponse = await synchronizationHandler.HandleAsync(genericSynchronizationEvent);
-                            if (httpresponse.StatusCode == System.Net.HttpStatusCode.OK) {
-                                // Reconoce el mensaje
-                                await subscriberClient.AcknowledgeAsync(subscriptionName, new[] { receivedMessage.AckId });
+
+                            if (httpresponse.IsSuccessStatusCode) {
+                                await subscriberClient.AcknowledgeAsync(subscriptionName, [receivedMessage.AckId]);
                             }
                             else {
                                 var content = await httpresponse.Content.ReadAsStringAsync();
                                 var errorCode = (int)httpresponse.StatusCode;
-                                if (!string.IsNullOrWhiteSpace(content)) {
-                                    try {
-                                        var problemDetails = JsonSerializer.Deserialize<ProblemDetails>(content, options);
-                                        if (problemDetails != null) {
-                                            logger.LogError("Api synchronizer error. Status: {Status} - Type: {Type} - Title: {Title} - Detail: {Detail} - Instance: {Instance}",
-                                            problemDetails.Status,
-                                            problemDetails.Type,
-                                            problemDetails.Title,
-                                            problemDetails.Detail,
-                                            problemDetails.Instance);
-                                        }
-                                    }
-                                    catch (Exception) {
-                                        logger.LogError("Api synchronizer error. Status: {Status} ", errorCode);
-                                    }
-                                }
-                                else {
-                                    logger.LogError("Api synchronizer error. Status: {Status} ", errorCode);
-                                }
+                                var logProblemDetails = "";
+                                ProblemDetails? problemDetails = null;
+
+                                try {
+                                    problemDetails = !string.IsNullOrWhiteSpace(content) ? JsonSerializer.Deserialize<ProblemDetails>(content, options) : null;
+                                } catch { }                             
+                                                                
+                                logProblemDetails = $"Api synchronizer error: Status: {problemDetails?.Status ?? errorCode} - " +
+                                    $"Type: {problemDetails?.Type} - Title: {problemDetails?.Title} - Detail: {problemDetails?.Detail} - Instance: {problemDetails?.Instance}";                                        
+                                
 
                                 //TODO: Pendiente de ver si se debe reintentar o no.
                                 //404: Not Found, 500: Internal Server Error, 422: Unprocessable Entity, 400: Bad Request
                                 if (errorCode == 404 || errorCode == 500) {
-
+                                    logger.LogError("Pulling process is aborted, it will starts in 5s. An error occurred while sending the message to Synchronizer Api. " +
+                                        "AckId: {Ackid} - PublishTime: {Publishtime} - Data: {data} ",
+                                        receivedMessage.AckId,
+                                        receivedMessage.Message.PublishTime.ToDateTime(),
+                                        messageData);
+                                    break;
+                                } else {
+                                    logger.LogError(GenerateLogMessage("The message has been refused.", receivedMessage, messageData));
+                                    await subscriberClient.AcknowledgeAsync(subscriptionName, [receivedMessage.AckId]);
                                 }
                             }
                         }
-                    }
-                    catch (JsonException ex) {
-                        logger.LogError(ex, "An exception occurred while deserializing the message: {Message}", ex.Message);
-                    }
-                    //catch (HttpRequestException ex) {
-                    //    // TODO: ver que hacer cuando la api no este disponible 
-                    //}
-                    catch (Exception ex) {
-                        logger.LogError(ex, "An exception occurred while processing the message: {Message}", ex.Message);
+                    } catch (JsonException ex) {
+                        logger.LogError(GenerateLogMessage("The message has been refused. An exception occurred while deserializing the message.", receivedMessage, messageData));
+                        await subscriberClient.AcknowledgeAsync(subscriptionName, [receivedMessage.AckId]);
+                    } catch (HttpRequestException ex) {
+                        logger.LogError(GenerateLogMessage("The message has been refused. An exception occurred while deserializing the message.", receivedMessage, messageData));
+                        // Salir del bucle si se produce un error de red/comunicación. Así nos aseguramos el orden en el procesamiento de los mensajes.
+                        logger.LogError(ex, "Pulling process is aborted, it will starts in 5s. An exception occurred while sending the message to Synchronizer Api. " +
+                            "AckId: {Ackid} - PublishTime: {Publishtime} - Data: {data} -  Exception: {Message} ",
+                            receivedMessage.AckId,
+                            receivedMessage.Message.PublishTime.ToDateTime(),
+                            messageData,
+                            ex.Message);
+                        break;
+                    } catch (Exception ex) {
+                        logger.LogError(GenerateLogMessage("The message has been refused. An exception occurred while processing the message.", receivedMessage, messageData));
+                        await subscriberClient.AcknowledgeAsync(subscriptionName, [receivedMessage.AckId]);
                     }
                 }
-            }
-            catch (Exception ex) {
+            } catch (Exception ex) {
                 logger.LogError(ex, "An exception occurred while pulling messages: {Message}", ex.Message);
             }
 
             // Espera un breve período antes de la siguiente extracción
-            await Task.Delay(TimeSpan.FromSeconds(10), stoppingToken);
+            await Task.Delay(TimeSpan.FromSeconds(5), stoppingToken);
         }
+    }
+
+    private string GenerateLogMessage(string message, ReceivedMessage receivedMessage, string messageData) {
+        return $"{message} AckId: {receivedMessage.AckId} - PublishTime: {receivedMessage.Message.PublishTime.ToDateTime()} - Data: {messageData}";
     }
 
     private object DeserializeEntity(As400Notification notification) {
