@@ -1,10 +1,12 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Dtos.As400;
 public class Mkupcabe{
-    public int Mkcid { get; set; }
-    public DateTime Mkcgrb { get; set; }
-    public DateTime Mkcbwd { get; set; }
-    public DateTime Mkcbwh { get; set; }
-    public int Mkcfed { get; set; }
-    public int Mkcfeh { get; set; }
-    public decimal Mkccpor { get; set; }
+    public required string Id { get; set; } = string.Empty;
+    public required string Fechamodi { get; set; } = string.Empty;
+    public required int Mkcid { get; set; }
+    public required DateTime Mkcgrb { get; set; }
+    public required DateTime Mkcbwd { get; set; }
+    public required DateTime Mkcbwh { get; set; }
+    public required int Mkcfed { get; set; }
+    public required int Mkcfeh { get; set; }
+    public required decimal Mkccpor { get; set; }
 }

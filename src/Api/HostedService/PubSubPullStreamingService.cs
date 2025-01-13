@@ -1,4 +1,7 @@
 namespace Senator.As400.Cloud.Sync.Api.HostedService;
+
+//Servicio de extraccion de mensajes mediante API de pull streaming de Google Pub/Sub.
+//Para mas detalles de la API de Google Pub/Sub: https://cloud.google.com/pubsub/docs/pull?hl=es-419#high_client_library
 public class PubSubPullStreamingService(
         SubscriberClient subscriberClient,
         ILogger<PubSubPullStreamingService> logger,
@@ -33,53 +36,75 @@ public class PubSubPullStreamingService(
                 return SubscriberClient.Reply.Nack;
             }
 
-            // Se recupera y deserializa el mensaje
-            var messageData = message.Data.ToStringUtf8();
-            try {
-                var notification = JsonSerializer.Deserialize<As400Notification>(messageData, serializeOptions);
-                if (notification != null) {
-                    var genericSynchronizationEvent = new GenericSynchronizationEvent {
-                        Operation = notification.Operation,
-                        Table = notification.Table,
-                        Data = notification.Data,
-                        Entity = DeserializeEntity(notification)
-                    };
-                    var httpResponse = await synchronizerHandler.HandleAsync(genericSynchronizationEvent);
-                    if (!httpResponse.IsSuccessStatusCode) {
-                        await LogHttpErrorResponse(httpResponse);
-                    }
-                }
-            } catch (JsonException ex) {
-                logger.LogError(ex, "An exception occurred while deserializing the message: {Message}", ex.Message);
-            } catch (Exception ex) {
-                logger.LogError(ex, "An exception occurred while processing the message: {Message}", ex.Message);
-            }
-            return SubscriberClient.Reply.Ack;
+            return await ProcessMessageAsync(message);
         });
     }
 
-    private async Task LogHttpErrorResponse(HttpResponseMessage httpResponse) {
-        var content = await httpResponse.Content.ReadAsStringAsync();
-        var errorCode = (int)httpResponse.StatusCode;
+    private async Task<SubscriberClient.Reply> ProcessMessageAsync(PubsubMessage message) {
+        // Se recupera y deserializa el mensaje
+        var messageData = string.Empty;
+        try {
+            messageData = message.Data.ToStringUtf8();
+            var notification = JsonSerializer.Deserialize<As400Notification>(messageData, serializeOptions) ??
+                throw new InvalidOperationException("The message could not be deserialized");
+            var genericSynchronizationEvent = new GenericSynchronizationEvent {
+                Operation = notification.Operation,
+                Table = notification.Table,
+                Data = notification.Data,
+                Entity = DeserializeEntity(notification)
+            };
+            var httpResponse = await synchronizerHandler.HandleAsync(genericSynchronizationEvent);
+            if (!httpResponse.IsSuccessStatusCode) {
+                var content = await httpResponse.Content.ReadAsStringAsync();
+                var errorCode = (int)httpResponse.StatusCode;
+                ProblemDetails? problemDetails = null;
 
-        if (string.IsNullOrWhiteSpace(content)) {
-            logger.LogError("Api synchronizer error. Status: {Status} ", errorCode);
-        } else {
-            try {
-                var problemDetails = JsonSerializer.Deserialize<ProblemDetails>(content, serializeOptions);
-                if (problemDetails != null) {
-                    logger.LogError("Api synchronizer error. Status: {Status} - Type: {Type} - Title: {Title} - Detail: {Detail} - Instance: {Instance}",
-                        problemDetails.Status,
-                        problemDetails.Type,
-                        problemDetails.Title,
-                        problemDetails.Detail,
-                        problemDetails.Instance);
-                    }
-            } catch (Exception) {
-                logger.LogError("Api synchronizer error. Status: {Status} ", errorCode);
+                try {
+                    problemDetails = !string.IsNullOrWhiteSpace(content) ? JsonSerializer.Deserialize<ProblemDetails>(content, serializeOptions) : null;
+                }
+                catch { }
+
+                if (errorCode == 404 || errorCode == 500) {
+                    //Se reintenta el mensaje
+                    logger.LogError("An error occurred while sending the message to Synchronizer Api. It will retry automatically again. {Message}",
+                        GenerateLogApi(message, messageData, errorCode, problemDetails));
+                    return SubscriberClient.Reply.Nack;
+                }
+                else {
+                    logger.LogError("The message has been refused. An error occurred while sending the message to Synchronizer Api. {Message}",
+                        GenerateLogApi(message, messageData, errorCode, problemDetails));
+                    return SubscriberClient.Reply.Ack;
+                }
+            }
+            else {
+                return SubscriberClient.Reply.Ack;
             }
         }
+        catch (JsonException ex) {
+            logger.LogError("The message has been refused. An exception occurred while deserializing the message: {Message}",
+                GenerateLogMessage(message, messageData, ex.Message));
+            return SubscriberClient.Reply.Ack;
+        }
+        catch (HttpRequestException ex) {
+            logger.LogError("An exception occurred while sending the message to Synchronizer Api. It will retry automatically again: {Message}",
+                GenerateLogMessage(message, messageData, ex.Message));
+            return SubscriberClient.Reply.Nack;
+        }
+        catch (Exception ex) {
+            logger.LogError("The message has been refused. An exception occurred while processing the message: {Message}",
+                GenerateLogMessage(message, messageData, ex.Message));
+            return SubscriberClient.Reply.Ack;
+        }
     }
+
+    private static string GenerateLogMessage(PubsubMessage receivedMessage, string messageData, string errorMessage) {
+        return $"{errorMessage}{Environment.NewLine}MessageId: {receivedMessage.MessageId}{Environment.NewLine}PublishTime: {receivedMessage.PublishTime.ToDateTime()}{Environment.NewLine}Data: {messageData}";
+    }
+
+    private static string GenerateLogApi(PubsubMessage received, string messageData, int errorCode, ProblemDetails? problemDetails) {
+        return GenerateLogMessage(received, messageData, $"Api synchronizer error: {problemDetails?.Status ?? errorCode}{Environment.NewLine}Type: {problemDetails?.Type}{Environment.NewLine}Title: {problemDetails?.Title}{Environment.NewLine}Detail: {problemDetails?.Detail}{Environment.NewLine}Instance: {problemDetails?.Instance}");
+    }
+
     public override async Task StopAsync(CancellationToken stoppingToken) =>
         await subscriberClient.StopAsync(stoppingToken);
 
