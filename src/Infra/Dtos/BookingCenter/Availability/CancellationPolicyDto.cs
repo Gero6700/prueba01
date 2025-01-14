@@ -1,4 +1,4 @@
-namespace Availability.Synchronizer.Api.Dtos;
+namespace Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter.Availability;
 
 public class CancellationPolicyDto {
     public required string Code { get; set; }
@@ -8,7 +8,7 @@ public class CancellationPolicyDto {
     public decimal? PenaltyPercent { get; set; }
     public decimal? PenaltyAmount { get; set; }
     public int ApplicationMargin { get; set; }
-    public required string ApplicationType { get; set; }
+    public required CancellationPolicyApplicationType ApplicationType { get; set; }
     public bool ApplyInOfferPrice { get; set; }
     public bool ApplyIfInsurance { get; set; }
     public bool RefundAsBonus { get; set; }

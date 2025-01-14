@@ -1,11 +1,9 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter.Availability;
-
 namespace Senator.As400.Cloud.Sync.Infrastructure.Providers {
     public interface IAvailabilitySynchronizerApiClient {
-        Task<HttpResponseMessage> CreateContract(Contract contract);
-        Task<HttpResponseMessage> CreateContractClient(ContractClient contractClient);
-        Task<HttpResponseMessage> UpdateContract(Contract contract);
-        Task<HttpResponseMessage> UpdateContractClient(ContractClient contractClient);
+        Task<HttpResponseMessage> CreateContract(ContractHeaderDto contract);
+        Task<HttpResponseMessage> CreateContractClient(IntegrationContractDto contractClient);
+        Task<HttpResponseMessage> UpdateContract(ContractHeaderDto contract);
+        Task<HttpResponseMessage> UpdateContractClient(IntegrationContractDto contractClient);
         Task<HttpResponseMessage> DeleteContract(string contractCode);
         Task<HttpResponseMessage> DeleteContractClient(string contractClientCode);
         Task<HttpResponseMessage> CreateClient(Client client);
@@ -29,8 +27,8 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Providers {
         Task<HttpResponseMessage> CreateRoom(Infrastructure.Dtos.BookingCenter.Availability.Room room);
         Task<HttpResponseMessage> UpdateRoom(Infrastructure.Dtos.BookingCenter.Availability.Room room);
         Task<HttpResponseMessage> DeleteRoom(string roomCode);
-        Task<HttpResponseMessage> CreateExtra(Extra extra);
-        Task<HttpResponseMessage> UpdateExtra(Extra extra);
+        Task<HttpResponseMessage> CreateExtra(ExtraDto extra);
+        Task<HttpResponseMessage> UpdateExtra(ExtraDto extra);
         Task<HttpResponseMessage> DeleteExtra(string extraCode);
         Task<HttpResponseMessage> CreateMinimumStay(MinimumStay minimumStay);
         Task<HttpResponseMessage> UpdateMinimumStay(MinimumStay minimumStay);
@@ -39,8 +37,8 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Providers {
         Task<HttpResponseMessage> CreateMarkup(Markup markup);
         Task<HttpResponseMessage> UpdateMarkup(Markup markup);
         Task<HttpResponseMessage> CreateMarkupHotel(MarkupHotel markupHotel);
-        Task<HttpResponseMessage> CreateCancellationPolicyLine(CancellationPolicyLine cancellationPolicyLine);
-        Task<HttpResponseMessage> UpdateCancellationPolicyLine(CancellationPolicyLine cancellationPolicyLine);
+        Task<HttpResponseMessage> CreateCancellationPolicyLine(CancellationPolicyDto cancellationPolicyLine);
+        Task<HttpResponseMessage> UpdateCancellationPolicyLine(CancellationPolicyDto cancellationPolicyLine);
         Task<HttpResponseMessage> CreateOfferAndSupplement(OfferAndSupplement offerAndSupplement);
         Task<HttpResponseMessage> UpdateOfferAndSupplement(OfferAndSupplement offerAndSupplement);
         Task<HttpResponseMessage> CreateOfferAndSupplementConfigurationPax(OfferAndSupplementConfigurationPax offerAndSupplementConfigurationPax);

@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Dtos\BookingCenter\Availability\CancellationPolicyLine.cs" />
+    <Compile Remove="Dtos\BookingCenter\Availability\Contract.cs" />
+    <Compile Remove="Dtos\BookingCenter\Availability\ContractClient.cs" />
+    <Compile Remove="Dtos\BookingCenter\Availability\Extra.cs" />
+    <Compile Remove="Dtos\BookingCenter\Availability\ExtraPax.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.2.2" />
     <PackageReference Include="IdentityModel" Version="6.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />

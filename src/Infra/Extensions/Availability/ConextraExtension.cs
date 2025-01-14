@@ -1,8 +1,8 @@
 
 namespace Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
 public static class ConextraExtension {
-    public static Extra ToExtra(this Conextra conextra) {
-        var extra = new Extra {
+    public static ExtraDto ToExtra(this Conextra conextra) {
+        var extra = new ExtraDto {
             Code = conextra.Code,
             ApplyFrom = DateTimeHelper.ConvertYYYYMMDDToNullableDatetime(conextra.C5fred),
             ApplyTo = DateTimeHelper.ConvertYYYYMMDDToNullableDatetime(conextra.C5freh),
@@ -21,35 +21,30 @@ public static class ConextraExtension {
                 conextra.C5apdt == "T" ? ExtrasDiscountApplicationType.All : ExtrasDiscountApplicationType.None, 
             TaxesIncluded = conextra.TaxesIncluded, 
             IsCommissionable = conextra.IsCommissionable, 
-            OccupancyRateCod = conextra.C5cocu == 0 ? "" : conextra.C5cocu.ToString()
+            OccupancyRateCode = conextra.C5cocu == 0 ? "" : conextra.C5cocu.ToString(),
+            IntegrationContractCodes = conextra.OriginType == OriginType.Contract ? [conextra.OriginCode] : null,
+            OfferSupplementCodes = conextra.OriginType == OriginType.Offer ? [conextra.OriginCode] : null,
+            ExtraPaxes = [],
+            RoomCodes= null,
+            MealCodes = null
         };
         extra.AddAdultPaxes(conextra);
         extra.AddChildPaxes(conextra);
         extra.AddRooms(conextra);
         extra.AddRegimes(conextra);
 
-        if (conextra.OriginType == OriginType.Contract) {
-            extra.ContractClients.Add(conextra.OriginCode);
-        }
-        else if (conextra.OriginType == OriginType.Offer) {
-            extra.OfferAndSuplements.Add(new ExtraOfferAndSuplement {
-                OfferAndSuplementCode = conextra.OriginCode,
-                //ApplyStayPriceType = conextra.Offoe.ToUpper() == "P" ? ApplyStayPriceType.P : conextra.Offoe.ToUpper() == "U" ? ApplyStayPriceType.U : conextra.Offoe.ToUpper() == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.D,
-            });
-        }
-
         return extra;
     }
 
-    private static void AddChildPaxes(this Extra extra, Conextra conextra) {
+    private static void AddChildPaxes(this ExtraDto extra, Conextra conextra) {
         const decimal ageFrom = 2;
         const decimal ageTo = 14.99m;
         const PaxType type = PaxType.Child;
         const Dtos.BookingCenter.Availability.TypeOfPayment payment = Dtos.BookingCenter.Availability.TypeOfPayment.Percent;
 
-        var paxes = new List<ExtraPax>();
+        var paxes = new List<ExtraPaxDto>();
         if (conextra.C5dtn1 != 0) {
-            paxes.Add(new ExtraPax {
+            paxes.Add(new ExtraPaxDto {
                 PaxOrder = 1,
                 PaxType = type,                
                 AgeFrom = ageFrom,
@@ -59,7 +54,7 @@ public static class ConextraExtension {
             });
         }
         if (conextra.C5dtn2 != 0) {
-            paxes.Add(new ExtraPax {
+            paxes.Add(new ExtraPaxDto {
                 PaxOrder = 2,
                 PaxType = type,
                 AgeFrom = ageFrom,
@@ -69,7 +64,7 @@ public static class ConextraExtension {
             });
         }
         if (conextra.C5dtn3 != 0) {
-            paxes.Add(new ExtraPax {
+            paxes.Add(new ExtraPaxDto {
                 PaxOrder = 3,
                 PaxType = type,
                 AgeFrom = ageFrom,
@@ -79,7 +74,7 @@ public static class ConextraExtension {
             });
         }
         if (conextra.C5dtn4 != 0) {
-            paxes.Add(new ExtraPax {
+            paxes.Add(new ExtraPaxDto {
                 PaxOrder = 4,
                 PaxType = type,
                 AgeFrom = ageFrom,
@@ -89,18 +84,18 @@ public static class ConextraExtension {
             });
         }
 
-        paxes.ForEach(pax => extra.Paxes.Add(pax));
+        paxes.ForEach(pax => extra.ExtraPaxes.ToList().Add(pax));
     }
 
-    private static void AddAdultPaxes(this Extra extra, Conextra conextra) {
+    private static void AddAdultPaxes(this ExtraDto extra, Conextra conextra) {
         const decimal ageFrom = 15;
         const decimal ageTo = 999;
         const PaxType type = PaxType.Adult;
         const TypeOfPayment payment = TypeOfPayment.Percent;
 
-        var paxes = new List<ExtraPax>();
+        var paxes = new List<ExtraPaxDto>();
         if (conextra.C5dta1 != 0) {
-            paxes.Add(new ExtraPax {
+            paxes.Add(new ExtraPaxDto {
                 PaxOrder = 1,
                 PaxType = type,
                 AgeFrom = ageFrom,
@@ -110,7 +105,7 @@ public static class ConextraExtension {
             });
         }
         if (conextra.C5dta2 != 0) {
-            paxes.Add(new ExtraPax {
+            paxes.Add(new ExtraPaxDto {
                 PaxOrder = 2,
                 PaxType = type,
                 AgeFrom = ageFrom,
@@ -120,7 +115,7 @@ public static class ConextraExtension {
             });
         }
         if (conextra.C5dta3 != 0) {
-            paxes.Add(new ExtraPax {
+            paxes.Add(new ExtraPaxDto {
                 PaxOrder = 3,
                 PaxType = type,
                 AgeFrom = ageFrom,
@@ -130,7 +125,7 @@ public static class ConextraExtension {
             });
         }
         if (conextra.C5dta4 != 0) {
-            paxes.Add(new ExtraPax {
+            paxes.Add(new ExtraPaxDto {
                 PaxOrder = 4,
                 PaxType = type,
                 AgeFrom = ageFrom,
@@ -140,10 +135,10 @@ public static class ConextraExtension {
             });
         }
 
-        paxes.ForEach(pax => extra.Paxes.Add(pax));
+        paxes.ForEach(pax => extra.ExtraPaxes.ToList().Add(pax));
     }
 
-    private static void AddRooms(this Extra extra, Conextra conextra) {
+    private static void AddRooms(this ExtraDto extra, Conextra conextra) {
         var rooms = new List<string>();
 
         if (!string.IsNullOrEmpty(conextra.C5th01)) {
@@ -192,10 +187,10 @@ public static class ConextraExtension {
             rooms.Add(conextra.C5th15);
         }
 
-        extra.Rooms = rooms;
+        extra.RoomCodes = rooms.Count > 0 ? rooms : null;
     }
 
-    private static void AddRegimes(this Extra extra, Conextra conextra) {
+    private static void AddRegimes(this ExtraDto extra, Conextra conextra) {
         var regimes = new List<string>();
 
         if (!string.IsNullOrEmpty(conextra.C5reg1)) {
@@ -214,7 +209,7 @@ public static class ConextraExtension {
             regimes.Add(conextra.C5reg5);
         }
 
-        extra.Regimes = regimes;
+        extra.MealCodes = regimes.Count > 0 ? regimes : null;
     }
 }
 
