@@ -16,6 +16,7 @@ public class CreateHotelRoomConfiguration :ICreateHotelRoomConfiguration {
         if (resthaho.Tihabg == "") {
             throw new ArgumentException("Incorrect inventory room code");
         }
+        //TODO: Pendiente de si puede venir una habitacion sin configuracion de ocupacion
         if (resthaho.Ticonf == 0) {
             throw new ArgumentException("Incorrect occupancy rate code");
         }

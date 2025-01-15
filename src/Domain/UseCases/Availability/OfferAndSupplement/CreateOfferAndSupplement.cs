@@ -1,3 +1,5 @@
+using Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter.Availability;
+
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.OfferAndSupplement;
 public class CreateOfferAndSupplement :ICreateOfferAndSupplement {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
@@ -36,6 +38,9 @@ public class CreateOfferAndSupplement :ICreateOfferAndSupplement {
         }
         if (conofege.Ofgrbd > 0 && conofege.Ofgrbh > 0 && DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Ofgrbd) > DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Ofgrbh)) {
             throw new ArgumentException("Booking window to date is less than booking window from date");
+        }
+        if (string.IsNullOrWhiteSpace(conofege.Ccode)) {
+            throw new ArgumentException("Integration contract code is required");
         }
 
         var offerAndSupplement = conofege.ToOfferAndSupplement();

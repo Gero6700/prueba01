@@ -1,14 +1,13 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter.Availability;
-
 namespace Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
 public static class ResthacoExtension {
-    public static OccupancyRate ToOccupancyRate(this Resthaco resthaco) {
-        return new OccupancyRate {
+    public static OccupancyRateDto ToOccupancyRate(this Resthaco resthaco) {
+        return new OccupancyRateDto {
             Code = resthaco.Cocod,
             MinAdult = resthaco.Cminad,
             MinTeen = resthaco.Cminat,
             MinChild = resthaco.Cminni,
-            MinInfant = resthaco.Cminin,
+            MinBaby = resthaco.Cminin,
+            MaxBaby = resthaco.Cmaxin,
             MaxAdult = resthaco.Cmaxad,
             MaxTeen = resthaco.Cmaxat,
             MaxChild = resthaco.Cmaxni,

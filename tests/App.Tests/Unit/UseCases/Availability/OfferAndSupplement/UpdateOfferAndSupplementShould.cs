@@ -38,7 +38,7 @@ public class UpdateOfferAndSupplementShould {
         //Then
         var expectedOfferAndSupplement = new Infrastructure.Dtos.BookingCenter.Availability.OfferAndSupplement {
             Code = anyConofege.Code,
-            ContractClients = new List<string> { anyConofege.ContractClientCode },
+            ContractClients = new List<string> { anyConofege.Ccode },
             Type = anyConofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = new DateTime(2024, 01, 01),
             ApplyTo = new DateTime(2024, 01, 02),

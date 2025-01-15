@@ -1,10 +1,10 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
 
 public static class ConofegeExtension {
-    public static OfferAndSupplement ToOfferAndSupplement(this Conofege conofege) {
-        return new OfferAndSupplement {
+    public static OfferSupplementDto ToOfferAndSupplement(this Conofege conofege) {
+        return new OfferSupplementDto {
             Code = conofege.Code,
-            ContractClients = conofege.ContractClientCode == "" ? [] : [conofege.ContractClientCode],
+            IntegrationContractCodes = [conofege.Ccode],
             Name = conofege.OfDesc,
             Type = conofege.Ofopci.ToUpper() == "S" ? OfferSupplementType.Offer : OfferSupplementType.Supplement,
             ApplyFrom = DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Offec),
@@ -14,7 +14,7 @@ public static class ConofegeExtension {
             DepositType = conofege.Ofdpto == 0 ? null : conofege.Offode == "%" ? TypeOfPayment.Percent : TypeOfPayment.Fixed,
             DepositBeforeDate = conofege.Offtop == 0 ? null : DateTimeHelper.ConvertYYMMDDToDatetime(conofege.Offtop),
             ModificationCostsAmount = conofege.Gmimpo == 0 ? null : conofege.Gmimpo,
-            Condition = new OfferAndSupplementCondition {
+            OfferSupplementCondition = new OfferSupplementConditionDto {
                     StayType = conofege.Ofties.ToUpper() == "P" ? StayType.Period : conofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
                     ApplyToPax = conofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : conofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
                     MinStayDays = conofege.Ofdiae == 0 ? null : conofege.Ofdiae,
@@ -23,21 +23,21 @@ public static class ConofegeExtension {
                     MaxReleaseDays = conofege.Offres == 0 ? null : conofege.Offres,
                     BookingWindowFrom = DateTimeHelper.ConvertYYYYMMDDToNullableDatetime(conofege.Ofgrbd),
                     BookingWindowTo = DateTimeHelper.ConvertYYYYMMDDToNullableDatetime(conofege.Ofgrbh),
-                    OccupancyRateCod = conofege.Ofcocu == 0 ? null : conofege.Ofcocu.ToString(),
+                    //OccupancyRateCod = conofege.Ofcocu == 0 ? null : conofege.Ofcocu.ToString(),
                     OnlyApplyIfRecordDatesOnWeekDays = "", //TODO: Pendiente de Jose
                     OnlyApplyIfStayDatesOnWeekDays = "", //TODO: Pendiente de Jose
                     WeekDaysApplicationMode = WeekDaysApplicationType.Always, //TODO: Pendiente de Jose
-                    Rooms = conofege.GetRoomCodes.Where(value => value != "").ToList(),
-                    Regimes = conofege.GetRegimeCodes.Where(value => value != "").ToList(),
+                    RoomCodes = conofege.GetRoomCodes.Where(value => value != "").ToList(),
+                    MealCodes = conofege.GetRegimeCodes.Where(value => value != "").ToList(),
                 },
-            Configuration = new OfferAndSupplementConfiguration {
+            OfferSupplementConfiguration = new OfferSupplementConfigurationDto {
                     FreeDays = conofege.Ofdfac.Trim() == "" && conofege.Ofdiaf > 0 ? conofege.Ofdiae - conofege.Ofdiaf : conofege.Ofdiaf,
-                    RoomTypeCodeToCalculatePrice = conofege.Ofthaf.Trim() == "" ? null : conofege.Ofthaf,
-                    RegimeTypeCodeToCalculatePrice = conofege.Oftsef.Trim() == "" ? null : conofege.Oftsef,
+                    RoomUsedToCalculatePrice = conofege.Ofthaf.Trim() == "" ? null : conofege.Ofthaf,
+                    MealUsedToCalculatePrice = conofege.Oftsef.Trim() == "" ? null : conofege.Oftsef,
                     ApplyStayPriceType = conofege.Ofpree == 0 ? null : conofege.Offore.ToUpper() == "P" ? ApplyStayPriceType.P : conofege.Offore.ToUpper() == "X" ? ApplyStayPriceType.X : conofege.Offore.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
                     ApplyStayPrice = conofege.Ofpree == 0 ? null : conofege.Ofpree,
-                    ApplyRegimePriceType = conofege.Ofpres == 0 ? null : conofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : conofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : conofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
-                    ApplyRegimePrice = conofege.Ofpres == 0 ? null : conofege.Ofpres,
+                    ApplyMealPriceType = conofege.Ofpres == 0 ? null : conofege.Offors.ToUpper() == "P" ? ApplyStayPriceType.P : conofege.Offors.ToUpper() == "X" ? ApplyStayPriceType.X : conofege.Offors.ToUpper() == "U" ? ApplyStayPriceType.U : ApplyStayPriceType.D,
+                    ApplyMealPrice = conofege.Ofpres == 0 ? null : conofege.Ofpres,
                     Amount = Math.Abs(conofege.Ofdtos), 
                     AmountType = conofege.Oftidt.ToUpper() == "C" ? TypeOfPayment.Fixed : TypeOfPayment.Percent,
                     Target = conofege.Ofsobr.ToUpper() == "B" ? DiscountTargetType.Net : conofege.Ofsobr.ToUpper() == "C" ? DiscountTargetType.Commission : DiscountTargetType.Pvp,

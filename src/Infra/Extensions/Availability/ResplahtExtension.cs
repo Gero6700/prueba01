@@ -1,8 +1,8 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
 
 public static class ResplahtExtension {
-    public static Inventory ToInventory(this Resplaht resplaht) {
-        return new Inventory {
+    public static InventoryDto ToInventory(this Resplaht resplaht) {
+        return new InventoryDto {
             InventoryDate = DateTimeHelper.ConvertYYYYMMDDToDatetime(resplaht.Ptfec),
             RoomQuantity = resplaht.GetRoomQuantity,
             OccupiedRooms = resplaht.GetOccupiedRooms,

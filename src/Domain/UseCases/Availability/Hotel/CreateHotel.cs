@@ -1,5 +1,3 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
-
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.Hotel;
 
 public class CreateHotel : ICreateHotel {

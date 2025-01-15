@@ -3,7 +3,7 @@ public class Conofege {
     public required string Id { get; set; } = string.Empty;
     public required string Fechamodi { get; set; } = string.Empty;
     public required string Code { get; set; } = string.Empty;
-    public required string ContractClientCode { get; set; } = string.Empty;
+    public required string Ccode { get; set; } = string.Empty;
     public required string OfDesc { get; set; } = string.Empty;
     public required string Ofopci { get; set; } = string.Empty;
     public required int Offec { get; set; }

@@ -37,6 +37,9 @@ public class UpdateOfferAndSupplement :IUpdateOfferAndSupplement {
         if (DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Ofgrbd) > DateTimeHelper.ConvertYYYYMMDDToDatetime(conofege.Ofgrbh) && conofege.Ofgrbh > 0 && conofege.Ofgrbd > 0) {
             throw new ArgumentException("Booking window to date is less than booking window from date");
         }
+        if (string.IsNullOrWhiteSpace(conofege.Ccode)) {
+            throw new ArgumentException("Integration contract code is required");
+        }
 
         var offerAndSupplement = conofege.ToOfferAndSupplement();
         return availabilitySynchronizerApiClient.UpdateOfferAndSupplement(offerAndSupplement);

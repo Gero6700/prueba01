@@ -8,10 +8,23 @@
 
   <ItemGroup>
     <Compile Remove="Dtos\BookingCenter\Availability\CancellationPolicyLine.cs" />
+    <Compile Remove="Dtos\BookingCenter\Availability\Client.cs" />
+    <Compile Remove="Dtos\BookingCenter\Availability\ClientType.cs" />
     <Compile Remove="Dtos\BookingCenter\Availability\Contract.cs" />
     <Compile Remove="Dtos\BookingCenter\Availability\ContractClient.cs" />
     <Compile Remove="Dtos\BookingCenter\Availability\Extra.cs" />
     <Compile Remove="Dtos\BookingCenter\Availability\ExtraPax.cs" />
+    <Compile Remove="Dtos\BookingCenter\Availability\Hotel.cs" />
+    <Compile Remove="Dtos\BookingCenter\Availability\HotelRoomConfiguration.cs" />
+    <Compile Remove="Dtos\BookingCenter\Availability\Inventory.cs" />
+    <Compile Remove="Dtos\BookingCenter\Availability\Market.cs" />
+    <Compile Remove="Dtos\BookingCenter\Availability\MinimumStay.cs" />
+    <Compile Remove="Dtos\BookingCenter\Availability\OcuppancyRate.cs" />
+    <Compile Remove="Dtos\BookingCenter\Availability\OfferAndSupplement.cs" />
+    <Compile Remove="Dtos\BookingCenter\Availability\OfferAndSupplementCondition.cs" />
+    <Compile Remove="Dtos\BookingCenter\Availability\OfferAndSupplementConfiguration.cs" />
+    <Compile Remove="Dtos\BookingCenter\Availability\Regime.cs" />
+    <Compile Remove="Dtos\BookingCenter\Availability\Room.cs" />
   </ItemGroup>
 
   <ItemGroup>

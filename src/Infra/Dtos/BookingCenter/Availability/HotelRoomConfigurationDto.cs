@@ -1,8 +1,8 @@
-namespace Availability.Synchronizer.Api.Dtos;
+namespace Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter.Availability;
 
 public class HotelRoomConfigurationDto {
     public required string HotelCode { get; set; }
     public required string RoomCode { get; set; }
     public string? OccupancyRateCode { get; set; }
-    public string? InventoryRoomTypeCode { get; set; }
+    public required string InventoryRoomTypeCode { get; set; }
 }

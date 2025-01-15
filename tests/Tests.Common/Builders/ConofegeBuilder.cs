@@ -66,7 +66,7 @@ public class ConofegeBuilder {
     public Conofege Build() {
         return new Conofege {
             Code = raw.Code,
-            ContractClientCode = raw.ContractClientCode,
+            Ccode = raw.ContractClientCode,
             Ofopci = raw.Ofopci,
             Offec = raw.Offec,
             Offec2 = raw.Offec2,
