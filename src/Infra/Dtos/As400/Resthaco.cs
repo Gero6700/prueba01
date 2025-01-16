@@ -1,9 +1,9 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Dtos.As400;
 public class Resthaco {
 
-    public required string Id { get; set; } = string.Empty;
-    public required string Fechamodi { get; set; } = string.Empty;
-    public required string Cocod { get; set; } = string.Empty;
+    public required string Id { get; set; } 
+    public required string Fechamodi { get; set; } 
+    public required string Cocod { get; set; } 
     public required int Cminad { get; set; }
     public required int Cminat { get; set; }
     public required int Cminni { get; set; }

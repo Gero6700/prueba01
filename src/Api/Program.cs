@@ -15,6 +15,7 @@ using Senator.As400.Cloud.Sync.Application.UseCases.Availability.OfferAndSupplem
 using Senator.As400.Cloud.Sync.Application.UseCases.Availability.PeriodPricing;
 using Senator.As400.Cloud.Sync.Application.UseCases.Availability.PeriodPricingPax;
 using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Regime;
+using Senator.As400.Cloud.Sync.Application.UseCases.Static;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,7 +40,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.ConfigureOptions<ConfigureSwaggerOptions>();
 builder.Services.AddErrorHandling();
 
-//TODO: Pendiente de ver con Jesus
 builder.Services.AddHttpClients(configuration);
 builder.Services.AddSingleton<ICreateCancellationPolicyLine, CreateCancellationPolicyLine>();
 builder.Services.AddSingleton<IUpdateCancellationPolicyLine, UpdateCancellationPolicyLine>();
@@ -106,16 +106,34 @@ builder.Services.AddSingleton<IDeletePeriodPricingPax, DeletePeriodPricingPax>()
 builder.Services.AddSingleton<ICreateRegimen, CreateRegime>();
 builder.Services.AddSingleton<IUpdateRegimen, UpdateRegime>();
 
-//Cupo
-var projectId = configuration["AvailGooglePubSub:ProjectId"];
-var subscriptionId = configuration["AvailGooglePubSub:SubscriptionId"];
+builder.Services.AddSingleton<ICreateStaticExtraTranslation, CreateStaticExtraTranslation>();
+builder.Services.AddSingleton<IUpdateStaticExtraTranslation, UpdateStaticExtraTranslation>();
+builder.Services.AddSingleton<IDeleteStaticExtraTranslation, DeleteStaticExtraTranslation>();
+
+builder.Services.AddSingleton<ICreateStaticOfferSupplementTranslation, CreateStaticOfferSuplementTranslation>();
+builder.Services.AddSingleton<IUpdateStaticOfferSupplementTranslation, UpdateStaticOfferSupplementTranslation>();
+builder.Services.AddSingleton<IDeleteStaticOfferSupplementTranslation, DeleteStaticOfferSupplementTranslation>();
+
+builder.Services.AddSingleton<ICreateStaticPaymentType, CreateStaticPaymentType>();
+builder.Services.AddSingleton<IUpdateStaticPaymentType, UpdateStaticPaymentType>();
+builder.Services.AddSingleton<IDeleteStaticPaymentType, DeleteStaticPaymentType>();
+
+builder.Services.AddSingleton<ICreateStaticTax, CreateStaticTax>();
+builder.Services.AddSingleton<IUpdateStaticTax, UpdateStaticTax>();
+builder.Services.AddSingleton<IDeleteStaticTax, DeleteStaticTax>();
+
+builder.Services.AddSingleton<ISynchronizerHandler<GenericSynchronizationEvent>, GenericEventHandler>();
+
+//subscription to quota
+var projectId = configuration["QuotaGooglePubSub:ProjectId"];
+var subscriptionId = configuration["QuotaGooglePubSub:SubscriptionId"];
 var subscriptionName = SubscriptionName.FromProjectSubscription(projectId, subscriptionId);
 builder.Services.AddSubscriberClient(subscriptionName);
-
 builder.Services.AddSubscriberServiceApiClient();
-builder.Services.AddSingleton<ISynchronizerHandler<GenericSynchronizationEvent>, GenericEventHandler>();
-//builder.Services.AddHostedService<PubSubPullStreamingService>();
+
+//subscription to avail and static 
 builder.Services.AddHostedService<AvailSubscriptionPullService>();
+builder.Services.AddHostedService<StaticSubscriptionPullService>();
 
 
 var app = builder.Build();

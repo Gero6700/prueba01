@@ -13,6 +13,7 @@
     <Compile Remove="Dtos\BookingCenter\Availability\Contract.cs" />
     <Compile Remove="Dtos\BookingCenter\Availability\ContractClient.cs" />
     <Compile Remove="Dtos\BookingCenter\Availability\Extra.cs" />
+    <Compile Remove="Dtos\BookingCenter\Availability\ExtraOfferAndSuplement.cs" />
     <Compile Remove="Dtos\BookingCenter\Availability\ExtraPax.cs" />
     <Compile Remove="Dtos\BookingCenter\Availability\Hotel.cs" />
     <Compile Remove="Dtos\BookingCenter\Availability\HotelRoomConfiguration.cs" />

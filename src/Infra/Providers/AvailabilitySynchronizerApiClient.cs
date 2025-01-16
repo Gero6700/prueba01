@@ -1,246 +1,238 @@
 using System.Net.Http.Json;
+
 namespace Senator.As400.Cloud.Sync.Infrastructure.Providers;
 public class AvailabilitySynchronizerApiClient : IAvailabilitySynchronizerApiClient {
-    private readonly HttpClient httpClient = new();
+    private readonly HttpClient httpClient;
 
     public AvailabilitySynchronizerApiClient(HttpClient httpClient) {
         this.httpClient = httpClient;
     }
 
-    public Task<HttpResponseMessage> CreateCancellationPolicyLine(CancellationPolicyLine cancellationPolicyLine) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.CreateCancellationPolicyLine(CancellationPolicyDto cancellationPolicyLine) {
         throw new NotImplementedException();
     }
 
-    public async Task<HttpResponseMessage> CreateClient(Client client) {
-        return await httpClient.PutAsJsonAsync("api/v1/client/create", client);
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.CreateClient(IntegrationDto client) {
+        return httpClient.PutAsJsonAsync("api/v1/client/create", client);
     }
 
-    public Task<HttpResponseMessage> CreateClientType(ClientType clientType) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.CreateClientType(IntegrationClientTypeDto clientType) {
         throw new NotImplementedException();
     }
 
-    public async Task<HttpResponseMessage> CreateContract(Contract contract) {
-        return await httpClient.PostAsJsonAsync("api/v1/contractheader/create", contract);
-    }
-
-    public async Task<HttpResponseMessage> UpdateContract(Contract contract) {
-        return await httpClient.PutAsJsonAsync("api/v1/contractheader/update", contract);
-    }
-
-    public async Task<HttpResponseMessage> CreateContractClient(ContractClient contractClient) {
-        return await httpClient.PostAsJsonAsync("api/create-contract-client", contractClient);
-    }
-   
-
-    public Task<HttpResponseMessage> UpdateContractClient(ContractClient contractClient) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.CreateContract(ContractHeaderDto contract) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> CreateExtra(Extra extra) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.CreateContractClient(IntegrationContractDto contractClient) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> CreateHotel(Dtos.BookingCenter.Availability.Hotel hotel) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.CreateExtra(ExtraDto extra) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> CreateHotelRoomConfiguration(HotelRoomConfiguration hotelRoomConfiguration) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.CreateHotel(HotelDto hotel) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> CreateInventory(Inventory inventory) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.CreateHotelRoomConfiguration(HotelRoomConfigurationDto hotelRoomConfiguration) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> CreateMarket(Market market) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.CreateInventory(InventoryDto inventory) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> CreateMarkup(Markup markup) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.CreateMarket(MarketDto market) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> CreateMarkupHotel(MarkupHotel markupHotel) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.CreateMarkup(Markup markup) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> CreateMinimumStay(MinimumStay minimumStay) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.CreateMarkupHotel(MarkupHotel markupHotel) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> CreateOccupancyRate(OccupancyRate occupancyRate) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.CreateMinimumStay(MinimumStayDto minimumStay) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> CreateOfferAndSupplement(OfferAndSupplement offerAndSupplement) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.CreateOccupancyRate(OccupancyRateDto occupancyRate) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> CreateOfferAndSupplementConfigurationPax(OfferAndSupplementConfigurationPax offerAndSupplementConfigurationPax) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.CreateOfferAndSupplement(OfferSupplementDto offerAndSupplement) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> CreateOfferAndSupplementGroup(OfferAndSupplementGroup offerAndSupplementGroup) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.CreateOfferAndSupplementConfigurationPax(OfferAndSupplementConfigurationPax offerAndSupplementConfigurationPax) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> CreateOfferAndSupplementGroupOfferAndSupplement(OfferAndSupplementGroupOfferAndSupplement offerAndSupplementGroupOfferAndSupplement) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.CreateOfferAndSupplementGroup(OfferAndSupplementGroup offerAndSupplementGroup) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> CreatePeriodPricing(PeriodPricing periodPricing) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.CreateOfferAndSupplementGroupOfferAndSupplement(OfferAndSupplementGroupOfferAndSupplement offerAndSupplementGroupOfferAndSupplement) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> CreatePeriodPricingPax(PeriodPricingPax periodPricingPax) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.CreatePeriodPricing(PeriodPricing periodPricing) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> CreateRegime(Dtos.BookingCenter.Availability.Regime regime) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.CreatePeriodPricingPax(PeriodPricingPax periodPricingPax) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> CreateRoom(Dtos.BookingCenter.Availability.Room room) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.CreateRegime(MealDto regime) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> DeleteClient(string clientCode) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.CreateRoom(RoomDto room) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> DeleteClientType(string ClientTypeCode) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.DeleteClient(string clientCode) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> DeleteContract(string contractCode) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.DeleteClientType(string ClientTypeCode) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> DeleteContractClient(string contractClientCode) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.DeleteContract(string contractCode) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> DeleteExtra(string extraCode) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.DeleteContractClient(string contractClientCode) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> DeleteHotel(string hotelCode) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.DeleteExtra(string extraCode) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> DeleteHotelRoomConfiguration(HotelRoomConfiguration hotelRoomConfiguration) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.DeleteHotel(string hotelCode) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> DeleteInventory(Inventory inventory) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.DeleteHotelRoomConfiguration(HotelRoomConfigurationDto hotelRoomConfiguration) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> DeleteMarket(string marketCode) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.DeleteInventory(InventoryDto inventory) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> DeleteOccupancyRate(string code) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.DeleteMarket(string marketCode) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> DeleteOfferAndSupplementConfigurationPax(string code) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.DeleteOccupancyRate(string code) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> DeleteOfferAndSupplementGroup(string code) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.DeleteOfferAndSupplementConfigurationPax(string code) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> DeleteOfferAndSupplementGroupOfferAndSupplement(OfferAndSupplementGroupOfferAndSupplement offerAndSupplementGroupOfferAndSupplement) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.DeleteOfferAndSupplementGroup(string code) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> DeletePeriodPricingPax(string code) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.DeleteOfferAndSupplementGroupOfferAndSupplement(OfferAndSupplementGroupOfferAndSupplement offerAndSupplementGroupOfferAndSupplement) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> DeleteRoom(string roomCode) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.DeletePeriodPricingPax(string code) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> UpdateCancellationPolicyLine(CancellationPolicyLine cancellationPolicyLine) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.DeleteRoom(string roomCode) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> UpdateClient(Client client) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.UpdateCancellationPolicyLine(CancellationPolicyDto cancellationPolicyLine) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> UpdateClientType(ClientType clientType) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.UpdateClient(IntegrationDto client) {
         throw new NotImplementedException();
     }
 
-    //public Task<HttpResponseMessage> UpdateContract(Contract contract) {
-    //    throw new NotImplementedException();
-    //}
-
-    //public Task<HttpResponseMessage> UpdateContractClient(ContractClient contractClient) {
-    //    throw new NotImplementedException();
-    //}
-
-    public Task<HttpResponseMessage> UpdateExtra(Extra extra) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.UpdateClientType(IntegrationClientTypeDto clientType) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> UpdateHotel(Dtos.BookingCenter.Availability.Hotel hotel) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.UpdateContract(ContractHeaderDto contract) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> UpdateHotelRoomConfiguration(HotelRoomConfiguration hotelRoomConfiguration) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.UpdateContractClient(IntegrationContractDto contractClient) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> UpdateInventory(Inventory inventory) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.UpdateExtra(ExtraDto extra) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> UpdateMarket(Market market) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.UpdateHotel(HotelDto hotel) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> UpdateMarkup(Markup markup) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.UpdateHotelRoomConfiguration(HotelRoomConfigurationDto hotelRoomConfiguration) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> UpdateMinimumStay(MinimumStay minimumStay) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.UpdateInventory(InventoryDto inventory) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> UpdateOccupancyRate(OccupancyRate occupancyRate) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.UpdateMarket(MarketDto market) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> UpdateOfferAndSupplement(OfferAndSupplement offerAndSupplement) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.UpdateMarkup(Markup markup) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> UpdateOfferAndSupplementConfigurationPax(OfferAndSupplementConfigurationPax offerAndSupplementConfigurationPax) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.UpdateMinimumStay(MinimumStayDto minimumStay) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> UpdateOfferAndSupplementGroup(OfferAndSupplementGroup offerAndSupplementGroup) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.UpdateOccupancyRate(OccupancyRateDto occupancyRate) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> UpdatePeriodPricing(PeriodPricing periodPricing) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.UpdateOfferAndSupplement(OfferSupplementDto offerAndSupplement) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> UpdatePeriodPricingPax(PeriodPricingPax periodPricingPax) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.UpdateOfferAndSupplementConfigurationPax(OfferAndSupplementConfigurationPax offerAndSupplementConfigurationPax) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> UpdateRegime(Dtos.BookingCenter.Availability.Regime regime) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.UpdateOfferAndSupplementGroup(OfferAndSupplementGroup offerAndSupplementGroup) {
         throw new NotImplementedException();
     }
 
-    public Task<HttpResponseMessage> UpdateRoom(Dtos.BookingCenter.Availability.Room room) {
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.UpdatePeriodPricing(PeriodPricing periodPricing) {
+        throw new NotImplementedException();
+    }
+
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.UpdatePeriodPricingPax(PeriodPricingPax periodPricingPax) {
+        throw new NotImplementedException();
+    }
+
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.UpdateRegime(MealDto regime) {
+        throw new NotImplementedException();
+    }
+
+    Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.UpdateRoom(RoomDto room) {
         throw new NotImplementedException();
     }
 }

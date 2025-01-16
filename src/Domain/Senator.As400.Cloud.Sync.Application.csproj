@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="UseCases\Static\PushStaticExtrasTranslations.cs" />
+    <Compile Remove="UseCases\Static\PushStaticHotel.cs" />
+    <Compile Remove="UseCases\Static\PushStaticOffersAndSupplementsTranslations.cs" />
+    <Compile Remove="UseCases\Static\PushStaticPaymentTypes.cs" />
+    <Compile Remove="UseCases\Static\PushStaticRegimes.cs" />
+    <Compile Remove="UseCases\Static\PushStaticServiceCategories.cs" />
+    <Compile Remove="UseCases\Static\PushStaticServices.cs" />
+    <Compile Remove="UseCases\Static\PushStaticTaxes.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Infra\Senator.As400.Cloud.Sync.Infrastructure.csproj" />
   </ItemGroup>
 

@@ -1,18 +1,18 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Dtos.As400;
 public class Conofege {
-    public required string Id { get; set; } = string.Empty;
-    public required string Fechamodi { get; set; } = string.Empty;
-    public required string Code { get; set; } = string.Empty;
-    public required string Ccode { get; set; } = string.Empty;
-    public required string OfDesc { get; set; } = string.Empty;
-    public required string Ofopci { get; set; } = string.Empty;
+    public required string Id { get; set; } 
+    public required string Fechamodi { get; set; } 
+    public required string Code { get; set; } 
+    public required string Ccode { get; set; } 
+    public required string OfDesc { get; set; } 
+    public required string Ofopci { get; set; } 
     public required int Offec { get; set; }
     public required int Offec2 { get; set; }
     public required decimal Ofdpto { get; set; }
-    public required string Offode { get; set; } = string.Empty;
+    public required string Offode { get; set; } 
     public required int Offtop { get; set; }
-    public required string Ofties { get; set; } = string.Empty;
-    public required string Ofadni { get; set; } = string.Empty;
+    public required string Ofties { get; set; } 
+    public required string Ofadni { get; set; } 
     public required int Ofdiae { get; set; }
     public required int Ofdiaf { get; set; }
     public required int Ofdieh { get; set; }
@@ -21,17 +21,17 @@ public class Conofege {
     public required int Ofgrbd { get; set; }
     public required int Ofgrbh { get; set; }
     public required int Ofcocu { get; set; }
-    public required string Ofdfac { get; set; } = string.Empty;
-    public required string Ofthaf { get; set; } = string.Empty;
-    public required string Oftsef { get; set; } = string.Empty;
-    public required string Offore { get; set; } = string.Empty;
+    public required string Ofdfac { get; set; } 
+    public required string Ofthaf { get; set; } 
+    public required string Oftsef { get; set; } 
+    public required string Offore { get; set; } 
     public required decimal Ofpree { get; set; }
-    public required string Offors { get; set; } = string.Empty;
+    public required string Offors { get; set; } 
     public required decimal Ofpres { get; set; }
     public required decimal Ofdtos { get; set; }
-    public required string Oftidt { get; set; } = string.Empty;
-    public required string Ofsobr { get; set; } = string.Empty;
-    public required string Ofapli { get; set; } = string.Empty;
+    public required string Oftidt { get; set; } 
+    public required string Ofsobr { get; set; } 
+    public required string Ofapli { get; set; } 
     //public decimal Ofdae1 { get; set; }
     //public decimal Ofdae2 { get; set; }
     //public decimal Ofdae3 { get; set; }
@@ -48,26 +48,26 @@ public class Conofege {
     //public decimal Ofdns2 { get; set; }
     //public decimal Ofdns3 { get; set; }
     //public decimal Ofdns4 { get; set; }
-    public required string Ofthab { get; set; } = string.Empty;
-    public required string Oftha2 { get; set; } = string.Empty;
-    public required string Oftha3 { get; set; } = string.Empty;
-    public required string Oftha4 { get; set; } = string.Empty;
-    public required string Oftha5 { get; set; } = string.Empty;
-    public required string Oftha6 { get; set; } = string.Empty;
-    public required string Oftha7 { get; set; } = string.Empty;
-    public required string Oftha8 { get; set; } = string.Empty;
-    public required string Oftha9 { get; set; } = string.Empty;
-    public required string Ofth10 { get; set; } = string.Empty;
-    public required string Ofth11 { get; set; } = string.Empty;
-    public required string Ofth12 { get; set; } = string.Empty;
-    public required string Ofth13 { get; set; } = string.Empty;
-    public required string Ofth14 { get; set; } = string.Empty;
-    public required string Ofth15 { get; set; } = string.Empty;
-    public required string Oftser { get; set; } = string.Empty;
-    public required string Oftse2 { get; set; } = string.Empty;
-    public required string Oftse3 { get; set; } = string.Empty;
-    public required string Oftse4 { get; set; } = string.Empty;
-    public required string Oftse5 { get; set; } = string.Empty;
+    public required string Ofthab { get; set; } 
+    public required string Oftha2 { get; set; } 
+    public required string Oftha3 { get; set; } 
+    public required string Oftha4 { get; set; } 
+    public required string Oftha5 { get; set; } 
+    public required string Oftha6 { get; set; } 
+    public required string Oftha7 { get; set; } 
+    public required string Oftha8 { get; set; } 
+    public required string Oftha9 { get; set; } 
+    public required string Ofth10 { get; set; } 
+    public required string Ofth11 { get; set; } 
+    public required string Ofth12 { get; set; } 
+    public required string Ofth13 { get; set; } 
+    public required string Ofth14 { get; set; } 
+    public required string Ofth15 { get; set; } 
+    public required string Oftser { get; set; } 
+    public required string Oftse2 { get; set; } 
+    public required string Oftse3 { get; set; } 
+    public required string Oftse4 { get; set; } 
+    public required string Oftse5 { get; set; } 
     //Congasmo
     public required decimal Gmimpo { get; set; }
     public required int Ofpri { get; set; }

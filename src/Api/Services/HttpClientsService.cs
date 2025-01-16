@@ -4,6 +4,7 @@ namespace Senator.As400.Cloud.Sync.Api.Services {
     public static class HttpClientsService {
         public static IServiceCollection AddHttpClients(this IServiceCollection services, IConfiguration configuration) {
             AvailabilitySynchronizerHttpClient(services, configuration);
+            StaticDataSynchronizerHttpClient(services, configuration);
             return services;
         }
 
@@ -20,6 +21,25 @@ namespace Senator.As400.Cloud.Sync.Api.Services {
             };
             services.AddHttpClient<IAvailabilitySynchronizerApiClient, AvailabilitySynchronizerApiClient>(client => {                
                 client.BaseAddress = new Uri(availabilitySynchronizeApiClientSettings!.BaseUrl);
+                //TODO: Ver las cabeceras con Jesus
+                client.DefaultRequestHeaders.Add("Username", hotelChainSettings!.Username);
+                client.DefaultRequestHeaders.Add("UserInfo", JsonSerializer.Serialize<UserInfo>(new UserInfo()));
+            });
+        }
+
+        private static void StaticDataSynchronizerHttpClient(IServiceCollection services, IConfiguration configuration) {
+            var staticSynchronizeApiClientSettings = configuration.GetSection("StaticDataSynchronizerApi").Get<AvailabilitySynchronizerApiSettings>();
+            var hotelChainSettings = configuration.GetSection("HotelChain").Get<HotelChainSettings>();
+            var userInfo = new UserInfo {
+                IntegrationType = string.Empty,
+                HotelChainId = hotelChainSettings!.Id,
+                ChannelManager = string.Empty,
+                Channel = string.Empty,
+                ChannelUsername = string.Empty,
+                ChannelPassword = string.Empty
+            };
+            services.AddHttpClient<IStaticSynchronizerApiClient, StaticSynchronizerApiClient>(client => {
+                client.BaseAddress = new Uri(staticSynchronizeApiClientSettings!.BaseUrl);
                 //TODO: Ver las cabeceras con Jesus
                 client.DefaultRequestHeaders.Add("Username", hotelChainSettings!.Username);
                 client.DefaultRequestHeaders.Add("UserInfo", JsonSerializer.Serialize<UserInfo>(new UserInfo()));

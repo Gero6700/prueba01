@@ -1,3 +1,5 @@
+using Senator.As400.Cloud.Sync.Application.UseCases.Static;
+
 namespace Senator.As400.Cloud.Sync.Application.Handlers;
 public class GenericEventHandler(
     ICreateCancellationPolicyLine createCancellationPolicyLine,
@@ -46,7 +48,19 @@ public class GenericEventHandler(
     IUpdatePeriodPricingPax updatePeriodPricingPax,
     IDeletePeriodPricingPax deletePeriodPricingPax,
     ICreateRegimen createRegimen,
-    IUpdateRegimen updateRegimen
+    IUpdateRegimen updateRegimen,
+    ICreateStaticExtraTranslation createStaticExtraTranslation,
+    IUpdateStaticExtraTranslation updateStaticExtraTranslation,
+    IDeleteStaticExtraTranslation deleteStaticExtraTranslation,
+    ICreateStaticOfferSupplementTranslation createStaticOfferSupplementTranslation,
+    IUpdateStaticOfferSupplementTranslation updateStaticOfferSupplementTranslation,
+    IDeleteStaticOfferSupplementTranslation deleteStaticOfferSupplementTranslation,
+    ICreateStaticPaymentType createStaticPaymentType,
+    IUpdateStaticPaymentType updateStaticPaymentType,
+    IDeleteStaticPaymentType deleteStaticPaymentType,
+    ICreateStaticTax createStaticTax,
+    IUpdateStaticTax updateStaticTax,
+    IDeleteStaticTax deleteStaticTax
     ) : ISynchronizerHandler<GenericSynchronizationEvent> {
     private readonly ICreateCancellationPolicyLine createCancellationPolicyLine = createCancellationPolicyLine;
     private readonly IUpdateCancellationPolicyLine updateCancellationPolicyLine = updateCancellationPolicyLine;
@@ -94,6 +108,18 @@ public class GenericEventHandler(
     private readonly IDeletePeriodPricingPax deletePeriodPricingPax = deletePeriodPricingPax;
     private readonly ICreateRegimen createRegimen = createRegimen;
     private readonly IUpdateRegimen updateRegimen = updateRegimen;
+    private readonly ICreateStaticExtraTranslation createStaticExtraTranslation = createStaticExtraTranslation;
+    private readonly IUpdateStaticExtraTranslation updateStaticExtraTranslation = updateStaticExtraTranslation;
+    private readonly IDeleteStaticExtraTranslation deleteStaticExtraTranslation = deleteStaticExtraTranslation;
+    private readonly ICreateStaticOfferSupplementTranslation createStaticOfferSupplementTranslation = createStaticOfferSupplementTranslation;
+    private readonly IUpdateStaticOfferSupplementTranslation updateStaticOfferSupplementTranslation = updateStaticOfferSupplementTranslation;
+    private readonly IDeleteStaticOfferSupplementTranslation deleteStaticOfferSupplementTranslation = deleteStaticOfferSupplementTranslation;
+    private readonly ICreateStaticPaymentType createStaticPaymentType = createStaticPaymentType;
+    private readonly IUpdateStaticPaymentType updateStaticPaymentType = updateStaticPaymentType;
+    private readonly IDeleteStaticPaymentType deleteStaticPaymentType = deleteStaticPaymentType;
+    private readonly ICreateStaticTax createStaticTax = createStaticTax;
+    private readonly IUpdateStaticTax updateStaticTax = updateStaticTax;
+    private readonly IDeleteStaticTax deleteStaticTax = deleteStaticTax;
 
     public async Task<HttpResponseMessage> HandleAsync(GenericSynchronizationEvent @event) {
         switch (@event.Table) {
@@ -151,6 +177,18 @@ public class GenericEventHandler(
             case nameof(TableType.Regimen):
                 var regimen = (Restregi)@event.Entity;
                 return await HandleRegimenEventAsync(regimen, @event.Operation);
+            case nameof(TableType.ExtraTranslation):
+                var extraTranslation = (Desextr)@event.Entity;
+                return await HandleExtraTranslationEventAsync(extraTranslation, @event.Operation);
+            case nameof(TableType.OfferAndSupplementTranslation):
+                var offerAndSupplementTranslation = (Desofer)@event.Entity;
+                return await HandleOfferAndSupplementTranslationEventAsync(offerAndSupplementTranslation, @event.Operation);
+            case nameof(TableType.PaymentType):
+                var paymentType = (Forpago)@event.Entity;
+                return await HandlePaymentTypeEventAsync(paymentType, @event.Operation);
+            case nameof(TableType.Tax):
+                var tax = (Reszoim)@event.Entity;
+                return await HandleTaxEventAsync(tax, @event.Operation);
             default:
                 throw new InvalidOperationException($"Unsupported table type: {@event.Table}");
         }
@@ -307,6 +345,42 @@ public class GenericEventHandler(
             nameof(OperationType.Create) => await createRegimen.Execute(regimen),
             nameof(OperationType.Update) => await updateRegimen.Execute(regimen),
             _ => throw new InvalidOperationException($"Unsupported operation: {operation} in Regimen"),
+        };
+    }
+
+    private async Task<HttpResponseMessage> HandleExtraTranslationEventAsync(Desextr extraTranslation, string operation) {
+        return operation switch {
+            nameof(OperationType.Create) => await createStaticExtraTranslation.Execute(extraTranslation),
+            nameof(OperationType.Update) => await updateStaticExtraTranslation.Execute(extraTranslation),
+            nameof(OperationType.Delete) => await deleteStaticExtraTranslation.Execute(extraTranslation),
+            _ => throw new InvalidOperationException($"Unsupported operation: {operation} in ExtraTranslation"),
+        };
+    }
+
+    private async Task<HttpResponseMessage> HandleOfferAndSupplementTranslationEventAsync(Desofer offerAndSupplementTranslation, string operation) {
+        return operation switch {
+            nameof(OperationType.Create) => await createStaticOfferSupplementTranslation.Execute(offerAndSupplementTranslation),
+            nameof(OperationType.Update) => await updateStaticOfferSupplementTranslation.Execute(offerAndSupplementTranslation),
+            nameof(OperationType.Delete) => await deleteStaticOfferSupplementTranslation.Execute(offerAndSupplementTranslation),
+            _ => throw new InvalidOperationException($"Unsupported operation: {operation} in OfferAndSupplementTranslation"),
+        };
+    }
+
+    private async Task<HttpResponseMessage> HandlePaymentTypeEventAsync(Forpago paymentType, string operation) {
+        return operation switch {
+            nameof(OperationType.Create) => await createStaticPaymentType.Execute(paymentType),
+            nameof(OperationType.Update) => await updateStaticPaymentType.Execute(paymentType),
+            nameof(OperationType.Delete) => await deleteStaticPaymentType.Execute(paymentType),
+            _ => throw new InvalidOperationException($"Unsupported operation: {operation} in PaymentType"),
+        };
+    }
+
+    private async Task<HttpResponseMessage> HandleTaxEventAsync(Reszoim tax, string operation) {
+        return operation switch {
+            nameof(OperationType.Create) => await createStaticTax.Execute(tax),
+            nameof(OperationType.Update) => await updateStaticTax.Execute(tax),
+            nameof(OperationType.Delete) => await deleteStaticTax.Execute(tax),
+            _ => throw new InvalidOperationException($"Unsupported operation: {operation} in Tax"),
         };
     }
 }

@@ -1,15 +1,15 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
 public static class MinimumStayExtension {
-    public static MinimumStay toMinimumStay(this Conestmi conestmi) {
-        return new MinimumStay {
+    public static MinimumStayDto toMinimumStay(this Conestmi conestmi) {
+        return new MinimumStayDto {
             Code = conestmi.Code,
             From = DateTimeHelper.ConvertYYYYMMDDToDatetime(conestmi.C7fec1),
             To = DateTimeHelper.ConvertYYYYMMDDToDatetime(conestmi.C7fec2),
             Days = conestmi.C7dmin,
             StrictPeriod = conestmi.C7peri.ToString().ToUpper() == "S",
-            ContractClientCode = conestmi.ContractClientCode,
+            IntegrationContractCode = conestmi.ContractClientCode,
             RoomCode = conestmi.C7thab.Trim() == "" ? null : conestmi.C7thab,
-            RegimeCode = conestmi.C7regi.Trim() == "" ? null : conestmi.C7regi
+            MealCode = conestmi.C7regi.Trim() == "" ? null : conestmi.C7regi
         };
     }
 }

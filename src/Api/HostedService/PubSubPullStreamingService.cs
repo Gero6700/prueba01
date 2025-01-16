@@ -67,12 +67,12 @@ public class PubSubPullStreamingService(
                 if (errorCode == 404 || errorCode == 500) {
                     //Se reintenta el mensaje
                     logger.LogError("An error occurred while sending the message to Synchronizer Api. It will retry automatically again. {Message}",
-                        GenerateLogApi(message, messageData, errorCode, problemDetails));
+                        GenerateLogApi(subscriberClient.SubscriptionName.ProjectId, subscriberClient.SubscriptionName.SubscriptionId, message, messageData, errorCode, problemDetails));
                     return SubscriberClient.Reply.Nack;
                 }
                 else {
                     logger.LogError("The message has been refused. An error occurred while sending the message to Synchronizer Api. {Message}",
-                        GenerateLogApi(message, messageData, errorCode, problemDetails));
+                        GenerateLogApi(subscriberClient.SubscriptionName.ProjectId, subscriberClient.SubscriptionName.SubscriptionId,message, messageData, errorCode, problemDetails));
                     return SubscriberClient.Reply.Ack;
                 }
             }
@@ -82,28 +82,32 @@ public class PubSubPullStreamingService(
         }
         catch (JsonException ex) {
             logger.LogError("The message has been refused. An exception occurred while deserializing the message: {Message}",
-                GenerateLogMessage(message, messageData, ex.Message));
+                GenerateLogMessage(subscriberClient.SubscriptionName.ProjectId, subscriberClient.SubscriptionName.SubscriptionId, message, messageData, ex.Message));
             return SubscriberClient.Reply.Ack;
         }
         catch (HttpRequestException ex) {
             logger.LogError("An exception occurred while sending the message to Synchronizer Api. It will retry automatically again: {Message}",
-                GenerateLogMessage(message, messageData, ex.Message));
+                GenerateLogMessage(subscriberClient.SubscriptionName.ProjectId, subscriberClient.SubscriptionName.SubscriptionId, message, messageData, ex.Message));
             return SubscriberClient.Reply.Nack;
         }
         catch (Exception ex) {
             logger.LogError("The message has been refused. An exception occurred while processing the message: {Message}",
-                GenerateLogMessage(message, messageData, ex.Message));
+                GenerateLogMessage(subscriberClient.SubscriptionName.ProjectId, subscriberClient.SubscriptionName.SubscriptionId, message, messageData, ex.Message));
             return SubscriberClient.Reply.Ack;
         }
     }
 
-    private static string GenerateLogMessage(PubsubMessage receivedMessage, string messageData, string errorMessage) {
-        return $"{errorMessage}{Environment.NewLine}MessageId: {receivedMessage.MessageId}{Environment.NewLine}PublishTime: {receivedMessage.PublishTime.ToDateTime()}{Environment.NewLine}Data: {messageData}";
+    private static string GenerateLogMessage(string projectId, string subscriptionId, PubsubMessage receivedMessage, string messageData, string errorMessage) {
+        return $"{errorMessage}{Environment.NewLine}Project:{projectId}{Environment.NewLine}Subscription: {subscriptionId}{Environment.NewLine}" +
+            $"MessageId: {receivedMessage.MessageId}{Environment.NewLine}PublishTime: {receivedMessage.PublishTime.ToDateTime()}{Environment.NewLine}Data: {messageData}";
     }
 
-    private static string GenerateLogApi(PubsubMessage received, string messageData, int errorCode, ProblemDetails? problemDetails) {
-        return GenerateLogMessage(received, messageData, $"Api synchronizer error: {problemDetails?.Status ?? errorCode}{Environment.NewLine}Type: {problemDetails?.Type}{Environment.NewLine}Title: {problemDetails?.Title}{Environment.NewLine}Detail: {problemDetails?.Detail}{Environment.NewLine}Instance: {problemDetails?.Instance}");
+    private static string GenerateLogApi(string projectId, string subscriptionId, PubsubMessage received, string messageData, int errorCode, ProblemDetails? problemDetails) {
+        return GenerateLogMessage(projectId, subscriptionId, received, messageData,
+            $"Api synchronizer error: {problemDetails?.Status ?? errorCode}{Environment.NewLine}Type: {problemDetails?.Type}{Environment.NewLine}" +
+            $"Title: {problemDetails?.Title}{Environment.NewLine}Detail: {problemDetails?.Detail}{Environment.NewLine}Instance: {problemDetails?.Instance}");
     }
+
 
     public override async Task StopAsync(CancellationToken stoppingToken) =>
         await subscriberClient.StopAsync(stoppingToken);
