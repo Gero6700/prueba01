@@ -2,53 +2,44 @@ using Senator.As400.Cloud.Sync.Application.UseCases.Static;
 
 namespace Senator.As400.Cloud.Sync.Application.Handlers;
 public class GenericEventHandler(
-    ICreateCancellationPolicyLine createCancellationPolicyLine,
-    IUpdateCancellationPolicyLine updateCancellationPolicyLine,
-    ICreateClient createClient,
-    IUpdateClient updateClient,
-    IDeleteClient deleteClient,
-    ICreateClientType createClientType,
-    IUpdateClientType updateClientType,
-    IDeleteClientType deleteClientType,
-    ICreateContract createContract,
-    IUpdateContract updateContract,
-    IDeleteContract deleteContract,
+    ICreateCancellationPolicy createCancellationPolicyLine,
+    IUpdateCancellationPolicy updateCancellationPolicyLine,
+    ICreateIntegration createClient,
+    IUpdateIntegration updateClient,
+    IDeleteIntegration deleteClient,
+    ICreateIntegrationClientType createClientType,
+    IUpdateIntegrationClientType updateClientType,
+    IDeleteIntegrationClientType deleteClientType,
+    ICreateContractHeader createContract,
+    IUpdateContractHeader updateContract,
     ICreateExtra createExtra,
     IUpdateExtra updateExtra,
     IDeleteExtra deleteExtra,
     ICreateHotel createHotel,
     IUpdateHotel updateHotel,
-    ICreateHotelRoomConfiguration createHotelRoomConfiguration,
-    IUpdateHotelRoomConfiguration updateHotelRoomConfiguration,
-    IDeleteHotelRoomConfiguration deleteHotelRoomConfiguration,
+    IPushHotelRoomConfiguration pushHotelRoomConfiguration,
     ICreateInventory createInventory,
     IUpdateInventory updateInventory,
-    IDeleteInventory deleteInventory,
     ICreateMarket createMarket,
-    IUpdateMarket updateMarket,
-    IDeleteMarket deleteMarket,
     ICreateMinimumStay createMinimumStay,
     IUpdateMinimumStay updateMinimumStay,
     ICreateOccupancyRate createOccupancyRate,
     IUpdateOccupancyRate updateOccupancyRate,
-    IDeleteOccupancyRate deleteOccupancyRate,
-    ICreateOfferAndSupplement createOfferAndSupplement,
-    IUpdateOfferAndSupplement updateOfferAndSupplement,
-    ICreateOfferAndSupplementConfigurationPax createOfferAndSupplementConfigurationPax,
-    IUpdateOfferAndSupplementConfigurationPax updateOfferAndSupplementConfigurationPax,
-    IDeleteOfferAndSupplementConfigurationPax deleteOfferAndSupplementConfigurationPax,
-    ICreateOfferAndSupplementGroup createOfferAndSupplementGroup,
-    IUpdateOfferAndSupplementGroup updateOfferAndSupplementGroup,
-    IDeleteOfferAndSupplementGroup deleteOfferAndSupplementGroup,
-    ICreateOfferAndSupplementGroupOfferAndSupplement createOfferAndSupplementGroupOfferAndSupplement,
-    IDeleteOfferAndSupplementGroupOfferAndSupplement deleteOfferAndSupplementGroupOfferAndSupplement,
+    ICreateOfferSupplement createOfferAndSupplement,
+    IUpdateOfferSupplement updateOfferAndSupplement,
+    ICreateOfferSupplementConfigurationPax createOfferAndSupplementConfigurationPax,
+    IUpdateOfferSupplementConfigurationPax updateOfferAndSupplementConfigurationPax,
+    IDeleteOfferSupplementConfigurationPax deleteOfferAndSupplementConfigurationPax,
+    ICreateOfferSupplementGroup createOfferAndSupplementGroup,
+    IUpdateOfferSupplementGroup updateOfferAndSupplementGroup,
+    ICreateOfferSupplementGroupRelation createOfferAndSupplementGroupOfferAndSupplement,
+    IDeleteOfferSupplementGroupRelation deleteOfferAndSupplementGroupOfferAndSupplement,
     ICreatePeriodPricing createPeriodPricing,
     IUpdatePeriodPricing updatePeriodPricing,
     ICreatePeriodPricingPax createPeriodPricingPax,
     IUpdatePeriodPricingPax updatePeriodPricingPax,
     IDeletePeriodPricingPax deletePeriodPricingPax,
-    ICreateRegimen createRegimen,
-    IUpdateRegimen updateRegimen,
+    ICreateMeal createRegimen,
     ICreateStaticExtraTranslation createStaticExtraTranslation,
     IUpdateStaticExtraTranslation updateStaticExtraTranslation,
     IDeleteStaticExtraTranslation deleteStaticExtraTranslation,
@@ -62,52 +53,44 @@ public class GenericEventHandler(
     IUpdateStaticTax updateStaticTax,
     IDeleteStaticTax deleteStaticTax
     ) : ISynchronizerHandler<GenericSynchronizationEvent> {
-    private readonly ICreateCancellationPolicyLine createCancellationPolicyLine = createCancellationPolicyLine;
-    private readonly IUpdateCancellationPolicyLine updateCancellationPolicyLine = updateCancellationPolicyLine;
-    private readonly ICreateClient createClient = createClient;
-    private readonly IUpdateClient updateClient = updateClient;
-    private readonly IDeleteClient deleteClient = deleteClient;
-    private readonly ICreateClientType createClientType = createClientType;
-    private readonly IUpdateClientType updateClientType = updateClientType;
-    private readonly IDeleteClientType deleteClientType = deleteClientType;
-    private readonly ICreateContract createContract = createContract;
-    private readonly IUpdateContract updateContract = updateContract;
-    private readonly IDeleteContract deleteContract = deleteContract;
+    private readonly ICreateCancellationPolicy createCancellationPolicyLine = createCancellationPolicyLine;
+    private readonly IUpdateCancellationPolicy updateCancellationPolicyLine = updateCancellationPolicyLine;
+    private readonly ICreateIntegration createClient = createClient;
+    private readonly IUpdateIntegration updateClient = updateClient;
+    private readonly IDeleteIntegration deleteClient = deleteClient;
+    private readonly ICreateIntegrationClientType createClientType = createClientType;
+    private readonly IUpdateIntegrationClientType updateClientType = updateClientType;
+    private readonly IDeleteIntegrationClientType deleteClientType = deleteClientType;
+    private readonly ICreateContractHeader createContract = createContract;
+    private readonly IUpdateContractHeader updateContract = updateContract;
     private readonly ICreateExtra createExtra = createExtra;
     private readonly IUpdateExtra updateExtra = updateExtra;
     private readonly IDeleteExtra deleteExtra = deleteExtra;
     private readonly ICreateHotel createHotel = createHotel;
     private readonly IUpdateHotel updateHotel = updateHotel;
-    private readonly ICreateHotelRoomConfiguration createHotelRoomConfiguration = createHotelRoomConfiguration;
-    private readonly IUpdateHotelRoomConfiguration updateHotelRoomConfiguration = updateHotelRoomConfiguration;
-    private readonly IDeleteHotelRoomConfiguration deleteHotelRoomConfiguration = deleteHotelRoomConfiguration;
+    private readonly IPushHotelRoomConfiguration pushHotelRoomConfiguration = pushHotelRoomConfiguration;
     private readonly ICreateInventory createInventory = createInventory;
     private readonly IUpdateInventory updateInventory = updateInventory;
-    private readonly IDeleteInventory deleteInventory = deleteInventory;
     private readonly ICreateMarket createMarket = createMarket;
-    private readonly IUpdateMarket updateMarket = updateMarket;
-    private readonly IDeleteMarket deleteMarket = deleteMarket;
     private readonly ICreateMinimumStay createMinimumStay = createMinimumStay;
     private readonly IUpdateMinimumStay updateMinimumStay = updateMinimumStay;
     private readonly ICreateOccupancyRate createOccupancyRate = createOccupancyRate;
     private readonly IUpdateOccupancyRate updateOccupancyRate = updateOccupancyRate;
-    private readonly ICreateOfferAndSupplement createOfferAndSupplement = createOfferAndSupplement;
-    private readonly IUpdateOfferAndSupplement updateOfferAndSupplement = updateOfferAndSupplement;
-    private readonly ICreateOfferAndSupplementConfigurationPax createOfferAndSupplementConfigurationPax = createOfferAndSupplementConfigurationPax;
-    private readonly IUpdateOfferAndSupplementConfigurationPax updateOfferAndSupplementConfigurationPax = updateOfferAndSupplementConfigurationPax;
-    private readonly IDeleteOfferAndSupplementConfigurationPax deleteOfferAndSupplementConfigurationPax = deleteOfferAndSupplementConfigurationPax;
-    private readonly ICreateOfferAndSupplementGroup createOfferAndSupplementGroup = createOfferAndSupplementGroup;
-    private readonly IUpdateOfferAndSupplementGroup updateOfferAndSupplementGroup = updateOfferAndSupplementGroup;
-    private readonly IDeleteOfferAndSupplementGroup deleteOfferAndSupplementGroup = deleteOfferAndSupplementGroup;
-    private readonly ICreateOfferAndSupplementGroupOfferAndSupplement createOfferAndSupplementGroupOfferAndSupplement = createOfferAndSupplementGroupOfferAndSupplement;
-    private readonly IDeleteOfferAndSupplementGroupOfferAndSupplement deleteOfferAndSupplementGroupOfferAndSupplement = deleteOfferAndSupplementGroupOfferAndSupplement;
+    private readonly ICreateOfferSupplement createOfferAndSupplement = createOfferAndSupplement;
+    private readonly IUpdateOfferSupplement updateOfferAndSupplement = updateOfferAndSupplement;
+    private readonly ICreateOfferSupplementConfigurationPax createOfferAndSupplementConfigurationPax = createOfferAndSupplementConfigurationPax;
+    private readonly IUpdateOfferSupplementConfigurationPax updateOfferAndSupplementConfigurationPax = updateOfferAndSupplementConfigurationPax;
+    private readonly IDeleteOfferSupplementConfigurationPax deleteOfferAndSupplementConfigurationPax = deleteOfferAndSupplementConfigurationPax;
+    private readonly ICreateOfferSupplementGroup createOfferAndSupplementGroup = createOfferAndSupplementGroup;
+    private readonly IUpdateOfferSupplementGroup updateOfferAndSupplementGroup = updateOfferAndSupplementGroup;
+    private readonly ICreateOfferSupplementGroupRelation createOfferAndSupplementGroupOfferAndSupplement = createOfferAndSupplementGroupOfferAndSupplement;
+    private readonly IDeleteOfferSupplementGroupRelation deleteOfferAndSupplementGroupOfferAndSupplement = deleteOfferAndSupplementGroupOfferAndSupplement;
     private readonly ICreatePeriodPricing createPeriodPricing = createPeriodPricing;
     private readonly IUpdatePeriodPricing updatePeriodPricing = updatePeriodPricing;
     private readonly ICreatePeriodPricingPax createPeriodPricingPax = createPeriodPricingPax;
     private readonly IUpdatePeriodPricingPax updatePeriodPricingPax = updatePeriodPricingPax;
     private readonly IDeletePeriodPricingPax deletePeriodPricingPax = deletePeriodPricingPax;
-    private readonly ICreateRegimen createRegimen = createRegimen;
-    private readonly IUpdateRegimen updateRegimen = updateRegimen;
+    private readonly ICreateMeal createRegimen = createRegimen;
     private readonly ICreateStaticExtraTranslation createStaticExtraTranslation = createStaticExtraTranslation;
     private readonly IUpdateStaticExtraTranslation updateStaticExtraTranslation = updateStaticExtraTranslation;
     private readonly IDeleteStaticExtraTranslation deleteStaticExtraTranslation = deleteStaticExtraTranslation;
@@ -247,9 +230,7 @@ public class GenericEventHandler(
 
     private async Task<HttpResponseMessage> HandleHotelRoomConfigurationEventAsync(Resthaho hotelRoomConfiguration, string operation) {
         return operation switch {
-            nameof(OperationType.Create) => await createHotelRoomConfiguration.Execute(hotelRoomConfiguration),
-            nameof(OperationType.Update) => await updateHotelRoomConfiguration.Execute(hotelRoomConfiguration),
-            nameof(OperationType.Delete) => await deleteHotelRoomConfiguration.Execute(hotelRoomConfiguration),
+            nameof(OperationType.Push) => await pushHotelRoomConfiguration.Execute(hotelRoomConfiguration),
             _ => throw new InvalidOperationException($"Unsupported operation: {operation} in HotelRoomConfiguration"),
         };
     }
@@ -258,7 +239,6 @@ public class GenericEventHandler(
         return operation switch {
             nameof(OperationType.Create) => await createInventory.Execute(inventory),
             nameof(OperationType.Update) => await updateInventory.Execute(inventory),
-            nameof(OperationType.Delete) => await deleteInventory.Execute(inventory),
             _ => throw new InvalidOperationException($"Unsupported operation: {operation} in Inventory"),
         };
     }
@@ -266,8 +246,6 @@ public class GenericEventHandler(
     private async Task<HttpResponseMessage> HandleMarketEventAsync(Merca market, string operation) {
         return operation switch {
             nameof(OperationType.Create) => await createMarket.Execute(market),
-            nameof(OperationType.Update) => await updateMarket.Execute(market),
-            nameof(OperationType.Delete) => await deleteMarket.Execute(market),
             _ => throw new InvalidOperationException($"Unsupported operation: {operation} in Market"),
         };
     }
@@ -284,7 +262,6 @@ public class GenericEventHandler(
         return operation switch {
             nameof(OperationType.Create) => await createOccupancyRate.Execute(occupancyRate),
             nameof(OperationType.Update) => await updateOccupancyRate.Execute(occupancyRate),
-            nameof(OperationType.Delete) => await deleteOccupancyRate.Execute(occupancyRate.Cocod),
             _ => throw new InvalidOperationException($"Unsupported operation: {operation} in OccupancyRate"),
         };
     }
@@ -310,7 +287,6 @@ public class GenericEventHandler(
         return operation switch {
             nameof(OperationType.Create) => await createOfferAndSupplementGroup.Execute(offerAndSupplementGroup),
             nameof(OperationType.Update) => await updateOfferAndSupplementGroup.Execute(offerAndSupplementGroup),
-            nameof(OperationType.Delete) => await deleteOfferAndSupplementGroup.Execute(offerAndSupplementGroup),
             _ => throw new InvalidOperationException($"Unsupported operation: {operation} in OfferAndSupplementGroup"),
         };
     }
@@ -343,7 +319,6 @@ public class GenericEventHandler(
     private async Task<HttpResponseMessage> HandleRegimenEventAsync(Restregi regimen, string operation) {
         return operation switch {
             nameof(OperationType.Create) => await createRegimen.Execute(regimen),
-            nameof(OperationType.Update) => await updateRegimen.Execute(regimen),
             _ => throw new InvalidOperationException($"Unsupported operation: {operation} in Regimen"),
         };
     }

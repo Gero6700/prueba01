@@ -3,12 +3,12 @@ namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Availability.Regime;
 [TestFixture]
 public class CreateRegimeShould {
     private IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
-    private CreateRegime createRegime;
+    private CreateMeal createRegime;
 
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        createRegime = new CreateRegime(availabilitySynchronizerApiClient);
+        createRegime = new CreateMeal(availabilitySynchronizerApiClient);
     }
 
     [Test]

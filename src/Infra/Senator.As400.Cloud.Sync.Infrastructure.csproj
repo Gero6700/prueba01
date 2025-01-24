@@ -24,6 +24,11 @@
     <Compile Remove="Dtos\BookingCenter\Availability\OfferAndSupplement.cs" />
     <Compile Remove="Dtos\BookingCenter\Availability\OfferAndSupplementCondition.cs" />
     <Compile Remove="Dtos\BookingCenter\Availability\OfferAndSupplementConfiguration.cs" />
+    <Compile Remove="Dtos\BookingCenter\Availability\OfferAndSupplementConfigurationPax.cs" />
+    <Compile Remove="Dtos\BookingCenter\Availability\OfferAndSupplementGroup.cs" />
+    <Compile Remove="Dtos\BookingCenter\Availability\OfferAndSupplementGroupOfferAndSupplement.cs" />
+    <Compile Remove="Dtos\BookingCenter\Availability\PeriodPricing.cs" />
+    <Compile Remove="Dtos\BookingCenter\Availability\PeriodPricingPax.cs" />
     <Compile Remove="Dtos\BookingCenter\Availability\Regime.cs" />
     <Compile Remove="Dtos\BookingCenter\Availability\Room.cs" />
   </ItemGroup>

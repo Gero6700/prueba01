@@ -8,7 +8,6 @@ public class DeleteHotelRoomConfiguration :IDeleteHotelRoomConfiguration {
     }
 
     public Task<HttpResponseMessage> Execute(Resthaho resthaho) {
-        var hotelRoomConfiguration = resthaho.ToHotelRoomConfiguration();
-        return availabilitySynchronizerApiClient.DeleteHotelRoomConfiguration(hotelRoomConfiguration);
+        throw new NotImplementedException();
     }
 }

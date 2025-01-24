@@ -37,6 +37,7 @@ public class CreateMarkup {
             throw new ArgumentException("Incorrect amount");
         }
         var markup = mkupcabe.ToMarkup();
-        return await availabilitySynchronizerApiClient.CreateMarkup(markup);
+        //return await availabilitySynchronizerApiClient.CreateMarkup(markup);
+        throw new NotImplementedException();
     }
 }

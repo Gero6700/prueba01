@@ -2,12 +2,12 @@ namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Availability.OfferAnd
 [TestFixture]
 public class UpdateOfferAndSupplementGroupShould {
     private IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
-    private UpdateOfferAndSupplementGroup updateOfferAndSupplementGroup;
+    private UpdateOfferSupplementGroup updateOfferAndSupplementGroup;
 
     [SetUp]
     public void Setup() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        updateOfferAndSupplementGroup = new UpdateOfferAndSupplementGroup(availabilitySynchronizerApiClient);
+        updateOfferAndSupplementGroup = new UpdateOfferSupplementGroup(availabilitySynchronizerApiClient);
     }
 
     [Test]

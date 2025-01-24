@@ -1,4 +1,4 @@
-namespace Availability.Synchronizer.Api.Dtos;
+namespace Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter.Availability;
 
 public class OccupancyScoreDto {
     public decimal? Adults { get; set; }

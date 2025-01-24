@@ -2,13 +2,13 @@ namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Availability.Contract
 
 [TestFixture]
 public class DeleteContractShould {
-    private DeleteContract deleteContract = null!;
+    private DeleteContractHeader deleteContract = null!;
     private IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient = null!;
 
     [SetUp]
     public void Setup() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        deleteContract = new DeleteContract(availabilitySynchronizerApiClient);
+        deleteContract = new DeleteContractHeader(availabilitySynchronizerApiClient);
     }
 
     [Test]

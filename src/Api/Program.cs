@@ -41,20 +41,19 @@ builder.Services.ConfigureOptions<ConfigureSwaggerOptions>();
 builder.Services.AddErrorHandling();
 
 builder.Services.AddHttpClients(configuration);
-builder.Services.AddSingleton<ICreateCancellationPolicyLine, CreateCancellationPolicyLine>();
-builder.Services.AddSingleton<IUpdateCancellationPolicyLine, UpdateCancellationPolicyLine>();
+builder.Services.AddSingleton<ICreateCancellationPolicy, CreateCancellationPolicy>();
+builder.Services.AddSingleton<IUpdateCancellationPolicy, UpdateCancellationPolicy>();
 
-builder.Services.AddSingleton<ICreateClientType, CreateClientType>();
-builder.Services.AddSingleton<IUpdateClientType, UpdateClientType>();
-builder.Services.AddSingleton<IDeleteClientType, DeleteClientType>();
+builder.Services.AddSingleton<ICreateIntegrationClientType, CreateIntegrationClientType>();
+builder.Services.AddSingleton<IUpdateIntegrationClientType, UpdateIntegrationClientType>();
+builder.Services.AddSingleton<IDeleteIntegrationClientType, DeleteIntegrationClientType>();
 
-builder.Services.AddSingleton<ICreateClient, CreateClient>();
-builder.Services.AddSingleton<IUpdateClient, UpdateClient>();
-builder.Services.AddSingleton<IDeleteClient, DeleteClient>();
+builder.Services.AddSingleton<ICreateIntegration, CreateIntegration>();
+builder.Services.AddSingleton<IUpdateIntegration, UpdateIntegration>();
+builder.Services.AddSingleton<IDeleteIntegration, DeleteIntegration>();
 
-builder.Services.AddSingleton<ICreateContract, CreateContract>();
-builder.Services.AddSingleton<IUpdateContract, UpdateContract>();
-builder.Services.AddSingleton<IDeleteContract, DeleteContract>();
+builder.Services.AddSingleton<ICreateContractHeader, CreateContractHeader>();
+builder.Services.AddSingleton<IUpdateContractHeader, UpdateContractHeader>();
 
 builder.Services.AddSingleton<ICreateExtra, CreateExtra>();
 builder.Services.AddSingleton<IUpdateExtra, UpdateExtra>();
@@ -63,38 +62,31 @@ builder.Services.AddSingleton<IDeleteExtra, DeleteExtra>();
 builder.Services.AddSingleton<ICreateHotel, CreateHotel>();
 builder.Services.AddSingleton<IUpdateHotel, UpdateHotel>();
 
-builder.Services.AddSingleton<ICreateHotelRoomConfiguration, CreateHotelRoomConfiguration>();
-builder.Services.AddSingleton<IUpdateHotelRoomConfiguration, UpdateHotelRoomConfiguration>();
-builder.Services.AddSingleton<IDeleteHotelRoomConfiguration, DeleteHotelRoomConfiguration>();
+builder.Services.AddSingleton<IPushHotelRoomConfiguration, PushHotelRoomConfiguration>();
 
 builder.Services.AddSingleton<ICreateInventory, CreateInventory>();
 builder.Services.AddSingleton<IUpdateInventory, UpdateInventory>();
-builder.Services.AddSingleton<IDeleteInventory, DeleteInventory>();
 
 builder.Services.AddSingleton<ICreateMarket, CreateMarket>();
-builder.Services.AddSingleton<IUpdateMarket, UpdateMarket>();
-builder.Services.AddSingleton<IDeleteMarket, DeleteMarket>();
 
 builder.Services.AddSingleton<ICreateMinimumStay, CreateMinimumStay>();
 builder.Services.AddSingleton<IUpdateMinimumStay, UpdateMinimumStay>();
 
 builder.Services.AddSingleton<ICreateOccupancyRate, CreateOccupancyRate>();
 builder.Services.AddSingleton<IUpdateOccupancyRate, UpdateOccupancyRate>();
-builder.Services.AddSingleton<IDeleteOccupancyRate, DeleteOccupancyRate>();
 
-builder.Services.AddSingleton<ICreateOfferAndSupplement, CreateOfferAndSupplement>();
-builder.Services.AddSingleton<IUpdateOfferAndSupplement, UpdateOfferAndSupplement>();
+builder.Services.AddSingleton<ICreateOfferSupplement, CreateOfferSupplement>();
+builder.Services.AddSingleton<IUpdateOfferSupplement, UpdateOfferSupplement>();
 
-builder.Services.AddSingleton<ICreateOfferAndSupplementConfigurationPax, CreateOfferAndSupplementConfigurationPax>();
-builder.Services.AddSingleton<IUpdateOfferAndSupplementConfigurationPax, UpdateOfferAndSupplementConfigurationPax>();
-builder.Services.AddSingleton<IDeleteOfferAndSupplementConfigurationPax, DeleteOfferAndSupplementConfigurationPax>();
+builder.Services.AddSingleton<ICreateOfferSupplementConfigurationPax, CreateOfferSupplementConfigurationPax>();
+builder.Services.AddSingleton<IUpdateOfferSupplementConfigurationPax, UpdateOfferSupplementConfigurationPax>();
+builder.Services.AddSingleton<IDeleteOfferSupplementConfigurationPax, DeleteOfferSupplementConfigurationPax>();
 
-builder.Services.AddSingleton<ICreateOfferAndSupplementGroup, CreateOfferAndSupplementGroup>();
-builder.Services.AddSingleton<IUpdateOfferAndSupplementGroup, UpdateOfferAndSupplementGroup>();
-builder.Services.AddSingleton<IDeleteOfferAndSupplementGroup, DeleteOfferAndSupplementGroup>();
+builder.Services.AddSingleton<ICreateOfferSupplementGroup, CreateOfferSupplementGroup>();
+builder.Services.AddSingleton<IUpdateOfferSupplementGroup, UpdateOfferSupplementGroup>();
 
-builder.Services.AddSingleton<ICreateOfferAndSupplementGroupOfferAndSupplement, CreateOfferAndSupplementGroupOfferAndSupplement>();
-builder.Services.AddSingleton<IDeleteOfferAndSupplementGroupOfferAndSupplement, DeleteOfferAndSupplementGroupOfferAndSupplement>();
+builder.Services.AddSingleton<ICreateOfferSupplementGroupRelation, CreateOfferSupplementGroupRelation>();
+builder.Services.AddSingleton<IDeleteOfferSupplementGroupRelation, DeleteOfferSupplementGroupRelation>();
 
 builder.Services.AddSingleton<ICreatePeriodPricing, CreatePeriodPricing>();
 builder.Services.AddSingleton<IUpdatePeriodPricing, UpdatePeriodPricing>();
@@ -103,8 +95,7 @@ builder.Services.AddSingleton<ICreatePeriodPricingPax, CreatePeriodPricingPax>()
 builder.Services.AddSingleton<IUpdatePeriodPricingPax, UpdatePeriodPricingPax>();
 builder.Services.AddSingleton<IDeletePeriodPricingPax, DeletePeriodPricingPax>();
 
-builder.Services.AddSingleton<ICreateRegimen, CreateRegime>();
-builder.Services.AddSingleton<IUpdateRegimen, UpdateRegime>();
+builder.Services.AddSingleton<ICreateMeal, CreateMeal>();
 
 builder.Services.AddSingleton<ICreateStaticExtraTranslation, CreateStaticExtraTranslation>();
 builder.Services.AddSingleton<IUpdateStaticExtraTranslation, UpdateStaticExtraTranslation>();

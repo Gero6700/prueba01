@@ -46,18 +46,18 @@ public static class ConofegeExtension {
         };
     }
 
-    private static IEnumerable<OfferAndSupplementConfigurationPax> CreatePaxConfigurations(List<decimal> discounts, PaxType paxType, ScopeType scopeType) {
-        return discounts
-            .Select((value, index) => new { Value = value, Index = index })
-            .Where(item => item.Value > 0)
-            .Select(item => new OfferAndSupplementConfigurationPax {
-                PaxOrder = item.Index + 1,
-                PaxType = paxType,
-                Scope = scopeType,
-                AgeFrom = 0,
-                AgeTo = 0,
-                Amount = item.Value,
-                AmountType = Dtos.BookingCenter.Availability.TypeOfPayment.Percent
-            });
-    }
+    //private static IEnumerable<OfferSupplementConfigurationPaxDto> CreatePaxConfigurations(List<decimal> discounts, PaxType paxType, ScopeType scopeType) {
+    //    return discounts
+    //        .Select((value, index) => new { Value = value, Index = index })
+    //        .Where(item => item.Value > 0)
+    //        .Select(item => new OfferSupplementConfigurationPaxDto {
+    //            PaxOrder = item.Index + 1,
+    //            PaxType = paxType,
+    //            Scope = scopeType,
+    //            AgeFrom = 0,
+    //            AgeTo = 0,
+    //            Amount = item.Value,
+    //            AmountType = Dtos.BookingCenter.Availability.TypeOfPayment.Percent
+    //        });
+    //}
 }

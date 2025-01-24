@@ -3,12 +3,12 @@ namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Availability.HotelRoo
 [TestFixture]
 public class CreateHotelRoomConfigurationShould {
     private IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
-    private CreateHotelRoomConfiguration createHotelRoomConfiguration;
+    private PushHotelRoomConfiguration createHotelRoomConfiguration;
 
     [SetUp]
     public void Setup() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        createHotelRoomConfiguration = new CreateHotelRoomConfiguration(availabilitySynchronizerApiClient);
+        createHotelRoomConfiguration = new PushHotelRoomConfiguration(availabilitySynchronizerApiClient);
     }
 
     [Test]

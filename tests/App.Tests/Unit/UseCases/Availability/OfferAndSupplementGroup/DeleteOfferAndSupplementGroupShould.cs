@@ -1,12 +1,12 @@
 namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Availability.OfferAndSupplementGroup;
 public class DeleteOfferAndSupplementGroupShould {
     private IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
-    private DeleteOfferAndSupplementGroup deleteOfferAndSupplementGroup;
+    private DeleteOfferSupplementGroup deleteOfferAndSupplementGroup;
 
     [SetUp]
     public void Setup() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        deleteOfferAndSupplementGroup = new DeleteOfferAndSupplementGroup(availabilitySynchronizerApiClient);
+        deleteOfferAndSupplementGroup = new DeleteOfferSupplementGroup(availabilitySynchronizerApiClient);
     }
 
     [Test]

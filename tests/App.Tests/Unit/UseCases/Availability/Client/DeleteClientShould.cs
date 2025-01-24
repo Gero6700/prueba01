@@ -2,13 +2,13 @@ namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Availability.Client;
 
 [TestFixture]
 public class DeleteClientShould {
-    private DeleteClient deleteClient = null!;
+    private DeleteIntegration deleteClient = null!;
     private IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient = null!;
 
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        deleteClient = new DeleteClient(availabilitySynchronizerApiClient);
+        deleteClient = new DeleteIntegration(availabilitySynchronizerApiClient);
     }
 
     [Test]

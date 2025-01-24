@@ -7,6 +7,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="UseCases\Availability\ContractHeader\DeleteContractHeader.cs" />
+    <Compile Remove="UseCases\Availability\ContractHeader\IDeleteContractHeader.cs" />
+    <Compile Remove="UseCases\Availability\HotelRoomConfiguration\DeleteHotelRoomConfiguration.cs" />
+    <Compile Remove="UseCases\Availability\HotelRoomConfiguration\IDeleteHotelRoomConfiguration.cs" />
+    <Compile Remove="UseCases\Availability\HotelRoomConfiguration\IUpdateHotelRoomConfiguration.cs" />
+    <Compile Remove="UseCases\Availability\HotelRoomConfiguration\UpdateHotelRoomConfiguration.cs" />
+    <Compile Remove="UseCases\Availability\Hotel\DeleteHotel.cs" />
+    <Compile Remove="UseCases\Availability\Inventory\DeleteInventory.cs" />
+    <Compile Remove="UseCases\Availability\Inventory\IDeleteInventory.cs" />
+    <Compile Remove="UseCases\Availability\Market\DeleteMarket.cs" />
+    <Compile Remove="UseCases\Availability\Market\IDeleteMarket.cs" />
+    <Compile Remove="UseCases\Availability\Market\IUpdateMarket.cs" />
+    <Compile Remove="UseCases\Availability\Market\UpdateMarket.cs" />
+    <Compile Remove="UseCases\Availability\OccupancyRate\DeleteOccupancyRate.cs" />
+    <Compile Remove="UseCases\Availability\OccupancyRate\IDeleteOccupancyRate.cs" />
+    <Compile Remove="UseCases\Availability\Meal\IUpdateRegimen.cs" />
+    <Compile Remove="UseCases\Availability\Meal\UpdateRegime.cs" />
+    <Compile Remove="UseCases\Availability\OfferSupplementGroup\DeleteOfferSupplementGroup.cs" />
+    <Compile Remove="UseCases\Availability\OfferSupplementGroup\IDeleteOfferSupplementGroup.cs" />
+    <Compile Remove="UseCases\Availability\Room\DeleteRoom.cs" />
+    <Compile Remove="UseCases\Availability\Room\IDeleteRoom.cs" />
+    <Compile Remove="UseCases\Availability\Room\IUpdateRoom.cs" />
+    <Compile Remove="UseCases\Availability\Room\UpdateRoom.cs" />
     <Compile Remove="UseCases\Static\PushStaticExtrasTranslations.cs" />
     <Compile Remove="UseCases\Static\PushStaticHotel.cs" />
     <Compile Remove="UseCases\Static\PushStaticOffersAndSupplementsTranslations.cs" />

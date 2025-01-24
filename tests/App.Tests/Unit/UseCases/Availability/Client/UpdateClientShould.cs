@@ -3,12 +3,12 @@ namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Availability.Client;
 [TestFixture]
 public class UpdateClientShould {
     private IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
-    private UpdateClient updateClient = null!;
+    private UpdateIntegration updateClient = null!;
 
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        updateClient = new UpdateClient(availabilitySynchronizerApiClient);
+        updateClient = new UpdateIntegration(availabilitySynchronizerApiClient);
     }
 
     [Test]

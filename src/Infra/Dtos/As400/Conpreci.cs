@@ -14,4 +14,5 @@ public class Conpreci {
     public required string Rerele { get; set; } 
     public required string Tior { get; set; } 
     public required int Acrele { get; set; }
+    public required string Code { get; set; }
 }

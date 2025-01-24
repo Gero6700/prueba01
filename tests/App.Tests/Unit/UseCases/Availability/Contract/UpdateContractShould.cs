@@ -2,13 +2,13 @@ namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Availability.Contract
 
 [TestFixture]
 public class UpdateContractShould {
-    private UpdateContract updateContract = null!;
+    private UpdateContractHeader updateContract = null!;
     private IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient = null!;
 
     [SetUp]
     public void Setup() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        updateContract = new UpdateContract(availabilitySynchronizerApiClient);
+        updateContract = new UpdateContractHeader(availabilitySynchronizerApiClient);
     }
 
     [Test]

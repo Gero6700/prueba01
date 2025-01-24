@@ -3,12 +3,12 @@ namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Availability.OfferAnd
 [TestFixture]
 public class CreateOfferAndSupplementConfigurationPaxShould {
     private IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
-    private CreateOfferAndSupplementConfigurationPax createOfferAndSupplementConfigurationPax;
+    private CreateOfferSupplementConfigurationPax createOfferAndSupplementConfigurationPax;
 
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        createOfferAndSupplementConfigurationPax = new CreateOfferAndSupplementConfigurationPax(availabilitySynchronizerApiClient);
+        createOfferAndSupplementConfigurationPax = new CreateOfferSupplementConfigurationPax(availabilitySynchronizerApiClient);
     }
 
     [Test]

@@ -65,6 +65,10 @@ public class ConofegeBuilder {
 
     public Conofege Build() {
         return new Conofege {
+            Id = "0",
+            Fechamodi = DateTime.Now.ToString(),
+            OfDesc ="",
+            Ofpri = 0,
             Code = raw.Code,
             Ccode = raw.ContractClientCode,
             Ofopci = raw.Ofopci,

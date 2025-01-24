@@ -2,12 +2,12 @@ namespace Senator.As400.Cloud.Sync.App.Tests.Unit.UseCases.Availability.Cancella
 [TestFixture]
 public class CreateCancellationPolicyLineShould {
     private IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
-    private CreateCancellationPolicyLine createCancellationPolicyLine;
+    private CreateCancellationPolicy createCancellationPolicyLine;
 
     [SetUp]
     public void SetUp() {
         availabilitySynchronizerApiClient = Substitute.For<IAvailabilitySynchronizerApiClient>();
-        createCancellationPolicyLine = new CreateCancellationPolicyLine(availabilitySynchronizerApiClient);
+        createCancellationPolicyLine = new CreateCancellationPolicy(availabilitySynchronizerApiClient);
     }
 
     [Test]

@@ -23,7 +23,7 @@ public class CreateMarkupHotelShould {
         };
 
         //When
-        await createMarkupHotel.Execute(anyMkuphote);
+        createMarkupHotel.Execute(anyMkuphote);
 
         //Then
         var expectedMarkupHotel = new Infrastructure.Dtos.BookingCenter.Availability.MarkupHotel {
