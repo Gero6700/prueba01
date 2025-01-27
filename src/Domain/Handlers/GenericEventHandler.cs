@@ -23,6 +23,7 @@ public class GenericEventHandler(
     ICreateMarket createMarket,
     ICreateMinimumStay createMinimumStay,
     IUpdateMinimumStay updateMinimumStay,
+    IDeleteMinimumStay deleteMinimumStay,
     ICreateOccupancyRate createOccupancyRate,
     IUpdateOccupancyRate updateOccupancyRate,
     ICreateOfferSupplement createOfferAndSupplement,
@@ -74,6 +75,7 @@ public class GenericEventHandler(
     private readonly ICreateMarket createMarket = createMarket;
     private readonly ICreateMinimumStay createMinimumStay = createMinimumStay;
     private readonly IUpdateMinimumStay updateMinimumStay = updateMinimumStay;
+    private readonly IDeleteMinimumStay deleteMinimumStay = deleteMinimumStay;
     private readonly ICreateOccupancyRate createOccupancyRate = createOccupancyRate;
     private readonly IUpdateOccupancyRate updateOccupancyRate = updateOccupancyRate;
     private readonly ICreateOfferSupplement createOfferAndSupplement = createOfferAndSupplement;
@@ -254,6 +256,7 @@ public class GenericEventHandler(
         return operation switch {
             nameof(OperationType.Create) => await createMinimumStay.Execute(minimumStay),
             nameof(OperationType.Update) => await updateMinimumStay.Execute(minimumStay),
+            nameof(OperationType.Delete) => await deleteMinimumStay.Execute(minimumStay.Code),
             _ => throw new InvalidOperationException($"Unsupported operation: {operation} in MinimumStay"),
         };
     }

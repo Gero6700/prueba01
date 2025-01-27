@@ -71,6 +71,7 @@ builder.Services.AddSingleton<ICreateMarket, CreateMarket>();
 
 builder.Services.AddSingleton<ICreateMinimumStay, CreateMinimumStay>();
 builder.Services.AddSingleton<IUpdateMinimumStay, UpdateMinimumStay>();
+builder.Services.AddSingleton<IDeleteMinimumStay, DeleteMinimumStay>();
 
 builder.Services.AddSingleton<ICreateOccupancyRate, CreateOccupancyRate>();
 builder.Services.AddSingleton<IUpdateOccupancyRate, UpdateOccupancyRate>();
