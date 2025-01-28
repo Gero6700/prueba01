@@ -1,7 +1,17 @@
 namespace Senator.As400.Cloud.Sync.Api.HostedService;
 
-//Servicio de extraccion de mensajes mediante API de pull streaming de Google Pub/Sub.
-//Para mas detalles de la API de Google Pub/Sub: https://cloud.google.com/pubsub/docs/pull?hl=es-419#high_client_library
+//Servicio de extracción de mensajes mediante API de pull streaming de Google Pub/Sub.
+//Para mas detalles de la API de StreamingPull de Google Pub/Sub: https://cloud.google.com/pubsub/docs/pull?hl=es-419#streamingpull_api
+//Para mas detalles de las bibliotecas cliente de alto nivel para Pub/Sub: https://cloud.google.com/pubsub/docs/pull?hl=es-419#high_client_library
+
+//El funcionamiento de este servicio es el siguiente:
+//1. El suscriptor inicia la escucha de los mensajes.
+//2. Por cada mensaje recibido, se deserializa el mensaje y se envía a un manejador de sincronización.
+//3. Si la respuesta del manejador no es satisfactoria, se registra un error en el log.
+//4. Si el error es de red/comunicación hacia la api (400, 500), el mensaje se marca con error y así poder reintentar.
+//5. En caso contrario, se confirma el mensaje para que no se vuelva a recibir.
+
+
 public class PubSubPullStreamingService(
         SubscriberClient subscriberClient,
         ILogger<PubSubPullStreamingService> logger,
@@ -9,24 +19,7 @@ public class PubSubPullStreamingService(
     ) : BackgroundService {
     private readonly JsonSerializerOptions serializeOptions = new() { PropertyNameCaseInsensitive = true };
     private readonly Dictionary<string, Type>  typeMap = new () {
-        {nameof(TableType.CancellationPolicyLine), typeof(Congasan)},
-        {nameof(TableType.Client), typeof(Usureg)},
-        {nameof(TableType.ClientType), typeof(Restagen)},
-        {nameof(TableType.Contract), typeof(Concabec)},
-        {nameof(TableType.Extra), typeof(Conextra)},
-        {nameof(TableType.Hotel), typeof(Reshotel)},
-        {nameof(TableType.HotelRoomConfiguration), typeof(Resthaho)},
-        {nameof(TableType.Inventory), typeof(Resplaht)},
-        {nameof(TableType.Market), typeof(Merca)},
-        {nameof(TableType.MinimumStay), typeof(Conestmi)},
-        {nameof(TableType.OccupancyRate), typeof(Resthaco)},
-        {nameof(TableType.OfferAndSupplement), typeof(Conofege)},
-        {nameof(TableType.OfferAndSupplementConfigurationPax), typeof(Condtof)},
-        {nameof(TableType.OfferAndSupplementGroup), typeof(ConofcomHeader)},
-        {nameof(TableType.OfferAndSupplementGroupOfferAndSupplement), typeof(ConofcomLine)},
-        {nameof(TableType.PeriodPricing), typeof(Conpreci)},
-        {nameof(TableType.PeriodPricingPax), typeof(Condtos)},
-        {nameof(TableType.Regimen), typeof(Restregi)}
+        {nameof(TableType.Inventory), typeof(Resplaht)}
     };
 
 

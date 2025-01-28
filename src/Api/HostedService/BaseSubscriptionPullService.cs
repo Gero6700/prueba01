@@ -1,7 +1,8 @@
 namespace Senator.As400.Cloud.Sync.Api.HostedService;
 
-//Servicio de extraccion de mensajes mediante API de pull de Google Pub/Sub.
-//Para mas detalles de la API de Google Pub/Sub: https://cloud.google.com/pubsub/docs/pull?hl=es-419#high_client_library
+//Servicio de extracción de mensajes mediante API de pull de Google Pub/Sub.
+//Para mas detalles de la API de pull de Google Pub/Sub: https://cloud.google.com/pubsub/docs/pull?hl=es-419#pull_api
+//Para mas detalles de las bibliotecas cliente de alto nivel para Pub/Sub: https://cloud.google.com/pubsub/docs/pull?hl=es-419#high_client_library
 
 //El funcionamiento de este servicio es el siguiente:
 //1. Realiza una operación de extracción (pull) asincrónica.
@@ -19,30 +20,9 @@ namespace Senator.As400.Cloud.Sync.Api.HostedService;
 //Si el deadline ha expirado, la confirmación del mensaje no fallará pero en realidad no se confirma y seguirá pendiente en la próxima lectura.
 //Si se produce un error de red/comunicación hacia la api, ya sea por una HttpRequestException o porque devuelva un 404 o 500, se sale del bucle para asegurar el orden en el procesamiento. Se reintará la extracción en el siguiente ciclo.
 //En cada mensaje de error se registra el AckId, PublishTime y Data del mensaje.
-//Además, si el error ha venido por la api de sincronización, se registra el objeto devuelto.
+//Además, si el error ha venido por la api de sincronización, se registra el objeto devuelto en la respuesta.
 public abstract class BaseSubscriptionPullService : BackgroundService {
     private readonly JsonSerializerOptions serializeOptions = new() { PropertyNameCaseInsensitive = true };
-    //private readonly Dictionary<string, Type> typeMap = new() {
-    //    {nameof(TableType.CancellationPolicyLine), typeof(Congasan)},
-    //    {nameof(TableType.Client), typeof(Usureg)},
-    //    {nameof(TableType.ClientType), typeof(Restagen)},
-    //    {nameof(TableType.Contract), typeof(Concabec)},
-    //    {nameof(TableType.Extra), typeof(Conextra)},
-    //    {nameof(TableType.Hotel), typeof(Reshotel)},
-    //    {nameof(TableType.HotelRoomConfiguration), typeof(Resthaho)},
-    //    {nameof(TableType.Inventory), typeof(Resplaht)},
-    //    {nameof(TableType.Market), typeof(Merca)},
-    //    {nameof(TableType.MinimumStay), typeof(Conestmi)},
-    //    {nameof(TableType.OccupancyRate), typeof(Resthaco)},
-    //    {nameof(TableType.OfferAndSupplement), typeof(Conofege)},
-    //    {nameof(TableType.OfferAndSupplementConfigurationPax), typeof(Condtof)},
-    //    {nameof(TableType.OfferAndSupplementGroup), typeof(ConofcomHeader)},
-    //    {nameof(TableType.OfferAndSupplementGroupOfferAndSupplement), typeof(ConofcomLine)},
-    //    {nameof(TableType.PeriodPricing), typeof(Conpreci)},
-    //    {nameof(TableType.PeriodPricingPax), typeof(Condtos)},
-    //    {nameof(TableType.Regimen), typeof(Restregi)}
-    //};
-
     protected readonly SubscriberServiceApiClient subscriberClient;
     protected readonly Microsoft.Extensions.Logging.ILogger logger;
     protected readonly ISynchronizerHandler<GenericSynchronizationEvent> synchronizationHandler;
