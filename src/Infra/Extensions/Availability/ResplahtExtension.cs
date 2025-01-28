@@ -6,6 +6,7 @@ public static class ResplahtExtension {
             InventoryDate = DateTimeHelper.ConvertYYYYMMDDToDatetime(resplaht.Ptfec),
             RoomQuantity = resplaht.GetRoomQuantity,
             OccupiedRooms = resplaht.GetOccupiedRooms,
+            LastUpdateDate = DateTime.Parse(resplaht.Fechamodi),
             HotelCode = resplaht.Pthot.ToString(),
             RoomCode = resplaht.Pthab
         };

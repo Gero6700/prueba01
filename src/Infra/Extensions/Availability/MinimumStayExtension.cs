@@ -5,7 +5,7 @@ public static class MinimumStayExtension {
             Code = conestmi.Code,
             From = DateTimeHelper.ConvertYYYYMMDDToDatetime(conestmi.C7fec1),
             To = DateTimeHelper.ConvertYYYYMMDDToDatetime(conestmi.C7fec2),
-            Days = conestmi.C7dmin,
+            Nights = conestmi.C7dmin,
             StrictPeriod = conestmi.C7peri.ToString().ToUpper() == "S",
             IntegrationContractCode = conestmi.ContractClientCode,
             RoomCode = conestmi.C7thab.Trim() == "" ? null : conestmi.C7thab,
