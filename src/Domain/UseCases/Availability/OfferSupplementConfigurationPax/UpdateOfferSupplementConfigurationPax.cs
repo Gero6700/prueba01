@@ -10,7 +10,7 @@ public class UpdateOfferSupplementConfigurationPax : IUpdateOfferSupplementConfi
         if (condtof.Code == "") {
             throw new ArgumentException("Code is required");
         }
-        if (condtof.OfferAndSupplementCode == "") {
+        if (condtof.Codeof == "") {
             throw new ArgumentException("OfferAndSupplement code is required");
         }
         if (condtof.O4has < condtof.O4desd) {

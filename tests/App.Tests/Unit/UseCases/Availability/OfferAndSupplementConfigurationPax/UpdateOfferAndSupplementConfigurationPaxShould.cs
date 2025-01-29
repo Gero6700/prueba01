@@ -29,7 +29,7 @@ public class UpdateOfferAndSupplementConfigurationPaxShould {
             O4has = anyO4has,
             O4dtos = anyO4dtos,
             Code = anyCode,
-            OfferAndSupplementCode = anyOfferAndSupplementCode
+            Codeof = anyOfferAndSupplementCode
         };
 
         //When
@@ -70,7 +70,7 @@ public class UpdateOfferAndSupplementConfigurationPaxShould {
             O4has = anyO4has,
             O4dtos = anyO4dtos,
             Code = anyCode,
-            OfferAndSupplementCode = anyOfferAndSupplementCode
+            Codeof = anyOfferAndSupplementCode
         };
 
         //When
@@ -98,7 +98,7 @@ public class UpdateOfferAndSupplementConfigurationPaxShould {
             O4has = anyO4has,
             O4dtos = anyO4dtos,
             Code = anyCode,
-            OfferAndSupplementCode = anyOfferAndSupplementCode
+            Codeof = anyOfferAndSupplementCode
         };
 
         //When
@@ -126,7 +126,7 @@ public class UpdateOfferAndSupplementConfigurationPaxShould {
             O4has = anyO4has,
             O4dtos = anyO4dtos,
             Code = anyCode,
-            OfferAndSupplementCode = anyOfferAndSupplementCode
+            Codeof = anyOfferAndSupplementCode
         };
 
         //When
@@ -155,7 +155,7 @@ public class UpdateOfferAndSupplementConfigurationPaxShould {
             O4has = anyO4has,
             O4dtos = anyO4dtos,
             Code = anyCode,
-            OfferAndSupplementCode = anyOfferAndSupplementCode
+            Codeof = anyOfferAndSupplementCode
         };
 
         //When
@@ -183,7 +183,7 @@ public class UpdateOfferAndSupplementConfigurationPaxShould {
             O4has = anyO4has,
             O4dtos = anyO4dtos,
             Code = anyCode,
-            OfferAndSupplementCode = anyOfferAndSupplementCode
+            Codeof = anyOfferAndSupplementCode
         };
 
         //When
@@ -211,7 +211,7 @@ public class UpdateOfferAndSupplementConfigurationPaxShould {
             O4has = anyO4has,
             O4dtos = anyO4dtos,
             Code = anyCode,
-            OfferAndSupplementCode = anyOfferAndSupplementCode
+            Codeof = anyOfferAndSupplementCode
         };
 
         //When

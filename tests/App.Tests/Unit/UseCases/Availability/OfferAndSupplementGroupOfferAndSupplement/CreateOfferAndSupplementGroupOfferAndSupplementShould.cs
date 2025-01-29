@@ -19,7 +19,7 @@ public class CreateOfferAndSupplementGroupOfferAndSupplementShould {
 
         var conofcomLine = new ConofcomLine {
             Occin = anyOccin,
-            OfferSupCode = anyOfferSupplementCode
+            Oocode = anyOfferSupplementCode
         };
 
         //When
@@ -43,7 +43,7 @@ public class CreateOfferAndSupplementGroupOfferAndSupplementShould {
 
         var conofcomLine = new ConofcomLine {
             Occin = anyOccin,
-            OfferSupCode = anyOfferSupplementCode
+            Oocode = anyOfferSupplementCode
         };
 
         //When
@@ -61,7 +61,7 @@ public class CreateOfferAndSupplementGroupOfferAndSupplementShould {
 
         var conofcomLine = new ConofcomLine {
             Occin = anyOccin,
-            OfferSupCode = anyOfferSupplementCode
+            Oocode = anyOfferSupplementCode
         };
 
         //When

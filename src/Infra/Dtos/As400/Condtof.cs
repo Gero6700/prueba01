@@ -8,6 +8,6 @@ public class Condtof {
     public required decimal O4has { get; set; }
     public required decimal O4dtos { get; set; }
     public required string Code { get; set; } 
-    public required string OfferAndSupplementCode { get; set; } 
+    public required string Codeof { get; set; } 
 }
     

@@ -11,7 +11,7 @@ public static class CondtofExtension {
             AgeTo = condtof.O4has == 0 ? null : condtof.O4has,
             Amount = condtof.O4dtos,
             AmountType = TypeOfPayment.Percent,
-            OfferSupplementCode = condtof.OfferAndSupplementCode
+            OfferSupplementCode = condtof.Codeof
         };
     }
 }

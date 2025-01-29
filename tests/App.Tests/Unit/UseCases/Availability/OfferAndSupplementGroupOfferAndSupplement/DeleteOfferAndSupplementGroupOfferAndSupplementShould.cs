@@ -19,7 +19,7 @@ public class DeleteOfferAndSupplementGroupOfferAndSupplementShould {
 
         var conofcomLine = new ConofcomLine {
             Occin = anyOccin,
-            OfferSupCode = anyOfferSupplementCode
+            Oocode = anyOfferSupplementCode
         };
 
         //When
@@ -38,7 +38,7 @@ public class DeleteOfferAndSupplementGroupOfferAndSupplementShould {
 
         var conofcomLine = new ConofcomLine {
             Occin = anyOccin,
-            OfferSupCode = anyOfferSupplementCode
+            Oocode = anyOfferSupplementCode
         };
 
         //When
@@ -56,7 +56,7 @@ public class DeleteOfferAndSupplementGroupOfferAndSupplementShould {
 
         var conofcomLine = new ConofcomLine {
             Occin = anyOccin,
-            OfferSupCode = anyOfferSupplementCode
+            Oocode = anyOfferSupplementCode
         };
 
         //When

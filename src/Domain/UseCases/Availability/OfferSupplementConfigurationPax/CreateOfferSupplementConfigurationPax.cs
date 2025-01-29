@@ -10,7 +10,7 @@ public class CreateOfferSupplementConfigurationPax : ICreateOfferSupplementConfi
         if (condtof.Code == "") {
             throw new ArgumentException("Code is required");
         }
-        if (condtof.OfferAndSupplementCode == "") {
+        if (condtof.Codeof == "") {
             throw new ArgumentException("OfferAndSupplement Code is required");
         }
         if (condtof.O4has < condtof.O4desd) {

@@ -7,7 +7,7 @@ public static class ConofcomHeaderExtension {
             Code = conofcomHeader.Occin.ToString(),
             ApplyFrom = conofcomHeader.Ocfec1 == 0 ? DateTime.MinValue : DateTimeHelper.ConvertYYYYMMDDToDatetime(conofcomHeader.Ocfec1),
             ApplyTo = conofcomHeader.Ocfec2 == 0 ? DateTime.MinValue : DateTimeHelper.ConvertYYYYMMDDToDatetime(conofcomHeader.Ocfec2),
-            IntegrationContractCodes = conofcomHeader.ContractClientCode == "" ? [] : new List<string> { conofcomHeader.ContractClientCode }
+            IntegrationContractCodes = conofcomHeader.Occode == "" ? [] : new List<string> { conofcomHeader.Occode }
         };
     }
 }

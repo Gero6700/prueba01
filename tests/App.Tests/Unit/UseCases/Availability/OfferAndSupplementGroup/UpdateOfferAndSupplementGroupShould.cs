@@ -19,7 +19,7 @@ public class UpdateOfferAndSupplementGroupShould {
         const int anyOcfec2 = 20240102;
 
         var anyConofcomHeader = new ConofcomHeader {
-            ContractClientCode = anyContractClientCode,
+            Occode = anyContractClientCode,
             Occin = anyOccin,
             Ocfec1 = anyOcfec1,
             Ocfec2 = anyOcfec2

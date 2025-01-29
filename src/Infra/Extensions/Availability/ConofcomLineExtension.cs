@@ -3,7 +3,7 @@ public static class ConofcomLineExtension {
     public static OfferSupplementGroupRelationDto ToOfferAndSupplementGroupOfferAndSupplement(this ConofcomLine conofcomLine) {
         return new OfferSupplementGroupRelationDto {
             OfferSupplementGroupCode = conofcomLine.Occin.ToString(),
-            OfferSupplementCode = conofcomLine.OfferSupCode
+            OfferSupplementCode = conofcomLine.Oocode
         };
     }
 }
