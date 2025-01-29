@@ -232,7 +232,8 @@ public class GenericEventHandler(
 
     private async Task<HttpResponseMessage> HandleHotelRoomConfigurationEventAsync(Resthaho hotelRoomConfiguration, string operation) {
         return operation switch {
-            nameof(OperationType.Push) => await pushHotelRoomConfiguration.Execute(hotelRoomConfiguration),
+            nameof(OperationType.Create) => await pushHotelRoomConfiguration.Execute(hotelRoomConfiguration),
+            nameof(OperationType.Update) => await pushHotelRoomConfiguration.Execute(hotelRoomConfiguration),
             _ => throw new InvalidOperationException($"Unsupported operation: {operation} in HotelRoomConfiguration"),
         };
     }
