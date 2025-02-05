@@ -12,9 +12,9 @@ namespace Senator.As400.Cloud.Sync.Api.HostedService;
 //5. En caso contrario, se confirma el mensaje para que no se vuelva a recibir.
 
 
-public class PubSubPullStreamingService(
+public class SubscriptionPullStreamingService(
         SubscriberClient subscriberClient,
-        ILogger<PubSubPullStreamingService> logger,
+        ILogger<SubscriptionPullStreamingService> logger,
         ISynchronizerHandler<GenericSynchronizationEvent> synchronizerHandler
     ) : BackgroundService {
     private readonly JsonSerializerOptions serializeOptions = new() { PropertyNameCaseInsensitive = true };

@@ -21,13 +21,13 @@ namespace Senator.As400.Cloud.Sync.Api.HostedService;
 //Si se produce un error de red/comunicación hacia la api, ya sea por una HttpRequestException o porque devuelva un 404 o 500, se sale del bucle para asegurar el orden en el procesamiento. Se reintará la extracción en el siguiente ciclo.
 //En cada mensaje de error se registra el AckId, PublishTime y Data del mensaje.
 //Además, si el error ha venido por la api de sincronización, se registra el objeto devuelto en la respuesta.
-public abstract class BaseSubscriptionPullService : BackgroundService {
+public abstract class SubscriptionPullService : BackgroundService {
     private readonly JsonSerializerOptions serializeOptions = new() { PropertyNameCaseInsensitive = true };
     protected readonly SubscriberServiceApiClient subscriberClient;
     protected readonly Microsoft.Extensions.Logging.ILogger logger;
     protected readonly ISynchronizerHandler<GenericSynchronizationEvent> synchronizationHandler;
 
-    protected BaseSubscriptionPullService(
+    protected SubscriptionPullService(
         SubscriberServiceApiClient subscriberClient,
         Microsoft.Extensions.Logging.ILogger logger,
         ISynchronizerHandler<GenericSynchronizationEvent> synchronizationHandler
