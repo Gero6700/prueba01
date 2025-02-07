@@ -69,21 +69,21 @@ public abstract class SubscriptionPullService : BackgroundService {
                         if (!httpresponse.IsSuccessStatusCode) {
                             var content = await httpresponse.Content.ReadAsStringAsync();
                             var errorCode = (int)httpresponse.StatusCode;
-                            ProblemDetails? problemDetails = null;
+                            //ProblemDetails? problemDetails = null;
 
-                            try {
-                                problemDetails = !string.IsNullOrWhiteSpace(content) ? JsonSerializer.Deserialize<ProblemDetails>(content, options) : null;
-                            }
-                            catch { }
+                            //try {
+                            //    problemDetails = !string.IsNullOrWhiteSpace(content) ? JsonSerializer.Deserialize<ProblemDetails>(content, options) : null;
+                            //}
+                            //catch { }
 
                             if (errorCode == 404 || errorCode == 500) {
                                 logger.LogError("Pulling process is aborted, it will restart automatically. An error occurred while sending the message to Synchronizer Api: {message}",
-                                    GenerateLogApi(projectId, subscriptionId, receivedMessage.Message, messageData, errorCode, problemDetails));
+                                    GenerateLogApi(projectId, subscriptionId, receivedMessage.Message, messageData, errorCode, content));
                                 break;
                             }
                             else {
                                 logger.LogError("The message has been refused. An error occurred while sending the message to Synchronizer Api: {message}",
-                                    GenerateLogApi(projectId, subscriptionId, receivedMessage.Message, messageData, errorCode, problemDetails));
+                                    GenerateLogApi(projectId, subscriptionId, receivedMessage.Message, messageData, errorCode, content));
                             }
                         }
                     }
@@ -117,10 +117,9 @@ public abstract class SubscriptionPullService : BackgroundService {
             $"MessageId: {receivedMessage.MessageId}{Environment.NewLine}PublishTime: {receivedMessage.PublishTime.ToDateTime()}{Environment.NewLine}Data: {messageData}";
     }
 
-    private static string GenerateLogApi(string projectId, string subscriptionId, PubsubMessage received, string messageData, int errorCode, ProblemDetails? problemDetails) {
+    private static string GenerateLogApi(string projectId, string subscriptionId, PubsubMessage received, string messageData, int errorCode, string? problemDetails) {
         return GenerateLogMessage(projectId, subscriptionId, received, messageData,
-            $"Api synchronizer error: {problemDetails?.Status ?? errorCode}{Environment.NewLine}Type: {problemDetails?.Type}{Environment.NewLine}" +
-            $"Title: {problemDetails?.Title}{Environment.NewLine}Detail: {problemDetails?.Detail}{Environment.NewLine}Instance: {problemDetails?.Instance}");
+            $"Api synchronizer error: {problemDetails ?? ""}");
     }
 
     private object DeserializeEntity(As400Notification notification) {
