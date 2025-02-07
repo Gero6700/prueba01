@@ -7,10 +7,10 @@ public class CreatePeriodPricing : ICreatePeriodPricing {
     }
 
     public Task<HttpResponseMessage> Execute(Conpreci conpreci) {
-        if (conpreci.Cffec == 0) {
+        if (conpreci.C4fec == 0) {
             throw new ArgumentException("Price date is required");
         }
-        if (DateTimeHelper.ConvertYYYYMMDDToDatetime(conpreci.Cffec) == DateTime.MinValue) {
+        if (DateTimeHelper.ConvertYYYYMMDDToDatetime(conpreci.C4fec) == DateTime.MinValue) {
             throw new ArgumentException("Invalid price date");
         }
         if (string.IsNullOrWhiteSpace(conpreci.C4thab)) {
@@ -19,10 +19,10 @@ public class CreatePeriodPricing : ICreatePeriodPricing {
         if (string.IsNullOrWhiteSpace(conpreci.C4tser)) {
             throw new ArgumentException("Regime code is required");
         }
-        if (string.IsNullOrWhiteSpace(conpreci.ContractClientCode)) {
+        if (string.IsNullOrWhiteSpace(conpreci.C4ccod)) {
             throw new ArgumentException("Contract client code is required");
         }
-        if (string.IsNullOrWhiteSpace(conpreci.RateCode)) {
+        if (string.IsNullOrWhiteSpace(conpreci.C4rcode)) {
             throw new ArgumentException("Rate code is required");
         }
         if (conpreci.C4esta <= 0) {

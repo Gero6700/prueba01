@@ -1,3 +1,4 @@
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Room;
 using Senator.As400.Cloud.Sync.Application.UseCases.Static;
 
 namespace Senator.As400.Cloud.Sync.Application.Handlers;
@@ -41,6 +42,7 @@ public class GenericEventHandler(
     IUpdatePeriodPricingPax updatePeriodPricingPax,
     IDeletePeriodPricingPax deletePeriodPricingPax,
     ICreateMeal createRegimen,
+    ICreateRoom createRoom,
     ICreateStaticExtraTranslation createStaticExtraTranslation,
     IUpdateStaticExtraTranslation updateStaticExtraTranslation,
     IDeleteStaticExtraTranslation deleteStaticExtraTranslation,
@@ -93,6 +95,7 @@ public class GenericEventHandler(
     private readonly IUpdatePeriodPricingPax updatePeriodPricingPax = updatePeriodPricingPax;
     private readonly IDeletePeriodPricingPax deletePeriodPricingPax = deletePeriodPricingPax;
     private readonly ICreateMeal createRegimen = createRegimen;
+    private readonly ICreateRoom createRoom = createRoom;
     private readonly ICreateStaticExtraTranslation createStaticExtraTranslation = createStaticExtraTranslation;
     private readonly IUpdateStaticExtraTranslation updateStaticExtraTranslation = updateStaticExtraTranslation;
     private readonly IDeleteStaticExtraTranslation deleteStaticExtraTranslation = deleteStaticExtraTranslation;
@@ -159,9 +162,12 @@ public class GenericEventHandler(
             case nameof(TableType.PeriodPricingPax):
                 var periodPricingPax = (Condtos)@event.Entity;
                 return await HandlePeriodPricingPaxEventAsync(periodPricingPax, @event.Operation);
-            case nameof(TableType.Regimen):
+            case nameof(TableType.Regime):
                 var regimen = (Restregi)@event.Entity;
                 return await HandleRegimenEventAsync(regimen, @event.Operation);
+            case nameof(TableType.Room):
+                var room = (Resthabi)@event.Entity;
+                return await HandleRoomEventAsync(room, @event.Operation);
             case nameof(TableType.ExtraTranslation):
                 var extraTranslation = (Desextr)@event.Entity;
                 return await HandleExtraTranslationEventAsync(extraTranslation, @event.Operation);
@@ -324,6 +330,13 @@ public class GenericEventHandler(
         return operation switch {
             nameof(OperationType.Create) => await createRegimen.Execute(regimen),
             _ => throw new InvalidOperationException($"Unsupported operation: {operation} in Regimen"),
+        };
+    }
+
+    private async Task<HttpResponseMessage> HandleRoomEventAsync(Resthabi room, string operation) {
+        return operation switch {
+            nameof(OperationType.Create) => await createRoom.Execute(room),
+            _ => throw new InvalidOperationException($"Unsupported operation: {operation} in Room"),
         };
     }
 

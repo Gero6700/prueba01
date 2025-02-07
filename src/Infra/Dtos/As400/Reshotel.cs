@@ -5,9 +5,7 @@ public class Reshotel{
     public required string Fechamodi { get; set; } 
     public required string Hotcod { get; set; } 
     public required string Hozhor { get; set; } 
-    public required string Hotpai { get; set; } 
-    public required string Hotcoi { get; set; } 
-    public required string Hotpri { get; set; } 
-    public required string HotPoi { get; set; } 
+    public required string Provincecode { get; set; } 
+    public required string Citycode { get; set; } 
 
 }

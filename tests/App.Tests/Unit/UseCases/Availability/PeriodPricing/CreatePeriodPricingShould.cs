@@ -28,9 +28,9 @@ public class CreatePeriodPricingShould {
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
-            RateCode = anyRateCode,
-            Cffec = anyCffec,
-            ContractClientCode = anyContractClientCode,
+            C4rcode = anyRateCode,
+            C4fec = anyCffec,
+            C4ccod = anyContractClientCode,
             C4esta = anyC4esta,
             C4form = anyC4form,
             C4serv = anyC4serv,
@@ -82,9 +82,9 @@ public class CreatePeriodPricingShould {
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
-            RateCode = anyRateCode,
-            Cffec = anyCffec,
-            ContractClientCode = anyContractClientCode,
+            C4rcode = anyRateCode,
+            C4fec = anyCffec,
+            C4ccod = anyContractClientCode,
             C4esta = anyC4esta,
             C4form = anyC4form,
             C4serv = anyC4serv,
@@ -136,9 +136,9 @@ public class CreatePeriodPricingShould {
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
-            RateCode = anyRateCode,
-            Cffec = anyCffec,
-            ContractClientCode = anyContractClientCode,
+            C4rcode = anyRateCode,
+            C4fec = anyCffec,
+            C4ccod = anyContractClientCode,
             C4esta = anyC4esta,
             C4form = anyC4form,
             C4serv = anyC4serv,
@@ -190,9 +190,9 @@ public class CreatePeriodPricingShould {
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
-            RateCode = anyRateCode,
-            Cffec = anyCffec,
-            ContractClientCode = anyContractClientCode,
+            C4rcode = anyRateCode,
+            C4fec = anyCffec,
+            C4ccod = anyContractClientCode,
             C4esta = anyC4esta,
             C4form = anyC4form,
             C4serv = anyC4serv,
@@ -244,9 +244,9 @@ public class CreatePeriodPricingShould {
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
-            RateCode = anyRateCode,
-            Cffec = anyCffec,
-            ContractClientCode = anyContractClientCode,
+            C4rcode = anyRateCode,
+            C4fec = anyCffec,
+            C4ccod = anyContractClientCode,
             C4esta = anyC4esta,
             C4form = anyC4form,
             C4serv = anyC4serv,
@@ -298,9 +298,9 @@ public class CreatePeriodPricingShould {
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
-            RateCode = anyRateCode,
-            Cffec = anyCffec,
-            ContractClientCode = anyContractClientCode,
+            C4rcode = anyRateCode,
+            C4fec = anyCffec,
+            C4ccod = anyContractClientCode,
             C4esta = anyC4esta,
             C4form = anyC4form,
             C4serv = anyC4serv,
@@ -352,9 +352,9 @@ public class CreatePeriodPricingShould {
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
-            RateCode = anyRateCode,
-            Cffec = anyCffec,
-            ContractClientCode = anyContractClientCode,
+            C4rcode = anyRateCode,
+            C4fec = anyCffec,
+            C4ccod = anyContractClientCode,
             C4esta = anyC4esta,
             C4form = anyC4form,
             C4serv = anyC4serv,
@@ -406,9 +406,9 @@ public class CreatePeriodPricingShould {
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
-            RateCode = anyRateCode,
-            Cffec = anyCffec,
-            ContractClientCode = anyContractClientCode,
+            C4rcode = anyRateCode,
+            C4fec = anyCffec,
+            C4ccod = anyContractClientCode,
             C4esta = anyC4esta,
             C4form = anyC4form,
             C4serv = anyC4serv,
@@ -460,9 +460,9 @@ public class CreatePeriodPricingShould {
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
-            RateCode = anyRateCode,
-            Cffec = anyCffec,
-            ContractClientCode = anyContractClientCode,
+            C4rcode = anyRateCode,
+            C4fec = anyCffec,
+            C4ccod = anyContractClientCode,
             C4esta = anyC4esta,
             C4form = anyC4form,
             C4serv = anyC4serv,
@@ -498,9 +498,9 @@ public class CreatePeriodPricingShould {
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
-            RateCode = anyRateCode,
-            Cffec = anyCffec,
-            ContractClientCode = anyContractClientCode,
+            C4rcode = anyRateCode,
+            C4fec = anyCffec,
+            C4ccod = anyContractClientCode,
             C4esta = anyC4esta,
             C4form = anyC4form,
             C4serv = anyC4serv,
@@ -536,9 +536,9 @@ public class CreatePeriodPricingShould {
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
-            RateCode = anyRateCode,
-            Cffec = anyCffec,
-            ContractClientCode = anyContractClientCode,
+            C4rcode = anyRateCode,
+            C4fec = anyCffec,
+            C4ccod = anyContractClientCode,
             C4esta = anyC4esta,
             C4form = anyC4form,
             C4serv = anyC4serv,
@@ -574,9 +574,9 @@ public class CreatePeriodPricingShould {
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
-            RateCode = anyRateCode,
-            Cffec = anyCffec,
-            ContractClientCode = anyContractClientCode,
+            C4rcode = anyRateCode,
+            C4fec = anyCffec,
+            C4ccod = anyContractClientCode,
             C4esta = anyC4esta,
             C4form = anyC4form,
             C4serv = anyC4serv,
@@ -612,9 +612,9 @@ public class CreatePeriodPricingShould {
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
-            RateCode = anyRateCode,
-            Cffec = anyCffec,
-            ContractClientCode = anyContractClientCode,
+            C4rcode = anyRateCode,
+            C4fec = anyCffec,
+            C4ccod = anyContractClientCode,
             C4esta = anyC4esta,
             C4form = anyC4form,
             C4serv = anyC4serv,
@@ -650,9 +650,9 @@ public class CreatePeriodPricingShould {
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
-            RateCode = anyRateCode,
-            Cffec = anyCffec,
-            ContractClientCode = anyContractClientCode,
+            C4rcode = anyRateCode,
+            C4fec = anyCffec,
+            C4ccod = anyContractClientCode,
             C4esta = anyC4esta,
             C4form = anyC4form,
             C4serv = anyC4serv,
@@ -688,9 +688,9 @@ public class CreatePeriodPricingShould {
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
-            RateCode = anyRateCode,
-            Cffec = anyCffec,
-            ContractClientCode = anyContractClientCode,
+            C4rcode = anyRateCode,
+            C4fec = anyCffec,
+            C4ccod = anyContractClientCode,
             C4esta = anyC4esta,
             C4form = anyC4form,
             C4serv = anyC4serv,
@@ -727,9 +727,9 @@ public class CreatePeriodPricingShould {
         const int anyAcrele = 0;
 
         var anyConpreci = new Conpreci {
-            RateCode = anyRateCode,
-            Cffec = anyCffec,
-            ContractClientCode = anyContractClientCode,
+            C4rcode = anyRateCode,
+            C4fec = anyCffec,
+            C4ccod = anyContractClientCode,
             C4esta = anyC4esta,
             C4form = anyC4form,
             C4serv = anyC4serv,

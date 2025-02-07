@@ -15,6 +15,7 @@ using Senator.As400.Cloud.Sync.Application.UseCases.Availability.OfferAndSupplem
 using Senator.As400.Cloud.Sync.Application.UseCases.Availability.PeriodPricing;
 using Senator.As400.Cloud.Sync.Application.UseCases.Availability.PeriodPricingPax;
 using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Regime;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Room;
 using Senator.As400.Cloud.Sync.Application.UseCases.Static;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -98,6 +99,8 @@ builder.Services.AddSingleton<IDeletePeriodPricingPax, DeletePeriodPricingPax>()
 
 builder.Services.AddSingleton<ICreateMeal, CreateMeal>();
 
+builder.Services.AddSingleton<ICreateRoom, CreateRoom>();
+
 builder.Services.AddSingleton<ICreateStaticExtraTranslation, CreateStaticExtraTranslation>();
 builder.Services.AddSingleton<IUpdateStaticExtraTranslation, UpdateStaticExtraTranslation>();
 builder.Services.AddSingleton<IDeleteStaticExtraTranslation, DeleteStaticExtraTranslation>();
@@ -117,15 +120,15 @@ builder.Services.AddSingleton<IDeleteStaticTax, DeleteStaticTax>();
 builder.Services.AddSingleton<ISynchronizerHandler<GenericSynchronizationEvent>, GenericEventHandler>();
 
 //subscription to quota
-var projectId = configuration["QuotaGooglePubSub:ProjectId"];
-var subscriptionId = configuration["QuotaGooglePubSub:SubscriptionId"];
-var subscriptionName = SubscriptionName.FromProjectSubscription(projectId, subscriptionId);
-builder.Services.AddSubscriberClient(subscriptionName);
+//var projectId = configuration["QuotaGooglePubSub:ProjectId"];
+//var subscriptionId = configuration["QuotaGooglePubSub:SubscriptionId"];
+//var subscriptionName = SubscriptionName.FromProjectSubscription(projectId, subscriptionId);
+//builder.Services.AddSubscriberClient(subscriptionName);
 builder.Services.AddSubscriberServiceApiClient();
 
 //subscription to avail and static 
 builder.Services.AddHostedService<AvailSubscriptionPullService>();
-builder.Services.AddHostedService<StaticSubscriptionPullService>();
+//builder.Services.AddHostedService<StaticSubscriptionPullService>();
 
 
 var app = builder.Build();

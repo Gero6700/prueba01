@@ -29,6 +29,7 @@ public class AvailSubscriptionPullService(
         {nameof(TableType.OfferAndSupplementGroupOfferAndSupplement), typeof(ConofcomLine)},
         {nameof(TableType.PeriodPricing), typeof(Conpreci)},
         {nameof(TableType.PeriodPricingPax), typeof(Condtos)},
-        {nameof(TableType.Regimen), typeof(Restregi)}
+        {nameof(TableType.Regime), typeof(Restregi)},
+        {nameof(TableType.Room), typeof(Resthabi)},
     };
 }

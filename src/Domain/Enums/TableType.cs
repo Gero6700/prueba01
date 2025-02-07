@@ -22,6 +22,6 @@ public enum TableType {
     PaymentType,
     PeriodPricing,
     PeriodPricingPax,
-    Regimen,
-    Tax,
+    Room,
+    Tax
 }

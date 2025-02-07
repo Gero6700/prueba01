@@ -5,8 +5,8 @@ public static class ReshotelExtension {
         return new HotelDto {
             Code = resHotel.Hotcod,
             TimeZone = resHotel.Hozhor,
-            ProvinceCode = resHotel.Hotpri,
-            CityCode = resHotel.HotPoi,
+            ProvinceCode = resHotel.Provincecode,
+            CityCode = resHotel.Citycode,
         };
     }
 }
