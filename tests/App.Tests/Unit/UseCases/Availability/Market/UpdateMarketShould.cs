@@ -16,8 +16,8 @@ public class UpdateMarketShould {
         const string anyCod = "COD";
         const string anyNom = "anyNom";
         var anyMerca = new Merca {
-            Cod = anyCod,
-            Nom = anyNom
+            Code = anyCod,
+            Description = anyNom
         };
 
         //When
@@ -39,8 +39,8 @@ public class UpdateMarketShould {
         const string anyCod = "";
         const string anyNom = "anyNom";
         var anyMerca = new Merca {
-            Cod = anyCod,
-            Nom = anyNom
+            Code = anyCod,
+            Description = anyNom
         };
 
         //When

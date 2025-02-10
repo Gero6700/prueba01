@@ -7,7 +7,7 @@ public class CreateMarket :ICreateMarket {
     }
 
     public Task<HttpResponseMessage> Execute(Merca merca) {
-        if (merca.Cod == "") {
+        if (merca.Code == "") {
             throw new ArgumentException("Incorrect market code");
         }
         var market = merca.ToMarket();

@@ -1,3 +1,5 @@
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
 namespace Senator.As400.Cloud.Sync.Api.HostedService;
 
 //Servicio de extracción de mensajes mediante API de pull de Google Pub/Sub.
@@ -21,6 +23,12 @@ namespace Senator.As400.Cloud.Sync.Api.HostedService;
 //Si se produce un error de red/comunicación hacia la api, ya sea por una HttpRequestException o porque devuelva un 404 o 500, se sale del bucle para asegurar el orden en el procesamiento. Se reintará la extracción en el siguiente ciclo.
 //En cada mensaje de error se registra el AckId, PublishTime y Data del mensaje.
 //Además, si el error ha venido por la api de sincronización, se registra el objeto devuelto en la respuesta.
+
+//Tipos de error de la api de sincronización:
+//400 error de entrada de datos o q ya exista en BBDD
+//404 no encuentra algo en BBDD
+//422 error en BBDD al intentar crear/modificar/eliminar la entidad
+//500 error critico por excepcion no controlada
 public abstract class SubscriptionPullService : BackgroundService {
     private readonly JsonSerializerOptions serializeOptions = new() { PropertyNameCaseInsensitive = true };
     protected readonly SubscriberServiceApiClient subscriberClient;
@@ -69,14 +77,14 @@ public abstract class SubscriptionPullService : BackgroundService {
                         if (!httpresponse.IsSuccessStatusCode) {
                             var content = await httpresponse.Content.ReadAsStringAsync();
                             var errorCode = (int)httpresponse.StatusCode;
-                            //ProblemDetails? problemDetails = null;
+                            ProblemDetails? problemDetails = null;
 
-                            //try {
-                            //    problemDetails = !string.IsNullOrWhiteSpace(content) ? JsonSerializer.Deserialize<ProblemDetails>(content, options) : null;
-                            //}
-                            //catch { }
-
-                            if (errorCode == 404 || errorCode == 500) {
+                            try {
+                                problemDetails = !string.IsNullOrWhiteSpace(content) ? JsonSerializer.Deserialize<ProblemDetails>(content, options) : null;
+                            }
+                            catch { }
+                            //Si devuelve un 404 (de .NET) o 500, se sale del bucle para asegurar el orden en el procesamiento. Se reintará la extracción en el siguiente ciclo.
+                            if ((problemDetails == null && errorCode == 404) || errorCode == 500) {
                                 logger.LogError("Pulling process is aborted, it will restart automatically. An error occurred while sending the message to Synchronizer Api: {message}",
                                     GenerateLogApi(projectId, subscriptionId, receivedMessage.Message, messageData, errorCode, content));
                                 break;

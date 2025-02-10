@@ -17,8 +17,8 @@ public class DeleteMarketShould {
         const string anyCod = "COD";
         const string anyNom = "";
         var anyMerca = new Merca {
-            Cod = anyCod,
-            Nom = anyNom
+            Code = anyCod,
+            Description = anyNom
         };
 
         //When

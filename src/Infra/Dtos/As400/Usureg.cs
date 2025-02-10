@@ -7,6 +7,6 @@ public class Usureg {
     public required string Clave { get; set; }   
     public required string NombreComercial { get; set; } 
     //Restagen
-    public required char AgGroup { get; set; }
+    public required string AgGroup { get; set; }
 }
 
