@@ -2,6 +2,6 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Dtos.As400;
 public class Restregi {
     public required string Id { get; set; } 
     public required string Fechamodi { get; set; } 
-    public required string Mrhab { get; set; } 
-    public required int Roorde;
+    public required string Mrhab { get; set; }
+    public required int Roorde { get; set; }
 }

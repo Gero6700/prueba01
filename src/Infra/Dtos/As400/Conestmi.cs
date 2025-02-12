@@ -7,7 +7,7 @@ public class Conestmi{
     public required int C7fec1 { get; set; }
     public required int C7fec2 { get; set; }
     public required int C7dmin { get; set; }
-    public required char C7peri { get; set; }
+    public required string C7peri { get; set; }
     public required string C7thab { get; set; } 
     public required string C7regi { get; set; } 
 }

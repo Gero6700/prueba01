@@ -104,6 +104,11 @@ public abstract class SubscriptionPullService : BackgroundService {
                             GenerateLogMessage(projectId, subscriptionId, receivedMessage.Message, messageData, ex.Message));
                         break;
                     }
+                    catch (TimeoutException ex) {
+                        logger.LogError("Pulling process is aborted, it will restart automatically. An exception occurred while sending the message to Synchronizer Api: {message}",
+                            GenerateLogMessage(projectId, subscriptionId, receivedMessage.Message, messageData, ex.Message));
+                        break;
+                    }
                     catch (Exception ex) {
                         logger.LogError("The message has been refused. An exception occurred while processing the message {message}",
                             GenerateLogMessage(projectId, subscriptionId, receivedMessage.Message, messageData, ex.Message));

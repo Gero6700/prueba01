@@ -17,9 +17,9 @@ public class PushHotelRoomConfiguration : IPushHotelRoomConfiguration {
             throw new ArgumentException("Incorrect inventory room code");
         }
         //TODO: Pendiente de si puede venir una habitacion sin configuracion de ocupacion
-        if (resthaho.Ticonf == 0) {
-            throw new ArgumentException("Incorrect occupancy rate code");
-        }
+        //if (resthaho.Ticonf == 0) {
+        //    throw new ArgumentException("Incorrect occupancy rate code");
+        //}
         var hotelRoomConfiguration = resthaho.ToHotelRoomConfiguration();
         return await availabilitySynchronizerApiClient.PushHotelRoomConfiguration(hotelRoomConfiguration);
     }

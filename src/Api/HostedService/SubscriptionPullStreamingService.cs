@@ -84,6 +84,11 @@ public class SubscriptionPullStreamingService(
                 GenerateLogMessage(subscriberClient.SubscriptionName.ProjectId, subscriberClient.SubscriptionName.SubscriptionId, message, messageData, ex.Message));
             return SubscriberClient.Reply.Nack;
         }
+        catch (TimeoutException ex) {
+            logger.LogError("An exception occurred while sending the message to Synchronizer Api. It will retry automatically again: {Message}",
+                GenerateLogMessage(subscriberClient.SubscriptionName.ProjectId, subscriberClient.SubscriptionName.SubscriptionId, message, messageData, ex.Message));
+            return SubscriberClient.Reply.Nack;
+        }
         catch (Exception ex) {
             logger.LogError("The message has been refused. An exception occurred while processing the message: {Message}",
                 GenerateLogMessage(subscriberClient.SubscriptionName.ProjectId, subscriberClient.SubscriptionName.SubscriptionId, message, messageData, ex.Message));
