@@ -46,6 +46,7 @@ public class SubscriptionPullStreamingService(
                 Data = notification.Data,
                 Entity = DeserializeEntity(notification)
             };
+            //return SubscriberClient.Reply.Ack;
             var httpResponse = await synchronizerHandler.HandleAsync(genericSynchronizationEvent);
             if (!httpResponse.IsSuccessStatusCode) {
                 var content = await httpResponse.Content.ReadAsStringAsync();
@@ -57,15 +58,15 @@ public class SubscriptionPullStreamingService(
                 }
                 catch { }
 
-                if (errorCode == 404 || errorCode == 500) {
+                if ((problemDetails == null && errorCode == 404) || errorCode == 500) {
                     //Se reintenta el mensaje
                     logger.LogError("An error occurred while sending the message to Synchronizer Api. It will retry automatically again. {Message}",
-                        GenerateLogApi(subscriberClient.SubscriptionName.ProjectId, subscriberClient.SubscriptionName.SubscriptionId, message, messageData, errorCode, problemDetails));
+                        GenerateLogApi(subscriberClient.SubscriptionName.ProjectId, subscriberClient.SubscriptionName.SubscriptionId, message, messageData, errorCode, content));
                     return SubscriberClient.Reply.Nack;
                 }
                 else {
                     logger.LogError("The message has been refused. An error occurred while sending the message to Synchronizer Api. {Message}",
-                        GenerateLogApi(subscriberClient.SubscriptionName.ProjectId, subscriberClient.SubscriptionName.SubscriptionId,message, messageData, errorCode, problemDetails));
+                        GenerateLogApi(subscriberClient.SubscriptionName.ProjectId, subscriberClient.SubscriptionName.SubscriptionId, message, messageData, errorCode, content));
                     return SubscriberClient.Reply.Ack;
                 }
             }
@@ -95,10 +96,8 @@ public class SubscriptionPullStreamingService(
             $"MessageId: {receivedMessage.MessageId}{Environment.NewLine}PublishTime: {receivedMessage.PublishTime.ToDateTime()}{Environment.NewLine}Data: {messageData}";
     }
 
-    private static string GenerateLogApi(string projectId, string subscriptionId, PubsubMessage received, string messageData, int errorCode, ProblemDetails? problemDetails) {
-        return GenerateLogMessage(projectId, subscriptionId, received, messageData,
-            $"Api synchronizer error: {problemDetails?.Status ?? errorCode}{Environment.NewLine}Type: {problemDetails?.Type}{Environment.NewLine}" +
-            $"Title: {problemDetails?.Title}{Environment.NewLine}Detail: {problemDetails?.Detail}{Environment.NewLine}Instance: {problemDetails?.Instance}");
+    private static string GenerateLogApi(string projectId, string subscriptionId, PubsubMessage received, string messageData, int errorCode, string? problemDetails) {
+        return GenerateLogMessage(projectId, subscriptionId, received, messageData, $"Api synchronizer error: {problemDetails ?? ""}");
     }
 
 

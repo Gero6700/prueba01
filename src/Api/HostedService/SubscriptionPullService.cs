@@ -126,8 +126,7 @@ public abstract class SubscriptionPullService : BackgroundService {
     }
 
     private static string GenerateLogApi(string projectId, string subscriptionId, PubsubMessage received, string messageData, int errorCode, string? problemDetails) {
-        return GenerateLogMessage(projectId, subscriptionId, received, messageData,
-            $"Api synchronizer error: {problemDetails ?? ""}");
+        return GenerateLogMessage(projectId, subscriptionId, received, messageData, $"Api synchronizer error: {problemDetails ?? ""}");
     }
 
     private object DeserializeEntity(As400Notification notification) {
