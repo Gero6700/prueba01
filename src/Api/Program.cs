@@ -4,6 +4,7 @@ using Senator.As400.Cloud.Sync.Application.UseCases.Availability.CancellationPol
 using Senator.As400.Cloud.Sync.Application.UseCases.Availability.ClientType;
 using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Extra;
 using Senator.As400.Cloud.Sync.Application.UseCases.Availability.HotelRoomConfiguration;
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.HotelSeason;
 using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Inventory;
 using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Market;
 using Senator.As400.Cloud.Sync.Application.UseCases.Availability.MinimunStay;
@@ -64,6 +65,7 @@ builder.Services.AddSingleton<ICreateHotel, CreateHotel>();
 builder.Services.AddSingleton<IUpdateHotel, UpdateHotel>();
 
 builder.Services.AddSingleton<IPushHotelRoomConfiguration, PushHotelRoomConfiguration>();
+builder.Services.AddSingleton<IPushHotelSeason, PushHotelSeason>();
 
 builder.Services.AddSingleton<ICreateInventory, CreateInventory>();
 builder.Services.AddSingleton<IUpdateInventory, UpdateInventory>();

@@ -1,3 +1,4 @@
+using Senator.As400.Cloud.Sync.Application.UseCases.Availability.HotelSeason;
 using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Room;
 using Senator.As400.Cloud.Sync.Application.UseCases.Static;
 
@@ -19,6 +20,7 @@ public class GenericEventHandler(
     ICreateHotel createHotel,
     IUpdateHotel updateHotel,
     IPushHotelRoomConfiguration pushHotelRoomConfiguration,
+    IPushHotelSeason pushHotelSeason,
     ICreateInventory createInventory,
     IUpdateInventory updateInventory,
     ICreateMarket createMarket,
@@ -72,6 +74,7 @@ public class GenericEventHandler(
     private readonly ICreateHotel createHotel = createHotel;
     private readonly IUpdateHotel updateHotel = updateHotel;
     private readonly IPushHotelRoomConfiguration pushHotelRoomConfiguration = pushHotelRoomConfiguration;
+    private readonly IPushHotelSeason pushHotelSeason = pushHotelSeason;
     private readonly ICreateInventory createInventory = createInventory;
     private readonly IUpdateInventory updateInventory = updateInventory;
     private readonly ICreateMarket createMarket = createMarket;
@@ -132,6 +135,9 @@ public class GenericEventHandler(
             case nameof(TableType.HotelRoomConfiguration):
                 var hotelRoomConfiguration = (Resthaho)@event.Entity;
                 return await HandleHotelRoomConfigurationEventAsync(hotelRoomConfiguration, @event.Operation);
+            case nameof(TableType.HotelSeason):
+                var hotelSeason = (Hotape)@event.Entity;
+                return await HandleHotelSeasonEventAsync(hotelSeason, @event.Operation);
             case nameof(TableType.Inventory):
                 var inventory = (Resplaht)@event.Entity;
                 return await HandleInventoryEventAsync(inventory, @event.Operation);
@@ -241,6 +247,14 @@ public class GenericEventHandler(
             nameof(OperationType.Create) => await pushHotelRoomConfiguration.Execute(hotelRoomConfiguration),
             nameof(OperationType.Update) => await pushHotelRoomConfiguration.Execute(hotelRoomConfiguration),
             _ => throw new InvalidOperationException($"Unsupported operation: {operation} in HotelRoomConfiguration"),
+        };
+    }
+
+    private async Task<HttpResponseMessage> HandleHotelSeasonEventAsync(Hotape hotelSeason, string operation) {
+        return operation switch {
+            nameof(OperationType.Create) => await pushHotelSeason.Execute(hotelSeason),
+            nameof(OperationType.Update) => await pushHotelSeason.Execute(hotelSeason),
+            _ => throw new InvalidOperationException($"Unsupported operation: {operation} in HotelSeason"),
         };
     }
 

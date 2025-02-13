@@ -20,6 +20,7 @@ public class AvailSubscriptionPullService(
         {nameof(TableType.Extra), typeof(Conextra)},
         {nameof(TableType.Hotel), typeof(Reshotel)},
         {nameof(TableType.HotelRoomConfiguration), typeof(Resthaho)},
+        {nameof(TableType.HotelSeason), typeof(Hotape)},
         {nameof(TableType.Market), typeof(Merca)},
         {nameof(TableType.MinimumStay), typeof(Conestmi)},
         {nameof(TableType.OccupancyRate), typeof(Resthaco)},

@@ -95,7 +95,7 @@ public abstract class SubscriptionPullService : BackgroundService {
                             }
                         }
                     }
-                    catch (JsonException ex) {
+                    catch (JsonException ex) {                        
                         logger.LogError("The message has been refused. An exception occurred while deserializing the message: {message}",
                             GenerateLogMessage(projectId, subscriptionId, receivedMessage.Message, messageData, ex.Message));
                     }

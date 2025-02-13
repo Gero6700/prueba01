@@ -8,6 +8,7 @@ public enum TableType {
     ExtraTranslation,
     Hotel,
     HotelRoomConfiguration,
+    HotelSeason,
     Inventory,
     Language,
     Market,

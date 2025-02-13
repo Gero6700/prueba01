@@ -16,8 +16,8 @@ public static class DateTimeHelper {
     //    return date;
     //}
 
-    public static DateTime? ConvertYYYYMMDDToNullableDatetime(int integerDate) {
-        if (DateTime.TryParseExact(integerDate.ToString(), "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var date)) {
+    public static DateTime? ConvertYYYYMMDDToNullableDatetime(int stringDate) {
+        if (DateTime.TryParseExact(stringDate.ToString(), "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var date)) {
             return date;
         }
 
@@ -36,6 +36,23 @@ public static class DateTimeHelper {
 
     public static DateTime ConvertYYMMDDToDatetime(int integerDate) {
         if (DateTime.TryParseExact(integerDate.ToString(), "yyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var date)) {
+            return date;
+        }
+
+        return DateTime.MinValue;
+    }
+
+    public static DateTime? ConvertYYYYMMDDToNullableDatetime(string stringDate) {
+        if (DateTime.TryParseExact(stringDate, "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var date)) {
+            return date;
+        }
+
+        return null;
+
+    }
+
+    public static DateTime ConvertYYYYMMDDToDatetime(string stringDate) {
+        if (DateTime.TryParseExact(stringDate.ToString(), "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var date)) {
             return date;
         }
 
