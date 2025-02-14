@@ -72,7 +72,7 @@ public abstract class SubscriptionPullService : BackgroundService {
                             Data = notification.Data,
                             Entity = DeserializeEntity(notification)
                         };
-                        var httpresponse = await synchronizationHandler.HandleAsync(genericSynchronizationEvent);
+                         var httpresponse = await synchronizationHandler.HandleAsync(genericSynchronizationEvent);
 
                         if (!httpresponse.IsSuccessStatusCode) {
                             var content = await httpresponse.Content.ReadAsStringAsync();
