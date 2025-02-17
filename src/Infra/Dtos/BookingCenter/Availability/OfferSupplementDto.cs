@@ -3,12 +3,12 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter.Availabilit
 public class OfferSupplementDto {
     public required string Code { get; set; }
     public required string Name { get; set; }
-    public required OfferSupplementType Type { get; set; }
+    public required string Type { get; set; }
     public required DateTime ApplyFrom { get; set; }
     public required DateTime ApplyTo { get; set; }
     public int? ApplyOrder { get; set; }
     public decimal? DepositAmount { get; set; }
-    public TypeOfPayment? DepositType { get; set; }
+    public string? DepositType { get; set; }
     public DateTime? DepositBeforeDate { get; set; }
     public decimal? ModificationCostsAmount { get; set; }
     public required IEnumerable<string> IntegrationContractCodes { get; set; }

@@ -10,7 +10,7 @@ public class ContractHeaderDto {
     public required string OrderedAges { get; set; }
     public DateTime? DepositDate { get; set; }
     public decimal? DepositAmount { get; set; }
-    public DepositType? DepositType { get; set; }
+    public string? DepositType { get; set; }
     public required bool BabiesFree { get; set; }
     public required string CurrencyIsoCode { get; set; }
     public required string HotelCode { get; set; }

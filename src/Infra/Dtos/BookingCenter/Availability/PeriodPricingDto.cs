@@ -6,9 +6,9 @@ public class PeriodPricingDto {
     public required string RateCode { get; set; }
     public required DateTime PricingDate { get; set; }
     public required decimal StayPvp { get; set; }
-    public ApplyStayPriceType StayPvpApplyMode { get; set; }
+    public required string StayPvpApplyMode { get; set; }
     public required decimal MealPvp { get; set; }
-    public ApplyStayPriceType MealPvpApplyMode { get; set; }
+    public required string MealPvpApplyMode { get; set; }
     public bool? OnRequest { get; set; }
     public int? Release { get; set; }
     public required string IntegrationContractCode { get; set; }

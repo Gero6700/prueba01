@@ -12,7 +12,7 @@ public static class ConcabecExtension {
             OrderedAges = TypeOfAgeOrdering.Asc.ToString(),
             DepositDate = concabec.Coftop != 0 ? DateTimeHelper.ConvertYYYYMMDDToNullableDatetime(concabec.Coftop) : null,
             DepositAmount = concabec.Codpto == 0 ? null : concabec.Codpto,
-            DepositType = concabec.Codpto == 0 ? null : concabec.Cofode == "%" ? DepositType.Percent : DepositType.Fixed,
+            DepositType = concabec.Codpto == 0 ? null : concabec.Cofode == "%" ? DepositType.Percent.ToString() : DepositType.Fixed.ToString(),
             BabiesFree = true,
             HotelCode = concabec.Cohote.ToString(),
             CurrencyIsoCode = concabec.Dinom2,

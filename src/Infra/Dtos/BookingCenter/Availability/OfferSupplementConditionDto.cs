@@ -11,7 +11,7 @@ public class OfferSupplementConditionDto {
     public DateTime? BookingWindowTo { get; set; }
     public required string OnlyApplyIfRecordDatesOnWeekDays { get; set; }
     public required string OnlyApplyIfStayDatesOnWeekDays { get; set; }
-    public required WeekDaysApplicationType WeekDaysApplicationMode { get; set; }
+    public required string WeekDaysApplicationMode { get; set; }
     public IEnumerable<string>? RoomCodes { get; set; }
     public IEnumerable<string>? MealCodes { get; set; }
 }

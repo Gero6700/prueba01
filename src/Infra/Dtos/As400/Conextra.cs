@@ -4,7 +4,7 @@ public class Conextra {
     public required string Fechamodi { get; set; } 
     public required string Code { get; set; } 
     public required string OriginCode { get; set; } 
-    public required OriginType OriginType { get; set; }
+    public required string OriginType { get; set; }
     public required int C5fred { get; set; }
     public required int C5freh { get; set; }
     public required int C5fec1 { get; set; }

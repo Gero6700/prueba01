@@ -4,9 +4,9 @@ public class Congasan {
     public required string Fechamodi { get; set; } 
     public required string Code { get; set; } 
     public required string OriginCode { get; set; } 
-    public required OriginType OriginType { get; set; }
-    public required int C6fec1 { get; set; }
-    public required int C6fec2 { get; set; }
+    public required string OriginType { get; set; }
+    public required string C6fec1 { get; set; }
+    public required string C6fec2 { get; set; }
     public required int C6gcdi { get; set; }
     public required int C6gcho { get; set; }
     public required int C6gcno { get; set; }

@@ -13,17 +13,17 @@ public static class ConextraExtension {
             Mandatory = conextra.C5Sele == "S" ? false : true,
             Quantity = conextra.C5unid,
             ByDay = conextra.C5inta,
-            ApplyBy = conextra.C5foun == "D" ? ApplyStayPriceType.D : conextra.C5foun == "P" ? ApplyStayPriceType.P : conextra.C5foun == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
+            ApplyBy = conextra.C5foun == "D" ? ApplyStayPriceType.D.ToString() : conextra.C5foun == "P" ? ApplyStayPriceType.P.ToString() : conextra.C5foun == "X" ? ApplyStayPriceType.X.ToString() : ApplyStayPriceType.U.ToString(),
             Price = conextra.C5prec,
-            PriceApplication = conextra.C5form == "D" ? ApplyStayPriceType.D : conextra.C5form == "P" ? ApplyStayPriceType.P : conextra.C5form == "X" ? ApplyStayPriceType.X : ApplyStayPriceType.U,
-            DiscountApplicationType = conextra.C5apdt == "C" ? ExtrasDiscountApplicationType.Contract : 
-                conextra.C5apdt == "S" ? ExtrasDiscountApplicationType.Offer : 
-                conextra.C5apdt == "T" ? ExtrasDiscountApplicationType.All : ExtrasDiscountApplicationType.None, 
+            PriceApplication = conextra.C5form == "D" ? ApplyStayPriceType.D.ToString() : conextra.C5form == "P" ? ApplyStayPriceType.P.ToString() : conextra.C5form == "X" ? ApplyStayPriceType.X.ToString() : ApplyStayPriceType.U.ToString(),
+            DiscountApplicationType = conextra.C5apdt == "C" ? ExtrasDiscountApplicationType.Contract.ToString() : 
+                conextra.C5apdt == "S" ? ExtrasDiscountApplicationType.Offer.ToString() : 
+                conextra.C5apdt == "T" ? ExtrasDiscountApplicationType.All.ToString() : ExtrasDiscountApplicationType.None.ToString(), 
             TaxesIncluded = conextra.TaxesIncluded, 
             IsCommissionable = conextra.IsCommissionable, 
             OccupancyRateCode = conextra.C5cocu == 0 ? "" : conextra.C5cocu.ToString(),
-            IntegrationContractCodes = conextra.OriginType == OriginType.Contract ? [conextra.OriginCode] : null,
-            OfferSupplementCodes = conextra.OriginType == OriginType.Offer ? [conextra.OriginCode] : null,
+            IntegrationContractCodes = conextra.OriginType == OriginType.Contract.ToString() ? [conextra.OriginCode] : null,
+            OfferSupplementCodes = conextra.OriginType == OriginType.Offer.ToString() ? [conextra.OriginCode] : null,
             ExtraPaxes = [],
             RoomCodes= null,
             MealCodes = null
@@ -46,41 +46,41 @@ public static class ConextraExtension {
         if (conextra.C5dtn1 != 0) {
             paxes.Add(new ExtraPaxDto {
                 PaxOrder = 1,
-                PaxType = type,                
+                PaxType = type.ToString(),                
                 AgeFrom = ageFrom,
                 AgeTo = ageTo,
                 Amount = conextra.C5dtn1,
-                AmountType = payment
+                AmountType = payment.ToString()
             });
         }
         if (conextra.C5dtn2 != 0) {
             paxes.Add(new ExtraPaxDto {
                 PaxOrder = 2,
-                PaxType = type,
+                PaxType = type.ToString(),
                 AgeFrom = ageFrom,
                 AgeTo = ageTo,
                 Amount = conextra.C5dtn2,
-                AmountType = payment
+                AmountType = payment.ToString()
             });
         }
         if (conextra.C5dtn3 != 0) {
             paxes.Add(new ExtraPaxDto {
                 PaxOrder = 3,
-                PaxType = type,
+                PaxType = type.ToString(),
                 AgeFrom = ageFrom,
                 AgeTo = ageTo,
                 Amount = conextra.C5dtn3,
-                AmountType = payment
+                AmountType = payment.ToString()
             });
         }
         if (conextra.C5dtn4 != 0) {
             paxes.Add(new ExtraPaxDto {
                 PaxOrder = 4,
-                PaxType = type,
+                PaxType = type.ToString(),
                 AgeFrom = ageFrom,
                 AgeTo = ageTo,
                 Amount = conextra.C5dtn4,
-                AmountType = payment
+                AmountType = payment.ToString()
             });
         }
 
@@ -97,41 +97,41 @@ public static class ConextraExtension {
         if (conextra.C5dta1 != 0) {
             paxes.Add(new ExtraPaxDto {
                 PaxOrder = 1,
-                PaxType = type,
+                PaxType = type.ToString(),
                 AgeFrom = ageFrom,
                 AgeTo = ageTo,
                 Amount = conextra.C5dta1,
-                AmountType = payment
+                AmountType = payment.ToString()
             });
         }
         if (conextra.C5dta2 != 0) {
             paxes.Add(new ExtraPaxDto {
                 PaxOrder = 2,
-                PaxType = type,
+                PaxType = type.ToString(),
                 AgeFrom = ageFrom,
                 AgeTo = ageTo,
                 Amount = conextra.C5dta2,
-                AmountType = payment
+                AmountType = payment.ToString()
             });
         }
         if (conextra.C5dta3 != 0) {
             paxes.Add(new ExtraPaxDto {
                 PaxOrder = 3,
-                PaxType = type,
+                PaxType = type.ToString(),
                 AgeFrom = ageFrom,
                 AgeTo = ageTo,
                 Amount = conextra.C5dta3,
-                AmountType = payment
+                AmountType = payment.ToString()
             });
         }
         if (conextra.C5dta4 != 0) {
             paxes.Add(new ExtraPaxDto {
                 PaxOrder = 4,
-                PaxType = type,
+                PaxType = type.ToString(),
                 AgeFrom = ageFrom,
                 AgeTo = ageTo,
                 Amount = conextra.C5dta4,
-                AmountType = payment
+                AmountType = payment.ToString()
             });
         }
 
