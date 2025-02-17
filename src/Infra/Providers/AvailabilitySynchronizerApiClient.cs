@@ -121,7 +121,7 @@ public class AvailabilitySynchronizerApiClient : IAvailabilitySynchronizerApiCli
     }
 
     Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.PushHotelSeasons(HotelSeasonsDto hotelSeasons) {
-        return httpClient.PostAsJsonAsync("api/v1/HotelSeasons/push", hotelSeasons);
+        return httpClient.PostAsJsonAsync("api/v1/HotelSeason/push", hotelSeasons);
     }
 
     Task<HttpResponseMessage> IAvailabilitySynchronizerApiClient.PushOccupancyScore(OccupancyScoreDto occupancyScore) {

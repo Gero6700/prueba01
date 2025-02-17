@@ -2,6 +2,7 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
 public static class HotapeExtension {
     public static HotelSeasonsDto ToHotelSeasons(this Hotape hotape) {
         var seasons = hotape.Apfecs.Split(';')
+            .Where(season => !string.IsNullOrWhiteSpace(season))
             .Select(season => {
                 var dates = season.Split('-');
                 return new SeasonDto {

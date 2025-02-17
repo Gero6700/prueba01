@@ -8,9 +8,6 @@ public class PushHotelSeason : IPushHotelSeason {
     }
 
     public async Task<HttpResponseMessage> Execute(Hotape hotape) {
-        if (hotape.Aphote == 0) {
-            throw new ArgumentException("Incorrect hotel code");
-        }
         
         var hotelSeasons = hotape.ToHotelSeasons();
         return await availabilitySynchronizerApiClient.PushHotelSeasons(hotelSeasons);
