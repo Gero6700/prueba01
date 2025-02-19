@@ -7,7 +7,7 @@ public static class ResthahoExtension {
             HotelCode = resthaho.Tihote.ToString(),
             RoomCode = resthaho.Tihab,
             InventoryRoomTypeCode = resthaho.Tihabg,
-            OccupancyRateCode = resthaho.Ticonf == 0 ? null : resthaho.Ticonf.ToString()
+            OccupancyRateCode = resthaho.Ticonf.ToString()
         };
     }
 }
