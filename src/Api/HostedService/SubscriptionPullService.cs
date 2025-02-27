@@ -1,4 +1,4 @@
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Collections.Concurrent;
 
 namespace Senator.As400.Cloud.Sync.Api.HostedService;
 
@@ -57,72 +57,136 @@ public abstract class SubscriptionPullService : BackgroundService {
         var intervalInSeconds = GetPullIntervalInSeconds();
         var subscriptionName = SubscriptionName.FromProjectSubscription(projectId, subscriptionId);
 
-        while (!stoppingToken.IsCancellationRequested) {
-            try {
-                var response = await subscriberClient.PullAsync(subscriptionName, 20, stoppingToken);
+        var queue = new PriorityQueue<ReceivedMessage, DateTime>();
+        var queueLock = new object();
 
-                foreach (var receivedMessage in response.ReceivedMessages) {
-                    var messageData = string.Empty;
-                    try {
-                        messageData = receivedMessage.Message.Data.ToStringUtf8();
-                        var notification = JsonSerializer.Deserialize<As400Notification>(messageData, options) ?? throw new InvalidOperationException("The message could not be deserialized");
-                        var genericSynchronizationEvent = new GenericSynchronizationEvent {
-                            Operation = notification.Operation,
-                            Table = notification.Table,
-                            Data = notification.Data,
-                            Entity = DeserializeEntity(notification)
-                        };
-                         var httpresponse = await synchronizationHandler.HandleAsync(genericSynchronizationEvent);
+        while (!stoppingToken.IsCancellationRequested)
+        {
+            try
+            {
+                var response = await subscriberClient.PullAsync(subscriptionName, 50, stoppingToken);
 
-                        if (!httpresponse.IsSuccessStatusCode) {
-                            var content = await httpresponse.Content.ReadAsStringAsync();
-                            var errorCode = (int)httpresponse.StatusCode;
-                            ProblemDetails? problemDetails = null;
+                await Parallel.ForEachAsync(response.ReceivedMessages, stoppingToken, (receivedMessage, token) => {
+                    lock (queueLock) {
+                        queue.Enqueue(receivedMessage, receivedMessage.Message.PublishTime.ToDateTime());
+                    }
 
-                            try {
-                                problemDetails = !string.IsNullOrWhiteSpace(content) ? JsonSerializer.Deserialize<ProblemDetails>(content, options) : null;
-                            }
-                            catch { }
-                            //Si devuelve un 404 (de .NET) o 500, se sale del bucle para asegurar el orden en el procesamiento. Se reintará la extracción en el siguiente ciclo.
-                            if ((problemDetails == null && errorCode == 404) || errorCode == 500) {
-                                logger.LogError("Pulling process is aborted, it will restart automatically. An error occurred while sending the message to Synchronizer Api: {message}",
-                                    GenerateLogApi(projectId, subscriptionId, receivedMessage.Message, messageData, errorCode, content));
-                                break;
-                            }
-                            else {
-                                logger.LogError("The message has been refused. An error occurred while sending the message to Synchronizer Api: {message}",
-                                    GenerateLogApi(projectId, subscriptionId, receivedMessage.Message, messageData, errorCode, content));
-                            }
+                    return ValueTask.CompletedTask;
+                });
+
+                while (queue.TryDequeue(out var receivedMessage, out _))
+                {
+                    var messageData = receivedMessage.Message.Data.ToStringUtf8();
+                    var notification = JsonSerializer.Deserialize<As400Notification>(messageData, options) ??
+                                       throw new InvalidOperationException("Invalid message format");
+
+                    var genericSynchronizationEvent = new GenericSynchronizationEvent
+                    {
+                        Operation = notification.Operation,
+                        Table = notification.Table,
+                        Data = notification.Data,
+                        Entity = DeserializeEntity(notification)
+                    };
+                    
+                    var httpresponse = await synchronizationHandler.HandleAsync(genericSynchronizationEvent);
+
+                    if (!httpresponse.IsSuccessStatusCode) {
+                        var content = await httpresponse.Content.ReadAsStringAsync();
+                        var errorCode = (int)httpresponse.StatusCode;
+                        ProblemDetails? problemDetails = null;
+
+                        try {
+                            problemDetails = !string.IsNullOrWhiteSpace(content) ? JsonSerializer.Deserialize<ProblemDetails>(content, options) : null;
                         }
-                    }
-                    catch (JsonException ex) {                        
-                        logger.LogError("The message has been refused. An exception occurred while deserializing the message: {message}",
-                            GenerateLogMessage(projectId, subscriptionId, receivedMessage.Message, messageData, ex.Message));
-                    }
-                    catch (HttpRequestException ex) {
-                        logger.LogError("Pulling process is aborted, it will restart automatically. An exception occurred while sending the message to Synchronizer Api: {message}",
-                            GenerateLogMessage(projectId, subscriptionId, receivedMessage.Message, messageData, ex.Message));
-                        break;
-                    }
-                    catch (TimeoutException ex) {
-                        logger.LogError("Pulling process is aborted, it will restart automatically. An exception occurred while sending the message to Synchronizer Api: {message}",
-                            GenerateLogMessage(projectId, subscriptionId, receivedMessage.Message, messageData, ex.Message));
-                        break;
-                    }
-                    catch (Exception ex) {
-                        logger.LogError("The message has been refused. An exception occurred while processing the message {message}",
-                            GenerateLogMessage(projectId, subscriptionId, receivedMessage.Message, messageData, ex.Message));
+                        catch { }
+                        //Si devuelve un 404 (de .NET) o 500, se sale del bucle para asegurar el orden en el procesamiento. Se reintará la extracción en el siguiente ciclo.
+                        if ((problemDetails == null && errorCode == 404) || errorCode == 500) {
+                            logger.LogError("Pulling process is aborted, it will restart automatically. An error occurred while sending the message to Synchronizer Api: {message}",
+                                GenerateLogApi(projectId, subscriptionId, receivedMessage.Message, messageData, errorCode, content));
+                            break;
+                        }
+
+                        logger.LogError("The message has been refused. An error occurred while sending the message to Synchronizer Api: {message}",
+                            GenerateLogApi(projectId, subscriptionId, receivedMessage.Message, messageData, errorCode, content));
                     }
 
                     await subscriberClient.AcknowledgeAsync(subscriptionName, new[] { receivedMessage.AckId });
                 }
             }
-            catch (Exception ex) {
-                logger.LogError(ex, "An exception occurred while pulling messages: {Message}", ex.Message);
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Error pulling messages: {Message}", ex.Message);
             }
 
             await Task.Delay(TimeSpan.FromSeconds(intervalInSeconds), stoppingToken);
         }
+
+        //while (!stoppingToken.IsCancellationRequested) {
+        //    try {
+        //        var response = await subscriberClient.PullAsync(subscriptionName, 20, stoppingToken);
+
+        //        foreach (var receivedMessage in response.ReceivedMessages) {
+        //            var messageData = string.Empty;
+        //            try {
+        //                messageData = receivedMessage.Message.Data.ToStringUtf8();
+        //                var notification = JsonSerializer.Deserialize<As400Notification>(messageData, options) ?? throw new InvalidOperationException("The message could not be deserialized");
+        //                var genericSynchronizationEvent = new GenericSynchronizationEvent {
+        //                    Operation = notification.Operation,
+        //                    Table = notification.Table,
+        //                    Data = notification.Data,
+        //                    Entity = DeserializeEntity(notification)
+        //                };
+        //                var httpresponse = await synchronizationHandler.HandleAsync(genericSynchronizationEvent);
+
+        //                if (!httpresponse.IsSuccessStatusCode) {
+        //                    var content = await httpresponse.Content.ReadAsStringAsync();
+        //                    var errorCode = (int)httpresponse.StatusCode;
+        //                    ProblemDetails? problemDetails = null;
+
+        //                    try {
+        //                        problemDetails = !string.IsNullOrWhiteSpace(content) ? JsonSerializer.Deserialize<ProblemDetails>(content, options) : null;
+        //                    }
+        //                    catch { }
+        //                    //Si devuelve un 404 (de .NET) o 500, se sale del bucle para asegurar el orden en el procesamiento. Se reintará la extracción en el siguiente ciclo.
+        //                    if ((problemDetails == null && errorCode == 404) || errorCode == 500) {
+        //                        logger.LogError("Pulling process is aborted, it will restart automatically. An error occurred while sending the message to Synchronizer Api: {message}",
+        //                            GenerateLogApi(projectId, subscriptionId, receivedMessage.Message, messageData, errorCode, content));
+        //                        break;
+        //                    }
+        //                    else {
+        //                        logger.LogError("The message has been refused. An error occurred while sending the message to Synchronizer Api: {message}",
+        //                            GenerateLogApi(projectId, subscriptionId, receivedMessage.Message, messageData, errorCode, content));
+        //                    }
+        //                }
+        //            }
+        //            catch (JsonException ex) {                        
+        //                logger.LogError("The message has been refused. An exception occurred while deserializing the message: {message}",
+        //                    GenerateLogMessage(projectId, subscriptionId, receivedMessage.Message, messageData, ex.Message));
+        //            }
+        //            catch (HttpRequestException ex) {
+        //                logger.LogError("Pulling process is aborted, it will restart automatically. An exception occurred while sending the message to Synchronizer Api: {message}",
+        //                    GenerateLogMessage(projectId, subscriptionId, receivedMessage.Message, messageData, ex.Message));
+        //                break;
+        //            }
+        //            catch (TimeoutException ex) {
+        //                logger.LogError("Pulling process is aborted, it will restart automatically. An exception occurred while sending the message to Synchronizer Api: {message}",
+        //                    GenerateLogMessage(projectId, subscriptionId, receivedMessage.Message, messageData, ex.Message));
+        //                break;
+        //            }
+        //            catch (Exception ex) {
+        //                logger.LogError("The message has been refused. An exception occurred while processing the message {message}",
+        //                    GenerateLogMessage(projectId, subscriptionId, receivedMessage.Message, messageData, ex.Message));
+        //            }
+
+        //            await subscriberClient.AcknowledgeAsync(subscriptionName, new[] { receivedMessage.AckId });
+        //        }
+        //    }
+        //    catch (Exception ex) {
+        //        logger.LogError(ex, "An exception occurred while pulling messages: {Message}", ex.Message);
+        //    }
+
+        //    await Task.Delay(TimeSpan.FromSeconds(intervalInSeconds), stoppingToken);
+        //}
     }
 
     private static string GenerateLogMessage(string projectId, string subscriptionId, PubsubMessage receivedMessage, string messageData, string errorMessage) {
