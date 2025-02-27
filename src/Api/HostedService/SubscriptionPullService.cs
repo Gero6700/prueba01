@@ -1,4 +1,5 @@
 using System.Collections.Concurrent;
+using System.Threading;
 
 namespace Senator.As400.Cloud.Sync.Api.HostedService;
 
@@ -59,6 +60,7 @@ public abstract class SubscriptionPullService : BackgroundService {
 
         var queue = new PriorityQueue<ReceivedMessage, DateTime>();
         var queueLock = new object();
+        var semaphore = new SemaphoreSlim(5);
 
         while (!stoppingToken.IsCancellationRequested)
         {
@@ -74,46 +76,60 @@ public abstract class SubscriptionPullService : BackgroundService {
                     return ValueTask.CompletedTask;
                 });
 
+                var tasks = new List<Task>();
+
                 while (queue.TryDequeue(out var receivedMessage, out _))
                 {
-                    var messageData = receivedMessage.Message.Data.ToStringUtf8();
-                    var notification = JsonSerializer.Deserialize<As400Notification>(messageData, options) ??
-                                       throw new InvalidOperationException("Invalid message format");
+                    await semaphore.WaitAsync(stoppingToken);
 
-                    var genericSynchronizationEvent = new GenericSynchronizationEvent
-                    {
-                        Operation = notification.Operation,
-                        Table = notification.Table,
-                        Data = notification.Data,
-                        Entity = DeserializeEntity(notification)
-                    };
-                    
-                    var httpresponse = await synchronizationHandler.HandleAsync(genericSynchronizationEvent);
-
-                    if (!httpresponse.IsSuccessStatusCode) {
-                        var content = await httpresponse.Content.ReadAsStringAsync();
-                        var errorCode = (int)httpresponse.StatusCode;
-                        ProblemDetails? problemDetails = null;
-
+                    tasks.Add(Task.Run(async () => {
                         try {
-                            problemDetails = !string.IsNullOrWhiteSpace(content) ? JsonSerializer.Deserialize<ProblemDetails>(content, options) : null;
-                        }
-                        catch { }
-                        //Si devuelve un 404 (de .NET) o 500, se sale del bucle para asegurar el orden en el procesamiento. Se reintará la extracción en el siguiente ciclo.
-                        if ((problemDetails == null && errorCode == 404) || errorCode == 500) {
-                            logger.LogError("Pulling process is aborted, it will restart automatically. An error occurred while sending the message to Synchronizer Api: {message}",
-                                GenerateLogApi(projectId, subscriptionId, receivedMessage.Message, messageData, errorCode, content));
-                            break;
-                        }
+                            var messageData = receivedMessage.Message.Data.ToStringUtf8();
+                            var notification = JsonSerializer.Deserialize<As400Notification>(messageData, options) ??
+                                               throw new InvalidOperationException("Invalid message format");
 
-                        logger.LogError("The message has been refused. An error occurred while sending the message to Synchronizer Api: {message}",
-                            GenerateLogApi(projectId, subscriptionId, receivedMessage.Message, messageData, errorCode, content));
-                    }
+                            var genericSynchronizationEvent = new GenericSynchronizationEvent
+                            {
+                                Operation = notification.Operation,
+                                Table = notification.Table,
+                                Data = notification.Data,
+                                Entity = DeserializeEntity(notification)
+                            };
 
-                    await subscriberClient.AcknowledgeAsync(subscriptionName, new[] { receivedMessage.AckId });
+                            var httpresponse = await synchronizationHandler.HandleAsync(genericSynchronizationEvent);
+
+                            if (!httpresponse.IsSuccessStatusCode) {
+                                var content = await httpresponse.Content.ReadAsStringAsync();
+                                var errorCode = (int)httpresponse.StatusCode;
+                                ProblemDetails? problemDetails = null;
+
+                                problemDetails = !string.IsNullOrWhiteSpace(content) ? JsonSerializer.Deserialize<ProblemDetails>(content, options) : null;
+
+                                //Si devuelve un 404 (de .NET) o 500, se sale del bucle para asegurar el orden en el procesamiento. Se reintará la extracción en el siguiente ciclo.
+                                if ((problemDetails == null && errorCode == 404) || errorCode == 500) {
+                                    logger.LogError("Pulling process is aborted, it will restart automatically. An error occurred while sending the message to Synchronizer Api: {message}",
+                                        GenerateLogApi(projectId, subscriptionId, receivedMessage.Message, messageData, errorCode, content));
+                                    return;
+                                }
+
+                                logger.LogError("The message has been refused. An error occurred while sending the message to Synchronizer Api: {message}",
+                                    GenerateLogApi(projectId, subscriptionId, receivedMessage.Message, messageData, errorCode, content));
+                            }
+
+                            await subscriberClient.AcknowledgeAsync(subscriptionName, new[] { receivedMessage.AckId });
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.LogError(ex, "Error sending message to API: {Message}", ex.Message);
+                        }
+                        finally
+                        {
+                            semaphore.Release();
+                        }
+                    }, stoppingToken));
                 }
-                stopwatch.Stop();
-                logger.LogInformation($"Process operation ({response.ReceivedMessages.Count}) took {stopwatch.ElapsedMilliseconds} ms.");
+                //stopwatch.Stop();
+                //logger.LogInformation($"Process operation ({response.ReceivedMessages.Count}) took {stopwatch.ElapsedMilliseconds} ms.");
             }
             catch (Exception ex)
             {
