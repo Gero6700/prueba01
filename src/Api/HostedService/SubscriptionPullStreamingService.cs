@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace Senator.As400.Cloud.Sync.Api.HostedService;
 
 //Servicio de extracción de mensajes mediante API de pull streaming de Google Pub/Sub.
@@ -18,8 +20,30 @@ public class SubscriptionPullStreamingService(
         ISynchronizerHandler<GenericSynchronizationEvent> synchronizerHandler
     ) : BackgroundService {
     private readonly JsonSerializerOptions serializeOptions = new() { PropertyNameCaseInsensitive = true };
-    private readonly Dictionary<string, Type>  typeMap = new () {
-        {nameof(TableType.Inventory), typeof(Resplaht)}
+    //private readonly Dictionary<string, Type>  typeMap = new () {
+    //    {nameof(TableType.Inventory), typeof(Resplaht)}
+    //};
+
+    protected readonly Dictionary<string, Type> typeMap = new() {
+        {nameof(TableType.CancellationPolicyLine), typeof(Congasan)},
+        {nameof(TableType.Client), typeof(Usureg)},
+        {nameof(TableType.ClientType), typeof(Restagen)},
+        {nameof(TableType.Contract), typeof(Concabec)},
+        {nameof(TableType.Extra), typeof(Conextra)},
+        {nameof(TableType.Hotel), typeof(Reshotel)},
+        {nameof(TableType.HotelRoomConfiguration), typeof(Resthaho)},
+        {nameof(TableType.HotelSeason), typeof(Hotape)},
+        {nameof(TableType.Market), typeof(Merca)},
+        {nameof(TableType.MinimumStay), typeof(Conestmi)},
+        {nameof(TableType.OccupancyRate), typeof(Resthaco)},
+        {nameof(TableType.OfferAndSupplement), typeof(Conofege)},
+        {nameof(TableType.OfferAndSupplementConfigurationPax), typeof(Condtof)},
+        {nameof(TableType.OfferAndSupplementGroup), typeof(ConofcomHeader)},
+        {nameof(TableType.OfferAndSupplementGroupOfferAndSupplement), typeof(ConofcomLine)},
+        {nameof(TableType.PeriodPricing), typeof(Conpreci)},
+        {nameof(TableType.PeriodPricingPax), typeof(Condtos)},
+        {nameof(TableType.Regime), typeof(Restregi)},
+        {nameof(TableType.Room), typeof(Resthabi)},
     };
 
 
@@ -28,7 +52,7 @@ public class SubscriptionPullStreamingService(
             if (stoppingToken.IsCancellationRequested) {
                 return SubscriberClient.Reply.Nack;
             }
-
+            //logger.LogInformation("Message received");
             return await ProcessMessageAsync(message);
         });
     }
@@ -37,6 +61,7 @@ public class SubscriptionPullStreamingService(
         // Se recupera y deserializa el mensaje
         var messageData = string.Empty;
         try {
+            //var stopwatch = Stopwatch.StartNew();
             messageData = message.Data.ToStringUtf8();
             var notification = JsonSerializer.Deserialize<As400Notification>(messageData, serializeOptions) ??
                 throw new InvalidOperationException("The message could not be deserialized");
@@ -46,7 +71,7 @@ public class SubscriptionPullStreamingService(
                 Data = notification.Data,
                 Entity = DeserializeEntity(notification)
             };
-            //return SubscriberClient.Reply.Ack;
+
             var httpResponse = await synchronizerHandler.HandleAsync(genericSynchronizationEvent);
             if (!httpResponse.IsSuccessStatusCode) {
                 var content = await httpResponse.Content.ReadAsStringAsync();
@@ -71,6 +96,8 @@ public class SubscriptionPullStreamingService(
                 }
             }
             else {
+                //stopwatch.Stop();
+                //logger.LogInformation($"Message proccessed took {stopwatch.ElapsedMilliseconds} ms.");
                 return SubscriberClient.Reply.Ack;
             }
         }

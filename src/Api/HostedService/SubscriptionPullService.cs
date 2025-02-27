@@ -1,3 +1,5 @@
+using System.Diagnostics;
+using Google.Apis.Auth.OAuth2;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Senator.As400.Cloud.Sync.Api.HostedService;
@@ -57,10 +59,17 @@ public abstract class SubscriptionPullService : BackgroundService {
         var intervalInSeconds = GetPullIntervalInSeconds();
         var subscriptionName = SubscriptionName.FromProjectSubscription(projectId, subscriptionId);
 
+        //var credential = GoogleCredential.GetApplicationDefault();
+        //logger.LogInformation($"Using credentials from: {credential}");
+
         while (!stoppingToken.IsCancellationRequested) {
             try {
-                var response = await subscriberClient.PullAsync(subscriptionName, 20, stoppingToken);
+                var stopwatch = Stopwatch.StartNew();
+                var response = await subscriberClient.PullAsync(subscriptionName, 50, stoppingToken);
+                stopwatch.Stop();
+                logger.LogInformation($"PullAsync operation took {stopwatch.ElapsedMilliseconds} ms.");
 
+                stopwatch = Stopwatch.StartNew();
                 foreach (var receivedMessage in response.ReceivedMessages) {
                     var messageData = string.Empty;
                     try {
@@ -116,12 +125,14 @@ public abstract class SubscriptionPullService : BackgroundService {
 
                     await subscriberClient.AcknowledgeAsync(subscriptionName, new[] { receivedMessage.AckId });
                 }
+                stopwatch.Stop();
+                logger.LogInformation($"Process operation ({response.ReceivedMessages.Count}) took {stopwatch.ElapsedMilliseconds} ms.");
             }
             catch (Exception ex) {
                 logger.LogError(ex, "An exception occurred while pulling messages: {Message}", ex.Message);
             }
 
-            await Task.Delay(TimeSpan.FromSeconds(intervalInSeconds), stoppingToken);
+            //await Task.Delay(TimeSpan.FromSeconds(intervalInSeconds), stoppingToken);
         }
     }
 
