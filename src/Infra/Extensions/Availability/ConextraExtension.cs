@@ -19,8 +19,8 @@ public static class ConextraExtension {
             DiscountApplicationType = conextra.C5apdt == "C" ? ExtrasDiscountApplicationType.Contract.ToString() : 
                 conextra.C5apdt == "S" ? ExtrasDiscountApplicationType.Offer.ToString() : 
                 conextra.C5apdt == "T" ? ExtrasDiscountApplicationType.All.ToString() : ExtrasDiscountApplicationType.None.ToString(), 
-            TaxesIncluded = conextra.TaxesIncluded, 
-            IsCommissionable = conextra.IsCommissionable, 
+            TaxesIncluded = conextra.TaxesIncluded.ToUpper() == "I" ? true : false, 
+            IsCommissionable = conextra.IsCommissionable.ToUpper() == "S" ? true : false, 
             OccupancyRateCode = conextra.C5cocu == 0 ? "" : conextra.C5cocu.ToString(),
             IntegrationContractCodes = conextra.OriginType == OriginType.Contract.ToString() ? [conextra.OriginCode] : null,
             OfferSupplementCodes = conextra.OriginType == OriginType.Offer.ToString() ? [conextra.OriginCode] : null,

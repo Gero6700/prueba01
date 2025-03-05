@@ -48,6 +48,6 @@ public class Conextra {
     public required string C5reg4 { get; set; } 
     public required string C5reg5 { get; set; } 
     public required string Offoe { get; set; } 
-    public required bool IsCommissionable { get; set; }
-    public required bool TaxesIncluded { get; set; }
+    public required string IsCommissionable { get; set; }
+    public required string TaxesIncluded { get; set; }
 }
