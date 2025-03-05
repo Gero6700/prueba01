@@ -106,21 +106,43 @@ public abstract class SubscriptionPullService : BackgroundService {
                                 problemDetails = !string.IsNullOrWhiteSpace(content) ? JsonSerializer.Deserialize<ProblemDetails>(content, options) : null;
 
                                 //Si devuelve un 404 (de .NET) o 500, se sale del bucle para asegurar el orden en el procesamiento. Se reintará la extracción en el siguiente ciclo.
+                                //TODO: Cuando es 404 de .net content no es null
                                 if ((problemDetails == null && errorCode == 404) || errorCode == 500) {
                                     logger.LogError("Pulling process is aborted, it will restart automatically. An error occurred while sending the message to Synchronizer Api: {message}",
-                                        GenerateLogApi(projectId, subscriptionId, receivedMessage.Message, messageData, errorCode, content));
+                                        GenerateLogApi(projectId, subscriptionId, receivedMessage.Message, errorCode, content));
+                                    lock (queueLock) {
+                                        queue.Clear();
+                                    }
                                     return;
                                 }
 
                                 logger.LogError("The message has been refused. An error occurred while sending the message to Synchronizer Api: {message}",
-                                    GenerateLogApi(projectId, subscriptionId, receivedMessage.Message, messageData, errorCode, content));
+                                    GenerateLogApi(projectId, subscriptionId, receivedMessage.Message, errorCode, content));
                             }
 
                             await subscriberClient.AcknowledgeAsync(subscriptionName, new[] { receivedMessage.AckId });
                         }
+                        catch (HttpRequestException ex) {
+                            logger.LogError("Error sending message to API: { message}",
+                                GenerateLogMessage(projectId, subscriptionId, receivedMessage.Message, ex.Message));
+                            lock (queueLock) {
+                                queue.Clear();
+                            }
+                            return;
+                        }
+                        catch (TimeoutException ex) {
+                            logger.LogError("Error sending message to API: { message}",
+                                GenerateLogMessage(projectId, subscriptionId, receivedMessage.Message, ex.Message));
+                            lock (queueLock) {
+                                queue.Clear();
+                            }
+                            return;
+                        }
                         catch (Exception ex)
                         {
-                            logger.LogError(ex, "Error sending message to API: {Message}", ex.Message);
+                            logger.LogError("Error processing the message {message}",
+                               GenerateLogMessage(projectId, subscriptionId, receivedMessage.Message, ex.Message));
+                            await subscriberClient.AcknowledgeAsync(subscriptionName, new[] { receivedMessage.AckId });
                         }
                         finally
                         {
@@ -207,13 +229,13 @@ public abstract class SubscriptionPullService : BackgroundService {
         //}
     }
 
-    private static string GenerateLogMessage(string projectId, string subscriptionId, PubsubMessage receivedMessage, string messageData, string errorMessage) {
+    private static string GenerateLogMessage(string projectId, string subscriptionId, PubsubMessage receivedMessage, string errorMessage) {
         return $"{errorMessage}{Environment.NewLine}Project:{projectId}{Environment.NewLine}Subscription: {subscriptionId}{Environment.NewLine}" +
-            $"MessageId: {receivedMessage.MessageId}{Environment.NewLine}PublishTime: {receivedMessage.PublishTime.ToDateTime()}{Environment.NewLine}Data: {messageData}";
+            $"MessageId: {receivedMessage.MessageId}{Environment.NewLine}PublishTime: {receivedMessage.PublishTime.ToDateTime()}{Environment.NewLine}Data: {receivedMessage.Data.ToStringUtf8()}";
     }
 
-    private static string GenerateLogApi(string projectId, string subscriptionId, PubsubMessage received, string messageData, int errorCode, string? problemDetails) {
-        return GenerateLogMessage(projectId, subscriptionId, received, messageData, $"Api synchronizer error: {problemDetails ?? ""}");
+    private static string GenerateLogApi(string projectId, string subscriptionId, PubsubMessage received, int errorCode, string? problemDetails) {
+        return GenerateLogMessage(projectId, subscriptionId, received, $"Api synchronizer error: {problemDetails ?? ""}");
     }
 
     private object DeserializeEntity(As400Notification notification) {
