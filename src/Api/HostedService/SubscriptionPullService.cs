@@ -103,12 +103,16 @@ public abstract class SubscriptionPullService : BackgroundService {
                                 var errorCode = (int)httpresponse.StatusCode;
                                 ProblemDetails? problemDetails = null;
 
-                                problemDetails = !string.IsNullOrWhiteSpace(content) ? JsonSerializer.Deserialize<ProblemDetails>(content, options) : null;
+                                try {
+                                    problemDetails = !string.IsNullOrWhiteSpace(content) ? JsonSerializer.Deserialize<ProblemDetails>(content, options) : null;
+                                }
+                                catch (Exception) { //Para cuando content sea un error html
+                                   problemDetails = null;
+                                }
 
                                 //Si devuelve un 404 (de .NET) o 500, se sale del bucle para asegurar el orden en el procesamiento. Se reintará la extracción en el siguiente ciclo.
-                                //TODO: Cuando es 404 de .net content no es null
                                 if ((problemDetails == null && errorCode == 404) || errorCode == 500) {
-                                    logger.LogError("Pulling process is aborted, it will restart automatically. An error occurred while sending the message to Synchronizer Api: {message}",
+                                    logger.LogError("Error sending message to Sync Api: {message}",
                                         GenerateLogApi(projectId, subscriptionId, receivedMessage.Message, errorCode, content));
                                     lock (queueLock) {
                                         queue.Clear();
@@ -116,31 +120,31 @@ public abstract class SubscriptionPullService : BackgroundService {
                                     return;
                                 }
 
-                                logger.LogError("The message has been refused. An error occurred while sending the message to Synchronizer Api: {message}",
+                                logger.LogError("The message has been refused. Error sending message to Sync Api: {message}",
                                     GenerateLogApi(projectId, subscriptionId, receivedMessage.Message, errorCode, content));
                             }
 
                             await subscriberClient.AcknowledgeAsync(subscriptionName, new[] { receivedMessage.AckId });
                         }
                         catch (HttpRequestException ex) {
-                            logger.LogError("Error sending message to API: { message}",
+                            logger.LogError("Error sending message to Sync Api: { message}",
                                 GenerateLogMessage(projectId, subscriptionId, receivedMessage.Message, ex.Message));
-                            lock (queueLock) {
+                            lock (queueLock) { //se sale del bucle para asegurar el orden en el procesamiento.
                                 queue.Clear();
                             }
                             return;
                         }
                         catch (TimeoutException ex) {
-                            logger.LogError("Error sending message to API: { message}",
+                            logger.LogError("Error sending message to Sync Api: { message}",
                                 GenerateLogMessage(projectId, subscriptionId, receivedMessage.Message, ex.Message));
-                            lock (queueLock) {
+                            lock (queueLock) { //se sale del bucle para asegurar el orden en el procesamiento.
                                 queue.Clear();
                             }
                             return;
                         }
                         catch (Exception ex)
                         {
-                            logger.LogError("Error processing the message {message}",
+                            logger.LogError("The message has been refused. Error processing the message {message}",
                                GenerateLogMessage(projectId, subscriptionId, receivedMessage.Message, ex.Message));
                             await subscriberClient.AcknowledgeAsync(subscriptionName, new[] { receivedMessage.AckId });
                         }
