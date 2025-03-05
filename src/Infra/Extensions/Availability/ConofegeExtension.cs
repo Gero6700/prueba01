@@ -24,10 +24,13 @@ public static class ConofegeExtension {
                     BookingWindowFrom = DateTimeHelper.ConvertYYYYMMDDToNullableDatetime(conofege.Ofgrbd),
                     BookingWindowTo = DateTimeHelper.ConvertYYYYMMDDToNullableDatetime(conofege.Ofgrbh),
                     //OccupancyRateCod = conofege.Ofcocu == 0 ? null : conofege.Ofcocu.ToString(),
-                    OnlyApplyIfRecordDatesOnWeekDays = "", //TODO: Pendiente de Jose
-                    OnlyApplyIfStayDatesOnWeekDays = "", //TODO: Pendiente de Jose
-                    WeekDaysApplicationMode = WeekDaysApplicationType.Always.ToString(), //TODO: Pendiente de Jose
-                    RoomCodes = conofege.GetRoomCodes.Where(value => value != "").ToList(),
+                    OnlyApplyIfRecordDatesOnWeekDays = conofege.RecordOnWeekDays, 
+                    OnlyApplyIfStayDatesOnWeekDays = conofege.StayOnWeekDays, 
+                    WeekDaysApplicationMode = conofege.WeekDaysApplicationMode.ToUpper() == WeekDaysApplicationType.Stay.ToString().ToUpper() ? WeekDaysApplicationType.Stay.ToString() :
+                        conofege.WeekDaysApplicationMode.ToUpper() == WeekDaysApplicationType.Record.ToString().ToUpper() ? WeekDaysApplicationType.Record.ToString() : 
+                        conofege.WeekDaysApplicationMode.ToUpper() == WeekDaysApplicationType.Both.ToString().ToUpper() ? WeekDaysApplicationType.Both.ToString() :
+                        WeekDaysApplicationType.Always.ToString(),
+                RoomCodes = conofege.GetRoomCodes.Where(value => value != "").ToList(),
                     MealCodes = conofege.GetRegimeCodes.Where(value => value != "").ToList(),
                 },
             OfferSupplementConfiguration = new OfferSupplementConfigurationDto {

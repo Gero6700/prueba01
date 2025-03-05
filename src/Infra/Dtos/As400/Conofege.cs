@@ -71,8 +71,15 @@ public class Conofege {
     //Congasmo
     public required decimal Gmimpo { get; set; }
     public required int Ofpri { get; set; }
+
+    public required string RecordOnWeekDays { get; set; }
+    public required string StayOnWeekDays { get; set; }
+    public required string WeekDaysApplicationMode { get; set; }
+
     public List<string> GetRoomCodes => new() { Ofthab, Oftha2, Oftha3, Oftha4, Oftha5, Oftha6, Oftha7, Oftha8, Oftha9, Ofth10, Ofth11, Ofth12, Ofth13, Ofth14, Ofth15 };
     public List<string> GetRegimeCodes => new() { Oftser, Oftse2, Oftse3, Oftse4, Oftse5 };
+
+
 
     //public List<decimal> GetAdultStayDiscounts => new () { Ofdae1, Ofdae2, Ofdae3, Ofdae4 };
     //public List<decimal> GetAdultRegimeDiscounts => new() { Ofdas1, Ofdas2, Ofdas3, Ofdas4 };

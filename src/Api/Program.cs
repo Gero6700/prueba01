@@ -139,7 +139,7 @@ builder.Services.AddSubscriberServiceApiClient();
 
 //subscription to avail and static 
 builder.Services.AddHostedService<AvailSubscriptionPullService>();
-builder.Services.AddHostedService<StaticSubscriptionPullService>();
+//builder.Services.AddHostedService<StaticSubscriptionPullService>();
 
 
 var app = builder.Build();
