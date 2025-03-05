@@ -16,7 +16,7 @@ public class CreateExtraShould {
         //Given
         const string anyCode = "anyCode";
         const string anyOriginCode = "anyOriginCode";
-        const OriginType anyOriginType = OriginType.Contract;
+        const string anyOriginType = "Contract";
         const int anyC5fred = 2024001;
         const int anyC5freh = 2024366;
         const int anyC5fec1 = 2024001;

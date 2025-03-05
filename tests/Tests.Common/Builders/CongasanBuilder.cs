@@ -18,17 +18,17 @@ public class CongasanBuilder {
         return this;
     }
 
-    public CongasanBuilder WithOriginType(OriginType newOriginType) {
+    public CongasanBuilder WithOriginType(string newOriginType) {
         raw.OriginType = newOriginType;
         return this;
     }
 
-    public CongasanBuilder WithC6fec1(int newC6fec1) {
+    public CongasanBuilder WithC6fec1(string newC6fec1) {
         raw.C6fec1 = newC6fec1;
         return this;
     }
 
-    public CongasanBuilder WithC6fec2(int newC6fec2) {
+    public CongasanBuilder WithC6fec2(string newC6fec2) {
         raw.C6fec2 = newC6fec2;
         return this;
     }
@@ -87,9 +87,9 @@ public class CongasanBuilder {
         return new Faker<CongasanRaw>()
             .RuleFor(x => x.Code, f => f.Random.String(10, 'A', 'Z').ToUpper())
             .RuleFor(x => x.OriginCode, f => f.Random.String(10, 'A', 'Z').ToUpper())
-            .RuleFor(x => x.OriginType, f => f.PickRandom<OriginType>())
-            .RuleFor(x => x.C6fec1, f => int.Parse(f.Date.Future(1, DateTime.Now).ToString("yyyyMMdd")))
-            .RuleFor(x => x.C6fec2, f => int.Parse(f.Date.Future(1, DateTime.Now.AddYears(1)).ToString("yyyyMMdd")))
+            .RuleFor(x => x.OriginType, f => f.PickRandom<OriginType>().ToString())
+            .RuleFor(x => x.C6fec1, f => f.Date.Future(1, DateTime.Now).ToString("yyyyMMdd"))
+            .RuleFor(x => x.C6fec2, f => f.Date.Future(1, DateTime.Now.AddYears(1)).ToString("yyyyMMdd"))
             .RuleFor(x => x.C6gcdi, f => f.Random.Int(0, 99))
             .RuleFor(x => x.C6gcho, f => f.Random.Int(0, 99))
             .RuleFor(x => x.C6gcno, f => f.Random.Int(0, 99))
@@ -126,18 +126,18 @@ public class CongasanBuilder {
     private class CongasanRaw {
         public string Code { get; set; } = string.Empty;
         public string OriginCode { get; set; } = string.Empty;
-        public OriginType OriginType { get; set; }
-        public int C6fec1 { get; set; }
-        public int C6fec2 { get; set; }
+        public string OriginType { get; set; } = string.Empty;
+        public string C6fec1 { get; set; } = string.Empty;
+        public string C6fec2 { get; set; } = string.Empty;
         public int C6gcdi { get; set; }
         public int C6gcho { get; set; }
         public int C6gcno { get; set; }
         public decimal C6gcpo { get; set; }
         public decimal C6gcim { get; set; }
         public int C6marg { get; set; }
-        public string C6medi { get; set; }
-        public string C6ofer { get; set; }
-        public string C6segu { get; set; }
-        public string C6bono { get; set; }
+        public string C6medi { get; set; } = string.Empty;
+        public string C6ofer { get; set; } = string.Empty;
+        public string C6segu { get; set; } = string.Empty;
+        public string C6bono { get; set; } = string.Empty;
     }
 }

@@ -14,9 +14,11 @@ public class CreateClientTypeShould {
     [Test]
     public async Task create_client_type() {
         //Given
-        var anyMrcodi = 'A';
+        var anyMrcodi = "A";
         var anyMrtext = "anyMrtext";
         var anyRestagen = new Restagen {
+            Id = "anyId",
+            Fechamodi = "anyFechamodi",
             Mrcodi = anyMrcodi,
             Mrtext = anyMrtext
         };
@@ -26,6 +28,8 @@ public class CreateClientTypeShould {
 
         //Then
         var expectedClientType = new Infrastructure.Dtos.BookingCenter.Availability.ClientType {
+            Id = "anyId",
+            LastModificationDate = "anyFechamodi",
             Code = anyMrcodi.ToString(),
             Description = anyMrtext
         };

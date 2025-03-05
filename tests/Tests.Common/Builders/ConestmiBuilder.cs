@@ -33,7 +33,7 @@ public class ConestmiBuilder {
         return this;
     }
 
-    public ConestmiBuilder WithC7peri(char newC7peri) {
+    public ConestmiBuilder WithC7peri(string newC7peri) {
         raw.C7peri = newC7peri;
         return this;
     }
@@ -68,7 +68,7 @@ public class ConestmiBuilder {
             .RuleFor(x => x.C7fec1, f => int.Parse(f.Date.Future(1, DateTime.Now).ToString("yyyyMMdd")))
             .RuleFor(x => x.C7fec2, (f, x) => int.Parse(f.Date.Future(1, DateTime.Now.AddYears(2)).ToString("yyyyMMdd")))
             .RuleFor(x => x.C7dmin, f => f.Random.Int(0,99))
-            .RuleFor(x => x.C7peri, f => f.Random.Char('A','Z'))
+            .RuleFor(x => x.C7peri, f => f.Random.String(1,'A','Z'))
             .RuleFor(x => x.C7thab, f => f.Random.String(2,'A', 'Z'))
             .RuleFor(x => x.C7regi, f => f.Random.String(2, 'A', 'Z'))
             .Generate();
@@ -80,7 +80,7 @@ public class ConestmiBuilder {
         public int C7fec1 { get; set; }
         public int C7fec2 { get; set; }
         public int C7dmin { get; set; }
-        public char C7peri { get; set; }
+        public string C7peri { get; set; }
         public string C7thab { get; set; } = string.Empty;
         public string C7regi { get; set; } = string.Empty;
     }    

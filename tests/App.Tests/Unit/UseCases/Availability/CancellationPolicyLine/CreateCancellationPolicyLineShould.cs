@@ -13,9 +13,9 @@ public class CreateCancellationPolicyLineShould {
     [Test]
     public async Task create_cancellation_policy_line() {
         //Given
-        const OriginType anyOriginType = OriginType.Contract;
-        const int anyC6fec1 = 20240101;
-        const int anyC6fec2 = 20241231;
+        const string anyOriginType = "Contract";
+        const string anyC6fec1 = "20240101";
+        const string anyC6fec2 = "20240101";
         const string anyC6medi = "";
         const string anyC6ofer = "";
         const string anyC6segu = "";

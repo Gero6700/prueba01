@@ -60,7 +60,7 @@ public class CreateContractShould {
         await createContract.Execute(anyConcabec);
 
         // Then
-        var expectedContract = new Infrastructure.Dtos.BookingCenter.Availability.Contract {
+        var expectedContract = new Infrastructure.Dtos.BookingCenter.Availability.ContractHeaderDto {
             Code = anyConcabec.ContractCode,
             Description = anyCodesc,
             ValidDateFrom = new DateTime(2024, 01, 01),

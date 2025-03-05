@@ -10,7 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Unit\UseCases\Availability\Contract\DeleteContractShould.cs" />
+    <Compile Remove="Unit\UseCases\Availability\**" />
+    <Compile Remove="Unit\UseCases\Static\**" />
+    <EmbeddedResource Remove="Unit\UseCases\Availability\**" />
+    <EmbeddedResource Remove="Unit\UseCases\Static\**" />
+    <None Remove="Unit\UseCases\Availability\**" />
+    <None Remove="Unit\UseCases\Static\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +31,10 @@
     <ProjectReference Include="..\..\src\Domain\Senator.As400.Cloud.Sync.Application.csproj" />
     <ProjectReference Include="..\..\src\Infra\Senator.As400.Cloud.Sync.Infrastructure.csproj" />
     <ProjectReference Include="..\Tests.Common\Senator.As400.Cloud.Sync.Tests.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Unit\UseCases\" />
   </ItemGroup>
 
 </Project>

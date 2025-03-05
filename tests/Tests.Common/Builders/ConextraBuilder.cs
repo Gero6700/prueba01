@@ -15,7 +15,7 @@ public class ConextraBuilder {
         return new Faker<ConextraRaw>()
             .RuleFor(x => x.Code, f => f.Random.String(10,'A','Z').ToUpper())
             .RuleFor(x => x.OriginCode, f => f.Random.String(10,'A','Z').ToUpper())
-            .RuleFor(x => x.OriginType, f => f.PickRandom<OriginType>())
+            .RuleFor(x => x.OriginType, f => f.PickRandom<OriginType>().ToString())
             .RuleFor(x => x.C5fred, f => (DateTime.Now.Year * 1000) + f.Random.Int(1, 365))
             .RuleFor(x => x.C5freh, f => ((DateTime.Now.Year + 1) * 1000) + f.Random.Int(1, 365))
             .RuleFor(x => x.C5fec1, f => (DateTime.Now.Year * 1000) + f.Random.Int(1, 365))
@@ -74,7 +74,7 @@ public class ConextraBuilder {
         return this;
     }
 
-    public ConextraBuilder WithOriginType(OriginType newOriginType) {
+    public ConextraBuilder WithOriginType(string newOriginType) {
         raw.OriginType = newOriginType;
         return this;
     }
@@ -361,7 +361,7 @@ public class ConextraBuilder {
     private class ConextraRaw {
         public string Code { get; set; } = string.Empty;
         public string OriginCode { get; set; } = string.Empty;
-        public OriginType OriginType { get; set; }
+        public string OriginType { get; set; } = string.Empty;
         public int C5fred { get; set; }
         public int C5freh { get; set; }
         public int C5fec1 { get; set; }

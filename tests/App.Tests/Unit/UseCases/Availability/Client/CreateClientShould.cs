@@ -18,7 +18,7 @@ public class CreateClientShould {
         const string anyUsuario = "anyUsuario";
         const string anyClave = "anyClave";
         const string anyNombreComercial = "anyNombreComercial";
-        const char anyAgGroup = 'A';
+        const string anyAgGroup = "A";
 
         var anyUsureg = UsuregBuilder.AnUsuregBuilder()
             .WithIdUsuario(anyIdUsuario)
