@@ -8,13 +8,13 @@ jobs:
   ping_job:
     runs-on: [self-hosted, Linux, X64, docker, build]
     steps:
-      - name: Ejecutar ping a example.com y guardar registros
+      - name: Ejecutar ping a google.com y guardar registros
         run: |
-          ping -c 4 example.com > ping_output.txt
+          ping -c 4 google.com > /home/gdonaire/ping_output.txt
 
       - name: Subir registros como artefacto
         uses: actions/upload-artifact@v4
         with:
           name: ping-logs-${{ github.run_id }}
-          path: ping_output.txt
+          path: /home/gdonaire/ping_output.txt
           include-hidden-files: true
