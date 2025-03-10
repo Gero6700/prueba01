@@ -6,7 +6,7 @@ on:
     
 jobs:
   ping_job:
-    runs-on: [self-hosted, shr-actions-runner]
+    runs-on: [self-hosted, Linux, X64, docker, build]
     steps:
       - name: Ejecutar ping a example.com y guardar registros
         run: |
