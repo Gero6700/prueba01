@@ -6,7 +6,7 @@ on:
 
 jobs:
   ping_job:
-    runs-on: [self-hosted, Linux, X64, docker, build]
+    runs-on: [self-hosted, linux, x64]
     steps:
       - name: Ejecutar ping a google.com y guardar registros
         run: |
