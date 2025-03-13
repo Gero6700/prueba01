@@ -1,8 +1,8 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter.Availability;
 
 public class OfferSupplementConditionDto {
-    public required StayType StayType { get; set; }
-    public required PaxType ApplyToPax { get; set; }
+    public required string StayType { get; set; }
+    public required string ApplyToPax { get; set; }
     public int? MinStayDays { get; set; }
     public int? MaxStayDays { get; set; }
     public int? MinReleaseDays { get; set; }

@@ -1,5 +1,6 @@
 using System.Collections.Concurrent;
 using System.Threading;
+using Senator.As400.Cloud.Sync.Infrastructure.Http.Exceptions;
 
 namespace Senator.As400.Cloud.Sync.Api.HostedService;
 
@@ -110,8 +111,8 @@ public abstract class SubscriptionPullService : BackgroundService {
                                    problemDetails = null;
                                 }
 
-                                //Si devuelve un 404 (de .NET) o 500, se sale del bucle para asegurar el orden en el procesamiento. Se reintará la extracción en el siguiente ciclo.
-                                if ((problemDetails == null && errorCode == 404) || errorCode == 500) {
+                                //Si devuelve un 404 o 500 (de .NET), se sale del bucle para asegurar el orden en el procesamiento. Se reintará la extracción en el siguiente ciclo.
+                                if (problemDetails == null && (errorCode == 404 || errorCode == 500)) {
                                     logger.LogError("Error sending message to Sync Api: {message}",
                                         GenerateLogApi(projectId, subscriptionId, receivedMessage.Message, errorCode, content));
                                     lock (queueLock) {
@@ -142,8 +143,26 @@ public abstract class SubscriptionPullService : BackgroundService {
                             }
                             return;
                         }
+                        catch (HttpException ex) {
+                            logger.LogError("Error sending message to Sync Api: { message}",
+                                GenerateLogMessage(projectId, subscriptionId, receivedMessage.Message, ex.Message));
+                            lock (queueLock) { //se sale del bucle para asegurar el orden en el procesamiento.
+                                queue.Clear();
+                            }
+                            return;
+                        }
                         catch (Exception ex)
                         {
+
+                            if (ex.Message.Contains("HttpClient.Timeout")) {
+                                logger.LogError("Error sending message to Sync Api: { message}",
+                                GenerateLogMessage(projectId, subscriptionId, receivedMessage.Message, ex.Message));
+                                lock (queueLock) { //se sale del bucle para asegurar el orden en el procesamiento.
+                                    queue.Clear();
+                                }
+                                return;
+                            }
+
                             logger.LogError("The message has been refused. Error processing the message {message}",
                                GenerateLogMessage(projectId, subscriptionId, receivedMessage.Message, ex.Message));
                             await subscriberClient.AcknowledgeAsync(subscriptionName, new[] { receivedMessage.AckId });

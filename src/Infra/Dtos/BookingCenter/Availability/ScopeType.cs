@@ -2,5 +2,5 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter.Availabilit
 
 public enum ScopeType {
     Stay,
-    Regime
+    Meal
 }

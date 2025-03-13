@@ -15,8 +15,8 @@ public static class ConofegeExtension {
             DepositBeforeDate = conofege.Offtop == 0 ? null : DateTimeHelper.ConvertYYMMDDToDatetime(conofege.Offtop),
             ModificationCostsAmount = conofege.Gmimpo == 0 ? null : conofege.Gmimpo,
             OfferSupplementCondition = new OfferSupplementConditionDto {
-                    StayType = conofege.Ofties.ToUpper() == "P" ? StayType.Period : conofege.Ofties.ToUpper() == "E" ? StayType.Stay : StayType.CheckInDay,
-                    ApplyToPax = conofege.Ofadni.ToUpper() == "A" ? PaxType.Adult : conofege.Ofadni.ToUpper() == "N" ? PaxType.Child : PaxType.All,
+                    StayType = conofege.Ofties.ToUpper() == "P" ? StayType.Period.ToString() : conofege.Ofties.ToUpper() == "E" ? StayType.Stay.ToString() : StayType.CheckInDay.ToString(),
+                    ApplyToPax = conofege.Ofadni.ToUpper() == "A" ? PaxType.Adult.ToString() : conofege.Ofadni.ToUpper() == "N" ? PaxType.Child.ToString() : PaxType.All.ToString(),
                     MinStayDays = conofege.Ofdiae == 0 ? null : conofege.Ofdiae,
                     MaxStayDays = conofege.Ofdieh == 0 ? null : conofege.Ofdieh,
                     MinReleaseDays = conofege.Offred == 0 ? null : conofege.Offred,

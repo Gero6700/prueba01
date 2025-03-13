@@ -60,7 +60,7 @@ public class SubscriptionPullStreamingService(
                 }
                 catch { }
 
-                if ((problemDetails == null && errorCode == 404) || errorCode == 500) {
+                if (problemDetails == null && (errorCode == 404 || errorCode == 500)) {
                     //Se reintenta el mensaje
                     logger.LogError("Error sending message to Sync Api. {Message}",
                         GenerateLogApi(subscriberClient.SubscriptionName.ProjectId, subscriberClient.SubscriptionName.SubscriptionId, message, messageData, errorCode, content));

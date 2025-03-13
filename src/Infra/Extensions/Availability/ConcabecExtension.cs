@@ -32,7 +32,7 @@ public static class ConcabecExtension {
             MaxAgeTeenager = concabec.D4hast > 0 ? concabec.D4hast : null,
             ExpiredDate = concabec.Cofext != 0 ? DateTimeHelper.ConvertYYYYMMDDToNullableDatetime(concabec.Cofext) : null,
             Commission = concabec.Cocoag,
-            IsPvp = concabec.Cocoag == 0,
+            IsPvp = concabec.Cocoag == 0 ? false : true,
             CancellationGuarantee = concabec.Cogcpo,
             CancellationGuaranteeIsCommissionable = concabec.Cocose == "S",
             ContractHeaderCode = concabec.ContractClientCode,
