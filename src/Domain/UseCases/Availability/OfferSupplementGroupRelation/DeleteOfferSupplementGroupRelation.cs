@@ -7,8 +7,8 @@ public class DeleteOfferSupplementGroupRelation : IDeleteOfferSupplementGroupRel
     }
 
     public async Task<HttpResponseMessage> Execute(ConofcomLine conofcomLine) {
-        if (conofcomLine.Occin == 0) {
-            throw new ArgumentException("Group code is zero");
+        if (string.IsNullOrEmpty(conofcomLine.Occin)) {
+            throw new ArgumentException("Group code is empty");
         }
         if (conofcomLine.Oocode == "") {
             throw new ArgumentException("Offer code is empty");
