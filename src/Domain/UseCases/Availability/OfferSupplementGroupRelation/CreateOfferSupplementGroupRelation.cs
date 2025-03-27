@@ -10,7 +10,7 @@ public class CreateOfferSupplementGroupRelation :ICreateOfferSupplementGroupRela
         if (string.IsNullOrEmpty(conofcomLine.Occin)) {
             throw new ArgumentException("Group code is empty");
         }
-        if (conofcomLine.Oocode == "") {
+        if (conofcomLine.OfferSupCode == "") {
             throw new ArgumentException("Offer code is empty");
         }
 

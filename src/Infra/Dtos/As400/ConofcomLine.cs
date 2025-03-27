@@ -3,5 +3,5 @@ public class ConofcomLine {
     public required string Id { get; set; } 
     public required string Fechamodi { get; set; } 
     public required string Occin { get; set; }
-    public required string Oocode { get; set; } 
+    public required string OfferSupCode { get; set; } 
 }
