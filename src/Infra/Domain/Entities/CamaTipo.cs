@@ -1,5 +1,5 @@
-namespace Senator.As400.Cloud.Sync.Infrastructure.Dtos.SqlServer;
-public class EstCamaTipo{
+namespace Senator.As400.Cloud.Sync.Infrastructure.Domain.Entities;
+public class CamaTipo{
     public int AnchoCm { get; set; }
     public int AltoCm { get; set; }
     public string EsNombre { get; set; } = string.Empty;

@@ -31,14 +31,35 @@
     <Compile Remove="Dtos\BookingCenter\Availability\PeriodPricingPax.cs" />
     <Compile Remove="Dtos\BookingCenter\Availability\Regime.cs" />
     <Compile Remove="Dtos\BookingCenter\Availability\Room.cs" />
+    <Compile Remove="Dtos\BookingCenter\Static\Bed.cs" />
+    <Compile Remove="Dtos\BookingCenter\Static\Description.cs" />
+    <Compile Remove="Dtos\BookingCenter\Static\Equipment.cs" />
+    <Compile Remove="Dtos\BookingCenter\Static\Hotel.cs" />
+    <Compile Remove="Dtos\BookingCenter\Static\HotelLanguage.cs" />
+    <Compile Remove="Dtos\BookingCenter\Static\Image.cs" />
+    <Compile Remove="Dtos\BookingCenter\Static\ImageTranslation.cs" />
+    <Compile Remove="Dtos\BookingCenter\Static\Regime.cs" />
+    <Compile Remove="Dtos\BookingCenter\Static\Room.cs" />
+    <Compile Remove="Dtos\BookingCenter\Static\RoomTranslation.cs" />
+    <Compile Remove="Dtos\BookingCenter\Static\Salon.cs" />
+    <Compile Remove="Dtos\BookingCenter\Static\Service.cs" />
+    <Compile Remove="Dtos\BookingCenter\Static\ServiceCategory.cs" />
+    <Compile Remove="Dtos\BookingCenter\Static\ServiceTranslation.cs" />
+    <Compile Remove="Dtos\BookingCenter\Static\SwimmingPool.cs" />
+    <Compile Remove="Dtos\BookingCenter\Static\Translation.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.2.2" />
+    <PackageReference Include="Dapper" Version="2.1.66" />
     <PackageReference Include="IdentityModel" Version="6.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="8.0.0" />
     <PackageReference Include="RabbitMQ.Client" Version="6.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Domain\Abstractions\" />
   </ItemGroup>
 
 </Project>

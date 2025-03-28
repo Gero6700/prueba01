@@ -1,15 +1,15 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Extensions.Static;
 public static class EstServicioCategoriaExtension {
-    public static ServiceCategory ToServiceCategory(this EstServicioCategoria estServicioCategoria) {
-        var serviceCategory = new ServiceCategory {
+    public static StaticServiceCategoryDto ToServiceCategory(this ServicioCategoria estServicioCategoria) {
+        var serviceCategory = new StaticServiceCategoryDto {
             Code = estServicioCategoria.Id.ToString(),
-            Translations = GetTranslations(estServicioCategoria)
+            ServiceCategoryTranslations = GetTranslations(estServicioCategoria)
         };
         return serviceCategory;
     }
 
-    private static List<Translation> GetTranslations(EstServicioCategoria estServicioCategoria) {
-        var translations = new List<Translation>();
+    private static List<StaticServiceCategoryTranslationDto> GetTranslations(ServicioCategoria estServicioCategoria) {
+        var translations = new List<StaticServiceCategoryTranslationDto>();
 
         var languages = new Dictionary<string, string> {
             { Language.Es.GetIsoCode(), estServicioCategoria.EsNombre },
@@ -21,7 +21,7 @@ public static class EstServicioCategoriaExtension {
 
         foreach (var language in languages) {
             if (!string.IsNullOrEmpty(language.Value)) {
-                translations.Add(new Translation {
+                translations.Add(new StaticServiceCategoryTranslationDto {
                     Name = language.Value,
                     LanguageIsoCode = language.Key
                 });

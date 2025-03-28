@@ -1,5 +1,5 @@
-namespace Senator.As400.Cloud.Sync.Infrastructure.Dtos.SqlServer;
-public class EstImagen{
+namespace Senator.As400.Cloud.Sync.Infrastructure.Domain.Entities;
+public class Imagen{
     public int Prioridad { get; set; }
     public string Url { get; set; } = string.Empty;
     public string EsTitulo { get; set; } = string.Empty;

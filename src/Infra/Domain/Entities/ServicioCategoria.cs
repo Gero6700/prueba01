@@ -1,5 +1,5 @@
-namespace Senator.As400.Cloud.Sync.Infrastructure.Dtos.SqlServer;
-public class EstServicioCategoria{
+namespace Senator.As400.Cloud.Sync.Infrastructure.Domain.Entities;
+public class ServicioCategoria{
     public int Id { get; set; }
     public string EsNombre { get; set; } = string.Empty;
     public string EnNombre { get; set;} = string.Empty;

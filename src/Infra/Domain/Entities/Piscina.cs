@@ -1,5 +1,5 @@
-namespace Senator.As400.Cloud.Sync.Infrastructure.Dtos.SqlServer;
-public class EstPiscina {
+namespace Senator.As400.Cloud.Sync.Infrastructure.Domain.Entities;
+public class Piscina {
     public int Id { get; set; }
     public int Cantidad { get; set; }
     public int Aforo { get; set; }
@@ -14,5 +14,5 @@ public class EstPiscina {
     public string FrDetalles { get; set; } = string.Empty;
     public string DeDetalles { get; set; } = string.Empty;
     public string PtDetalles { get; set; } = string.Empty;
-    public List<EstImagen> Imagenes { get; set; } = [];
+    public IEnumerable<Imagen> Imagenes { get; set; } = [];
 }

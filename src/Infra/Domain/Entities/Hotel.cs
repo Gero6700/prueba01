@@ -1,5 +1,5 @@
-namespace Senator.As400.Cloud.Sync.Infrastructure.Dtos.SqlServer;
-public class EstHotel : IAggregateRoot {
+namespace Senator.As400.Cloud.Sync.Infrastructure.Domain.Entities;
+public class Hotel {
     public int CodigoInterno { get; set; }
     public string NombreHotel { get; set; } = string.Empty;
     public DateTime? CerradoDesde { get; set; }
@@ -45,10 +45,10 @@ public class EstHotel : IAggregateRoot {
     public string PtEntradilla { get; set; } = string.Empty;
     public string PtDescripcion { get; set; } = string.Empty;
     public string PtSituacion { get; set; } = string.Empty;
-    public List<EstImagen> Imagenes { get; set; } = [];
-    public List<EstHabitacion> Habitaciones { get; set; } = [];
-    public List<EstPiscina> Piscinas { get; set; } = [];
-    public List<EstSalon> Salones { get; set; } = [];
-    public List<string> IdReszoims { get; set; } = []; 
-    public List<int> IdServicios { get; set; } = [];
+    public IEnumerable<Imagen>? Imagenes { get; set; } = [];
+    public IEnumerable<Regimen>? Regimenes { get; set; } = [];
+    public IEnumerable<Habitacion>? Habitaciones { get; set; } = [];
+    public IEnumerable<Piscina>? Piscinas { get; set; } = [];
+    public IEnumerable<Salon>? Salones { get; set; } = [];
+    public IEnumerable<Servicio>? IdServicios { get; set; } = [];    
 }

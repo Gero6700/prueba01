@@ -1,5 +1,5 @@
-namespace Senator.As400.Cloud.Sync.Infrastructure.Dtos.SqlServer;
-public class EstHabitacion : IAggregateRoot {
+namespace Senator.As400.Cloud.Sync.Infrastructure.Domain.Entities;
+public class Habitacion {
     public string CodigoTipoHabitacion { get; set; } = string.Empty;
     public int NumeroHabitaciones { get; set; }
     public decimal SuperficieAprox { get; set; }
@@ -26,6 +26,6 @@ public class EstHabitacion : IAggregateRoot {
     public string FrEntradilla { get; set; } = string.Empty;
     public string DeEntradilla { get; set; } = string.Empty;
     public string PtEntradilla { get; set; } = string.Empty;
-    public List<EstImagen> Imagenes { get; set; } = [];
-    public List<EstCamaTipo> Camas { get; set; } = [];
+    public IEnumerable<Imagen> Imagenes { get; set; } = [];
+    public IEnumerable<CamaTipo> Camas { get; set; } = [];
 }

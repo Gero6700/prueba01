@@ -1,15 +1,16 @@
+using Senator.As400.Cloud.Sync.Infrastructure.Domain.Entities;
+
 namespace Senator.As400.Cloud.Sync.Infrastructure.Extensions.Static;
 public static class EstRegimenExtension {
-    public static Dtos.BookingCenter.Static.Regime ToRegime(this EstRegimen estRegimen) {
-        return new Dtos.BookingCenter.Static.Regime
-        {
-            Code = estRegimen.Regimen,
-            Translations = GetTranslations(estRegimen)
+    public static StaticMealDto ToRegime(this Regimen estRegimen) {
+        return new StaticMealDto {
+            Code = estRegimen.Codigo,
+            MealTranslations = GetTranslations(estRegimen)
         };
     }
 
-    private static List<Translation> GetTranslations(EstRegimen regimen) {
-        var translations = new List<Translation>();
+    private static List<StaticMealTranslationDto> GetTranslations(Regimen regimen) {
+        var translations = new List<StaticMealTranslationDto>();
 
         var languages = new Dictionary<string, string> {
             { Language.Es.GetIsoCode(), regimen.EsNombre },
@@ -21,7 +22,7 @@ public static class EstRegimenExtension {
 
         foreach (var language in languages) {
             if (!string.IsNullOrEmpty(language.Value)) {
-                translations.Add(new Translation {
+                translations.Add(new StaticMealTranslationDto {
                     Name = language.Value,
                     LanguageIsoCode = language.Key
                 });
