@@ -13,7 +13,6 @@ global using System.Globalization;
 global using System.Net;
 global using System.Text;
 global using System.Text.Json;
-global using Availability.Synchronizer.Domain.Abstractions.Persistence;
 global using Dapper;
 global using Senator.As400.Cloud.Sync.Infrastructure.Domain.Entities;
 global using Senator.As400.Cloud.Sync.Infrastructure.Domain.Repositories;

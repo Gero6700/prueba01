@@ -1,5 +1,3 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Domain.Abstractions.Core;
-
 namespace Senator.As400.Cloud.Sync.Application.Services.Static;
 public class HotelService(
     IUnitOfWork unitOfWork,

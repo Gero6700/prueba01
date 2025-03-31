@@ -5,14 +5,16 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Persistence.Repositories;
 public class StaticHotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(unitOfWork), IStaticHotelRepository {
     public async Task<Hotel?> GetHotelAsync(int hotelId) {
         var result = await Connection.QueryMultipleAsync(GetHotelQuery() + ";" + GetImagesQuery(), 
-            new { hotelId }, Transaction);
+            new { hotelId }, DbContext.Transaction);
         var hotel = result.Read<Hotel>().FirstOrDefault();
         if (hotel == null) {
             return null;
         }
-        var images = result.Read<Imagen>().ToList();
 
-        return hotel with { Imagenes = images };
+        hotel.Imagenes = [.. result.Read<Imagen>()];
+        
+
+        return hotel;
     }
 
     private static string GetHotelQuery() {
