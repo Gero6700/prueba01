@@ -1,6 +1,7 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Domain.Entities;
 public class Salon{
     public int Id { get; set; }
+    public string Uid { get; set; } = string.Empty;
     public string EsNombre { get; set; } = string.Empty;
     public decimal Superficie { get; set; }
     public decimal Ancho { get; set; }
@@ -16,5 +17,4 @@ public class Salon{
     public string FrDescripcion { get; set; } = string.Empty;
     public string DeDescripcion { get; set; } = string.Empty;
     public string PtDescripcion { get; set; } = string.Empty;
-    public IEnumerable<Imagen> Imagenes { get; set; } = [];
 }

@@ -1,5 +1,6 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Domain.Entities;
 public class Hotel {
+    public string Uid { get; set; } = string.Empty;
     public int CodigoInterno { get; set; }
     public string NombreHotel { get; set; } = string.Empty;
     public DateTime? CerradoDesde { get; set; }
@@ -45,10 +46,17 @@ public class Hotel {
     public string PtEntradilla { get; set; } = string.Empty;
     public string PtDescripcion { get; set; } = string.Empty;
     public string PtSituacion { get; set; } = string.Empty;
-    public IEnumerable<Imagen>? Imagenes { get; set; } = [];
-    public IEnumerable<Regimen>? Regimenes { get; set; } = [];
-    public IEnumerable<Habitacion>? Habitaciones { get; set; } = [];
-    public IEnumerable<Piscina>? Piscinas { get; set; } = [];
-    public IEnumerable<Salon>? Salones { get; set; } = [];
-    public IEnumerable<Servicio>? IdServicios { get; set; } = [];    
+    public IEnumerable<Imagen> Imagenes { get; set; } = [];
+    public IEnumerable<Regimen> Regimenes { get; set; } = [];
+    public IEnumerable<Piscina> Piscinas { get; set; } = [];
+    public IEnumerable<Imagen> PiscinasImagenes { get; set; } = []; 
+
+    public IEnumerable<Habitacion> Habitaciones { get; set; } = [];
+    public IEnumerable<Imagen> HabitacionesImagenes { get; set; } = [];
+    public IEnumerable<CamaTipo> HabitacionesCamas { get; set; } = [];
+    public IEnumerable<Servicio> HabitacionesServicios { get; set; } = [];
+
+    public IEnumerable<Salon> Salones { get; set; } = [];
+    public IEnumerable<Imagen> SalonesImagenes { get; set; } = [];
+    public IEnumerable<Servicio> Servicios { get; set; } = [];    
 }

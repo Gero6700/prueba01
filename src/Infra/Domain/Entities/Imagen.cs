@@ -1,7 +1,10 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Domain.Entities;
 public class Imagen{
+    //public string? CodigoTipoHabitacion { get; set; } = null;
+    //public int? IdSalon { get; set; } = null;
+    public string UidPadre { get; set; } = string.Empty;
     public int Prioridad { get; set; }
-    public string Url { get; set; } = string.Empty;
+    public Guid Url { get; set; }
     public string EsTitulo { get; set; } = string.Empty;
     public string EnTitulo { get; set; } = string.Empty;
     public string FrTitulo { get; set; } = string.Empty;

@@ -1,6 +1,8 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Domain.Entities;
 public class Habitacion {
+    public int Id { get; set; }
     public string CodigoTipoHabitacion { get; set; } = string.Empty;
+    public string Uid { get; set; } = string.Empty;
     public int NumeroHabitaciones { get; set; }
     public decimal SuperficieAprox { get; set; }
     public decimal PesoMinimo { get; set; }
@@ -26,6 +28,4 @@ public class Habitacion {
     public string FrEntradilla { get; set; } = string.Empty;
     public string DeEntradilla { get; set; } = string.Empty;
     public string PtEntradilla { get; set; } = string.Empty;
-    public IEnumerable<Imagen> Imagenes { get; set; } = [];
-    public IEnumerable<CamaTipo> Camas { get; set; } = [];
 }

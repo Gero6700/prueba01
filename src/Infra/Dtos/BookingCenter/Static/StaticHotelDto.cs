@@ -24,7 +24,7 @@ public class StaticHotelDto {
     public IEnumerable<StaticHotelImageDto>? HotelImages { get; set; } //TODO: Nullable,ver con Jesús
     public IEnumerable<StaticHotelLanguageDto>? HotelLanguages { get; set; } //TODO: Nullable,ver con Jesús
     public IEnumerable<StaticHotelNoticeDto>? HotelNotices { get; set; }
-    public required IEnumerable<RoomDto> Rooms { get; set; }
+    public required IEnumerable<StaticRoomDto> Rooms { get; set; }
     public required IEnumerable<StaticMealDto> Meals { get; set; }
     public IEnumerable<StaticServiceDto>? Services { get; set; }
     public IEnumerable<StaticSwimmingPoolDto>? SwimmingPools { get; set; }
@@ -81,15 +81,15 @@ public class StaticHotelTranslationDto {
     public string? LocationDescription { get; set; }
 }
 
-public class StaticHotelImageDto {
-    public required int Order { get; set; }
-    public required string Url { get; set; }
-    public IEnumerable<StaticHotelImageTranslationDto>? HotelImageTranslations { get; set; }
+public class StaticHotelImageDto : IImageDto {
+    public int Order { get; set; }
+    public string Url { get; set; } = string.Empty;
+    public IEnumerable<StaticImageTranslationDto>? ImageTranslations { get; set; }
 }
 
-public class StaticHotelImageTranslationDto {
-    public required string LanguageIsoCode { get; set; }
-    public required string Title { get; set; }
+public class StaticHotelImageTranslationDto : IImageTranslationDto {
+    public string LanguageIsoCode { get; set; } = string.Empty;
+    public string Title { get; set; } = string.Empty;
     public string? Description { get; set; }
 }
 
@@ -109,7 +109,7 @@ public class StaticRoomDto {
     public decimal? Surface { get; set; }
     public IEnumerable<StaticRoomTranslationDto>? RoomTranslations { get; set; }
     public IEnumerable<StaticRoomImageDto>? RoomImages { get; set; }
-    public IEnumerable<StaticRoomPaxDto>? RoomPaxes { get; set; }
+    public StaticRoomPaxDto? RoomPax { get; set; } //TODO: Se ha quitado la lista, ver con Jesus
     public IEnumerable<StaticRoomBedDto>? RoomBeds { get; set; }
     public IEnumerable<StaticEquipmentDto>? Equipments { get; set; }
     public IEnumerable<StaticServiceDto>? Services { get; set; }
@@ -122,17 +122,24 @@ public class StaticRoomTranslationDto {
     public string? LargeDescription { get; set; }
 }
 
-public class StaticRoomImageDto {
-    public required int Order { get; set; }
-    public required string Url { get; set; }
-    public IEnumerable<StaticRoomImageTranslationDto>? RoomImageTranslations { get; set; }
+public class StaticRoomImageDto : IImageDto {
+    public int Order { get; set; }
+    public string Url { get; set; } = string.Empty;
+    //public IEnumerable<StaticRoomImageTranslationDto>? ImageTranslations { get; set; }
+    public IEnumerable<StaticImageTranslationDto>? ImageTranslations { get; set; }
 }
 
-public class StaticRoomImageTranslationDto {
-    public required string LanguageIsoCode { get; set; }
-    public required string Title { get; set; }
+public class StaticImageTranslationDto  {
+    public required string LanguageIsoCode { get; set; } = string.Empty;
+    public required string Title { get; set; } = string.Empty;
     public string? Description { get; set; }
 }
+
+//public class StaticRoomImageTranslationDto : IImageTranslationDto {
+//    public string LanguageIsoCode { get; set; } = string.Empty;
+//    public string Title { get; set; } = string.Empty;
+//    public string? Description { get; set; }
+//}
 
 public class StaticRoomPaxDto {
     public decimal? MinWeight { get; set; }
@@ -218,15 +225,15 @@ public class StaticSwimmingPoolTranslationDto {
     public string? Description { get; set; }
 }
 
-public class StaticSwimmingPoolImageDto {
-    public required int Order { get; set; }
-    public required string Url { get; set; }
-    public IEnumerable<StaticSwimmingPoolImageTranslationDto>? SwimmingPoolImageTranslations { get; set; }
+public class StaticSwimmingPoolImageDto : IImageDto {
+    public int Order { get; set; }
+    public string Url { get; set; }
+    public IEnumerable<StaticImageTranslationDto>? ImageTranslations { get; set; }
 }
 
 public class StaticSwimmingPoolImageTranslationDto {
-    public required string LanguageIsoCode { get; set; }
-    public required string Title { get; set; }
+    public required string LanguageIsoCode { get; set; } = string.Empty;
+    public required string Title { get; set; } = string.Empty;
     public string? Description { get; set; }
 }
 
@@ -259,7 +266,7 @@ public class StaticSalonImageDto {
 }
 
 public class StaticSalonImageTranslationDto {
-    public required string LanguageIsoCode { get; set; }
-    public required string Title { get; set; }
+    public required string LanguageIsoCode { get; set; } = string.Empty;
+    public required string Title { get; set; } = string.Empty;
     public string? Description { get; set; }
 }

@@ -1,6 +1,7 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Domain.Entities;
 public class Piscina {
     public int Id { get; set; }
+    public string Uid { get; set; } = string.Empty;
     public int Cantidad { get; set; }
     public int Aforo { get; set; }
     public decimal Superficie { get; set; }
@@ -14,5 +15,4 @@ public class Piscina {
     public string FrDetalles { get; set; } = string.Empty;
     public string DeDetalles { get; set; } = string.Empty;
     public string PtDetalles { get; set; } = string.Empty;
-    public IEnumerable<Imagen> Imagenes { get; set; } = [];
 }

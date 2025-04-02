@@ -9,7 +9,7 @@ public class HotelService(
             unitOfWork.BeginTransaction();
             var hotel = await staticHotelRepository.GetHotelAsync(hotelId);
             unitOfWork.Commit();
-            return hotel?.ToHotel();
+            return hotel?.ToHotelDto();
         }
         catch (Exception ex) {
             unitOfWork.Rollback();
