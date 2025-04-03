@@ -20,7 +20,7 @@ public static class SalonExtension {
             ClassroomCapacity = salon.AforoAula,
             SalonTranslations = GetTranslations(salon),
             SalonImages = imagenes.Any() ?
-                imagenes.Where(i => i.UidPadre == salon.Uid).ToList().ToSalonImageDto() :
+                imagenes.Where(i => i.UidPadre == salon.Uid).ToList().ToImageDto<StaticSalonImageDto>() :
                 null
         }).ToList();
     }

@@ -1,10 +1,8 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Abstractions.Persistence;
-using Senator.As400.Cloud.Sync.Infrastructure.Domain.Abstractions.Persistence;
-
 namespace Senator.As400.Cloud.Sync.Infrastructure.Persistence.Repositories;
 public class StaticHotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(unitOfWork), IStaticHotelRepository {
     public async Task<Hotel?> GetHotelAsync(int hotelId) {
-        var result = await Connection.QueryMultipleAsync(
+        using var connection = Connection;
+        var result = await connection.QueryMultipleAsync(
             GetHotelQuery() + ";" + GetRegimenQuery() + ";" + 
             GetHabitacionQuery() + ";" + GetHabitacionCamaQuery() + ";" + GetHabitacionServicio() + ";" +
             GetPiscinaQuery() + ";" +
@@ -32,9 +30,9 @@ public class StaticHotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(u
         var hotelUid = hotel.Uid;
         var roomUids = hotel.Habitaciones.Select(h => h.Uid).ToList();
         var piscinaUids = hotel.Piscinas.Select(p => p.Uid).ToList();
-        var salonUids = hotel.Salones.Select(s => s.Id).ToList();
+        var salonUids = hotel.Salones.Select(s => s.Uid).ToList();
 
-        var imagesResult = await Connection.QueryMultipleAsync(
+        var imagesResult = await connection.QueryMultipleAsync(
             GetHotelImagenQuery() + ";" + GetRoomImagenQuery() + ";" + GetPiscinaImageQuery() + ";" + GetSalonImageQuery(),
             new { hotelUid, roomUids, piscinaUids, salonUids },
             DbContext.Transaction);
@@ -54,7 +52,7 @@ public class StaticHotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(u
             FROM EST_Hoteles h
             LEFT JOIN EST_marcas_comerciales m ON h.id_marca_comercial = m.id
             LEFT JOIN AUX_paises P ON h.codigo_pais = p.codigo_pais
-            WHERE codigo_interno = @hotelId";                   
+            WHERE visible = 1 AND codigo_interno = @hotelId";                   
     }
 
     //private static string GetHotelImagenQuery() {
@@ -78,7 +76,7 @@ public class StaticHotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(u
             SELECT 
                 {GetImagesColumnsWithAliases()}                
             FROM EST_Imagenes2
-            WHERE tabla_padre='EST_Hoteles' AND uid_padre = @hotelUid";
+            WHERE visible = 1 AND tabla_padre='EST_Hoteles' AND uid_padre = @hotelUid";
     }
 
     private static string GetRoomImagenQuery() {
@@ -86,7 +84,7 @@ public class StaticHotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(u
             SELECT 
                 {GetImagesColumnsWithAliases()}                
             FROM EST_Imagenes2
-            WHERE tabla_padre='EST_habitaciones' AND uid_padre IN @roomUids";
+            WHERE visible = 1 AND tabla_padre='EST_habitaciones' AND uid_padre IN @roomUids";
     }
 
     private static string GetHabitacionCamaQuery() {
@@ -95,7 +93,7 @@ public class StaticHotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(u
                 {GetCamaTipoColumnsWithAlias()}                
             FROM EST_camas_tipos ct
             JOIN EST_R_habitaciones_camas hc ON ct.id = hc.id_cama
-            JOIN EST_habitaciones h ON hc.id_habitacion = h.id and h.codigo_interno_hotel = @hotelId";
+            JOIN EST_habitaciones h ON hc.id_habitacion = h.id AND h.visible = 1 AND h.codigo_interno_hotel = @hotelId";
     }
 
     private static string GetRegimenQuery() {
@@ -103,7 +101,7 @@ public class StaticHotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(u
             SELECT 
                 {GetRegimenColumnsWithAlias()}                
             FROM EST_regimenes
-            WHERE id_hoteles like @hotelIDInLike";
+            WHERE visible = 1 AND id_hoteles like @hotelIDInLike";
     }
 
     private static string GetHabitacionQuery() {
@@ -111,7 +109,7 @@ public class StaticHotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(u
             SELECT 
                 {GetHabitacionColumnsWithAlias()}                
             FROM EST_habitaciones
-            WHERE codigo_interno_hotel = @hotelId";
+            WHERE visible = 1 and codigo_interno_hotel = @hotelId";
     }
 
     private static string GetPiscinaQuery() {
@@ -119,7 +117,7 @@ public class StaticHotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(u
             SELECT 
                 {GetPiscinaColumnsWithAlias()}                
             FROM EST_piscinas
-            WHERE visible=1 AND codigo_hotel = @hotelId";
+            WHERE visible = 1 AND codigo_hotel = @hotelId";
     }
 
     private static string GetSalonQuery() {
@@ -127,7 +125,7 @@ public class StaticHotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(u
             SELECT 
                 {GetSalonColumnsWithAlias()}                
             FROM EST_salones
-            WHERE codigo_hotel = @hotelId";
+            WHERE visible = 1 AND codigo_hotel = @hotelId";
     }
 
     private static string GetSalonImageQuery() {
@@ -135,7 +133,7 @@ public class StaticHotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(u
             SELECT 
                 {GetImagesColumnsWithAliases()}                
             FROM EST_Imagenes2
-            WHERE tabla_padre='EST_salones' AND uid_padre IN @salonUids";
+            WHERE visible = 1 AND tabla_padre='EST_salones' AND uid_padre IN @salonUids";
     }
 
     private static string GetPiscinaImageQuery() {
@@ -143,7 +141,7 @@ public class StaticHotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(u
             SELECT 
                 {GetImagesColumnsWithAliases()}                
             FROM EST_Imagenes2
-            WHERE tabla_padre='EST_piscinas' AND uid_padre IN @piscinaUids";
+            WHERE visible = 1 AND tabla_padre='EST_piscinas' AND uid_padre IN @piscinaUids";
     }
 
     private static string GetServicioQuery() {
@@ -180,11 +178,11 @@ public class StaticHotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(u
             "sc.fr_nombre AS FrNombreCategoria",
             "sc.de_nombre AS DeNombreCategoria",
             "sc.pt_nombre AS PtNombreCategoria",
-            "hs.es_detalle AS EsDetalle",
-            "hs.en_detalle AS EnDetalle",
-            "hs.fr_detalle AS FrDetalle",
-            "hs.de_detalle AS DeDetalle",
-            "hs.pt_detalle AS PtDetalle"
+            "hs.es_detalles AS EsDetalle",
+            "hs.en_detalles AS EnDetalle",
+            "hs.fr_detalles AS FrDetalle",
+            "hs.de_detalles AS DeDetalle",
+            "hs.pt_detalles AS PtDetalle"
         };
         return string.Join(", ", columns);
     }

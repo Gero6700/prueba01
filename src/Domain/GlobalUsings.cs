@@ -25,6 +25,7 @@ global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.PeriodPr
 global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.PeriodPricingPax;
 global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Regime;
 global using Microsoft.Extensions.Logging;
-global using Senator.As400.Cloud.Sync.Infrastructure.Domain.Abstractions.Persistence;
-global using Senator.As400.Cloud.Sync.Infrastructure.Domain.Repositories;
 global using Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter.Static;
+global using Senator.As400.Cloud.Sync.Domain.Abstractions.Persistence;
+global using Senator.As400.Cloud.Sync.Domain.Repositories;
+global using Senator.As400.Cloud.Sync.Domain.Abstractions.Core;

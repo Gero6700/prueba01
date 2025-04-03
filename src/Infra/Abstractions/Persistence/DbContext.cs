@@ -1,8 +1,6 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Domain.Abstractions.Persistence;
-
 namespace Senator.As400.Cloud.Sync.Infrastructure.Abstractions.Persistence;
 
-public class DbContext(IDbConnectionFactory connectionFactory, ISqlQueryBuilder sqlQueryBuilder) : IDbContext {
+public class DbContext(IDbConnectionFactory connectionFactory) : IDbContext {
     private IDbConnection? connection;
     private IDbTransaction? transaction;
 
@@ -18,7 +16,7 @@ public class DbContext(IDbConnectionFactory connectionFactory, ISqlQueryBuilder 
 
     public IDbTransaction Transaction => transaction!;
 
-    public ISqlQueryBuilder SqlQueryBuilder { get; } = sqlQueryBuilder; 
+    //public ISqlQueryBuilder SqlQueryBuilder { get; } = sqlQueryBuilder; 
 
     public DbContextState State { get; private set; } = DbContextState.Closed;
 

@@ -46,7 +46,7 @@ public static class ServiceExtension
             }
             translations.Add(new StaticServiceTranslationDto {
                     Name = name,
-                    Description = description,
+                    Description = string.IsNullOrEmpty(description) ? null : description,
                     LanguageIsoCode = language.GetIsoCode()
             });
         }

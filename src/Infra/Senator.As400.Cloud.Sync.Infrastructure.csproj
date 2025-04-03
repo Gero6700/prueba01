@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Domain\**" />
+    <EmbeddedResource Remove="Domain\**" />
+    <None Remove="Domain\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Dtos\BookingCenter\Availability\CancellationPolicyLine.cs" />
     <Compile Remove="Dtos\BookingCenter\Availability\Client.cs" />
     <Compile Remove="Dtos\BookingCenter\Availability\ClientType.cs" />
@@ -36,6 +42,7 @@
     <Compile Remove="Dtos\BookingCenter\Static\Equipment.cs" />
     <Compile Remove="Dtos\BookingCenter\Static\Hotel.cs" />
     <Compile Remove="Dtos\BookingCenter\Static\HotelLanguage.cs" />
+    <Compile Remove="Dtos\BookingCenter\Static\IImageTranslationDto.cs" />
     <Compile Remove="Dtos\BookingCenter\Static\Image.cs" />
     <Compile Remove="Dtos\BookingCenter\Static\ImageTranslation.cs" />
     <Compile Remove="Dtos\BookingCenter\Static\Regime.cs" />
@@ -59,7 +66,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Domain\Abstractions\" />
+    <ProjectReference Include="..\..\Senator.As400.Cloud.Sync.Domain\Senator.As400.Cloud.Sync.Domain.csproj" />
   </ItemGroup>
 
 </Project>

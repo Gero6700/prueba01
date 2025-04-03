@@ -1,4 +1,4 @@
-namespace Senator.As400.Cloud.Sync.Infrastructure.Domain.Entities;
+namespace Senator.As400.Cloud.Sync.Domain.Entities;
 public class Imagen{
     //public string? CodigoTipoHabitacion { get; set; } = null;
     //public int? IdSalon { get; set; } = null;

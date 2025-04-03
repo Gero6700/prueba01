@@ -17,7 +17,7 @@ public static class HabitacionExtension {
             Surface = habitacion.SuperficieAprox,
             RoomTranslations = GetTranslations(habitacion),
             RoomImages = !imagenes.Any() ? null :
-                imagenes.Where(i => i.UidPadre == habitacion.Uid).ToList().ToImageDto<StaticRoomImageDto>(),
+                imagenes.Where(i => i.UidPadre.ToString() == habitacion.Uid).ToList().ToImageDto<StaticRoomImageDto>(),
             RoomPax = new StaticRoomPaxDto {
                 MinWeight = habitacion.PesoMinimo,
                 MaxWeight = habitacion.PesoMaximo,
@@ -74,8 +74,8 @@ public static class HabitacionExtension {
             translations.Add(new StaticRoomTranslationDto {
                 LanguageIsoCode = language.GetIsoCode(),
                 Name = name,
-                ShortDescription = shortDesc,
-                LargeDescription = largeDesc
+                ShortDescription = string.IsNullOrEmpty(shortDesc) ? null : shortDesc,
+                LargeDescription = string.IsNullOrEmpty(largeDesc) ? null : largeDesc
             });
         }
 

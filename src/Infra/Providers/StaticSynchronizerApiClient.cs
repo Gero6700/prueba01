@@ -1,5 +1,6 @@
 
 using System.Net.Http.Json;
+using Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter.Static;
 
 namespace Senator.As400.Cloud.Sync.Infrastructure.Providers;
 public class StaticSynchronizerApiClient : IStaticSynchronizerApiClient {
@@ -10,11 +11,11 @@ public class StaticSynchronizerApiClient : IStaticSynchronizerApiClient {
     }
 
     public Task<HttpResponseMessage> PushHotel(StaticHotelDto hotel) {
-        throw new NotImplementedException();
+        return httpClient.PutAsJsonAsync("api/v1/hotel/push", hotel);
     }
 
     Task<HttpResponseMessage> IStaticSynchronizerApiClient.CreateExtraTranslation(ExtraTranslation extraTranslation) {
-        return httpClient.PutAsJsonAsync("api/v1/extratranslation/create", extraTranslation);
+        throw new NotImplementedException();
     }
 
     Task<HttpResponseMessage> IStaticSynchronizerApiClient.CreateOfferSupplementTranslation(OfferAndSupplementTranslation offerAndSupplementTranslation) {

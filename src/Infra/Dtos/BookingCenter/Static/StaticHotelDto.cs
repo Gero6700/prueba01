@@ -87,11 +87,11 @@ public class StaticHotelImageDto : IImageDto {
     public IEnumerable<StaticImageTranslationDto>? ImageTranslations { get; set; }
 }
 
-public class StaticHotelImageTranslationDto : IImageTranslationDto {
-    public string LanguageIsoCode { get; set; } = string.Empty;
-    public string Title { get; set; } = string.Empty;
-    public string? Description { get; set; }
-}
+//public class StaticHotelImageTranslationDto : IImageTranslationDto {
+//    public string LanguageIsoCode { get; set; } = string.Empty;
+//    public string Title { get; set; } = string.Empty;
+//    public string? Description { get; set; }
+//}
 
 public class StaticHotelLanguageDto {
     public required string LanguageIsoCode { get; set; }
@@ -259,10 +259,10 @@ public class StaticSalonTranslationDto {
     public required string Description { get; set; }
 }
 
-public class StaticSalonImageDto {
-    public required int Order { get; set; }
-    public required string Url { get; set; }
-    public IEnumerable<StaticSalonImageTranslationDto>? SalonImageTranslations { get; set; }
+public class StaticSalonImageDto : IImageDto {
+    public int Order { get; set; }
+    public string Url { get; set; }
+    public IEnumerable<StaticImageTranslationDto>? ImageTranslations { get; set; }
 }
 
 public class StaticSalonImageTranslationDto {

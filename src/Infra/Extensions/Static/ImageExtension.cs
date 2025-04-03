@@ -117,7 +117,7 @@ public static class ImageExtension {
             translations.Add(new StaticImageTranslationDto {
                 LanguageIsoCode = language.GetIsoCode(),
                 Title = title,
-                Description = description
+                Description = string.IsNullOrEmpty(description) ? null : description
             });
         }
         return translations;

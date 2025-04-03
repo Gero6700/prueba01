@@ -1,4 +1,4 @@
-namespace Senator.As400.Cloud.Sync.Infrastructure.Domain.Entities;
+namespace Senator.As400.Cloud.Sync.Domain.Entities;
 public class Piscina {
     public int Id { get; set; }
     public Guid Uid { get; set; } 

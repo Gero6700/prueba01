@@ -1,5 +1,3 @@
-using Senator.As400.Cloud.Sync.Infrastructure.Domain.Abstractions.Persistence;
-
 namespace Senator.As400.Cloud.Sync.Infrastructure.Abstractions.Persistence;
 
 public class UnitOfWork(IDbContext context) : IUnitOfWork {
@@ -27,16 +25,16 @@ public class UnitOfWork(IDbContext context) : IUnitOfWork {
         State = UnitOfWorkState.RolledBack;
     }
 
-    public void Dispose() {
-        Dispose(true);
-        GC.SuppressFinalize(this);
-    }
+    //public void Dispose() {
+    //    Dispose(true);
+    //    GC.SuppressFinalize(this);
+    //}
 
-    protected virtual void Dispose(bool disposing) {
-        if (disposed) return;
-        if (disposing) {
-            DbContext.Dispose();
-        }
-        disposed = true;
-    }
+    //protected virtual void Dispose(bool disposing) {
+    //    if (disposed) return;
+    //    if (disposing) {
+    //        DbContext.Dispose();
+    //    }
+    //    disposed = true;
+    //}
 }

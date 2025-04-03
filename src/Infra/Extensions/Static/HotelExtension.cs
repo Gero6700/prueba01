@@ -60,7 +60,7 @@ public static class HotelExtension
             Meals = hotel.Regimenes.ToMealDto(), 
             Services = hotel.Servicios.ToServiceDto(),
             SwimmingPools = hotel.Piscinas.ToSwimmingPoolDto(hotel.PiscinasImagenes),
-            Salons = hotel.Salones.ToSalonDto(),
+            Salons = hotel.Salones.ToSalonDto(hotel.SalonesImagenes),
         };
     }
 
