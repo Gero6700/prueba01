@@ -14,9 +14,10 @@ public static class PiscinasExtension {
             IsHeatedPool = false, //no tenemos datos
             HasWaterSlides = false, //no tenemos datos
             SwimmingPoolTranslations = GetTranslations(piscina),
-            SwimmingPoolImages = imagenes.Any() ? 
-                imagenes.Where(i => i.UidPadre == piscina.Uid).ToList().ToImageDto<StaticSwimmingPoolImageDto>() : 
-                null
+            //TODO: ver error
+            //SwimmingPoolImages = imagenes.Any() ? 
+            //    imagenes.Where(i => i.UidPadre == piscina.Uid).ToList().ToImageDto<StaticSwimmingPoolImageDto>() : 
+            //    null
         }).ToList();
     }
     private static List<StaticSwimmingPoolTranslationDto> GetTranslations(Piscina piscina) {

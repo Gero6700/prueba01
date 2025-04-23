@@ -28,24 +28,24 @@ builder.Services.AddUseCases();
 builder.Services.AddSingleton<ISynchronizerHandler<GenericSynchronizationEvent>, GenericEventHandler>();
 
 //subscription to quota
-//var projectId = configuration["QuotaGooglePubSub:ProjectId"];
-//var subscriptionId = configuration["QuotaGooglePubSub:SubscriptionId"];
+var projectId = configuration["QuotaGooglePubSub:ProjectId"];
+var subscriptionId = configuration["QuotaGooglePubSub:SubscriptionId"];
+var subscriptionName = SubscriptionName.FromProjectSubscription(projectId, subscriptionId);
+builder.Services.AddSubscriberClient(subscriptionName);
+builder.Services.AddHostedService<SubscriptionPullStreamingService>();
+
+//subscription to avail with streaming
+//var projectId = configuration["AvailGooglePubSub:ProjectId"];
+//var subscriptionId = configuration["AvailGooglePubSub:SubscriptionId"];
 //var subscriptionName = SubscriptionName.FromProjectSubscription(projectId, subscriptionId);
 //builder.Services.AddSubscriberClient(subscriptionName);
 //builder.Services.AddHostedService<SubscriptionPullStreamingService>();
 
-////subscription to avail with streaming
-////var projectId = configuration["AvailGooglePubSub:ProjectId"];
-////var subscriptionId = configuration["AvailGooglePubSub:SubscriptionId"];
-////var subscriptionName = SubscriptionName.FromProjectSubscription(projectId, subscriptionId);
-////builder.Services.AddSubscriberClient(subscriptionName);
-////builder.Services.AddHostedService<SubscriptionPullStreamingService>();
-
 builder.Services.AddSubscriberServiceApiClient();
 
 ////subscription to avail and static 
-//builder.Services.AddHostedService<AvailSubscriptionPullService>();
-builder.Services.AddHostedService<StaticSubscriptionPullService>();
+builder.Services.AddHostedService<AvailSubscriptionPullService>();
+//builder.Services.AddHostedService<StaticSubscriptionPullService>();
 
 
 var app = builder.Build();

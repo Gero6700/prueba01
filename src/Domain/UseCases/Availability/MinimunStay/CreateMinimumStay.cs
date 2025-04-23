@@ -1,3 +1,5 @@
+using System.Text.Json;
+
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Availability.MinimunStay;
 public class CreateMinimumStay : ICreateMinimumStay {
     private readonly IAvailabilitySynchronizerApiClient availabilitySynchronizerApiClient;
@@ -24,6 +26,7 @@ public class CreateMinimumStay : ICreateMinimumStay {
         }
 
         var minimumStay = conestmi.toMinimumStay();
+        var json = JsonSerializer.Serialize(minimumStay);
         return await availabilitySynchronizerApiClient.CreateMinimumStay(minimumStay);
     }
 }

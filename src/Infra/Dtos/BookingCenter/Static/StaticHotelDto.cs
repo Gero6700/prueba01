@@ -17,10 +17,10 @@ public class StaticHotelDto {
     public required bool HasSpecialTaxes { get; set; }
     public required StaticHotelChainDto HotelChain { get; set; }
     public required StaticHotelAddressDto HotelAddress { get; set; }
-    public required StaticHotelTimeZoneDto HotelTimeZone { get; set; }
+    public required StaticHotelTimeZoneDto HotelTimeZone { get; set; } //TODO: pdte de ver la relacion con la tabla de zonas horarias
     public StaticHotelContactDto? HotelContact { get; set; }
     public required StaticHotelPaxAgesConfigurationDto HotelPaxAgesConfiguration { get; set; }
-    public required IEnumerable<StaticHotelTranslationDto> HotelTranslations { get; set; }
+    public required IEnumerable<StaticHotelTranslationDto>? HotelTranslations { get; set; }
     public IEnumerable<StaticHotelImageDto>? HotelImages { get; set; } //TODO: Nullable,ver con Jesús
     public IEnumerable<StaticHotelLanguageDto>? HotelLanguages { get; set; } //TODO: Nullable,ver con Jesús
     public IEnumerable<StaticHotelNoticeDto>? HotelNotices { get; set; }
@@ -76,8 +76,8 @@ public class StaticHotelPaxAgesConfigurationDto {
 
 public class StaticHotelTranslationDto {
     public required string LanguageIsoCode { get; set; }
-    public string? ShortDescription { get; set; }
-    public string? LargeDescription { get; set; }
+    public string ShortDescription { get; set; } = string.Empty;
+    public string LargeDescription { get; set; } = string.Empty;
     public string? LocationDescription { get; set; }
 }
 
@@ -155,8 +155,8 @@ public class StaticRoomPaxDto {
 }
 
 public class StaticRoomBedDto {
-    public int? Width { get; set; }
-    public int? Height { get; set; }
+    public int Width { get; set; }
+    public int Height { get; set; }
     public IEnumerable<StaticRoomBedTranslationDto>? RoomBedTranslations { get; set; }
 }
 
@@ -199,7 +199,7 @@ public class StaticServiceTranslationDto {
 
 public class StaticMealDto {
     public required string Code { get; set; }
-    public required IEnumerable<StaticMealTranslationDto> MealTranslations { get; set; }
+    public required IEnumerable<StaticMealTranslationDto>? MealTranslations { get; set; }
 }
 
 public class StaticMealTranslationDto {
@@ -207,7 +207,7 @@ public class StaticMealTranslationDto {
     public required string Name { get; set; }
 }
 
-public class StaticSwimmingPoolDto {
+public class StaticSwimmingPoolDto { //TODO: En bd no son not null, ver con Jesus
     public required string Code { get; set; }
     public required int PoolsNumber { get; set; }
     public required int Capacity { get; set; }
@@ -226,8 +226,8 @@ public class StaticSwimmingPoolTranslationDto {
 }
 
 public class StaticSwimmingPoolImageDto : IImageDto {
-    public int Order { get; set; }
-    public string Url { get; set; }
+    public required int Order { get; set; }
+    public required string Url { get; set; }
     public IEnumerable<StaticImageTranslationDto>? ImageTranslations { get; set; }
 }
 
