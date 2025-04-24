@@ -28,11 +28,11 @@ builder.Services.AddUseCases();
 builder.Services.AddSingleton<ISynchronizerHandler<GenericSynchronizationEvent>, GenericEventHandler>();
 
 //subscription to quota
-var projectId = configuration["QuotaGooglePubSub:ProjectId"];
-var subscriptionId = configuration["QuotaGooglePubSub:SubscriptionId"];
-var subscriptionName = SubscriptionName.FromProjectSubscription(projectId, subscriptionId);
-builder.Services.AddSubscriberClient(subscriptionName);
-builder.Services.AddHostedService<SubscriptionPullStreamingService>();
+//var projectId = configuration["QuotaGooglePubSub:ProjectId"];
+//var subscriptionId = configuration["QuotaGooglePubSub:SubscriptionId"];
+//var subscriptionName = SubscriptionName.FromProjectSubscription(projectId, subscriptionId);
+//builder.Services.AddSubscriberClient(subscriptionName);
+//builder.Services.AddHostedService<SubscriptionPullStreamingService>();
 
 //subscription to avail with streaming
 //var projectId = configuration["AvailGooglePubSub:ProjectId"];
