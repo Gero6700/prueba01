@@ -20,6 +20,7 @@ public class CloudSyncController : ControllerBase
     [ProducesResponseType(StatusCodes.Status502BadGateway)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
     public async Task<IActionResult> PushHotel(int hotelId)
     {
         var pushHotelResult = await pushHotel.Execute(hotelId);
