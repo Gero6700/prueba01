@@ -5,7 +5,7 @@ public static class HabitacionExtension {
         this IEnumerable<Habitacion> habitaciones, 
         IEnumerable<Imagen> imagenes, 
         IEnumerable<CamaTipo> camas,
-        IEnumerable<Servicio> servicios) {
+        IEnumerable<HabitacionServicio> servicios) {
 
         if (!habitaciones.Any()) {
             return [];
@@ -32,7 +32,7 @@ public static class HabitacionExtension {
                 camas.Where(c => c.CodigoTipoHabitacion == habitacion.CodigoTipoHabitacion).ToList().ToRoomBedDto(),
             Equipments = null, //no tenemos datos
             Services = !servicios.Any() ? null :
-                servicios.Where(s => s.IdHabitacion == habitacion.Id).ToList().ToServiceDto()
+                servicios.Where(s => s.IdHabitacion == habitacion.Id).Select(s => s.IdHabitacion.ToString()).ToList()
         });
     }
     private static List<StaticRoomTranslationDto> GetTranslations(Habitacion estHabitacion) {

@@ -1,7 +1,7 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Extensions.Static;
 public static class ReszoimExtension {
-    public static Tax ToTax(this Reszoim reszoim) {
-        return new Tax {
+    public static StaticTax ToTax(this Reszoim reszoim) {
+        return new StaticTax {
             Code = reszoim.Zocod,
             Description = reszoim.Zotext,
             Amount = reszoim.Zoporc,

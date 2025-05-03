@@ -16,15 +16,15 @@ public class StaticHotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(u
         }
 
         //hotel.Imagenes = [.. result.Read<Imagen>()];
-        hotel.Regimenes = [.. result.Read<Regimen>()];
+        hotel.RegimenesIds = [.. result.Read<int>()];
         hotel.Habitaciones = [.. result.Read<Habitacion>()];
         //hotel.HabitacionesImagenes = [.. result.Read<Imagen>()];
         hotel.HabitacionesCamas = [.. result.Read<CamaTipo>()];
-        hotel.HabitacionesServicios = [.. result.Read<Servicio>()];
+        hotel.HabitacionesServicios = [.. result.Read<HabitacionServicio>()];
         hotel.Piscinas = [.. result.Read<Piscina>()];
         hotel.Salones = [.. result.Read<Salon>()];
        // hotel.SalonesImagenes = [.. result.Read<Imagen>()];
-        hotel.Servicios = [.. result.Read<Servicio>()];
+        hotel.ServiciosIds = [.. result.Read<int>()];
 
         //Se consultan las imagenes del hotel, las habitaciones y las piscinas segun los uid del resultado anterior
         var hotelUid = hotel.Uid;
@@ -149,40 +149,48 @@ public class StaticHotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(u
             SELECT 
                 {GetServicioColumnsWithAlias()}                
             FROM EST_servicios s
-            JOIN EST_servicios_categorias sc ON sc.id = s.id_categoria
+            -- JOIN EST_servicios_categorias sc ON sc.id = s.id_categoria
             JOIN EST_R_servicios_hoteles hs ON hs.id_servicio = s.id AND hs.codigo_hotel = @hotelId";
     }
+
+    //private static string GetHabitacionServicio() {
+    //    return $@"
+    //        SELECT 
+    //            {GetServicioColumnsWithAlias()}, hs.id_habitacion AS IdHabitacion               
+    //        FROM EST_servicios s
+    //        -- JOIN EST_servicios_categorias sc ON sc.id = s.id_categoria
+    //        JOIN EST_R_servicios_habitaciones hs ON hs.id_servicio = s.id
+    //        JOIN EST_habitaciones h ON hs.id_habitacion = h.id and h.codigo_interno_hotel = @hotelId";
+    //}
 
     private static string GetHabitacionServicio() {
         return $@"
             SELECT 
-                {GetServicioColumnsWithAlias()}, hs.id_habitacion AS IdHabitacion               
-            FROM EST_servicios s
-            JOIN EST_servicios_categorias sc ON sc.id = s.id_categoria
-            JOIN EST_R_servicios_habitaciones hs ON hs.id_servicio = s.id
+                hs.id_servicio as IdServicio, hs.id_habitacion AS IdHabitacion               
+            FROM EST_R_servicios_habitaciones hs
             JOIN EST_habitaciones h ON hs.id_habitacion = h.id and h.codigo_interno_hotel = @hotelId";
     }
 
     private static string GetServicioColumnsWithAlias() {
         var columns = new List<string>
         {
-            "s.id AS Id",
-            "s.es_servicio AS EsServicio",
-            "s.en_servicio AS EnServicio",
-            "s.de_servicio AS DeServicio",
-            "s.fr_servicio AS FrServicio",
-            "s.pt_servicio AS PtServicio",
-            "sc.id AS IdCategoria",
-            "sc.es_nombre AS EsNombreCategoria",
-            "sc.en_nombre AS EnNombreCategoria",
-            "sc.fr_nombre AS FrNombreCategoria",
-            "sc.de_nombre AS DeNombreCategoria",
-            "sc.pt_nombre AS PtNombreCategoria",
-            "hs.es_detalles AS EsDetalle",
-            "hs.en_detalles AS EnDetalle",
-            "hs.fr_detalles AS FrDetalle",
-            "hs.de_detalles AS DeDetalle",
-            "hs.pt_detalles AS PtDetalle"
+            "s.id AS IdServicio"
+            //"s.es_servicio AS EsServicio",
+            //"s.en_servicio AS EnServicio",
+            //"s.de_servicio AS DeServicio",
+            //"s.fr_servicio AS FrServicio",
+            //"s.pt_servicio AS PtServicio",
+            //"sc.id AS IdCategoria",
+            //"sc.es_nombre AS EsNombreCategoria",
+            //"sc.en_nombre AS EnNombreCategoria",
+            //"sc.fr_nombre AS FrNombreCategoria",
+            //"sc.de_nombre AS DeNombreCategoria",
+            //"sc.pt_nombre AS PtNombreCategoria",
+            //"hs.es_detalles AS EsDetalle",
+            //"hs.en_detalles AS EnDetalle",
+            //"hs.fr_detalles AS FrDetalle",
+            //"hs.de_detalles AS DeDetalle",
+            //"hs.pt_detalles AS PtDetalle"
         };
         return string.Join(", ", columns);
     }
@@ -287,12 +295,13 @@ public class StaticHotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(u
     private static string GetRegimenColumnsWithAlias() {
         var columns = new List<string>
         {
-        "regimen AS Codigo",
-        "es_nombre AS EsNombre",
-        "en_nombre AS EnNombre",
-        "fr_nombre AS FrNombre",
-        "de_nombre AS DeNombre",
-        "pt_nombre AS PtNombre"
+            "id as Id"
+        //"regimen AS Codigo",
+        //"es_nombre AS EsNombre",
+        //"en_nombre AS EnNombre",
+        //"fr_nombre AS FrNombre",
+        //"de_nombre AS DeNombre",
+        //"pt_nombre AS PtNombre"
     };
         return string.Join(", ", columns);
     }

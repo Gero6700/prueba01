@@ -47,16 +47,16 @@ public class Hotel {
     public string PtDescripcion { get; set; } = string.Empty;
     public string PtSituacion { get; set; } = string.Empty;
     public IEnumerable<Imagen> Imagenes { get; set; } = [];
-    public IEnumerable<Regimen> Regimenes { get; set; } = [];
+    public IEnumerable<int> RegimenesIds { get; set; } = [];
     public IEnumerable<Piscina> Piscinas { get; set; } = [];
     public IEnumerable<Imagen> PiscinasImagenes { get; set; } = []; 
 
     public IEnumerable<Habitacion> Habitaciones { get; set; } = [];
     public IEnumerable<Imagen> HabitacionesImagenes { get; set; } = [];
     public IEnumerable<CamaTipo> HabitacionesCamas { get; set; } = [];
-    public IEnumerable<Servicio> HabitacionesServicios { get; set; } = [];
+    public IEnumerable<HabitacionServicio> HabitacionesServicios { get; set; } = [];
 
     public IEnumerable<Salon> Salones { get; set; } = [];
     public IEnumerable<Imagen> SalonesImagenes { get; set; } = [];
-    public IEnumerable<Servicio> Servicios { get; set; } = [];    
+    public IEnumerable<int> ServiciosIds { get; set; } = [];    
 }

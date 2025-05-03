@@ -14,14 +14,5 @@ public class Servicio {
     public string DeDetalle { get; set; } = string.Empty;
     public string PtDetalle { get; set; } = string.Empty;
 
-
-    //Category
     public int IdCategoria { get; set; }
-    public string EsNombreCategoria { get; set; } = string.Empty;
-    public string EnNombreCategoria { get; set; } = string.Empty;
-    public string FrNombreCategoria { get; set; } = string.Empty;
-    public string DeNombreCategoria { get; set; } = string.Empty;
-    public string PtNombreCategoria { get; set; } = string.Empty;
-
-    public int? IdHabitacion { get; set; }
 }

@@ -1,7 +1,7 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Extensions.Static;
 public static class DesextrExtension{
-    public static ExtraTranslation ToExtraTranslation(this Desextr desextr) {
-        return new ExtraTranslation {
+    public static StaticExtraTranslationDto ToExtraTranslation(this Desextr desextr) {
+        return new StaticExtraTranslationDto {
             ExtraCode = desextr.ExtraCode,
             Description = desextr.Detext,
             LanguageIsoCode = desextr.IdioIsoCode

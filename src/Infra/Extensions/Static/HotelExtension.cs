@@ -16,11 +16,6 @@ public static class HotelExtension
             FloorsNumber = hotel.NumeroPlantas,
             ConstructionYear = hotel.AnioConstruccion,
             HasSpecialTaxes = false, // TODO: Es nuevo, averiguar el mapeo
-            HotelChain = new StaticHotelChainDto //TODO: va en la cabecera
-            {
-                Code = "DefaultCode", // Set appropriate value
-                Active = true // Set appropriate value
-            },
             HotelAddress = new StaticHotelAddressDto
             {
                 Country = hotel.EsPais,
@@ -34,10 +29,7 @@ public static class HotelExtension
                 Latitude = double.TryParse(hotel.GmapsLatitud, out var lat) ? lat : null,
                 Longitude = double.TryParse(hotel.GmapsLongitud, out var lon) ? lon : null,
             },
-            HotelTimeZone = new StaticHotelTimeZoneDto //TODO: Es nuevo, averiguar el mapeo. Tambien está en availability
-            {
-                GreenwichMeanTime = "GMT+01:00:00"
-            },
+            HotelTimeZoneDescription = null, //TODO: Es nuevo, averiguar el mapeo
             HotelContact = new StaticHotelContactDto
             {
                 Phone = hotel.Telefono,
@@ -57,8 +49,8 @@ public static class HotelExtension
             HotelTranslations = GetTranslations(hotel),
             HotelImages = hotel.Imagenes.ToImageDto<StaticHotelImageDto>(),
             Rooms = hotel.Habitaciones.ToRoomDto(hotel.Imagenes, hotel.HabitacionesCamas, hotel.HabitacionesServicios),
-            Meals = hotel.Regimenes.ToMealDto(), 
-            Services = hotel.Servicios.ToServiceDto(),
+            MealCodes = hotel.RegimenesIds.Select(r => r.ToString()), //.ToMealDto(), 
+            ServiceCodes = !hotel.ServiciosIds.Any() ? null : hotel.ServiciosIds.Select(r => r.ToString()), //.ToServiceDto(),
             SwimmingPools = hotel.Piscinas.ToSwimmingPoolDto(hotel.PiscinasImagenes),
             Salons = hotel.Salones.ToSalonDto(hotel.SalonesImagenes),
         };

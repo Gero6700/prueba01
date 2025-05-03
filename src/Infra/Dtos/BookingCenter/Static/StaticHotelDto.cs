@@ -11,22 +11,22 @@ public class StaticHotelDto {
     public string? Director { get; set; }
     public int? RoomsNumber { get; set; }
     public int? FloorsNumber { get; set; }
-    public DateTime? OpeningDate { get; set; }
-    public DateTime? ClosingDate { get; set; }
+    public DateOnly? OpeningDate { get; set; }
+    public DateOnly? ClosingDate { get; set; }
     public int? ConstructionYear { get; set; }
     public required bool HasSpecialTaxes { get; set; }
-    public required StaticHotelChainDto HotelChain { get; set; }
+    //public required int HotelChainId { get; set; }
     public required StaticHotelAddressDto HotelAddress { get; set; }
-    public required StaticHotelTimeZoneDto HotelTimeZone { get; set; } //TODO: pdte de ver la relacion con la tabla de zonas horarias
+    public string? HotelTimeZoneDescription { get; set; }
     public StaticHotelContactDto? HotelContact { get; set; }
     public required StaticHotelPaxAgesConfigurationDto HotelPaxAgesConfiguration { get; set; }
-    public required IEnumerable<StaticHotelTranslationDto>? HotelTranslations { get; set; }
+    public IEnumerable<StaticHotelTranslationDto>? HotelTranslations { get; set; }
     public IEnumerable<StaticHotelImageDto>? HotelImages { get; set; } //TODO: Nullable,ver con Jesús
     public IEnumerable<StaticHotelLanguageDto>? HotelLanguages { get; set; } //TODO: Nullable,ver con Jesús
     public IEnumerable<StaticHotelNoticeDto>? HotelNotices { get; set; }
     public required IEnumerable<StaticRoomDto> Rooms { get; set; }
-    public required IEnumerable<StaticMealDto> Meals { get; set; }
-    public IEnumerable<StaticServiceDto>? Services { get; set; }
+    public required IEnumerable<string> MealCodes { get; set; }
+    public IEnumerable<string>? ServiceCodes { get; set; }
     public IEnumerable<StaticSwimmingPoolDto>? SwimmingPools { get; set; }
     public IEnumerable<StaticSalonDto>? Salons { get; set; }
 }
@@ -111,8 +111,8 @@ public class StaticRoomDto {
     public IEnumerable<StaticRoomImageDto>? RoomImages { get; set; }
     public StaticRoomPaxDto? RoomPax { get; set; } //TODO: Se ha quitado la lista, ver con Jesus
     public IEnumerable<StaticRoomBedDto>? RoomBeds { get; set; }
-    public IEnumerable<StaticEquipmentDto>? Equipments { get; set; }
-    public IEnumerable<StaticServiceDto>? Services { get; set; }
+    public IEnumerable<string>? Equipments { get; set; }
+    public IEnumerable<string>? Services { get; set; }
 }
 
 public class StaticRoomTranslationDto {
@@ -165,47 +165,47 @@ public class StaticRoomBedTranslationDto {
     public required string Description { get; set; }
 }
 
-public class StaticEquipmentDto {
-    public required string Name { get; set; }
-    public IEnumerable<StaticEquipmentTranslationDto>? EquipmentTranslations { get; set; }
-}
+//public class StaticEquipmentDto {
+//    public required string Name { get; set; }
+//    public IEnumerable<StaticEquipmentTranslationDto>? EquipmentTranslations { get; set; }
+//}
 
-public class StaticEquipmentTranslationDto {
-    public required string LanguageIsoCode { get; set; }
-    public required string Description { get; set; }
-}
+//public class StaticEquipmentTranslationDto {
+//    public required string LanguageIsoCode { get; set; }
+//    public required string Description { get; set; }
+//}
 
-public class StaticServiceDto {
-    public required string Code { get; set; }
-    public required StaticServiceCategoryDto ServiceCategory { get; set; }
-    public IEnumerable<StaticServiceTranslationDto>? ServiceTranslations { get; set; }
-}
+//public class StaticServiceDto {
+//    public required string Code { get; set; }
+//    public required StaticServiceCategoryDto ServiceCategory { get; set; }
+//    public IEnumerable<StaticServiceTranslationDto>? ServiceTranslations { get; set; }
+//}
 
-public class StaticServiceCategoryDto {
-    public required string Code { get; set; }
-    public IEnumerable<StaticServiceCategoryTranslationDto>? ServiceCategoryTranslations { get; set; }
-}
+//public class StaticServiceCategoryDto {
+//    public required string Code { get; set; }
+//    public IEnumerable<StaticServiceCategoryTranslationDto>? ServiceCategoryTranslations { get; set; }
+//}
 
-public class StaticServiceCategoryTranslationDto {
-    public required string LanguageIsoCode { get; set; }
-    public required string Name { get; set; }
-}
+//public class StaticServiceCategoryTranslationDto {
+//    public required string LanguageIsoCode { get; set; }
+//    public required string Name { get; set; }
+//}
 
-public class StaticServiceTranslationDto {
-    public required string LanguageIsoCode { get; set; }
-    public required string Name { get; set; }
-    public string? Description { get; set; }
-}
+//public class StaticServiceTranslationDto {
+//    public required string LanguageIsoCode { get; set; }
+//    public required string Name { get; set; }
+//    public string? Description { get; set; }
+//}
 
-public class StaticMealDto {
-    public required string Code { get; set; }
-    public required IEnumerable<StaticMealTranslationDto>? MealTranslations { get; set; }
-}
+//public class StaticMealDto {
+//    public required string Code { get; set; }
+//    public required IEnumerable<StaticMealTranslationDto>? MealTranslations { get; set; }
+//}
 
-public class StaticMealTranslationDto {
-    public required string LanguageIsoCode { get; set; }
-    public required string Name { get; set; }
-}
+//public class StaticMealTranslationDto {
+//    public required string LanguageIsoCode { get; set; }
+//    public required string Name { get; set; }
+//}
 
 public class StaticSwimmingPoolDto { //TODO: En bd no son not null, ver con Jesus
     public required string Code { get; set; }

@@ -14,11 +14,11 @@ public class StaticSynchronizerApiClient : IStaticSynchronizerApiClient {
         return httpClient.PutAsJsonAsync("api/v1/hotel/push", hotel);
     }
 
-    Task<HttpResponseMessage> IStaticSynchronizerApiClient.CreateExtraTranslation(ExtraTranslation extraTranslation) {
+    Task<HttpResponseMessage> IStaticSynchronizerApiClient.CreateExtraTranslation(StaticExtraTranslationDto extraTranslation) {
         throw new NotImplementedException();
     }
 
-    Task<HttpResponseMessage> IStaticSynchronizerApiClient.CreateOfferSupplementTranslation(OfferAndSupplementTranslation offerAndSupplementTranslation) {
+    Task<HttpResponseMessage> IStaticSynchronizerApiClient.CreateOfferSupplementTranslation(StaticOfferAndSupplementTranslation offerAndSupplementTranslation) {
         throw new NotImplementedException();
     }
 
@@ -26,7 +26,7 @@ public class StaticSynchronizerApiClient : IStaticSynchronizerApiClient {
         throw new NotImplementedException();
     }
 
-    Task<HttpResponseMessage> IStaticSynchronizerApiClient.CreateTax(Tax tax) {
+    Task<HttpResponseMessage> IStaticSynchronizerApiClient.CreateTax(StaticTax tax) {
         throw new NotImplementedException();
     }
 
@@ -42,15 +42,15 @@ public class StaticSynchronizerApiClient : IStaticSynchronizerApiClient {
         throw new NotImplementedException();
     }
 
-    Task<HttpResponseMessage> IStaticSynchronizerApiClient.DeleteTax(Tax tax) {
+    Task<HttpResponseMessage> IStaticSynchronizerApiClient.DeleteTax(StaticTax tax) {
         throw new NotImplementedException();
     }
 
-    Task<HttpResponseMessage> IStaticSynchronizerApiClient.UpdateExtraTranslation(ExtraTranslation extraTranslations) {
+    Task<HttpResponseMessage> IStaticSynchronizerApiClient.UpdateExtraTranslation(StaticExtraTranslationDto extraTranslations) {
         throw new NotImplementedException();
     }
 
-    Task<HttpResponseMessage> IStaticSynchronizerApiClient.UpdateOfferSupplementTranslation(OfferAndSupplementTranslation offerAndSupplementTranslation) {
+    Task<HttpResponseMessage> IStaticSynchronizerApiClient.UpdateOfferSupplementTranslation(StaticOfferAndSupplementTranslation offerAndSupplementTranslation) {
         throw new NotImplementedException();
     }
 
@@ -58,7 +58,7 @@ public class StaticSynchronizerApiClient : IStaticSynchronizerApiClient {
         throw new NotImplementedException();
     }
 
-    Task<HttpResponseMessage> IStaticSynchronizerApiClient.UpdateTax(Tax tax) {
+    Task<HttpResponseMessage> IStaticSynchronizerApiClient.UpdateTax(StaticTax tax) {
         throw new NotImplementedException();
     }
 }
