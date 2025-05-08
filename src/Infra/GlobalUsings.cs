@@ -23,3 +23,4 @@ global using Senator.As400.Cloud.Sync.Domain.Abstractions.Persistence;
 global using Senator.As400.Cloud.Sync.Domain.Entities;
 global using Senator.As400.Cloud.Sync.Infrastructure.Abstractions.Persistence;
 global using Senator.As400.Cloud.Sync.Domain.Repositories;
+global using System.Net.Http.Json;
