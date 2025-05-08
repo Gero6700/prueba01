@@ -1,5 +1,14 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Persistence.Repositories;
 public class StaticHotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(unitOfWork), IStaticHotelRepository {
+
+    public async Task<IEnumerable<int>?> GetAllHotelsIdsAsync() {
+        using var connection = Connection;
+        var result = await connection.QueryAsync<int>(
+            "SELECT codigo_interno FROM EST_Hoteles WHERE visible = 1",
+            transaction: DbContext.Transaction);
+        return [.. result];
+    }
+
     public async Task<Hotel?> GetHotelAsync(int hotelId) {
         using var connection = Connection;
         var result = await connection.QueryMultipleAsync(
