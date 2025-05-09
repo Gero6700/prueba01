@@ -4,7 +4,7 @@ public static class RepositoriesService {
         services.AddScoped<IDbContext, DbContext>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-        services.AddScoped<IStaticHotelRepository, StaticHotelRepository>();
+        services.AddScoped<IHotelRepository, HotelRepository>();
         return services;
     }
 }

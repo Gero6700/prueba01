@@ -6,6 +6,6 @@ public class DeleteStaticOfferSupplementTranslation : IDeleteStaticOfferSuppleme
     }
     public async Task<HttpResponseMessage> Execute(Desofer desofer) {
         var offerAndSupplementTranslation = desofer.ToOfferAndSupplementTranslation();
-        return await staticSynchronizerApiClient.DeleteOfferSupplementTranslation(offerAndSupplementTranslation.OfferAndSupplementCode, offerAndSupplementTranslation.LanguageIsoCode);
+        return await staticSynchronizerApiClient.DeleteOfferSupplementTranslation(offerAndSupplementTranslation.OfferAndSupplementCode);
     }
 }

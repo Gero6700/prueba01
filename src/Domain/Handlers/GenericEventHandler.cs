@@ -55,8 +55,7 @@ public class GenericEventHandler(
     IUpdateStaticPaymentType updateStaticPaymentType,
     IDeleteStaticPaymentType deleteStaticPaymentType,
     ICreateStaticTax createStaticTax,
-    IUpdateStaticTax updateStaticTax,
-    IDeleteStaticTax deleteStaticTax
+    IUpdateStaticTax updateStaticTax
     ) : ISynchronizerHandler<GenericSynchronizationEvent> {
     private readonly ICreateCancellationPolicy createCancellationPolicyLine = createCancellationPolicyLine;
     private readonly IUpdateCancellationPolicy updateCancellationPolicyLine = updateCancellationPolicyLine;
@@ -110,7 +109,6 @@ public class GenericEventHandler(
     private readonly IDeleteStaticPaymentType deleteStaticPaymentType = deleteStaticPaymentType;
     private readonly ICreateStaticTax createStaticTax = createStaticTax;
     private readonly IUpdateStaticTax updateStaticTax = updateStaticTax;
-    private readonly IDeleteStaticTax deleteStaticTax = deleteStaticTax;
 
     public async Task<HttpResponseMessage> HandleAsync(GenericSynchronizationEvent @event) {
         switch (@event.Table) {
@@ -385,7 +383,6 @@ public class GenericEventHandler(
         return operation switch {
             nameof(OperationType.Create) => await createStaticTax.Execute(tax),
             nameof(OperationType.Update) => await updateStaticTax.Execute(tax),
-            nameof(OperationType.Delete) => await deleteStaticTax.Execute(tax),
             _ => throw new InvalidOperationException($"Unsupported operation: {operation} in Tax"),
         };
     }

@@ -30,6 +30,8 @@
     <Compile Remove="UseCases\Availability\Room\IDeleteRoom.cs" />
     <Compile Remove="UseCases\Availability\Room\IUpdateRoom.cs" />
     <Compile Remove="UseCases\Availability\Room\UpdateRoom.cs" />
+    <Compile Remove="UseCases\Static\DeleteStaticTax.cs" />
+    <Compile Remove="UseCases\Static\IDeleteStaticTax.cs" />
     <Compile Remove="UseCases\Static\PushStaticExtrasTranslations.cs" />
     <Compile Remove="UseCases\Static\PushStaticHotel.cs" />
     <Compile Remove="UseCases\Static\PushStaticOffersAndSupplementsTranslations.cs" />

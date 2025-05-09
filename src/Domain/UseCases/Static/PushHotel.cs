@@ -1,6 +1,3 @@
-using System.Text.Json;
-using Senator.As400.Cloud.Sync.Domain.Abstractions.Core;
-
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Static;
 public class PushHotel {
     private readonly IStaticSynchronizerApiClient staticSynchronizerApiClient;

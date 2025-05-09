@@ -12,4 +12,9 @@ public interface IStaticSynchronizerApiClient {
     Task<HttpResponseMessage> DeletePaymentType(string code);
     Task<HttpResponseMessage> CreateTax(StaticTax tax);
     Task<HttpResponseMessage> UpdateTax(StaticTax tax);
+    Task<HttpResponseMessage> PushService(StaticServiceDto service);
+    Task<HttpResponseMessage> PushEquipment(StaticEquipmentDto equipment);
+    Task<HttpResponseMessage> PushMeal(StaticMealDto meal);
+    Task<HttpResponseMessage> PushServiceCategory(StaticServiceCategoryDto serviceCategory);
+
 }

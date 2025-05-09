@@ -6,6 +6,6 @@ public class DeleteStaticExtraTranslation : IDeleteStaticExtraTranslation {
     }
     public async Task<HttpResponseMessage> Execute(Desextr desextr) {
         var extraTranslation = desextr.ToExtraTranslation();
-        return await staticSynchronizerApiClient.DeleteExtraTranslation(extraTranslation.ExtraCode, extraTranslation.LanguageIsoCode);
+        return await staticSynchronizerApiClient.DeleteExtraTranslation(extraTranslation.ExtraCode);
     }
 }

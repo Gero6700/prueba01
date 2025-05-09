@@ -1,5 +1,5 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Persistence.Repositories;
-public class StaticHotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(unitOfWork), IStaticHotelRepository {
+public class HotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(unitOfWork), IHotelRepository {
 
     public async Task<IEnumerable<int>?> GetAllHotelsIdsAsync() {
         using var connection = Connection;

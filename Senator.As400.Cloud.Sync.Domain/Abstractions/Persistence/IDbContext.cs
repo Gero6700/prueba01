@@ -1,11 +1,10 @@
-using System.Data;
-
 namespace Senator.As400.Cloud.Sync.Domain.Abstractions.Persistence;
 
-public interface IDbContext {
+public interface IDbContext : IDisposable {
     DbContextState State { get; }
     IDbConnection Connection { get; }
     IDbTransaction Transaction { get; }
+    ISqlQueryBuilder SqlQueryBuilder { get; }
 
     void BeginTransaction();
     void Commit();

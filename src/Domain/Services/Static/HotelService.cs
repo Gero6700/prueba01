@@ -1,6 +1,6 @@
 namespace Senator.As400.Cloud.Sync.Application.Services.Static;
 public class HotelService(
-    IStaticHotelRepository staticHotelRepository,
+    IHotelRepository staticHotelRepository,
     ILogger<HotelService> logger) : IHotelService  {
 
     public async Task<Result<StaticHotelDto?>> GetHotelAsync(int hotelId) {
@@ -14,6 +14,18 @@ public class HotelService(
                 $"[HotelId: {hotelId} ]";
             logger.LogCritical(ex, "{ErrorMessage} {MethodParameters}", error.Message, methodParameters);
             return Result<StaticHotelDto?>.Failure(error);
+        }
+    }
+
+    public async Task<Result<IEnumerable<int>?>> GetAllHotelsIdsAsync() {
+        try {
+            var hotelsIds = await staticHotelRepository.GetAllHotelsIdsAsync();
+            return Result<IEnumerable<int>?>.Success(hotelsIds);
+        }
+        catch (Exception ex) {
+            var error = new Error("GetAllHotelsIdsAsync.DatabaseFailure", ex.Message);
+            logger.LogCritical(ex, "{ErrorMessage}", error.Message);
+            return Result<IEnumerable<int>?>.Failure(error);
         }
     }
 }

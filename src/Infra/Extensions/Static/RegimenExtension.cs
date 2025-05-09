@@ -11,15 +11,15 @@ public static class RegimenExtension {
         });
     }
 
-    private static List<StaticMealTranslationDto> GetTranslations(Regimen regimen) {
+    private static List<StaticMealTranslationDto>? GetTranslations(Regimen regimen) {
         var translations = new List<StaticMealTranslationDto>();
 
         var languages = new Dictionary<Language, string> {
-            { Language.Es, regimen.EsNombre },
-            { Language.En, regimen.EnNombre },
-            { Language.Fr, regimen.FrNombre },
-            { Language.De, regimen.DeNombre},
-            { Language.Pt, regimen.PtNombre }
+            { Language.Es, regimen.EsNombre ?? string.Empty },
+            { Language.En, regimen.EnNombre ?? string.Empty },
+            { Language.Fr, regimen.FrNombre ?? string.Empty },
+            { Language.De, regimen.DeNombre ?? string.Empty},
+            { Language.Pt, regimen.PtNombre ?? string.Empty }
         };
 
         foreach (var language in languages) {
@@ -31,6 +31,6 @@ public static class RegimenExtension {
             }
         }
 
-        return translations;
+        return translations.Count == 0 ? null : translations;
     }
 }

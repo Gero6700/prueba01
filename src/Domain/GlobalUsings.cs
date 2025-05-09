@@ -29,3 +29,4 @@ global using Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter.Static;
 global using Senator.As400.Cloud.Sync.Domain.Abstractions.Persistence;
 global using Senator.As400.Cloud.Sync.Domain.Repositories;
 global using Senator.As400.Cloud.Sync.Domain.Abstractions.Core;
+global using Senator.As400.Cloud.Sync.Domain.Entities;

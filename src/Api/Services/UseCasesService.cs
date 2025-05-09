@@ -75,8 +75,7 @@ public static class UseCasesService {
 
         services.AddSingleton<ICreateStaticTax, CreateStaticTax>();
         services.AddSingleton<IUpdateStaticTax, UpdateStaticTax>();
-        services.AddSingleton<IDeleteStaticTax, DeleteStaticTax>();
-
+        
         services.AddScoped<PushHotel>();
         return services;
     }

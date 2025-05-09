@@ -1,22 +1,24 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Extensions.Static;
 public static class ServicioCategoriaExtension {
-    public static StaticServiceCategoryDto ToServiceCategoryDto(this ServicioCategoria servicioCategoria) {
-        var serviceCategory = new StaticServiceCategoryDto {
+    public static IEnumerable<StaticServiceCategoryDto>? ToServiceCategoryDto(this IEnumerable<ServicioCategoria> servicioCategorias) {
+        if(!servicioCategorias.Any()) {
+            return null;
+        }
+        return servicioCategorias.Select(servicioCategoria => new StaticServiceCategoryDto {
             Code = servicioCategoria.Id.ToString(),
             ServiceCategoryTranslations = GetTranslations(servicioCategoria)
-        };
-        return serviceCategory;
+        }).ToList();
     }
 
-    private static List<StaticServiceCategoryTranslationDto> GetTranslations(ServicioCategoria servicioCategoria) {
+    private static List<StaticServiceCategoryTranslationDto>? GetTranslations(ServicioCategoria servicioCategoria) {
         var translations = new List<StaticServiceCategoryTranslationDto>();
 
         var languages = new Dictionary<Language, string> {
-            { Language.Es, servicioCategoria.EsNombre },
-            { Language.En, servicioCategoria.EnNombre },
-            { Language.Fr, servicioCategoria.FrNombre },
-            { Language.De, servicioCategoria.DeNombre },
-            { Language.Pt, servicioCategoria.PtNombre }
+            { Language.Es, servicioCategoria.EsNombre ?? string.Empty },
+            { Language.En, servicioCategoria.EnNombre ?? string.Empty },
+            { Language.Fr, servicioCategoria.FrNombre ?? string.Empty },
+            { Language.De, servicioCategoria.DeNombre ?? string.Empty },
+            { Language.Pt, servicioCategoria.PtNombre ?? string.Empty }
         };
 
         foreach (var language in languages) {
@@ -28,6 +30,6 @@ public static class ServicioCategoriaExtension {
             }
         }
 
-        return translations;
+        return translations.Count == 0 ? null : translations;
     }
 }

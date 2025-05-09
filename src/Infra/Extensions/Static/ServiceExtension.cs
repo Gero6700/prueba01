@@ -13,29 +13,58 @@ public static class ServiceExtension
 
     }
 
-    private static List<StaticServiceTranslationDto> GetTranslations(Servicio servicio)
+    public static IEnumerable<StaticEquipmentDto>? ToEquipmentDto(this IEnumerable<Servicio> servicios) {
+        if (!servicios.Any()) {
+            return null;
+        }
+        return servicios.Select(servicio => new StaticEquipmentDto {
+            Code = servicio.Id.ToString(),
+            Name = servicio.EsServicio?? string.Empty,
+            EquipmentTranslations = GetEquipmentTranslations(servicio)
+        }).ToList();
+    }
+
+    private static List<EquipmentTranslationDto>? GetEquipmentTranslations(Servicio servicio) {
+        var translations = new List<EquipmentTranslationDto>();
+
+        var names = new Dictionary<Language, string> {
+            { Language.Es, servicio.EsServicio?? string.Empty },
+            { Language.En, servicio.EnServicio?? string.Empty },
+            { Language.Fr, servicio.FrServicio?? string.Empty },
+            { Language.De, servicio.DeServicio?? string.Empty },
+            { Language.Pt, servicio.PtServicio?? string.Empty }
+        };
+
+        foreach (var language in Enum.GetValues<Language>()) {
+            if (!names.TryGetValue(language, out var name)) {
+                continue;
+            }
+            if (string.IsNullOrEmpty(name)) {
+                continue;
+            }
+            translations.Add(new EquipmentTranslationDto {
+                Description = name,
+                LanguageIsoCode = language.GetIsoCode()
+            });
+        }
+
+        return translations.Count == 0 ? null : translations;
+    }
+
+    private static List<StaticServiceTranslationDto>? GetTranslations(Servicio servicio)
     {
         var translations = new List<StaticServiceTranslationDto>();
 
         var names = new Dictionary<Language, string> {
-            { Language.Es, servicio.EsServicio },
-            { Language.En, servicio.EnServicio },
-            { Language.Fr, servicio.FrServicio },
-            { Language.De, servicio.DeServicio },
-            { Language.Pt, servicio.PtServicio }
-        };
-
-        var descriptions = new Dictionary<Language, string> {
-            { Language.Es, servicio.EsDetalle },
-            { Language.En, servicio.EnDetalle },
-            { Language.Fr, servicio.FrDetalle },
-            { Language.De, servicio.DeDetalle },
-            { Language.Pt, servicio.PtDetalle }
+            { Language.Es, servicio.EsServicio?? string.Empty },
+            { Language.En, servicio.EnServicio?? string.Empty },
+            { Language.Fr, servicio.FrServicio?? string.Empty },
+            { Language.De, servicio.DeServicio?? string.Empty },
+            { Language.Pt, servicio.PtServicio?? string.Empty }
         };
       
         foreach(var language in Enum.GetValues<Language>()) {
-            if (!names.TryGetValue(language, out var name) || 
-                !descriptions.TryGetValue(language, out var description)) {
+            if (!names.TryGetValue(language, out var name)) {
                 continue;
             }
             if (string.IsNullOrEmpty(name)) {
@@ -43,11 +72,11 @@ public static class ServiceExtension
             }
             translations.Add(new StaticServiceTranslationDto {
                     Name = name,
-                    Description = string.IsNullOrEmpty(description) ? null : description,
+                    Description = null,
                     LanguageIsoCode = language.GetIsoCode()
             });
         }
 
-        return translations;
+        return translations.Count == 0 ? null : translations;
     }
 }

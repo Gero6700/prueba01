@@ -7,8 +7,24 @@ public class StaticSynchronizerApiClient : IStaticSynchronizerApiClient {
         this.httpClient = httpClient;
     }
 
+    public Task<HttpResponseMessage> PushEquipment(StaticEquipmentDto equipment) {
+        return httpClient.PutAsJsonAsync("api/v1/equipment/push", equipment);
+    }
+
     public Task<HttpResponseMessage> PushHotel(StaticHotelDto hotel) {
         return httpClient.PutAsJsonAsync("api/v1/hotel/push", hotel);
+    }
+
+    public Task<HttpResponseMessage> PushMeal(StaticMealDto meal) {
+        return httpClient.PutAsJsonAsync("api/v1/meal/push", meal);
+    }
+
+    public Task<HttpResponseMessage> PushService(StaticServiceDto service) {
+        return httpClient.PutAsJsonAsync("api/v1/service/push", service);
+    }
+
+    public Task<HttpResponseMessage> PushServiceCategory(StaticServiceCategoryDto serviceCategory) {
+        return httpClient.PutAsJsonAsync("api/v1/servicecategory/push", serviceCategory);
     }
 
     Task<HttpResponseMessage> IStaticSynchronizerApiClient.CreateExtraTranslation(StaticExtraTranslationDto extraTranslation) {
