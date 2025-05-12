@@ -1,31 +1,31 @@
 namespace Senator.As400.Cloud.Sync.Application.Services.Static;
-public class PushServiceHandler(
+public class PushHotelServiceHandler(
     IStaticSynchronizerApiClient staticSynchronizerApiClient,
-    IServicioService serviceService,
-    ILogger<PushServiceHandler> logger) : IPushServiceHandler {
+    IHotelService hotelService,
+    ILogger<PushHotelServiceHandler> logger) : IPushHotelServiceHandler {
 
     private readonly IStaticSynchronizerApiClient staticSynchronizerApiClient = staticSynchronizerApiClient;
-    private readonly IServicioService serviceService = serviceService;
-    private readonly ILogger<PushServiceHandler> logger = logger;
+    private readonly IHotelService hotelService = hotelService;
+    private readonly ILogger<PushHotelServiceHandler> logger = logger;
 
     public async Task Execute(CancellationToken stoppingToken) {
-        var services = await serviceService.GetAllAsync();
-        if (services.IsFailure) {
+        var hotels = await hotelService.GetAllAsync();
+        if (hotels.IsFailure) {
             return;
         }
-        if (services.Value == null) {
-            logger.LogError("ServiceService.ServicesNotFound");
+        if (hotels.Value == null) {
+            logger.LogError("HotelService.HotelsNotFound");
             return;
         }
         try {
-            var serviceDtos = services.Value.ToServiceDto();
+            var hotelDtos = hotels.Value.ToHotelDtos();
             var parallelOptions = new ParallelOptions {
-                MaxDegreeOfParallelism = 8, 
+                MaxDegreeOfParallelism = 8,
                 CancellationToken = stoppingToken
             };
-            await Parallel.ForEachAsync(serviceDtos!, parallelOptions, async (serviceDto, cancellationToken) => {
+            await Parallel.ForEachAsync(hotelDtos!, parallelOptions, async (hotelDto, cancellationToken) => {
                 try {
-                    var response = await staticSynchronizerApiClient.PushService(serviceDto);
+                    var response = await staticSynchronizerApiClient.PushHotel(hotelDto);
                     if (!response.IsSuccessStatusCode) {
                         var content = await response.Content.ReadAsStringAsync(cancellationToken);
                         logger.LogError("StaticSynchronizerApiClientError: {Content}", content);

@@ -1,6 +1,10 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Extensions.Static;
 public static class HotelExtension
 {
+    public static IEnumerable<StaticHotelDto> ToHotelDtos(this IEnumerable<Hotel> hotels) {
+        return hotels.Select(h => h.ToHotelDto());
+    }
+
     public static StaticHotelDto ToHotelDto(this Hotel hotel)
     {
         return new StaticHotelDto

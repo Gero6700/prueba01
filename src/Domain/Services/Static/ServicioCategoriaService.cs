@@ -1,11 +1,11 @@
 namespace Senator.As400.Cloud.Sync.Application.Services.Static;
 public class ServicioCategoriaService(
     IServicioCategoriaRepository staticServicioCategoriaRepository,
-    ILogger<ServicioCategoriaService> logger) : IServiceCategoryService {
+    ILogger<ServicioCategoriaService> logger) : IServicioCategoriaService {
     public async Task<Result<IEnumerable<ServicioCategoria>?>> GetAllAsync() {
         try {
             var servicios = await staticServicioCategoriaRepository.GetAllAsync();
-            return !servicios.Any() ?
+            return (servicios == null || !servicios.Any()) ?
                 Result<IEnumerable<ServicioCategoria>?>.Success(null) :
                 Result<IEnumerable<ServicioCategoria>?>.Success(servicios);
         }

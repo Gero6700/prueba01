@@ -1,31 +1,31 @@
 namespace Senator.As400.Cloud.Sync.Application.Services.Static;
-public class PushServiceHandler(
+public class PushMealServiceHandler(
     IStaticSynchronizerApiClient staticSynchronizerApiClient,
-    IServicioService serviceService,
-    ILogger<PushServiceHandler> logger) : IPushServiceHandler {
+    IRegimenService regimenService,
+    ILogger<PushMealServiceHandler> logger) : IPushMealServiceHandler {
 
     private readonly IStaticSynchronizerApiClient staticSynchronizerApiClient = staticSynchronizerApiClient;
-    private readonly IServicioService serviceService = serviceService;
-    private readonly ILogger<PushServiceHandler> logger = logger;
+    private readonly IRegimenService regimenService = regimenService;
+    private readonly ILogger<PushMealServiceHandler> logger = logger;
 
     public async Task Execute(CancellationToken stoppingToken) {
-        var services = await serviceService.GetAllAsync();
-        if (services.IsFailure) {
+        var regimenes = await regimenService.GetDistinctCodeAsync();
+        if (regimenes.IsFailure) {
             return;
         }
-        if (services.Value == null) {
-            logger.LogError("ServiceService.ServicesNotFound");
+        if (regimenes.Value == null) {
+            logger.LogError("RegimenService.MealsNotFound");
             return;
         }
         try {
-            var serviceDtos = services.Value.ToServiceDto();
+            var mealsDtos = regimenes.Value.ToMealDto();
             var parallelOptions = new ParallelOptions {
-                MaxDegreeOfParallelism = 8, 
+                MaxDegreeOfParallelism = 8,
                 CancellationToken = stoppingToken
             };
-            await Parallel.ForEachAsync(serviceDtos!, parallelOptions, async (serviceDto, cancellationToken) => {
+            await Parallel.ForEachAsync(mealsDtos!, parallelOptions, async (mealDto, cancellationToken) => {
                 try {
-                    var response = await staticSynchronizerApiClient.PushService(serviceDto);
+                    var response = await staticSynchronizerApiClient.PushMeal(mealDto);
                     if (!response.IsSuccessStatusCode) {
                         var content = await response.Content.ReadAsStringAsync(cancellationToken);
                         logger.LogError("StaticSynchronizerApiClientError: {Content}", content);
@@ -40,4 +40,5 @@ public class PushServiceHandler(
             logger.LogError("{ErrorMessage}", ex.Message);
         }
     }
+
 }

@@ -34,18 +34,12 @@ builder.Services.AddSingleton<ISynchronizerHandler<GenericSynchronizationEvent>,
 //builder.Services.AddSubscriberClient(subscriptionName);
 //builder.Services.AddHostedService<SubscriptionPullStreamingService>();
 
-//subscription to avail with streaming
-//var projectId = configuration["AvailGooglePubSub:ProjectId"];
-//var subscriptionId = configuration["AvailGooglePubSub:SubscriptionId"];
-//var subscriptionName = SubscriptionName.FromProjectSubscription(projectId, subscriptionId);
-//builder.Services.AddSubscriberClient(subscriptionName);
-//builder.Services.AddHostedService<SubscriptionPullStreamingService>();
-
-builder.Services.AddSubscriberServiceApiClient();
+//builder.Services.AddSubscriberServiceApiClient();
 
 ////subscription to avail and static 
 //builder.Services.AddHostedService<AvailSubscriptionPullService>();
-builder.Services.AddHostedService<StaticSubscriptionPullService>();
+//builder.Services.AddHostedService<StaticSubscriptionPullService>();
+builder.Services.AddHostedService<NightlyStaticSyncService>();
 
 
 var app = builder.Build();

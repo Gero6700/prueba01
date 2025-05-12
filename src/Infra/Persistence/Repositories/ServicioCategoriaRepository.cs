@@ -1,6 +1,15 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Persistence.Repositories;
 public class ServicioCategoriaRepository(IUnitOfWork unitOfWork)
     : Repository<ServicioCategoria>(unitOfWork), IServicioCategoriaRepository {
+
+    public async Task<IEnumerable<ServicioCategoria>?> GetAll() {
+        SetIdentityColumnTo<ServicioCategoria>();
+        var getServicioCategoriaQuery = GetServicioCategoriaQuery();
+        var servicioCategorias = await Connection.QueryAsync<ServicioCategoria>(
+            sql: getServicioCategoriaQuery,
+            transaction: Transaction);
+        return !servicioCategorias.Any() ? null : servicioCategorias;
+    }
     public async Task<IEnumerable<ServicioCategoria>?> GetByNombresAsync(IEnumerable<string> nombres) {
         SetIdentityColumnTo<ServicioCategoria>();
         var getServicioCategoriaQuery = GetServicioCategoriaQuery();
@@ -21,12 +30,20 @@ public class ServicioCategoriaRepository(IUnitOfWork unitOfWork)
                 {SqlQueryBuilder.GetTableName(typeof(ServicioCategoria))} sc
             /**where**/";
     }
+
+    //private string GetServicioCategoriaQueryWithoutAlias() {
+    //    return $@"
+    //        SELECT *
+    //        FROM
+    //            {SqlQueryBuilder.GetTableName(typeof(ServicioCategoria))} 
+    //        /**where**/";
+    //}
     private void SetIdentityColumnTo<T>() {
         SqlQueryBuilder.SetIdentityColumnCustomMap(typeof(T));
     }
 
     private string GetTableColumnsOf<T>(string tableAlias) {
-        return SqlQueryBuilder.GetTableColumnsWithAlias(typeof(T), tableAlias);
+        return SqlQueryBuilder.GetTableColumnsWithAlias(typeof(T));
     }
 
     private static SqlBuilder.Template GetServicioCategoriaByNombresQueryTemplate(string query, IEnumerable<string> nombres) {

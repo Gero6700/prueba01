@@ -17,15 +17,29 @@ public class HotelService(
         }
     }
 
-    public async Task<Result<IEnumerable<int>?>> GetAllHotelsIdsAsync() {
+    public async Task<Result<IEnumerable<Hotel>?>> GetAllAsync() {
         try {
-            var hotelsIds = await staticHotelRepository.GetAllHotelsIdsAsync();
-            return Result<IEnumerable<int>?>.Success(hotelsIds);
+            var hotels = await staticHotelRepository.GetAllAsync();
+            return !hotels.Any() ?
+                Result<IEnumerable<Hotel>?>.Success(null) :
+                Result<IEnumerable<Hotel>?>.Success(hotels);
         }
         catch (Exception ex) {
-            var error = new Error("GetAllHotelsIdsAsync.DatabaseFailure", ex.Message);
+            var error = new Error("GetAllAsync.DatabaseFailure", ex.Message);
             logger.LogCritical(ex, "{ErrorMessage}", error.Message);
-            return Result<IEnumerable<int>?>.Failure(error);
+            return Result<IEnumerable<Hotel>?>.Failure(error);
         }
     }
+
+    //public async Task<Result<IEnumerable<int>?>> GetAllHotelsIdsAsync() {
+    //    try {
+    //        var hotelsIds = await staticHotelRepository.GetAllHotelsIdsAsync();
+    //        return Result<IEnumerable<int>?>.Success(hotelsIds);
+    //    }
+    //    catch (Exception ex) {
+    //        var error = new Error("GetAllHotelsIdsAsync.DatabaseFailure", ex.Message);
+    //        logger.LogCritical(ex, "{ErrorMessage}", error.Message);
+    //        return Result<IEnumerable<int>?>.Failure(error);
+    //    }
+    //}
 }

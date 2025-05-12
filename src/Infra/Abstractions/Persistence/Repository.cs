@@ -14,9 +14,17 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class {
         SqlQueryBuilder = DbContext.SqlQueryBuilder;
     }
 
+    //public Task<IEnumerable<TEntity>> GetAllAsync() {
+    //    var tableName = SqlQueryBuilder.GetTableName(type);
+    //    var query = $"SELECT * FROM {tableName}";
+    //    return Connection.QueryAsync<TEntity>(query, Transaction);
+    //}
+
     public Task<IEnumerable<TEntity>> GetAllAsync() {
         var tableName = SqlQueryBuilder.GetTableName(type);
-        var query = $"SELECT * FROM {tableName}";
+        var query = $@"SELECT 
+                {SqlQueryBuilder.GetTableColumnsWithAlias(type)}
+            FROM {tableName}";
         return Connection.QueryAsync<TEntity>(query, Transaction);
     }
 }
