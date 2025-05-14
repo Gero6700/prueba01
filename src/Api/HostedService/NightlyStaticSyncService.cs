@@ -12,17 +12,19 @@ public class NightlyStaticSyncService(
             await Semaphore.WaitAsync(stoppingToken);
 
             //Wait to 24:00
-            //var now = DateTime.UtcNow;
-            //var nextRun = now.Date.AddDays(1);
-            //var delay = nextRun - now;
+            var now = DateTime.UtcNow;
+            var nextRun = now.Date.AddDays(1);
+            var delay = nextRun - now;
 
-            //if (delay.TotalMilliseconds > 0) {
-            //    logger.LogInformation("NightlyStaticSyncService: Waiting for {Delay} to run the sync service", delay);
-            //    Task.Delay(delay, stoppingToken).Wait(stoppingToken);
-            //}
+            if (delay.TotalMilliseconds > 0) {
+                logger.LogInformation("NightlyStaticSyncService: Waiting for {Delay} to run the sync service", delay);
+                Task.Delay(delay, stoppingToken).Wait(stoppingToken);
+            }
 
             try {
+                logger.LogInformation("NightlyStaticSyncService: Starting synchronization at {Time}", DateTime.UtcNow);
                 await ExecuteSync(stoppingToken);
+                logger.LogInformation("NightlyStaticSyncService: Synchronization completed at {Time}", DateTime.UtcNow);
             }
             catch (Exception ex) {
                 logger.LogError(ex, "NightlyStaticSyncService: An error occurred during synchronization.");
@@ -38,9 +40,11 @@ public class NightlyStaticSyncService(
         var pushServiceHandler = scope.ServiceProvider.GetRequiredService<IPushServiceHandler>();
         var pushMealServiceHandler = scope.ServiceProvider.GetRequiredService<IPushMealServiceHandler>();
         var pushServiceCategoryHandler = scope.ServiceProvider.GetRequiredService<IPushServiceCategoryHandler>();
+        var pushHotelServiceHandler = scope.ServiceProvider.GetRequiredService<IPushHotelServiceHandler>();
 
         await pushServiceCategoryHandler.Execute(stoppingToken);
         await pushServiceHandler.Execute(stoppingToken);
-        await pushMealServiceHandler.Execute(stoppingToken);            
+        await pushMealServiceHandler.Execute(stoppingToken);
+        await pushHotelServiceHandler.Execute(stoppingToken);
     }
 }

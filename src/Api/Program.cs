@@ -34,11 +34,12 @@ builder.Services.AddSingleton<ISynchronizerHandler<GenericSynchronizationEvent>,
 //builder.Services.AddSubscriberClient(subscriptionName);
 //builder.Services.AddHostedService<SubscriptionPullStreamingService>();
 
-//builder.Services.AddSubscriberServiceApiClient();
 
-////subscription to avail and static 
+//subscription to avail and static 
+builder.Services.AddSubscriberServiceApiClient();
 //builder.Services.AddHostedService<AvailSubscriptionPullService>();
-//builder.Services.AddHostedService<StaticSubscriptionPullService>();
+builder.Services.AddHostedService<StaticSubscriptionPullService>();
+
 builder.Services.AddHostedService<NightlyStaticSyncService>();
 
 

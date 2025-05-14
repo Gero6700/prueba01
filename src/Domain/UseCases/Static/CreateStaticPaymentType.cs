@@ -1,5 +1,5 @@
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Static;
-public class CreateStaticPaymentType : ICreateStaticPaymentType {
+public class CreateStaticPaymentType {
     private readonly IStaticSynchronizerApiClient staticSynchronizerApiClient;
     public CreateStaticPaymentType(IStaticSynchronizerApiClient staticSynchronizerApiClient) {
         this.staticSynchronizerApiClient = staticSynchronizerApiClient;

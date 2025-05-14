@@ -61,21 +61,24 @@ public static class UseCasesService {
 
         services.AddSingleton<ICreateRoom, CreateRoom>();
 
-        services.AddSingleton<ICreateStaticExtraTranslation, CreateStaticExtraTranslation>();
-        services.AddSingleton<IUpdateStaticExtraTranslation, UpdateStaticExtraTranslation>();
-        services.AddSingleton<IDeleteStaticExtraTranslation, DeleteStaticExtraTranslation>();
+        services.AddSingleton<CreateStaticExtraTranslation, CreateStaticExtraTranslation>();
+        services.AddSingleton<UpdateStaticExtraTranslation, UpdateStaticExtraTranslation>();
+        services.AddSingleton<DeleteStaticExtraTranslation, DeleteStaticExtraTranslation>();
 
-        services.AddSingleton<ICreateStaticOfferSupplementTranslation, CreateStaticOfferSuplementTranslation>();
-        services.AddSingleton<IUpdateStaticOfferSupplementTranslation, UpdateStaticOfferSupplementTranslation>();
-        services.AddSingleton<IDeleteStaticOfferSupplementTranslation, DeleteStaticOfferSupplementTranslation>();
+        services.AddSingleton<CreateStaticOfferSuplementTranslation>();
+        services.AddSingleton<UpdateStaticOfferSupplementTranslation>();
+        services.AddSingleton<DeleteStaticOfferSupplementTranslation>();
 
-        services.AddSingleton<ICreateStaticPaymentType, CreateStaticPaymentType>();
-        services.AddSingleton<IUpdateStaticPaymentType, UpdateStaticPaymentType>();
-        services.AddSingleton<IDeleteStaticPaymentType, DeleteStaticPaymentType>();
+        services.AddSingleton<CreateStaticPaymentType>();
+        services.AddSingleton<UpdateStaticPaymentType>();
+        services.AddSingleton<DeleteStaticPaymentType>();
 
-        services.AddSingleton<ICreateStaticTax, CreateStaticTax>();
-        services.AddSingleton<IUpdateStaticTax, UpdateStaticTax>();
-        
+        services.AddSingleton<CreateStaticTax>();
+        services.AddSingleton<UpdateStaticTax>();
+
+        services.AddSingleton<CreateStaticHotelTax>();
+        services.AddSingleton<DeleteStaticHotelTax>();
+
         services.AddScoped<PushHotel>();
         return services;
     }

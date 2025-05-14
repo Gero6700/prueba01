@@ -14,6 +14,7 @@ public class StaticSubscriptionPullService(
         {nameof(TableType.ExtraTranslation), typeof(Desextr)},
         {nameof(TableType.OfferAndSupplementTranslation), typeof(Desofer)},
         {nameof(TableType.PaymentType), typeof(Forpago)},
-        {nameof(TableType.Tax), typeof(Reszoim)}  
+        {nameof(TableType.Tax), typeof(Reszoim)}  ,
+        {nameof(TableType.HotelTax), typeof(Reszoimh)},
     };
 }

@@ -1,8 +1,8 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Dtos.BookingCenter.Static;
 public class StaticTax {
-    public string Code { get; set; } = string.Empty;
-    public string Description { get; set; } = string.Empty;
-    public decimal Amount { get; set; }
+    public required string Code { get; set; } = string.Empty;
+    public required string Description { get; set; } = string.Empty;
+    public required decimal Amount { get; set; }
     public int Order { get; set; }
-    public bool AppliesToTaxableBase { get; set; }
+    public required bool AppliesToTaxableBase { get; set; }
 }

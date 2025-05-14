@@ -24,5 +24,6 @@ public enum TableType {
     PeriodPricing,
     PeriodPricingPax,
     Room,
-    Tax
+    Tax,
+    HotelTax
 }

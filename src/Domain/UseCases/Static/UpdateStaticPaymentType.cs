@@ -1,5 +1,5 @@
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Static;
-public class UpdateStaticPaymentType : IUpdateStaticPaymentType {
+public class UpdateStaticPaymentType {
     private readonly IStaticSynchronizerApiClient staticSynchronizerApiClient;
     public UpdateStaticPaymentType(IStaticSynchronizerApiClient staticSynchronizerApiClient) {
         this.staticSynchronizerApiClient = staticSynchronizerApiClient;

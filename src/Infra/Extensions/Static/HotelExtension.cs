@@ -53,7 +53,7 @@ public static class HotelExtension
             HotelTranslations = GetTranslations(hotel),
             HotelImages = hotel.Imagenes.ToImageDto<StaticHotelImageDto>(),
             Rooms = hotel.Habitaciones.ToRoomDto(hotel.Imagenes, hotel.HabitacionesCamas, hotel.HabitacionesServicios),
-            MealCodes = hotel.RegimenesIds.Select(r => r.ToString()), //.ToMealDto(), 
+            MealCodes = hotel.RegimenesCodes.Select(r => r.ToString()), //.ToMealDto(), 
             ServiceCodes = !hotel.ServiciosIds.Any() ? null : hotel.ServiciosIds.Select(r => r.ToString()), //.ToServiceDto(),
             SwimmingPools = hotel.Piscinas.ToSwimmingPoolDto(hotel.PiscinasImagenes),
             Salons = hotel.Salones.ToSalonDto(hotel.SalonesImagenes),

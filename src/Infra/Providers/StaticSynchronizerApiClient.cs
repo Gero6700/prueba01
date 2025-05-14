@@ -28,19 +28,27 @@ public class StaticSynchronizerApiClient : IStaticSynchronizerApiClient {
     }
 
     Task<HttpResponseMessage> IStaticSynchronizerApiClient.CreateExtraTranslation(StaticExtraTranslationDto extraTranslation) {
-        return httpClient.PutAsJsonAsync("api/v1/extratranslation/create", extraTranslation);
+        return httpClient.PostAsJsonAsync("api/v1/extratranslation/create", extraTranslation);
     }
 
     Task<HttpResponseMessage> IStaticSynchronizerApiClient.CreateOfferSupplementTranslation(StaticOfferAndSupplementTranslation offerAndSupplementTranslation) {
-        return httpClient.PutAsJsonAsync("api/v1/offersupplementtranslation/create", offerAndSupplementTranslation);
+        return httpClient.PostAsJsonAsync("api/v1/offersupplementtranslation/create", offerAndSupplementTranslation);
     }
 
     Task<HttpResponseMessage> IStaticSynchronizerApiClient.CreatePaymentType(PaymentType paymentType) {
-        return httpClient.PutAsJsonAsync("api/v1/paymenttype/create", paymentType);
+        return httpClient.PostAsJsonAsync("api/v1/paymenttype/create", paymentType);
     }
 
     Task<HttpResponseMessage> IStaticSynchronizerApiClient.CreateTax(StaticTax tax) {
-        return httpClient.PutAsJsonAsync("api/v1/tax/create", tax);
+        return httpClient.PostAsJsonAsync("api/v1/tax/create", tax);
+    }
+
+    Task<HttpResponseMessage> IStaticSynchronizerApiClient.CreateHotelTax(StaticHotelTax hotelTax) {
+        return httpClient.PostAsJsonAsync("api/v1/hoteltax/create", hotelTax);
+    }
+
+    Task<HttpResponseMessage> IStaticSynchronizerApiClient.DeleteHotelTax(StaticHotelTax hotelTax) {
+        return httpClient.DeleteAsync($"api/v1/hoteltax/delete/{hotelTax.HotelCode}/{hotelTax.TaxCode}");
     }
 
     Task<HttpResponseMessage> IStaticSynchronizerApiClient.DeleteExtraTranslation(string extraCode) {

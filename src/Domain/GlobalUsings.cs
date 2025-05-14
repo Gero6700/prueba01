@@ -30,3 +30,6 @@ global using Senator.As400.Cloud.Sync.Domain.Abstractions.Persistence;
 global using Senator.As400.Cloud.Sync.Domain.Repositories;
 global using Senator.As400.Cloud.Sync.Domain.Abstractions.Core;
 global using Senator.As400.Cloud.Sync.Domain.Entities;
+global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.HotelSeason;
+global using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Room;
+global using Senator.As400.Cloud.Sync.Application.UseCases.Static;

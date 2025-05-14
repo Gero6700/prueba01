@@ -1,5 +1,5 @@
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Static;
-public class DeleteStaticPaymentType : IDeleteStaticPaymentType {
+public class DeleteStaticPaymentType {
     private readonly IStaticSynchronizerApiClient staticSynchronizerApiClient;
     public DeleteStaticPaymentType(IStaticSynchronizerApiClient staticSynchronizerApiClient) {
         this.staticSynchronizerApiClient = staticSynchronizerApiClient;

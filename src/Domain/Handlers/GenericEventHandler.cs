@@ -1,7 +1,3 @@
-using Senator.As400.Cloud.Sync.Application.UseCases.Availability.HotelSeason;
-using Senator.As400.Cloud.Sync.Application.UseCases.Availability.Room;
-using Senator.As400.Cloud.Sync.Application.UseCases.Static;
-
 namespace Senator.As400.Cloud.Sync.Application.Handlers;
 public class GenericEventHandler(
     ICreateCancellationPolicy createCancellationPolicyLine,
@@ -45,17 +41,19 @@ public class GenericEventHandler(
     IDeletePeriodPricingPax deletePeriodPricingPax,
     ICreateMeal createRegimen,
     ICreateRoom createRoom,
-    ICreateStaticExtraTranslation createStaticExtraTranslation,
-    IUpdateStaticExtraTranslation updateStaticExtraTranslation,
-    IDeleteStaticExtraTranslation deleteStaticExtraTranslation,
-    ICreateStaticOfferSupplementTranslation createStaticOfferSupplementTranslation,
-    IUpdateStaticOfferSupplementTranslation updateStaticOfferSupplementTranslation,
-    IDeleteStaticOfferSupplementTranslation deleteStaticOfferSupplementTranslation,
-    ICreateStaticPaymentType createStaticPaymentType,
-    IUpdateStaticPaymentType updateStaticPaymentType,
-    IDeleteStaticPaymentType deleteStaticPaymentType,
-    ICreateStaticTax createStaticTax,
-    IUpdateStaticTax updateStaticTax
+    CreateStaticExtraTranslation createStaticExtraTranslation,
+    UpdateStaticExtraTranslation updateStaticExtraTranslation,
+    DeleteStaticExtraTranslation deleteStaticExtraTranslation,
+    CreateStaticOfferSuplementTranslation createStaticOfferSupplementTranslation,
+    UpdateStaticOfferSupplementTranslation updateStaticOfferSupplementTranslation,
+    DeleteStaticOfferSupplementTranslation deleteStaticOfferSupplementTranslation,
+    CreateStaticPaymentType createStaticPaymentType,
+    UpdateStaticPaymentType updateStaticPaymentType,
+    DeleteStaticPaymentType deleteStaticPaymentType,
+    CreateStaticTax createStaticTax,
+    UpdateStaticTax updateStaticTax,
+    CreateStaticHotelTax createStaticHotelTax,
+    DeleteStaticHotelTax deleteStaticHotelTax
     ) : ISynchronizerHandler<GenericSynchronizationEvent> {
     private readonly ICreateCancellationPolicy createCancellationPolicyLine = createCancellationPolicyLine;
     private readonly IUpdateCancellationPolicy updateCancellationPolicyLine = updateCancellationPolicyLine;
@@ -98,17 +96,17 @@ public class GenericEventHandler(
     private readonly IDeletePeriodPricingPax deletePeriodPricingPax = deletePeriodPricingPax;
     private readonly ICreateMeal createRegimen = createRegimen;
     private readonly ICreateRoom createRoom = createRoom;
-    private readonly ICreateStaticExtraTranslation createStaticExtraTranslation = createStaticExtraTranslation;
-    private readonly IUpdateStaticExtraTranslation updateStaticExtraTranslation = updateStaticExtraTranslation;
-    private readonly IDeleteStaticExtraTranslation deleteStaticExtraTranslation = deleteStaticExtraTranslation;
-    private readonly ICreateStaticOfferSupplementTranslation createStaticOfferSupplementTranslation = createStaticOfferSupplementTranslation;
-    private readonly IUpdateStaticOfferSupplementTranslation updateStaticOfferSupplementTranslation = updateStaticOfferSupplementTranslation;
-    private readonly IDeleteStaticOfferSupplementTranslation deleteStaticOfferSupplementTranslation = deleteStaticOfferSupplementTranslation;
-    private readonly ICreateStaticPaymentType createStaticPaymentType = createStaticPaymentType;
-    private readonly IUpdateStaticPaymentType updateStaticPaymentType = updateStaticPaymentType;
-    private readonly IDeleteStaticPaymentType deleteStaticPaymentType = deleteStaticPaymentType;
-    private readonly ICreateStaticTax createStaticTax = createStaticTax;
-    private readonly IUpdateStaticTax updateStaticTax = updateStaticTax;
+    private readonly CreateStaticExtraTranslation createStaticExtraTranslation = createStaticExtraTranslation;
+    private readonly UpdateStaticExtraTranslation updateStaticExtraTranslation = updateStaticExtraTranslation;
+    private readonly DeleteStaticExtraTranslation deleteStaticExtraTranslation = deleteStaticExtraTranslation;
+    private readonly CreateStaticOfferSuplementTranslation createStaticOfferSupplementTranslation = createStaticOfferSupplementTranslation;
+    private readonly UpdateStaticOfferSupplementTranslation updateStaticOfferSupplementTranslation = updateStaticOfferSupplementTranslation;
+    private readonly DeleteStaticOfferSupplementTranslation deleteStaticOfferSupplementTranslation = deleteStaticOfferSupplementTranslation;
+    private readonly CreateStaticPaymentType createStaticPaymentType = createStaticPaymentType;
+    private readonly UpdateStaticPaymentType updateStaticPaymentType = updateStaticPaymentType;
+    private readonly DeleteStaticPaymentType deleteStaticPaymentType = deleteStaticPaymentType;
+    private readonly CreateStaticTax createStaticTax = createStaticTax;
+    private readonly UpdateStaticTax updateStaticTax = updateStaticTax;
 
     public async Task<HttpResponseMessage> HandleAsync(GenericSynchronizationEvent @event) {
         switch (@event.Table) {
@@ -184,6 +182,9 @@ public class GenericEventHandler(
             case nameof(TableType.Tax):
                 var tax = (Reszoim)@event.Entity;
                 return await HandleTaxEventAsync(tax, @event.Operation);
+            case nameof(TableType.HotelTax):
+                var hotelTax = (Reszoimh)@event.Entity;
+                return await HandleHotelTaxEventAsync(hotelTax, @event.Operation);
             default:
                 throw new InvalidOperationException($"Unsupported table type: {@event.Table}");
         }
@@ -384,6 +385,14 @@ public class GenericEventHandler(
             nameof(OperationType.Create) => await createStaticTax.Execute(tax),
             nameof(OperationType.Update) => await updateStaticTax.Execute(tax),
             _ => throw new InvalidOperationException($"Unsupported operation: {operation} in Tax"),
+        };
+    }
+
+    private async Task<HttpResponseMessage> HandleHotelTaxEventAsync(Reszoimh hotelTax, string operation) {
+        return operation switch {
+            nameof(OperationType.Create) => await createStaticHotelTax.Execute(hotelTax),
+            nameof(OperationType.Delete) => await deleteStaticHotelTax.Execute(hotelTax),
+            _ => throw new InvalidOperationException($"Unsupported operation: {operation} in HotelTax"),
         };
     }
 }

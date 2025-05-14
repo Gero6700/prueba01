@@ -1,5 +1,5 @@
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Static;
-public class UpdateStaticExtraTranslation : IUpdateStaticExtraTranslation {
+public class UpdateStaticExtraTranslation {
     private readonly IStaticSynchronizerApiClient staticSynchronizerApiClient;
     public UpdateStaticExtraTranslation(IStaticSynchronizerApiClient staticSynchronizerApiClient) {
         this.staticSynchronizerApiClient = staticSynchronizerApiClient;

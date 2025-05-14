@@ -1,5 +1,5 @@
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Static;
-public class DeleteStaticExtraTranslation : IDeleteStaticExtraTranslation {
+public class DeleteStaticExtraTranslation {
     private readonly IStaticSynchronizerApiClient staticSynchronizerApiClient;
     public DeleteStaticExtraTranslation(IStaticSynchronizerApiClient staticSynchronizerApiClient) {
         this.staticSynchronizerApiClient = staticSynchronizerApiClient;

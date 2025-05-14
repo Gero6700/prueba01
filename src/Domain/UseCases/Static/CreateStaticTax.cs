@@ -1,5 +1,5 @@
 namespace Senator.As400.Cloud.Sync.Application.UseCases.Static;
-public class CreateStaticTax : ICreateStaticTax {
+public class CreateStaticTax {
     private readonly IStaticSynchronizerApiClient staticSynchronizerApiClient;
     public CreateStaticTax(IStaticSynchronizerApiClient staticSynchronizerApiClient) {
         this.staticSynchronizerApiClient = staticSynchronizerApiClient;

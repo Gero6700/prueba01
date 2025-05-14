@@ -18,7 +18,7 @@ public class PushHotel {
         }
 
         try {
-            var response = await staticSynchronizerApiClient.PushHotel(hotel.Value);
+            var response = await staticSynchronizerApiClient.PushHotel(hotel.Value.ToHotelDto());
             if (response.IsSuccessStatusCode) {
                 return Result.Success();
             }

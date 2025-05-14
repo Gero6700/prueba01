@@ -9,22 +9,38 @@ public class PushHotelServiceHandler(
     private readonly ILogger<PushHotelServiceHandler> logger = logger;
 
     public async Task Execute(CancellationToken stoppingToken) {
-        var hotels = await hotelService.GetAllAsync();
-        if (hotels.IsFailure) {
-            return;
-        }
-        if (hotels.Value == null) {
-            logger.LogError("HotelService.HotelsNotFound");
-            return;
-        }
-        try {
-            var hotelDtos = hotels.Value.ToHotelDtos();
+      try {
+            var hotelsIds = await hotelService.GetAllHotelsIdsAsync();
+            if (hotelsIds.IsFailure) {
+                return;
+            }
+            if (hotelsIds.Value == null) {
+                logger.LogError("HotelService.HotelsNotFound");
+                return;
+            }
+
+            var hotelIds = hotelsIds.Value.ToList();
+            var hotels = new List<Hotel>();
+            foreach (var hotelId in hotelIds) {
+                var hotel = await hotelService.GetHotelAsync(hotelId);
+                if (hotel.IsFailure) {
+                    logger.LogError("HotelService.HotelNotFound");
+                    continue;
+                }
+                if (hotel.Value == null) {
+                    logger.LogError("HotelService.HotelNotFound");
+                    continue;
+                }
+                hotels.Add(hotel.Value);
+            }
+
             var parallelOptions = new ParallelOptions {
-                MaxDegreeOfParallelism = 8,
+                MaxDegreeOfParallelism = 10,
                 CancellationToken = stoppingToken
             };
-            await Parallel.ForEachAsync(hotelDtos!, parallelOptions, async (hotelDto, cancellationToken) => {
+            await Parallel.ForEachAsync(hotels!, parallelOptions, async (hotel, cancellationToken) => {
                 try {
+                    var hotelDto = hotel.ToHotelDto();  
                     var response = await staticSynchronizerApiClient.PushHotel(hotelDto);
                     if (!response.IsSuccessStatusCode) {
                         var content = await response.Content.ReadAsStringAsync(cancellationToken);

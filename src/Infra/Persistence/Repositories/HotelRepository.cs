@@ -2,16 +2,16 @@ namespace Senator.As400.Cloud.Sync.Infrastructure.Persistence.Repositories;
 public class HotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(unitOfWork), IHotelRepository {
 
     public async Task<IEnumerable<int>?> GetAllHotelsIdsAsync() {
-        using var connection = Connection;
-        var result = await connection.QueryAsync<int>(
+        //using var connection = Connection;
+        var result = await Connection.QueryAsync<int>(
             "SELECT codigo_interno FROM EST_Hoteles WHERE visible = 1",
             transaction: DbContext.Transaction);
         return [.. result];
     }
 
     public async Task<Hotel?> GetHotelAsync(int hotelId) {
-        using var connection = Connection;
-        var result = await connection.QueryMultipleAsync(
+        //using var connection = DbContext.Connection;
+        var result = await Connection.QueryMultipleAsync(
             GetHotelQuery() + ";" + GetRegimenQuery() + ";" + 
             GetHabitacionQuery() + ";" + GetHabitacionCamaQuery() + ";" + GetHabitacionServicio() + ";" +
             GetPiscinaQuery() + ";" +
@@ -25,7 +25,7 @@ public class HotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(unitOfW
         }
 
         //hotel.Imagenes = [.. result.Read<Imagen>()];
-        hotel.RegimenesIds = [.. result.Read<int>()];
+        hotel.RegimenesCodes = [.. result.Read<string>()];
         hotel.Habitaciones = [.. result.Read<Habitacion>()];
         //hotel.HabitacionesImagenes = [.. result.Read<Imagen>()];
         hotel.HabitacionesCamas = [.. result.Read<CamaTipo>()];
@@ -41,7 +41,7 @@ public class HotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(unitOfW
         var piscinaUids = hotel.Piscinas.Select(p => p.Uid).ToList();
         var salonUids = hotel.Salones.Select(s => s.Uid).ToList();
 
-        var imagesResult = await connection.QueryMultipleAsync(
+        var imagesResult = await Connection.QueryMultipleAsync(
             GetHotelImagenQuery() + ";" + GetRoomImagenQuery() + ";" + GetPiscinaImageQuery() + ";" + GetSalonImageQuery(),
             new { hotelUid, roomUids, piscinaUids, salonUids },
             DbContext.Transaction);
@@ -304,13 +304,7 @@ public class HotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(unitOfW
     private static string GetRegimenColumnsWithAlias() {
         var columns = new List<string>
         {
-            "id as Id"
-        //"regimen AS Codigo",
-        //"es_nombre AS EsNombre",
-        //"en_nombre AS EnNombre",
-        //"fr_nombre AS FrNombre",
-        //"de_nombre AS DeNombre",
-        //"pt_nombre AS PtNombre"
+            "regimen AS Codigo"
     };
         return string.Join(", ", columns);
     }
