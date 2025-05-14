@@ -26,19 +26,8 @@ builder.Services.AddHttpClients(configuration);
 builder.Services.AddApplicationServices();
 builder.Services.AddUseCases();
 builder.Services.AddSingleton<ISynchronizerHandler<GenericSynchronizationEvent>, GenericEventHandler>();
+builder.Services.AddPubSubServices(configuration);
 
-//subscription to quota
-//var projectId = configuration["QuotaGooglePubSub:ProjectId"];
-//var subscriptionId = configuration["QuotaGooglePubSub:SubscriptionId"];
-//var subscriptionName = SubscriptionName.FromProjectSubscription(projectId, subscriptionId);
-//builder.Services.AddSubscriberClient(subscriptionName);
-//builder.Services.AddHostedService<SubscriptionPullStreamingService>();
-
-
-//subscription to avail and static 
-builder.Services.AddSubscriberServiceApiClient();
-//builder.Services.AddHostedService<AvailSubscriptionPullService>();
-builder.Services.AddHostedService<StaticSubscriptionPullService>();
 
 builder.Services.AddHostedService<NightlyStaticSyncService>();
 
