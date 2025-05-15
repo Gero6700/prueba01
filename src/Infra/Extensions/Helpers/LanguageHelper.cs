@@ -3,17 +3,17 @@ public static class LanguageHelper {
     public static string GetIsoCode(this Language language) {
         switch (language) {
             case Language.Es:
-                return "es-ES";
+                return "ES";
             case Language.En:
-                return "en-GB";
+                return "GB";
             case Language.Fr:
-                return "fr-FR";
+                return "FR";
             case Language.De:
-                return "de-DE";
+                return "DE";
             case Language.Pt:
-                return "pt-PT";
+                return "PT";
             default:
-                return "en-GB";
+                return "GB";
         }
     }
 }
