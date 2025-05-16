@@ -52,3 +52,8 @@ global using Senator.As400.Cloud.Sync.Infrastructure.Persistence.Repositories;
 global using Senator.As400.Cloud.Sync.Domain.Abstractions.Persistence;
 global using Senator.As400.Cloud.Sync.Domain.Repositories;
 global using Senator.As400.Cloud.Sync.Domain.Abstractions.Core;
+global using Serilog.Events;
+global using Serilog.Formatting;
+global using Serilog.Formatting.Json;
+global using System;
+global using System.IO;
