@@ -8,7 +8,7 @@ public class AlwaysLevelCompactJsonFormatter : ITextFormatter {
 
         // Timestamp
         output.Write("\"@t\":\"");
-        output.Write(logEvent.Timestamp.UtcDateTime.ToString("O"));
+        output.Write(logEvent.Timestamp.LocalDateTime.ToString("O"));
         output.Write('\"');
 
         // MessageTemplate
