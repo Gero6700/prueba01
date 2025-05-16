@@ -15,9 +15,9 @@ public class Hotel(
     int numeroPlantas,
     int anioConstruccion,
     string esPais,
-    string codigoPaisIso,
+    int codigoPais,
     string nombreProvincia,
-    string codigoProvinciaIso,
+    int codigoProvincia,
     string nombreLocalidad,
     string codigoLocalidad,
     string domicilio,
@@ -87,14 +87,14 @@ public class Hotel(
     [Column("es_pais")]
     public string EsPais { get; set; } = esPais;
 
-    [Column("codigo_pais_iso")]
-    public string CodigoPaisIso { get; set; } = codigoPaisIso;
+    [Column("codigo_pais")]
+    public int CodigoPais { get; set; } = codigoPais;
 
     [Column("nombre_provincia")]
     public string NombreProvincia { get; set; } = nombreProvincia;
 
-    [Column("codigo_provincia_iso")]
-    public string CodigoProvinciaIso { get; set; } = codigoProvinciaIso;
+    [Column("codigo_provincia")]
+    public int CodigoProvincia { get; set; } = codigoProvincia;
 
     [Column("nombre_localidad")]
     public string NombreLocalidad { get; set; } = nombreLocalidad;
@@ -209,9 +209,9 @@ public class Hotel(
         0,
         0,
         string.Empty,
+        0,
         string.Empty,
-        string.Empty,
-        string.Empty,
+        0,
         string.Empty,
         string.Empty,
         string.Empty,

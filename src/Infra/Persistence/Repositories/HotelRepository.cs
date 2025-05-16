@@ -327,7 +327,7 @@ public class HotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(unitOfW
         "es_pais AS EsPais",
         "p.siglas AS CodigoPaisIso",
         "nombre_provincia AS NombreProvincia",
-        "codigo_provincia AS CodigoProvinciaIso",
+        "codigo_provincia AS CodigoProvincia",
         "nombre_localidad AS NombreLocalidad",
         "codigo_localidad AS CodigoLocalidad",
         "domicilio AS Domicilio",

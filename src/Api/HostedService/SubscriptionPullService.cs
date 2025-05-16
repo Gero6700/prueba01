@@ -185,8 +185,12 @@ public abstract class SubscriptionPullService : BackgroundService {
     }
 
     private static string GenerateLogMessage(string projectId, string subscriptionId, PubsubMessage receivedMessage, string errorMessage) {
-        return $"{errorMessage}{Environment.NewLine}Project:{projectId}{Environment.NewLine}Subscription: {subscriptionId}{Environment.NewLine}" +
-            $"MessageId: {receivedMessage.MessageId}{Environment.NewLine}PublishTime: {receivedMessage.PublishTime.ToDateTime()}{Environment.NewLine}Data: {receivedMessage.Data.ToStringUtf8()}";
+        return $"{errorMessage}{Environment.NewLine}" +
+            $"Project:{projectId}{Environment.NewLine}" +
+            $"Subscription: {subscriptionId}{Environment.NewLine}" +
+            $"MessageId: {receivedMessage.MessageId}{Environment.NewLine}" +
+            $"PublishTime: {receivedMessage.PublishTime.ToDateTime()}{Environment.NewLine}" +
+            $"Data: {receivedMessage.Data.ToStringUtf8()}";
     }
 
     private static string GenerateLogApi(string projectId, string subscriptionId, PubsubMessage received, int errorCode, string? problemDetails) {
