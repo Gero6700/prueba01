@@ -27,10 +27,7 @@ builder.Services.AddApplicationServices();
 builder.Services.AddUseCases();
 builder.Services.AddSingleton<ISynchronizerHandler<GenericSynchronizationEvent>, GenericEventHandler>();
 builder.Services.AddPubSubServices(configuration);
-
-
 builder.Services.AddHostedService<NightlyStaticSyncService>();
-
 
 var app = builder.Build();
 

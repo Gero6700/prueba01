@@ -5,8 +5,10 @@ public static class PubSubServices {
         var projectId = configuration["QuotaGooglePubSub:ProjectId"];
         var subscriptionId = configuration["QuotaGooglePubSub:SubscriptionId"];
         var subscriptionName = SubscriptionName.FromProjectSubscription(projectId, subscriptionId);
+
         services.AddSubscriberClient(subscriptionName);
         services.AddHostedService<SubscriptionPullStreamingService>();
+
         //subscription to avail and static 
         services.AddSubscriberServiceApiClient();
         services.AddHostedService<AvailSubscriptionPullService>();
