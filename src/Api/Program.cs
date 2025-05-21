@@ -46,7 +46,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.UseRouting();
 app.MapControllers();
-app.MapHealthChecks("/health.json", new HealthCheckOptions {
+app.MapHealthChecks("/health", new HealthCheckOptions {
     Predicate = _ => true, ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
 });
 app.Run();

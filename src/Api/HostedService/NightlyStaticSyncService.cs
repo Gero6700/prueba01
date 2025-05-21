@@ -8,31 +8,36 @@ public class NightlyStaticSyncService(
 
     private static readonly SemaphoreSlim Semaphore = new(1, 1);
     protected override async Task ExecuteAsync(CancellationToken stoppingToken) {
-        while (!stoppingToken.IsCancellationRequested) {
-            await Semaphore.WaitAsync(stoppingToken);
+        try {
+            while (!stoppingToken.IsCancellationRequested) {
+                await Semaphore.WaitAsync(stoppingToken);
 
-            //Wait to 24:00
-            var now = DateTime.UtcNow;
-            var nextRun = now.Date.AddDays(1);
-            var delay = nextRun - now;
+                //Wait to 24:00
+                var now = DateTime.Now;
+                var nextRun = now.Date.AddDays(1);
+                var delay = nextRun - now;
 
-            if (delay.TotalMilliseconds > 0) {
-                logger.LogInformation("NightlyStaticSyncService: Waiting for {Delay} to run the sync service", delay);
-                Task.Delay(delay, stoppingToken).Wait(stoppingToken);
-            }
+                if (delay.TotalMilliseconds > 0) {
+                    logger.LogInformation("NightlyStaticSyncService: Waiting for {Delay} to run the sync service", delay);
+                    await Task.Delay(delay, stoppingToken);
+                }
 
-            try {
-                logger.LogInformation("NightlyStaticSyncService: Starting synchronization at {Time}", DateTime.UtcNow);
-                await ExecuteSync(stoppingToken);
-                logger.LogInformation("NightlyStaticSyncService: Synchronization completed at {Time}", DateTime.UtcNow);
-            }
-            catch (Exception ex) {
-                logger.LogError(ex, "NightlyStaticSyncService: An error occurred during synchronization.");
-            }
-            finally {
-                Semaphore.Release();
+                try {
+                    logger.LogInformation("NightlyStaticSyncService: Starting synchronization at {Time}", DateTime.UtcNow);
+                    await ExecuteSync(stoppingToken);
+                    logger.LogInformation("NightlyStaticSyncService: Synchronization completed at {Time}", DateTime.UtcNow);
+                }
+                catch (Exception ex) {
+                    logger.LogError(ex, "NightlyStaticSyncService: An error occurred during synchronization.");
+                }
+                finally {
+                    Semaphore.Release();
+                }
             }
         }
+        catch (Exception ex) {
+            logger.LogError(ex, "NightlyStaticSyncService: An error occurred in the background service.");
+        }        
     }
 
     private async Task ExecuteSync(CancellationToken stoppingToken) {

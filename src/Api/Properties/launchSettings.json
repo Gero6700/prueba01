@@ -4,9 +4,9 @@
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Production" //"Preproduction" // "Development"
-      },
+        "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development" //"Preproduction" // "Development"
+        },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7239;http://localhost:5134"
     },
