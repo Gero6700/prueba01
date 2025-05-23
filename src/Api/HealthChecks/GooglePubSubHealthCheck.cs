@@ -1,9 +1,9 @@
 namespace Senator.As400.Cloud.Sync.Api.HealthChecks; 
 
-public class StaticDataSynchronizerApiHealthCheck : IHealthCheck {
+public class GooglePubSubHealthCheck : IHealthCheck {
     private readonly IConfiguration configuration;
     
-    public StaticDataSynchronizerApiHealthCheck(IConfiguration configuration) {
+    public GooglePubSubHealthCheck(IConfiguration configuration) {
         this.configuration = configuration;
     }
     
