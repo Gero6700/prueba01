@@ -4,7 +4,7 @@ public class HotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(unitOfW
     public async Task<IEnumerable<int>?> GetAllHotelsIdsAsync() {
         //using var connection = Connection;
         var result = await Connection.QueryAsync<int>(
-            "SELECT codigo_interno FROM EST_Hoteles WHERE visible = 1",
+            "SELECT codigo_interno FROM EST_Hoteles",
             transaction: DbContext.Transaction);
         return [.. result];
     }
@@ -61,7 +61,7 @@ public class HotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(unitOfW
             FROM EST_Hoteles h
             LEFT JOIN EST_marcas_comerciales m ON h.id_marca_comercial = m.id
             LEFT JOIN AUX_paises P ON h.codigo_pais = p.codigo_pais
-            WHERE visible = 1 AND codigo_interno = @hotelId";                   
+            WHERE codigo_interno = @hotelId";                   
     }
 
     //private static string GetHotelImagenQuery() {
@@ -110,7 +110,7 @@ public class HotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(unitOfW
             SELECT 
                 {GetRegimenColumnsWithAlias()}                
             FROM EST_regimenes
-            WHERE visible = 1 AND id_hoteles like @hotelIDInLike";
+            WHERE id_hoteles like @hotelIDInLike";
     }
 
     private static string GetHabitacionQuery() {
@@ -118,7 +118,7 @@ public class HotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(unitOfW
             SELECT 
                 {GetHabitacionColumnsWithAlias()}                
             FROM EST_habitaciones
-            WHERE visible = 1 and codigo_interno_hotel = @hotelId";
+            WHERE codigo_interno_hotel = @hotelId";
     }
 
     private static string GetPiscinaQuery() {
@@ -126,7 +126,7 @@ public class HotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(unitOfW
             SELECT 
                 {GetPiscinaColumnsWithAlias()}                
             FROM EST_piscinas
-            WHERE visible = 1 AND codigo_hotel = @hotelId";
+            WHERE codigo_hotel = @hotelId";
     }
 
     private static string GetSalonQuery() {
@@ -134,7 +134,7 @@ public class HotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(unitOfW
             SELECT 
                 {GetSalonColumnsWithAlias()}                
             FROM EST_salones
-            WHERE visible = 1 AND codigo_hotel = @hotelId";
+            WHERE codigo_hotel = @hotelId";
     }
 
     private static string GetSalonImageQuery() {
@@ -142,7 +142,7 @@ public class HotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(unitOfW
             SELECT 
                 {GetImagesColumnsWithAliases()}                
             FROM EST_Imagenes2
-            WHERE visible = 1 AND tabla_padre='EST_salones' AND uid_padre IN @salonUids";
+            WHERE tabla_padre='EST_salones' AND uid_padre IN @salonUids";
     }
 
     private static string GetPiscinaImageQuery() {
@@ -150,7 +150,7 @@ public class HotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(unitOfW
             SELECT 
                 {GetImagesColumnsWithAliases()}                
             FROM EST_Imagenes2
-            WHERE visible = 1 AND tabla_padre='EST_piscinas' AND uid_padre IN @piscinaUids";
+            WHERE tabla_padre='EST_piscinas' AND uid_padre IN @piscinaUids";
     }
 
     private static string GetServicioQuery() {
