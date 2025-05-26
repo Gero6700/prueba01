@@ -16,7 +16,7 @@ builder.Logging.AddSerilog(logger);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddApiVersioningService();
-builder.Services.AddHealthChecksService();
+builder.Services.AddHealthChecksService(configuration);
 builder.Services.AddSwaggerGen();
 builder.Services.ConfigureOptions<ConfigureSwaggerOptions>();
 builder.Services.AddErrorHandling();

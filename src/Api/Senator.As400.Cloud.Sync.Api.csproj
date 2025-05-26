@@ -25,8 +25,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="HealthChecks\StaticDatabaseHealthCheck.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Asp.Versioning.Mvc" Version="7.1.0" />
     <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="7.1.0" />
+    <PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="9.0.0" />
     <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="7.1.0" />
     <PackageReference Include="Google.Cloud.PubSub.V1" Version="3.19.0" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.1" />
