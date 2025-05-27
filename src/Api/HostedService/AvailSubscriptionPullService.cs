@@ -5,8 +5,9 @@ public class AvailSubscriptionPullService(
         IConfiguration configuration,
         SubscriberServiceApiClient subscriberClient,
         ILogger<AvailSubscriptionPullService> logger,
-        ISynchronizerHandler<GenericSynchronizationEvent> synchronizationHandler
-    ) : SubscriptionPullService (subscriberClient, logger, synchronizationHandler) {
+        ISynchronizerHandler<GenericSynchronizationEvent> synchronizationHandler,
+        IAs400NotificationApiClient as400NotificationApiClient
+    ) : SubscriptionPullService (subscriberClient, logger, synchronizationHandler, as400NotificationApiClient) {
 
     protected override string GetProjectId() => configuration["AvailGooglePubSub:ProjectId"]!;
     protected override string GetSubscriptionId() => configuration["AvailGooglePubSub:SubscriptionId"]!;

@@ -159,14 +159,19 @@ public static class HotelExtension
                         { Language.Pt, estHotel.PtSituacion }
                     };
 
-        foreach (var language in Enum.GetValues<Language>())
-        {
-            translations.Add(new StaticHotelTranslationDto
-            {
+        foreach (var language in Enum.GetValues<Language>()) {
+            var shortDescription = shortDescriptions[language];
+            var largeDescription = largeDescriptions[language];
+            var locationDescription = locationDescriptions[language];
+
+            if (string.IsNullOrEmpty(shortDescription) && string.IsNullOrEmpty(largeDescription)) {
+                continue; 
+            }
+            translations.Add(new StaticHotelTranslationDto {
                 LanguageIsoCode = language.GetIsoCode(),
-                ShortDescription = shortDescriptions[language],
-                LargeDescription = largeDescriptions[language],
-                LocationDescription = locationDescriptions[language]
+                ShortDescription = shortDescription,
+                LargeDescription = largeDescription,
+                LocationDescription = string.IsNullOrEmpty(locationDescription) ? null : locationDescription
             });
         }
 

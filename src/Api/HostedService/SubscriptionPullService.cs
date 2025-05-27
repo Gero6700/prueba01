@@ -36,15 +36,17 @@ public abstract class SubscriptionPullService : BackgroundService {
     protected readonly SubscriberServiceApiClient subscriberClient;
     protected readonly Microsoft.Extensions.Logging.ILogger logger;
     protected readonly ISynchronizerHandler<GenericSynchronizationEvent> synchronizationHandler;
+    protected readonly IAs400NotificationApiClient? as400NotificationApiClient;
 
     protected SubscriptionPullService(
         SubscriberServiceApiClient subscriberClient,
         Microsoft.Extensions.Logging.ILogger logger,
-        ISynchronizerHandler<GenericSynchronizationEvent> synchronizationHandler
-    ) {
+        ISynchronizerHandler<GenericSynchronizationEvent> synchronizationHandler,
+        IAs400NotificationApiClient? as400NotificationApiClient) {
         this.subscriberClient = subscriberClient;
         this.logger = logger;
         this.synchronizationHandler = synchronizationHandler;
+        this.as400NotificationApiClient = as400NotificationApiClient;
     }
 
     protected abstract Dictionary<string, Type> typeMap { get; }
@@ -98,6 +100,7 @@ public abstract class SubscriptionPullService : BackgroundService {
                             };
 
                             var httpresponse = await synchronizationHandler.HandleAsync(genericSynchronizationEvent);
+                            var statusAs400 = "Ok";
 
                             if (!httpresponse.IsSuccessStatusCode) {
                                 var content = await httpresponse.Content.ReadAsStringAsync();
@@ -112,7 +115,7 @@ public abstract class SubscriptionPullService : BackgroundService {
                                 }
 
                                 //Si devuelve un 404 o 500 (de .NET), se sale del bucle para asegurar el orden en el procesamiento. Se reintará la extracción en el siguiente ciclo.
-                                if (problemDetails == null && (errorCode == 404 || errorCode == 500)) {
+                                if (problemDetails == null && (errorCode == 404 || errorCode == 500 || errorCode == 429)) {
                                     logger.LogError("Error sending message to Sync Api: {message}",
                                         GenerateLogApi(projectId, subscriptionId, receivedMessage.Message, errorCode, content));
                                     lock (queueLock) {
@@ -120,12 +123,20 @@ public abstract class SubscriptionPullService : BackgroundService {
                                     }
                                     return;
                                 }
-
+                                statusAs400 = errorCode.ToString();
                                 logger.LogError("The message has been refused. Error sending message to Sync Api: {message}",
                                     GenerateLogApi(projectId, subscriptionId, receivedMessage.Message, errorCode, content));
                             }
 
-                            await subscriberClient.AcknowledgeAsync(subscriptionName, new[] { receivedMessage.AckId });
+                            await subscriberClient.AcknowledgeAsync(subscriptionName, [receivedMessage.AckId]);
+
+                            try {
+                                if (as400NotificationApiClient is not null) {
+                                    var (id, fechaModi) = GetIdFechamodi(notification);
+                                    var response = await as400NotificationApiClient.SendNotification(notification.Table, id, fechaModi, statusAs400);
+                                }
+                            }
+                            catch { }                                                      
                         }
                         catch (HttpRequestException ex) {
                             logger.LogError("Error sending message to Sync Api: { message}",
@@ -153,7 +164,6 @@ public abstract class SubscriptionPullService : BackgroundService {
                         }
                         catch (Exception ex)
                         {
-
                             if (ex.Message.Contains("HttpClient.Timeout")) {
                                 logger.LogError("Error sending message to Sync Api: { message}",
                                 GenerateLogMessage(projectId, subscriptionId, receivedMessage.Message, ex.Message));
@@ -165,7 +175,7 @@ public abstract class SubscriptionPullService : BackgroundService {
 
                             logger.LogError("The message has been refused. Error processing the message {message}",
                                GenerateLogMessage(projectId, subscriptionId, receivedMessage.Message, ex.Message));
-                            await subscriberClient.AcknowledgeAsync(subscriptionName, new[] { receivedMessage.AckId });
+                            await subscriberClient.AcknowledgeAsync(subscriptionName, [receivedMessage.AckId]);
                         }
                         finally
                         {
@@ -204,6 +214,16 @@ public abstract class SubscriptionPullService : BackgroundService {
         }
 
         throw new InvalidOperationException($"Unsupported table type: {notification.Table}");
+    }
+
+    private (string,string) GetIdFechamodi(As400Notification notification) {
+        var data = JsonSerializer.Deserialize<Dictionary<string, object>>(notification.Data, serializeOptions);
+        if (data != null && data.TryGetValue("Id", out var idObj) && data.TryGetValue("Fechamodi", out var fechaModiObj)) {
+            var id = idObj?.ToString();
+            var fechaModi = fechaModiObj?.ToString();
+            return (id ?? string.Empty, fechaModi ?? string.Empty);
+        }
+        return (string.Empty, string.Empty);
     }
 
     private class As400Notification : SynchronizationEvent { }

@@ -4,7 +4,7 @@ public class StaticSubscriptionPullService(
         SubscriberServiceApiClient subscriberClient,
         ILogger<StaticSubscriptionPullService> logger,
         ISynchronizerHandler<GenericSynchronizationEvent> synchronizationHandler
-    ) : SubscriptionPullService(subscriberClient, logger, synchronizationHandler) {
+    ) : SubscriptionPullService(subscriberClient, logger, synchronizationHandler, null) {
 
     protected override string GetProjectId() => configuration["StaticGooglePubSub:ProjectId"]!;
     protected override string GetSubscriptionId() => configuration["StaticGooglePubSub:SubscriptionId"]!;
