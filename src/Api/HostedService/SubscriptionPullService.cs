@@ -134,6 +134,9 @@ public abstract class SubscriptionPullService : BackgroundService {
                                 if (as400NotificationApiClient is not null) {
                                     var (id, fechaModi) = GetIdFechamodi(notification);
                                     var response = await as400NotificationApiClient.SendNotification(notification.Table, id, fechaModi, statusAs400);
+                                    if (!response.IsSuccessStatusCode) {
+                                        logger.LogError("Error sending notification to AS400 API: {message}", response.StatusCode);
+                                    }
                                 }
                             }
                             catch { }                                                      
