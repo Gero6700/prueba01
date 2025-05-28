@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Senator.As400.Cloud.Sync.Infrastructure.Providers;
 
 namespace Senator.As400.Cloud.Sync.Api.HostedService;
 
@@ -17,7 +18,8 @@ namespace Senator.As400.Cloud.Sync.Api.HostedService;
 public class SubscriptionPullStreamingService(
         SubscriberClient subscriberClient,
         ILogger<SubscriptionPullStreamingService> logger,
-        ISynchronizerHandler<GenericSynchronizationEvent> synchronizerHandler
+        ISynchronizerHandler<GenericSynchronizationEvent> synchronizerHandler,
+        IAs400NotificationApiClient? as400NotificationApiClient
     ) : BackgroundService {
     private readonly JsonSerializerOptions serializeOptions = new() { PropertyNameCaseInsensitive = true };
     private readonly Dictionary<string, Type> typeMap = new() {
@@ -29,7 +31,6 @@ public class SubscriptionPullStreamingService(
             if (stoppingToken.IsCancellationRequested) {
                 return SubscriberClient.Reply.Nack;
             }
-            //logger.LogInformation("Message received");
             return await ProcessMessageAsync(message);
         });
     }
@@ -38,7 +39,6 @@ public class SubscriptionPullStreamingService(
         // Se recupera y deserializa el mensaje
         var messageData = string.Empty;
         try {
-            //var stopwatch = Stopwatch.StartNew();
             messageData = message.Data.ToStringUtf8();
             var notification = JsonSerializer.Deserialize<As400Notification>(messageData, serializeOptions) ??
                 throw new InvalidOperationException("The message could not be deserialized");
@@ -50,6 +50,7 @@ public class SubscriptionPullStreamingService(
             };
 
             var httpResponse = await synchronizerHandler.HandleAsync(genericSynchronizationEvent);
+            var statusAs400 = "Ok";
             if (!httpResponse.IsSuccessStatusCode) {
                 var content = await httpResponse.Content.ReadAsStringAsync();
                 var errorCode = (int)httpResponse.StatusCode;
@@ -60,27 +61,24 @@ public class SubscriptionPullStreamingService(
                 }
                 catch { }
 
-                if (problemDetails == null && (errorCode == 404 || errorCode == 500)) {
+                if (problemDetails == null) {
                     //Se reintenta el mensaje
                     logger.LogError("Error sending message to Sync Api. {Message}",
                         GenerateLogApi(subscriberClient.SubscriptionName.ProjectId, subscriberClient.SubscriptionName.SubscriptionId, message, messageData, errorCode, content));
                     return SubscriberClient.Reply.Nack;
                 }
-
+                statusAs400 = errorCode.ToString();
                 logger.LogError("The message has been refused. Error sending message to Sync Api. {Message}",
                     GenerateLogApi(subscriberClient.SubscriptionName.ProjectId, subscriberClient.SubscriptionName.SubscriptionId, message, messageData, errorCode, content));
             }
 
+            await SendAs400Notification(notification, statusAs400);
             return SubscriberClient.Reply.Ack;
         }
-        catch (HttpRequestException ex) {
-            logger.LogError("Error sending message to Sync Api: {Message}",
-                GenerateLogMessage(subscriberClient.SubscriptionName.ProjectId, subscriberClient.SubscriptionName.SubscriptionId, message, messageData, ex.Message));
-            return SubscriberClient.Reply.Nack;
-        }
-        catch (TimeoutException ex) {
-            logger.LogError("Error sending message to Sync Api: {Message}",
-                GenerateLogMessage(subscriberClient.SubscriptionName.ProjectId, subscriberClient.SubscriptionName.SubscriptionId, message, messageData, ex.Message));
+        catch (Exception ex) when (
+            ex is HttpRequestException ||
+            ex is TimeoutException ||
+            ex.Message.Contains("HttpClient.Timeout")) {
             return SubscriberClient.Reply.Nack;
         }
         catch (Exception ex) {
@@ -99,7 +97,6 @@ public class SubscriptionPullStreamingService(
         return GenerateLogMessage(projectId, subscriptionId, received, messageData, $"Api synchronizer error: {problemDetails ?? ""}");
     }
 
-
     public override async Task StopAsync(CancellationToken stoppingToken) =>
         await subscriberClient.StopAsync(stoppingToken);
 
@@ -110,7 +107,30 @@ public class SubscriptionPullStreamingService(
         }
 
         throw new InvalidOperationException($"Unsupported table type: {notification.Table}");
-    }   
+    }
+
+    private async Task SendAs400Notification(As400Notification notification, string statusAs400) {
+        try {
+            if (as400NotificationApiClient is not null) {
+                var (id, fechaModi) = GetIdFechamodi(notification);
+                var response = await as400NotificationApiClient.SendNotification(notification.Table, id, fechaModi, statusAs400);
+                if (!response.IsSuccessStatusCode) {
+                    logger.LogError("Error sending notification to AS400 API: {message}", response.StatusCode);
+                }
+            }
+        }
+        catch { }
+    }
+
+    private (string, string) GetIdFechamodi(As400Notification notification) {
+        var data = JsonSerializer.Deserialize<Dictionary<string, object>>(notification.Data, serializeOptions);
+        if (data != null && data.TryGetValue("Id", out var idObj) && data.TryGetValue("Fechamodi", out var fechaModiObj)) {
+            var id = idObj?.ToString();
+            var fechaModi = fechaModiObj?.ToString();
+            return (id ?? string.Empty, fechaModi ?? string.Empty);
+        }
+        return (string.Empty, string.Empty);
+    }
 
     private class As400Notification : SynchronizationEvent { }
 }
