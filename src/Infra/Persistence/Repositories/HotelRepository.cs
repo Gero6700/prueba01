@@ -4,7 +4,7 @@ public class HotelRepository(IUnitOfWork unitOfWork) : Repository<Hotel>(unitOfW
     public async Task<IEnumerable<int>?> GetAllHotelsIdsAsync() {
         //using var connection = Connection;
         var result = await Connection.QueryAsync<int>(
-            "SELECT codigo_interno FROM EST_Hoteles",
+            "SELECT codigo_interno FROM EST_Hoteles WHERE tipo_establecimiento = 'h'",
             transaction: DbContext.Transaction);
         return [.. result];
     }
