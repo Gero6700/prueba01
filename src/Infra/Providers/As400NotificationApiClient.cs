@@ -13,6 +13,6 @@ public class As400NotificationApiClient : IAs400NotificationApiClient {
             $"&Id={id}" +
             $"&FechaModi={fechaModi:yyyy-MM-ddTHH:mm:ss.ffffffZ}" +
             $"&Status={status}" +
-            $"$Text={text}");
+            $"&Text={text}");
     }
 }
