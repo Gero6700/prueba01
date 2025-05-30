@@ -7,7 +7,12 @@ public class As400NotificationApiClient : IAs400NotificationApiClient {
         this.httpClient = httpClient;
     }
 
-    public Task<HttpResponseMessage> SendNotification(string tabla, string id, string fechaModi, string status) {
-        return httpClient.GetAsync($"web/services/EstadoSincroPubSub?Tabla={tabla}&Id={id}&FechaModi={fechaModi:yyyy-MM-ddTHH:mm:ss.ffffffZ}&Status={status}");
+    public Task<HttpResponseMessage> SendNotification(string tabla, string id, string fechaModi, string status, string text) {
+        return httpClient.GetAsync($"web/services/EstadoSincroPubSub" +
+            $"?Tabla={tabla}" +
+            $"&Id={id}" +
+            $"&FechaModi={fechaModi:yyyy-MM-ddTHH:mm:ss.ffffffZ}" +
+            $"&Status={status}" +
+            $"$Text={text}");
     }
 }

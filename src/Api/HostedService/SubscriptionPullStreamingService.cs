@@ -51,6 +51,7 @@ public class SubscriptionPullStreamingService(
 
             var httpResponse = await synchronizerHandler.HandleAsync(genericSynchronizationEvent);
             var statusAs400 = "Ok";
+            var textAs400 = string.Empty;
             if (!httpResponse.IsSuccessStatusCode) {
                 var content = await httpResponse.Content.ReadAsStringAsync();
                 var errorCode = (int)httpResponse.StatusCode;
@@ -68,11 +69,12 @@ public class SubscriptionPullStreamingService(
                     return SubscriberClient.Reply.Nack;
                 }
                 statusAs400 = errorCode.ToString();
+                textAs400 = problemDetails.Detail ?? content;
                 logger.LogError("The message has been refused. Error sending message to Sync Api. {Message}",
                     GenerateLogApi(subscriberClient.SubscriptionName.ProjectId, subscriberClient.SubscriptionName.SubscriptionId, message, messageData, errorCode, content));
             }
 
-            await SendAs400Notification(notification, statusAs400);
+            await SendAs400Notification(notification, statusAs400, textAs400?? string.Empty);
             return SubscriberClient.Reply.Ack;
         }
         catch (Exception ex) when (
@@ -109,11 +111,13 @@ public class SubscriptionPullStreamingService(
         throw new InvalidOperationException($"Unsupported table type: {notification.Table}");
     }
 
-    private async Task SendAs400Notification(As400Notification notification, string statusAs400) {
+    private async Task SendAs400Notification(As400Notification notification, string statusAs400, string textAs400) {
         try {
             if (as400NotificationApiClient is not null) {
                 var (id, fechaModi) = GetIdFechamodi(notification);
-                var response = await as400NotificationApiClient.SendNotification(notification.Table, id, fechaModi, statusAs400);
+                if (textAs400.Length > 250)
+                    textAs400 = textAs400[..250];
+                var response = await as400NotificationApiClient.SendNotification(notification.Table, id, fechaModi, statusAs400, textAs400);
                 if (!response.IsSuccessStatusCode) {
                     logger.LogError("Error sending notification to AS400 API: {message}", response.StatusCode);
                 }
