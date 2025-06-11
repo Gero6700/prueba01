@@ -10,101 +10,22 @@ public static class ImageExtension {
             ImageTranslations = GetTranslations(imagen)
         }).ToList();
     }
-    //public static IEnumerable<StaticRoomImageDto>? ToRoomImageDto(this IEnumerable<Imagen> imagenes) {
-    //    if (!imagenes.Any()) {
-    //        return null;
-    //    }
-
-    //    return imagenes.Select(imagen => new StaticRoomImageDto {
-    //        Order = imagen.Prioridad,
-    //        Url = $"http://servicios.playasenator.com/imagen.aspx?id={imagen.Url}",
-    //        RoomImageTranslations = GetTranslations<StaticRoomImageTranslationDto>(imagen)
-    //    }).ToList();
-    //}
-
-    //public static IEnumerable<StaticHotelImageDto>? ToHotelImageDto(this IEnumerable<Imagen> imagenes) {
-    //    if (!imagenes.Any()) {
-    //        return null;
-    //    }
-    //    return imagenes.Select(imagen => new StaticHotelImageDto {
-    //        Order = imagen.Prioridad,
-    //        Url = $"http://servicios.playasenator.com/imagen.aspx?id={imagen.Url}",
-    //        HotelImageTranslations = GetTranslations<StaticHotelImageTranslationDto>(imagen)
-    //    }).ToList();
-    //}
-
-    //public static IEnumerable<StaticSwimmingPoolImageDto>? ToSwimmingPoolImageDto(this IEnumerable<Imagen> imagenes) {
-    //    if (!imagenes.Any()) {
-    //        return null;
-    //    }
-    //    return imagenes.Select(imagen => new StaticSwimmingPoolImageDto {
-    //        Order = imagen.Prioridad,
-    //        Url = $"http://servicios.playasenator.com/imagen.aspx?id={imagen.Url}",
-    //        SwimmingPoolImageTranslations = GetTranslations<StaticSwimmingPoolImageTranslationDto>(imagen)
-    //    }).ToList();
-    //}
-
-    //public static IEnumerable<StaticSalonImageDto>? ToSalonImageDto(this IEnumerable<Imagen> imagenes) {
-    //    if (!imagenes.Any()) {
-    //        return null;
-    //    }
-    //    return imagenes.Select(imagen => new StaticSalonImageDto {
-    //        Order = imagen.Prioridad,
-    //        Url = $"http://servicios.playasenator.com/imagen.aspx?id={imagen.Url}",
-    //        SalonImageTranslations = GetTranslations<StaticSalonImageTranslationDto>(imagen)
-    //    }).ToList();
-    //}
-
-    //private static List<StaticImageTranslationDto> GetTranslations(Imagen imagen) {
-    //    var translations = new List<StaticImageTranslationDto>();
-    //    var titleDescriptions = new Dictionary<Language, string> {
-    //        { Language.Es, imagen.EsTitulo },
-    //        { Language.En, imagen.EnTitulo },
-    //        { Language.Fr, imagen.FrTitulo },
-    //        { Language.De, imagen.DeTitulo },
-    //        { Language.Pt, imagen.PtTitulo }
-    //    };
-    //    var descriptions = new Dictionary<Language, string> {
-    //        { Language.Es, imagen.EsDescripcion },
-    //        { Language.En, imagen.EnDescripcion },
-    //        { Language.Fr, imagen.FrDescripcion },
-    //        { Language.De, imagen.DeDescripcion },
-    //        { Language.Pt, imagen.PtDescripcion }
-    //    };
-    //    foreach (var language in Enum.GetValues<Language>()) {
-    //        if (!titleDescriptions.TryGetValue(language, out var title) ||
-    //            !descriptions.TryGetValue(language, out var description)) {
-    //            continue;
-    //        }
-    //        if (string.IsNullOrEmpty(title)) {
-    //            continue;
-    //        }
-    //        translations.Add(new T {
-    //            LanguageIsoCode = language.GetIsoCode(),
-    //            Title = title,
-    //            Description = description
-    //        });
-    //    }
-    //    return translations;
-    //}
-
-
-
+   
     private static List<StaticImageTranslationDto> GetTranslations(Imagen imagen) {
         var translations = new List<StaticImageTranslationDto>();
         var titleDescriptions = new Dictionary<Language, string> {
-            { Language.Es, imagen.EsTitulo },
-            { Language.En, imagen.EnTitulo },
-            { Language.Fr, imagen.FrTitulo },
-            { Language.De, imagen.DeTitulo },
-            { Language.Pt, imagen.PtTitulo }
+            { Language.Es, imagen.EsTitulo.Trim() },
+            { Language.En, imagen.EnTitulo.Trim() },
+            { Language.Fr, imagen.FrTitulo.Trim() },
+            { Language.De, imagen.DeTitulo.Trim() },
+            { Language.Pt, imagen.PtTitulo.Trim() }
         };
         var descriptions = new Dictionary<Language, string> {
-            { Language.Es, imagen.EsDescripcion },
-            { Language.En, imagen.EnDescripcion },
-            { Language.Fr, imagen.FrDescripcion },
-            { Language.De, imagen.DeDescripcion },
-            { Language.Pt, imagen.PtDescripcion }
+            { Language.Es, imagen.EsDescripcion.Trim() },
+            { Language.En, imagen.EnDescripcion.Trim() },
+            { Language.Fr, imagen.FrDescripcion.Trim() },
+            { Language.De, imagen.DeDescripcion.Trim() },
+            { Language.Pt, imagen.PtDescripcion.Trim() }
         };
         foreach (var language in Enum.GetValues<Language>()) {
             if (!titleDescriptions.TryGetValue(language, out var title) ||
