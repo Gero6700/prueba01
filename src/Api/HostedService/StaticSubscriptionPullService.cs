@@ -8,7 +8,7 @@ public class StaticSubscriptionPullService(
 
     protected override string GetProjectId() => configuration["StaticGooglePubSub:ProjectId"]!;
     protected override string GetSubscriptionId() => configuration["StaticGooglePubSub:SubscriptionId"]!;
-    protected override int GetPullIntervalInSeconds() => int.Parse(configuration["StaticGooglePubSub:PullIntervalInSeconds"] ?? "0");
+    protected override int GetPullMaxMessages() => int.Parse(configuration["StaticGooglePubSub:PullMaxMessages"] ?? "0");
 
     protected override Dictionary<string, Type> typeMap => new() {
         {nameof(TableType.ExtraTranslation), typeof(Desextr)},
