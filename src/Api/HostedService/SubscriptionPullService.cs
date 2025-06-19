@@ -63,7 +63,7 @@ public abstract class SubscriptionPullService : BackgroundService {
 
         var queue = new PriorityQueue<ReceivedMessage, DateTime>();
         var queueLock = new object();
-        var semaphore = new SemaphoreSlim(5);
+        var semaphore = new SemaphoreSlim(50);
 
         while (!stoppingToken.IsCancellationRequested)
         {
