@@ -16,9 +16,7 @@ public static class CongasanExtension {
             CheckInDateFrom = DateTime.TryParse(congasan.C6fec1, out var dateFrom) ? dateFrom : null,
             CheckInDateTo = DateTime.TryParse(congasan.C6fec2, out var dateTo) ? dateTo : null,
             IntegrationContractCodes = congasan.OriginType == OriginType.Contract.ToString() ? [congasan.OriginCode] : null,
-            OfferSupplementCodes = congasan.OriginType == OriginType.Offer.ToString() ? [congasan.OriginCode] : null,
-            CheckInDateFrom = DateTime.Parse(congasan.C6fec1),
-            CheckInDateTo = DateTime.Parse(congasan.C6fec2)
+            OfferSupplementCodes = congasan.OriginType == OriginType.Offer.ToString() ? [congasan.OriginCode] : null
         };
 
         return line;

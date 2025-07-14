@@ -16,6 +16,4 @@ public class CancellationPolicyDto {
     public DateTime? CheckInDateTo { get; init; }
     public IEnumerable<string>? IntegrationContractCodes { get; set; }
     public IEnumerable<string>? OfferSupplementCodes { get; set; }
-    public DateTime CheckInDateFrom { get; set; }
-    public DateTime CheckInDateTo { get; set; }
 }
