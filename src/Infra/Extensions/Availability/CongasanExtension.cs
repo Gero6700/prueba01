@@ -11,7 +11,7 @@ public static class CongasanExtension {
         );
 
         var isValidDateTo = DateTime.TryParseExact(
-            congasan.C6fec1,
+            congasan.C6fec2,
             "yyyyMMdd",
             CultureInfo.InvariantCulture,
             DateTimeStyles.None,
@@ -30,8 +30,8 @@ public static class CongasanExtension {
             ApplyInOfferPrice = congasan.C6ofer.ToUpper() == "S" ? true : false,
             ApplyIfInsurance = congasan.C6segu.ToUpper() == "S" ? true : false,
             RefundAsBonus = congasan.C6bono.ToUpper() == "S" ? true : false,
-            CheckInDateFrom = isValidDateFrom ? finalDateFrom.Date : null,
-            CheckInDateTo = isValidDateTo ? finalDateTo.Date.AddHours(23).AddMinutes(59).AddSeconds(59) : null,
+            CheckInDateFrom = isValidDateFrom ? finalDateFrom.Date : DateTime.Now,
+            CheckInDateTo = isValidDateTo ? finalDateTo.Date.AddHours(23).AddMinutes(59).AddSeconds(59) : DateTime.Now,
             IntegrationContractCodes = congasan.OriginType == OriginType.Contract.ToString() ? [congasan.OriginCode] : null,
             OfferSupplementCodes = congasan.OriginType == OriginType.Offer.ToString() ? [congasan.OriginCode] : null
         };
