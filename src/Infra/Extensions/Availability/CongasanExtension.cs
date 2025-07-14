@@ -14,7 +14,9 @@ public static class CongasanExtension {
             ApplyIfInsurance = congasan.C6segu.ToUpper() == "S" ? true : false,
             RefundAsBonus = congasan.C6bono.ToUpper() == "S" ? true : false,
             IntegrationContractCodes = congasan.OriginType == OriginType.Contract.ToString() ? [congasan.OriginCode] : null,
-            OfferSupplementCodes = congasan.OriginType == OriginType.Offer.ToString() ? [congasan.OriginCode] : null
+            OfferSupplementCodes = congasan.OriginType == OriginType.Offer.ToString() ? [congasan.OriginCode] : null,
+            CheckInDateFrom = DateTime.Parse(congasan.C6fec1),
+            CheckInDateTo = DateTime.Parse(congasan.C6fec2)
         };
 
         return line;

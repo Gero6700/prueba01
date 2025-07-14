@@ -14,4 +14,6 @@ public class CancellationPolicyDto {
     public bool RefundAsBonus { get; set; }
     public IEnumerable<string>? IntegrationContractCodes { get; set; }
     public IEnumerable<string>? OfferSupplementCodes { get; set; }
+    public DateTime CheckInDateFrom { get; set; }
+    public DateTime CheckInDateTo { get; set; }
 }
