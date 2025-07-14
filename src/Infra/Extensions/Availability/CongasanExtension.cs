@@ -1,6 +1,23 @@
 namespace Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
 public static class CongasanExtension {
     public static CancellationPolicyDto ToCancellationPolicyLine(this Congasan congasan) {
+
+        var isValidDateFrom = DateTime.TryParseExact(
+            congasan.C6fec1,
+            "yyyyMMdd",
+            CultureInfo.InvariantCulture,
+            DateTimeStyles.None,
+            out var finalDateFrom
+        );
+
+        var isValidDateTo = DateTime.TryParseExact(
+            congasan.C6fec1,
+            "yyyyMMdd",
+            CultureInfo.InvariantCulture,
+            DateTimeStyles.None,
+            out var finalDateTo
+        );
+
         var line = new CancellationPolicyDto {
             Code = congasan.Code,
             ReleaseDays = congasan.C6gcdi,
@@ -13,8 +30,8 @@ public static class CongasanExtension {
             ApplyInOfferPrice = congasan.C6ofer.ToUpper() == "S" ? true : false,
             ApplyIfInsurance = congasan.C6segu.ToUpper() == "S" ? true : false,
             RefundAsBonus = congasan.C6bono.ToUpper() == "S" ? true : false,
-            CheckInDateFrom = DateTime.TryParse(congasan.C6fec1, out var dateFrom) ? dateFrom : null,
-            CheckInDateTo = DateTime.TryParse(congasan.C6fec2, out var dateTo) ? dateTo : null,
+            CheckInDateFrom = isValidDateFrom ? finalDateFrom.Date : null,
+            CheckInDateTo = isValidDateTo ? finalDateTo.Date.AddHours(23).AddMinutes(59).AddSeconds(59) : null,
             IntegrationContractCodes = congasan.OriginType == OriginType.Contract.ToString() ? [congasan.OriginCode] : null,
             OfferSupplementCodes = congasan.OriginType == OriginType.Offer.ToString() ? [congasan.OriginCode] : null
         };
