@@ -11,7 +11,7 @@ public class AvailSubscriptionPullService(
 
     protected override string GetProjectId() => configuration["AvailGooglePubSub:ProjectId"]!;
     protected override string GetSubscriptionId() => configuration["AvailGooglePubSub:SubscriptionId"]!;
-    protected override int GetPullIntervalInSeconds() => int.Parse(configuration["AvailGooglePubSub:PullIntervalInSeconds"] ?? "0");
+    protected override int GetPullMaxMessages() => int.Parse(configuration["AvailGooglePubSub:PullMaxMessages"] ?? "0");
 
     protected override Dictionary<string, Type> typeMap => new() {
         {nameof(TableType.CancellationPolicyLine), typeof(Congasan)},

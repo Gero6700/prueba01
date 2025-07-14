@@ -52,24 +52,24 @@ public abstract class SubscriptionPullService : BackgroundService {
     protected abstract Dictionary<string, Type> typeMap { get; }
     protected abstract string GetProjectId();
     protected abstract string GetSubscriptionId();
-    protected abstract int GetPullIntervalInSeconds();
+    protected abstract int GetPullMaxMessages();
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken) {
         var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
         var projectId = GetProjectId();
         var subscriptionId = GetSubscriptionId();
-        var intervalInSeconds = GetPullIntervalInSeconds();
+        var pullMaxMessages = GetPullMaxMessages();
         var subscriptionName = SubscriptionName.FromProjectSubscription(projectId, subscriptionId);
 
         var queue = new PriorityQueue<ReceivedMessage, DateTime>();
         var queueLock = new object();
-        var semaphore = new SemaphoreSlim(5);
+        var semaphore = new SemaphoreSlim(pullMaxMessages);
 
         while (!stoppingToken.IsCancellationRequested)
         {
             try
             {
-                var response = await subscriberClient.PullAsync(subscriptionName, 50, stoppingToken);
+                var response = await subscriberClient.PullAsync(subscriptionName, pullMaxMessages, stoppingToken);
 
                 await Parallel.ForEachAsync(response.ReceivedMessages, stoppingToken, (receivedMessage, token) => {
                     lock (queueLock) {
