@@ -136,6 +136,8 @@ public abstract class SubscriptionPullService : BackgroundService {
                             ex is TimeoutException ||
                             ex is HttpException ||
                             ex.Message.Contains("HttpClient.Timeout")) {
+                            logger.LogError("An error has occurred processing the message {message}",
+                               GenerateLogMessage(projectId, subscriptionId, receivedMessage.Message, ex.Message));
                             lock (queueLock) { //se sale del bucle para asegurar el orden en el procesamiento.
                                 queue.Clear();
                             }
