@@ -70,7 +70,7 @@ public class SubscriptionPullStreamingService(
                 }
                 statusAs400 = errorCode.ToString();
                 textAs400 = problemDetails.Detail ?? content;
-                logger.LogError("The message has been refused. Error sending message to Sync Api. {Message}",
+                logger.LogError("SubscriptionPullStreamingService: The message has been refused. Error sending message to Sync Api. {Message}",
                     GenerateLogApi(subscriberClient.SubscriptionName.ProjectId, subscriberClient.SubscriptionName.SubscriptionId, message, messageData, errorCode, content));
             }
 

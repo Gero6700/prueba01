@@ -123,7 +123,7 @@ public abstract class SubscriptionPullService : BackgroundService {
                                 }
                                 statusAs400 = errorCode.ToString();
                                 textAs400 = problemDetails.Detail ?? content;
-                                logger.LogError("The message has been refused. Error sending message to Sync Api: {message}",
+                                logger.LogError("SubscriptionPullSerice: The message has been refused. Error sending message to Sync Api: {message}",
                                     GenerateLogApi(projectId, subscriptionId, receivedMessage.Message, errorCode, content));
                             }
 
