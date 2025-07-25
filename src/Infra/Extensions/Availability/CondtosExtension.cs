@@ -4,7 +4,11 @@ public static class CondtosExtension {
         var paxTypeString = condtos.D4tipa[..5].ToUpper();
         return new PeriodPricingPaxDto {
             PaxOrder = int.Parse(condtos.D4tipa.Trim()[5..]),
-            PaxType = paxTypeString == "NIÑOS" ? PaxType.Child.ToString() : paxTypeString == "ADULT" && condtos.D4has < 18 ? PaxType.Teenager.ToString() : PaxType.Adult.ToString(),
+            PaxType = paxTypeString == "NIÑOS" ? 
+                PaxType.Child.ToString() : 
+                paxTypeString == "ADULT" && condtos.D4has > 0 && condtos.D4has < 18 ? 
+                    PaxType.Teenager.ToString() : 
+                    PaxType.Adult.ToString(),
             Scope = condtos.D4tdto.ToUpper() == "E" ? ScopeType.Stay.ToString() : condtos.D4tdto.ToUpper() == "S" ? ScopeType.Meal.ToString() : ScopeType.Stay.ToString(),
             AgeFrom = condtos.D4desd,
             AgeTo = condtos.D4has,

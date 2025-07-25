@@ -1,3 +1,5 @@
+using Senator.As400.Cloud.Sync.Infrastructure.Dtos.As400;
+
 namespace Senator.As400.Cloud.Sync.Infrastructure.Extensions.Availability;
 public static class CondtofExtension {
     public static OfferSupplementConfigurationPaxDto ToOfferAndSupplementConfigurationPax(this Condtof condtof) {
@@ -5,7 +7,11 @@ public static class CondtofExtension {
         return new OfferSupplementConfigurationPaxDto {
             Code = condtof.Code,
             PaxOrder = int.Parse(condtof.O4tipa.Trim()[5..]),
-            PaxType = paxTypeString == "ADULT" && condtof.O4has < 18 ? PaxType.Teenager.ToString() : paxTypeString == "ADULT" ? PaxType.Adult.ToString() : paxTypeString == "NIÑOS" ? PaxType.Child.ToString() : PaxType.Adult.ToString(),
+            PaxType = paxTypeString == "NIÑOS" ? 
+                PaxType.Child.ToString() : 
+                paxTypeString == "ADULT" && condtof.O4has > 0 && condtof.O4has < 18 ? 
+                    PaxType.Teenager.ToString() : 
+                    PaxType.Adult.ToString(),
             Scope = condtof.O4tdto.ToUpper() == "E" ? ScopeType.Stay.ToString() : condtof.O4tdto.ToUpper() == "S" ? ScopeType.Meal.ToString() : ScopeType.Stay.ToString(),
             AgeFrom = condtof.O4desd == 0 ? null : condtof.O4desd,
             AgeTo = condtof.O4has == 0 ? null : condtof.O4has,
