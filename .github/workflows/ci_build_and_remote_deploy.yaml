@@ -1,0 +1,119 @@
+name: Build local & Deploy remote (SSH)
+
+on:
+  push:
+    branches: [ main, develop, release ]
+env:
+  IMAGE_BASE: senator-as400-cloud-sync
+  ARTIFACT:    image-tar
+  ENV_FILE:    .env
+
+jobs:
+  build:
+    runs-on: [ self-hosted, linux, x64 ]
+    outputs:
+      tag: ${{ steps.meta.outputs.tag }}
+      tar: ${{ steps.save.outputs.tar }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Load .env
+        id: env
+        run: |
+          case "${GITHUB_REF##*/}" in
+            main)
+              TAG=latest;
+              CFG=Release;
+              ASPNETCORE_ENVIRONMENT=Production;
+            ;;
+            develop)
+              TAG=develop;
+              CFG=Debug;
+              ASPNETCORE_ENVIRONMENT=Development;
+            ;;
+            release) 
+              TAG=release;
+              CFG=Release;
+              ASPNETCORE_ENVIRONMENT=Preproduction;
+            ;;
+            *)       
+              TAG=${GITHUB_REF##*/};
+              CFG=Release;
+              ASPNETCORE_ENVIRONMENT=Preproduction;
+            ;;
+          esac
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          echo "CFG=$CFG"  >> $GITHUB_ENV
+          echo "TAG=$TAG     BUILD_CONFIG=$CFG"
+          echo "ASPNETCORE_ENVIRONMENT=$ASPNETCORE_ENVIRONMENT" >> .env
+      
+      - name: Load .env
+        run: |
+          set -a && source .env && set +a
+          cat .env >> "$GITHUB_ENV"
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Build image
+        run: |
+          docker build \
+            --build-arg BUILD_CONFIG=$CFG \
+            -t $IMAGE_BASE:${{ steps.meta.outputs.tag }} .
+
+      - name: Save image → tar.gz
+        id: save
+        run: |
+          TAR=${{ env.ARTIFACT }}_${{ steps.meta.outputs.tag }}.tar.gz
+          docker save $IMAGE_BASE:${{ steps.meta.outputs.tag }} | gzip > $TAR
+          echo "tar=$TAR" >> $GITHUB_OUTPUT
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.ARTIFACT }}
+          path: ${{ steps.save.outputs.tar }}
+          retention-days: 1
+
+  deploy:
+    needs: build
+    runs-on: [ self-hosted, linux, x64 ]
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: ${{ env.ARTIFACT }}
+
+      - name: SCP artefacts
+        uses: appleboy/scp-action@v1.0.4
+        with:
+          host: ${{ secrets.SSH_HOST_DEST }}
+          username: ${{ secrets.SSH_USER_DEST }}
+          key: ${{ secrets.SSH_KEY_DEST }}
+          source: |
+            ${{ needs.build.outputs.tar }}
+            .env
+          target: /tmp
+
+      - name: Remote deploy
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST_DEST }}
+          username: ${{ secrets.SSH_USER_DEST }}
+          key: ${{ secrets.SSH_KEY_DEST }}
+          script: |
+            set -e
+            TAG='${{ needs.build.outputs.tag }}'
+            IMAGE='${{ env.IMAGE_BASE }}:'$TAG
+            source /tmp/.env
+            echo "docker load..."
+            gunzip -c /tmp/${{ needs.build.outputs.tar }} | docker image prune -af | docker load
+            echo "docker stop $CONTAINER_NAME || true"
+            docker stop $CONTAINER_NAME 2>/dev/null || true
+            docker rm   $CONTAINER_NAME 2>/dev/null || true
+            echo "docker run"
+            docker run -d --name $CONTAINER_NAME \
+              -p $HOST_HTTP_PORT:$INT_HTTP_PORT \
+              -p $HOST_HTTPS_PORT:$INT_HTTPS_PORT \
+              --env-file /tmp/.env \
+              --restart unless-stopped \
+              $IMAGE
+            rm /tmp/${{ needs.build.outputs.tar }} /tmp/.env
