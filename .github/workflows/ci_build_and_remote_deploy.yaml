@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main, develop, release ]
 env:
-  IMAGE_BASE: senator-as400-cloud-sync
+  IMAGE_BASE: prueba01
   ARTIFACT:    image-tar
   ENV_FILE:    .env
 
