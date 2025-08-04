@@ -83,7 +83,7 @@ jobs:
           name: ${{ env.ARTIFACT }}
 
       - name: SCP artefacts
-        uses: appleboy/scp-action@v1.0.4
+        uses: appleboy/scp-action@v1
         with:
           host: ${{ secrets.SSH_HOST_DEST }}
           username: ${{ secrets.SSH_USER_DEST }}
