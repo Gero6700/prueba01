@@ -52,7 +52,7 @@ jobs:
           set -a && source .env && set +a
           cat .env >> "$GITHUB_ENV"
 
-      - uses: docker/setup-buildx-action@v3
+      # - uses: docker/setup-buildx-action@v3
 
       - name: Build image
         run: |
