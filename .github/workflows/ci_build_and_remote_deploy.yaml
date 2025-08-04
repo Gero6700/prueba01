@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: [ self-hosted, linux, x64 ]
     outputs:
-      tag: ${{ steps.meta.outputs.tag }}
+      tag: ${{ steps.env.outputs.tag }}
       tar: ${{ steps.save.outputs.tar }}
     steps:
       - uses: actions/checkout@v4
@@ -61,7 +61,7 @@ jobs:
             -t $IMAGE_BASE:${{ steps.meta.outputs.tag }} .
 
       - name: Save image → tar.gz
-        id: save
+        id: savesteps.meta.outputs.tag 
         run: |
           TAR=${{ env.ARTIFACT }}_${{ steps.meta.outputs.tag }}.tar.gz
           docker save $IMAGE_BASE:${{ steps.meta.outputs.tag }} | gzip > $TAR
