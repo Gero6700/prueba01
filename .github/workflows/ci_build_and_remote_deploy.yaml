@@ -56,7 +56,7 @@ jobs:
 
       - name: Build image
         run: |
-          users |
+          users ;
           docker build \
             --build-arg BUILD_CONFIG=$CFG \
             -t $IMAGE_BASE:${{ steps.meta.outputs.tag }} .
