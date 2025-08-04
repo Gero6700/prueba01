@@ -58,13 +58,13 @@ jobs:
         run: |
            docker build \
             --build-arg BUILD_CONFIG=$CFG \
-            -t $IMAGE_BASE:${{ steps.meta.outputs.tag }} .
+            -t $IMAGE_BASE:${{ steps.env.outputs.tag }} .
 
       - name: Save image → tar.gz
-        id: savesteps.meta.outputs.tag 
+        id: save
         run: |
-          TAR=${{ env.ARTIFACT }}_${{ steps.meta.outputs.tag }}.tar.gz
-          docker save $IMAGE_BASE:${{ steps.meta.outputs.tag }} | gzip > $TAR
+          TAR=${{ env.ARTIFACT }}_${{ steps.env.outputs.tag }}.tar.gz
+          docker save $IMAGE_BASE:${{ steps.env.outputs.tag }} | gzip > $TAR
           echo "tar=$TAR" >> $GITHUB_OUTPUT
 
       - uses: actions/upload-artifact@v4
